@@ -1,0 +1,1476 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>킹왕짱 RPG</title>
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-basic.webp"
+            fetchpriority="low"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-fire.webp"
+            fetchpriority="low"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-ice.webp"
+            fetchpriority="low"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-lightning.webp"
+            fetchpriority="low"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-void.webp"
+            fetchpriority="low"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="images/theme/parts/combat-gold.webp"
+            fetchpriority="low"
+        />
+
+        <link rel="stylesheet" href="styles/base/variables.css" />
+        <link rel="stylesheet" href="styles/base/animations.css" />
+        <link rel="stylesheet" href="styles/screens/title-screen.css" />
+        <link rel="stylesheet" href="styles/screens/battle-mode-game.css" />
+        <link rel="stylesheet" href="styles/base/modal-common.css" />
+        <link rel="stylesheet" href="styles/screens/mode-selection.css" />
+        <link rel="stylesheet" href="styles/screens/practice-mode-game.css" />
+        <link rel="stylesheet" href="styles/screens/battle-mode-story-modal.css" />
+        <link rel="stylesheet" href="styles/base/buttons.css" />
+        <link rel="stylesheet" href="styles/screens/shop-modal.css" />
+        <link rel="stylesheet" href="styles/screens/inventory-modal.css" />
+        <link rel="stylesheet" href="styles/screens/statistics-modal.css" />
+        <link rel="stylesheet" href="styles/screens/setting-modal.css" />
+        <link rel="stylesheet" href="styles/screens/result-modal.css" />
+        <link rel="stylesheet" href="styles/base/notifications.css" />
+        <link rel="stylesheet" href="styles/theme/fantasy-theme.css" />
+        <link rel="stylesheet" href="styles/theme/guild-gameplay.css" />
+        <link rel="stylesheet" href="styles/theme/image-components.css" />
+        <link rel="stylesheet" href="styles/theme/approved-menus.css" />
+        <link rel="stylesheet" href="styles/theme/weapon-effects.css" />
+    </head>
+
+    <body>
+        <button
+            type="button"
+            id="global-fullscreen-btn"
+            class="fullscreen-btn"
+            data-action="fullscreen-toggle"
+            aria-label="전체화면"
+            aria-pressed="false"
+            title="전체화면"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6" />
+            </svg>
+        </button>
+        <div id="battle-mode-game" style="display: none; height: 100%; flex-direction: column">
+            <header class="gameplay-header">
+                <span class="game-emblem emblem-swords" aria-hidden="true"></span>
+                <div class="gameplay-heading">
+                    <h2>단어 퀘스트</h2>
+                    <p>WORD QUEST</p>
+                </div>
+                <div class="gameplay-actions">
+                    <span class="fullscreen-space" aria-hidden="true"></span>
+                    <button
+                        type="button"
+                        class="music-toggle-btn"
+                        id="battle-music-toggle-btn"
+                        data-music-state="off"
+                        aria-pressed="false"
+                        aria-label="배경음악 OFF, 켜기"
+                        title="배경음악 OFF, 켜기"
+                    >
+                        ⏸️
+                    </button>
+                    <button
+                        type="button"
+                        class="practice-nav-btn practice-nav-exit"
+                        id="battle-exit-btn"
+                        title="나가기"
+                    >
+                        나가기
+                    </button>
+                </div>
+            </header>
+            <div class="battle-arena">
+                <div class="battle-hud" aria-label="전투 정보">
+                    <div class="battle-status">
+                        <div class="info-badge" id="game-info-badge">배틀 모드 - Day 1</div>
+                        <div class="overlay-gold" aria-label="보유 골드">
+                            <span class="gold-icon" aria-hidden="true">💰</span>
+                            <span id="overlay-gold">0</span><span class="gold-unit">G</span>
+                        </div>
+                    </div>
+                    <div class="info-badge" id="wave-badge">Wave: 1</div>
+                    <div class="overlay-timer" aria-label="남은 시간">
+                        <div class="timer-bar-bg">
+                            <div id="overlay-timer" class="timer-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 현재 재생 중인 음악 정보 -->
+                <div class="music-info-overlay" id="music-info-overlay" style="display: none">
+                    <span id="music-filename" class="visually-hidden" aria-hidden="true"></span>
+                    <select
+                        id="music-select"
+                        class="music-track-select"
+                        aria-label="배경음악 곡 선택"
+                    ></select>
+                </div>
+
+                <div class="char-wrapper" id="hero-wrapper">
+                    <div id="hero-head" class="hero-equip-slot"></div>
+                    <div id="hero-hand-1" class="hero-equip-slot"></div>
+                    <div id="hero-hand-2" class="hero-equip-slot"></div>
+                    <div id="hero-feet" class="hero-equip-slot"></div>
+                    <img id="hero-img" class="char-img" src="" alt="모험가" />
+                    <div id="hero-weapon" class="equipped-weapon"></div>
+                    <div id="hero-effect" class="hero-effect" style="display: none"></div>
+                </div>
+
+                <div class="effect-layer" id="combat-effects" aria-hidden="true">
+                    <div id="weapon-flight" class="weapon-flight">
+                        <img id="weapon-flight-art" alt="" />
+                    </div>
+                    <div id="effect-slash" class="attack-impact">
+                        <img id="attack-impact-art" class="combat-core" alt="" /><img
+                            id="attack-echo-art"
+                            class="combat-echo"
+                            alt=""
+                        />
+                        <img class="combat-cut" src="images/theme/parts/combat-basic.webp" alt="" />
+                        <div id="attack-particles" class="combat-particles"></div>
+                    </div>
+                    <div id="attack-secondary" class="attack-impact">
+                        <img id="attack-secondary-art" alt="" />
+                    </div>
+                    <div id="attack-gold" class="attack-impact">
+                        <img id="attack-gold-art" alt="" />
+                    </div>
+                    <div id="attack-guard" class="attack-guard">
+                        <img src="images/theme/parts/item-shield.webp" alt="" />
+                    </div>
+                </div>
+
+                <div class="char-wrapper">
+                    <img id="monster-img" class="char-img" src="" alt="몬스터" />
+                </div>
+                <div id="dmg-txt" class="damage-txt"></div>
+                <!-- 게임 조작은 상단 길드 헤더에 배치한다. -->
+            </div>
+
+            <div class="quiz-area">
+                <div class="question-box">
+                    <div class="gameplay-card-label" id="question-instruction">
+                        CHOOSE YOUR ANSWER
+                    </div>
+                    <div class="q-label" id="q-label">MEANING</div>
+                    <div class="q-text" id="q-text">Loading...</div>
+                    <p id="equipment-hint" role="status" hidden></p>
+                </div>
+
+                <div id="equipment-display" class="equipment-bar" aria-label="장비 능력"></div>
+                <div id="skill-display" class="skill-bar"></div>
+
+                <div id="listening-panel" class="listening-panel" hidden>
+                    <div class="listening-actions">
+                        <button
+                            type="button"
+                            id="listen-word-btn"
+                            class="btn-main"
+                            data-action="battle-listen"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/ui-music.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>발음 듣기</span>
+                        </button>
+                        <button
+                            type="button"
+                            id="listen-fallback-btn"
+                            class="btn-main"
+                            data-action="battle-listen-fallback"
+                        >
+                            뜻 문제로 풀기
+                        </button>
+                    </div>
+                    <p id="listening-status" role="status" aria-live="polite">
+                        발음을 들은 뒤 답을 고르세요.
+                    </p>
+                </div>
+
+                <div id="spelling-panel" class="spelling-panel" hidden>
+                    <div
+                        id="spelling-answer"
+                        class="spelling-answer"
+                        aria-label="조립한 철자"
+                        aria-live="polite"
+                    ></div>
+                    <div
+                        id="spelling-tiles"
+                        class="spelling-tiles"
+                        role="group"
+                        aria-label="철자 선택"
+                    ></div>
+                    <div class="spelling-tools">
+                        <button type="button" class="btn-main" data-action="battle-spelling-remove">
+                            한 글자 지우기
+                        </button>
+                        <button type="button" class="btn-main" data-action="battle-spelling-clear">
+                            다시 조립
+                        </button>
+                    </div>
+                    <button
+                        type="button"
+                        id="spelling-submit"
+                        class="boss-submit btn-danger"
+                        data-action="boss-submit"
+                        disabled
+                    >
+                        <img
+                            class="action-icon"
+                            src="images/theme/parts/calm-attack-icon.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>공격하기</span>
+                    </button>
+                </div>
+
+                <div
+                    id="options-box"
+                    class="options-grid"
+                    role="group"
+                    aria-labelledby="q-text"
+                ></div>
+
+                <div id="boss-box" class="boss-ui">
+                    <div id="boss-title">⚠️ FINAL BOSS</div>
+                    <div id="boss-hint" class="boss-hint"></div>
+                    <input
+                        type="text"
+                        id="boss-input"
+                        aria-labelledby="q-text"
+                        aria-describedby="boss-hint"
+                        class="boss-input"
+                        placeholder="정답 입력"
+                        autocomplete="off"
+                    />
+                    <button class="boss-submit btn-danger" data-action="boss-submit">
+                        <img
+                            class="action-icon"
+                            src="images/theme/parts/calm-attack-icon.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>공격하기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="title-screen" class="screen-overlay">
+            <div class="title-container-wrapper">
+                <img
+                    id="title-background"
+                    src="images/theme/quest-lobby-forest.webp"
+                    alt=""
+                    class="title-background"
+                    aria-hidden="true"
+                />
+                <div class="title-buttons-overlay">
+                    <div class="title-toolbar">
+                        <div class="title-gold-display" aria-label="보유 골드">
+                            <span class="gold-icon" aria-hidden="true">💰</span>
+                            <span id="title-ui-gold">0</span><span class="gold-unit">G</span>
+                        </div>
+                        <select
+                            id="game-data-selector"
+                            class="title-data-selector"
+                            aria-label="단어장 선택"
+                        >
+                            <option value="1">능률 보카 중등 기본</option>
+                            <option value="2">워드 마스터 중등 고난도</option>
+                        </select>
+                        <button
+                            class="image-action-button revenge-shortcut"
+                            data-action="revenge-open"
+                            aria-label="복수 퀘스트"
+                            title="복수 퀘스트"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/monster-goblin.webp"
+                                alt=""
+                            /><span>복수 <b data-revenge-count>0</b></span>
+                        </button>
+                        <span class="fullscreen-space" aria-hidden="true"></span>
+                    </div>
+                    <header class="title-header">
+                        <h1 id="title-header-text" class="visually-hidden">킹왕짱</h1>
+                        <span
+                            id="title-logo"
+                            class="title-logo"
+                            data-variant="0"
+                            aria-hidden="true"
+                        ></span>
+                    </header>
+                    <div class="title-menu-art">
+                        <nav class="menu-hotspots" aria-label="학습 모드">
+                            <button
+                                id="title-battle-mode-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="배틀 모드 · 범위 선택, 문제 풀기"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-battle.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button
+                                id="title-practice-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="연습 모드"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-practice.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button
+                                id="title-boss-mode-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="전체 단어 도전"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-boss.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </nav>
+                        <nav class="menu-hotspots" aria-label="게임 메뉴">
+                            <button
+                                id="title-shop-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="상점"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-shop.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button
+                                id="title-inventory-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="장비"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-inventory.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button
+                                id="title-statistics-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="통계"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-statistics.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button
+                                id="title-setting-btn"
+                                type="button"
+                                class="menu-hotspot"
+                                aria-label="설정"
+                            >
+                                <img
+                                    src="images/theme/parts/menu-setting.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden UI elements (kept for functionality but not displayed) -->
+            <div style="display: none">
+                <div id="equipped-summary" class="equipped-summary"></div>
+                <select id="day-select"></select>
+                <select id="count-select">
+                    <option value="10" selected>10 마리 (보통)</option>
+                    <option value="20">20 마리 (어려움)</option>
+                    <option value="all">모든 문제</option>
+                </select>
+            </div>
+        </div>
+
+        <dialog
+            id="inventory-modal"
+            class="screen-overlay inventory-modal-wrapper"
+            aria-label="인벤토리"
+            style="display: none"
+        >
+            <div class="card rpg-modal">
+                <div id="inv-item-detail" style="display: none">
+                    <div id="detail-header">
+                        <div id="detail-icon"></div>
+                        <div id="detail-name"></div>
+                        <button id="detail-close" data-action="inventory-hide-details">X</button>
+                    </div>
+                    <div id="detail-desc"></div>
+                    <div id="detail-actions"></div>
+                </div>
+
+                <div class="modal-header approved-menu-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-shield" aria-hidden="true"></span
+                        ><span>장비</span>
+                    </h2>
+                    <div class="menu-wallet" aria-label="보유 골드">
+                        <img
+                            src="images/theme/parts/approved-coin.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span data-menu-gold>0</span><span>G</span>
+                    </div>
+                </div>
+                <div class="inv-container">
+                    <div class="inv-player">
+                        <div class="inventory-paperdoll">
+                            <img
+                                class="inventory-boy"
+                                src="images/theme/parts/approved-boy.webp"
+                                alt=""
+                                aria-hidden="true"
+                            />
+                            <button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-head"
+                                aria-label="머리 슬롯"
+                                data-slot-label="머리"
+                                data-action="inventory-unequip"
+                                data-slot="head"
+                            ></button
+                            ><button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-hand-1"
+                                aria-label="오른손 슬롯"
+                                data-slot-label="오른손"
+                                data-action="inventory-unequip"
+                                data-slot="hand-1"
+                            ></button
+                            ><button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-hand-2"
+                                aria-label="왼손 슬롯"
+                                data-slot-label="왼손"
+                                data-action="inventory-unequip"
+                                data-slot="hand-2"
+                            ></button
+                            ><button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-foot-1"
+                                aria-label="왼발 슬롯"
+                                data-slot-label="왼발"
+                                data-action="inventory-unequip"
+                                data-slot="foot-1"
+                            ></button
+                            ><button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-foot-2"
+                                aria-label="오른발 슬롯"
+                                data-slot-label="오른발"
+                                data-action="inventory-unequip"
+                                data-slot="foot-2"
+                            ></button>
+                        </div>
+                        <p class="inventory-slot-caption">
+                            캐릭터 기준 · 장착한 장비를 누르면 해제
+                        </p>
+                        <div class="inventory-bonus">
+                            <span>골드 보너스</span><strong id="inv-gold-bonus">×1</strong>
+                        </div>
+                        <details class="inventory-equipment-guide">
+                            <summary>슬롯별 장착 안내</summary>
+                            <dl>
+                                <div>
+                                    <dt>머리</dt>
+                                    <dd>투구 · 전투당 무료 힌트 1회</dd>
+                                </div>
+                                <div>
+                                    <dt>오른손</dt>
+                                    <dd>주무기 · 골드 배율 · 3연속 정답 +10 G</dd>
+                                </div>
+                                <div>
+                                    <dt>왼손</dt>
+                                    <dd>보조 이펙트 · 방패는 전투당 재도전 1회</dd>
+                                </div>
+                                <div>
+                                    <dt>양발</dt>
+                                    <dd>부츠 한 켤레 · 시간 또는 보상 경로 선택</dd>
+                                </div>
+                            </dl>
+                            <p>
+                                장비를 선택하면 가능한 장착 위치가 표시됩니다. 오른손을 비우면 기본
+                                검을 사용합니다. 장비 능력은 전투 시작 시 적용됩니다. 수호 방패
+                                유물은 오답 손실을 절반으로 줄이며, 장착 방패의 재도전과는 별도
+                                효과입니다.
+                            </p>
+                        </details>
+                    </div>
+                    <div class="inv-storage">
+                        <div class="inventory-storage-heading">
+                            <h3 class="inv-section-title">보관함</h3>
+                            <div class="inv-capacity">
+                                <span id="inv-cap">0</span> / <span id="inv-max-cap">3</span>
+                            </div>
+                        </div>
+                        <div class="inv-items"></div>
+
+                        <h3 class="inv-section-title" style="margin-top: 16px">보유 유물</h3>
+                        <div class="inv-relics"></div>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    class="image-action-button"
+                    id="inv-close-btn"
+                    data-action="inventory-close"
+                    aria-label="인벤토리 닫기"
+                >
+                    <img
+                        class="menu-home-icon"
+                        src="images/theme/parts/approved-home.webp"
+                        alt=""
+                        aria-hidden="true"
+                    /><span>마을로</span>
+                </button>
+            </div>
+        </dialog>
+
+        <!-- 학습 선택: 그림 좌표와 독립적인 폼 -->
+        <dialog
+            id="practice-mode-modal"
+            class="screen-overlay"
+            aria-labelledby="practice-selection-title"
+            style="display: none"
+        >
+            <section class="card mode-selection">
+                <header class="menu-heading">
+                    <span class="game-emblem emblem-book" aria-hidden="true"></span>
+                    <div>
+                        <span class="menu-kicker">SPELLBOOK</span>
+                        <h2 id="practice-selection-title">단어 연습</h2>
+                    </div>
+                </header>
+                <div class="mode-selection-body">
+                    <p class="mode-description">뜻을 떠올린 뒤 확인하고, 외운 단어를 표시하세요.</p>
+                    <label for="practice-mode-modal-day-select">학습 범위</label>
+                    <select id="practice-mode-modal-day-select"></select>
+                </div>
+                <div class="mode-actions">
+                    <button id="practice-mode-modal-cancel-btn" type="button">취소</button>
+                    <button id="practice-mode-modal-start-btn" type="button" class="mode-start">
+                        연습 시작
+                    </button>
+                </div>
+            </section>
+        </dialog>
+        <dialog
+            id="battle-mode-modal"
+            class="screen-overlay"
+            aria-labelledby="battle-selection-title"
+            style="display: none"
+        >
+            <section class="card mode-selection">
+                <header class="menu-heading">
+                    <span class="game-emblem emblem-swords" aria-hidden="true"></span>
+                    <div>
+                        <span class="menu-kicker">ADVENTURE</span>
+                        <h2 id="battle-selection-title">단어 배틀</h2>
+                    </div>
+                </header>
+                <div class="mode-selection-body">
+                    <label for="battle-mode-modal-day-select">출제 범위</label>
+                    <select id="battle-mode-modal-day-select"></select>
+                    <label for="battle-mode-modal-count-select">문제 수</label>
+                    <select id="battle-mode-modal-count-select">
+                        <option value="10">10문제</option>
+                        <option value="20">20문제</option>
+                        <option value="all">모든 문제</option>
+                    </select>
+                    <fieldset
+                        id="battle-mode-modal-question-type-group"
+                        class="mode-question-types"
+                    >
+                        <legend>문제 유형</legend>
+                        <label
+                            ><input
+                                type="radio"
+                                name="battle-question-type"
+                                value="monsters"
+                                checked
+                            />몬스터별</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="battle-question-type"
+                                value="objective"
+                            />객관식</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="battle-question-type"
+                                value="mixed"
+                            />혼합형</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="battle-question-type"
+                                value="subjective"
+                            />주관식</label
+                        >
+                    </fieldset>
+                    <p class="mode-description">
+                        몬스터별: 슬라임은 뜻, 고블린은 철자 조립, 박쥐는 듣기, 마지막 드래곤은 보스
+                        문제입니다. 듣기는 발음이 끝난 뒤 시간 제한이 시작됩니다.
+                    </p>
+                </div>
+                <div class="mode-actions">
+                    <button id="battle-mode-modal-cancel-btn" type="button">취소</button>
+                    <button id="battle-mode-modal-start-btn" type="button" class="mode-start">
+                        배틀 시작
+                    </button>
+                </div>
+            </section>
+        </dialog>
+
+        <!-- Practice Mode Game (단어 암기 화면) -->
+        <div id="practice-mode-game" style="display: none; height: 100%; flex-direction: column">
+            <header class="gameplay-header">
+                <span class="game-emblem emblem-book" aria-hidden="true"></span>
+                <div class="gameplay-heading">
+                    <h2>단어 모험</h2>
+                    <p>LEARN · DISCOVER · REMEMBER</p>
+                </div>
+                <div class="gameplay-actions">
+                    <span class="fullscreen-space" aria-hidden="true"></span>
+                    <button
+                        type="button"
+                        class="music-toggle-btn"
+                        id="practice-music-toggle-btn"
+                        data-music-state="off"
+                        aria-pressed="false"
+                        aria-label="배경음악 OFF, 켜기"
+                        title="배경음악 OFF, 켜기"
+                    >
+                        ⏸️
+                    </button>
+                    <button
+                        type="button"
+                        class="practice-nav-btn practice-nav-exit"
+                        id="practice-exit-btn"
+                        title="나가기"
+                    >
+                        나가기
+                    </button>
+                </div>
+            </header>
+            <div class="practice-memorization-container">
+                <!-- 배틀 아레나 영역 (배틀 모드와 유사) -->
+                <div class="practice-memorization-arena">
+                    <!-- 현재 재생 중인 음악 정보 -->
+                    <div
+                        class="music-info-overlay"
+                        id="practice-music-info-overlay"
+                        style="display: none"
+                    >
+                        <span
+                            id="practice-music-filename"
+                            class="visually-hidden"
+                            aria-hidden="true"
+                        ></span>
+                        <select
+                            id="practice-music-select"
+                            class="music-track-select"
+                            aria-label="배경음악 곡 선택"
+                        ></select>
+                    </div>
+                    <!-- 상단: Day 정보 및 단어 번호 -->
+                    <div class="practice-memorization-header">
+                        <div class="practice-day-info" id="practice-memorization-day-info"></div>
+                        <div class="practice-word-counter" id="practice-word-counter">1 / 1</div>
+                    </div>
+                    <!-- 게임 조작은 상단 길드 헤더에 배치한다. -->
+                </div>
+
+                <!-- 중앙: 단어 표시 영역 (배틀 모드의 quiz-area와 유사) -->
+                <div class="practice-memorization-content">
+                    <!-- 영어 단어 + 음성 재생 -->
+                    <div class="practice-word-section">
+                        <div class="gameplay-card-label">WORD DISCOVERY</div>
+                        <div class="practice-word-row">
+                            <div class="practice-word-text" id="practice-word-text">Loading...</div>
+                        </div>
+                    </div>
+
+                    <!-- 한글 뜻 -->
+                    <div class="practice-meaning-section">
+                        <div class="gameplay-card-label">뜻을 기억하고 있나요?</div>
+                        <p id="practice-recall-prompt" class="practice-recall-prompt">
+                            뜻을 먼저 떠올려 보세요.
+                        </p>
+                        <button
+                            type="button"
+                            id="practice-reveal-btn"
+                            class="practice-reveal-btn"
+                            aria-expanded="false"
+                            aria-controls="practice-meaning-text practice-explanation-section"
+                        >
+                            뜻 확인
+                        </button>
+                        <div class="practice-meaning-text" id="practice-meaning-text">
+                            Loading...
+                        </div>
+                    </div>
+
+                    <!-- 영문/한글 설명 (탭하여 전환) -->
+                    <div
+                        class="practice-explanation-section"
+                        id="practice-explanation-section"
+                        role="button"
+                        tabindex="0"
+                        aria-label="영문 또는 한글 설명 전환"
+                        title="탭하면 한글/영문 설명으로 전환됩니다"
+                    >
+                        <div class="gameplay-card-label">단어 풀이</div>
+                        <div class="practice-explanation-text" id="practice-explanation-text">
+                            Loading...
+                        </div>
+                        <div class="practice-explanation-hint" aria-hidden="true">E ↔ 한</div>
+                    </div>
+                </div>
+
+                <!-- 초이스 칩 + 음성 아이콘 (한 줄) -->
+                <div id="practice-filter-chips" class="practice-memorized-row">
+                    <button
+                        type="button"
+                        class="practice-chip practice-chip-active"
+                        data-filter="all"
+                    >
+                        전체보기
+                    </button>
+                    <button type="button" class="practice-chip" data-filter="memorized">
+                        외운단어
+                    </button>
+                    <button type="button" class="practice-chip" data-filter="not-memorized">
+                        못외운단어
+                    </button>
+                    <button
+                        type="button"
+                        class="practice-speak-btn"
+                        id="practice-speak-btn"
+                        title="음성 재생"
+                        aria-label="음성 재생"
+                    >
+                        🗣️
+                    </button>
+                </div>
+
+                <!-- 하단: 네비게이션 버튼 (중앙: 외웠어요) -->
+                <div class="practice-memorization-navigation">
+                    <button class="practice-nav-btn" id="practice-prev-btn" title="이전 단어">
+                        이전
+                    </button>
+                    <button
+                        type="button"
+                        class="practice-nav-btn practice-memorized-btn"
+                        id="practice-memorized-btn"
+                        title="스스로 기억했다고 표시합니다. 정답률 기록과는 별개입니다."
+                        aria-pressed="false"
+                    >
+                        외웠어요
+                    </button>
+                    <button class="practice-nav-btn" id="practice-next-btn" title="다음 단어">
+                        다음
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <dialog
+            id="battle-mode-story-modal"
+            class="screen-overlay"
+            aria-labelledby="battle-mode-day-info"
+            style="display: none"
+        >
+            <div class="card story-card">
+                <header class="menu-heading">
+                    <span class="game-emblem emblem-quill" aria-hidden="true"></span>
+                    <div>
+                        <span class="menu-kicker">CHAPTER</span>
+                        <h2 class="story-day-info" id="battle-mode-day-info"></h2>
+                    </div>
+                </header>
+                <div class="story-text-content" id="battle-mode-text"></div>
+                <div class="story-actions">
+                    <button class="btn-gray" data-action="story-back">범위 다시 선택</button>
+                    <button class="btn-main" id="battle-mode-start-btn" autofocus>
+                        모험 시작 ⚔️
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="shop-modal"
+            class="screen-overlay shop-modal-wrapper"
+            aria-label="상점"
+            style="display: none"
+        >
+            <div class="card rpg-modal">
+                <div class="modal-header approved-menu-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-chest" aria-hidden="true"></span
+                        ><span>상점</span>
+                    </h2>
+                    <div class="menu-wallet" aria-label="보유 골드">
+                        <img
+                            src="images/theme/parts/approved-coin.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span data-menu-gold id="shop-gold">0</span><span>G</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="shop-container" style="text-align: left"></div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="image-action-button"
+                        data-action="shop-close"
+                        aria-label="나가기"
+                    >
+                        <img
+                            class="menu-home-icon"
+                            src="images/theme/parts/approved-home.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>마을로</span>
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="statistics-modal"
+            class="screen-overlay statistics-modal-wrapper"
+            aria-label="학습 통계"
+            style="display: none"
+        >
+            <div class="card rpg-modal">
+                <div class="modal-header approved-menu-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-trophy" aria-hidden="true"></span
+                        ><span>통계</span>
+                    </h2>
+                    <div class="menu-wallet" aria-label="보유 골드">
+                        <img
+                            src="images/theme/parts/approved-coin.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span data-menu-gold>0</span><span>G</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="statistics-container" style="text-align: left"></div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="image-action-button"
+                        data-action="statistics-close"
+                        aria-label="나가기"
+                    >
+                        <img
+                            class="menu-home-icon"
+                            src="images/theme/parts/approved-home.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>마을로</span>
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="result-modal"
+            class="screen-overlay screen-overlay--result"
+            aria-label="게임 결과"
+            style="display: none"
+        >
+            <div class="result-modal" role="dialog" aria-label="결과">
+                <div class="result-emblem game-emblem emblem-trophy" aria-hidden="true"></div>
+                <div id="res-title" class="result-modal-title">FINISHED!</div>
+
+                <div class="result-modal-body">
+                    <div class="result-modal-row">
+                        <span class="result-label">이번 획득</span>
+                        <span class="result-value gold">+<span id="res-gain">0</span> G</span>
+                    </div>
+                    <div class="result-modal-row">
+                        <span class="result-label">이번 손실</span>
+                        <span class="result-value danger">-<span id="res-lost">0</span> G</span>
+                    </div>
+                    <div class="result-modal-total">
+                        내 지갑 총액: <span id="res-current-total">0</span> G
+                    </div>
+                    <div id="res-record" class="result-record-container"></div>
+                    <p id="res-retry-note" hidden></p>
+                    <button class="result-btn" data-action="revenge-open">
+                        복수 퀘스트 <b data-revenge-count>0</b>
+                    </button>
+                    <div id="res-wrong-words" class="result-wrong-words-container"></div>
+                    <button
+                        id="result-review-btn"
+                        class="result-btn result-btn-gold"
+                        data-action="result-review"
+                        hidden
+                    >
+                        틀린 단어 복습
+                    </button>
+                </div>
+
+                <div class="result-modal-actions">
+                    <button class="result-btn result-btn-gold" data-action="result-close">
+                        <img
+                            class="action-icon"
+                            src="images/theme/parts/approved-home.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>마을로 귀환</span>
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="setting-modal"
+            class="screen-overlay setting-modal-wrapper"
+            aria-label="설정"
+            style="display: none"
+        >
+            <div id="password-modal" class="card rpg-modal password-modal-card">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-gears" aria-hidden="true"></span
+                        ><span>비밀번호 입력</span>
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <div
+                        id="password-input-boxes"
+                        style="display: flex; gap: 5px; justify-content: center; margin: 20px 0"
+                    ></div>
+
+                    <p id="password-error" style="color: var(--danger); display: none">
+                        비밀번호가 틀렸습니다.
+                    </p>
+
+                    <div
+                        id="password-numpad"
+                        style="
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            max-width: 200px;
+                            margin: 0 auto;
+                        "
+                    >
+                        <button class="num-btn" data-action="secret-enter" data-digit="1">1</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="2">2</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="3">3</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="4">4</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="5">5</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="6">6</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="7">7</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="8">8</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="9">9</button>
+
+                        <button class="num-btn" data-action="secret-del">⌫</button>
+
+                        <button class="num-btn" data-action="secret-enter" data-digit="0">0</button>
+
+                        <button
+                            class="num-btn"
+                            data-action="secret-close"
+                            style="
+                                width: 60px;
+                                height: 60px;
+                                font-size: 20px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                box-sizing: border-box;
+                            "
+                        >
+                            X
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="gold-adjuster-modal"
+                class="card rpg-modal gold-adjuster-modal-card"
+                style="display: none"
+            >
+                <div class="modal-header approved-menu-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-gears" aria-hidden="true"></span
+                        ><span>설정</span>
+                    </h2>
+                    <div class="menu-wallet" aria-label="보유 골드">
+                        <img
+                            src="images/theme/parts/approved-coin.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span data-menu-gold>0</span><span>G</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-option-row">
+                        <label class="setting-checkbox-label">
+                            <input type="checkbox" id="setting-music-play" checked />
+                            <img
+                                class="setting-icon"
+                                src="images/theme/parts/ui-music.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>음악 재생</span>
+                        </label>
+                    </div>
+                    <div class="setting-option-row">
+                        <label class="setting-checkbox-label">
+                            <input type="checkbox" id="setting-word-read" checked />
+                            <img
+                                class="setting-icon"
+                                src="images/theme/parts/ui-book.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>단어 바로 읽기</span>
+                        </label>
+                    </div>
+                    <section class="settings-gold-editor">
+                        <h3>
+                            <img
+                                class="setting-icon"
+                                src="images/theme/parts/approved-coin.webp"
+                                alt=""
+                                aria-hidden="true"
+                            />골드 수정
+                        </h3>
+                        <div class="settings-gold-current">
+                            <span>현재 골드</span
+                            ><strong><span id="settings-current-gold">0</span> G</strong>
+                        </div>
+                        <div class="gold-adjust-controls">
+                            <button
+                                type="button"
+                                id="settings-gold-down"
+                                class="gold-arrow"
+                                aria-label="골드 500 줄이기"
+                            >
+                                −
+                            </button>
+                            <output
+                                id="settings-edit-gold"
+                                class="gold-display-box"
+                                aria-label="설정할 골드"
+                                aria-live="polite"
+                                >0</output
+                            >
+                            <button
+                                type="button"
+                                id="settings-gold-up"
+                                class="gold-arrow"
+                                aria-label="골드 500 늘리기"
+                            >
+                                +
+                            </button>
+                        </div>
+                        <button
+                            type="button"
+                            class="modal-btn-main settings-gold-apply"
+                            data-action="secret-gold-edit-apply"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/calm-apply-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>적용</span>
+                        </button>
+                    </section>
+                    <div class="settings-actions">
+                        <button class="modal-btn-main" data-action="secret-print-open">
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/calm-print-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>문제 출력</span>
+                        </button>
+                        <button
+                            class="modal-btn-main btn-danger"
+                            data-action="secret-reset-statistics"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/calm-reset-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>통계 초기화</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="image-action-button"
+                        data-action="secret-close"
+                        aria-label="나가기"
+                    >
+                        <img
+                            class="menu-home-icon"
+                            src="images/theme/parts/approved-home.webp"
+                            alt=""
+                            aria-hidden="true"
+                        /><span>마을로</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="gold-edit-modal" class="card rpg-modal" style="display: none">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-chest" aria-hidden="true"></span
+                        ><span>골드 수정</span>
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <div class="gold-adjuster">
+                        <div class="gold-adjust-label">현재 골드</div>
+
+                        <div id="current-gold-edit-display" class="gold-display-box">0</div>
+
+                        <div class="gold-adjust-label">설정할 골드</div>
+
+                        <div class="gold-adjust-controls">
+                            <button id="gold-edit-down" class="gold-arrow">▼</button>
+
+                            <div id="edit-gold-display" class="gold-display-box">0</div>
+
+                            <button id="gold-edit-up" class="gold-arrow">▲</button>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; width: 100%">
+                        <button
+                            type="button"
+                            class="image-action-button"
+                            data-action="secret-gold-edit-apply"
+                            aria-label="적용"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/calm-apply-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>적용</span>
+                        </button>
+                    </div>
+                    <div style="text-align: center; width: 100%; margin-top: 10px">
+                        <button
+                            type="button"
+                            class="image-action-button"
+                            data-action="secret-gold-edit-close"
+                            aria-label="나가기"
+                        >
+                            <span>나가기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="print-day-select-modal" class="card rpg-modal" style="display: none">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <span class="game-emblem emblem-quill" aria-hidden="true"></span
+                        ><span>Day 선택</span>
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <div style="margin: 20px 0">
+                        <select
+                            id="print-day-select"
+                            class="modal-btn-main"
+                            style="width: 100%; padding: 10px; font-size: 16px"
+                        >
+                            <option value="">Day 선택...</option>
+                        </select>
+                    </div>
+                    <!-- 문제 타입 라디오 버튼 (Print Modal 전용) -->
+                    <div id="print-question-type-group" class="print-radio-group">
+                        <label class="print-radio-label">
+                            <input
+                                type="radio"
+                                name="print-question-type"
+                                value="objective"
+                                class="print-radio"
+                            />
+                            <span class="print-radio-text">객관식</span>
+                        </label>
+                        <label class="print-radio-label">
+                            <input
+                                type="radio"
+                                name="print-question-type"
+                                value="mixed"
+                                checked
+                                class="print-radio"
+                            />
+                            <span class="print-radio-text">혼합형</span>
+                        </label>
+                        <label class="print-radio-label">
+                            <input
+                                type="radio"
+                                name="print-question-type"
+                                value="subjective"
+                                class="print-radio"
+                            />
+                            <span class="print-radio-text">주관식</span>
+                        </label>
+                    </div>
+                    <div style="text-align: center; width: 100%; margin-top: 20px">
+                        <button
+                            class="modal-btn-main"
+                            data-action="secret-print-generate"
+                            style="width: 80%; margin: 0 auto"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/calm-print-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>인쇄용 HTML 생성</span>
+                        </button>
+                    </div>
+                    <div style="text-align: center; width: 100%; margin-top: 10px">
+                        <button
+                            type="button"
+                            class="image-action-button"
+                            data-action="secret-print-close"
+                            aria-label="나가기"
+                        >
+                            <span>나가기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog
+            id="revenge-modal"
+            class="screen-overlay"
+            aria-label="복수 퀘스트"
+            style="display: none"
+        >
+            <div class="revenge-panel">
+                <header>
+                    <img src="images/theme/parts/monster-goblin.webp" alt="" />
+                    <div>
+                        <h2>복수 퀘스트</h2>
+                        <p id="revenge-summary"></p>
+                    </div>
+                </header>
+                <p class="revenge-guide">
+                    틀린 단어로 몬스터에게 재도전하세요. 성공하면 24시간 뒤 회상 문제가 열립니다.
+                    단어별 보상은 각 단계에서 한 번씩 받을 수 있어요.
+                </p>
+                <div id="revenge-list" aria-live="polite"></div>
+                <footer>
+                    <button
+                        id="revenge-start-btn"
+                        class="image-action-button"
+                        data-action="revenge-start"
+                    >
+                        <span>재도전</span></button
+                    ><button class="image-action-button" data-action="revenge-close">
+                        <img
+                            class="menu-home-icon"
+                            src="images/theme/parts/approved-home.webp"
+                            alt=""
+                        /><span>마을로</span>
+                    </button>
+                </footer>
+            </div>
+        </dialog>
+
+        <dialog
+            id="equipment-route-modal"
+            class="screen-overlay"
+            aria-label="모험 경로 선택"
+            style="display: none"
+        >
+            <div class="revenge-panel route-panel">
+                <header>
+                    <img src="images/theme/parts/item-boots.webp" alt="" />
+                    <div>
+                        <h2>어느 길로 갈까요?</h2>
+                        <p>장착한 부츠로 모험 경로를 고르세요.</p>
+                    </div>
+                </header>
+                <div class="route-choices">
+                    <button id="route-safe-btn" class="image-action-button">
+                        <img src="images/theme/parts/item-shield.webp" alt="" /><strong
+                            >안전한 길</strong
+                        ><span>시간 제한 문제 +5초</span>
+                    </button>
+                    <button id="route-treasure-btn" class="image-action-button">
+                        <img src="images/theme/parts/approved-coin.webp" alt="" /><strong
+                            >보물 길</strong
+                        ><span>전투 골드 +10%</span>
+                    </button>
+                </div>
+                <p class="revenge-guide">
+                    철자·보스 문제에는 시간 제한이 없습니다. 복수 퀘스트의 추가 보상은 경로 배율에
+                    포함되지 않습니다.
+                </p>
+                <footer>
+                    <button class="image-action-button" data-action="route-exit">
+                        <span>마을로</span>
+                    </button>
+                </footer>
+            </div>
+        </dialog>
+
+        <!-- 디버그 로깅 유틸 (가장 먼저 로드 — 이후 스크립트의 dlog 호출 대비) -->
+        <script src="scripts/config.js"></script>
+        <script src="scripts/utils/debug.js"></script>
+
+        <!-- 데이터 파일 먼저 로드 (CORS 문제 방지를 위해 JavaScript 변수로 래핑) -->
+        <script src="data/game-data-1.js"></script>
+        <script src="data/game-data-2.js"></script>
+        <script src="data/game-data-3.js"></script>
+        <!-- 유사 단어 집합 (decoy words set) -->
+        <script src="data/decoy-words-set.js"></script>
+        <script src="data/items-data.js"></script>
+
+        <script src="scripts/core/storage.js"></script>
+
+        <!-- 데이터 로더 -->
+        <script src="scripts/data/game-data-loader.js"></script>
+        <script src="scripts/data/words-loader.js"></script>
+        <script src="scripts/data/items-loader.js"></script>
+
+        <!-- 유틸리티 함수 -->
+        <script src="scripts/ui/notify.js"></script>
+        <script src="scripts/utils/helpers.js"></script>
+        <script src="scripts/ui/image-components.js"></script>
+
+        <!-- 핵심 시스템 모듈 -->
+        <script src="scripts/domain/questions.js"></script>
+        <script src="data/battle-examples.js"></script>
+        <script src="scripts/domain/monster-encounters.js"></script>
+        <script src="scripts/domain/battle-rules.js"></script>
+        <script src="scripts/domain/attack-profiles.js"></script>
+        <script src="scripts/domain/equipment-rules.js"></script>
+        <script src="scripts/domain/revenge-rules.js"></script>
+        <script src="scripts/core/database.js"></script>
+        <script src="scripts/features/inventory.js"></script>
+        <script src="scripts/features/shop.js"></script>
+        <script src="scripts/features/statistics.js"></script>
+        <script src="scripts/features/settings.js"></script>
+
+        <!-- UI 관리 -->
+        <!-- UI 관리 -->
+        <script src="scripts/ui/navigation.js"></script>
+        <script src="scripts/ui/modal-manager.js"></script>
+        <script src="scripts/ui/layout-manager.js"></script>
+        <script src="scripts/ui/menu-logic.js"></script>
+        <script src="scripts/ui/setup-ui.js"></script>
+        <script src="scripts/ui/battle-assets.js"></script>
+        <script src="scripts/ui/ui-manager.js"></script>
+        <script src="scripts/ui/battle-view.js"></script>
+        <script src="scripts/ui/practice-view.js"></script>
+
+        <!-- 기능 모듈 -->
+        <script src="scripts/features/revenge-quests.js"></script>
+        <script src="scripts/features/speech.js"></script>
+        <script src="scripts/features/story.js"></script>
+        <script src="scripts/features/audio-manager.js"></script>
+        <script src="scripts/features/worksheet.js"></script>
+        <script src="scripts/features/admin-tools.js"></script>
+
+        <!-- 게임 로직 -->
+        <script src="scripts/game/game-engine.js"></script>
+        <script src="scripts/game/practice-session.js"></script>
+
+        <!-- 메인 애플리케이션 -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/init.js" defer></script>
+
+        <!-- Background Music -->
+        <audio id="background-music" preload="none">
+            <source src="data/background_music_1.mp3" type="audio/mpeg" />
+        </audio>
+    </body>
+</html>

@@ -1,0 +1,768 @@
+/* 생성한 길드 UI 시안에 맞춘 스킨. 조작 영역은 Grid/Flex와 native button이 소유한다. */
+:root {
+    --art-library: url('../../images/theme/library.webp');
+    --art-courtyard: url('../../images/theme/courtyard.webp');
+    --art-dragon: url('../../images/theme/dragon-tower.webp');
+    --art-panel: url('../../images/theme/guild-panel.webp');
+    --art-jade: url('../../images/theme/guild-jade.webp');
+    --theme-ink: #38291c;
+    --theme-muted: #685338;
+    --primary: #146848;
+    --gold: #905512;
+    --danger: #a42e2e;
+    --success: #236d40;
+    --btn-blue: #075bc4;
+    --text-color: #38291c;
+    --game-bg: #eee4cf;
+    --game-card: #fffaf0;
+    --game-card-border: #c9b692;
+    --game-text: #322b20;
+    --game-text-muted: #685338;
+}
+body {
+    background: radial-gradient(ellipse at top, #344c32, #14291e 75%);
+    animation: none;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+.game-emblem {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background: url('../../images/theme/guild-emblems.webp') 0 0 / 400% 200% no-repeat;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 2px #34251944);
+}
+.emblem-book {
+    background-position: 0 0;
+}
+.emblem-swords {
+    background-position: 33.333333% 0;
+}
+.emblem-dragon {
+    background-position: 66.666667% 0;
+}
+.emblem-chest {
+    background-position: 100% 0;
+}
+.emblem-shield {
+    background-position: 0 100%;
+}
+.emblem-trophy {
+    background-position: 33.333333% 100%;
+}
+.emblem-gears {
+    background-position: 66.666667% 100%;
+}
+.emblem-quill {
+    background-position: 100% 100%;
+}
+
+/* 2×3 로고 atlas는 글자 순열만 바꾸며 레이아웃과 입력 좌표에는 관여하지 않는다. */
+.title-logo {
+    display: block;
+    flex-shrink: 0;
+    width: min(140%, clamp(390px, 69vh, 495px));
+    max-width: none;
+    aspect-ratio: 3 / 1;
+    background: url('../../images/theme/guild-titles.webp') 0 0 / 200% 300% no-repeat;
+    transform: translateX(-5.5%);
+}
+.title-logo:is([data-variant='1'], [data-variant='3'], [data-variant='5']) {
+    transform: translateX(5.5%);
+}
+.title-logo[data-variant='1'] {
+    background-position: 100% 0;
+}
+.title-logo[data-variant='2'] {
+    background-position: 0 50%;
+}
+.title-logo[data-variant='3'] {
+    background-position: 100% 50%;
+}
+.title-logo[data-variant='4'] {
+    background-position: 0 100%;
+}
+.title-logo[data-variant='5'] {
+    background-position: 100% 100%;
+}
+/* 생성 atlas의 행 경계에 남은 윗행 그림 한 줄을 가린다. */
+.title-logo:is([data-variant='2'], [data-variant='3'], [data-variant='4'], [data-variant='5']) {
+    clip-path: inset(4% 0 0);
+}
+
+/* 나무/양피지 이미지를 9-slice로 늘려 크기가 다른 버튼과 창에 공유한다. */
+.title-btn-area,
+.card.mode-selection,
+.card.story-card,
+.card.rpg-modal,
+.app-confirm-box,
+#result-modal .result-modal,
+#inv-item-detail {
+    border: 16px solid transparent;
+    border-image: var(--art-panel) 16% fill / 16px / 0 stretch;
+    background: transparent;
+    border-radius: 18px;
+    color: var(--theme-ink);
+    box-shadow: 0 6px 18px #24170a44;
+}
+#title-screen {
+    background: #182e20;
+}
+.title-container-wrapper {
+    width: min(100%, 480px);
+}
+.title-background {
+    opacity: 1;
+    object-position: center;
+    filter: none;
+}
+.title-buttons-overlay {
+    gap: 12px;
+    padding: max(12px, env(safe-area-inset-top)) 16px max(12px, env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, #183e1c15, transparent 45%, #2d1a0d20);
+}
+.title-toolbar {
+    gap: 8px;
+}
+.title-data-selector,
+.title-gold-display {
+    min-height: 44px;
+    margin: 0;
+    padding: 8px 10px;
+    border: 3px solid #8f582b;
+    background-color: #fff0d4f5;
+    box-shadow: 0 3px 0 #4e301c;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--theme-ink);
+    font-weight: 800;
+    text-shadow: none;
+}
+.title-data-selector {
+    appearance: auto;
+    background-image: none;
+    padding-right: 4px;
+}
+.title-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(130px, 23vh, 165px);
+    min-height: 130px;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.title-modes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: auto;
+}
+.title-modes .title-btn-area {
+    gap: 4px;
+    min-height: 112px;
+    border-width: 12px;
+    border-image-width: 12px;
+    padding: 4px;
+    text-align: center;
+    transition: transform 120ms ease;
+}
+#title-battle-mode-btn {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 16px;
+    grid-column: 1 / -1;
+    min-height: 100px;
+    border-image-source: var(--art-jade);
+    border-width: 14px;
+    border-image-width: 14px;
+    padding: 8px;
+    text-align: left;
+}
+.mode-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 16px;
+    color: var(--theme-ink);
+}
+.title-modes .mode-copy small {
+    font-size: 11px;
+    color: var(--theme-muted);
+    line-height: 1.4;
+}
+#title-battle-mode-btn .mode-copy {
+    font-size: 23px;
+    color: #fff6d7;
+    text-shadow: 0 2px 0 #123e28;
+}
+#title-battle-mode-btn .mode-copy small {
+    font-size: 12px;
+    color: #f1eac8;
+}
+.title-modes .game-emblem {
+    width: 40px;
+    height: 40px;
+}
+#title-battle-mode-btn .game-emblem {
+    width: 56px;
+    height: 56px;
+}
+.mode-arrow {
+    display: none;
+    color: #ffe6a4;
+    font-size: 30px;
+    font-weight: 800;
+}
+#title-battle-mode-btn .mode-arrow {
+    display: block;
+}
+.title-btn-area:hover {
+    background: transparent;
+    filter: brightness(1.06);
+}
+.title-btn-area:active {
+    transform: translateY(2px);
+}
+.title-utilities {
+    gap: 8px;
+    margin: 0;
+}
+.title-utilities .title-btn-area {
+    min-height: 84px;
+    border-width: 10px;
+    border-image-width: 10px;
+    padding: 3px 0;
+    gap: 3px;
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #41261566;
+}
+.title-utilities .game-emblem {
+    width: 36px;
+    height: 36px;
+}
+.title-utilities span:not(.game-emblem) {
+    font-size: 13px;
+    color: var(--theme-ink);
+}
+
+/* 창 안의 읽기 영역은 단순한 밝은 종이, 실행/닫기는 생성한 비취 스킨이다. */
+dialog.screen-overlay {
+    background: #10281a9c;
+    backdrop-filter: blur(7px);
+}
+.card.mode-selection,
+.card.story-card,
+.card.rpg-modal,
+.app-confirm-box,
+#result-modal .result-modal {
+    padding: 14px;
+    animation: none;
+}
+.card.rpg-modal {
+    width: min(92vw, 480px);
+    max-width: 480px;
+    max-height: min(88dvh, var(--app-height, 100dvh));
+    display: flex;
+    flex-direction: column;
+}
+.card.rpg-modal::before,
+.card.rpg-modal::after,
+.result-modal::before,
+.result-modal::after {
+    content: none;
+}
+.menu-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    padding: 0 0 12px;
+    margin: 0 0 12px;
+    border: 0;
+    border-bottom: 2px solid #b1936455;
+    background: transparent;
+    flex-shrink: 0;
+    text-align: left;
+}
+.menu-heading .game-emblem {
+    width: 46px;
+    height: 46px;
+}
+.menu-heading h2,
+.mode-selection .menu-heading h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 23px;
+    color: var(--theme-ink);
+    text-shadow: none;
+}
+.menu-kicker {
+    display: none;
+}
+.card label,
+.mode-question-types legend {
+    color: var(--theme-ink);
+    text-shadow: none;
+}
+.mode-selection-body > label,
+.mode-question-types legend {
+    font-size: 14px;
+}
+.card select,
+.mode-selection select {
+    color: var(--theme-ink);
+    background: #fffaf0;
+    appearance: auto;
+    border-color: #b4925c;
+    border-radius: 10px;
+    font-size: 15px;
+    text-shadow: none;
+    box-shadow: none;
+}
+.mode-selection select {
+    margin: 0;
+}
+select option,
+select option:checked {
+    background: #fffaf0;
+    color: var(--theme-ink);
+}
+.mode-question-types label,
+.print-radio-label {
+    background: #fff8e7;
+    color: var(--theme-ink);
+    font-size: 14px;
+}
+.mode-question-types label:has(input:checked),
+.print-radio-label:has(.print-radio:checked) {
+    color: #fff7db;
+    background: #176348;
+    border-color: #176348;
+    box-shadow: none;
+    transform: none;
+}
+.print-radio:checked + .print-radio-text {
+    color: #fff7db;
+}
+.mode-question-types input,
+.setting-checkbox-label input {
+    accent-color: #176348;
+}
+.mode-description {
+    color: var(--theme-muted);
+}
+.app-confirm-msg {
+    color: var(--theme-ink);
+}
+.mode-actions button,
+.story-actions button,
+.app-confirm-actions button,
+.image-action-button,
+.card.rpg-modal .modal-btn-main,
+.card.rpg-modal #detail-actions button,
+.result-btn {
+    min-height: 48px;
+    border: 10px solid transparent;
+    border-image: var(--art-jade) 16% fill / 10px / 0 stretch;
+    border-radius: 12px;
+    background: transparent;
+    padding: 5px;
+    color: #fff6d7;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: 0 1px 1px #153c2a;
+    box-shadow: 0 3px 0 #44281744;
+    animation: none;
+}
+.mode-actions button:not(.mode-start),
+.story-actions button:not(.btn-main),
+.app-confirm-cancel {
+    border-image-source: var(--art-panel);
+    color: var(--theme-ink);
+    text-shadow: none;
+}
+.mode-actions .mode-start {
+    background: transparent;
+    color: #fff6d7;
+}
+.image-action-button {
+    width: 100%;
+}
+.card.rpg-modal .modal-btn-main::before,
+#detail-actions button::before,
+.result-btn::before {
+    content: none;
+}
+.card.rpg-modal .modal-btn-main.btn-danger {
+    border-image: none;
+    min-height: 48px;
+    text-shadow: none;
+    box-shadow: none;
+}
+.card.story-card {
+    gap: 14px;
+}
+.card.story-card .menu-heading {
+    margin: 0;
+}
+.story-text-content {
+    color: var(--theme-ink);
+    font-size: 16px;
+    line-height: 1.75;
+}
+.card.rpg-modal .modal-header,
+.statistics-modal-wrapper .card.rpg-modal .modal-header {
+    min-height: 62px;
+    margin-bottom: 14px;
+    padding: 0 0 12px;
+    border: 0;
+    border-bottom: 2px solid #b1936455;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+}
+.card.rpg-modal .modal-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 23px;
+    color: var(--theme-ink);
+    text-shadow: none;
+}
+.card.rpg-modal .modal-title .game-emblem {
+    width: 46px;
+    height: 46px;
+}
+.card.rpg-modal .modal-body {
+    min-height: 0;
+}
+.modal-body,
+.inv-container,
+.result-modal-body,
+.mode-selection-body,
+.story-text-content {
+    scrollbar-width: thin;
+    scrollbar-color: #9b723a #f4e0ba;
+}
+.shop-item .buy-btn {
+    min-height: 44px;
+    min-width: 66px;
+    margin-left: 8px;
+    border: 7px solid transparent;
+    border-image: var(--art-jade) 16% fill / 7px / 0 stretch;
+    border-radius: 9px;
+    padding: 3px;
+    background: transparent;
+    color: #fff6d7;
+}
+.shop-item-copy {
+    font-size: 15px;
+    min-width: 0;
+}
+.shop-item-description {
+    font-size: 13px;
+    color: var(--theme-muted);
+}
+.card.rpg-modal .modal-footer {
+    border-color: #b1936455;
+    padding-top: 12px;
+}
+.shop-item,
+.inv-slot,
+.statistics-item,
+.inv-items,
+.inv-relics,
+.inv-torso,
+.inv-item,
+.relic-item {
+    background: #fff8e8;
+    border-color: #c3a577;
+    color: var(--theme-ink);
+}
+.shop-section,
+.statistics-section,
+.inv-section-title {
+    color: #146848;
+    border-color: #b1936455;
+    text-shadow: none;
+}
+.statistics-value-correct {
+    color: #236d40;
+}
+.statistics-value-wrong {
+    color: #a42e2e;
+}
+.statistics-value-wave {
+    color: #72468a;
+}
+.inv-capacity,
+#detail-desc,
+.gold-adjust-label {
+    color: var(--theme-muted);
+}
+#inv-item-detail {
+    padding: 12px;
+}
+#detail-header {
+    border-color: #b1936455;
+}
+#detail-close {
+    color: var(--theme-ink);
+    min-width: 44px;
+    min-height: 44px;
+}
+.gold-adjuster-modal-card .setting-option-row {
+    width: 100%;
+    border: 1px solid #c3a577;
+    background: #fff8e8;
+    box-shadow: none;
+}
+.gold-adjuster-modal-card .setting-checkbox-label {
+    color: var(--theme-ink);
+}
+.setting-modal-wrapper .card.rpg-modal .num-btn,
+.password-box,
+.gold-display-box {
+    background: #fff8e8;
+    border-color: #c3a577;
+    color: var(--theme-ink);
+}
+.setting-modal-wrapper .card.rpg-modal .num-btn {
+    border: 7px solid transparent;
+    border-image: var(--art-panel) 16% fill / 7px / 0 stretch;
+    box-shadow: none;
+}
+.result-emblem {
+    align-self: center;
+    width: 54px;
+    height: 54px;
+}
+.result-modal-title {
+    margin: 3px 0 14px;
+    color: var(--theme-ink);
+    text-shadow: none;
+}
+.result-modal-body {
+    border-color: #c3a577;
+    background: #fff8e8;
+    box-shadow: none;
+}
+.result-modal-row,
+.result-modal-total {
+    color: var(--theme-ink);
+}
+.result-modal-total,
+.result-record-container,
+.result-wrong-words-container {
+    border-color: #b1936455;
+}
+#result-modal .result-wrong-word-item {
+    background: #ffefe0;
+    border-color: #ba845d;
+}
+#result-modal .result-wrong-word-item .wrong-word {
+    color: #97372a;
+}
+#result-modal .result-wrong-word-item .wrong-meaning {
+    color: var(--theme-ink);
+}
+
+/* 단어와 답안은 장식 없는 읽기 영역에 두고 조작 버튼만 스킨을 공유한다. */
+.practice-memorization-arena {
+    background-image: linear-gradient(#12223744, #12223777), var(--art-library);
+    background-position: center 44%;
+    border-color: #9b723a;
+}
+.battle-arena {
+    background-image: linear-gradient(#12223733, #12223766), var(--art-courtyard);
+    background-position: center;
+    border-color: #9b723a;
+}
+#battle-mode-game[data-game-mode='boss'] .battle-arena {
+    background-image: linear-gradient(#12223733, #12223766), var(--art-dragon);
+}
+.quiz-area,
+.practice-memorization-content,
+.practice-memorized-row,
+.practice-memorization-navigation {
+    background: var(--game-bg);
+}
+.practice-word-section,
+.practice-meaning-section,
+.practice-explanation-section,
+.question-box {
+    background: var(--game-card);
+    border-color: var(--game-card-border);
+    border-radius: 14px;
+    box-shadow: 0 2px 3px #39281c18;
+}
+.practice-word-section {
+    border-top: 3px solid #9b723a;
+}
+.practice-word-counter,
+.practice-day-info,
+.info-badge,
+.overlay-gold {
+    background: #153829ed;
+    color: #fff0c9;
+    border: 1px solid #bfa169;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px #0004;
+}
+.practice-nav-btn,
+.practice-chip,
+.practice-speak-btn,
+.practice-reveal-btn,
+.boss-submit {
+    border: 7px solid transparent;
+    border-image: var(--art-panel) 16% fill / 7px / 0 stretch;
+    background: transparent;
+    color: var(--theme-ink);
+    padding: 4px 6px;
+    box-shadow: none;
+}
+.practice-nav-btn,
+.practice-chip,
+.practice-speak-btn {
+    min-height: 44px;
+}
+.practice-speak-btn {
+    min-width: 44px;
+}
+.practice-nav-exit {
+    border-image: none;
+    background: #a34232;
+    color: #fff4df;
+    border: 1px solid #873128;
+}
+.practice-chip-active,
+.practice-memorized-active,
+.boss-submit {
+    border-image-source: var(--art-jade);
+    color: #fff6d7;
+}
+.skill-btn.skill-active,
+.skill-btn.skill-active .skill-count {
+    color: #fff8e7;
+}
+.timer-bar-fill:not(.timer-danger) {
+    background: linear-gradient(90deg, #1a8058, #70c781);
+}
+.boss-input {
+    border-color: #b69762;
+    background: #fff8e7;
+}
+
+@media (max-width: 350px) {
+    .title-buttons-overlay {
+        padding-inline: 12px;
+        gap: 10px;
+    }
+    .mode-copy {
+        font-size: 14px;
+    }
+    .title-modes .mode-copy small {
+        font-size: 10px;
+    }
+    #title-battle-mode-btn .mode-copy {
+        font-size: 20px;
+    }
+    #title-battle-mode-btn .mode-copy small {
+        font-size: 10px;
+    }
+    .title-utilities {
+        gap: 6px;
+    }
+    .title-utilities .title-btn-area {
+        border-width: 8px;
+        border-image-width: 8px;
+    }
+    .card.mode-selection,
+    .card.story-card,
+    .card.rpg-modal,
+    #result-modal .result-modal {
+        padding: 10px;
+    }
+    .menu-heading h2,
+    .mode-selection .menu-heading h2 {
+        font-size: 21px;
+    }
+}
+@media (max-height: 560px) {
+    .title-buttons-overlay {
+        gap: 8px;
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    .title-header {
+        height: 108px;
+        min-height: 108px;
+    }
+    .title-logo {
+        width: min(110%, 324px);
+    }
+    .title-modes {
+        gap: 8px;
+    }
+    .title-modes .title-btn-area {
+        min-height: 92px;
+        border-width: 10px;
+        border-image-width: 10px;
+        padding: 2px;
+        gap: 2px;
+    }
+    #title-battle-mode-btn {
+        min-height: 82px;
+        padding: 4px 8px;
+        grid-template-columns: 46px minmax(0, 1fr) 14px;
+    }
+    #title-battle-mode-btn .mode-copy {
+        font-size: 20px;
+    }
+    .title-modes .game-emblem {
+        width: 32px;
+        height: 32px;
+    }
+    #title-battle-mode-btn .game-emblem {
+        width: 46px;
+        height: 46px;
+    }
+    .title-modes .mode-copy small {
+        font-size: 10px;
+    }
+    .title-utilities .title-btn-area {
+        min-height: 70px;
+        padding: 2px 0;
+        gap: 2px;
+    }
+    .title-utilities .game-emblem {
+        width: 30px;
+        height: 30px;
+    }
+    .title-utilities span:not(.game-emblem) {
+        font-size: 12px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .title-btn-area,
+    .timer-bar-fill {
+        transition: none;
+    }
+    .music-filename {
+        animation: none;
+        padding-left: 0;
+    }
+}

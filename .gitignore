@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+node_modules/
+dist/
+*.log
+
+# 로컬 백업 (런타임 및 커밋 제외)
+backup/

@@ -1,0 +1,767 @@
+/* Individual illustrated VFX and weapon art, anchored to the actual combatants. */
+#combat-effects {
+    --spark-color: #fff6b7;
+    --impact-delay: 200ms;
+    --flight-duration: 350ms;
+    overflow: hidden;
+    isolation: isolate;
+}
+#combat-effects[data-element='fire'] {
+    --spark-color: #ffb04d;
+}
+#combat-effects[data-element='ice'] {
+    --spark-color: #b5f6ff;
+}
+#combat-effects[data-element='lightning'] {
+    --spark-color: #ffe875;
+}
+#combat-effects[data-element='void'] {
+    --spark-color: #ceaeff;
+}
+#combat-effects[data-element='gold'] {
+    --spark-color: #ffe594;
+}
+#combat-effects .weapon-flight,
+#combat-effects .attack-impact,
+#combat-effects .attack-guard {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+#combat-effects .weapon-flight {
+    left: var(--source-x);
+    top: var(--source-y);
+    width: var(--weapon-size);
+    height: var(--weapon-size);
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 3px 2px #16372666);
+    z-index: 2;
+}
+#combat-effects img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+#combat-effects .attack-impact {
+    left: var(--target-x);
+    top: var(--target-y);
+    width: var(--impact-size);
+    height: var(--impact-size);
+    transform: translate(-50%, -50%);
+    background: none;
+    border: 0;
+    box-shadow: none;
+    filter: none;
+    animation: none;
+}
+#combat-effects #effect-slash {
+    opacity: 1;
+}
+#combat-effects .combat-core,
+#combat-effects .combat-echo {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+#combat-effects .combat-echo {
+    display: none;
+}
+#combat-effects.is-attacking .weapon-flight {
+    animation: quest-weapon-slash var(--flight-duration) ease-out both;
+}
+#combat-effects.is-attacking .combat-core {
+    animation: quest-impact 420ms ease-out var(--impact-delay) both;
+}
+#combat-effects.is-attacking[data-echo='true'] .combat-echo {
+    display: block;
+    animation: quest-echo 300ms ease-out calc(var(--impact-delay) + 110ms) both;
+}
+#combat-effects.is-attacking[data-strike='dagger'] .weapon-flight {
+    animation: quest-weapon-dagger 600ms ease-out both;
+}
+#combat-effects.is-attacking[data-strike='dagger'] .combat-echo {
+    animation-delay: calc(var(--impact-delay) + 150ms);
+}
+#combat-effects.is-attacking:is([data-strike='cross'], [data-strike='royal']) .weapon-flight {
+    animation-name: quest-weapon-cross;
+}
+#combat-effects.is-attacking[data-strike='axe'] .weapon-flight {
+    animation-name: quest-weapon-axe;
+}
+#combat-effects.is-attacking[data-strike='axe'] .combat-core {
+    animation-name: quest-impact-heavy;
+}
+#combat-effects.is-attacking[data-strike='rise'] .weapon-flight {
+    animation-name: quest-weapon-rise;
+}
+#combat-effects.is-attacking[data-strike='reap'] .weapon-flight {
+    animation-name: quest-weapon-reap;
+}
+#combat-effects.is-attacking[data-strike='thrust'] .weapon-flight {
+    animation-name: quest-weapon-thrust;
+}
+#combat-effects.is-attacking[data-element='ice'] .combat-core {
+    animation-name: quest-impact-ice;
+}
+#combat-effects.is-attacking[data-element='lightning'] .combat-core {
+    animation-name: quest-impact-lightning;
+}
+#combat-effects.is-attacking[data-element='void'] .combat-core {
+    animation-name: quest-impact-void;
+}
+#combat-effects.is-attacking.has-secondary #attack-secondary {
+    opacity: 1;
+}
+#combat-effects.is-attacking.has-secondary #attack-secondary-art {
+    animation: quest-secondary 430ms ease-out both;
+}
+#combat-effects.is-attacking.has-secondary[data-secondary='void'] #attack-secondary-art {
+    animation-name: quest-secondary-void;
+}
+#combat-effects.is-attacking:is(.has-gold, [data-combo='true']) #attack-gold {
+    opacity: 1;
+}
+#combat-effects.is-attacking:is(.has-gold, [data-combo='true']) #attack-gold-art {
+    animation: quest-gold-burst 350ms ease-out calc(var(--impact-delay) + 50ms) both;
+}
+.combat-particles {
+    position: absolute;
+    inset: 0;
+}
+.combat-particles i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 12px;
+    opacity: 0;
+    background: var(--spark-color);
+    clip-path: polygon(50% 0, 66% 33%, 100% 50%, 66% 66%, 50% 100%, 33% 66%, 0 50%, 33% 33%);
+}
+#combat-effects[data-element='ice'] .combat-particles i {
+    width: 9px;
+    height: 18px;
+    clip-path: polygon(50% 0, 100% 65%, 50% 100%, 0 65%);
+}
+#combat-effects[data-element='fire'] .combat-particles i {
+    border-radius: 60% 40% 70% 30%;
+    clip-path: none;
+}
+#combat-effects.is-attacking .combat-particles i {
+    animation: quest-spark 380ms ease-out var(--impact-delay) both;
+}
+#combat-effects .attack-guard {
+    left: var(--source-x);
+    top: var(--source-y);
+    width: min(90px, var(--impact-size));
+    height: min(90px, var(--impact-size));
+    transform: translate(-50%, -50%);
+}
+#combat-effects.is-blocking .attack-guard {
+    animation: quest-guard 620ms ease-out both;
+}
+#combat-effects .attack-guard::before {
+    content: '';
+    position: absolute;
+    inset: -8%;
+    border: 3px solid #b8f3d3;
+    background: #8ddabc33;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #96e1b944;
+}
+#combat-effects .attack-guard img {
+    position: relative;
+    padding: 12%;
+    box-sizing: border-box;
+}
+
+/* Move the visible sprite and its equipped art together. */
+#battle-mode-game #hero-wrapper.hero-active::before,
+#battle-mode-game #hero-wrapper.hero-active .char-img,
+#battle-mode-game #hero-wrapper.hero-active .equipped-weapon {
+    animation: none;
+}
+#battle-mode-game #hero-wrapper.hero-active {
+    animation: quest-hero-slash 620ms ease-in-out both;
+}
+#battle-mode-game #hero-wrapper.hero-active[data-strike='dagger'] {
+    animation-name: quest-hero-dagger;
+}
+#battle-mode-game #hero-wrapper.hero-active[data-strike='axe'] {
+    animation-name: quest-hero-heavy;
+}
+#battle-mode-game
+    #hero-wrapper.hero-active:is(
+        [data-strike='cross'],
+        [data-strike='royal'],
+        [data-strike='reap']
+    ) {
+    animation-name: quest-hero-turn;
+}
+#battle-mode-game #hero-wrapper.hero-active[data-strike='rise'] {
+    animation-name: quest-hero-rise;
+}
+#battle-mode-game #hero-wrapper.hero-active[data-strike='thrust'] {
+    animation-name: quest-hero-thrust;
+}
+#battle-mode-game .battle-arena[data-strike] .char-wrapper:has(#monster-img.mob-active) {
+    animation: quest-recoil 380ms ease-out both;
+}
+#battle-mode-game .battle-arena[data-strike='axe'] .char-wrapper:has(#monster-img.mob-active) {
+    animation-name: quest-recoil-heavy;
+}
+#battle-mode-game .battle-arena[data-strike='reap'] .char-wrapper:has(#monster-img.mob-active) {
+    animation-name: quest-recoil-ice;
+}
+
+@keyframes quest-weapon-slash {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-55deg) scale(0.7);
+    }
+    18% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 50%)) rotate(65deg)
+            scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 35%), calc(var(--travel-y) - 35%))
+            rotate(115deg) scale(0.9);
+    }
+}
+@keyframes quest-weapon-cross {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-60deg) scale(0.6);
+    }
+    18% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 60%), calc(var(--travel-y) - 65%)) rotate(40deg)
+            scale(1.1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 40%), calc(var(--travel-y) - 35%))
+            rotate(-40deg) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 40%), calc(var(--travel-y) - 35%))
+            rotate(-50deg);
+    }
+}
+@keyframes quest-weapon-dagger {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(45deg) scale(0.65);
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 70%)) rotate(45deg)
+            scale(0.9);
+    }
+    42% {
+        opacity: 0;
+        transform: translate(-50%, -10%) rotate(45deg) scale(0.65);
+    }
+    50% {
+        opacity: 1;
+    }
+    62% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 30%)) rotate(45deg)
+            scale(0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 30%), calc(var(--travel-y) - 30%)) rotate(45deg);
+    }
+}
+@keyframes quest-weapon-axe {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-60deg) scale(0.8);
+    }
+    22% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) * 0.45 - 50%), -150%) rotate(-120deg) scale(1.1);
+    }
+    65% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 50%)) rotate(35deg)
+            scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 15%)) rotate(55deg)
+            scale(0.9);
+    }
+}
+@keyframes quest-weapon-rise {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10%) rotate(35deg) scale(0.7);
+    }
+    20% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 75%))
+            rotate(-50deg) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 50%), calc(var(--travel-y) - 130%))
+            rotate(-90deg);
+    }
+}
+@keyframes quest-weapon-reap {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-110deg) scale(0.7);
+    }
+    18% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 70%), calc(var(--travel-y) - 50%)) rotate(40deg)
+            scale(1.15);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 25%), calc(var(--travel-y) - 50%))
+            rotate(150deg) scale(0.9);
+    }
+}
+@keyframes quest-weapon-thrust {
+    0% {
+        opacity: 0;
+        transform: translate(-80%, -50%) rotate(45deg) scale(0.8);
+    }
+    15% {
+        opacity: 1;
+    }
+    55% {
+        opacity: 1;
+        transform: translate(calc(var(--travel-x) - 30%), calc(var(--travel-y) - 50%)) rotate(45deg)
+            scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--travel-x) - 10%), calc(var(--travel-y) - 50%)) rotate(45deg)
+            scale(0.9);
+    }
+}
+@keyframes quest-impact {
+    0% {
+        opacity: 0;
+        transform: rotate(-30deg) scale(0.3);
+    }
+    25% {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+    65% {
+        opacity: 0.85;
+        transform: rotate(15deg) scale(1.03);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(25deg) scale(1.12);
+    }
+}
+@keyframes quest-impact-heavy {
+    0% {
+        opacity: 0;
+        transform: translateY(-18%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(4%) scale(1.18, 0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(8%) scale(1.2, 0.9);
+    }
+}
+@keyframes quest-impact-ice {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) scale(0.35);
+    }
+    25% {
+        opacity: 1;
+        transform: rotate(0) scale(1.05);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(55deg) scale(1.16);
+    }
+}
+@keyframes quest-impact-lightning {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.2);
+    }
+    15% {
+        opacity: 1;
+        transform: scale(1, 1.1);
+    }
+    55% {
+        opacity: 0.9;
+        transform: scale(1.04);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+}
+@keyframes quest-impact-void {
+    0% {
+        opacity: 0;
+        transform: rotate(-70deg) scale(0.3);
+    }
+    35% {
+        opacity: 0.95;
+        transform: rotate(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(100deg) scale(1.05);
+    }
+}
+@keyframes quest-echo {
+    0% {
+        opacity: 0;
+        transform: scaleX(-1) rotate(-35deg) scale(0.5);
+    }
+    30% {
+        opacity: 0.85;
+        transform: scaleX(-1) rotate(-15deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(-1) rotate(5deg) scale(1.1);
+    }
+}
+@keyframes quest-secondary {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-20deg);
+    }
+    30% {
+        opacity: 0.85;
+        transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.15) rotate(35deg);
+    }
+}
+@keyframes quest-secondary-void {
+    0% {
+        opacity: 0;
+        transform: scale(0.4) rotate(-80deg);
+    }
+    35% {
+        opacity: 0.9;
+        transform: scale(1.15) rotate(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2) rotate(130deg);
+    }
+}
+@keyframes quest-gold-burst {
+    0% {
+        opacity: 0;
+        transform: scale(0.35);
+    }
+    30% {
+        opacity: 0.8;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.15) translateY(-8%);
+    }
+}
+@keyframes quest-spark {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--spark-angle)) scale(0.5);
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--spark-x) - 50%), calc(var(--spark-y) - 50%))
+            rotate(var(--spark-angle)) scale(0.4);
+    }
+}
+@keyframes quest-guard {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.14);
+    }
+}
+@keyframes quest-hero-slash {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+    18% {
+        transform: translateX(-4px) rotate(-7deg);
+    }
+    45% {
+        transform: translateX(var(--lunge)) rotate(8deg);
+    }
+    75% {
+        transform: translateX(4px) rotate(-2deg);
+    }
+}
+@keyframes quest-hero-dagger {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    24%,
+    60% {
+        transform: translateX(var(--lunge));
+    }
+    40%,
+    80% {
+        transform: translateX(2px);
+    }
+}
+@keyframes quest-hero-heavy {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+    22% {
+        transform: translateY(-9px) rotate(-10deg);
+    }
+    48% {
+        transform: translateX(var(--lunge)) translateY(3px) rotate(12deg);
+    }
+    72% {
+        transform: translateX(4px) rotate(2deg);
+    }
+}
+@keyframes quest-hero-turn {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0) scaleX(1);
+    }
+    22% {
+        transform: translateX(-3px) rotate(-10deg) scaleX(0.9);
+    }
+    46% {
+        transform: translateX(var(--lunge)) rotate(10deg) scaleX(1.05);
+    }
+    72% {
+        transform: translateX(4px) rotate(-4deg);
+    }
+}
+@keyframes quest-hero-rise {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+    25% {
+        transform: translateX(4px) translateY(4px) rotate(6deg);
+    }
+    50% {
+        transform: translateX(var(--lunge)) translateY(-10px) rotate(-8deg);
+    }
+    80% {
+        transform: translateX(2px) translateY(-2px);
+    }
+}
+@keyframes quest-hero-thrust {
+    0%,
+    100% {
+        transform: translateX(0) scaleX(1);
+    }
+    20% {
+        transform: translateX(-6px) scaleX(0.9);
+    }
+    34%,
+    50% {
+        transform: translateX(var(--lunge)) scaleX(1.07);
+    }
+    75% {
+        transform: translateX(3px) scaleX(1);
+    }
+}
+@keyframes quest-recoil {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+    25% {
+        transform: translateX(8px) rotate(7deg);
+    }
+    65% {
+        transform: translateX(3px) rotate(-3deg);
+    }
+}
+@keyframes quest-recoil-heavy {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+    30% {
+        transform: translateX(8px) translateY(6px) scaleY(0.85) rotate(10deg);
+    }
+    70% {
+        transform: translateX(3px) translateY(2px) scaleY(0.95);
+    }
+}
+@keyframes quest-recoil-ice {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+    25% {
+        transform: translateX(8px) rotate(6deg);
+    }
+    60% {
+        transform: translateX(8px) rotate(6deg);
+    }
+}
+@keyframes quest-quiet-fade {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    25%,
+    70% {
+        opacity: 0.85;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    #combat-effects.is-attacking .weapon-flight,
+    #combat-effects .combat-particles {
+        display: none;
+    }
+    #battle-mode-game #hero-wrapper.hero-active,
+    #battle-mode-game .battle-arena[data-strike] .char-wrapper:has(#monster-img.mob-active) {
+        animation: none !important;
+    }
+    #combat-effects.is-attacking .combat-core,
+    #combat-effects.is-attacking .combat-echo,
+    #combat-effects.is-attacking.has-secondary #attack-secondary-art,
+    #combat-effects.is-attacking:is(.has-gold, [data-combo='true']) #attack-gold-art {
+        animation: quest-quiet-fade 350ms linear var(--impact-delay) both !important;
+    }
+    #combat-effects.is-blocking .attack-guard {
+        animation: quest-quiet-fade 600ms linear both;
+    }
+}
+
+/* Gold weapons retain their blade silhouette beneath the reward sparkles. */
+#combat-effects .combat-cut {
+    display: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+#combat-effects.is-attacking[data-element='gold'] .combat-cut {
+    display: block;
+    animation: quest-impact 380ms ease-out var(--impact-delay) both;
+}
+#combat-effects.is-attacking[data-strike='dagger'] .combat-cut {
+    animation-name: quest-cut-pierce;
+}
+#combat-effects.is-attacking[data-strike='axe'] .combat-cut {
+    animation-name: quest-cut-down;
+}
+#combat-effects.is-attacking[data-strike='axe'] #effect-slash::after {
+    content: '';
+    position: absolute;
+    left: 15%;
+    top: 72%;
+    width: 70%;
+    height: 22%;
+    border: 3px solid #ffe9ad;
+    border-radius: 50%;
+    animation: quest-ground-ring 380ms ease-out var(--impact-delay) both;
+}
+#battle-mode-game .battle-hud {
+    z-index: 25;
+}
+@keyframes quest-cut-pierce {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%) scale(0.3, 0.15) rotate(-35deg);
+    }
+    25% {
+        opacity: 0.95;
+        transform: translateX(0) scale(1.1, 0.3) rotate(-35deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(12%) scale(1.2, 0.3) rotate(-35deg);
+    }
+}
+@keyframes quest-cut-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-25%) rotate(70deg) scale(0.6);
+    }
+    25% {
+        opacity: 0.95;
+        transform: translateY(0) rotate(70deg) scale(0.7, 1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(12%) rotate(70deg) scale(0.7, 1.15);
+    }
+}
+@keyframes quest-ground-ring {
+    0% {
+        opacity: 0;
+        transform: scale(0.25);
+    }
+    25% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.3);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    #combat-effects.is-attacking[data-element='gold'] .combat-cut {
+        animation: quest-quiet-fade 350ms linear var(--impact-delay) both !important;
+    }
+    #combat-effects.is-attacking[data-strike='axe'] #effect-slash::after {
+        animation: none;
+        display: none;
+    }
+}

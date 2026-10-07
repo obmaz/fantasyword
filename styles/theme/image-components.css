@@ -1,0 +1,293 @@
+/* Shared generated parts. Text, form controls and state remain live HTML. */
+:root {
+    --ui-action: url('../../images/theme/parts/surface-action.webp');
+    --ui-secondary: url('../../images/theme/parts/surface-secondary.webp');
+    --ui-danger: url('../../images/theme/parts/surface-danger.webp');
+    --ui-field: url('../../images/theme/parts/surface-field.webp');
+    --ui-panel: url('../../images/theme/parts/surface-panel.webp');
+    --ui-answer: url('../../images/theme/parts/surface-answer.webp');
+}
+
+/* The old theme has several per-screen button skins; image parts replace those skins. */
+:is(.mode-actions, .story-actions, .app-confirm-actions, #detail-actions) button,
+button:is(
+    .boss-submit,
+    .result-btn,
+    .buy-btn,
+    .modal-btn-main,
+    .image-action-button,
+    .practice-reveal-btn,
+    .practice-nav-btn,
+    .practice-chip,
+    .practice-speak-btn,
+    .music-toggle-btn,
+    .skill-btn,
+    .gold-arrow,
+    .num-btn
+),
+.skill-btn.skill-passive {
+    --ui-control-art: var(--ui-action);
+    background: var(--ui-control-art) center / 100% 100% no-repeat !important;
+    border: 0 !important;
+    border-image: none !important;
+    box-shadow: none !important;
+    color: #fff5dc !important;
+    text-shadow: 0 1px 1px #103324;
+    min-height: 44px;
+    padding: 10px 16px;
+}
+:is(.mode-actions, .story-actions) button:not(.mode-start, .btn-main),
+button:is(.app-confirm-cancel, .practice-chip, .gold-arrow, .num-btn),
+#practice-prev-btn,
+#practice-next-btn,
+.gameplay-actions :is(.practice-nav-btn, .music-toggle-btn),
+.skill-btn.skill-passive {
+    --ui-control-art: var(--ui-secondary);
+}
+button.btn-danger {
+    --ui-control-art: var(--ui-danger);
+}
+.practice-chip.practice-chip-active,
+#practice-memorized-btn[aria-pressed='true'] {
+    --ui-control-art: var(--ui-action);
+}
+button:disabled:not(.option-btn) {
+    opacity: 0.55;
+}
+.result-btn::before,
+.image-action-button::before {
+    display: none;
+}
+
+/* Generated frames retain their corners while the empty center fits variable content. */
+dialog.screen-overlay :is(.card.rpg-modal, .card.mode-selection, .card.story-card, .result-modal),
+.app-confirm-box,
+#battle-mode-game .question-box,
+#practice-mode-game
+    :is(.practice-word-section, .practice-meaning-section, .practice-explanation-section),
+#inventory-modal #inv-item-detail {
+    border: 14px solid transparent !important;
+    border-image: var(--ui-panel) 18% fill / 14px / 0 stretch !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff5dc;
+}
+.result-modal::before,
+.result-modal::after {
+    display: none;
+}
+.card.rpg-modal {
+    container-type: inline-size;
+}
+
+#battle-mode-game .option-btn,
+#inventory-modal :is(.inv-slot, .inv-item, .inv-torso) {
+    --ui-option-art: var(--ui-answer);
+    border: 0 !important;
+    border-image: none !important;
+    background: var(--ui-option-art) center / 100% 100% no-repeat !important;
+    box-shadow: none !important;
+    color: #fff5dc !important;
+}
+#battle-mode-game .option-btn {
+    transition:
+        transform 140ms ease,
+        filter 140ms ease;
+}
+#battle-mode-game .option-btn:is(.option-btn-correct, .option-btn-picked-correct) {
+    --ui-option-art: var(--ui-action);
+}
+#battle-mode-game .option-btn.option-btn-picked-wrong {
+    --ui-option-art: var(--ui-danger);
+}
+#battle-mode-game
+    .option-btn:is(.option-btn-correct, .option-btn-picked-correct, .option-btn-picked-wrong) {
+    outline: 2px solid #ffefd0;
+    outline-offset: -2px;
+}
+dialog.screen-overlay select,
+#battle-mode-game .boss-input {
+    background: var(--ui-field) center / 100% 100% no-repeat;
+    border: 0;
+    box-shadow: none;
+    color: #263e30;
+    padding-inline: 16px;
+}
+#battle-mode-game .boss-input-correct {
+    outline: 2px solid #8dda9c;
+}
+#battle-mode-game .boss-input-wrong {
+    outline: 2px solid #e9aa9e;
+}
+
+/* Independent icon files are shared by headings, navigation and gameplay. */
+.game-emblem {
+    background: var(--ui-icon) center / contain no-repeat;
+    filter: none;
+}
+.emblem-book {
+    --ui-icon: url('../../images/theme/parts/ui-book.webp');
+}
+.emblem-swords {
+    --ui-icon: url('../../images/theme/parts/ui-swords.webp');
+}
+.emblem-dragon {
+    --ui-icon: url('../../images/theme/parts/ui-dragon.webp');
+}
+.emblem-chest {
+    --ui-icon: url('../../images/theme/parts/ui-chest.webp');
+}
+.emblem-shield {
+    --ui-icon: url('../../images/theme/parts/ui-backpack.webp');
+}
+.emblem-trophy {
+    --ui-icon: url('../../images/theme/parts/ui-trophy.webp');
+}
+.emblem-gears {
+    --ui-icon: url('../../images/theme/parts/ui-gear.webp');
+}
+.emblem-quill {
+    --ui-icon: url('../../images/theme/parts/ui-scroll.webp');
+}
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .game-emblem {
+    background-image: var(--ui-icon);
+}
+#statistics-modal .emblem-trophy {
+    --ui-icon: url('../../images/theme/parts/ui-bars.webp');
+}
+.item-art {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+.inv-slot .item-art,
+.inv-item .item-art {
+    width: 100%;
+    height: 100%;
+    max-width: 48px;
+    max-height: 48px;
+}
+#detail-icon .item-art {
+    width: 56px;
+    height: 56px;
+}
+.hero-weapon .item-art,
+.hero-effect .item-art,
+.hero-head .item-art {
+    width: 100%;
+    height: 100%;
+}
+.skill-btn .item-art {
+    width: 24px;
+    height: 24px;
+}
+
+#shop-modal .shop-item {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+}
+#shop-modal .shop-item-copy {
+    min-width: 0;
+}
+#shop-modal .shop-item-copy b {
+    overflow-wrap: anywhere;
+}
+#shop-modal .buy-btn {
+    font-size: 14px;
+    min-width: 76px;
+}
+#inventory-modal .relic-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#inventory-modal .relic-item .item-art {
+    flex-shrink: 0;
+}
+@container (max-width: 360px) {
+    #shop-modal .shop-item {
+        grid-template-columns: 36px minmax(0, 1fr);
+    }
+    #shop-modal .buy-btn {
+        grid-column: 2;
+        width: 100%;
+    }
+}
+
+/* Simple generated navigation icons coexist with native fullscreen semantics. */
+.music-toggle-btn {
+    position: relative;
+    font-size: 0 !important;
+    padding: 8px !important;
+}
+.music-toggle-btn::after {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url('../../images/theme/parts/ui-music.webp') center / contain no-repeat;
+}
+.music-toggle-btn[aria-pressed='false']::after {
+    opacity: 0.65;
+}
+.practice-speak-btn {
+    font-size: 0;
+}
+.practice-speak-btn::after {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url('../../images/theme/parts/ui-music.webp') center / contain no-repeat;
+}
+#practice-prev-btn::before,
+#practice-next-btn::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 16px;
+    vertical-align: middle;
+    background: url('../../images/theme/parts/ui-left.webp') center / contain no-repeat;
+}
+#practice-next-btn::after {
+    background-image: url('../../images/theme/parts/ui-right.webp');
+}
+
+/* The global control keeps its tested frame position; only its surface changes. */
+#global-fullscreen-btn {
+    background: var(--ui-answer) center / 100% 100% no-repeat;
+    border: 0;
+    box-shadow: none;
+    color: #fff5dc;
+}
+#practice-speak-btn {
+    font-size: 0 !important;
+    padding: 8px !important;
+}
+#practice-memorized-btn {
+    background: var(--ui-control-art) center / 100% 100% no-repeat !important;
+    border: 0 !important;
+}
+#practice-memorized-btn[aria-pressed='true'] {
+    outline: 2px solid #e3f2c9;
+    outline-offset: -2px;
+}
+#detail-close {
+    background: var(--ui-secondary) center / 100% 100% no-repeat;
+    border: 0;
+    color: #fff5dc;
+}
+.equipped-weapon .item-art,
+.hero-effect .item-art {
+    width: 24px;
+    height: 24px;
+}
+.hero-equip-slot .item-art {
+    width: 100%;
+    height: 100%;
+    max-width: 32px;
+    max-height: 32px;
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "noEmit": true,
+        "strict": true,
+        "target": "ES2024",
+        "module": "commonjs",
+        "types": []
+    },
+    "files": [
+        "scripts/game/practice-session.js",
+        "scripts/features/speech.js",
+        "scripts/ui/practice-view.js",
+        "types/practice.d.ts"
+    ]
+}

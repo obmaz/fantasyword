@@ -1,0 +1,113 @@
+.app-toast-container {
+    position: fixed;
+    left: 50%;
+    bottom: 7%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: var(--layer-toast);
+    pointer-events: none;
+    width: max-content;
+    max-width: 86vw;
+}
+.app-toast {
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: rgba(20, 20, 28, 0.95);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    max-width: 86vw;
+    word-break: keep-all;
+}
+.app-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.app-toast-success {
+    border-color: rgba(76, 175, 80, 0.6);
+}
+.app-toast-error {
+    border-color: rgba(255, 82, 82, 0.6);
+}
+.app-toast-warn {
+    border-color: rgba(255, 213, 79, 0.6);
+}
+
+.app-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 24px;
+}
+.app-confirm-overlay.show {
+    opacity: 1;
+}
+.app-confirm-box {
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(135deg, rgba(34, 34, 44, 0.98), rgba(22, 22, 30, 0.98));
+    border: 1px solid rgba(255, 213, 79, 0.25);
+    border-radius: 14px;
+    padding: 22px 20px 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+.app-confirm-msg {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 18px;
+    text-align: center;
+    word-break: keep-all;
+}
+.app-confirm-actions {
+    display: flex;
+    gap: 10px;
+}
+.app-confirm-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.app-confirm-cancel {
+    background: #37474f;
+    color: #e0e0e0;
+}
+.app-confirm-ok {
+    background: linear-gradient(135deg, var(--primary, #ffd54f), #ffb74d);
+    color: #000;
+}
+
+.app-confirm-overlay:not([open]) {
+    display: none;
+}
+.app-confirm-overlay::backdrop {
+    background: transparent;
+}

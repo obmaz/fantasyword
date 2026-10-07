@@ -1,0 +1,363 @@
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn-main {
+    background: linear-gradient(135deg, var(--primary) 0%, #ffb74d 50%, var(--primary) 100%);
+    background-size: 200% 200%;
+    color: #000;
+    font-weight: bold;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    width: 100%;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 6px 20px rgba(255, 213, 79, 0.3),
+        0 0 15px rgba(255, 213, 79, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    animation: buttonShine 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-main:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn-blue {
+    background: var(--btn-blue);
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-danger {
+    margin-top: 10px;
+    color: #fff;
+    border: 1px solid #eda5a4;
+    background: linear-gradient(180deg, #e58484, #d8757b);
+    box-shadow:
+        inset 0 1px 0 #ffffff40,
+        0 2px 0 #b75e67,
+        0 4px 8px #a44c591a;
+    text-shadow: none;
+}
+
+/* Common Modal Button Style (Consolidated from shop/setting modals) */
+.modal-btn-main {
+    height: 58px;
+    border-radius: 14px;
+    border: 3px solid var(--modal-btn-border);
+    font-weight: 900;
+    font-size: clamp(14px, 3.5vw, 16px);
+    letter-spacing: 0.5px;
+    box-shadow: var(--modal-shadow), var(--modal-inner-shadow);
+    animation: none !important;
+    background-size: initial !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    color: var(--modal-btn-text);
+    background: linear-gradient(
+        45deg,
+        var(--modal-btn-gradient-start),
+        var(--modal-btn-gradient-end)
+    );
+}
+
+.modal-btn-main.btn-blue {
+    background: linear-gradient(
+        45deg,
+        rgba(41, 121, 255, 0.95),
+        rgba(41, 121, 255, 0.85)
+    ) !important;
+    color: #fff !important;
+}
+
+.btn-boss-mode {
+    background: linear-gradient(45deg, var(--boss-color), #ab47bc);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(224, 64, 251, 0.2);
+}
+
+.btn-shop {
+    background: linear-gradient(45deg, #5c6bc0, #7986cb);
+    color: white;
+    box-shadow: 0 4px 15px rgba(92, 107, 192, 0.2);
+}
+
+.btn-inv {
+    background: linear-gradient(45deg, #4caf50, #81c784);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+/* Game Screen Buttons */
+.option-btn {
+    background: #37474f;
+    color: #e0e0e0;
+    border: 1px solid #455a64;
+    padding: 12px 16px;
+    font-size: clamp(16px, 5.5cqmin, 34px);
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.option-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.option-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 정답 공개: 오답을 골랐을 때 어떤 보기가 정답이었는지 강조 */
+.option-btn.option-btn-correct {
+    background: #4caf50;
+    color: #ffffff;
+    border: 3px solid #2e7d32;
+    font-weight: bold;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
+}
+
+/* 사용자가 실제로 누른 보기의 피드백 */
+.option-btn.option-btn-picked-correct {
+    background: #66bb6a;
+}
+.option-btn.option-btn-picked-wrong {
+    background: #d32f2f;
+}
+
+/* Boss Mode UI */
+.boss-ui {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+}
+#boss-title {
+    font-size: 14px;
+}
+.boss-hint {
+    font-size: 24px;
+    letter-spacing: 4px;
+    text-align: center;
+    font-family: monospace;
+    color: var(--success);
+}
+
+/* 오답 후 정답 전체를 공개할 때 */
+.boss-hint.boss-hint-revealed {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.boss-input {
+    padding: 12px;
+    font-size: clamp(16px, 5.5cqmin, 34px);
+    text-align: center;
+    background: #222;
+    border: 2px solid var(--primary);
+    color: white;
+    border-radius: 8px;
+    outline: none;
+}
+
+.boss-input.boss-input-correct {
+    border-color: #66bb6a;
+}
+.boss-input.boss-input-wrong {
+    border-color: #d32f2f;
+}
+
+.boss-submit {
+    background: var(--danger);
+    color: white;
+    border: 2px solid rgba(255, 82, 82, 0.5);
+    padding: 12px;
+    font-size: clamp(16px, 5.5cqmin, 34px);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 82, 82, 0.3);
+}
+
+.boss-submit:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.boss-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* exit_btn 이미지 스타일 */
+img[src*='exit_btn'] {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img[src*='exit_btn']:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+/* Shop buttons */
+.buy-btn {
+    background: #4caf50;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.buy-btn.equipped {
+    background: #ff9800;
+    pointer-events: none;
+}
+.buy-btn.owned {
+    background: #555;
+    pointer-events: none;
+}
+
+/* Form elements */
+label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    margin: 0 0 20px 0;
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.95) 0%, rgba(20, 20, 30, 0.95) 100%);
+    color: #ffd54f;
+    border: 2px solid rgba(255, 213, 79, 0.4);
+    border-radius: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFD54F%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.65em auto;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+select option {
+    background: #1e1e1e;
+    color: #ffd54f;
+    padding: 10px;
+    font-weight: 500;
+}
+
+select option:checked {
+    background: #2a2a2a;
+    color: #ffeb3b;
+}
+
+.adventure-settings {
+    text-align: left;
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(30, 20, 40, 0.2) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 213, 79, 0.15);
+}
+
+/* Music Toggle Button */
+.music-toggle-btn {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px auto; /* Exit button above with spacing */
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex; /* Centering emoji */
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 0;
+    line-height: 1;
+}
+
+.music-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.music-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.image-action-button {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.image-action-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.image-action-button:hover {
+    filter: brightness(1.1);
+}

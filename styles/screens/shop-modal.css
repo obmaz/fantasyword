@@ -1,0 +1,56 @@
+/* ============================================
+   SHOP MODAL STYLES
+   ============================================ */
+
+/* Shop Modal 전용 스타일 */
+/* RPG Modal 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+
+/* Shop Modal 타이틀, 헤더, 푸터 스타일은 modal-common.css의 .card.rpg-modal 공통 스타일을 따름 */
+
+/* Shop Layout */
+.shop-modal-wrapper .card {
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+/* Modal Layout 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+
+.shop-section {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+
+.shop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #252525;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.shop-modal-wrapper .shop-item-skill {
+    padding: 5px 10px !important;
+    margin-bottom: 4px !important;
+    min-height: auto !important;
+}
+
+.shop-modal-wrapper .shop-item-skill > div {
+    line-height: 1.3 !important;
+    margin: 0 !important;
+}
+
+#shop-modal .shop-item-skill > div br {
+    line-height: 1.3 !important;
+}
+
+/* Shop 버튼 스타일은 buttons.css의 .modal-btn-main 사용 */

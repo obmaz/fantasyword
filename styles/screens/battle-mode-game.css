@@ -1,0 +1,494 @@
+/* ============================================
+   Battle Mode Game 스타일
+   ============================================ */
+
+/* 컨테이너 쿼리: 레이아웃이 줄어들면 글자도 같이 줄어들게 (cqmin 기준) */
+#battle-mode-game {
+    container-type: size;
+    container-name: battle-game;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: var(--app-height, 100vh);
+    background: var(--game-bg);
+    z-index: var(--layer-game); /* screen-overlay(z-index: 200) 위에 표시 */
+    overflow: hidden;
+}
+
+/* Top Bar (only for game screen) */
+#battle-mode-game .top-bar {
+    height: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #333;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    gap: 15px;
+}
+
+/* Arena */
+.battle-arena {
+    flex: 0 0 40%;
+    background: #000 url('../../images/theme/courtyard.webp') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px 30px;
+    border-bottom: 2px solid #333;
+    background-size: cover;
+    overflow: hidden;
+    max-width: 100vw;
+    min-height: 28vh;
+}
+
+.char-wrapper {
+    position: relative;
+    width: 16.67vh;
+    height: 16.67vh;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 200px;
+    max-height: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
+    z-index: 5;
+    transition: transform 0.1s;
+}
+
+.equipped-weapon {
+    position: absolute;
+    right: -1.5cqmin;
+    bottom: 6cqmin;
+    font-size: clamp(18px, 6.5cqmin, 46px);
+    z-index: 6;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    transform-origin: bottom left;
+}
+
+/* Badge — 밝은 톤 */
+.info-badge {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--game-card-border);
+    font-size: 17px;
+    color: var(--game-text);
+    z-index: 15;
+    line-height: 1.2;
+    min-height: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+/* 레이아웃 비율: cqmin — 줄어들면 글자도 같이 축소 */
+#wave-badge {
+    left: auto;
+    right: 10px;
+    top: 10px;
+    transform: none;
+    padding: clamp(4px, 1.2cqmin, 12px) clamp(6px, 2cqmin, 16px);
+    line-height: clamp(12px, 2.8cqmin, 18px);
+    font-size: clamp(14px, 3cqmin, 20px);
+    min-height: auto;
+}
+#game-info-badge {
+    left: 10px;
+    top: 10px;
+    transform: none;
+    padding: clamp(4px, 1.2cqmin, 12px) clamp(6px, 2cqmin, 16px);
+    line-height: clamp(14px, 3cqmin, 20px);
+    font-size: clamp(14px, 3cqmin, 20px);
+    min-height: auto;
+}
+.overlay-gold {
+    position: absolute;
+    top: calc(clamp(4px, 1.2cqmin, 12px) * 2 + clamp(12px, 2.8cqmin, 18px) + 20px);
+    left: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: clamp(4px, 1.2cqmin, 12px) clamp(6px, 2cqmin, 16px);
+    border-radius: 10px;
+    border: 1px solid var(--game-card-border);
+    color: var(--gold);
+    font-size: clamp(14px, 3cqmin, 20px);
+    font-weight: bold;
+    line-height: clamp(14px, 3cqmin, 20px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    z-index: 15;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-sizing: border-box;
+    height: calc(clamp(14px, 3cqmin, 20px) + clamp(4px, 1.2cqmin, 12px) * 2 + 2px);
+}
+
+.overlay-timer {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.music-info-overlay {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+    pointer-events: auto; /* Enable clicks */
+    cursor: pointer;
+    border: 1px solid rgba(255, 213, 79, 0.3);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    max-width: 150px;
+    overflow: hidden;
+}
+
+.music-select-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-appearance: menulist-button; /* Ensure it triggers dropdown */
+    appearance: menulist-button;
+}
+
+.music-info-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.music-icon {
+    flex-shrink: 0;
+}
+
+.music-text-container {
+    overflow: hidden;
+    flex: 1;
+}
+
+.music-filename {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+.overlay-timer .timer-bar-bg {
+    width: 120px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    border: 1px solid var(--game-card-border);
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.gold-display {
+    color: var(--gold);
+    font-size: clamp(14px, 3cqmin, 20px);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.timer-bar-bg {
+    width: 80px;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+.timer-bar-fill {
+    height: 100%;
+    background: var(--success);
+    width: 100%;
+    transition: width 0.1s linear;
+}
+.timer-danger {
+    background: var(--danger);
+}
+
+/* Quiz Area — 밝은 톤 */
+.quiz-area {
+    flex: 1;
+    min-height: 0; /* flex 자식이 overflow 계산을 정확히 하도록 */
+    background: var(--game-bg);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 게임 화면 내 스크롤바 숨김 (보스/주관식 모드 포함) */
+#battle-mode-game,
+.quiz-area {
+    scrollbar-width: none; /* Firefox 64+ */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+#battle-mode-game::-webkit-scrollbar,
+.quiz-area::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/WebKit */
+}
+.question-box {
+    background: var(--game-card);
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 1px solid var(--game-card-border);
+    flex-shrink: 0;
+}
+.q-label {
+    font-size: 14px;
+    color: var(--game-text-muted);
+    margin-bottom: 3px;
+    letter-spacing: 2px;
+    display: none;
+}
+.q-text {
+    font-size: clamp(16px, 5.5cqmin, 34px);
+    font-weight: bold;
+    color: var(--game-text);
+    word-break: keep-all;
+}
+
+#boss-title {
+    font-size: clamp(16px, 5.5cqmin, 34px);
+}
+
+.options-grid {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Skills — 상하 폭 대폭 축소 */
+.skill-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+    justify-content: flex-end;
+}
+
+/* 기본 스킬 버튼 — 밝은 톤, 상하 패딩 축소 */
+.skill-btn {
+    border: 2px solid var(--game-card-border);
+    color: var(--game-text);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: var(--game-card);
+    line-height: 1.2;
+}
+
+/* 클릭 가능한 액티브 스킬 (힌트, 필살기) - 파란/보라 계열 */
+.skill-btn.skill-active {
+    background: linear-gradient(135deg, rgba(41, 121, 255, 0.9) 0%, rgba(94, 53, 177, 0.9) 100%);
+    border-color: rgba(100, 181, 246, 0.6);
+    cursor: pointer;
+    animation: activeSkillPulse 2s ease-in-out infinite;
+}
+
+.skill-btn.skill-active:active {
+    transform: translateY(0px);
+}
+
+/* 패시브 스킬 (황금장갑) - 골드 계열 */
+.skill-btn.skill-passive {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.85) 0%, rgba(255, 152, 0, 0.75) 100%);
+    border-color: rgba(255, 193, 7, 0.7);
+    cursor: default;
+    box-shadow:
+        0 2px 8px rgba(255, 193, 7, 0.4),
+        0 0 12px rgba(255, 193, 7, 0.2);
+}
+
+.skill-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    animation: none;
+}
+
+.skill-count {
+    font-size: 11px;
+    color: var(--game-text);
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.06);
+    padding: 2px 5px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Skill Bar Placeholder */
+.skill-placeholder {
+    color: var(--game-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+/* Effects */
+.effect-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mob-attack-anim {
+    animation: mob-atk 0.4s ease-in-out;
+}
+.hero-hit-anim {
+    animation: hero-hit 0.4s;
+}
+.screen-shake {
+    animation: shake-screen 0.4s;
+}
+
+.damage-txt {
+    position: absolute;
+    top: 40%;
+    right: 20%;
+    font-size: clamp(18px, 5.5cqmin, 34px);
+    font-weight: 900;
+    text-shadow: 2px 2px 0 #000;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+.dmg-red {
+    color: #ff5252;
+}
+.dmg-gold {
+    color: #ffd54f;
+}
+.float-up {
+    animation: floatAnim 1s forwards;
+}
+
+.hero-effect {
+    position: absolute;
+    right: 40px;
+    bottom: 10px;
+    font-size: clamp(20px, 6.5cqmin, 42px);
+    transform-origin: bottom right;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+}
+
+/* Hero Equipment Slots (보스 모드) — cqmin */
+.hero-equip-slot {
+    position: absolute;
+    z-index: 6;
+    font-size: clamp(16px, 5.5cqmin, 36px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(20px, 5cqmin, 50px);
+    height: clamp(20px, 5cqmin, 50px);
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
+}
+
+#hero-head {
+    top: -5px;
+    left: 30px;
+}
+
+#hero-hand-1 {
+    top: 40px;
+    left: -5px;
+}
+
+#hero-hand-2 {
+    top: 40px;
+    left: 65px;
+}
+
+#hero-feet {
+    bottom: -5px;
+    left: 30px;
+}
+
+/* 게임 화면 밝은 톤 — 객관식/보스 UI 오버라이드 */
+#battle-mode-game .option-btn {
+    background: var(--game-card);
+    color: var(--game-text);
+    border: 1px solid var(--game-card-border);
+}
+
+#battle-mode-game .boss-hint {
+    color: var(--success);
+}
+.boss-input {
+    background: var(--game-card);
+    border: 2px solid var(--game-card-border);
+    color: var(--game-text);
+    font-size: clamp(16px, 5.5cqmin, 34px);
+}
+#battle-mode-game .boss-input::placeholder {
+    color: var(--game-text-muted);
+}
+#battle-mode-game .boss-submit {
+    color: #fff;
+}

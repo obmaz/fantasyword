@@ -1,0 +1,97 @@
+.mode-selection {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+    animation: fadeIn 0.3s ease-out;
+}
+.mode-selection-body {
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.mode-selection h2 {
+    margin: 0 0 16px;
+    color: var(--gold);
+    text-align: center;
+    font-size: 24px;
+}
+.mode-description {
+    color: #c5c5cf;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.mode-selection-body > label {
+    display: block;
+    margin: 18px 0 8px;
+    font-weight: bold;
+}
+.mode-selection select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px;
+    border: 1px solid #74683c;
+    border-radius: 10px;
+    background: #20202e;
+    color: #fff;
+    font: inherit;
+}
+.mode-question-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 12px 0 0;
+    border: 0;
+}
+.mode-question-types legend {
+    font-weight: bold;
+}
+.mode-question-types label {
+    display: flex;
+    flex: 1;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px;
+    border: 1px solid #74683c;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.mode-question-types label:has(input:checked) {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: #ffd54f20;
+}
+.mode-question-types input {
+    accent-color: var(--gold);
+    margin: 0;
+}
+.mode-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-shrink: 0;
+}
+.mode-actions button {
+    flex: 1;
+    min-height: 46px;
+    border: 1px solid #74683c;
+    border-radius: 10px;
+    background: #292938;
+    color: #fff;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+.mode-actions .mode-start {
+    background: var(--gold);
+    color: #20202e;
+}
+.mode-selection :is(button, select):focus-visible,
+.mode-question-types label:focus-within {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}

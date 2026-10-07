@@ -1,0 +1,32 @@
+{
+    "name": "fantasyword",
+    "version": "1.0.0",
+    "description": "A portrait-responsive vocabulary RPG with illustrated UI, monster-specific lessons, recall quests, and equipment-driven combat.",
+    "scripts": {
+        "typecheck": "tsc -p tsconfig.json",
+        "build": "node tools/check-project.js && node tools/build.js",
+        "test": "node --test \"tests/**/*.test.js\"",
+        "format": "prettier --write \"**/*.{html,css,js,json,md,ts}\"",
+        "format:check": "prettier --check \"**/*.{html,css,js,json,md,ts}\"",
+        "check": "node tools/check-project.js && node tools/check-docs.js && npm run typecheck && npm test && npm run format:check"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/obmaz/fantasyword.git"
+    },
+    "keywords": [],
+    "author": "obmaz",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/obmaz/fantasyword/issues"
+    },
+    "homepage": "https://github.com/obmaz/fantasyword#readme",
+    "devDependencies": {
+        "prettier": "3.9.9",
+        "typescript": "7.0.2"
+    },
+    "engines": {
+        "node": ">=22"
+    }
+}

@@ -1,0 +1,125 @@
+:root {
+    --layer-title: 10;
+    --layer-game: 20;
+    --layer-modal: 30;
+    --layer-toast: 40;
+    --overlay-close-duration: 400ms;
+    --primary: #ffd54f;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #eee;
+    --gold: #ffc107;
+    --danger: #ff5252;
+    --success: #66bb6a;
+    --boss-color: #e040fb;
+    --btn-blue: #2979ff;
+    /* 게임 화면 밝은 톤 (아주 살짝 어둡게) */
+    --game-bg: #ebebeb;
+    --game-card: #f5f5f5;
+    --game-card-border: #d5d5d5;
+    --game-text: #2a2a2a;
+    --game-text-muted: #5a5a5a;
+
+    /* Modal Theme */
+    --modal-header-bg: rgba(0, 0, 0, 0.15);
+    --modal-border-gold: rgba(255, 215, 130, 0.18);
+    --modal-btn-border: rgba(231, 189, 105, 0.9);
+    --modal-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    --modal-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    --modal-btn-gradient-start: rgba(255, 214, 120, 0.95);
+    --modal-btn-gradient-end: rgba(214, 140, 45, 0.95);
+    --modal-btn-text: rgba(20, 15, 10, 0.92);
+}
+
+* {
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    height: var(--app-height, 100vh);
+    min-height: var(--app-height, 100vh);
+    max-height: var(--app-height, 100vh);
+    font-size: clamp(16px, 4vw, 24px); /* 화면 크기에 비례하여 확대 */
+}
+
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    font-family: system-ui, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    font-size: clamp(16px, 4vw, 24px); /* 화면 크기에 비례하여 확대 */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0a0a0a, #2a2a2a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-color);
+    height: var(--app-height, 100vh);
+    min-height: var(--app-height, 100vh);
+    max-height: var(--app-height, 100vh);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Hide scrollbars but keep functionality */
+.card::-webkit-scrollbar,
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    background: transparent;
+}
+
+.card,
+body,
+html {
+    scrollbar-width: none; /* Firefox 64+ */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Ensure no horizontal overflow */
+* {
+    max-width: 100%;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+:focus-visible {
+    outline: 3px solid var(--btn-blue) !important;
+    outline-offset: 3px;
+}
+[hidden] {
+    display: none !important;
+}

@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+
+# Images
+images/
+
+# Git
+.git/
+
+# Other
+.DS_Store
+*.min.js
+*.min.css
