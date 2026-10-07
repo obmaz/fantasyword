@@ -63,5 +63,16 @@ CI와 실제 배포 상태는 커밋 후 GitHub Actions와 공개 사이트에�
 ## 새 저장소 초기화
 
 현재 코드·에셋·문서를 `obmaz/fantasyword`로 옮기고 이전 `.git`과 커밋 이력은 제외했다.
-새 이력은 `init` 한 개이며 작성자·커미터는 `obmaz <zambobmaz@gmail.com>`이다.
-package/README의 저장소 링크를 새 이름으로 맞췄다. 새 저장소의 Pages 배포는 수동 실행이며 도메인 이전은 별도 작업이다.
+새 이력은 `init` 한 개로 시작했으며 작성자·커미터는 `obmaz <zambobmaz@gmail.com>`이다.
+package/README의 저장소 링크를 새 이름으로 맞췄다. 새 저장소의 Pages 배포는 수동 실행이다.
+
+## Pages와 도메인 이전
+
+사용자 요청으로 `obmaz/fantasyword`의 Pages를 활성화하고 `dokdok.quest` 연결을 옮겼다.
+Source는 GitHub Actions이며 기존 저장소의 Custom domain은 해제했다. DNS는 GitHub Pages IP를 유지하고
+새 저장소에 승인된 HTTPS 인증서와 HTTPS 강제 설정을 확인했다.
+README·에이전트 지침·현행 사양·구조·인계 문서를 실제 저장소와 수동 배포 절차에 맞췄다.
+
+도메인 변경 후 새 저장소의 `Deploy Pages`를 다시 실행해 실제 서비스 반영을 확인했다.
+`https://dokdok.quest/`의 기본 경로와 HTTP → HTTPS 전환, manifest 및 182개 런타임 응답의 SHA-256이
+로컬 빌드와 일치했다. 문서 갱신 후 회귀 테스트 126개(실패/스킵 0), 타입·에셋·문서 링크·포맷 검사와 빌드도 통과했다.

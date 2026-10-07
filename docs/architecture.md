@@ -104,4 +104,5 @@ strict checkJs 대상은 연습 세션/렌더러/발음이며 전체 앱 타입 
 `.nojekyll`과 SHA-256 `build-manifest.json`을 만든다. 소스와 script 순서를 보존하고 심볼릭 링크를 거부한다.
 문서·시안·도구·테스트·npm 파일은 배포하지 않는다. 기존 dist는 안전한 저장소 내부 경로에서만 재생성한다.
 `Deploy Pages`는 수동 실행이며 검증·빌드·artifact·Pages 순서다. deploy job만 pages/id-token 쓰기 권한을 가진다.
-새 저장소의 Pages/도메인 설정은 별도 이전 요청이 있을 때 진행한다.
+`obmaz/fantasyword`의 Pages는 Source가 GitHub Actions이며 Custom domain은 `dokdok.quest`, HTTPS 강제는 활성화 상태다.
+DNS는 GitHub Pages IP를 유지한다. 기존 저장소의 Custom domain 연결은 해제했다.

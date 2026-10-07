@@ -38,8 +38,9 @@ python3 -m http.server 8000 --directory dist
 ```
 
 `dist/`는 재생성 가능한 배포 결과이며 커밋하지 않습니다.
-새 저장소의 `Validate`는 push 시 검증·빌드를 수행합니다. `Deploy Pages`는 수동 실행으로 준비되어 있습니다.
-현재 도메인은 기존 서비스가 사용하므로 Pages/도메인을 옮긴 뒤 수동 배포를 실행하세요.
+`obmaz/fantasyword`의 GitHub Pages가 `dokdok.quest`를 서비스하며 HTTPS를 강제합니다.
+`Validate`는 push 시 검증·빌드를 수행하고, `Deploy Pages`는 수동 실행합니다.
+푸시한 `main`을 배포하려면 `gh workflow run pages.yml --repo obmaz/fantasyword --ref main`을 실행하세요.
 `build-manifest.json`의 SHA-256과 공개 응답을 비교하면 실제 배포 반영을 확인할 수 있습니다.
 
 ## 구조

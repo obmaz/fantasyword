@@ -60,8 +60,10 @@ git push origin HEAD:main
 ```
 
 새 저장소는 `Validate`가 push 시 실행되고 `Deploy Pages`는 수동 실행이다.
-현재 서비스는 기존 배포를 사용하므로 Pages/도메인 이전은 별도 요청을 받은 뒤 진행한다.
-이전 후 GitHub의 `Validate`, `Deploy Pages`를 **방금 푸시한 전체 HEAD SHA** 기준으로 확인한다.
+`dokdok.quest`는 이 저장소의 Pages에 연결됐고 HTTPS 인증서와 강제 설정이 적용돼 있다.
+기존 저장소의 Custom domain은 해제했으며 DNS는 GitHub Pages IP를 그대로 사용한다.
+`Validate` 성공 후 `gh workflow run pages.yml --repo obmaz/fantasyword --ref main`으로 배포한다.
+GitHub의 `Validate`, `Deploy Pages`를 **방금 푸시한 전체 HEAD SHA** 기준으로 확인한다.
 두 workflow가 성공해도 공개 페이지가 이전 버전일 수 있으므로 `https://dokdok.quest/build-manifest.json`을
 로컬 `dist/build-manifest.json`과 비교하고 변경된 HTML/CSS/JS/이미지 응답의 SHA-256을 검사한다.
 HTTP 캐시 확인에는 현재 커밋을 쿼리로 붙일 수 있다. TLS 검증·환경 프록시는 유지한다.

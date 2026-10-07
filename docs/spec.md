@@ -1,8 +1,8 @@
 # 현행 게임 사양
 
 2026-10-07 구현 기준. 개발 원본은 HTML/CSS/JavaScript 정적 앱이며 빌드 없이 실행된다.
-새 저장소는 push 시 GitHub Actions 검증/빌드를 실행하며 배포는 `Deploy Pages` 수동 실행으로 준비했다.
-현재 [dokdok.quest](https://dokdok.quest/)의 Pages/도메인 이전은 별도 작업이다. 이전 완료 후 `dist/` artifact를 Pages에 배포한다.
+`obmaz/fantasyword`는 push 시 GitHub Actions 검증/빌드를 실행하며 배포는 `Deploy Pages` 수동 실행이다.
+현재 [dokdok.quest](https://dokdok.quest/)는 이 저장소의 `dist/` artifact를 GitHub Pages로 서비스하며 HTTPS를 강제한다.
 개발은 Node.js 22 이상, CI는 24. 서버·계정·런타임 npm 의존성은 없다.
 
 ## 단어장과 연습
