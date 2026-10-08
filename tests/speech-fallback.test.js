@@ -77,35 +77,20 @@ test('브라우저 음성을 우선 사용하고 재생 오류 시에만 현재 
     assert.equal(r.notices.length, 0);
 });
 
-test('기본 단어장 녹음은 Web Audio gain 2로 재생하고 오류 시 브라우저 음성으로 전환한다', () => {
-    const gains = [];
+test('Web Audio를 지원해도 모든 단어에 브라우저 TTS를 먼저 사용한다', () => {
     const r = speechRuntime({
         AudioContext: class {
-            destination = {};
-            createMediaElementSource() {
-                return { connect: (gain) => gain, disconnect() {} };
-            }
-            createGain() {
-                const gain = {
-                    gain: { value: 0 },
-                    connect: () => this.destination,
-                    disconnect() {},
-                };
-                gains.push(gain);
-                return gain;
-            }
-            resume() {
-                return Promise.resolve();
+            constructor() {
+                throw new Error('녹음 증폭 경로를 사용해서는 안 됩니다.');
             }
         },
     });
     r.practice.playTTS();
-    assert.equal(r.clips.length, 1);
-    assert.equal(gains[0].gain.value, 2);
-    assert.match(r.clips[0].src, /^data\/pronunciation\//);
-    assert.equal(r.utterances.length, 0);
-    r.clips[0].onerror();
     assert.equal(r.utterances.length, 1);
+    assert.equal(r.clips.length, 0);
+    r.utterances[0].onerror({ error: 'synthesis-failed' });
+    assert.equal(r.clips.length, 1);
+    assert.match(r.clips[0].src, /^https:\/\/translate\.google\.com\/translate_tts/);
 });
 
 test('취소한 발화나 이전 단어의 늦은 오류는 원격 음성을 시작하지 않는다', () => {

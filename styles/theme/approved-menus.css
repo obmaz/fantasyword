@@ -42,7 +42,7 @@
     gap: 12px;
     position: sticky;
     top: -20px;
-    z-index: 2;
+    z-index: 10;
     padding: 8px 0;
     background: #173e34;
 }
@@ -67,68 +67,136 @@
     line-height: 1.4;
 }
 .story-map-path {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
     position: relative;
-    margin: 18px 0;
-    padding: 12px 4px;
-    background: radial-gradient(ellipse at center, #295f4f 0, #183a33 78%);
-    border: 1px solid #829d79;
-    border-radius: 18px;
-}
-.story-map-path::before {
-    content: '';
-    position: absolute;
-    inset: 30px 50% 30px auto;
-    border-left: 3px dashed #e4c98485;
-    pointer-events: none;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 2 / 3;
+    margin: 12px auto;
+    background: url('../../images/theme/story-map.webp') center / 100% 100% no-repeat;
+    box-shadow: 0 8px 20px #07140b88;
 }
 .story-map-row {
-    display: flex;
-    justify-content: space-around;
-    gap: 16px;
-    z-index: 1;
+    display: contents;
 }
 .story-map-node {
-    width: min(46%, 168px);
-    min-height: 68px;
-    padding: 8px;
-    color: #fff9e2;
-    background: #356c51;
-    border: 3px solid #d1bd81;
-    border-radius: 18px;
-    font: inherit;
-    font-weight: 800;
-    line-height: 1.25;
-    box-shadow: 0 5px 0 #10291e;
+    position: absolute;
+    z-index: 1;
+    width: clamp(44px, 13%, 60px);
+    aspect-ratio: 1;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    background: #18291d22;
+    border: 3px solid #f9de8b;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 2px #26331c,
+        0 0 12px #ffe59d;
     cursor: pointer;
 }
+.story-map-row[data-stage='0'] .story-map-node[data-index='0'] {
+    left: 50%;
+    top: 87%;
+}
+.story-map-row[data-stage='0'] .story-map-node[data-index='1'] {
+    left: 28%;
+    top: 73%;
+}
+.story-map-row[data-stage='1'] .story-map-node[data-index='0'] {
+    left: 50%;
+    top: 52%;
+}
+.story-map-row[data-stage='1'] .story-map-node[data-index='1'] {
+    left: 70%;
+    top: 70%;
+}
+.story-map-row[data-stage='2'] .story-map-node[data-index='0'] {
+    left: 70%;
+    top: 47%;
+}
+.story-map-row[data-stage='2'] .story-map-node[data-index='1'] {
+    left: 63%;
+    top: 30%;
+}
+.story-map-row[data-stage='3'] .story-map-node[data-index='0'] {
+    left: 27%;
+    top: 44%;
+}
+.story-map-row[data-stage='3'] .story-map-node[data-index='1'] {
+    left: 34%;
+    top: 27%;
+}
+.story-map-row[data-stage='4'] .story-map-node[data-index='0'] {
+    left: 55%;
+    top: 15%;
+}
+.story-map-node-label {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    display: none;
+    width: max-content;
+    max-width: 110px;
+    padding: 3px 7px;
+    transform: translateX(-50%);
+    color: #fff9dc;
+    background: #17382fea;
+    border: 1px solid #e4c47e;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: clamp(10px, 2.8vw, 13px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+    pointer-events: none;
+}
 .story-map-node-market {
-    background: #55405e;
+    border-color: #cfadf4;
 }
 .story-map-node-boss {
-    background: #813a32;
+    border-color: #ffaf80;
+}
+.story-map-row[data-state='current'] .story-map-node-label {
+    display: block;
 }
 .story-map-row[data-state='current'] .story-map-node {
+    z-index: 2;
     box-shadow:
-        0 0 0 4px #f6df744d,
-        0 5px 0 #10291e;
+        0 0 0 3px #213523,
+        0 0 0 6px #f6df74ab,
+        0 0 18px #ffdc63;
 }
 .story-map-node:disabled {
-    opacity: 0.52;
+    opacity: 0.58;
     cursor: default;
 }
 .story-map-row[data-state='passed'] .story-map-node {
-    opacity: 0.38;
+    opacity: 0.45;
 }
 .story-map-row[data-state='passed'] .story-map-node[data-visited='true'] {
-    opacity: 0.92;
+    opacity: 1;
     border-color: #ffe69b;
-    box-shadow: 0 0 0 3px #ffe69b44;
+    box-shadow: 0 0 0 3px #ffe69b88;
 }
 .story-map-restart {
-    align-self: center;
+    position: absolute;
+    z-index: 3;
+    bottom: 5%;
+    left: 50%;
+    width: 56%;
+    min-height: 44px;
+    transform: translateX(-50%);
+}
+@media (max-height: 500px) {
+    .story-map-header h2 {
+        font-size: 22px;
+    }
+    .story-map-header button {
+        min-width: 60px;
+    }
+    .story-map-guide {
+        display: none;
+    }
 }
 .story-market-item {
     display: flex;

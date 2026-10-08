@@ -12,7 +12,7 @@
 | [내부 메뉴](design/approved-menus.webp)           | 상점·장비·통계·설정의 생성 초안; 재질과 톤의 기준               |
 | [초기 길드](design/guild-lobby-concept.webp)      | 초기 제작 이력; 연습 우선 배치는 현행이 아님                    |
 | [내부 메뉴 탐색](design/quest-menu-concepts.webp) | 이전 탐색 시안                                                  |
-| [스토리 지도 초안](design/story-map-draft.webp)   | 갈림길과 암시장을 배치한 생성 시안; 현재 지도 UI에는 적용 전    |
+| [스토리 지도 초안](design/story-map-draft.webp)   | 갈림길과 암시장을 배치한 생성 시안; 런타임 지도 배경으로 적용   |
 
 ![승인된 시작 메뉴](design/approved-lobby.webp)
 
@@ -32,11 +32,12 @@
 | `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                  |
 | `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                  |
 | `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                       |
+| `images/theme/story-map.webp`                                         | 생성 지도 배경; 전투·암시장 선택은 위치를 맞춘 HTML 버튼                   |
 | `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                |
 | `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음 |
 
 `game-*`가 최종 버튼 재질을 제공하고 기존 `surface-*`는 공통 이미지 컴포넌트의 기본 재질이다.
-`data/pronunciation/`의 1,833개 MP3는 기본 단어장에 나오는 고유 단어를 Flite 영어 음성으로 생성한 발음 파일이다. Web Audio gain 2로 재생하며 브라우저가 지원하지 않으면 기본 음성으로 전환한다.
+발음은 브라우저 영어 TTS를 우선 사용하고 실패 시 원격 TTS로 전환한다. 단어별 발음 파일은 배포하지 않는다.
 동일 역할처럼 보이는 파일도 CSS cascade에 실제 참조가 남아 있으면 미사용으로 단정하지 않는다.
 현재 구조에서는 모든 런타임 이미지가 build에 복사되므로 참조 없는 파일은 검토 후 제거한다.
 

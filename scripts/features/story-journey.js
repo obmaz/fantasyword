@@ -49,6 +49,13 @@ const storyJourney = {
     open() {
         storyJourney.render();
         openScreenOverlay('story-map-modal', false);
+        const card = document.querySelector('#story-map-modal .story-map-card');
+        const map = document.getElementById('story-map-path');
+        const current = map.querySelector('.story-map-row[data-state="current"] .story-map-node');
+        if (current)
+            card.scrollTop =
+                map.offsetTop + current.offsetTop - (card.clientHeight - current.offsetHeight) / 2;
+        else if (storyJourney.stage >= 5) card.scrollTop = card.scrollHeight;
     },
     close() {
         resetScreenOverlay('story-map-modal');
@@ -66,21 +73,28 @@ const storyJourney = {
         storyJourney.nodes().forEach((row, rowIndex) => {
             const group = document.createElement('div');
             group.className = 'story-map-row';
+            group.dataset.stage = String(rowIndex);
             group.dataset.state =
                 rowIndex < stage ? 'passed' : rowIndex === stage ? 'current' : 'locked';
             row.forEach((node, index) => {
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = `story-map-node story-map-node-${node.kind}`;
+                button.dataset.index = String(index);
                 button.disabled = rowIndex !== stage;
                 if (rowIndex < stage) button.dataset.visited = String(path[rowIndex] === index);
-                button.textContent =
+                const label =
                     node.kind === 'market'
-                        ? '☽ 암시장'
+                        ? '암시장'
                         : node.kind === 'boss'
-                          ? `🐉 마지막 관문 · Day ${node.day}`
-                          : `⚔️ ${dayCatalog[node.day]?.label || `Day ${node.day}`}`;
-                if (node.kind !== 'market') button.title = `Day ${node.day} 전투`;
+                          ? `마지막 관문 · Day ${node.day}`
+                          : dayCatalog[node.day]?.label || `Day ${node.day}`;
+                button.setAttribute('aria-label', label);
+                button.title = label;
+                const caption = document.createElement('span');
+                caption.className = 'story-map-node-label';
+                caption.textContent = label;
+                button.appendChild(caption);
                 button.addEventListener('click', () => storyJourney.select(rowIndex, index));
                 group.appendChild(button);
             });
