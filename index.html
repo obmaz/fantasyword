@@ -284,11 +284,11 @@
             </div>
         </div>
 
-        <section id="skyfall-mode-game" aria-label="단어 낙하전" style="display: none">
+        <section id="skyfall-mode-game" aria-label="총공세" style="display: none">
             <header class="skyfall-hud">
                 <button id="skyfall-exit-btn" type="button" aria-label="마을로 돌아가기">←</button>
                 <div><small>TIME</small><strong id="skyfall-time">60</strong></div>
-                <div><small>HIT</small><strong id="skyfall-score">0 / 12</strong></div>
+                <div><small>HIT</small><strong id="skyfall-score">0 / 0</strong></div>
                 <div class="skyfall-heart">
                     <small>LIFE</small><strong id="skyfall-lives">♥♥♥♥♥</strong>
                 </div>
@@ -298,6 +298,9 @@
                 <div class="skyfall-hero" aria-hidden="true">✦</div>
             </div>
             <div class="skyfall-answer-panel">
+                <button id="skyfall-pause-btn" class="skyfall-item" type="button">
+                    ⏸️ 3초 정지 <small>총공세 기본 1개</small>
+                </button>
                 <p id="skyfall-prompt">내려오는 단어를 누르세요</p>
                 <div id="skyfall-choices" class="skyfall-choices"></div>
             </div>
@@ -350,8 +353,8 @@
                         ></span>
                     </header>
                     <div class="title-menu-art">
-                        <button id="title-skyfall-btn" type="button" aria-label="단어 낙하전 시작">
-                            <span aria-hidden="true">✦</span> 단어 낙하전 <small>WORD RAIN</small>
+                        <button id="title-skyfall-btn" type="button" aria-label="총공세 시작">
+                            <span aria-hidden="true">✦</span> 총공세 <small>TOTAL ASSAULT</small>
                         </button>
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
@@ -768,14 +771,14 @@
                     <span class="game-emblem emblem-swords" aria-hidden="true"></span>
                     <div>
                         <span class="menu-kicker">WORD RAIN</span>
-                        <h2 id="skyfall-selection-title">단어 낙하전</h2>
+                        <h2 id="skyfall-selection-title">총공세</h2>
                     </div>
                     <button
                         class="modal-close-x"
                         type="button"
                         id="skyfall-modal-x-btn"
                         data-action="skyfall-modal-close"
-                        aria-label="낙하전 선택 닫기"
+                        aria-label="총공세 선택 닫기"
                         title="닫기"
                     >
                         <span aria-hidden="true">×</span>
@@ -786,13 +789,13 @@
                     <select id="skyfall-mode-day-select"></select>
                     <p class="mode-description">
                         하늘에서 내려오는 단어를 눌러 뜻이나 영어를 고르세요. 정답이면 공격합니다.
-                        60초 안에 12개를 맞히세요. 놓치거나 틀리면 생명이 줄고, 시간이 갈수록
-                        빨라집니다.
+                        제한 시간은 5초 + 단어 수 × 3초입니다. 매 판 도박 효과와 3초 정지 장치를
+                        하나씩 받습니다.
                     </p>
                 </div>
                 <div class="mode-actions">
                     <button id="skyfall-modal-start" type="button" class="mode-start">
-                        낙하전 시작
+                        총공세 시작
                     </button>
                 </div>
             </section>
@@ -1146,16 +1149,16 @@
                     class="modal-close-x"
                     type="button"
                     data-action="skyfall-result-close"
-                    aria-label="낙하전 결과 닫기"
+                    aria-label="총공세 결과 닫기"
                     title="마을로 돌아가기"
                 >
                     <span aria-hidden="true">×</span>
                 </button>
                 <div class="result-emblem game-emblem emblem-trophy" aria-hidden="true"></div>
-                <h2 id="skyfall-result-title">낙하전 종료</h2>
+                <h2 id="skyfall-result-title">총공세 종료</h2>
                 <p id="skyfall-result-detail"></p>
                 <div class="skyfall-result-stats">
-                    <div><small>정답</small><strong id="skyfall-result-score">0 / 12</strong></div>
+                    <div><small>정답</small><strong id="skyfall-result-score">0 / 0</strong></div>
                     <div><small>획득</small><strong id="skyfall-result-gold">+0 G</strong></div>
                 </div>
                 <button id="skyfall-result-close" class="image-action-button" type="button">

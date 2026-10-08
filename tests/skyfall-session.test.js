@@ -125,13 +125,13 @@ test('느린 프레임에서도 낙하와 등장 간격은 실제 시간을 따�
     const r = runtime();
     r.session.start(1);
     r.advance(4000);
-    assert.equal(r.hud.remaining, 56);
+    assert.equal(r.hud.remaining, 7);
     assert.ok(r.moves[0][1] > 0.45);
     assert.equal(r.words.size, 2);
     assert.equal([...r.words.values()].at(-1).item.y, 0.07);
     r.advance(3200);
-    assert.equal(r.hud.lives, 4);
-    assert.ok(r.events.includes('damage'));
+    assert.equal(r.hud.lives, 5);
+    assert.ok(!r.events.includes('damage'));
 });
 
 test('프레임 재개 전 마감 직후 클릭하거나 정답을 제출해도 골드를 지급하지 않는다', () => {
@@ -153,27 +153,27 @@ test('프레임 재개 전 마감 직후 클릭하거나 정답을 제출해도 
 test('정답 12개는 기본 보상 72G를 한 번씩 지급하고 중복 입력은 무시한다', () => {
     const r = runtime();
     r.session.start(1);
-    for (let count = 0; count < 12; count++) {
+    for (let count = 0; count < 2; count++) {
         while (!r.words.size && r.session.active) r.advance(100);
         r.words.values().next().value.select();
         const choice = r.choice;
         choice.choose(choice.item.answer);
         choice.choose(choice.item.answer);
     }
-    assert.equal(r.gold, 72);
+    assert.equal(r.gold, 12);
     assert.equal(r.results[0].won, true);
-    assert.equal(r.results[0].score, 12);
+    assert.equal(r.results[0].score, 2);
     assert.equal(r.session.active, false);
 });
 
 test('오답은 목숨을 차감하고 5번째에 종료하며 시간이 지나면 낙하 속도가 빨라진다', () => {
     const r = runtime();
     r.session.start(1);
-    for (let count = 0; count < 5; count++) {
+    for (let count = 0; count < 2; count++) {
         while (!r.words.size && r.session.active) r.advance(100);
         r.answer(false);
     }
-    assert.equal(r.hud.lives, 0);
+    assert.equal(r.hud.lives, 3);
     assert.equal(r.gold, 0);
     assert.equal(r.results[0].won, false);
     assert.ok(r.session.rates(30).speed > r.session.rates(0).speed);
@@ -193,8 +193,20 @@ test('종료 후 늦은 입력·프레임은 다시 시작한 세션을 갱신�
     oldChoice.choose(oldChoice.item.answer);
     assert.equal(r.session.active, true);
     assert.equal(r.gold, 0);
-    assert.equal(r.hud.remaining, 60);
+    assert.equal(r.hud.remaining, 11);
     assert.equal(r.results.length, 0);
+});
+
+test('총공세 정지 장치는 한 번만 사용하고 3초 동안 낙하를 멈춘다', () => {
+    const r = runtime();
+    r.session.start(1);
+    const before = r.moves.length;
+    assert.equal(r.session.useItem(), true);
+    assert.equal(r.session.useItem(), false);
+    r.advance(2500);
+    assert.equal(r.moves.length, before);
+    r.advance(600);
+    assert.ok(r.moves.length > before);
 });
 
 test('렌더러는 종료 즉시 공격 효과와 예약된 정리를 제거한다', () => {

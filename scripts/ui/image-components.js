@@ -19,6 +19,7 @@ function itemIconMarkup(item) {
         backpack: 'ui-backpack',
         hint: 'item-potion',
         ultimate: 'item-lightning',
+        totalAssaultPause: 'item-hourglass',
     };
     const name = names[item.id] || 'item-scroll';
     return `<img class="item-art" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;

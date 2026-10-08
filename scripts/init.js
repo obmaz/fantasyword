@@ -173,6 +173,9 @@ window.onload = () => {
     });
     document.getElementById('skyfall-exit-btn')?.addEventListener('click', () => skyfall.exit());
     document
+        .getElementById('skyfall-pause-btn')
+        ?.addEventListener('click', () => skyfall.useItem());
+    document
         .getElementById('skyfall-result-close')
         ?.addEventListener('click', () => skyfall.exit());
 

@@ -116,6 +116,13 @@ window.weaponsData = [
 
 window.relicsData = [
     {
+        id: 'totalAssaultPause',
+        name: '⏸️ 총공세 정지 장치',
+        cost: 0,
+        desc: '총공세마다 기본 1개 지급 · 3초 동안 적과 시간을 멈춥니다. (일회성)',
+        type: 'skyfall',
+    },
+    {
         id: 'shadowCompass',
         name: '🧭 그림자 나침반',
         cost: 180,

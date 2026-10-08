@@ -217,6 +217,27 @@
     border-top: 2px solid #d3ae69;
     background: linear-gradient(#214746, #153638);
 }
+.skyfall-item {
+    display: block;
+    min-width: 132px;
+    margin: 0 auto 5px;
+    padding: 4px 9px;
+    border: 1px solid #d3ae69;
+    border-radius: 8px;
+    color: #fff4d4;
+    background: #315c51;
+    font:
+        800 11px/1.1 system-ui,
+        sans-serif;
+}
+.skyfall-item small {
+    margin-left: 4px;
+    color: #f5d99b;
+    font-size: 9px;
+}
+.skyfall-item:disabled {
+    opacity: 0.45;
+}
 #skyfall-prompt {
     margin: 0 0 7px;
     min-height: 18px;

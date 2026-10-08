@@ -1,4 +1,4 @@
-/** 낙하전 진행. 시간·화면·음악은 구성 루트에서 주입한다. */
+/** 총공세 진행. 시간·화면·음악은 구성 루트에서 주입한다. */
 function createSkyfallSession({
     db,
     getSource,
@@ -12,8 +12,8 @@ function createSkyfallSession({
     now,
     notify,
 }) {
-    const LIMIT = 60;
-    const TARGET = 12;
+    const BASE_TIME = 5;
+    const TIME_PER_WORD = 3;
     const REWARD = 6;
     const MAX_LIVES = 5;
     let active = false;
@@ -31,19 +31,35 @@ function createSkyfallSession({
     let frame = 0;
     let generation = 0;
     let nextLane = 0;
+    let nextWordIndex = 0;
+    let resolved = 0;
+    let modifier = 'steady';
+    let pausedUntil = 0;
+    let pausedFrom = 0;
+    let pausedTotal = 0;
 
-    const rates = (seconds) => ({
-        interval: Math.max(0.8, 2.4 - seconds * 0.032),
-        speed: Math.min(0.28, 0.105 + seconds * 0.0028),
+    const rates = (seconds, item = null) => ({
+        interval: Math.max(0.8, 2.4 - seconds * 0.032) * (modifier === 'rush' ? 0.7 : 1),
+        speed:
+            Math.min(0.28, 0.105 + seconds * 0.0028) *
+            (modifier === 'swift' && item?.swift ? 1.7 : 1),
     });
+    const limit = () => BASE_TIME + pool.length * TIME_PER_WORD;
+    const elapsedNow = () => {
+        const current = now();
+        const activePause = pausedUntil > current ? current - pausedFrom : 0;
+        return Math.max(0, (current - startedAt - pausedTotal - activePause) / 1000);
+    };
     function updateHud() {
         view.hud({
-            remaining: Math.max(0, Math.ceil(LIMIT - elapsed)),
+            remaining: Math.max(0, Math.ceil(limit() - elapsed)),
             score,
-            target: TARGET,
+            target: pool.length,
             lives,
             maxLives: MAX_LIVES,
             earned,
+            itemAvailable: !pausedFrom,
+            modifier,
         });
     }
     function clearChoice() {
@@ -58,8 +74,14 @@ function createSkyfallSession({
     // 배경 탭에서 rAF가 멈춰도 마감은 연장되지 않는다. 입력 전에도 검사한다.
     function canContinue() {
         if (!active) return false;
-        elapsed = Math.max(0, (now() - startedAt) / 1000);
-        if (elapsed < LIMIT) return true;
+        if (pausedUntil && now() >= pausedUntil) {
+            pausedTotal += now() - pausedFrom;
+            pausedUntil = 0;
+            pausedFrom = 0;
+            lastFrame = now();
+        }
+        elapsed = elapsedNow();
+        if (elapsed < limit()) return true;
         updateHud();
         finish(false);
         return false;
@@ -75,9 +97,11 @@ function createSkyfallSession({
             lives -= 1;
             view.damage();
         }
+        resolved += 1;
         removeItem(item);
         updateHud();
-        if (score >= TARGET || lives <= 0) finish(score >= TARGET);
+        if (lives <= 0 || (resolved >= pool.length && !items.length))
+            finish(lives > 0 && score === pool.length);
     }
     function select(item) {
         if (!canContinue() || !items.includes(item)) return;
@@ -88,8 +112,9 @@ function createSkyfallSession({
     }
     function spawn() {
         if (items.length >= 5 || !pool.length) return;
-        const row = pool[Math.floor(Math.random() * pool.length)];
-        const english = Math.random() < 0.5;
+        const row = pool[nextWordIndex++];
+        if (!row) return;
+        const english = nextWordIndex % 2 === 0;
         const answerKey = english ? 'meaning' : 'word';
         const prompt = String(english ? row.word : row.meaning).trim();
         const answer = String(row[answerKey]).trim();
@@ -99,7 +124,16 @@ function createSkyfallSession({
         ]);
         if (options.length < 2) return;
         const x = [16, 50, 84][nextLane++ % 3];
-        const item = { id: ++serial, prompt, answer, answerKey, options, x, y: 0.07 };
+        const item = {
+            id: ++serial,
+            prompt,
+            answer,
+            answerKey,
+            options,
+            x,
+            y: 0.07,
+            swift: modifier === 'swift' && nextWordIndex % 3 === 0,
+        };
         items.push(item);
         view.addWord(item, () => select(item));
     }
@@ -115,18 +149,26 @@ function createSkyfallSession({
         const delta = Math.max(0, (timestamp - lastFrame) / 1000);
         lastFrame = timestamp;
         spawnElapsed += delta;
-        const rate = rates(elapsed);
         for (const item of [...items]) {
-            item.y += delta * rate.speed;
+            if (pausedUntil) continue;
+            item.y += delta * rates(elapsed, item).speed;
             view.moveWord(item.id, Math.min(0.84, item.y));
-            if (item.y >= 0.84) hit(item, false);
+            if (item.y >= 0.84) {
+                resolved += 1;
+                removeItem(item);
+            }
             if (!active) return;
         }
         // 긴 프레임 뒤에도 새로 등장한 단어는 시작 위치에서 출발한다.
-        if (spawnElapsed >= rate.interval) {
+        if (
+            !pausedUntil &&
+            nextWordIndex < pool.length &&
+            spawnElapsed >= rates(elapsed).interval
+        ) {
             spawnElapsed = 0;
             spawn();
         }
+        if (resolved >= pool.length && !items.length) finish(score === pool.length);
         updateHud();
         queueFrame();
     }
@@ -137,6 +179,9 @@ function createSkyfallSession({
         frame = 0;
         items = [];
         selected = null;
+        pausedUntil = 0;
+        pausedFrom = 0;
+        pausedTotal = 0;
         view.stop();
     }
     function exit() {
@@ -148,7 +193,14 @@ function createSkyfallSession({
         if (!active) return;
         stop();
         pauseMusic();
-        view.result({ won, score, target: TARGET, earned });
+        view.result({ won, score, target: pool.length, earned });
+    }
+    function useItem() {
+        if (!active || pausedFrom || pausedUntil) return false;
+        pausedFrom = now();
+        pausedUntil = pausedFrom + 3000;
+        updateHud();
+        return true;
     }
     function start(day) {
         stop();
@@ -163,6 +215,12 @@ function createSkyfallSession({
         earned = 0;
         lives = MAX_LIVES;
         nextLane = 0;
+        nextWordIndex = 0;
+        resolved = 0;
+        modifier = ['steady', 'rush', 'swift'][Math.floor(Math.random() * 3)];
+        pausedUntil = 0;
+        pausedFrom = 0;
+        pausedTotal = 0;
         startedAt = now();
         lastFrame = startedAt;
         active = true;
@@ -177,6 +235,7 @@ function createSkyfallSession({
         exit,
         stop,
         rates,
+        useItem,
         get active() {
             return active;
         },

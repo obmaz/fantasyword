@@ -53,7 +53,9 @@ const shop = {
         relics
             .filter(
                 (r) =>
-                    !r.storyOnly && ((r.type !== 'skill' && !isPurchased(r)) || r.id === 'backpack')
+                    !r.storyOnly &&
+                    r.type !== 'skyfall' &&
+                    ((r.type !== 'skill' && !isPurchased(r)) || r.id === 'backpack')
             )
             .forEach((r) => (html += shop.createItemHtml(r, r.type)));
 

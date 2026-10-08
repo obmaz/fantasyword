@@ -1,4 +1,4 @@
-/** 낙하전 DOM과 짧은 공격 효과의 수명만 소유한다. */
+/** 총공세 DOM과 짧은 공격 효과의 수명만 소유한다. */
 function createSkyfallView({ document, openScreen, closeScreen, syncLayout, timers }) {
     const { setTimeout: schedule, clearTimeout: cancel } = timers;
     const byId = (id) => document.getElementById(id);
@@ -29,11 +29,21 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
         pending.add(id);
     }
     const view = {
-        hud({ remaining, score, target, lives, maxLives, earned }) {
+        hud({ remaining, score, target, lives, maxLives, earned, itemAvailable, modifier }) {
             setText('skyfall-time', remaining);
             setText('skyfall-score', score + ' / ' + target);
             setText('skyfall-lives', '♥'.repeat(lives) + '♡'.repeat(maxLives - lives));
             setText('skyfall-gold', earned);
+            const item = byId('skyfall-pause-btn');
+            if (item) {
+                item.disabled = !itemAvailable;
+                item.title =
+                    modifier === 'rush'
+                        ? '도박: 적 등장 속도 증가'
+                        : modifier === 'swift'
+                          ? '도박: 일부 적이 빠르게 하강'
+                          : '도박: 기본 속도';
+            }
         },
         clearChoice() {
             setText('skyfall-prompt', '내려오는 단어를 누르세요');
@@ -111,7 +121,7 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
             syncLayout();
         },
         result({ won, score, target, earned }) {
-            setText('skyfall-result-title', won ? '공터를 지켰어요!' : '낙하전 종료');
+            setText('skyfall-result-title', won ? '총공세 승리!' : '총공세 종료');
             setText('skyfall-result-score', score + ' / ' + target);
             setText('skyfall-result-gold', '+' + earned + ' G');
             setText(
