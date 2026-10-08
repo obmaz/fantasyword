@@ -38,6 +38,7 @@ function createBattleSession({
         timeLeft: 0,
         maxTime: 10,
         deadline: null,
+        rewardStartedAt: 0,
         stats: { gain: 0, lost: 0 },
         currentQ: null,
         currentAns: '',
@@ -197,6 +198,7 @@ function createBattleSession({
                 return;
             }
             game.currentQ = game.mode === 'boss' ? game.deck.pop() : game.list[game.idx];
+            game.rewardStartedAt = game.now();
             if (game.mode === 'boss' && encounters) {
                 game.currentQ = encounters.prepare(game.currentQ, 'dragon');
                 game.encounterHistory.push(game.currentQ);
@@ -476,6 +478,7 @@ function createBattleSession({
                 game.later(() => {
                     if (game.currentQ !== question) return;
                     game.isProcessing = false;
+                    game.rewardStartedAt = game.now();
                     game.view.retry(game.options);
                     if (timed) game.startTimer(retryTime);
                     ui.updateSkills();
@@ -518,9 +521,9 @@ function createBattleSession({
                 const baseGain = battleRules.reward({
                     mode: game.mode,
                     subjective: !!game.currentQ.isBoss,
-                    count: game.list.length,
                     timeLeft: game.timeLeft,
                     maxTime: game.maxTime,
+                    elapsedSeconds: Math.max(0, (game.now() - game.rewardStartedAt) / 1000),
                     multiplier: weapon.multiplier || 1,
                     glove: db.has('goldGlove'),
                 });
@@ -531,13 +534,16 @@ function createBattleSession({
                 if (db.has('goldGlove')) db.useItem('goldGlove');
                 game.stats.gain += gain;
                 db.addGold(gain);
+                const rewardDetails = [
+                    `정답 +${baseGain}`,
+                    ...(routeBonus ? [`보물 +${routeBonus}`] : []),
+                    ...(comboBonus ? [`연속 +${comboBonus}`] : []),
+                    ...(questBonus ? [`퀘스트 +${questBonus}`] : []),
+                ];
                 game.view.floatText(
-                    questBonus
-                        ? `+${gain} G · 퀘스트 +${questBonus}`
-                        : comboBonus
-                          ? `+${gain} G · 연속 공격!`
-                          : `+${gain} G`,
-                    'gold'
+                    `+${gain} G`,
+                    'gold',
+                    comboBonus || routeBonus || questBonus ? rewardDetails.join(' · ') : ''
                 );
                 game.later(() => {
                     game.idx++;
@@ -583,8 +589,9 @@ function createBattleSession({
                 const wrong = game.options.flatMap((q, i) =>
                     !q.correct && !q.disabled ? [i] : []
                 );
-                if (!wrong.length) return;
-                const indices = game.shuffle(wrong).slice(0, 2);
+                const count = battleRules.hintRemovalCount(wrong.length);
+                if (!count) return;
+                const indices = game.shuffle(wrong).slice(0, count);
                 indices.forEach((i) => {
                     game.options[i].disabled = true;
                 });
@@ -611,8 +618,9 @@ function createBattleSession({
             const wrong = game.options.flatMap((option, index) =>
                 !option.correct && !option.disabled ? [index] : []
             );
-            if (!wrong.length) return;
-            const indices = game.shuffle(wrong).slice(0, 2);
+            const count = battleRules.hintRemovalCount(wrong.length);
+            if (!count) return;
+            const indices = game.shuffle(wrong).slice(0, count);
             indices.forEach((index) => {
                 game.options[index].disabled = true;
             });

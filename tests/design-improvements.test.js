@@ -257,7 +257,7 @@ test('전투 진행은 DOM 없는 렌더러를 주입해 시작·채점·종료�
     scheduled.shift()();
     assert.equal(game.currentQ.isBoss, true);
     game.handleAnswer(true, null);
-    assert.equal(db.gold, 100);
+    assert.equal(db.gold, 30);
     game.end(true);
     assert.equal(game.active, false);
     assert.ok(commands.some(([name]) => name === 'subjective'));
@@ -269,7 +269,7 @@ test('타이머 콜백이 지연되어도 실제 남은 시간으로 보상을 �
     r.advance(3000);
     r.game.answerOption(r.game.options.findIndex((option) => option.correct));
     assert.equal(r.game.timeLeft, 7);
-    assert.equal(r.game.stats.gain, 34);
+    assert.equal(r.game.stats.gain, 15);
 });
 
 test('마감 후 늦은 정답 클릭은 시간 초과 오답으로 한 번만 기록한다', () => {
@@ -303,8 +303,9 @@ test('스킬은 버튼 텍스트/표시 상태 대신 문제와 보기 모델로
     r.game.useHint();
     r.game.useHint();
     r.game.useHint();
-    assert.equal(r.evaluate('db.skills.hint'), 1);
-    assert.equal(r.game.options.filter((option) => option.disabled).length, 3);
+    assert.equal(r.evaluate('db.skills.hint'), 2);
+    assert.equal(r.game.options.filter((option) => option.disabled).length, 2);
+    assert.equal(r.game.options.filter((option) => !option.disabled).length, 2);
     r.game.useUltimate();
     assert.equal(r.evaluate('db.skills.ultimate'), 0);
     assert.equal(r.game.sessionCorrectObjective, 1);
@@ -345,6 +346,7 @@ test('철자 힌트/채점은 한 글자·구문·빈 입력을 일관되게 처
     const r = browserRuntime();
     const rules = r.evaluate('battleRules');
     assert.equal(rules.spellingHint('get up'), 'g__ u_');
+    assert.equal(rules.spellingHint('a'), '_');
     assert.equal(rules.checkSpelling(' GET UP ', 'get up'), true);
     assert.equal(rules.checkSpelling('et up', 'get up'), true);
     assert.equal(rules.checkSpelling('', 'a'), false);

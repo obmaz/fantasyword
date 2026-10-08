@@ -102,6 +102,10 @@ const ui = {
      */
     updateSkills: () => {
         const gear = game.gear;
+        const noUsefulHint =
+            game.mode !== 'boss' &&
+            !game.currentQ?.isBoss &&
+            game.options.filter((option) => !option.correct && !option.disabled).length <= 1;
         const equipmentBar = document.getElementById('equipment-display');
         equipmentBar.innerHTML = '';
         if (gear) {
@@ -128,11 +132,12 @@ const ui = {
                 append(
                     'helmet',
                     `힌트 ${gear.hint}/1`,
-                    '투구 무료 힌트: 보기 제거 또는 앞 두 글자',
+                    '투구 무료 힌트: 보기 제거 또는 일부 철자',
                     game.useEquipmentHint,
                     !gear.hint ||
                         !game.currentQ ||
                         game.isProcessing ||
+                        noUsefulHint ||
                         (game.currentQ.questionKind === 'listening' && !game.listeningReady)
                 );
             if (gear.boots)
@@ -179,7 +184,8 @@ const ui = {
             const hintIcon = itemIconMarkup(hintData);
             hintBtn.innerHTML = `<span>${hintIcon}</span> <span class="skill-count">${db.skills.hint}</span>`;
             hintBtn.onclick = game.useHint;
-            hintBtn.disabled = isBossQuestion || game.isProcessing || waitingForSound;
+            hintBtn.disabled =
+                isBossQuestion || game.isProcessing || waitingForSound || noUsefulHint;
             hintBtn.title = isBossQuestion ? '힌트: 주관식에서는 사용 불가' : '힌트: 클릭하여 사용';
             container.appendChild(hintBtn);
         }

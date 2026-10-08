@@ -804,6 +804,9 @@ button .action-icon {
     line-height: 1.5;
     font-size: 11px;
 }
+#question-instruction:empty {
+    display: none;
+}
 #battle-mode-game:is([data-question-kind='cloze'], [data-question-kind='riddle']) .q-text {
     font-size: clamp(16px, 4.4cqw, 24px);
     line-height: 1.55;
@@ -955,6 +958,123 @@ button .action-icon {
     #battle-mode-game :is(.listening-actions, .spelling-tools) button {
         padding: 1px 6px !important;
         line-height: 18px;
+    }
+}
+
+/* Give answer controls priority on portrait screens near the 3:4 limit. */
+@media (max-height: 850px) {
+    :root[data-layout='portrait'] #battle-mode-game {
+        --battle-scene-height: clamp(110px, 26cqh, 200px);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .battle-arena {
+        flex-basis: 26%;
+        min-height: clamp(110px, 26cqh, 200px);
+        padding: 8px 12px 20px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .battle-arena .char-wrapper {
+        width: clamp(72px, 18cqw, 110px);
+        height: clamp(72px, 18cqw, 110px);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .quiz-area {
+        gap: 8px;
+        padding: 10px 12px 14px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .question-box {
+        padding: 8px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .spelling-panel {
+        gap: 6px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .options-grid {
+        gap: 8px;
+        grid-auto-rows: minmax(52px, 1fr);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .option-btn {
+        min-height: 52px;
+        padding: 6px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .letter-tile {
+        height: 40px;
+        min-height: 40px;
+    }
+}
+
+@media (max-height: 550px) {
+    :root[data-layout='portrait'] #battle-mode-game {
+        --battle-scene-height: clamp(90px, 21cqh, 110px);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .gameplay-header {
+        height: 56px;
+        min-height: 56px;
+        padding-block: 12px 0;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .battle-arena {
+        flex-basis: 21%;
+        min-height: clamp(90px, 21cqh, 110px);
+        padding: 8px 8px 20px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .battle-arena .char-wrapper {
+        width: clamp(62px, 16cqw, 88px);
+        height: clamp(62px, 16cqw, 88px);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .quiz-area {
+        gap: 4px;
+        padding: 4px 8px max(4px, env(safe-area-inset-bottom));
+    }
+    :root[data-layout='portrait'] #battle-mode-game .question-box {
+        padding: 4px 6px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .q-label {
+        display: none !important;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .options-grid {
+        gap: 4px;
+        grid-auto-rows: minmax(44px, 1fr);
+    }
+    :root[data-layout='portrait'] #battle-mode-game .option-btn {
+        min-height: 44px;
+        padding: 2px 4px;
+        font-size: 12px;
+        line-height: 1.1;
+    }
+    :root[data-layout='portrait'] #battle-mode-game #listening-status {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
+    :root[data-layout='portrait']
+        #battle-mode-game
+        :is(.listening-actions, .spelling-tools)
+        button {
+        min-height: 44px;
+        font-size: 11px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .spelling-panel {
+        gap: 4px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .letter-tile {
+        width: 32px;
+        height: 38px;
+        min-height: 38px;
+        padding: 2px;
+        font-size: 16px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .spelling-answer {
+        min-height: 24px;
+        font-size: 16px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .letter-slot {
+        width: 20px;
+        height: 24px;
+        line-height: 22px;
+    }
+    :root[data-layout='portrait'] #battle-mode-game .boss-ui {
+        gap: 6px;
     }
 }
 

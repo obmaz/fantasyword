@@ -152,8 +152,7 @@ function createBattleView({
                 ? `${encounter.name} · ${encounter.lesson}`
                 : '';
             element('q-label').style.display = encounter ? 'block' : 'none';
-            element('question-instruction').innerText =
-                encounter?.instruction || 'CHOOSE YOUR ANSWER';
+            element('question-instruction').innerText = encounter?.instruction || '';
             element('listening-panel').hidden = true;
             element('spelling-panel').hidden = true;
             element('spelling-panel').onkeydown = null;
@@ -466,11 +465,17 @@ function createBattleView({
                 doc.querySelector('.battle-arena')?.classList.remove('screen-shake');
             }, 400);
         },
-        floatText(text, type) {
+        floatText(text, type, detail = '') {
             const version = ++floatVersion;
             const node = element('dmg-txt');
             node.innerText = text;
-            node.className = `damage-txt float-up ${type === 'gold' ? 'dmg-gold' : 'dmg-red'}`;
+            node.className = `damage-txt float-up ${type === 'gold' ? 'dmg-gold' : 'dmg-red'}${detail ? ' damage-with-detail' : ''}`;
+            if (detail) {
+                const label = doc.createElement('span');
+                label.className = 'damage-detail';
+                label.innerText = detail;
+                node.appendChild(label);
+            }
             questionLater(() => {
                 if (version === floatVersion) {
                     node.classList.remove('float-up');

@@ -209,3 +209,31 @@ test('dayLabel: all/boss/숫자를 사람이 읽는 라벨로 바꾼다', () => 
     assert.strictEqual(game.dayLabel(3), 'Day 3 (숲)', 'dayCatalog 라벨을 우선 사용');
     assert.strictEqual(game.dayLabel(9), 'Day 9', '카탈로그에 없으면 기본 형식');
 });
+
+test('정답 골드는 문제 수와 무관하고 남은 시간 또는 풀이 시간에 따라 감소한다', () => {
+    const rules = loadScripts(['scripts/domain/battle-rules.js']).evaluate('battleRules');
+    const objective = (timeLeft) =>
+        rules.reward({ mode: 'battle', subjective: false, timeLeft, maxTime: 10 });
+    const subjective = (elapsedSeconds, count = 10) =>
+        rules.reward({ mode: 'battle', subjective: true, elapsedSeconds, count });
+    assert.equal(objective(10), 20);
+    assert.equal(objective(9.99), 20);
+    assert.equal(objective(7), 15);
+    assert.equal(objective(0), 5);
+    assert.equal(subjective(0), 30);
+    assert.equal(subjective(0.01), 30);
+    assert.equal(subjective(15), 18);
+    assert.equal(subjective(30, 100), 7);
+    assert.equal(rules.reward({ mode: 'boss', subjective: true, elapsedSeconds: 15 }), 25);
+    assert.equal(
+        rules.reward({
+            mode: 'battle',
+            subjective: false,
+            timeLeft: 10,
+            maxTime: 10,
+            multiplier: 1.5,
+            glove: true,
+        }),
+        45
+    );
+});

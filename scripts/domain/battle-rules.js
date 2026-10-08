@@ -1,4 +1,11 @@
 /** DOM/저장소에 의존하지 않는 전투 출제·채점·보상 규칙. */
+const REWARD_POLICY = Object.freeze({
+    objective: 20,
+    subjective: 30,
+    boss: 40,
+    minimumShare: 0.25,
+    untimedDecaySeconds: 30,
+});
 const battleRules = Object.freeze({
     buildPool(day, source) {
         return day === 'all' || day === 'boss'
@@ -26,7 +33,9 @@ const battleRules = Object.freeze({
         );
     },
     spellingHint(word) {
-        return word.replace(/\S+/g, (part) => part[0] + '_'.repeat(part.length - 1));
+        return word.replace(/\S+/g, (part) =>
+            part.length === 1 ? '_' : part[0] + '_'.repeat(part.length - 1)
+        );
     },
     checkSpelling(input, word) {
         const answer = word.trim().toLowerCase();
@@ -34,12 +43,38 @@ const battleRules = Object.freeze({
         // 기존 입력 규칙: 전체 철자 또는 맨 앞 한 글자를 제외한 철자를 허용한다.
         return value.length > 0 && (value === answer || value === answer.slice(1));
     },
-    reward({ mode, subjective, count, timeLeft, maxTime, multiplier = 1, glove = false }) {
+    hintRemovalCount(wrongCount) {
+        return Math.max(0, Math.min(2, wrongCount - 1));
+    },
+    reward({
+        mode,
+        subjective,
+        timeLeft,
+        maxTime,
+        elapsedSeconds = 0,
+        multiplier = 1,
+        glove = false,
+    }) {
         const base =
-            mode === 'boss' ? 80 : subjective ? (count >= 20 ? 600 : count >= 10 ? 200 : 100) : 40;
+            mode === 'boss'
+                ? REWARD_POLICY.boss
+                : subjective
+                  ? REWARD_POLICY.subjective
+                  : REWARD_POLICY.objective;
         const ratio =
-            mode === 'boss' || subjective ? 1 : Math.max(0, Math.min(1, timeLeft / maxTime));
-        let gain = Math.floor(Math.floor(base * (0.5 + ratio * 0.5)) * multiplier);
+            mode === 'boss' || subjective
+                ? Math.max(
+                      0,
+                      1 -
+                          Math.floor(Math.max(0, elapsedSeconds)) /
+                              REWARD_POLICY.untimedDecaySeconds
+                  )
+                : Math.max(0, Math.min(1, Math.ceil(timeLeft) / maxTime));
+        let gain = Math.floor(
+            base *
+                (REWARD_POLICY.minimumShare + ratio * (1 - REWARD_POLICY.minimumShare)) *
+                multiplier
+        );
         if (glove) gain = Math.floor(gain * 1.5);
         return gain;
     },

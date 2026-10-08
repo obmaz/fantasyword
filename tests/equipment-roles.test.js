@@ -39,7 +39,10 @@ test('오른손 무기는 3연속 정답에만 추가 10 G를 주며 오답은 �
         r.choose(true);
         if (i < 2) r.advance(800);
     }
-    assert.equal(r.game.stats.gain, 130);
+    assert.equal(r.game.stats.gain, 70);
+    assert.equal(r.evaluate('db.gold'), 1070);
+    assert.equal(r.getElement('dmg-txt').innerText, '+30 G');
+    assert.equal(r.getElement('dmg-txt').children.at(-1).innerText, '정답 +20 · 연속 +10');
     assert.equal(r.game.gear.combo, 0);
     r.advance(800);
     r.choose(false);
@@ -119,9 +122,36 @@ test('투구 힌트는 듣기 전 사용되지 않으며 무료 1회로 주관�
     const typed = runtime({ head: 'helmet' });
     typed.start('goblin');
     typed.game.useEquipmentHint();
-    assert.match(typed.getElement('equipment-hint').innerText, /앞 두 글자: ap/);
+    assert.match(typed.getElement('equipment-hint').innerText, /앞 2글자: ap/);
     assert.equal(typed.game.gear.hint, 0);
     assert.equal(typed.game.spellingChosen.length, 0);
+    assert.equal(typed.evaluate('equipmentRules.hint("an")'), '앞 1글자: a · 전체 2글자');
+    assert.equal(typed.evaluate('equipmentRules.hint("a")'), '전체 1글자');
+});
+
+test('남은 오답 보기가 하나면 힌트는 정답만 남기거나 소모되지 않는다', () => {
+    const r = runtime({ head: 'helmet' });
+    r.start();
+    r.game.options
+        .filter((q) => !q.correct)
+        .slice(0, 2)
+        .forEach((q) => (q.disabled = true));
+    r.game.useEquipmentHint();
+    assert.equal(r.game.gear.hint, 1);
+    r.evaluate('db.skills.hint=1');
+    r.game.useHint();
+    assert.equal(r.evaluate('db.skills.hint'), 1);
+    assert.equal(r.game.options.filter((q) => !q.disabled).length, 2);
+});
+
+test('시간 제한이 없는 문제도 풀이가 길어지면 기본 보상이 줄어든다', () => {
+    const r = runtime();
+    r.start('dragon');
+    r.advance(15000);
+    r.getElement('boss-input').value = 'apple';
+    r.game.checkBossAnswer();
+    assert.equal(r.game.stats.gain, 18);
+    assert.equal(r.evaluate('db.gold'), 1018);
 });
 
 test('부츠 경로를 고르기 전에는 출제·타이머가 시작되지 않고 안전한 길은 모래시계와 합산된다', () => {
@@ -146,14 +176,14 @@ test('보물 길은 전투 골드만 10% 늘리고 고정 복수 보상에는 �
     r.game.selectRoute('treasure');
     r.start();
     r.choose(true);
-    assert.equal(r.game.stats.gain, 44);
+    assert.equal(r.game.stats.gain, 22);
     r.game.exit();
     r.evaluate('revengeQuests.fail({...rawDataData[0],monsterId:"slime"})');
     r.game.init('revenge', 'all');
     r.advance(400);
     r.game.selectRoute('treasure');
     r.choose(true);
-    assert.equal(r.game.stats.gain, 94);
+    assert.equal(r.game.stats.gain, 72);
     assert.equal(r.evaluate('Object.values(db.revengeQuests[db.getBookKey()])[0].phase'), 'recall');
 });
 

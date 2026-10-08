@@ -22,5 +22,10 @@ const equipmentRules = Object.freeze({
     },
     routeBonus: (gain, route) => (route === 'treasure' ? Math.floor(gain * 0.1) : 0),
     routeSeconds: (route) => (route === 'safe' ? 5 : 0),
-    hint: (word) => `앞 두 글자: ${word.slice(0, 2)} · 전체 ${word.length}글자`,
+    hint(word) {
+        const letters = [...word.trim()];
+        if (letters.length <= 1) return `전체 ${letters.length}글자`;
+        const shown = letters.length === 2 ? 1 : 2;
+        return `앞 ${shown}글자: ${letters.slice(0, shown).join('')} · 전체 ${letters.length}글자`;
+    },
 });

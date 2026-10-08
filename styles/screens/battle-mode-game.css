@@ -418,6 +418,37 @@
     pointer-events: none;
     z-index: 100;
 }
+.damage-with-detail {
+    top: 35%;
+    right: 10%;
+    max-width: 80%;
+    padding: 4px 6px;
+    border: 1px solid #ffe6a4;
+    border-radius: 8px;
+    background: #103d2fef;
+    text-align: center;
+    font-size: clamp(14px, 4cqmin, 24px);
+}
+.damage-with-detail.float-up {
+    animation: rewardFloat 1s forwards;
+}
+.damage-detail {
+    display: block;
+    font-size: clamp(10px, 0.7em, 14px);
+    line-height: 1.2;
+    white-space: normal;
+}
+@keyframes rewardFloat {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .dmg-red {
     color: #ff5252;
 }
