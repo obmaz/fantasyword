@@ -82,6 +82,7 @@
                 if (settled) return;
                 settled = true;
                 activeConfirm = null;
+                overlay.style.display = 'none';
                 overlay.close();
                 window.syncFullscreenHost?.();
                 overlay.classList.remove('show');

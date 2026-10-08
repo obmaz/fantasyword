@@ -26,7 +26,7 @@ function createPracticeView({ document, openScreen, closeScreen, syncLayout, tra
                 );
             });
         },
-        answer(visible, hasWord) {
+        answer(hasWord) {
             for (const id of ['practice-meaning-text', 'practice-explanation-section']) {
                 const target = element(id);
                 if (target) target.hidden = !hasWord;

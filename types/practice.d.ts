@@ -8,7 +8,7 @@ export interface Word {
 export type PracticeFilter = 'all' | 'memorized' | 'not-memorized';
 export interface PracticeView {
     filter(value: PracticeFilter): void;
-    answer(visible: boolean, hasWord: boolean): void;
+    answer(hasWord: boolean): void;
     empty(): void;
     memorized(known: boolean): void;
     word(word: Word, index: number, count: number, korean: boolean): void;
@@ -40,14 +40,11 @@ export interface PracticeSession {
     currentDay: string | number | null;
     currentFilter: PracticeFilter;
     showKoreanExplanation: boolean;
-    answerVisible: boolean;
     readonly speechAudio: HTMLAudioElement | null;
     stopSpeech(): void;
     getMemorizedSet(): Set<string>;
     applyFilter(filter: PracticeFilter | null, preferredIndex?: number): void;
     toggleMemorized(): void;
-    setAnswerVisible(visible: boolean): void;
-    toggleAnswer(): void;
     updateMemorizedButton(): void;
     showWord(index: number): void;
     start(day: string | number, reviewPool?: Word[] | null): void;

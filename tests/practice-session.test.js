@@ -41,12 +41,9 @@ test('연습 세션은 브라우저 전역 없이 생성되고 두 세션의 진
     a.result.start(1);
     b.result.start(1);
     a.result.next();
-    a.result.toggleAnswer();
     a.result.toggleMemorized();
     assert.equal(a.result.currentIndex, 1);
     assert.equal(b.result.currentIndex, 0);
-    assert.equal(a.result.answerVisible, true);
-    assert.equal(b.result.answerVisible, false);
     assert.equal(b.result.getMemorizedSet().size, 0);
 });
 

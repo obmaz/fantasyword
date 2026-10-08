@@ -15,6 +15,65 @@ const POOL = [
     },
 ];
 
+test('철자 조립의 방해 글자는 답에 없는 글자이며 흔한 글자가 부족하면 다른 자음을 보충한다', () => {
+    const r = loadScripts(['scripts/domain/monster-encounters.js']);
+    const encounters = r.evaluate('monsterEncounters');
+    for (const word of ['machine', 'turn a silver stone']) {
+        const tiles = encounters.spellingTiles(word, (values) => [...values]);
+        const letters = [...word].filter((letter) => /[a-z]/i.test(letter));
+        const extras = tiles.slice(letters.length);
+        assert.equal(extras.length, 3);
+        assert.equal(new Set(extras).size, 3);
+        assert.ok(extras.every((letter) => !word.includes(letter)));
+        assert.deepEqual([...tiles.slice(0, letters.length)], letters);
+    }
+});
+
+test('드래곤 설명에 정답이 있으면 빈칸으로 가리되 원본 단어와 설명을 보존한다', () => {
+    const r = loadScripts(['data/battle-examples.js', 'scripts/domain/monster-encounters.js']);
+    const encounters = r.evaluate('monsterEncounters');
+    const word = {
+        word: 'cotton',
+        meaning: '면',
+        englishExplanation: 'thread or cloth made from the fibres of the cotton plant',
+    };
+    const question = encounters.prepare(word, 'dragon');
+    assert.equal(question.questionKind, 'riddle');
+    assert.equal(
+        question.encounterPrompt,
+        'thread or cloth made from the fibres of the _____ plant'
+    );
+    assert.equal(question.word, 'cotton');
+    assert.equal(word.englishExplanation.includes('cotton'), true);
+});
+
+test('실제 세 단어장의 모든 드래곤 설명 문제는 정답 단어를 그대로 노출하지 않는다', () => {
+    const r = loadScripts([
+        'data/game-data-1.js',
+        'data/game-data-2.js',
+        'data/game-data-3.js',
+        'data/battle-examples.js',
+        'scripts/domain/monster-encounters.js',
+    ]);
+    const encounters = r.evaluate('monsterEncounters');
+    let checked = 0;
+    for (let id = 1; id <= 3; id++) {
+        for (const word of r.sandbox[`rawData_${id}`]) {
+            const question = encounters.prepare(word, 'dragon');
+            if (question.questionKind !== 'riddle') continue;
+            const prompt =
+                question.encounterPrompt || question.englishExplanation || question.meaning;
+            assert.equal(
+                encounters.cloze({ word: word.word, exampleSentence: prompt }),
+                null,
+                `${id}/${word.word}: ${prompt}`
+            );
+            checked++;
+        }
+    }
+    assert.ok(checked > 2000);
+});
+
 function runtime() {
     const utterances = [];
     const clips = [];

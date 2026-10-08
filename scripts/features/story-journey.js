@@ -3,6 +3,11 @@ const storyJourney = {
     returnAfterResult: false,
     pendingStage: null,
     pendingIndex: null,
+    cancelBattleReturn() {
+        storyJourney.returnAfterResult = false;
+        storyJourney.pendingStage = null;
+        storyJourney.pendingIndex = null;
+    },
     purchaseSuccessRate: 0.75,
     random: () => Math.random(),
     get key() {

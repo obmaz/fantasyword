@@ -91,16 +91,16 @@ const ui = {
         const summaryEl = document.getElementById('equipped-summary');
         if (summaryEl) {
             summaryEl.innerHTML = `
-                <div class="eq" title="무기: ${
+                <div class="eq" title="무기: ${escapeHTML(
                     wData.name
-                }"><span class="icon">${wData.icon}</span><div><div style="font-weight:700">${
+                )}"><span class="icon">${escapeHTML(wData.icon)}</span><div><div style="font-weight:700">${escapeHTML(
                     wData.name
-                }</div><div style="font-size:12px;color:#aaa">x${
+                )}</div><div style="font-size:12px;color:#aaa">x${
                     wData.multiplier || 1
                 }</div></div></div>
                 ${
                     effData
-                        ? `<div class="eq" title="이펙트: ${effData.name}"><span class="icon">${effData.icon}</span><div><div style="font-weight:700">${effData.name}</div><div style="font-size:12px;color:#aaa">${effData.desc}</div></div></div>`
+                        ? `<div class="eq" title="이펙트: ${escapeHTML(effData.name)}"><span class="icon">${escapeHTML(effData.icon)}</span><div><div style="font-weight:700">${escapeHTML(effData.name)}</div><div style="font-size:12px;color:#aaa">${escapeHTML(effData.desc)}</div></div></div>`
                         : ''
                 }
             `;

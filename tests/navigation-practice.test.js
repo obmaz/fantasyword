@@ -72,7 +72,7 @@ test('단어를 바꾸면 뜻과 설명을 바로 보여준다', () => {
 test('외움 표시는 확인 상태를 유지하고 같은 단어의 발화를 재시작하지 않는다', () => {
     const r = browserRuntime();
     r.evaluate(
-        'practiceMemorization.playTTS = () => { window.reads = (window.reads || 0) + 1; }; practiceMemorization.start("1"); practiceMemorization.toggleAnswer()'
+        'practiceMemorization.playTTS = () => { window.reads = (window.reads || 0) + 1; }; practiceMemorization.start("1")'
     );
     const reads = r.sandbox.reads;
     r.evaluate('practiceMemorization.toggleMemorized()');

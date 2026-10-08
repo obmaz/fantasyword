@@ -124,6 +124,7 @@ function createBattleSession({
             if (game.active) return;
             game.stop();
             game.mode = mode;
+            if (mode !== 'story') journey?.cancelBattleReturn?.();
             game.currentDay = day;
             closeScreenOverlay('battle-mode-story-modal', true);
             const source = game._getRawData();

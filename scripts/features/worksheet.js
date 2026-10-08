@@ -19,7 +19,19 @@ const worksheet = {
         const currentRawData =
             typeof window !== 'undefined' && window.rawDataData ? window.rawDataData : rawData;
         const dayNum = Number(selectedDay);
-        const dayWords = currentRawData.filter((i) => Number(i.day) === dayNum);
+        // 먼저 사본을 섞고 중복을 제거한다. 한 묶음 안에서도 같은 문제가 반복되지 않는다.
+        const seenWords = new Set();
+        const seenMeanings = new Set();
+        const dayWords = questionTools
+            .shuffle(currentRawData.filter((i) => Number(i.day) === dayNum))
+            .filter((item) => {
+                const word = String(item.word).trim().toLowerCase();
+                const meaning = String(item.meaning).trim();
+                if (seenWords.has(word) || seenMeanings.has(meaning)) return false;
+                seenWords.add(word);
+                seenMeanings.add(meaning);
+                return true;
+            });
 
         if (dayWords.length === 0) {
             showToast('선택한 Day에 단어가 없습니다.', 'warn');
@@ -387,12 +399,13 @@ const worksheet = {
             gap: 0.8cm; /* Reduced gap from 1.2cm */
             width: 100%;
             flex: 1;
-            overflow: hidden;
+            overflow: visible;
             min-height: 0;
             position: relative;
         }
         .print-column {
             flex: 1;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             gap: 0;
@@ -413,6 +426,8 @@ const worksheet = {
         }
         .question-content {
             flex: 1;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
         .question-text {
             font-weight: 500;
@@ -430,9 +445,9 @@ const worksheet = {
         }
         .option-item {
             flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            min-width: 0;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
         .option-item.correct {
             font-weight: bold;
@@ -466,7 +481,7 @@ const worksheet = {
                 margin: 0;
                 padding: 1.5cm; /* Ensure padding matches non-print */
                 width: 21cm;
-                height: 29.7cm;
+                height: auto;
                 box-sizing: border-box;
             }
         }

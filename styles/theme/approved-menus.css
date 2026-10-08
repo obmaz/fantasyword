@@ -2097,6 +2097,37 @@ button.equipment-control {
 }
 
 @media (max-height: 550px) {
+    #battle-mode-game .battle-hud {
+        --hud-badge-height: 28px;
+        --hud-control-height: 24px;
+        top: 4px;
+        gap: 2px 6px;
+    }
+    #battle-mode-game .battle-hud :is(.info-badge, .overlay-gold) {
+        min-height: var(--hud-badge-height);
+        padding: 4px 6px;
+        font-size: 11px;
+        line-height: 16px;
+        white-space: nowrap;
+    }
+    #battle-mode-game .battle-hud .music-info-overlay {
+        position: static;
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: start;
+        width: 128px;
+        max-width: 100%;
+        min-height: var(--hud-control-height);
+        transform: none;
+    }
+    #battle-mode-game .battle-hud .music-track-select {
+        height: var(--hud-control-height);
+        padding: 2px 6px;
+        font-size: 11px;
+    }
+    #battle-mode-game .battle-hud .overlay-timer {
+        min-height: var(--hud-control-height);
+    }
     #battle-mode-game .gameplay-header,
     #battle-mode-game[data-question-kind='spelling'] .gameplay-header {
         height: 68px !important;
@@ -2132,6 +2163,11 @@ button.equipment-control {
 }
 
 @media (max-height: 410px) {
+    #battle-mode-game .battle-hud {
+        --hud-badge-height: 26px;
+        --hud-control-height: 22px;
+        top: 2px;
+    }
     #battle-mode-game[data-question-kind='spelling'] .battle-arena {
         flex-basis: 16% !important;
         min-height: 66px !important;

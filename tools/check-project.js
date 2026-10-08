@@ -29,11 +29,19 @@ for (const file of files(path.join(root, 'scripts/domain'))) {
     }
 }
 for (const file of files(path.join(root, 'scripts/game'))) {
-    if (/\b(?:document|window|navigator|performance)\s*\./.test(fs.readFileSync(file, 'utf8'))) {
+    const source = fs.readFileSync(file, 'utf8');
+    if (/\b(?:document|window|navigator|performance)\s*\./.test(source)) {
         throw new Error(`세션의 환경 의존성은 구성 루트에서 주입해야 합니다: ${file}`);
     }
+    if (
+        /\.(?:getElementById|querySelector(?:All)?|createElement|getBoundingClientRect)\s*\(/.test(
+            source
+        )
+    ) {
+        throw new Error(`세션의 DOM 표현은 렌더러가 소유해야 합니다: ${file}`);
+    }
 }
-for (const name of ['battle-view', 'practice-view']) {
+for (const name of ['battle-view', 'practice-view', 'skyfall-view']) {
     if (
         /\b(?:game|db|practiceMemorization)\s*\./.test(
             fs.readFileSync(path.join(root, `scripts/ui/${name}.js`), 'utf8')
@@ -55,4 +63,4 @@ for (const file of files(path.join(root, 'styles')).filter((f) => f.endsWith('.c
         }
     }
 }
-console.log('JavaScript 문법, 배포 에셋/로드 등록, HTML 동작 분리, 전투 모듈 책임 경계 검사 통과');
+console.log('JavaScript 문법, 배포 에셋/로드 등록, HTML 동작 분리, 게임 모듈 책임 경계 검사 통과');

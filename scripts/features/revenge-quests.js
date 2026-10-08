@@ -94,6 +94,7 @@ const revengeQuests = (() => {
     }
     function open() {
         cancelPendingGameStart();
+        storyJourney.cancelBattleReturn();
         closeScreenOverlay('result-modal', false);
         resetScreenOverlays();
         openScreenOverlay('title-screen', false);

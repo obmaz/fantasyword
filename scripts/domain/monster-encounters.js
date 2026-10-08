@@ -23,11 +23,18 @@ const monsterEncounters = Object.freeze({
     prepare(data, monsterId) {
         const monster = monsterEncounters.catalog[monsterId];
         const cloze = monsterId === 'dragon' ? monsterEncounters.cloze(data) : null;
+        const riddle =
+            monsterId === 'dragon' && !cloze
+                ? monsterEncounters.cloze({
+                      word: data.word,
+                      exampleSentence: data.englishExplanation,
+                  })
+                : null;
         return {
             ...data,
             monsterId,
             questionKind: cloze ? 'cloze' : monster.kind,
-            encounterPrompt: cloze || null,
+            encounterPrompt: cloze || riddle || null,
             isBoss: !['meaning', 'listening'].includes(monster.kind),
         };
     },
@@ -47,7 +54,12 @@ const monsterEncounters = Object.freeze({
         const letters = [...word].filter((letter) => /[a-z]/i.test(letter));
         // Common letters make plausible decoys while every answer letter remains available.
         const common = [...'aeiourstnl'];
-        const extras = shuffle(common).slice(0, 3);
+        const used = new Set(letters.map((letter) => letter.toLowerCase()));
+        const unusedCommon = common.filter((letter) => !used.has(letter));
+        const uncommon = [...'abcdefghijklmnopqrstuvwxyz'].filter(
+            (letter) => !used.has(letter) && !common.includes(letter)
+        );
+        const extras = [...shuffle(unusedCommon), ...shuffle(uncommon)].slice(0, 3);
         return shuffle([...letters, ...extras]);
     },
     spellingAnswer(word, tiles, chosen) {

@@ -91,7 +91,7 @@ const shop = {
         const name = isSkill
             ? `${itemDisplayName(item)} (현재 ${db.skills[item.id]}개)`
             : itemDisplayName(item);
-        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${name}</b><br><span class="shop-item-description">${item.desc}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${item.id}" data-type="${type}" aria-label="${name} 구매">구매</button></div></div>`;
+        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(item.desc)}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
     },
 
     /**

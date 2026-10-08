@@ -65,6 +65,18 @@ function createPracticeSpeech({
     let audio = null;
     /** @type {HTMLAudioElement | null} */
     let resumeMusic = null;
+    /** @type {HTMLAudioElement | null} */
+    let lockedMusic = null;
+    const pauseMusic = () => {
+        if (lockedMusic && !lockedMusic.paused) {
+            resumeMusic = lockedMusic;
+            lockedMusic.pause();
+        }
+    };
+    const unlockMusic = () => {
+        lockedMusic?.removeEventListener?.('play', pauseMusic);
+        lockedMusic = null;
+    };
     const restoreMusic = () => {
         const music = resumeMusic;
         resumeMusic = null;
@@ -77,6 +89,7 @@ function createPracticeSpeech({
         },
         stop() {
             requestId++;
+            unlockMusic();
             getSynth()?.cancel();
             const previous = audio;
             audio = null;
@@ -89,22 +102,24 @@ function createPracticeSpeech({
         },
         play(word, automatic = false, callbacks = {}) {
             speech.stop();
-            const music = getMusic?.();
-            if (music && !music.paused) {
-                resumeMusic = music;
-                music.pause();
-            }
+            lockedMusic = getMusic?.() || null;
+            // 발음 중 곡 선택/ON을 눌러도 음악은 발음이 끝난 뒤에 재개한다.
+            lockedMusic?.addEventListener?.('play', pauseMusic);
+            pauseMusic();
             const id = requestId;
-            const isCurrent = () => id === requestId;
             let completed = false;
+            const isCurrent = () => id === requestId && !completed;
             const ready = () => {
-                if (!isCurrent() || completed) return;
+                if (!isCurrent()) return;
                 completed = true;
+                unlockMusic();
                 restoreMusic();
                 callbacks.onReady?.();
             };
             const unavailable = () => {
                 if (!isCurrent()) return;
+                completed = true;
+                unlockMusic();
                 restoreMusic();
                 callbacks.onUnavailable?.();
                 if (!automatic)

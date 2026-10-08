@@ -1,14 +1,14 @@
 # 다음 작업을 위한 인계
 
-2026-10-07 정리 기준. 사용자 요청은 당분간 개발을 멈추기 전에 저장소를 정리하고
-나중에 AI가 코드·요구사항·배포 상태를 빠르게 이해할 수 있게 하는 것이었다.
+2026-10-08 전체 코드 리뷰와 수정 기준. 최근 결함·수정·재검증 근거는
+[전체 코드 리뷰](review-2026-10-08.md)에 있고, 이전 정리 기록은 [리뷰](review.md)에 보존한다.
 새 기능을 자동으로 계속 만들거나 로드맵을 이미 승인된 작업으로 취급하지 않는다.
 
 ## 먼저 읽을 것
 
 [AGENTS.md](../AGENTS.md) → [사용자 요구사항](user-requirements.md) → [현행 사양](spec.md).
 구현 위치는 [아키텍처](architecture.md), 그림 기준은 [디자인 에셋](design-assets.md),
-이번 정리 근거는 [리뷰](review.md)를 확인한다. `archive/`는 과거 기록이다.
+최근 검증 근거는 [전체 코드 리뷰](review-2026-10-08.md)를 확인한다. `archive/`는 과거 기록이다.
 
 ## 완료된 기능과 찾아갈 코드
 
@@ -20,6 +20,9 @@
 | 무기별 모션·보조 속성   | `scripts/domain/attack-profiles.js`, `scripts/ui/battle-view.js`, `styles/theme/weapon-effects.css` | `weapon-effects.test.js`                                         |
 | 채점·보상·진행          | `scripts/domain/battle-rules.js`, `scripts/game/game-engine.js`                                     | `game-engine.test.js`, `regressions.test.js`                     |
 | 연습·발음               | `scripts/game/practice-session.js`, `scripts/features/speech.js`, `scripts/ui/practice-view.js`     | `practice-session.test.js`, `speech-fallback.test.js`            |
+| 낙하전·효과 정리        | `scripts/game/skyfall-session.js`, `scripts/ui/skyfall-view.js`                                     | `skyfall-session.test.js`                                        |
+| 비동기 전환 회귀        | `scripts/ui/layout-manager.js`, `scripts/features/speech.js`, `scripts/features/story-journey.js`   | `review-regressions.test.js`                                     |
+| HTML 문제지 출력        | `scripts/features/worksheet.js`                                                                     | `worksheet.test.js`                                              |
 | 저장/복원               | `scripts/core/database.js`, `scripts/core/storage.js`                                               | `inventory.test.js`, `smoke-load.test.js`, `regressions.test.js` |
 | 비율·전체화면·화면 전환 | `scripts/ui/layout-manager.js`, `scripts/ui/modal-manager.js`, `scripts/ui/navigation.js`           | `design-improvements.test.js`, `navigation-practice.test.js`     |
 | 최종 메뉴/버튼 디자인   | `styles/theme/approved-menus.css`, `styles/theme/image-components.css`                              | 실제 브라우저 확인                                               |

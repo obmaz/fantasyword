@@ -73,28 +73,39 @@ const practiceMemorization = createPracticeSession({
         getMusic: () => document.getElementById('background-music'),
     }),
     notify: showToast,
-    resetResult: () => resetScreenOverlay('result-modal'),
+    resetResult: () => {
+        storyJourney.cancelBattleReturn();
+        resetScreenOverlay('result-modal');
+    },
     playMusic,
 });
 
 const skyfall = createSkyfallSession({
-    document,
     db,
     getSource: () => window.rawDataData || rawData,
     questions: questionTools,
     rules: battleRules,
-    openScreen: openScreenOverlay,
-    closeScreen: closeScreenOverlay,
+    view: createSkyfallView({
+        document,
+        openScreen: openScreenOverlay,
+        closeScreen: closeScreenOverlay,
+        syncLayout: syncGameScreenSize,
+        timers: { setTimeout, clearTimeout },
+    }),
     playMusic,
-    syncLayout: syncGameScreenSize,
+    pauseMusic: () => {
+        const music = document.getElementById('background-music');
+        music.pause();
+        music.currentTime = 0;
+    },
     requestFrame: (callback) =>
         window.requestAnimationFrame
             ? window.requestAnimationFrame(callback)
-            : setTimeout(() => callback(Date.now()), 16),
+            : setTimeout(callback, 16),
     cancelFrame: (id) => {
         if (window.cancelAnimationFrame) window.cancelAnimationFrame(id);
         else clearTimeout(id);
     },
-    later: setTimeout,
+    now: () => performance.now(),
     notify: showToast,
 });

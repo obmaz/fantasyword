@@ -155,7 +155,10 @@ window.onload = () => {
         'title-setting-btn': () => settingsManager.open(),
     };
     Object.entries(titleActions).forEach(([id, action]) => {
-        document.getElementById(id)?.addEventListener('click', action);
+        document.getElementById(id)?.addEventListener('click', () => {
+            cancelPendingGameStart();
+            action();
+        });
     });
     document.getElementById('title-screen')?.addEventListener('pointerdown', showLobbyWeaponEffect);
 
@@ -259,10 +262,6 @@ window.onload = () => {
         if (event.target.closest('input, select, textarea, button, [role="button"]')) return;
         if (event.key === 'ArrowLeft') practiceMemorization.prev();
         else if (event.key === 'ArrowRight') practiceMemorization.next();
-        else if (event.key === ' ') {
-            event.preventDefault();
-            practiceMemorization.toggleAnswer();
-        }
     });
 
     // 배틀 모드 나가기 버튼
@@ -324,7 +323,7 @@ window.onload = () => {
     // 전역: 결과 화면 닫기 함수
     window.closeResultScreen = function () {
         const returnToStory = storyJourney.returnAfterResult;
-        storyJourney.returnAfterResult = false;
+        storyJourney.cancelBattleReturn();
         closeScreenOverlay('result-modal', true);
 
         // 스토리/모드 선택 오버레이의 인라인 스타일을 CSS 기본값으로 되돌림

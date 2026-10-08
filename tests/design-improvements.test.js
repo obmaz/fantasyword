@@ -143,6 +143,7 @@ test('전체화면 진입·종료·거부 뒤에도 팝업 순서와 입력 상�
         id,
         open: true,
         style: { display: 'flex' },
+        classList: { contains: () => false },
         value: '입력 유지',
         close() {
             this.open = false;
@@ -159,7 +160,7 @@ test('전체화면 진입·종료·거부 뒤에도 팝업 순서와 입력 상�
         activeElement: { focus: () => restoredFocus++ },
         getElementById: () => null,
         querySelectorAll: (selector) =>
-            selector === 'dialog[open]' ? dialogs.filter((dialog) => dialog.open) : [],
+            selector.startsWith('dialog[open]') ? dialogs.filter((dialog) => dialog.open) : [],
         documentElement: {
             requestFullscreen: async () => {
                 assert.ok(dialogs.every((dialog) => !dialog.open));
@@ -434,7 +435,6 @@ test('오답 복습은 중복을 제거하고 원본 설명과 뜻 가리기를 
         r.evaluate('practiceMemorization.words[0].englishExplanation'),
         word.englishExplanation
     );
-    assert.equal(r.evaluate('practiceMemorization.answerVisible'), false);
     assert.equal(r.getElement('practice-memorization-day-info').textContent, '이번 판 오답 복습');
     r.evaluate('practiceMemorization.start(1)');
     assert.ok(r.evaluate('practiceMemorization.words.length') > 2);

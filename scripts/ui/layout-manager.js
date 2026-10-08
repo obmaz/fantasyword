@@ -90,6 +90,12 @@
                 screen.style.height = height + 'px';
             }
         }
+        // 짧은 화면에서는 음악 선택을 HUD의 둘째 줄에 놓아 골드·문제를 가리지 않는다.
+        const arena = document.querySelector('#battle-mode-game .battle-arena');
+        const hud = arena?.querySelector('.battle-hud');
+        const music = document.getElementById('music-info-overlay');
+        const host = height <= 550 ? hud : arena;
+        if (music && host && music.parentElement !== host) host.appendChild(music);
     }
 
     function updateFullscreenButtons() {
@@ -133,7 +139,7 @@
         updateFullscreenButtons();
         // 전체화면 요소가 dialog보다 나중에 top layer에 올라가면 팝업을 가릴 수 있다.
         // 전환 뒤 같은 팝업을 다시 올리되 화면 상태와 navigation 이력은 유지한다.
-        const dialogs = [...document.querySelectorAll('dialog[open]')];
+        const dialogs = [...document.querySelectorAll('dialog[open]:not(.closing)')];
         const focused = document.activeElement;
         dialogs.forEach((dialog) => dialog.close());
         try {
@@ -142,13 +148,23 @@
         } catch {
             showToast('전체화면으로 전환할 수 없습니다. 다시 시도해 주세요.', 'info');
         } finally {
-            for (const dialog of dialogs) {
-                if (!dialog.open && dialog.style.display !== 'none') dialog.showModal();
+            try {
+                for (const dialog of dialogs) {
+                    if (
+                        !dialog.open &&
+                        dialog.isConnected !== false &&
+                        dialog.style.display !== 'none' &&
+                        !dialog.classList.contains('closing')
+                    ) {
+                        dialog.showModal();
+                    }
+                }
+                syncFullscreenHost();
+                if (focused?.isConnected !== false) focused?.focus({ preventScroll: true });
+            } finally {
+                fullscreenPending = false;
+                updateFullscreenButtons();
             }
-            syncFullscreenHost();
-            focused?.focus({ preventScroll: true });
-            fullscreenPending = false;
-            updateFullscreenButtons();
         }
     }
 

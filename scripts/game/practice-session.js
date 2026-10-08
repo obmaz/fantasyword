@@ -21,7 +21,6 @@ function createPracticeSession({
         currentDay: null,
         currentFilter: 'all',
         showKoreanExplanation: false,
-        answerVisible: false,
         get speechAudio() {
             return speech.audio;
         },
@@ -46,7 +45,7 @@ function createPracticeSession({
                 session.showWord(Math.min(preferredIndex, session.words.length - 1));
             else {
                 session.stopSpeech();
-                session.setAnswerVisible(false);
+                view.answer(false);
                 view.empty();
             }
         },
@@ -70,13 +69,6 @@ function createPracticeSession({
             if (session.currentFilter === 'all') session.updateMemorizedButton();
             else session.applyFilter(null, session.currentIndex);
         },
-        setAnswerVisible(visible) {
-            session.answerVisible = visible;
-            view.answer(visible, session.words.length > 0);
-        },
-        toggleAnswer() {
-            if (session.words.length) session.setAnswerVisible(!session.answerVisible);
-        },
         updateMemorizedButton() {
             const word = session.words[session.currentIndex];
             if (word) view.memorized(session.getMemorizedSet().has(`${word.word}|${word.meaning}`));
@@ -91,7 +83,7 @@ function createPracticeSession({
                 session.words.length,
                 session.showKoreanExplanation
             );
-            session.setAnswerVisible(false);
+            view.answer(true);
             session.updateMemorizedButton();
             if (db.settings.wordRead) session.playTTS(true);
         },
@@ -111,8 +103,8 @@ function createPracticeSession({
             session.fullPool = pool;
             session.showKoreanExplanation = false;
             view.open(reviewPool ? '이번 판 오답 복습' : day === 'all' ? '전체' : `Day ${day}`);
-            session.applyFilter('all');
             playMusic('practice');
+            session.applyFilter('all');
         },
         reviewWrongWords() {
             const seen = new Set();
