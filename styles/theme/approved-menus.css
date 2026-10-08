@@ -417,6 +417,39 @@
         animation-duration: 0.1s;
     }
 }
+
+/* 상단 조작 영역까지 같은 일러스트 장면을 이어 붙인다. */
+#practice-mode-game::before,
+#skyfall-mode-game::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-position: center;
+    background-size: cover;
+}
+#practice-mode-game::before {
+    background-image: linear-gradient(#173d3230, #173d3266), url('../../images/theme/library.webp');
+}
+#skyfall-mode-game::before {
+    background-image:
+        linear-gradient(#102f2b33, #102f2b66), url('../../images/theme/skyfall-field.webp');
+}
+#practice-mode-game .gameplay-header,
+#practice-mode-game .practice-memorization-arena,
+#skyfall-mode-game .skyfall-hud {
+    background: transparent !important;
+}
+#practice-mode-game .practice-memorization-container {
+    background: transparent !important;
+}
+#practice-mode-game .gameplay-header,
+#practice-mode-game .practice-memorization-container,
+#skyfall-mode-game > :is(.skyfall-hud, .skyfall-field, .skyfall-answer-panel) {
+    position: relative;
+    z-index: 1;
+}
 @media (max-height: 550px) {
     .practice-memorization-arena,
     :root[data-compact='true'] .practice-memorization-arena {
@@ -1436,6 +1469,10 @@ button .action-icon {
     text-shadow: none;
     font-size: 20px;
     font-weight: 800;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    text-align: center;
 }
 #battle-mode-game .letter-tile:disabled {
     opacity: 0.3;
