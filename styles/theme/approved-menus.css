@@ -1189,6 +1189,20 @@ button .action-icon {
     gap: 12px;
     flex-shrink: 0;
 }
+#battle-mode-game .quiz-area {
+    justify-content: flex-start;
+}
+#battle-mode-game .options-grid {
+    flex: 0 0 auto;
+    margin-top: auto;
+    grid-auto-rows: minmax(72px, auto);
+}
+#battle-mode-game :is(.spelling-panel, .boss-ui, .listening-panel) {
+    margin-top: auto;
+}
+#battle-mode-game .boss-ui {
+    flex: 0 0 auto;
+}
 .spelling-answer,
 .spelling-tiles {
     display: flex;
@@ -1314,7 +1328,7 @@ button .action-icon {
     }
     :root[data-layout='portrait'] #battle-mode-game .options-grid {
         gap: 8px;
-        grid-auto-rows: minmax(52px, 1fr);
+        grid-auto-rows: minmax(52px, auto);
     }
     :root[data-layout='portrait'] #battle-mode-game .option-btn {
         min-height: 52px;
@@ -1356,7 +1370,7 @@ button .action-icon {
     }
     :root[data-layout='portrait'] #battle-mode-game .options-grid {
         gap: 4px;
-        grid-auto-rows: minmax(44px, 1fr);
+        grid-auto-rows: minmax(44px, auto);
     }
     :root[data-layout='portrait'] #battle-mode-game .option-btn {
         min-height: 44px;
@@ -1853,9 +1867,13 @@ button.equipment-control {
 }
 
 @media (max-height: 550px) {
+    #battle-mode-game .gameplay-header,
     #battle-mode-game[data-question-kind='spelling'] .gameplay-header {
-        height: 48px !important;
-        min-height: 48px !important;
+        height: 68px !important;
+        min-height: 68px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .gameplay-header {
+        padding-block: 8px;
     }
     #battle-mode-game[data-question-kind='spelling'] .battle-arena {
         flex-basis: 16% !important;

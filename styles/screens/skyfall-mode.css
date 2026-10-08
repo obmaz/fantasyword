@@ -54,7 +54,7 @@
     grid-template-columns: 34px 0.8fr 1fr 1.35fr 0.8fr;
     align-items: center;
     gap: 3px;
-    min-height: 49px;
+    min-height: 68px;
     padding: 4px 62px 4px 6px;
     background: linear-gradient(#172f35, #244b45);
     border-bottom: 2px solid #d3ae69;
@@ -211,7 +211,7 @@
 .skyfall-answer-panel {
     z-index: 1;
     flex: 0 0 auto;
-    min-height: 112px;
+    min-height: 0;
     padding: 8px 9px max(9px, env(safe-area-inset-bottom));
     border-top: 2px solid #d3ae69;
     background: linear-gradient(#214746, #153638);
@@ -301,14 +301,10 @@
 }
 @media (max-height: 500px) {
     .skyfall-answer-panel {
-        min-height: 100px;
         padding-block: 5px;
     }
     .skyfall-choice {
         min-height: 27px;
-    }
-    .skyfall-hud {
-        min-height: 42px;
     }
 }
 @media (prefers-reduced-motion: reduce) {
