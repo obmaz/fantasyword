@@ -88,10 +88,11 @@
     width: 32px;
     height: 32px;
     padding: 0;
-    border: 1px solid #dec48a;
-    border-radius: 9px;
+    border: 0;
+    border-radius: 0;
     color: #fff4d4;
-    background: #325051;
+    background: var(--ui-small-control) center / 100% 100% no-repeat;
+    filter: hue-rotate(240deg) saturate(1.6);
     font:
         700 22px system-ui,
         sans-serif;

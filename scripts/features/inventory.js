@@ -47,7 +47,7 @@ const inventory = {
         inventory.render();
 
         // 접근성 / 작은 뷰포트 대응: 닫기 버튼이 도달 가능하도록 보장
-        const closeBtn = document.getElementById('inv-close-btn');
+        const closeBtn = document.querySelector('#inventory-modal .modal-header .modal-close-x');
         if (closeBtn) {
             try {
                 closeBtn.focus({ preventScroll: true });

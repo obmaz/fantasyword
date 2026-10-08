@@ -276,7 +276,7 @@ function createBattleView({
             element('listen-word-btn').disabled = false;
             element('listen-fallback-btn').disabled = false;
             const label = element('listen-word-btn').querySelector('span');
-            if (label) label.innerText = '발음 듣기';
+            if (label) label.innerText = '듣고 풀기';
             // 실제 버튼 동작은 공통 이벤트 위임이 소유한다.
             element('listening-status').innerText =
                 '발음을 듣고 한국어 뜻을 고르세요. 발음이 끝나면 답을 고를 수 있습니다.';

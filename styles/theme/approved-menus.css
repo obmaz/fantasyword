@@ -35,26 +35,24 @@
     z-index: 20;
     display: inline-grid;
     place-items: center;
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     margin: 0;
     padding: 0;
-    border: 1px solid #a7c59d;
-    border-radius: 50%;
+    border: 0;
+    border-radius: 0;
     color: #fff7df;
-    background: #214d3c;
-    box-shadow:
-        inset 0 1px 0 #ffffff35,
-        0 2px 4px #102c2866;
+    background: var(--ui-small-control) center / 100% 100% no-repeat;
+    box-shadow: none;
     font:
         800 25px/1 system-ui,
         sans-serif;
     cursor: pointer;
 }
 .modal-close-x:hover {
-    background: #2e7053;
+    filter: brightness(1.12);
 }
 .modal-close-x:active {
     transform: scale(0.94);
@@ -70,21 +68,19 @@
         sans-serif;
 }
 .story-map-header > .btn-gray {
-    width: 38px;
-    min-width: 38px;
-    height: 38px;
-    min-height: 38px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
     padding: 0;
-    border: 1px solid #a7c59d;
-    border-radius: 50%;
-    background: #214d3c;
+    border: 0;
+    border-radius: 0;
+    background: var(--ui-small-control) center / 100% 100% no-repeat;
     color: #fff7df;
-    box-shadow:
-        inset 0 1px 0 #ffffff35,
-        0 2px 4px #102c2866;
+    box-shadow: none;
 }
 .story-map-header > .btn-gray:hover {
-    background: #2e7053;
+    filter: brightness(1.12);
 }
 .story-map-header > .btn-gray .visually-hidden {
     position: absolute;
@@ -165,6 +161,21 @@
 .story-map-header h2 {
     margin: 2px 0 0;
     color: #ffe2a0;
+}
+#story-map-modal .story-map-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#story-map-modal .story-map-header {
+    position: relative !important;
+    flex: 0 0 auto;
+}
+#story-map-content {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    position: relative;
 }
 .story-map-header button {
     min-width: 72px;
@@ -844,7 +855,7 @@ button .action-icon {
 }
 :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .approved-menu-header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto 44px;
     grid-template-rows: auto;
     align-items: center;
 }
@@ -1434,39 +1445,66 @@ button .action-icon {
     top: var(--header-top);
     z-index: 3;
     --ui-control-art: var(--ui-danger);
-    background: var(--ui-danger) center / 100% 100% no-repeat !important;
+    width: 44px;
+    min-width: 44px;
+    border: 0 !important;
+    border-image: none !important;
+    border-radius: 0 !important;
+    background: var(--ui-small-control) center / 100% 100% no-repeat !important;
+    filter: hue-rotate(240deg) saturate(1.6);
 }
 :is(#battle-mode-game, #practice-mode-game) .gameplay-heading {
-    margin-left: 64px;
+    margin-left: 46px;
 }
 :is(#battle-mode-game, #practice-mode-game) .music-info-overlay {
     display: block !important;
-    position: absolute;
-    top: var(--header-top);
-    right: 112px;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    transform: none;
     bottom: auto;
     z-index: 25;
     width: 44px;
     min-width: 44px;
+    max-width: 44px;
     height: 44px;
     padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
+    flex: 0 0 44px;
+    background: var(--ui-small-control) center / 100% 100% no-repeat;
+}
+:is(#battle-mode-game, #practice-mode-game) .music-info-overlay::before {
+    content: '♫';
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff6dd;
+    font:
+        900 23px/1 system-ui,
+        sans-serif;
+    pointer-events: none;
 }
 :is(#battle-mode-game, #practice-mode-game) .music-track-select {
     width: 44px;
     height: 44px;
     padding: 0 4px;
     overflow: hidden;
-    color: transparent;
-    background: var(--ui-small-control) center / 100% 100% no-repeat;
+    opacity: 0;
+    cursor: pointer;
     border: 0;
     border-radius: 0;
     text-shadow: none;
 }
 :is(#battle-mode-game, #practice-mode-game) .music-track-select option {
     color: #243626;
+}
+:is(#battle-mode-game, #practice-mode-game) .music-info-overlay:focus-within {
+    outline: 2px solid #ffe7a6;
+    outline-offset: 2px;
 }
 :is(#battle-mode-game, #practice-mode-game) .gameplay-actions .music-toggle-btn {
     margin-left: auto;
@@ -1497,15 +1535,38 @@ button img:not([class]) {
     font-size: clamp(14px, 4.2cqw, 19px);
     letter-spacing: 0.01em;
 }
+#overlay-gold {
+    flex: 0 0 6ch;
+    width: 6ch;
+    font-variant-numeric: tabular-nums;
+}
 #battle-mode-game .battle-status .overlay-gold {
     min-width: 76px;
     justify-content: center;
 }
 :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .modal-title {
-    padding-right: 112px;
+    padding-right: 0;
 }
-:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .modal-title .menu-wallet {
-    margin-right: 46px;
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
+    .approved-menu-header
+    > .modal-close-x {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+}
+#battle-mode-game .listening-actions button {
+    box-shadow: none !important;
+    animation: none;
+    overflow: visible;
+    background: transparent !important;
+}
+#battle-mode-game .listening-actions button::before {
+    content: none;
+}
+:is(#shop-modal, #statistics-modal, #setting-modal) .modal-footer,
+#inv-close-btn,
+#revenge-modal footer > [data-action='revenge-close'] {
+    display: none;
 }
 #battle-mode-game .spelling-panel {
     display: flex;

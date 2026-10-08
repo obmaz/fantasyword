@@ -90,12 +90,15 @@
                 screen.style.height = height + 'px';
             }
         }
-        // 짧은 화면에서는 음악 선택을 HUD의 둘째 줄에 놓아 골드·문제를 가리지 않는다.
-        const arena = document.querySelector('#battle-mode-game .battle-arena');
-        const hud = arena?.querySelector('.battle-hud');
-        const music = document.getElementById('music-info-overlay');
-        const host = height <= 550 ? hud : arena;
-        if (music && host && music.parentElement !== host) host.appendChild(music);
+        // 곡 선택은 화면 높이와 관계없이 음악 ON/OFF 바로 앞에 둔다.
+        for (const mode of ['battle', 'practice']) {
+            const toggle = document.getElementById(`${mode}-music-toggle-btn`);
+            const music = document.getElementById(
+                mode === 'battle' ? 'music-info-overlay' : 'practice-music-info-overlay'
+            );
+            if (music && toggle && music.parentElement !== toggle.parentElement)
+                toggle.parentElement.insertBefore(music, toggle);
+        }
     }
 
     function updateFullscreenButtons() {

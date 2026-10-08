@@ -54,7 +54,7 @@ const storyJourney = {
     open() {
         storyJourney.render();
         openScreenOverlay('story-map-modal', false);
-        const card = document.querySelector('#story-map-modal .story-map-card');
+        const card = document.getElementById('story-map-content');
         const map = document.getElementById('story-map-path');
         const current = map.querySelector('.story-map-row[data-state="current"] .story-map-node');
         if (current)
