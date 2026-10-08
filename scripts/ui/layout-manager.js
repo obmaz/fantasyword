@@ -131,12 +131,22 @@
         }
         fullscreenPending = true;
         updateFullscreenButtons();
+        // 전체화면 요소가 dialog보다 나중에 top layer에 올라가면 팝업을 가릴 수 있다.
+        // 전환 뒤 같은 팝업을 다시 올리되 화면 상태와 navigation 이력은 유지한다.
+        const dialogs = [...document.querySelectorAll('dialog[open]')];
+        const focused = document.activeElement;
+        dialogs.forEach((dialog) => dialog.close());
         try {
             if (document.fullscreenElement) await document.exitFullscreen();
             else await document.documentElement.requestFullscreen();
         } catch {
             showToast('전체화면으로 전환할 수 없습니다. 다시 시도해 주세요.', 'info');
         } finally {
+            for (const dialog of dialogs) {
+                if (!dialog.open && dialog.style.display !== 'none') dialog.showModal();
+            }
+            syncFullscreenHost();
+            focused?.focus({ preventScroll: true });
             fullscreenPending = false;
             updateFullscreenButtons();
         }

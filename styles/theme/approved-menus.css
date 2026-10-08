@@ -639,7 +639,7 @@ button .action-icon {
     text-overflow: ellipsis;
 }
 
-/* Answer rims keep a fixed thickness; labels and numbers live inside the frame. */
+/* Answer rims keep a fixed thickness; labels live inside the frame. */
 #battle-mode-game .option-btn {
     --ui-option-art: var(--ui-choice);
     border: 12px solid transparent !important;
@@ -656,6 +656,82 @@ button .action-icon {
     width: 22px;
     height: 22px;
     border-radius: 7px;
+    content: none;
+}
+
+/* Keep the menu centers while reducing the illustrated controls to 80%. */
+.title-menu-art :is(.menu-hotspot, #title-skyfall-btn) {
+    transform: scale(0.8);
+    transform-origin: center;
+}
+
+/* Skyfall results share the illustrated frame, parchment and home control. */
+#skyfall-result-modal .skyfall-result {
+    width: min(440px, calc(var(--title-container-width, 100vw) - 24px));
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 20px 14px 14px;
+    border: 18px solid transparent;
+    border-image: var(--ui-panel) 48 fill / 18px / 0 stretch;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none;
+    font-family: inherit;
+}
+#skyfall-result-modal .result-emblem {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 8px;
+}
+#skyfall-result-modal h2 {
+    font-size: clamp(20px, 5cqw, 27px);
+    line-height: 1.25;
+}
+#skyfall-result-detail {
+    font-size: 14px;
+    line-height: 1.5;
+}
+#skyfall-result-modal .skyfall-result-stats {
+    margin: 14px 0;
+}
+#skyfall-result-modal .skyfall-result-stats div {
+    border: 10px solid transparent;
+    border-image: var(--menu-paper) 15% fill / 10px / 0 stretch;
+    border-radius: 0;
+    background: transparent;
+    padding: 8px 4px;
+}
+#skyfall-result-modal .skyfall-result-stats small {
+    color: #514332;
+    font-size: 13px;
+}
+#skyfall-result-modal .skyfall-result-stats strong {
+    color: #2d3928;
+    font-size: 21px;
+    font-variant-numeric: tabular-nums;
+}
+#skyfall-result-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 56px;
+    font-family: inherit;
+}
+@media (max-height: 500px) {
+    #skyfall-result-modal .skyfall-result {
+        padding-block: 8px;
+    }
+    #skyfall-result-modal .result-emblem {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 2px;
+    }
+    #skyfall-result-modal .skyfall-result-stats {
+        margin: 8px 0;
+    }
 }
 #battle-mode-game .option-btn:focus-visible {
     outline: 2px solid #fff3d2;

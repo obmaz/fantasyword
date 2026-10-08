@@ -75,6 +75,7 @@ CSS의 이미지 상대 경로는 `../../images/`이며 빌드가 버전을 붙�
 `modal-manager`가 root dialog 열기/닫기, `navigation`이 history/popstate를 담당한다.
 설정의 암호/인쇄/골드 편집은 같은 dialog 내부 패널이다.
 전체화면 버튼은 가장 위 열린 dialog 또는 body로 옮겨 항상 접근 가능하게 하고 게임 프레임 우상단 위치를 유지한다.
+전체화면 진입/종료 시 열린 dialog를 잠시 닫은 뒤 같은 순서로 다시 top layer에 올린다. 전환 거부 시에도 복원하며 DOM 입력·스크롤·navigation 이력은 그대로 유지한다.
 Escape/모바일 뒤로 가기는 기존 닫기 흐름을 쓴다.
 
 ## 컨벤션

@@ -137,6 +137,61 @@ test('데스크톱에서는 높이만 변경해도 창 크기에 맞추고 입�
     assert.equal(r.getElement('battle-mode-game').style.height, '800px');
 });
 
+test('전체화면 진입·종료·거부 뒤에도 팝업 순서와 입력 상태를 유지한다', async () => {
+    const stack = [];
+    const dialogs = ['shop', 'detail'].map((id) => ({
+        id,
+        open: true,
+        style: { display: 'flex' },
+        value: '입력 유지',
+        close() {
+            this.open = false;
+            stack.push('close:' + id);
+        },
+        showModal() {
+            this.open = true;
+            stack.push('show:' + id);
+        },
+    }));
+    let restoredFocus = 0;
+    const document = {
+        fullscreenEnabled: true,
+        activeElement: { focus: () => restoredFocus++ },
+        getElementById: () => null,
+        querySelectorAll: (selector) =>
+            selector === 'dialog[open]' ? dialogs.filter((dialog) => dialog.open) : [],
+        documentElement: {
+            requestFullscreen: async () => {
+                assert.ok(dialogs.every((dialog) => !dialog.open));
+                stack.push('fullscreen');
+                document.fullscreenElement = document.documentElement;
+            },
+        },
+        exitFullscreen: async () => {
+            stack.push('exit');
+            document.fullscreenElement = null;
+        },
+    };
+    const runtime = loadScripts(['scripts/ui/layout-manager.js'], { document, showToast() {} });
+    await runtime.sandbox.toggleFullscreen();
+    assert.deepEqual(stack, [
+        'close:shop',
+        'close:detail',
+        'fullscreen',
+        'show:shop',
+        'show:detail',
+    ]);
+    stack.length = 0;
+    await runtime.sandbox.toggleFullscreen();
+    assert.deepEqual(stack, ['close:shop', 'close:detail', 'exit', 'show:shop', 'show:detail']);
+    document.documentElement.requestFullscreen = async () => {
+        throw new Error('Denied');
+    };
+    await runtime.sandbox.toggleFullscreen();
+    assert.ok(dialogs.every((dialog) => dialog.open && dialog.value === '입력 유지'));
+    assert.equal(restoredFocus, 3);
+});
+
 test('거부된 전체화면 요청은 재시도를 막지 않고 지원하지 않는 브라우저에서는 요청하지 않는다', async () => {
     const r = browserRuntime();
     const document = r.sandbox.document;
