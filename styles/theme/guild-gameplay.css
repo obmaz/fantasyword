@@ -1762,6 +1762,12 @@ dialog.screen-overlay :is(.card, .result-modal),
         inset 0 1px 0 #ffffff26,
         0 8px 24px #092c3440;
 }
+.app-confirm-box .app-confirm-msg {
+    color: inherit;
+}
+.app-confirm-overlay .app-confirm-box {
+    background-color: #183d32 !important;
+}
 #result-modal .result-modal {
     padding: 16px;
 }
