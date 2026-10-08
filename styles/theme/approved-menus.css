@@ -1583,6 +1583,14 @@ button img:not([class]) {
     margin-top: auto;
     grid-auto-rows: minmax(72px, auto);
 }
+#battle-mode-game[data-question-kind='listening'] .listening-panel,
+#battle-mode-game[data-question-kind='listening'] .options-grid {
+    margin-top: 0;
+}
+#battle-mode-game[data-question-kind='listening'] .quiz-area {
+    justify-content: flex-start;
+    overflow-y: auto;
+}
 #battle-mode-game :is(.spelling-panel, .boss-ui, .listening-panel) {
     margin-top: auto;
 }
