@@ -27,6 +27,10 @@ function openBattleModeModal() {
     if (radio) radio.checked = true;
     openScreenOverlay('battle-mode-modal', false);
 }
+function openSkyfallModal() {
+    restoreSelectedDay(document.getElementById('skyfall-mode-day-select'));
+    openScreenOverlay('skyfall-mode-modal', false);
+}
 
 /** 로비를 터치하면 현재 오른손 무기의 모션과 속성으로 짧은 이펙트를 그린다. */
 function showLobbyWeaponEffect(event) {

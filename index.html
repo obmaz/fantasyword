@@ -61,6 +61,7 @@
         <link rel="stylesheet" href="styles/theme/image-components.css" />
         <link rel="stylesheet" href="styles/theme/approved-menus.css" />
         <link rel="stylesheet" href="styles/theme/weapon-effects.css" />
+        <link rel="stylesheet" href="styles/screens/skyfall-mode.css" />
     </head>
 
     <body>
@@ -283,6 +284,25 @@
             </div>
         </div>
 
+        <section id="skyfall-mode-game" aria-label="단어 낙하전" style="display: none">
+            <header class="skyfall-hud">
+                <button id="skyfall-exit-btn" type="button" aria-label="마을로 돌아가기">←</button>
+                <div><small>TIME</small><strong id="skyfall-time">60</strong></div>
+                <div><small>HIT</small><strong id="skyfall-score">0 / 12</strong></div>
+                <div class="skyfall-heart">
+                    <small>LIFE</small><strong id="skyfall-lives">♥♥♥♥♥</strong>
+                </div>
+                <div><small>GOLD</small><strong id="skyfall-gold">0</strong></div>
+            </header>
+            <div id="skyfall-field" class="skyfall-field" aria-label="내려오는 단어">
+                <div class="skyfall-hero" aria-hidden="true">✦</div>
+            </div>
+            <div class="skyfall-answer-panel">
+                <p id="skyfall-prompt">내려오는 단어를 누르세요</p>
+                <div id="skyfall-choices" class="skyfall-choices"></div>
+            </div>
+        </section>
+
         <div id="title-screen" class="screen-overlay">
             <div class="title-container-wrapper">
                 <img
@@ -330,6 +350,9 @@
                         ></span>
                     </header>
                     <div class="title-menu-art">
+                        <button id="title-skyfall-btn" type="button" aria-label="단어 낙하전 시작">
+                            <span aria-hidden="true">✦</span> 단어 낙하전 <small>WORD RAIN</small>
+                        </button>
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
                                 id="title-story-mode-btn"
@@ -705,6 +728,38 @@
             </section>
         </dialog>
 
+        <dialog
+            id="skyfall-mode-modal"
+            class="screen-overlay"
+            aria-labelledby="skyfall-selection-title"
+            style="display: none"
+        >
+            <section class="card mode-selection skyfall-selection">
+                <header class="menu-heading">
+                    <span class="game-emblem emblem-swords" aria-hidden="true"></span>
+                    <div>
+                        <span class="menu-kicker">WORD RAIN</span>
+                        <h2 id="skyfall-selection-title">단어 낙하전</h2>
+                    </div>
+                </header>
+                <div class="mode-selection-body">
+                    <label for="skyfall-mode-day-select">출제 범위</label>
+                    <select id="skyfall-mode-day-select"></select>
+                    <p class="mode-description">
+                        하늘에서 내려오는 단어를 눌러 뜻이나 영어를 고르세요. 정답이면 공격합니다.
+                        60초 안에 12개를 맞히세요. 놓치거나 틀리면 생명이 줄고, 시간이 갈수록
+                        빨라집니다.
+                    </p>
+                </div>
+                <div class="mode-actions">
+                    <button id="skyfall-modal-close" type="button">닫기</button>
+                    <button id="skyfall-modal-start" type="button" class="mode-start">
+                        낙하전 시작
+                    </button>
+                </div>
+            </section>
+        </dialog>
+
         <!-- Practice Mode Game (단어 암기 화면) -->
         <div id="practice-mode-game" style="display: none; height: 100%; flex-direction: column">
             <header class="gameplay-header">
@@ -1022,6 +1077,25 @@
                     </button>
                 </div>
             </div>
+        </dialog>
+
+        <dialog
+            id="skyfall-result-modal"
+            class="screen-overlay"
+            aria-labelledby="skyfall-result-title"
+            style="display: none"
+        >
+            <section class="card skyfall-result">
+                <span class="skyfall-result-star" aria-hidden="true">✦</span>
+                <p class="menu-kicker">WORD RAIN REPORT</p>
+                <h2 id="skyfall-result-title">낙하전 종료</h2>
+                <p id="skyfall-result-detail"></p>
+                <div class="skyfall-result-stats">
+                    <div><small>정답</small><strong id="skyfall-result-score">0 / 12</strong></div>
+                    <div><small>획득</small><strong id="skyfall-result-gold">+0 G</strong></div>
+                </div>
+                <button id="skyfall-result-close" type="button">마을로 돌아가기</button>
+            </section>
         </dialog>
 
         <dialog
@@ -1561,6 +1635,7 @@
         <!-- 게임 로직 -->
         <script src="scripts/game/game-engine.js"></script>
         <script src="scripts/game/practice-session.js"></script>
+        <script src="scripts/game/skyfall-session.js"></script>
 
         <!-- 메인 애플리케이션 -->
         <script src="scripts/app.js"></script>

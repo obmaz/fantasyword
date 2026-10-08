@@ -76,3 +76,25 @@ const practiceMemorization = createPracticeSession({
     resetResult: () => resetScreenOverlay('result-modal'),
     playMusic,
 });
+
+const skyfall = createSkyfallSession({
+    document,
+    db,
+    getSource: () => window.rawDataData || rawData,
+    questions: questionTools,
+    rules: battleRules,
+    openScreen: openScreenOverlay,
+    closeScreen: closeScreenOverlay,
+    playMusic,
+    syncLayout: syncGameScreenSize,
+    requestFrame: (callback) =>
+        window.requestAnimationFrame
+            ? window.requestAnimationFrame(callback)
+            : setTimeout(() => callback(Date.now()), 16),
+    cancelFrame: (id) => {
+        if (window.cancelAnimationFrame) window.cancelAnimationFrame(id);
+        else clearTimeout(id);
+    },
+    later: setTimeout,
+    notify: showToast,
+});

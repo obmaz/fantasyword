@@ -31,6 +31,7 @@
 | `images/theme/parts/ui-*.webp`, `item-*.webp`                         | 메뉴·상점·장비·스킬별 투명 아이콘                                          |
 | `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                  |
 | `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                  |
+| `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                       |
 | `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                |
 | `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음 |
 

@@ -1,0 +1,320 @@
+#title-skyfall-btn {
+    position: absolute;
+    z-index: 2;
+    left: 15%;
+    bottom: calc(100% + 7px);
+    width: 70%;
+    min-height: 43px;
+    padding: 5px 12px;
+    border: 2px solid #e4c176;
+    border-radius: 14px;
+    color: #fff5cf;
+    background: linear-gradient(145deg, #415b81, #1c3954 68%, #17332f);
+    box-shadow:
+        0 4px 0 #0c201d,
+        0 7px 17px #0009,
+        inset 0 1px 0 #fff6;
+    font:
+        800 clamp(14px, 4vw, 18px) system-ui,
+        sans-serif;
+    line-height: 1.1;
+    cursor: pointer;
+}
+#title-skyfall-btn span {
+    color: #fee48f;
+}
+#title-skyfall-btn small {
+    margin-left: 4px;
+    color: #d9ddc8;
+    font-size: 0.58em;
+    letter-spacing: 0.11em;
+}
+#title-skyfall-btn:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+#skyfall-mode-game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: var(--layer-game);
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 100vw;
+    max-height: var(--app-height, 100dvh);
+    color: #fff5dc;
+    background: #112b2c;
+    isolation: isolate;
+}
+.skyfall-hud {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 34px 0.8fr 1fr 1.35fr 0.8fr;
+    align-items: center;
+    gap: 3px;
+    min-height: 49px;
+    padding: 4px 62px 4px 6px;
+    background: linear-gradient(#172f35, #244b45);
+    border-bottom: 2px solid #d3ae69;
+    box-shadow: 0 2px 8px #081b20a8;
+    text-align: center;
+}
+.skyfall-hud > div {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+}
+.skyfall-hud small {
+    color: #e0ca9d;
+    font:
+        700 9px system-ui,
+        sans-serif;
+    letter-spacing: 0.08em;
+}
+.skyfall-hud strong {
+    font:
+        800 clamp(12px, 3.5vw, 17px) system-ui,
+        sans-serif;
+    white-space: nowrap;
+}
+.skyfall-hud .skyfall-heart strong {
+    color: #ff929a;
+    font-size: clamp(12px, 3.4vw, 17px);
+    letter-spacing: -0.08em;
+}
+#skyfall-exit-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #dec48a;
+    border-radius: 9px;
+    color: #fff4d4;
+    background: #325051;
+    font:
+        700 22px system-ui,
+        sans-serif;
+}
+.skyfall-field {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    background: #305b43 url('../../images/theme/skyfall-field.webp') center / 100% 100% no-repeat;
+}
+.skyfall-field::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(#08201517 0%, transparent 22%, transparent 75%, #0c2b2870);
+}
+.skyfall-hero {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 1%;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    transform: translateX(-50%);
+    border: 2px solid #e9dca6;
+    border-radius: 50%;
+    color: #fff7b7;
+    background: radial-gradient(circle, #7d9aaa, #244957 70%);
+    box-shadow:
+        0 0 0 4px #d6eaca46,
+        0 0 24px #dbf4c6;
+    font-size: 30px;
+}
+.skyfall-word {
+    position: absolute;
+    z-index: 2;
+    width: min(30%, 138px);
+    min-height: 38px;
+    padding: 4px 6px;
+    transform: translate(-50%, -50%);
+    border: 2px solid #efcf8c;
+    border-radius: 12px;
+    color: #142f34;
+    background: linear-gradient(#fff7d9, #e6d9b6);
+    box-shadow:
+        0 3px 0 #6f643a,
+        0 6px 15px #071b18a3;
+    font:
+        800 clamp(11px, 3.1vw, 16px)/1.1 system-ui,
+        sans-serif;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+.skyfall-word.selected {
+    border-color: #fff;
+    background: #fded9b;
+    box-shadow:
+        0 0 0 3px #78eddd,
+        0 0 18px #fbeabb;
+}
+.skyfall-hit {
+    position: absolute;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    color: #fff8a2;
+    font-size: 48px;
+    text-shadow:
+        0 0 15px #fff,
+        0 0 28px #f6a440;
+    pointer-events: none;
+    animation: skyfall-impact 0.6s ease-out forwards;
+}
+.skyfall-projectile {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 91%;
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    background: url('../../images/theme/parts/combat-basic.webp') center / contain no-repeat;
+    pointer-events: none;
+    animation: skyfall-shot 0.36s ease-in forwards;
+}
+@keyframes skyfall-shot {
+    to {
+        left: var(--dest-left);
+        top: var(--dest-top);
+    }
+}
+@keyframes skyfall-impact {
+    from {
+        scale: 0.35;
+        opacity: 0;
+    }
+    35% {
+        scale: 1.3;
+        opacity: 1;
+    }
+    to {
+        scale: 2;
+        opacity: 0;
+    }
+}
+.skyfall-damaged {
+    animation: skyfall-damage 0.35s ease-out;
+}
+@keyframes skyfall-damage {
+    50% {
+        filter: saturate(1.5) sepia(0.6) hue-rotate(310deg);
+    }
+}
+.skyfall-answer-panel {
+    z-index: 1;
+    flex: 0 0 auto;
+    min-height: 112px;
+    padding: 8px 9px max(9px, env(safe-area-inset-bottom));
+    border-top: 2px solid #d3ae69;
+    background: linear-gradient(#214746, #153638);
+}
+#skyfall-prompt {
+    margin: 0 0 7px;
+    min-height: 18px;
+    text-align: center;
+    font:
+        800 clamp(11px, 3.1vw, 15px)/1.2 system-ui,
+        sans-serif;
+}
+.skyfall-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+}
+.skyfall-choice {
+    min-width: 0;
+    min-height: 31px;
+    padding: 4px 6px;
+    border: 1px solid #bfcbd3;
+    border-radius: 8px;
+    color: #173245;
+    background: #e6f0e7;
+    font:
+        750 clamp(11px, 3vw, 14px)/1.15 system-ui,
+        sans-serif;
+    overflow-wrap: anywhere;
+}
+.skyfall-choice:active {
+    background: #f9e1a0;
+}
+.skyfall-selection .mode-description {
+    color: #f0e5ca;
+}
+.skyfall-result {
+    text-align: center;
+    color: #f8eac8;
+    background: linear-gradient(160deg, #23484a, #192e3c) !important;
+    border: 2px solid #dfbf79;
+}
+.skyfall-result-star {
+    display: block;
+    color: #ffe19a;
+    font-size: 52px;
+    line-height: 1;
+}
+.skyfall-result h2 {
+    margin: 5px 0 7px;
+    color: #fff4cb;
+    font-size: 25px;
+}
+.skyfall-result p {
+    margin: 8px 0;
+}
+.skyfall-result-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 18px 0;
+}
+.skyfall-result-stats div {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid #cbb476;
+    border-radius: 10px;
+    background: #142c32;
+}
+.skyfall-result-stats small {
+    color: #bfcdd0;
+}
+.skyfall-result-stats strong {
+    color: #ffe6a3;
+}
+#skyfall-result-close {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid #ffe0a0;
+    border-radius: 10px;
+    color: #fff5da;
+    background: #34675b;
+    font:
+        800 16px system-ui,
+        sans-serif;
+}
+@media (max-height: 500px) {
+    .skyfall-answer-panel {
+        min-height: 100px;
+        padding-block: 5px;
+    }
+    .skyfall-choice {
+        min-height: 27px;
+    }
+    .skyfall-hud {
+        min-height: 42px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .skyfall-hit,
+    .skyfall-damaged,
+    .skyfall-projectile {
+        animation-duration: 0.01ms;
+    }
+}

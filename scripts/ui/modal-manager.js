@@ -5,6 +5,7 @@
         'battle-mode-story-modal',
         'practice-mode-modal',
         'battle-mode-modal',
+        'skyfall-mode-modal',
     ]);
     function cancelClose(id) {
         clearTimeout(closeTimers.get(id));
@@ -17,7 +18,11 @@
         element.classList.remove('closing');
         element.style.display = 'flex';
         const title = document.getElementById('title-screen');
-        if (id === 'battle-mode-game' || id === 'practice-mode-game') {
+        if (
+            id === 'battle-mode-game' ||
+            id === 'practice-mode-game' ||
+            id === 'skyfall-mode-game'
+        ) {
             title.style.display = 'none';
             title.inert = true;
         } else if (id === 'title-screen') {
@@ -51,6 +56,7 @@
         if (!element) return;
         cancelClose(id);
         if (id === 'battle-mode-game') game.stop();
+        if (id === 'skyfall-mode-game') skyfall.stop();
         if (animated && element.classList.contains('screen-overlay')) {
             element.classList.add('closing');
             closeTimers.set(

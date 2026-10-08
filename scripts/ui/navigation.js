@@ -54,6 +54,7 @@ const navigation = (() => {
             ['inventory-modal', () => inventory.close()],
             ['statistics-modal', () => statistics.close()],
             ['result-modal', () => closeResultScreen()],
+            ['skyfall-result-modal', () => skyfall.exit()],
         ]) {
             if (visible(id)) {
                 close();
@@ -64,7 +65,8 @@ const navigation = (() => {
             story.closeIntro();
             return;
         }
-        if (game.active || visible('battle-mode-game')) game.exit();
+        if (skyfall.active || visible('skyfall-mode-game')) skyfall.exit();
+        else if (game.active || visible('battle-mode-game')) game.exit();
         else if (visible('practice-mode-game')) practiceMemorization.exit();
         else {
             resetScreenOverlays(GAME_ENTRY_OVERLAYS);

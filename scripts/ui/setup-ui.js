@@ -2,6 +2,7 @@ function initSelections() {
     const daySelect = document.getElementById('day-select');
     const practiceDaySelect = document.getElementById('practice-mode-modal-day-select');
     const battleDaySelect = document.getElementById('battle-mode-modal-day-select');
+    const skyfallDaySelect = document.getElementById('skyfall-mode-day-select');
 
     // Gather days from canonical `dayCatalog` and rawData (avoid referencing legacy `dayInfo`)
     const daysFromData = new Set();
@@ -48,7 +49,7 @@ function initSelections() {
         }
     }
 
-    for (const select of [practiceDaySelect, battleDaySelect]) {
+    for (const select of [practiceDaySelect, battleDaySelect, skyfallDaySelect]) {
         if (!select) continue;
         select.innerHTML = html;
         restoreSelectedDay(select);

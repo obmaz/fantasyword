@@ -142,6 +142,7 @@ window.onload = () => {
     const titleActions = {
         'title-practice-btn': openPracticeModal,
         'title-battle-mode-btn': openBattleModeModal,
+        'title-skyfall-btn': openSkyfallModal,
         'title-story-mode-btn': () => storyJourney.open(),
         'title-boss-mode-btn': () => story.startBossDirectly(),
         'title-shop-btn': () => shop.open(),
@@ -153,6 +154,20 @@ window.onload = () => {
         document.getElementById(id)?.addEventListener('click', action);
     });
     document.getElementById('title-screen')?.addEventListener('pointerdown', showLobbyWeaponEffect);
+
+    document.getElementById('skyfall-modal-close')?.addEventListener('click', () => {
+        closeScreenOverlay('skyfall-mode-modal', false);
+    });
+    document.getElementById('skyfall-modal-start')?.addEventListener('click', () => {
+        const day = document.getElementById('skyfall-mode-day-select').value;
+        db.lastSelectedDay = day;
+        db.save();
+        skyfall.start(day);
+    });
+    document.getElementById('skyfall-exit-btn')?.addEventListener('click', () => skyfall.exit());
+    document
+        .getElementById('skyfall-result-close')
+        ?.addEventListener('click', () => skyfall.exit());
 
     // 연습 모드 모달 버튼
     const practiceStartBtn = document.getElementById('practice-mode-modal-start-btn');
