@@ -337,8 +337,4 @@ window.onload = () => {
         syncScreenLayout();
         if (returnToStory) storyJourney.open();
     };
-
-    document
-        .getElementById('practice-reveal-btn')
-        ?.addEventListener('click', () => practiceMemorization.toggleAnswer());
 };

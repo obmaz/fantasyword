@@ -60,17 +60,13 @@ test('Escape는 열려 있는 상점만 닫고 다시 열면 이전 닫기 타�
     assert.equal(r.getElement('shop-modal').open, true);
 });
 
-test('단어를 바꾸면 뜻/설명을 숨기고 확인한 뒤에만 보여준다', () => {
+test('단어를 바꾸면 뜻과 설명을 바로 보여준다', () => {
     const r = browserRuntime();
     r.evaluate('db.settings.wordRead = false; practiceMemorization.start("1")');
-    assert.equal(r.getElement('practice-meaning-text').hidden, true);
-    assert.equal(r.getElement('practice-explanation-section').hidden, true);
-    r.evaluate('practiceMemorization.toggleAnswer()');
     assert.equal(r.getElement('practice-meaning-text').hidden, false);
-    assert.equal(r.getElement('practice-reveal-btn')['aria-expanded'], 'true');
+    assert.equal(r.getElement('practice-explanation-section').hidden, false);
     r.evaluate('practiceMemorization.next()');
-    assert.equal(r.getElement('practice-meaning-text').hidden, true);
-    assert.equal(r.getElement('practice-reveal-btn')['aria-expanded'], 'false');
+    assert.equal(r.getElement('practice-meaning-text').hidden, false);
 });
 
 test('외움 표시는 확인 상태를 유지하고 같은 단어의 발화를 재시작하지 않는다', () => {
@@ -85,16 +81,15 @@ test('외움 표시는 확인 상태를 유지하고 같은 단어의 발화를 
     assert.equal(r.getElement('practice-memorized-btn')['aria-pressed'], 'true');
     r.evaluate('practiceMemorization.applyFilter("not-memorized")');
     assert.equal(r.evaluate('practiceMemorization.currentIndex'), 0);
-    assert.equal(r.getElement('practice-meaning-text').hidden, true);
+    assert.equal(r.getElement('practice-meaning-text').hidden, false);
 });
 
-test('빈 암기 필터에서 뜻 확인을 비활성화한다', () => {
+test('빈 암기 필터에서도 뜻 확인 조작 없이 빈 상태를 유지한다', () => {
     const r = browserRuntime();
     r.evaluate(
         'db.settings.wordRead = false; practiceMemorization.start("1"); practiceMemorization.applyFilter("memorized")'
     );
-    assert.equal(r.getElement('practice-reveal-btn').disabled, true);
-    assert.equal(r.getElement('practice-recall-prompt').hidden, true);
+    assert.equal(r.getElement('practice-meaning-text').hidden, true);
 });
 
 test('확인창 뒤로 가기는 취소로 해석하고 부모 설정을 닫지 않는다', async () => {

@@ -29,16 +29,8 @@ function createPracticeView({ document, openScreen, closeScreen, syncLayout, tra
         answer(visible, hasWord) {
             for (const id of ['practice-meaning-text', 'practice-explanation-section']) {
                 const target = element(id);
-                if (target) target.hidden = !visible;
+                if (target) target.hidden = !hasWord;
             }
-            const reveal = /** @type {HTMLButtonElement | null} */ (element('practice-reveal-btn'));
-            if (reveal) {
-                reveal.disabled = !hasWord;
-                reveal.textContent = visible ? '뜻 숨기기' : '뜻 확인';
-                reveal.setAttribute('aria-expanded', String(visible));
-            }
-            const prompt = element('practice-recall-prompt');
-            if (prompt) prompt.hidden = visible || !hasWord;
         },
         memorized(known) {
             const button = /** @type {HTMLButtonElement | null} */ (
