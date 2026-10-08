@@ -51,6 +51,9 @@ function browserRuntime(saved = {}, overrides = {}) {
             appendChild(child) {
                 this.children.push(child);
             },
+            replaceChildren(...children) {
+                this.children = children;
+            },
             remove() {},
             setAttribute(name, value) {
                 this[name] = value;

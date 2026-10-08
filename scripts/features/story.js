@@ -32,6 +32,15 @@ function resolveStoryData(day) {
 const story = {
     day: null,
     mode: null,
+    closeIntro: () => {
+        resetScreenOverlay('battle-mode-story-modal');
+        if (story.mode === 'story') {
+            storyJourney.returnAfterResult = false;
+            storyJourney.pendingStage = null;
+            storyJourney.pendingIndex = null;
+            storyJourney.open();
+        } else openScreenOverlay('title-screen', false);
+    },
 
     /**
      * 보스 모드: 스토리 모달 없이 바로 게임 시작

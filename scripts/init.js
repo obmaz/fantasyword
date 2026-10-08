@@ -34,7 +34,11 @@ const ACTION_HANDLERS = {
     'battle-listen-fallback': () => game.fallbackListening(),
     'battle-spelling-remove': () => game.removeSpellingLetter(),
     'battle-spelling-clear': () => game.clearSpelling(),
-    'story-back': () => navigation.back(),
+    'story-close': () => story.closeIntro(),
+    'story-map-close': () => storyJourney.close(),
+    'story-market-buy': () => storyJourney.buy(),
+    'story-market-leave': () => storyJourney.leaveMarket(),
+    'story-market-advance': () => storyJourney.advanceMarket(),
 
     'shop-open': () => shop.open(),
     'shop-close': () => shop.close(),
@@ -137,6 +141,7 @@ window.onload = () => {
     const titleActions = {
         'title-practice-btn': openPracticeModal,
         'title-battle-mode-btn': openBattleModeModal,
+        'title-story-mode-btn': () => storyJourney.open(),
         'title-boss-mode-btn': () => story.startBossDirectly(),
         'title-shop-btn': () => shop.open(),
         'title-inventory-btn': () => inventory.open(),
@@ -146,6 +151,7 @@ window.onload = () => {
     Object.entries(titleActions).forEach(([id, action]) => {
         document.getElementById(id)?.addEventListener('click', action);
     });
+    document.getElementById('title-screen')?.addEventListener('pointerdown', showLobbyWeaponEffect);
 
     // 연습 모드 모달 버튼
     const practiceStartBtn = document.getElementById('practice-mode-modal-start-btn');
@@ -281,13 +287,10 @@ window.onload = () => {
             if (daySelect) daySelect.value = selectedDay;
             if (countSelect) countSelect.value = String(selectedCount);
 
-            const startScreen = document.getElementById('title-screen');
-            if (startScreen) startScreen.style.display = 'none';
-
             closePracticeModal(true); // Helper acts for both practice and battle modals
 
             scheduleGameStart(() => {
-                story.startIntro('battle', selectedDay);
+                game.init('battle', selectedDay);
             });
         });
     }
@@ -300,6 +303,8 @@ window.onload = () => {
 
     // 전역: 결과 화면 닫기 함수
     window.closeResultScreen = function () {
+        const returnToStory = storyJourney.returnAfterResult;
+        storyJourney.returnAfterResult = false;
         closeScreenOverlay('result-modal', true);
 
         // 스토리/모드 선택 오버레이의 인라인 스타일을 CSS 기본값으로 되돌림
@@ -310,6 +315,7 @@ window.onload = () => {
 
         openScreenOverlay('title-screen', false);
         syncScreenLayout();
+        if (returnToStory) storyJourney.open();
     };
 
     document

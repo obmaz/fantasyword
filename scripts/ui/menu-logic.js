@@ -27,3 +27,35 @@ function openBattleModeModal() {
     if (radio) radio.checked = true;
     openScreenOverlay('battle-mode-modal', false);
 }
+
+/** 로비를 터치하면 현재 오른손 무기의 모션과 속성으로 짧은 이펙트를 그린다. */
+function showLobbyWeaponEffect(event) {
+    const title = document.getElementById('title-screen');
+    if (!title || title.style.display === 'none') return;
+    const weaponId = db.equipped['hand-1'] || db.equippedWeapon || 'basic';
+    const weapon = weapons.find((item) => item.id === weaponId);
+    const secondary = weapons.find((item) => item.id === db.equipped['hand-2']);
+    const profile = battleAttackProfiles.resolve({
+        weaponId,
+        effect: weapon?.effect,
+        secondaryEffect: secondary?.effect,
+    });
+    const frame = title.getBoundingClientRect();
+    const burst = document.createElement('div');
+    burst.className = 'lobby-weapon-burst';
+    burst.dataset.element = profile.element;
+    burst.dataset.motion = profile.motion;
+    burst.style.left = `${event.clientX - frame.left}px`;
+    burst.style.top = `${event.clientY - frame.top}px`;
+    const art = document.createElement('img');
+    art.src = `images/theme/parts/${profile.icon}.webp`;
+    art.alt = '';
+    burst.appendChild(art);
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('span');
+        particle.style.setProperty('--i', i);
+        burst.appendChild(particle);
+    }
+    title.appendChild(burst);
+    setTimeout(() => burst.remove(), 900);
+}

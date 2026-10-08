@@ -33,6 +33,21 @@ const navigation = (() => {
             game.exit();
             return;
         }
+        if (visible('story-map-modal')) {
+            storyJourney.close();
+            return;
+        }
+        if (visible('story-market-modal')) {
+            storyJourney.leaveMarket();
+            return;
+        }
+        if (
+            visible('inventory-modal') &&
+            document.getElementById('inventory-modal').dataset.detailOpen === 'true'
+        ) {
+            inventory.hideDetails();
+            return;
+        }
         for (const [id, close] of [
             ['revenge-modal', () => revengeQuests.close()],
             ['shop-modal', () => shop.close()],
@@ -46,8 +61,7 @@ const navigation = (() => {
             }
         }
         if (visible('battle-mode-story-modal') && !game.active) {
-            resetScreenOverlay('battle-mode-story-modal');
-            openBattleModeModal();
+            story.closeIntro();
             return;
         }
         if (game.active || visible('battle-mode-game')) game.exit();

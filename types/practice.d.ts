@@ -74,6 +74,7 @@ export interface PracticeDependencies {
     playMusic(mode: 'practice'): void;
 }
 export interface SpeechDependencies {
+    getMusic?(): HTMLAudioElement | null;
     getSynth(): SpeechSynthesis | null | undefined;
     createUtterance(word: string): SpeechSynthesisUtterance | null;
     getVoice(): SpeechSynthesisVoice | null;

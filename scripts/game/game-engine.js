@@ -3,6 +3,7 @@ function createBattleSession({
     db,
     ui,
     story,
+    journey,
     config: APP_CONFIG,
     questions: questionTools,
     rules: battleRules,
@@ -94,11 +95,18 @@ function createBattleSession({
             game.view?.stop();
         },
         exit() {
+            const returnToMap = game.mode === 'story';
+            if (returnToMap) {
+                journey.returnAfterResult = false;
+                journey.pendingStage = null;
+                journey.pendingIndex = null;
+            }
             navigation.track('title-screen');
             game.stop();
             game.view.exit();
             closeScreenOverlay('battle-mode-game', true);
             openScreenOverlay('title-screen', false);
+            if (returnToMap) journey.open();
             setTimeout(syncLayout, 100);
         },
         _getRawData: getSource,
@@ -134,6 +142,7 @@ function createBattleSession({
             game.maxTime = db.has('hourglass')
                 ? APP_CONFIG.hourglassSeconds
                 : APP_CONFIG.objectiveSeconds;
+            if (mode === 'story' && db.has('shadowCompass')) game.maxTime += 3;
             game.hadRetry = false;
             game.gear = equipment?.load(db.equipped, getWeapons(), db.equippedWeapon) || null;
             game.stats = { gain: 0, lost: 0 };
@@ -157,7 +166,7 @@ function createBattleSession({
                 ui.updateGold();
                 ui.updateVisuals();
                 syncLayout();
-                if (game.gear?.boots) {
+                if (mode === 'story' && game.gear?.boots) {
                     game.awaitingRoute = true;
                     game.view.chooseRoute(game.selectRoute);
                 } else game.nextLevel();
@@ -224,7 +233,7 @@ function createBattleSession({
             const instructions = {
                 meaning: '영어 단어의 뜻을 고르세요',
                 spelling: '글자 조각을 골라 영어 단어를 완성하세요',
-                listening: '발음을 듣고 영어 단어를 고르세요',
+                listening: '발음을 듣고 한국어 뜻을 고르세요',
                 cloze: '빈칸에 들어갈 영어 단어를 입력하세요',
                 riddle: '설명을 읽고 영어 단어를 입력하세요',
             };
@@ -272,8 +281,8 @@ function createBattleSession({
                 return;
             }
             const listening = data.questionKind === 'listening';
-            const answer = listening ? data.word : data.meaning;
-            const distractors = game.getDistractors(answer, listening ? 'word' : 'meaning', data);
+            const answer = data.meaning;
+            const distractors = game.getDistractors(answer, 'meaning', data);
             // 단어장에 고유한 보기가 적어도 확보한 보기로 풀 수 있게 한다.
             game.currentAns = answer;
             game.options = game
@@ -287,7 +296,7 @@ function createBattleSession({
                 return;
             }
             game.view.objective(
-                listening ? '어떤 단어가 들렸나요?' : data.word,
+                listening ? '들은 단어의 뜻은 무엇인가요?' : data.word,
                 game.options,
                 game.answerOption
             );
@@ -674,6 +683,7 @@ function createBattleSession({
         },
         end(win) {
             if (!game.active) return;
+            if (game.mode === 'story' && win) journey.completeBattle();
             resetScreenOverlays(GAME_ENTRY_OVERLAYS);
             openScreenOverlay('title-screen', false);
             openScreenOverlay('result-modal', true);

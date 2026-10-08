@@ -27,6 +27,7 @@
         };
         try {
             audio = new Audio();
+            audio.volume = 1;
             audio.src = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${encodeURIComponent(lang)}&client=tw-ob`;
             audio.onerror = fail;
             audio.onended = () => {
@@ -49,10 +50,24 @@
  * @param {import('../../types/practice').SpeechDependencies} dependencies
  * @returns {import('../../types/practice').SpeechPlayer}
  */
-function createPracticeSpeech({ getSynth, createUtterance, getVoice, playRemote, notify }) {
+function createPracticeSpeech({
+    getSynth,
+    createUtterance,
+    getVoice,
+    playRemote,
+    notify,
+    getMusic,
+}) {
     let requestId = 0;
     /** @type {HTMLAudioElement | null} */
     let audio = null;
+    /** @type {HTMLAudioElement | null} */
+    let resumeMusic = null;
+    const restoreMusic = () => {
+        const music = resumeMusic;
+        resumeMusic = null;
+        if (music && music.paused) Promise.resolve(music.play()).catch(() => {});
+    };
     /** @type {import('../../types/practice').SpeechPlayer} */
     const speech = {
         get audio() {
@@ -68,19 +83,27 @@ function createPracticeSpeech({ getSynth, createUtterance, getVoice, playRemote,
                 previous.removeAttribute?.('src');
                 previous.load?.();
             }
+            restoreMusic();
         },
         play(word, automatic = false, callbacks = {}) {
             speech.stop();
+            const music = getMusic?.();
+            if (music && !music.paused) {
+                resumeMusic = music;
+                music.pause();
+            }
             const id = requestId;
             const isCurrent = () => id === requestId;
             let completed = false;
             const ready = () => {
                 if (!isCurrent() || completed) return;
                 completed = true;
+                restoreMusic();
                 callbacks.onReady?.();
             };
             const unavailable = () => {
                 if (!isCurrent()) return;
+                restoreMusic();
                 callbacks.onUnavailable?.();
                 if (!automatic)
                     notify(
@@ -103,6 +126,7 @@ function createPracticeSpeech({ getSynth, createUtterance, getVoice, playRemote,
                 }
                 utterance.lang = 'en-US';
                 utterance.rate = 0.8;
+                utterance.volume = 1;
                 const voice = getVoice();
                 if (voice) utterance.voice = voice;
                 utterance.onerror = (event) => {

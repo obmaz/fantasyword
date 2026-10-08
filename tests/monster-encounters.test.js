@@ -148,6 +148,9 @@ test('고블린은 숙어의 띄어쓰기를 유지하고 틀린 배열에는 �
 test('듣기 전에는 답·스킬·타이머를 막고 음성 종료 후 시작하며 다시 들어도 시간이 늘지 않는다', () => {
     const r = runtime();
     r.start('bat');
+    assert.equal(r.game.currentAns, '사과');
+    assert(r.game.options.every((option) => /[가-힣]/.test(option.label)));
+    assert.equal(r.getElement('q-text').innerText, '들은 단어의 뜻은 무엇인가요?');
     r.evaluate('db.skills.hint=2; db.skills.ultimate=2');
     r.advance(15000);
     r.game.answerOption(r.game.options.findIndex((q) => q.correct));

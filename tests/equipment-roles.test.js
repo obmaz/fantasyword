@@ -154,8 +154,14 @@ test('시간 제한이 없는 문제도 풀이가 길어지면 기본 보상이 
     assert.equal(r.evaluate('db.gold'), 1018);
 });
 
-test('부츠 경로를 고르기 전에는 출제·타이머가 시작되지 않고 안전한 길은 모래시계와 합산된다', () => {
+test('일반 전투에서는 부츠 경로 선택 없이 출제하고 스토리 전투에서만 경로를 고른다', () => {
     const r = runtime({ 'foot-1': 'boots', 'foot-2': 'boots' });
+    assert.equal(r.game.awaitingRoute, false);
+    assert.ok(r.game.currentQ);
+    assert.equal(r.game.gear.route, 'none');
+    r.game.exit();
+    r.game.init('story', 1);
+    r.advance(400);
     assert.equal(r.game.awaitingRoute, true);
     assert.equal(r.game.currentQ, null);
     assert.equal(r.game.deadline, null);
@@ -173,6 +179,9 @@ test('부츠 경로를 고르기 전에는 출제·타이머가 시작되지 않
 
 test('보물 길은 전투 골드만 10% 늘리고 고정 복수 보상에는 배율을 적용하지 않는다', () => {
     const r = runtime({ 'foot-1': 'boots', 'foot-2': 'boots' }, { v7_owned: '["basic"]' });
+    r.game.exit();
+    r.game.init('story', 1);
+    r.advance(400);
     r.game.selectRoute('treasure');
     r.start();
     r.choose(true);
@@ -181,9 +190,8 @@ test('보물 길은 전투 골드만 10% 늘리고 고정 복수 보상에는 �
     r.evaluate('revengeQuests.fail({...rawDataData[0],monsterId:"slime"})');
     r.game.init('revenge', 'all');
     r.advance(400);
-    r.game.selectRoute('treasure');
     r.choose(true);
-    assert.equal(r.game.stats.gain, 72);
+    assert.equal(r.game.stats.gain, 70);
     assert.equal(r.evaluate('Object.values(db.revengeQuests[db.getBookKey()])[0].phase'), 'recall');
 });
 

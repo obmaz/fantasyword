@@ -115,6 +115,14 @@ window.weaponsData = [
 ];
 
 window.relicsData = [
+    {
+        id: 'shadowCompass',
+        name: '🧭 그림자 나침반',
+        cost: 180,
+        desc: '스토리 모드 시간 제한 문제 +3초 · 암시장에서만 획득',
+        type: 'passive',
+        storyOnly: true,
+    },
     { id: 'hourglass', name: '⏳ 모래시계', cost: 500, desc: '제한시간 +5초', type: 'passive' },
     {
         id: 'goldGlove',
@@ -157,7 +165,7 @@ window.itemsData = [
         id: 'boots',
         name: '👢 부츠',
         cost: 1000,
-        desc: '양발 장착: 안전한 길(시간 +5초) 또는 보물 길(전투 골드 +10%) 선택',
+        desc: '양발 장착: 스토리 전투에서 안전한 길(시간 +5초) 또는 보물 길(골드 +10%) 선택',
         slot: 'foot-1',
         icon: '👢',
     },

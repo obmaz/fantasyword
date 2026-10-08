@@ -281,7 +281,7 @@ function createBattleView({
             if (label) label.innerText = '발음 듣기';
             // 실제 버튼 동작은 공통 이벤트 위임이 소유한다.
             element('listening-status').innerText =
-                '발음 듣기를 누르세요. 발음이 끝나면 답을 고를 수 있습니다.';
+                '발음을 듣고 한국어 뜻을 고르세요. 발음이 끝나면 답을 고를 수 있습니다.';
             optionButtons.forEach((button) => {
                 button.disabled = true;
             });
@@ -293,7 +293,7 @@ function createBattleView({
             element('listening-status').innerText =
                 state === 'playing'
                     ? '발음을 재생하고 있습니다.'
-                    : '들린 단어를 고르세요. 다시 들어도 남은 시간은 유지됩니다.';
+                    : '들린 단어의 뜻을 고르세요. 다시 들어도 남은 시간은 유지됩니다.';
             if (state === 'ready')
                 optionButtons.forEach((button, i) => {
                     button.disabled = options[i].disabled;

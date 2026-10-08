@@ -26,6 +26,16 @@ const ui = {
      */
     updateGameInfo: (mode, day) => {
         document.getElementById('battle-mode-game').dataset.gameMode = mode;
+        const title = document.getElementById('battle-screen-title');
+        if (title)
+            title.textContent =
+                mode === 'story'
+                    ? '스토리 모드'
+                    : mode === 'boss'
+                      ? '전체 단어 도전'
+                      : mode === 'revenge'
+                        ? '복수 퀘스트'
+                        : '1일 전투';
         let dayText;
         if (mode === 'boss') {
             dayText = '전체 도전';

@@ -18,12 +18,12 @@ const inventory = {
         },
         'foot-1': {
             label: '왼발',
-            accepts: '부츠 · 경로 선택 · 양발 함께 장착',
+            accepts: '부츠 · 스토리 경로 선택 · 양발 함께 장착',
             placeholder: 'boots',
         },
         'foot-2': {
             label: '오른발',
-            accepts: '부츠 · 경로 선택 · 양발 함께 장착',
+            accepts: '부츠 · 스토리 경로 선택 · 양발 함께 장착',
             placeholder: 'boots',
         },
     },
@@ -292,6 +292,8 @@ const inventory = {
         }
 
         document.getElementById('inv-item-detail').style.display = 'block';
+        document.getElementById('inventory-modal').dataset.detailOpen = 'true';
+        document.getElementById('detail-close').focus({ preventScroll: true });
     },
 
     /**
@@ -299,6 +301,7 @@ const inventory = {
      */
     hideDetails: () => {
         document.getElementById('inv-item-detail').style.display = 'none';
+        document.getElementById('inventory-modal').dataset.detailOpen = 'false';
     },
 
     /**

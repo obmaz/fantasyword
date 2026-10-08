@@ -132,3 +132,39 @@ test('나간 뒤 늦게 거부된 재생 Promise는 실패 알림을 띄우지 �
     await Promise.resolve();
     assert.equal(r.notices.length, 0);
 });
+
+test('발음이 재생되는 동안 음악을 멈추고 완료 또는 취소 시 이전 재생 상태를 복구한다', () => {
+    const r = speechRuntime();
+    const music = {
+        paused: false,
+        pause() {
+            this.paused = true;
+        },
+        play() {
+            this.paused = false;
+            return Promise.resolve();
+        },
+    };
+    const speech = r.evaluate('createPracticeSpeech')({
+        getSynth: () => r.sandbox.speechSynthesis,
+        createUtterance: (word) => new r.sandbox.SpeechSynthesisUtterance(word),
+        getVoice: r.sandbox.getPreferredTTSVoice,
+        playRemote: r.sandbox.playGoogleTTS,
+        notify() {},
+        getMusic: () => music,
+    });
+    speech.play('apple');
+    assert.equal(music.paused, true);
+    assert.equal(r.utterances.at(-1).volume, 1);
+    r.utterances.at(-1).onend();
+    assert.equal(music.paused, false);
+    speech.play('banana');
+    assert.equal(music.paused, true);
+    speech.stop();
+    assert.equal(music.paused, false);
+    music.pause();
+    speech.play('cat');
+    assert.equal(music.paused, true);
+    speech.stop();
+    assert.equal(music.paused, true);
+});

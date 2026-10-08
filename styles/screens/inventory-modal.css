@@ -30,6 +30,15 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 5px;
+    overscroll-behavior: contain;
+}
+.inventory-modal-wrapper[data-detail-open='true'] .inv-container {
+    overflow: hidden !important;
+    touch-action: none;
+}
+.inventory-modal-wrapper[data-detail-open='true'] #inv-item-detail {
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 #inv-close-btn {

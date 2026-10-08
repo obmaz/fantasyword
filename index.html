@@ -81,7 +81,7 @@
             <header class="gameplay-header">
                 <span class="game-emblem emblem-swords" aria-hidden="true"></span>
                 <div class="gameplay-heading">
-                    <h2>단어 퀘스트</h2>
+                    <h2 id="battle-screen-title">1일 전투</h2>
                     <p>WORD QUEST</p>
                 </div>
                 <div class="gameplay-actions">
@@ -110,7 +110,7 @@
             <div class="battle-arena">
                 <div class="battle-hud" aria-label="전투 정보">
                     <div class="battle-status">
-                        <div class="info-badge" id="game-info-badge">배틀 모드 - Day 1</div>
+                        <div class="info-badge" id="game-info-badge">1일 전투 - Day 1</div>
                         <div class="overlay-gold" aria-label="보유 골드">
                             <span class="gold-icon" aria-hidden="true">💰</span>
                             <span id="overlay-gold">0</span><span class="gold-unit">G</span>
@@ -211,7 +211,7 @@
                         </button>
                     </div>
                     <p id="listening-status" role="status" aria-live="polite">
-                        발음을 들은 뒤 답을 고르세요.
+                        발음을 듣고 한국어 뜻을 고르세요.
                     </p>
                 </div>
 
@@ -332,16 +332,27 @@
                     <div class="title-menu-art">
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
+                                id="title-story-mode-btn"
+                                type="button"
+                                class="menu-hotspot story-menu-hotspot"
+                                aria-label="스토리 모드 · 지도 탐험"
+                            >
+                                <span class="story-menu-icon" aria-hidden="true">🗺️</span
+                                ><span>스토리 모드</span>
+                            </button>
+                            <button
                                 id="title-battle-mode-btn"
                                 type="button"
                                 class="menu-hotspot"
-                                aria-label="배틀 모드 · 범위 선택, 문제 풀기"
+                                aria-label="1일 전투 · 범위 선택, 문제 풀기"
                             >
                                 <img
                                     src="images/theme/parts/menu-battle.webp"
                                     alt=""
                                     aria-hidden="true"
                                 />
+                                <span class="battle-menu-icon" aria-hidden="true">⚔️</span>
+                                <span class="battle-menu-caption">1일 전투</span>
                             </button>
                             <button
                                 id="title-practice-btn"
@@ -445,7 +456,13 @@
                     <div id="detail-header">
                         <div id="detail-icon"></div>
                         <div id="detail-name"></div>
-                        <button id="detail-close" data-action="inventory-hide-details">X</button>
+                        <button
+                            id="detail-close"
+                            data-action="inventory-hide-details"
+                            aria-label="아이템 정보 닫기"
+                        >
+                            닫기
+                        </button>
                     </div>
                     <div id="detail-desc"></div>
                     <div id="detail-actions"></div>
@@ -542,7 +559,7 @@
                                 </div>
                                 <div>
                                     <dt>양발</dt>
-                                    <dd>부츠 한 켤레 · 시간 또는 보상 경로 선택</dd>
+                                    <dd>부츠 한 켤레 · 스토리 전투의 시간 또는 보상 경로 선택</dd>
                                 </div>
                             </dl>
                             <p>
@@ -604,7 +621,7 @@
                     <select id="practice-mode-modal-day-select"></select>
                 </div>
                 <div class="mode-actions">
-                    <button id="practice-mode-modal-cancel-btn" type="button">취소</button>
+                    <button id="practice-mode-modal-cancel-btn" type="button">닫기</button>
                     <button id="practice-mode-modal-start-btn" type="button" class="mode-start">
                         연습 시작
                     </button>
@@ -622,7 +639,7 @@
                     <span class="game-emblem emblem-swords" aria-hidden="true"></span>
                     <div>
                         <span class="menu-kicker">ADVENTURE</span>
-                        <h2 id="battle-selection-title">단어 배틀</h2>
+                        <h2 id="battle-selection-title">1일 전투</h2>
                     </div>
                 </header>
                 <div class="mode-selection-body">
@@ -675,9 +692,9 @@
                     </p>
                 </div>
                 <div class="mode-actions">
-                    <button id="battle-mode-modal-cancel-btn" type="button">취소</button>
+                    <button id="battle-mode-modal-cancel-btn" type="button">닫기</button>
                     <button id="battle-mode-modal-start-btn" type="button" class="mode-start">
-                        배틀 시작
+                        전투 시작
                     </button>
                 </div>
             </section>
@@ -746,7 +763,6 @@
                 <div class="practice-memorization-content">
                     <!-- 영어 단어 + 음성 재생 -->
                     <div class="practice-word-section">
-                        <div class="gameplay-card-label">WORD DISCOVERY</div>
                         <div class="practice-word-row">
                             <div class="practice-word-text" id="practice-word-text">Loading...</div>
                         </div>
@@ -852,12 +868,68 @@
                 </header>
                 <div class="story-text-content" id="battle-mode-text"></div>
                 <div class="story-actions">
-                    <button class="btn-gray" data-action="story-back">범위 다시 선택</button>
+                    <button class="btn-gray" data-action="story-close">닫기</button>
                     <button class="btn-main" id="battle-mode-start-btn" autofocus>
                         모험 시작 ⚔️
                     </button>
                 </div>
             </div>
+        </dialog>
+
+        <dialog
+            id="story-map-modal"
+            class="screen-overlay"
+            aria-labelledby="story-map-title"
+            style="display: none"
+        >
+            <section class="card story-map-card">
+                <header class="story-map-header">
+                    <div>
+                        <span class="menu-kicker">ADVENTURE MAP</span>
+                        <h2 id="story-map-title">스토리 모드</h2>
+                    </div>
+                    <button type="button" class="btn-gray" data-action="story-map-close">
+                        닫기
+                    </button>
+                </header>
+                <p id="story-map-status" role="status"></p>
+                <div id="story-map-path" class="story-map-path" aria-label="탐험 지도"></div>
+                <p class="story-map-guide">
+                    이어진 다음 지점을 골라 진행하세요. 암시장에서만 얻을 수 있는 유물이 있습니다.
+                </p>
+            </section>
+        </dialog>
+
+        <dialog
+            id="story-market-modal"
+            class="screen-overlay"
+            aria-labelledby="story-market-title"
+            style="display: none"
+        >
+            <section class="card story-map-card story-market-card">
+                <header class="story-map-header">
+                    <div>
+                        <span class="menu-kicker">BLACK MARKET</span>
+                        <h2 id="story-market-title">암시장</h2>
+                    </div>
+                    <button type="button" class="btn-gray" data-action="story-market-leave">
+                        닫기
+                    </button>
+                </header>
+                <p>그림자 나침반은 스토리 전투의 제한시간을 3초 늘려 줍니다.</p>
+                <div class="story-market-item">
+                    <span aria-hidden="true">🧭</span><strong>그림자 나침반</strong
+                    ><span>180 G</span>
+                </div>
+                <p id="story-market-status" role="status"></p>
+                <div class="story-market-actions">
+                    <button type="button" class="btn-main" data-action="story-market-buy">
+                        구매</button
+                    ><button type="button" class="btn-gray" data-action="story-market-advance">
+                        다음 지점
+                    </button>
+                </div>
+            </section>
         </dialog>
 
         <dialog
@@ -1454,6 +1526,7 @@
         <script src="scripts/features/revenge-quests.js"></script>
         <script src="scripts/features/speech.js"></script>
         <script src="scripts/features/story.js"></script>
+        <script src="scripts/features/story-journey.js"></script>
         <script src="scripts/features/audio-manager.js"></script>
         <script src="scripts/features/worksheet.js"></script>
         <script src="scripts/features/admin-tools.js"></script>

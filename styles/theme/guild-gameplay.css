@@ -2160,10 +2160,58 @@ dialog.screen-overlay :is(select, select option),
     -webkit-tap-highlight-color: #c6e9bd33;
 }
 .title-menu-art #title-battle-mode-btn {
-    left: 0%;
+    left: 50%;
     top: 0%;
-    width: 100%;
+    width: 50%;
     height: 37.238979%;
+    overflow: hidden;
+    background: var(--ui-danger) center / 100% 100% no-repeat;
+}
+.title-menu-art #title-battle-mode-btn > img {
+    display: none;
+}
+.title-menu-art #title-story-mode-btn {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 37.238979%;
+    background: var(--ui-action) center / 100% 100% no-repeat;
+    color: #fff5d9;
+    font-size: clamp(15px, 4.5cqw, 23px);
+    font-weight: 900;
+    line-height: 1.2;
+    text-shadow: 0 2px 3px #16331e;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.story-menu-icon {
+    font-size: 1.5em;
+}
+.title-menu-art .battle-menu-icon {
+    position: absolute;
+    inset: 14% 0 auto;
+    display: block;
+    text-align: center;
+    font-size: clamp(22px, 7cqw, 38px);
+    line-height: 1;
+}
+.title-menu-art .battle-menu-caption {
+    position: absolute;
+    inset: auto 4px 18%;
+    display: block;
+    text-align: center;
+    color: #fff7e0;
+    font-size: clamp(14px, 4cqw, 21px);
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 0 2px 3px #382016;
 }
 .title-menu-art #title-practice-btn {
     left: 0%;

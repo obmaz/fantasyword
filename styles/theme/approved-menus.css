@@ -13,6 +13,254 @@
     --menu-ink: #243626;
 }
 
+.practice-memorization-arena {
+    flex-basis: clamp(150px, 24cqh, 250px);
+    min-height: 0;
+    background-size: cover;
+}
+
+.story-map-card {
+    width: min(94vw, 480px);
+    max-height: min(88dvh, 780px);
+    overflow: auto;
+    padding: 20px;
+    color: #f5eccd;
+    background: linear-gradient(155deg, #173e34, #172827 70%, #39271c);
+    border: 3px solid #b69556;
+    border-radius: 18px;
+    box-shadow: 0 16px 50px #08130bc9;
+    overscroll-behavior: contain;
+}
+#story-map-modal .story-map-card,
+#story-market-modal .story-map-card {
+    background: linear-gradient(155deg, #173e34, #172827 70%, #39271c) !important;
+}
+.story-map-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    position: sticky;
+    top: -20px;
+    z-index: 2;
+    padding: 8px 0;
+    background: #173e34;
+}
+.story-map-header h2 {
+    margin: 2px 0 0;
+    color: #ffe2a0;
+}
+.story-map-header button {
+    min-width: 72px;
+    min-height: 44px;
+    border: 0;
+    background: var(--ui-home) center / 100% 100% no-repeat;
+    color: #fff8df;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+#story-map-status,
+.story-map-guide,
+#story-market-status {
+    color: #f1ddb3;
+    line-height: 1.4;
+}
+.story-map-path {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    margin: 18px 0;
+    padding: 12px 4px;
+    background: radial-gradient(ellipse at center, #295f4f 0, #183a33 78%);
+    border: 1px solid #829d79;
+    border-radius: 18px;
+}
+.story-map-path::before {
+    content: '';
+    position: absolute;
+    inset: 30px 50% 30px auto;
+    border-left: 3px dashed #e4c98485;
+    pointer-events: none;
+}
+.story-map-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    z-index: 1;
+}
+.story-map-node {
+    width: min(46%, 168px);
+    min-height: 68px;
+    padding: 8px;
+    color: #fff9e2;
+    background: #356c51;
+    border: 3px solid #d1bd81;
+    border-radius: 18px;
+    font: inherit;
+    font-weight: 800;
+    line-height: 1.25;
+    box-shadow: 0 5px 0 #10291e;
+    cursor: pointer;
+}
+.story-map-node-market {
+    background: #55405e;
+}
+.story-map-node-boss {
+    background: #813a32;
+}
+.story-map-row[data-state='current'] .story-map-node {
+    box-shadow:
+        0 0 0 4px #f6df744d,
+        0 5px 0 #10291e;
+}
+.story-map-node:disabled {
+    opacity: 0.52;
+    cursor: default;
+}
+.story-map-row[data-state='passed'] .story-map-node {
+    opacity: 0.38;
+}
+.story-map-row[data-state='passed'] .story-map-node[data-visited='true'] {
+    opacity: 0.92;
+    border-color: #ffe69b;
+    box-shadow: 0 0 0 3px #ffe69b44;
+}
+.story-map-restart {
+    align-self: center;
+}
+.story-market-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 18px 12px;
+    background: #244539;
+    border: 1px solid #b69556;
+    border-radius: 14px;
+}
+.story-market-item > span:first-child {
+    font-size: 28px;
+}
+.story-market-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.story-market-actions button {
+    flex: 1;
+    min-width: 130px;
+}
+#story-market-modal .story-market-actions .btn-gray {
+    min-height: 50px;
+    border: 0;
+    background: var(--ui-home) center / 100% 100% no-repeat;
+    color: #fff8df;
+    font-weight: 800;
+}
+
+.lobby-weapon-burst {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 9;
+    pointer-events: none;
+    color: #fff5ce;
+    filter: drop-shadow(0 0 9px currentColor);
+}
+.lobby-weapon-burst[data-element='fire'] {
+    color: #ff8b42;
+}
+.lobby-weapon-burst[data-element='ice'] {
+    color: #a5eaff;
+}
+.lobby-weapon-burst[data-element='lightning'] {
+    color: #fff16d;
+}
+.lobby-weapon-burst[data-element='void'] {
+    color: #ce9eff;
+}
+.lobby-weapon-burst[data-element='gold'] {
+    color: #ffe28a;
+}
+.lobby-weapon-burst img {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    left: -36px;
+    top: -36px;
+    object-fit: contain;
+    animation: lobby-strike 0.7s ease-out both;
+}
+.lobby-weapon-burst span {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    left: -4px;
+    top: -4px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: lobby-spark 0.7s ease-out both;
+    transform: rotate(calc(var(--i) * 72deg));
+}
+@keyframes lobby-strike {
+    from {
+        opacity: 0;
+        transform: scale(0.35) rotate(-45deg);
+    }
+    35% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.5) rotate(35deg);
+    }
+}
+@keyframes lobby-spark {
+    from {
+        opacity: 1;
+        transform: rotate(calc(var(--i) * 72deg)) translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: rotate(calc(var(--i) * 72deg)) translateX(60px);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .lobby-weapon-burst img,
+    .lobby-weapon-burst span {
+        animation-duration: 0.1s;
+    }
+}
+@media (max-height: 550px) {
+    .practice-memorization-arena,
+    :root[data-compact='true'] .practice-memorization-arena {
+        flex-basis: 100px;
+        min-height: 100px;
+    }
+    :root[data-compact='true'] .practice-word-section {
+        min-height: 80px;
+    }
+}
+@media (max-height: 420px) {
+    .practice-memorization-arena,
+    :root[data-compact='true'] .practice-memorization-arena {
+        flex-basis: 76px;
+        min-height: 76px;
+    }
+    :root[data-compact='true'] .practice-memorized-row {
+        padding-block: 0;
+    }
+    :root[data-compact='true'] .practice-memorization-navigation {
+        padding-block: 0 4px;
+    }
+    :root[data-compact='true'] .practice-memorization-navigation .practice-nav-btn {
+        min-height: 44px;
+        padding-block: 3px;
+    }
+}
+
 /* Preserve each illustrated button corner instead of stretching it into an oval. */
 :is(
         .mode-actions,
@@ -1229,6 +1477,24 @@ button.equipment-control {
     cursor: pointer;
 }
 .equipment-control .item-art {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.equipment-control,
+.skill-bar .skill-btn {
+    height: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+.skill-bar .skill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.skill-bar .skill-btn .item-art {
     width: 20px;
     height: 20px;
     object-fit: contain;

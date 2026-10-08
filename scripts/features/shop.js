@@ -51,7 +51,10 @@ const shop = {
         // 유물
         html += '<div class="shop-section">유물 / 아이템</div>';
         relics
-            .filter((r) => (r.type !== 'skill' && !isPurchased(r)) || r.id === 'backpack')
+            .filter(
+                (r) =>
+                    !r.storyOnly && ((r.type !== 'skill' && !isPurchased(r)) || r.id === 'backpack')
+            )
             .forEach((r) => (html += shop.createItemHtml(r, r.type)));
 
         // 스킬 (항상 표시)
@@ -103,7 +106,7 @@ const shop = {
                 : type === 'item'
                   ? items.find((i) => i.id === id)
                   : relics.find((r) => r.id === id && r.type === type);
-        if (!item || !Number.isFinite(item.cost) || item.cost < 0) return;
+        if (!item || item.storyOnly || !Number.isFinite(item.cost) || item.cost < 0) return;
         const cost = item.cost;
         if (
             !['skill', 'backpack'].includes(type) &&
