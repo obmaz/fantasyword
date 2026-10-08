@@ -756,6 +756,15 @@ button .action-icon {
     font-size: 14px;
     line-height: 1.5;
 }
+#skyfall-mode-modal .skyfall-selection .menu-heading h2 {
+    color: #fff4cb;
+    text-shadow: 0 2px 3px #102b2b99;
+}
+#skyfall-mode-modal .skyfall-selection .menu-heading .menu-kicker {
+    display: block;
+    color: #ffe19a;
+    text-shadow: 0 1px 2px #102b2b99;
+}
 #skyfall-result-modal .skyfall-result-stats {
     margin: 14px 0;
 }
