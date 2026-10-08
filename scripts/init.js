@@ -56,6 +56,7 @@ const ACTION_HANDLERS = {
     'secret-del': () => secret.del(),
     'secret-close': () => secret.close(),
     'secret-reset-statistics': () => secret.resetStatistics(),
+    'settings-reset-game': () => settingsManager.resetGame(),
     'secret-gold-edit-open': () => secret.openGoldEditModal(),
     'secret-gold-edit-close': () => secret.closeGoldEditModal(),
     'secret-gold-edit-apply': () => secret.applyGoldEdit(),

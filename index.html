@@ -337,8 +337,13 @@
                                 class="menu-hotspot story-menu-hotspot"
                                 aria-label="스토리 모드 · 지도 탐험"
                             >
-                                <span class="story-menu-icon" aria-hidden="true">🗺️</span
-                                ><span>스토리 모드</span>
+                                <img
+                                    class="story-menu-icon"
+                                    src="images/theme/parts/menu-story-icon.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                                <span>스토리 모드</span>
                             </button>
                             <button
                                 id="title-battle-mode-btn"
@@ -347,11 +352,11 @@
                                 aria-label="1일 전투 · 범위 선택, 문제 풀기"
                             >
                                 <img
-                                    src="images/theme/parts/menu-battle.webp"
+                                    class="battle-menu-icon"
+                                    src="images/theme/parts/menu-day-battle-icon.webp"
                                     alt=""
                                     aria-hidden="true"
                                 />
-                                <span class="battle-menu-icon" aria-hidden="true">⚔️</span>
                                 <span class="battle-menu-caption">1일 전투</span>
                             </button>
                             <button
@@ -1251,6 +1256,19 @@
                             /><span>통계 초기화</span>
                         </button>
                     </div>
+                    <button
+                        type="button"
+                        class="modal-btn-main settings-reset-game"
+                        data-action="settings-reset-game"
+                    >
+                        <img
+                            class="action-icon"
+                            src="images/theme/parts/calm-reset-icon.webp"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <span>게임 완전 초기화</span>
+                    </button>
                 </div>
                 <div class="modal-footer">
                     <button

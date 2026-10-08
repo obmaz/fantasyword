@@ -108,8 +108,15 @@ function browserRuntime(saved = {}, overrides = {}) {
     const scripts = [...html.matchAll(/<script\s+src="([^"]+)"/g)].map((m) => m[1]);
     const globals = {
         localStorage: {
+            get length() {
+                return store.size;
+            },
+            key(index) {
+                return [...store.keys()][index] ?? null;
+            },
             getItem: (key) => store.get(key) ?? null,
             setItem: (key, value) => store.set(key, String(value)),
+            removeItem: (key) => store.delete(key),
         },
         document: {
             readyState: 'loading',

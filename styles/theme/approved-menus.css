@@ -998,6 +998,16 @@ button .action-icon {
 #setting-modal .settings-actions .modal-btn-main > span {
     white-space: nowrap;
 }
+#setting-modal .settings-reset-game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+    color: #fff5db;
+    --ui-control-art: var(--ui-danger);
+}
 @container (max-width: 320px) {
     #setting-modal .card.rpg-modal .settings-actions {
         grid-template-columns: minmax(0, 1fr);

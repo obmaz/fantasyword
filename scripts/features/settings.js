@@ -87,5 +87,20 @@ const settingsManager = {
         closeScreenOverlay('setting-modal');
         navigation.track('title-screen');
     },
+    resetGame: async () => {
+        const confirmed = await showConfirm(
+            '골드, 장비, 스토리 진행, 외운 단어, 복수 퀘스트, 통계와 설정을 모두 삭제하고 처음부터 시작합니다. 되돌릴 수 없습니다.',
+            { okText: '모두 삭제', cancelText: '돌아가기' }
+        );
+        if (!confirmed) return;
+        if (!gameStorage.clearGameData()) {
+            showToast('저장 데이터를 지우지 못했습니다. 다시 시도해 주세요.', 'error');
+            return;
+        }
+        game.stop();
+        practiceMemorization.stopSpeech();
+        document.getElementById('background-music')?.pause();
+        window.location.reload();
+    },
 };
 window.settingsManager = settingsManager;

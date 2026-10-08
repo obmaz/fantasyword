@@ -27,6 +27,21 @@ const gameStorage = {
             return false;
         }
     },
+    /** 게임이 소유한 저장 키만 지운다. 같은 출처의 다른 데이터는 보존한다. */
+    clearGameData: () => {
+        try {
+            const keys = [];
+            for (let index = 0; index < localStorage.length; index++) {
+                const key = localStorage.key(index);
+                if (key?.startsWith('v7_') || key === 'selectedGameDataSet') keys.push(key);
+            }
+            keys.forEach((key) => localStorage.removeItem(key));
+            return true;
+        } catch (error) {
+            gameStorage.warn();
+            return false;
+        }
+    },
     warn: () => {
         if (gameStorage.warned) return;
         gameStorage.warned = true;
