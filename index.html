@@ -486,10 +486,12 @@
                         <div id="detail-name"></div>
                         <button
                             id="detail-close"
+                            class="modal-close-x"
                             data-action="inventory-hide-details"
                             aria-label="아이템 정보 닫기"
+                            title="아이템 정보 닫기"
                         >
-                            닫기
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div id="detail-desc"></div>
@@ -508,6 +510,15 @@
                             aria-hidden="true"
                         /><span data-menu-gold>0</span><span>G</span>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="inventory-close"
+                        aria-label="장비 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="inv-container">
                     <div class="inv-player">
@@ -642,6 +653,16 @@
                         <span class="menu-kicker">SPELLBOOK</span>
                         <h2 id="practice-selection-title">단어 연습</h2>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        id="practice-mode-modal-x-btn"
+                        data-action="practice-mode-modal-close"
+                        aria-label="연습 선택 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <div class="mode-selection-body">
                     <p class="mode-description">뜻을 떠올린 뒤 확인하고, 외운 단어를 표시하세요.</p>
@@ -649,7 +670,6 @@
                     <select id="practice-mode-modal-day-select"></select>
                 </div>
                 <div class="mode-actions">
-                    <button id="practice-mode-modal-cancel-btn" type="button">닫기</button>
                     <button id="practice-mode-modal-start-btn" type="button" class="mode-start">
                         연습 시작
                     </button>
@@ -669,6 +689,16 @@
                         <span class="menu-kicker">ADVENTURE</span>
                         <h2 id="battle-selection-title">1일 전투</h2>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        id="battle-mode-modal-x-btn"
+                        data-action="battle-mode-modal-close"
+                        aria-label="전투 선택 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <div class="mode-selection-body">
                     <label for="battle-mode-modal-day-select">출제 범위</label>
@@ -720,7 +750,6 @@
                     </p>
                 </div>
                 <div class="mode-actions">
-                    <button id="battle-mode-modal-cancel-btn" type="button">닫기</button>
                     <button id="battle-mode-modal-start-btn" type="button" class="mode-start">
                         전투 시작
                     </button>
@@ -741,6 +770,16 @@
                         <span class="menu-kicker">WORD RAIN</span>
                         <h2 id="skyfall-selection-title">단어 낙하전</h2>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        id="skyfall-modal-x-btn"
+                        data-action="skyfall-modal-close"
+                        aria-label="낙하전 선택 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <div class="mode-selection-body">
                     <label for="skyfall-mode-day-select">출제 범위</label>
@@ -752,7 +791,6 @@
                     </p>
                 </div>
                 <div class="mode-actions">
-                    <button id="skyfall-modal-close" type="button">닫기</button>
                     <button id="skyfall-modal-start" type="button" class="mode-start">
                         낙하전 시작
                     </button>
@@ -925,10 +963,18 @@
                         <span class="menu-kicker">CHAPTER</span>
                         <h2 class="story-day-info" id="battle-mode-day-info"></h2>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="story-close"
+                        aria-label="스토리 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <div class="story-text-content" id="battle-mode-text"></div>
                 <div class="story-actions">
-                    <button class="btn-gray" data-action="story-close">닫기</button>
                     <button class="btn-main" id="battle-mode-start-btn" autofocus>
                         모험 시작 ⚔️
                     </button>
@@ -949,7 +995,8 @@
                         <h2 id="story-map-title">스토리 모드</h2>
                     </div>
                     <button type="button" class="btn-gray" data-action="story-map-close">
-                        닫기
+                        <span class="modal-close-x-glyph" aria-hidden="true">×</span>
+                        <span class="visually-hidden">닫기</span>
                     </button>
                 </header>
                 <p id="story-map-status" role="status"></p>
@@ -973,7 +1020,8 @@
                         <h2 id="story-market-title">암시장</h2>
                     </div>
                     <button type="button" class="btn-gray" data-action="story-market-leave">
-                        닫기
+                        <span class="modal-close-x-glyph" aria-hidden="true">×</span>
+                        <span class="visually-hidden">닫기</span>
                     </button>
                 </header>
                 <p>그림자 나침반은 스토리 전투의 제한시간을 3초 늘려 줍니다.</p>
@@ -1016,6 +1064,15 @@
                             aria-hidden="true"
                         /><span data-menu-gold id="shop-gold">0</span><span>G</span>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="shop-close"
+                        aria-label="상점 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div id="shop-container" style="text-align: left"></div>
@@ -1057,6 +1114,15 @@
                             aria-hidden="true"
                         /><span data-menu-gold>0</span><span>G</span>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="statistics-close"
+                        aria-label="통계 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div id="statistics-container" style="text-align: left"></div>
@@ -1086,6 +1152,15 @@
             style="display: none"
         >
             <section class="card skyfall-result">
+                <button
+                    class="modal-close-x"
+                    type="button"
+                    data-action="skyfall-result-close"
+                    aria-label="낙하전 결과 닫기"
+                    title="마을로 돌아가기"
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
                 <span class="skyfall-result-star" aria-hidden="true">✦</span>
                 <p class="menu-kicker">WORD RAIN REPORT</p>
                 <h2 id="skyfall-result-title">낙하전 종료</h2>
@@ -1105,6 +1180,15 @@
             style="display: none"
         >
             <div class="result-modal" role="dialog" aria-label="결과">
+                <button
+                    class="modal-close-x"
+                    type="button"
+                    data-action="result-close"
+                    aria-label="결과 닫기"
+                    title="마을로 돌아가기"
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
                 <div class="result-emblem game-emblem emblem-trophy" aria-hidden="true"></div>
                 <p class="result-modal-kicker">BATTLE REPORT</p>
                 <h2 id="res-title" class="result-modal-title">전투 완료</h2>
@@ -1165,6 +1249,15 @@
                         <span class="game-emblem emblem-gears" aria-hidden="true"></span
                         ><span>비밀번호 입력</span>
                     </h2>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="secret-close"
+                        aria-label="설정 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div
@@ -1243,6 +1336,15 @@
                             aria-hidden="true"
                         /><span data-menu-gold>0</span><span>G</span>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="secret-close"
+                        aria-label="설정 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="setting-option-row">
@@ -1376,6 +1478,15 @@
                         <span class="game-emblem emblem-chest" aria-hidden="true"></span
                         ><span>골드 수정</span>
                     </h2>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="secret-gold-edit-close"
+                        aria-label="골드 수정 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="gold-adjuster">
@@ -1428,6 +1539,15 @@
                         <span class="game-emblem emblem-quill" aria-hidden="true"></span
                         ><span>Day 선택</span>
                     </h2>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="secret-print-close"
+                        aria-label="인쇄 설정 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div style="margin: 20px 0">
@@ -1511,6 +1631,15 @@
                         <h2>복수 퀘스트</h2>
                         <p id="revenge-summary"></p>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="revenge-close"
+                        aria-label="복수 퀘스트 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <p class="revenge-guide">
                     틀린 단어로 몬스터에게 재도전하세요. 성공하면 24시간 뒤 회상 문제가 열립니다.
@@ -1548,6 +1677,15 @@
                         <h2>어느 길로 갈까요?</h2>
                         <p>장착한 부츠로 모험 경로를 고르세요.</p>
                     </div>
+                    <button
+                        class="modal-close-x"
+                        type="button"
+                        data-action="route-exit"
+                        aria-label="경로 선택 닫기"
+                        title="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </header>
                 <div class="route-choices">
                     <button id="route-safe-btn" class="image-action-button">

@@ -13,6 +13,92 @@
     --menu-ink: #243626;
 }
 
+/* 모든 닫기 동작은 팝업 우상단의 작은 X로 통일한다. */
+:is(
+    .card.rpg-modal,
+    .card.mode-selection,
+    .card.story-card,
+    .story-map-card,
+    .revenge-panel,
+    .result-modal,
+    .skyfall-result
+) {
+    position: relative;
+}
+:is(.modal-header, .menu-heading, .story-map-header, .revenge-panel > header, #detail-header) {
+    position: relative;
+}
+.modal-close-x {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 20;
+    display: inline-grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #a7c59d;
+    border-radius: 50%;
+    color: #fff7df;
+    background: #214d3c;
+    box-shadow:
+        inset 0 1px 0 #ffffff35,
+        0 2px 4px #102c2866;
+    font:
+        800 25px/1 system-ui,
+        sans-serif;
+    cursor: pointer;
+}
+.modal-close-x:hover {
+    background: #2e7053;
+}
+.modal-close-x:active {
+    transform: scale(0.94);
+}
+.modal-close-x:focus-visible {
+    outline: 2px solid #ffe7a6;
+    outline-offset: 2px;
+}
+.modal-close-x-glyph {
+    display: block;
+    font:
+        800 25px/1 system-ui,
+        sans-serif;
+}
+.story-map-header > .btn-gray {
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    min-height: 38px;
+    padding: 0;
+    border: 1px solid #a7c59d;
+    border-radius: 50%;
+    background: #214d3c;
+    color: #fff7df;
+    box-shadow:
+        inset 0 1px 0 #ffffff35,
+        0 2px 4px #102c2866;
+}
+.story-map-header > .btn-gray:hover {
+    background: #2e7053;
+}
+.story-map-header > .btn-gray .visually-hidden {
+    position: absolute;
+}
+#detail-header .modal-close-x {
+    top: 6px;
+    right: 6px;
+}
+.result-modal .modal-close-x,
+.skyfall-result .modal-close-x {
+    top: 10px;
+    right: 10px;
+}
+
 .practice-memorization-arena {
     flex-basis: clamp(150px, 24cqh, 250px);
     min-height: 0;
@@ -40,8 +126,8 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
-    position: sticky;
-    top: -20px;
+    position: sticky !important;
+    top: 0;
     z-index: 10;
     padding: 8px 0;
     background: #173e34;
