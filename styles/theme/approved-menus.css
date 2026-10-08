@@ -243,6 +243,7 @@
         min-height: 80px;
     }
 }
+
 @media (max-height: 420px) {
     .practice-memorization-arena,
     :root[data-compact='true'] .practice-memorization-arena {
@@ -1579,4 +1580,262 @@ button.equipment-control {
     color: #fff5ce;
     font-size: 8px;
     line-height: 10px;
+}
+
+/* A parchment prompt separates the question from the green answer controls. */
+#battle-mode-game .question-box {
+    border: 12px solid transparent !important;
+    border-image: var(--menu-paper) 15% fill / 12px / 0 stretch !important;
+    background: transparent;
+    box-shadow: 0 3px 0 #0b2c29 !important;
+    min-height: 68px;
+    display: grid;
+    place-items: center;
+}
+#battle-mode-game .question-box :is(.gameplay-card-label, .q-label) {
+    display: none !important;
+}
+#battle-mode-game .question-box .q-text {
+    color: #342b25;
+    text-shadow: none;
+    line-height: 1.25;
+}
+#battle-mode-game[data-question-kind='listening'] .question-box {
+    display: none;
+}
+#battle-mode-game #equipment-hint:not([hidden]) {
+    margin: 0;
+    padding: 5px 10px;
+    color: #fff0c7;
+    background: #554537;
+    border: 1px solid #b69b6a;
+    border-radius: 8px;
+}
+
+#story-market-modal .story-market-risk {
+    margin: 8px 0;
+    color: #f8d8a0;
+    font-size: 13px;
+    line-height: 1.45;
+}
+#story-market-modal .story-market-actions .image-action-button {
+    --ui-control-art: var(--ui-action);
+    min-height: 50px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff8df;
+    text-shadow: 0 1px 2px #15342a;
+}
+#story-market-modal .story-market-actions .image-action-button:disabled {
+    opacity: 0.5;
+}
+
+/* Results use the same parchment and illustrated buttons as the rest of the menus. */
+#result-modal .result-modal {
+    width: min(92vw, 440px);
+    max-width: min(92vw, 440px);
+    padding: 16px;
+    background: linear-gradient(160deg, #193f37, #122e2c);
+    border: 2px solid #c5a86d;
+    border-radius: 18px;
+    color: #fff3d5;
+    font-family: inherit;
+}
+#result-modal .result-modal::before,
+#result-modal .result-modal::after {
+    display: none;
+}
+#result-modal .result-emblem {
+    align-self: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 2px;
+}
+#result-modal .result-modal-kicker {
+    margin: 0;
+    color: #d9c690;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+#result-modal .result-modal-title {
+    margin: 3px 0 0;
+    color: #fff3d5;
+    font-size: clamp(22px, 5cqw, 28px);
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-shadow: none;
+}
+#result-modal .result-modal-subtitle {
+    margin: 4px 0 2px;
+    color: #d8e4cd;
+    font-size: 13px;
+    text-align: center;
+}
+#result-modal .result-modal-summary {
+    margin: 0 0 10px;
+    color: #f1daa5;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+#result-modal .result-modal-body {
+    padding: 14px;
+    border: 12px solid transparent;
+    border-image: var(--menu-paper) 15% fill / 12px / 0 stretch;
+    background: transparent;
+    color: #352f25;
+    box-shadow: none;
+}
+#result-modal .result-modal-row {
+    flex-wrap: nowrap;
+    padding: 7px 4px;
+    color: #493d2f;
+    font-size: 14px;
+    border-bottom: 1px solid #8e744d4d;
+}
+#result-modal .result-value {
+    font-size: 20px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+#result-modal .result-value.gold {
+    color: #785018;
+}
+#result-modal .result-value.danger {
+    color: #963d35;
+}
+#result-modal .result-modal-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 6px 0 0;
+    padding: 10px 4px 2px;
+    border: 0;
+    color: #304d39;
+    font-size: 13px;
+}
+#result-modal .result-modal-total strong {
+    font-size: 19px;
+    white-space: nowrap;
+}
+#result-modal .result-record-container,
+#result-modal .result-wrong-words-container {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-color: #8e744d66;
+}
+#result-modal .result-modal-section {
+    color: #654826;
+    font-size: 13px;
+    font-weight: 900;
+}
+#result-modal .result-modal-item,
+#result-modal .result-stat-row,
+#result-modal .result-stat-label {
+    color: #493d2f;
+}
+#result-modal .result-stat-value {
+    color: #1d5743;
+}
+#result-modal .result-wrong-word-item {
+    background: #f6e6c6;
+    border-color: #bfa276;
+}
+#result-modal .result-wrong-word-item .wrong-word {
+    color: #7e352e;
+}
+#result-modal .result-wrong-word-item .wrong-meaning {
+    color: #493d2f;
+}
+#result-modal .result-modal-actions {
+    margin-top: 8px;
+    padding: 0;
+}
+#result-modal .result-btn {
+    --ui-control-art: var(--ui-action);
+    color: #fff4d8;
+    font-weight: 800;
+    font-size: 15px;
+}
+#result-modal .result-modal-actions .result-btn {
+    --ui-control-art: var(--ui-home);
+}
+#result-modal #res-retry-note {
+    color: #704f29;
+    font-size: 12px;
+}
+@media (max-height: 550px) {
+    #result-modal .result-modal {
+        max-height: calc(100dvh - 20px);
+        padding: 9px;
+    }
+    #result-modal .result-emblem {
+        display: none;
+    }
+    #result-modal .result-modal-subtitle {
+        margin-bottom: 0;
+    }
+    #result-modal .result-modal-summary {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-height: 550px) {
+    #battle-mode-game[data-question-kind='spelling'] .gameplay-header {
+        height: 48px !important;
+        min-height: 48px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .battle-arena {
+        flex-basis: 16% !important;
+        min-height: 70px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .question-box {
+        min-height: 50px;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .spelling-panel {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+    }
+    #battle-mode-game[data-question-kind='spelling'] :is(.spelling-answer, .spelling-tiles) {
+        grid-column: 1 / -1;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .spelling-tools {
+        display: contents;
+    }
+    #battle-mode-game[data-question-kind='spelling'] :is(.spelling-tools button, #spelling-submit) {
+        min-height: 44px;
+        padding-inline: 0 !important;
+        font-size: 11px;
+        line-height: 1.15;
+    }
+}
+
+@media (max-height: 410px) {
+    #battle-mode-game[data-question-kind='spelling'] .battle-arena {
+        flex-basis: 16% !important;
+        min-height: 66px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .question-box {
+        min-height: 40px;
+        padding: 2px;
+        border-width: 8px !important;
+        border-image-width: 8px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] .spelling-panel {
+        gap: 2px;
+    }
+    #battle-mode-game[data-question-kind='spelling'] :is(.spelling-tools button, #spelling-submit) {
+        height: 44px !important;
+        min-height: 44px !important;
+        border-width: 8px !important;
+        border-image-width: 8px !important;
+    }
+    #battle-mode-game[data-question-kind='spelling'] #spelling-submit .action-icon {
+        display: none;
+    }
 }

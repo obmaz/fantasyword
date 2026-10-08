@@ -1,5 +1,20 @@
-/** 브라우저 영어 음성 우선, 미지원/재생 실패 시 원격 발음 폴백. */
+/** 기본 단어장 녹음을 증폭해 재생하고 브라우저 음성/원격 발음으로 폴백한다. */
 (function () {
+    const recordedWords = new Set(
+        [...(window.rawData_1 || []), ...(window.rawData_2 || []), ...(window.rawData_3 || [])].map(
+            (/** @type {import('../../types/practice').Word} */ { word }) =>
+                String(word).trim().toLowerCase()
+        )
+    );
+    let pronunciationContext = null;
+    /** @param {string} word */
+    function canBoost(word) {
+        return (
+            recordedWords.has(String(word).trim().toLowerCase()) &&
+            window.location?.protocol !== 'file:' &&
+            Boolean(window.AudioContext || window.webkitAudioContext)
+        );
+    }
     function getPreferredTTSVoice() {
         const synth = window.speechSynthesis;
         if (!synth || typeof synth.getVoices !== 'function') return null;
@@ -17,21 +32,43 @@
     }
 
     /** @type {import('../../types/practice').SpeechDependencies['playRemote']} */
-    const playGoogleTTS = (text, lang, isCurrent, onUnavailable, onReady) => {
+    const playGoogleTTS = (text, lang, isCurrent, onUnavailable, onReady, forceRemote = false) => {
+        /** @type {(HTMLAudioElement & { releaseBoost?: () => void }) | undefined} */
         let audio;
         let failed = false;
         const fail = () => {
             if (failed || !isCurrent()) return;
             failed = true;
+            audio?.pause();
+            audio?.releaseBoost?.();
             onUnavailable();
         };
         try {
             audio = new Audio();
             audio.volume = 1;
-            audio.src = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${encodeURIComponent(lang)}&client=tw-ob`;
+            const boosted = !forceRemote && canBoost(text);
+            if (boosted) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                pronunciationContext ||= new AudioContext();
+                const source = pronunciationContext.createMediaElementSource(audio);
+                const gain = pronunciationContext.createGain();
+                gain.gain.value = 2;
+                source.connect(gain).connect(pronunciationContext.destination);
+                const boostedAudio = audio;
+                boostedAudio.releaseBoost = () => {
+                    source.disconnect();
+                    gain.disconnect();
+                    boostedAudio.releaseBoost = undefined;
+                };
+                audio.src = `data/pronunciation/${encodeURIComponent(String(text).trim().toLowerCase())}.mp3`;
+                Promise.resolve(pronunciationContext.resume()).catch(fail);
+            } else {
+                audio.src = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${encodeURIComponent(lang)}&client=tw-ob`;
+            }
             audio.onerror = fail;
             audio.onended = () => {
-                if (isCurrent()) onReady?.();
+                audio?.releaseBoost?.();
+                if (!failed && isCurrent()) onReady?.();
             };
             Promise.resolve(audio.play()).catch(fail);
             return audio;
@@ -42,6 +79,7 @@
     };
 
     window.getPreferredTTSVoice = getPreferredTTSVoice;
+    window.hasBoostedPronunciation = canBoost;
     window.playGoogleTTS = playGoogleTTS;
 })();
 
@@ -80,6 +118,9 @@ function createPracticeSpeech({
             audio = null;
             if (previous) {
                 previous.pause();
+                /** @type {HTMLAudioElement & { releaseBoost?: () => void }} */ (
+                    previous
+                ).releaseBoost?.();
                 previous.removeAttribute?.('src');
                 previous.load?.();
             }
@@ -115,32 +156,42 @@ function createPracticeSpeech({
             const fallback = () => {
                 if (!isCurrent() || fallbackStarted) return;
                 fallbackStarted = true;
-                audio = playRemote(word, 'en', isCurrent, unavailable, ready);
+                audio = playRemote(word, 'en', isCurrent, unavailable, ready, true);
             };
-            try {
-                const synth = getSynth();
-                const utterance = createUtterance(word);
-                if (!synth || !utterance) {
-                    fallback();
-                    return;
-                }
-                utterance.lang = 'en-US';
-                utterance.rate = 0.8;
-                utterance.volume = 1;
-                const voice = getVoice();
-                if (voice) utterance.voice = voice;
-                utterance.onerror = (event) => {
-                    if (!isCurrent() || event.error === 'canceled' || event.error === 'interrupted')
+            const speakNative = () => {
+                if (!isCurrent()) return;
+                try {
+                    const synth = getSynth();
+                    const utterance = createUtterance(word);
+                    if (!synth || !utterance) {
+                        fallback();
                         return;
+                    }
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.8;
+                    utterance.volume = 1;
+                    const voice = getVoice();
+                    if (voice) utterance.voice = voice;
+                    utterance.onerror = (event) => {
+                        if (
+                            !isCurrent() ||
+                            event.error === 'canceled' ||
+                            event.error === 'interrupted'
+                        )
+                            return;
+                        fallback();
+                    };
+                    utterance.onend = () => {
+                        if (!fallbackStarted) ready();
+                    };
+                    synth.speak(utterance);
+                } catch {
                     fallback();
-                };
-                utterance.onend = () => {
-                    if (!fallbackStarted) ready();
-                };
-                synth.speak(utterance);
-            } catch {
-                fallback();
-            }
+                }
+            };
+            if (window.hasBoostedPronunciation?.(word)) {
+                audio = playRemote(word, 'en', isCurrent, speakNative, ready);
+            } else speakNative();
         },
     };
     return speech;

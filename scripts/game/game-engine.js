@@ -310,6 +310,8 @@ function createBattleSession({
                 !Number.isInteger(index) ||
                 index < 0 ||
                 index >= game.spellingTiles.length ||
+                game.spellingChosen.length >=
+                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length ||
                 game.spellingChosen.includes(index)
             )
                 return;
@@ -428,7 +430,12 @@ function createBattleSession({
             )
                 return;
             const assembling = game.currentQ.questionKind === 'spelling';
-            if (assembling && game.spellingChosen.length !== game.spellingTiles.length) return;
+            if (
+                assembling &&
+                game.spellingChosen.length !==
+                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length
+            )
+                return;
             const input = assembling
                 ? encounters.spellingAnswer(
                       game.currentQ.word,

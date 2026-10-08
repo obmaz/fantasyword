@@ -45,12 +45,10 @@ const monsterEncounters = Object.freeze({
     },
     spellingTiles(word, shuffle) {
         const letters = [...word].filter((letter) => /[a-z]/i.test(letter));
-        const result = shuffle(letters);
-        if (result.join('') === letters.join('')) {
-            const different = result.findIndex((letter) => letter !== result[0]);
-            if (different > 0) [result[0], result[different]] = [result[different], result[0]];
-        }
-        return result;
+        // Common letters make plausible decoys while every answer letter remains available.
+        const common = [...'aeiourstnl'];
+        const extras = shuffle(common).slice(0, 3);
+        return shuffle([...letters, ...extras]);
     },
     spellingAnswer(word, tiles, chosen) {
         let index = 0;

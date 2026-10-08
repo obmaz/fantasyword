@@ -180,8 +180,8 @@
                     <div class="gameplay-card-label" id="question-instruction"></div>
                     <div class="q-label" id="q-label">MEANING</div>
                     <div class="q-text" id="q-text">Loading...</div>
-                    <p id="equipment-hint" role="status" hidden></p>
                 </div>
+                <p id="equipment-hint" role="status" hidden></p>
 
                 <div id="equipment-display" class="equipment-bar" aria-label="장비 능력"></div>
                 <div id="skill-display" class="skill-bar"></div>
@@ -926,9 +926,14 @@
                     <span aria-hidden="true">🧭</span><strong>그림자 나침반</strong
                     ><span>180 G</span>
                 </div>
+                <p class="story-market-risk">구매 성공률 75% · 실패해도 180 G를 잃습니다.</p>
                 <p id="story-market-status" role="status"></p>
                 <div class="story-market-actions">
-                    <button type="button" class="btn-main" data-action="story-market-buy">
+                    <button
+                        type="button"
+                        class="btn-main image-action-button"
+                        data-action="story-market-buy"
+                    >
                         구매</button
                     ><button type="button" class="btn-gray" data-action="story-market-advance">
                         다음 지점
@@ -1027,7 +1032,10 @@
         >
             <div class="result-modal" role="dialog" aria-label="결과">
                 <div class="result-emblem game-emblem emblem-trophy" aria-hidden="true"></div>
-                <div id="res-title" class="result-modal-title">FINISHED!</div>
+                <p class="result-modal-kicker">BATTLE REPORT</p>
+                <h2 id="res-title" class="result-modal-title">전투 완료</h2>
+                <p id="res-subtitle" class="result-modal-subtitle"></p>
+                <p id="res-summary" class="result-modal-summary"></p>
 
                 <div class="result-modal-body">
                     <div class="result-modal-row">
@@ -1039,7 +1047,8 @@
                         <span class="result-value danger">-<span id="res-lost">0</span> G</span>
                     </div>
                     <div class="result-modal-total">
-                        내 지갑 총액: <span id="res-current-total">0</span> G
+                        <span>현재 보유 골드</span
+                        ><strong><span id="res-current-total">0</span> G</strong>
                     </div>
                     <div id="res-record" class="result-record-container"></div>
                     <p id="res-retry-note" hidden></p>

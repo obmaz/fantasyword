@@ -3,6 +3,8 @@ const storyJourney = {
     returnAfterResult: false,
     pendingStage: null,
     pendingIndex: null,
+    purchaseSuccessRate: 0.75,
+    random: () => Math.random(),
     get key() {
         return `v7_story_stage_${db.getBookKey()}`;
     },
@@ -121,12 +123,13 @@ const storyJourney = {
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
     },
-    renderMarket() {
+    renderMarket(message = '') {
         const owned = db.has('shadowCompass');
         document.getElementById('story-market-status').textContent = owned
             ? '그림자 나침반을 가지고 있습니다.'
-            : `보유 골드 ${db.gold} G`;
-        document.querySelector('[data-action="story-market-buy"]').disabled = owned;
+            : message || `보유 골드 ${db.gold} G`;
+        const buyButton = document.querySelector('[data-action="story-market-buy"]');
+        if (buyButton) buyButton.disabled = owned;
     },
     buy() {
         const relic = relics.find((item) => item.id === 'shadowCompass');
@@ -136,6 +139,12 @@ const storyJourney = {
             return;
         }
         db.subGold(relic.cost);
+        if (storyJourney.random() >= storyJourney.purchaseSuccessRate) {
+            storyJourney.renderMarket(
+                `거래 실패 · ${relic.cost} G를 잃었습니다. 남은 골드 ${db.gold} G`
+            );
+            return;
+        }
         db.owned.push(relic.id);
         db.save('owned');
         inventory.render();

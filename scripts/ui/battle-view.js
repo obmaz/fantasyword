@@ -148,11 +148,9 @@ function createBattleView({
             element('wave-badge').innerText = progress;
             element('equipment-hint').hidden = true;
             element('equipment-hint').innerText = '';
-            element('q-label').innerText = encounter
-                ? `${encounter.name} · ${encounter.lesson}`
-                : '';
-            element('q-label').style.display = encounter ? 'block' : 'none';
-            element('question-instruction').innerText = encounter?.instruction || '';
+            element('q-label').innerText = '';
+            element('q-label').style.display = 'none';
+            element('question-instruction').innerText = '';
             element('listening-panel').hidden = true;
             element('spelling-panel').hidden = true;
             element('spelling-panel').onkeydown = null;
@@ -267,9 +265,9 @@ function createBattleView({
                 answer.appendChild(slot);
             }
             letterButtons.forEach((button, i) => {
-                button.disabled = chosen.includes(i);
+                button.disabled = chosen.includes(i) || (index > 0 && chosen.length >= index);
             });
-            element('spelling-submit').disabled = chosen.length !== tiles.length;
+            element('spelling-submit').disabled = chosen.length !== index;
             const next = letterButtons.find((button) => !button.disabled);
             (next || element('spelling-submit')).focus({ preventScroll: true });
         },
@@ -497,7 +495,13 @@ function createBattleView({
             element('res-retry-note').innerText =
                 '방패 재도전 사용 · 맞힌 개수는 최종 제출 기준입니다. 처음 틀린 단어는 복수 퀘스트에 남아 있어요.';
             element('result-review-btn').hidden = wrongWords.length === 0;
-            element('res-title').innerText = win || mode === 'boss' ? 'FINISHED!' : 'FAILED';
+            element('res-title').innerText = win || mode === 'boss' ? '전투 완료' : '도전 종료';
+            element('res-subtitle').innerText =
+                mode === 'story' ? '스토리 모드' : mode === 'boss' ? '전체 단어 도전' : '1일 전투';
+            const total = rows.find(({ label }) => label === '전체') || rows.at(-1);
+            element('res-summary').innerText = total
+                ? `정답 ${total.correct}/${total.total} · ${total.total ? Math.round((total.correct / total.total) * 100) : 0}%`
+                : '';
             element('res-gain').innerText = stats.gain;
             element('res-lost').innerText = stats.lost;
             element('res-current-total').innerText = gold;

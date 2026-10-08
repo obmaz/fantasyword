@@ -109,6 +109,7 @@ test('고블린은 같은 글자 조각을 재사용하지 않으며 중복 철�
     const r = runtime();
     r.start('goblin', 'balloon');
     assert.notEqual(r.game.spellingTiles.join(''), 'balloon');
+    assert.equal(r.game.spellingTiles.length, 10);
     r.game.chooseSpellingLetter(0);
     r.game.chooseSpellingLetter(0);
     assert.equal(r.game.spellingChosen.length, 1);
@@ -121,6 +122,9 @@ test('고블린은 같은 글자 조각을 재사용하지 않으며 중복 철�
     r.assemble('balloon');
     assert.equal(r.game.spellingChosen.length, 7);
     assert.equal(new Set(r.game.spellingChosen).size, 7);
+    assert.equal(r.getElement('spelling-submit').disabled, false);
+    r.game.chooseSpellingLetter(7);
+    assert.equal(r.game.spellingChosen.length, 7);
     r.game.checkBossAnswer();
     assert.equal(r.game.subjectiveCorrect, 1);
     assert.equal(r.evaluate('db.getBookStats().subjective.correct'), 1);
@@ -139,6 +143,18 @@ test('고블린은 숙어의 띄어쓰기를 유지하고 틀린 배열에는 �
     const wrong = runtime();
     wrong.start('goblin', 'put on');
     wrong.game.spellingTiles.forEach((_, i) => wrong.game.chooseSpellingLetter(i));
+    if (
+        wrong.encounters.spellingAnswer(
+            'put on',
+            wrong.game.spellingTiles,
+            wrong.game.spellingChosen
+        ) === 'put on'
+    ) {
+        wrong.game.clearSpelling();
+        wrong.game.spellingTiles.forEach((_, i) =>
+            wrong.game.chooseSpellingLetter(wrong.game.spellingTiles.length - i - 1)
+        );
+    }
     wrong.game.checkBossAnswer();
     assert.equal(wrong.game.subjectiveCorrect, 0);
     assert.equal(wrong.getElement('spelling-answer').innerText, 'put on');

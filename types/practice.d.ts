@@ -83,13 +83,19 @@ export interface SpeechDependencies {
         lang: string,
         isCurrent: () => boolean,
         onUnavailable: () => void,
-        onReady?: () => void
+        onReady?: () => void,
+        forceRemote?: boolean
     ): HTMLAudioElement | null;
     notify(message: string, type?: string): void;
 }
 declare global {
     interface Window {
         getPreferredTTSVoice(): SpeechSynthesisVoice | null;
+        hasBoostedPronunciation?(word: string): boolean;
+        webkitAudioContext?: typeof AudioContext;
+        rawData_1?: Word[];
+        rawData_2?: Word[];
+        rawData_3?: Word[];
         playGoogleTTS: SpeechDependencies['playRemote'];
     }
 }
