@@ -60,10 +60,8 @@ function createPracticeSession({
             const index = keys.indexOf(key);
             if (index === -1) {
                 keys.push(key);
-                notify('외웠어요! 나중에 다시 떠올려 보세요.', 'success');
             } else {
                 keys.splice(index, 1);
-                notify('외움 표시를 취소했습니다.');
             }
             db.save('memorized');
             if (session.currentFilter === 'all') session.updateMemorizedButton();
