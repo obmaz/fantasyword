@@ -12,7 +12,7 @@ const ui = {
             const amount = document.getElementById(id);
             if (!amount) continue;
             amount.innerText = db.gold;
-            amount.title = `${db.gold} G`;
+            amount.title = `${db.gold}`;
         }
         document.querySelectorAll('[data-menu-gold]').forEach((amount) => {
             amount.innerText = formatMenuNumber(db.gold);

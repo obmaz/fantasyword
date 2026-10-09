@@ -127,7 +127,7 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
         result({ won, score, target, earned }) {
             setText('skyfall-result-title', won ? '총공세 승리!' : '총공세 종료');
             setText('skyfall-result-score', score + ' / ' + target);
-            setText('skyfall-result-gold', '+' + earned + ' G');
+            setText('skyfall-result-gold', '+' + earned);
             setText(
                 'skyfall-result-detail',
                 won ? '내려오는 단어를 모두 막았습니다.' : '다시 도전해서 기록을 높여 보세요.'

@@ -407,8 +407,9 @@ select {
 }
 .gold-icon {
     flex: 0 0 auto;
-    font-size: 14px;
-    line-height: 1;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 .gold-unit {
     font-size: 10px;

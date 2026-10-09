@@ -113,8 +113,13 @@
                     <div class="battle-status">
                         <div class="info-badge" id="game-info-badge">도전 - Day 1</div>
                         <div class="overlay-gold" aria-label="보유 골드">
-                            <span class="gold-icon" aria-hidden="true">💰</span>
-                            <span id="overlay-gold">0</span><span class="gold-unit">G</span>
+                            <img
+                                class="gold-icon"
+                                src="images/theme/parts/approved-coin.webp"
+                                alt=""
+                                aria-hidden="true"
+                            />
+                            <span id="overlay-gold">0</span>
                         </div>
                     </div>
                     <div class="info-badge" id="wave-badge">Wave: 1</div>
@@ -374,8 +379,13 @@
                 <div class="title-buttons-overlay">
                     <div class="title-toolbar">
                         <div class="title-gold-display" aria-label="보유 골드">
-                            <span class="gold-icon" aria-hidden="true">💰</span>
-                            <span id="title-ui-gold">0</span><span class="gold-unit">G</span>
+                            <img
+                                class="gold-icon"
+                                src="images/theme/parts/approved-coin.webp"
+                                alt=""
+                                aria-hidden="true"
+                            />
+                            <span id="title-ui-gold">0</span>
                         </div>
                         <select
                             id="game-data-selector"
@@ -560,7 +570,7 @@
                             src="images/theme/parts/approved-coin.webp"
                             alt=""
                             aria-hidden="true"
-                        /><span data-menu-gold>0</span><span>G</span>
+                        /><span data-menu-gold>0</span>
                     </div>
                     <button
                         class="modal-close-x"
@@ -1242,7 +1252,7 @@
                             src="images/theme/parts/approved-coin.webp"
                             alt=""
                             aria-hidden="true"
-                        /><span data-menu-gold id="shop-gold">0</span><span>G</span>
+                        /><span data-menu-gold id="shop-gold">0</span>
                     </div>
                     <button
                         class="modal-close-x"
@@ -1292,7 +1302,7 @@
                             src="images/theme/parts/approved-coin.webp"
                             alt=""
                             aria-hidden="true"
-                        /><span data-menu-gold>0</span><span>G</span>
+                        /><span data-menu-gold>0</span>
                     </div>
                     <button
                         class="modal-close-x"
@@ -1347,7 +1357,7 @@
                 <p id="skyfall-result-detail"></p>
                 <div class="skyfall-result-stats">
                     <div><small>정답</small><strong id="skyfall-result-score">0 / 0</strong></div>
-                    <div><small>획득</small><strong id="skyfall-result-gold">+0 G</strong></div>
+                    <div><small>획득</small><strong id="skyfall-result-gold">+0</strong></div>
                 </div>
             </section>
         </dialog>
@@ -1377,15 +1387,15 @@
                 <div class="result-modal-body">
                     <div class="result-modal-row">
                         <span class="result-label">이번 획득</span>
-                        <span class="result-value gold">+<span id="res-gain">0</span> G</span>
+                        <span class="result-value gold">+<span id="res-gain">0</span></span>
                     </div>
                     <div class="result-modal-row">
                         <span class="result-label">이번 손실</span>
-                        <span class="result-value danger">-<span id="res-lost">0</span> G</span>
+                        <span class="result-value danger">-<span id="res-lost">0</span></span>
                     </div>
                     <div class="result-modal-total">
                         <span>현재 보유 골드</span
-                        ><strong><span id="res-current-total">0</span> G</strong>
+                        ><strong><span id="res-current-total">0</span></strong>
                     </div>
                     <div id="res-record" class="result-record-container"></div>
                     <p id="res-retry-note" hidden></p>
@@ -1502,7 +1512,7 @@
                             src="images/theme/parts/approved-coin.webp"
                             alt=""
                             aria-hidden="true"
-                        /><span data-menu-gold>0</span><span>G</span>
+                        /><span data-menu-gold>0</span>
                     </div>
                     <button
                         class="modal-close-x"
@@ -1548,7 +1558,7 @@
                         </h3>
                         <div class="settings-gold-current">
                             <span>현재 골드</span
-                            ><strong><span id="settings-current-gold">0</span> G</strong>
+                            ><strong><span id="settings-current-gold">0</span></strong>
                         </div>
                         <div class="gold-adjust-controls">
                             <button
