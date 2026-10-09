@@ -32,13 +32,13 @@ const ui = {
                 mode === 'story'
                     ? '스토리'
                     : mode === 'boss'
-                      ? '전체 단어 도전'
+                      ? '생존 도전'
                       : mode === 'revenge'
                         ? '복수 퀘스트'
                         : '도전';
         let dayText;
         if (mode === 'boss') {
-            dayText = '전체 도전';
+            dayText = '생존 도전';
         } else if (mode === 'revenge') {
             dayText = '복수 퀘스트';
         } else {

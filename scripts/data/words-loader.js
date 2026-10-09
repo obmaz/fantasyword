@@ -43,7 +43,7 @@ const dayCatalog = (function () {
         label:
             stories && stories.boss && stories.boss.title
                 ? stories.boss.title
-                : '전체 단어 도전 (Boss Mode)',
+                : '생존 도전 (Boss Mode)',
         story: stories && stories.boss ? stories.boss : null,
     };
     dlog('[words.js] dayCatalog created:', Object.keys(c).length, 'entries');
