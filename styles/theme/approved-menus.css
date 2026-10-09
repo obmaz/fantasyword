@@ -1553,6 +1553,26 @@ button .action-icon {
 }
 
 /* Monster lessons keep the existing illustrated frame and use live text/buttons. */
+#battle-mode-game #hero-wrapper::before {
+    display: none;
+}
+#battle-mode-game #hero-img {
+    opacity: 1;
+    object-fit: contain;
+}
+#battle-mode-game #hero-weapon {
+    top: 40%;
+    bottom: auto;
+    right: -4%;
+}
+#battle-mode-game #hero-weapon .item-art {
+    width: clamp(30px, 8cqh, 70px);
+    height: clamp(30px, 8cqh, 70px);
+}
+#battle-mode-game .battle-arena .char-wrapper:is(#hero-wrapper, :has(#monster-img)) {
+    width: clamp(88px, 21cqh, 180px);
+    height: clamp(88px, 21cqh, 180px);
+}
 #battle-mode-game[data-monster]:not([data-monster='']) .char-wrapper:has(#monster-img)::before {
     display: none;
 }
@@ -2387,12 +2407,134 @@ button.equipment-control {
 /* A parchment prompt separates the question from the green answer controls. */
 #battle-mode-game .question-box {
     border: 12px solid transparent !important;
-    border-image: var(--menu-paper) 15% fill / 12px / 0 stretch !important;
+    border-image: url('../../images/theme/parts/quest-paper.webp') 18% fill / 12px / 0 stretch !important;
     background: transparent;
     box-shadow: 0 3px 0 #0b2c29 !important;
     min-height: 68px;
     display: grid;
     place-items: center;
+}
+
+/* 승인한 숲 모험 시안: 이미지 키와 HTML 글자를 분리한다. */
+#battle-mode-game {
+    --ui-choice: url('../../images/theme/parts/quest-key.webp');
+    --ui-action: url('../../images/theme/parts/quest-key.webp');
+    --ui-danger: url('../../images/theme/parts/quest-delete.webp');
+}
+.english-keyboard {
+    display: grid;
+    gap: 5px;
+    width: 100%;
+    padding: 6px 2px;
+    border: 1px solid #ad9057;
+    background: #102e24;
+}
+.english-keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+#battle-mode-game .english-key {
+    flex: 0 0 calc((100% - 27px) / 10);
+    min-width: 0;
+    height: clamp(32px, 5.5cqh, 52px);
+    min-height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0;
+    background: url('../../images/theme/parts/quest-key.webp') center / 100% 100% no-repeat !important;
+    color: #fff2d0;
+    font-family: Georgia, serif;
+    font-size: clamp(16px, 4.5cqw, 26px);
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 1px 1px #102e24;
+    box-shadow: none;
+    touch-action: manipulation;
+}
+#battle-mode-game .english-key-delete {
+    background-image: url('../../images/theme/parts/quest-delete.webp') !important;
+}
+#battle-mode-game .english-key:disabled {
+    opacity: 0.5;
+}
+#battle-mode-game .english-key:focus-visible {
+    outline: 2px solid #ffe4a1;
+    outline-offset: 1px;
+}
+#battle-mode-game .boss-submit {
+    --ui-control-art: url('../../images/theme/parts/quest-attack.webp');
+    border-image: var(--ui-control-art) 24% fill / 10px / 0 stretch !important;
+    min-height: 48px;
+    margin: 0;
+    font-weight: 900;
+    color: #fff2d0;
+}
+:root[data-layout] #battle-mode-game[data-answer-entry='letters'] {
+    --battle-scene-height: clamp(52px, 35cqh, 320px);
+}
+:root[data-layout] #battle-mode-game[data-answer-entry='letters'] .battle-arena {
+    flex: 0 999 var(--battle-scene-height);
+    min-height: 52px;
+}
+#battle-mode-game[data-answer-entry='letters'] .battle-arena::after {
+    display: none;
+}
+#battle-mode-game[data-answer-entry='letters'] :is(#skill-display, #equipment-display) {
+    display: none;
+}
+#battle-mode-game[data-answer-entry='letters'] .quiz-area {
+    padding: 6px 10px max(6px, env(safe-area-inset-bottom));
+    gap: 5px;
+    overflow: hidden;
+}
+#battle-mode-game[data-answer-entry='letters'] .question-box {
+    flex: 1 1 auto;
+    min-height: 54px;
+    overflow: auto;
+    padding: 6px;
+}
+#battle-mode-game[data-answer-entry='letters'] #q-text {
+    font-size: clamp(24px, 9cqw, 48px);
+}
+#battle-mode-game[data-answer-entry='letters'] .boss-ui {
+    flex: 0 0 auto;
+    gap: 5px;
+    margin-top: 0;
+    padding: 0;
+}
+#battle-mode-game[data-answer-entry='letters'] .boss-letter-entry {
+    min-height: 40px;
+}
+#battle-mode-game .boss-letter-entry:focus-within {
+    outline: none;
+}
+#boss-letter-slots .letter-slot {
+    color: #fff2d0;
+    border-bottom-color: #d9ba71;
+    font-family: Georgia, serif;
+}
+@media (max-height: 500px) {
+    :root[data-layout] #battle-mode-game[data-answer-entry='letters'] {
+        --battle-scene-height: clamp(52px, 14cqh, 70px);
+    }
+    #battle-mode-game .battle-arena .char-wrapper:is(#hero-wrapper, :has(#monster-img)) {
+        width: 64px;
+        height: 64px;
+    }
+    #battle-mode-game[data-answer-entry='letters'] .battle-hud {
+        top: 0;
+    }
+    #battle-mode-game[data-answer-entry='letters'] .boss-submit {
+        height: 44px;
+        min-height: 44px;
+        padding: 3px !important;
+    }
+    #battle-mode-game[data-answer-entry='letters'] .english-keyboard {
+        gap: 2px;
+        padding-block: 3px;
+    }
 }
 #battle-mode-game .question-box :is(.gameplay-card-label, .q-label) {
     display: none !important;

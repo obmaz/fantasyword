@@ -67,7 +67,7 @@ const ui = {
      * 히어로 비주얼을 업데이트합니다 (무기, 이펙트 등)
      */
     updateVisuals: () => {
-        document.getElementById('hero-img').src = 'images/battle/hero.webp';
+        document.getElementById('hero-img').src = 'images/theme/parts/quest-hero.webp';
 
         // 무기 -> hand-1 (게임플레이)
         const hand1Id = db.equipped['hand-1'] || db.equippedWeapon || 'basic';

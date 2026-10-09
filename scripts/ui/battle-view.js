@@ -18,6 +18,30 @@ function createBattleView({
     let floatVersion = 0;
     let attackVersion = 0;
     let inputPattern = '';
+    let keyboardButtons = [];
+    function lockKeyboard(locked) {
+        keyboardButtons.forEach((button) => {
+            button.disabled = locked;
+        });
+    }
+    function typeLetter(key) {
+        const input = element('boss-input');
+        if (input.disabled) return;
+        const letters = input.value.replace(/[^a-z]/gi, '').split('');
+        if (key === 'Backspace') letters.pop();
+        else if (letters.length < (inputPattern.match(/[a-z]/gi) || []).length)
+            letters.push(key.toLowerCase());
+        let index = 0;
+        let value = '';
+        for (const character of inputPattern) {
+            if (/[a-z]/i.test(character)) {
+                if (!letters[index]) break;
+                value += letters[index++];
+            } else if (index > 0) value += character;
+        }
+        input.value = value;
+        updateInputSlots();
+    }
     function updateInputSlots() {
         const input = element('boss-input');
         const slots = element('boss-letter-slots');
@@ -131,6 +155,9 @@ function createBattleView({
             questionVersion++;
             floatVersion++;
             resetEffects();
+            lockKeyboard(true);
+            element('boss-box').onkeydown = null;
+            element('battle-mode-game').dataset.answerEntry = '';
             closeScreen?.('equipment-route-modal', false);
         },
         chooseRoute(onPick) {
@@ -164,6 +191,7 @@ function createBattleView({
             element('monster-img').src = sprite;
             element('monster-img').alt = encounter?.name || '몬스터';
             const screen = element('battle-mode-game');
+            screen.dataset.answerEntry = '';
             screen.dataset.monster = encounter?.id || '';
             screen.dataset.questionKind = encounter?.kind || '';
             element('wave-badge').innerText = progress;
@@ -215,10 +243,56 @@ function createBattleView({
             input.onclick = updateInputSlots;
             updateInputSlots();
             input.disabled = false;
+            input.readOnly = true;
+            input.setAttribute('inputmode', 'none');
+            element('battle-mode-game').dataset.answerEntry = 'letters';
+            const keyboard = element('boss-keyboard');
+            keyboard.innerHTML = '';
+            keyboardButtons = [];
+            for (const row of ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM']) {
+                const line = doc.createElement('div');
+                line.className = 'english-keyboard-row';
+                for (const key of [...row, ...(row === 'ZXCVBNM' ? ['Backspace'] : [])]) {
+                    const button = doc.createElement('button');
+                    button.type = 'button';
+                    button.className =
+                        key === 'Backspace' ? 'english-key english-key-delete' : 'english-key';
+                    button.textContent = key === 'Backspace' ? '⌫' : key;
+                    button.setAttribute(
+                        'aria-label',
+                        key === 'Backspace' ? '한 글자 지우기' : `${key} 입력`
+                    );
+                    button.onclick = () => {
+                        if (version !== questionVersion || button.disabled) return;
+                        typeLetter(key);
+                        input.focus({ preventScroll: true });
+                    };
+                    line.appendChild(button);
+                    keyboardButtons.push(button);
+                }
+                keyboard.appendChild(line);
+            }
             input.classList.remove('boss-input-correct', 'boss-input-wrong');
             input.onkeydown = (event) => {
-                if (event.key === 'Enter' && !event.isComposing && version === questionVersion)
+                if (
+                    event.isComposing ||
+                    version !== questionVersion ||
+                    input.disabled ||
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.altKey
+                )
+                    return;
+                if (event.key === 'Enter') {
+                    event.preventDefault?.();
                     onSubmit();
+                } else if (/^[a-z]$/i.test(event.key) || event.key === 'Backspace') {
+                    event.preventDefault?.();
+                    typeLetter(event.key);
+                }
+            };
+            element('boss-box').onkeydown = (event) => {
+                if (event.target !== input) input.onkeydown?.(event);
             };
             if (focusInput) input.focus({ preventScroll: true });
             const submit = doc.querySelector('#boss-box .boss-submit');
@@ -349,6 +423,7 @@ function createBattleView({
                 );
             }
             if (lockInput || element('boss-box').style.display !== 'none') {
+                lockKeyboard(true);
                 element('boss-input').disabled = true;
                 element('boss-input').onkeydown = null;
                 const submit = doc.querySelector('#boss-box .boss-submit');
@@ -375,6 +450,7 @@ function createBattleView({
             element('boss-input').value = '';
             updateInputSlots();
             element('boss-input').disabled = true;
+            lockKeyboard(true);
             const submit = doc.querySelector('#boss-box .boss-submit');
             if (submit) submit.disabled = true;
             letterButtons.forEach((button) => {
@@ -388,6 +464,7 @@ function createBattleView({
             element('listen-fallback-btn').disabled = true;
         },
         retry(options) {
+            lockKeyboard(false);
             optionButtons.forEach((button, i) => {
                 button.disabled = options[i].disabled;
             });

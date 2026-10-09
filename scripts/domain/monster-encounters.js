@@ -4,7 +4,7 @@ const monsterEncounters = Object.freeze({
         slime: { name: '슬라임', lesson: '뜻 고르기', sprite: 'monster-slime', kind: 'meaning' },
         goblin: { name: '고블린', lesson: '철자 조립', sprite: 'monster-goblin', kind: 'spelling' },
         bat: { name: '박쥐', lesson: '발음 듣기', sprite: 'monster-bat', kind: 'listening' },
-        dragon: { name: '드래곤', lesson: '보스 문제', sprite: 'monster-dragon', kind: 'riddle' },
+        dragon: { name: '드래곤', lesson: '보스 문제', sprite: 'quest-dragon', kind: 'riddle' },
     }),
     normalize(value) {
         return String(value).trim().toLowerCase().replace(/\s+/g, ' ');

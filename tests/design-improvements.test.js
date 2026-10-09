@@ -3,6 +3,36 @@ const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
 const { loadScripts } = require('./helpers/load-module');
 
+test('게임 영어 키보드는 26글자와 삭제만 제공하고 구분자를 자동 입력한다', () => {
+    const r = browserRuntime();
+    r.sandbox.onload();
+    r.evaluate("game.view.subjective({ word: 'a-b c', meaning: '예시' }, '', '', () => {}, false)");
+    const keys = r.getElement('boss-keyboard').children.flatMap((row) => row.children);
+    assert.equal(keys.length, 27);
+    const input = r.getElement('boss-input');
+    assert.equal(input.readOnly, true);
+    assert.equal(input.inputmode, 'none');
+    for (const key of ['A', 'B', 'C', 'D'])
+        keys.find((button) => button.textContent === key).click();
+    assert.equal(input.value, 'a-b c');
+    keys.find((button) => button.textContent === '⌫').click();
+    assert.equal(input.value, 'a-b ');
+    r.evaluate('game.view.feedback(true, null, true)');
+    assert.ok(keys.every((button) => button.disabled));
+});
+
+test('이전 문제의 키 입력은 새 문제에 영향을 주지 않고 종료 시 키를 잠근다', () => {
+    const r = browserRuntime();
+    r.sandbox.onload();
+    r.evaluate("game.view.subjective({ word: 'abc', meaning: '예시' }, '', '', () => {}, false)");
+    const key = r.getElement('boss-keyboard').children[1].children[0];
+    r.evaluate("game.view.beginQuestion('', '2/10')");
+    key.click();
+    assert.equal(r.getElement('boss-input').value, '');
+    r.evaluate('game.view.stop()');
+    assert.equal(key.disabled, true);
+});
+
 test('주관식은 입력·삭제한 문자를 밑줄 칸에 반영하고 Enter로 제출한다', () => {
     const r = browserRuntime();
     r.sandbox.onload();
