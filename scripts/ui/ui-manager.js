@@ -75,16 +75,18 @@ const ui = {
             weapons.find((w) => w.id === hand1Id) ||
             weapons.find((w) => w.id === db.equippedWeapon) ||
             weapons.find((w) => w.id === 'basic');
-        const heroWeaponEl = document.getElementById('hero-weapon');
-        if (heroWeaponEl) heroWeaponEl.innerHTML = itemIconMarkup(wData);
-
         // 이펙트 -> hand-2 (시각 효과)
         const hand2Id = db.equipped['hand-2'];
         const effData = weapons.find((w) => w.id === hand2Id);
-        const heroEffEl = document.getElementById('hero-effect');
-        if (heroEffEl) {
-            heroEffEl.innerHTML = effData ? itemIconMarkup(effData) : '';
-            heroEffEl.style.display = effData ? 'block' : 'none';
+        const avatarModel = {
+            equipped: db.equipped,
+            durability: db.durability,
+            weapons,
+            items,
+            fallback: db.equippedWeapon,
+        };
+        for (const id of ['hero-wrapper', 'inventory-avatar']) {
+            renderEquipmentAvatar(document.getElementById(id), avatarModel);
         }
 
         // 장착 요약 (클릭 없이 표시)
@@ -130,7 +132,11 @@ const ui = {
                 equipmentBar.appendChild(node);
             };
             if (gear.weapon)
-                append('basic', `연속 ${gear.combo}/3`, '3연속 정답마다 추가 공격 +10 G');
+                append(
+                    'basic',
+                    `연속 ${gear.combo}/3`,
+                    `3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`
+                );
             if (gear.protection)
                 append(
                     'shield_item',
@@ -180,7 +186,7 @@ const ui = {
             gloveBtn.innerHTML = `${itemIconMarkup({ id: 'goldGlove' })} <span class="skill-count">${
                 db.durability['goldGlove'] || 0
             }/30</span>`;
-            gloveBtn.title = '황금장갑 (장착 중): 정답 골드 x1.5배';
+            gloveBtn.title = '미다스의 건틀릿 (장착 중): 정답 골드 x1.5배';
             container.appendChild(gloveBtn);
         }
 

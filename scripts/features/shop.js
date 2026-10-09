@@ -37,13 +37,15 @@ const shop = {
             db.owned.includes(item.id);
 
         // 경제형 무기
-        let html = '<div class="shop-section">경제형 무기 · 골드 보너스</div>';
+        let html =
+            '<p class="shop-economy-guide">10문제 전투 약 50–75 G<br><small>정답률 80% · 문제당 4초 · 기본 장비 기준</small></p>' +
+            '<div class="shop-section">마법 무기 · 골드 보너스</div>';
         weapons
             .filter((w) => w.multiplier > 1 && !isPurchased(w))
             .forEach((w) => (html += shop.createItemHtml(w, 'weapon')));
 
         // 스킨 무기
-        html += '<div class="shop-section">스킨 무기 · 이펙트</div>';
+        html += '<div class="shop-section">무기 · 방패</div>';
         weapons
             .filter((w) => w.id !== 'basic' && w.multiplier === 1 && !isPurchased(w))
             .forEach((w) => (html += shop.createItemHtml(w, 'weapon')));

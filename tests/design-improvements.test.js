@@ -396,7 +396,7 @@ test('전투 진행은 DOM 없는 렌더러를 주입해 시작·채점·종료�
     scheduled.shift()();
     assert.equal(game.currentQ.isBoss, true);
     game.handleAnswer(true, null);
-    assert.equal(db.gold, 30);
+    assert.equal(db.gold, 12);
     game.end(true);
     assert.equal(game.active, false);
     assert.ok(commands.some(([name]) => name === 'subjective'));
@@ -408,7 +408,7 @@ test('타이머 콜백이 지연되어도 실제 남은 시간으로 보상을 �
     r.advance(3000);
     r.game.answerOption(r.game.options.findIndex((option) => option.correct));
     assert.equal(r.game.timeLeft, 7);
-    assert.equal(r.game.stats.gain, 15);
+    assert.equal(r.game.stats.gain, 7);
 });
 
 test('마감 후 늦은 정답 클릭은 시간 초과 오답으로 한 번만 기록한다', () => {

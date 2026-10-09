@@ -298,3 +298,113 @@ dialog.screen-overlay select,
     max-width: 32px;
     max-height: 32px;
 }
+
+/* 전투와 장비 메뉴는 같은 포즈·정사각형 좌표의 착용 부품을 공유한다. */
+.equipment-avatar {
+    position: relative;
+    aspect-ratio: 1;
+    isolation: isolate;
+}
+.inventory-boy .equipment-avatar {
+    width: 100%;
+    max-width: 184px;
+}
+.equipment-avatar .avatar-body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.equipment-avatar .avatar-layer {
+    position: absolute;
+    inset: 0;
+    background: url('../../images/theme/parts/avatar-equipment.webp') 0 0 / 300% 100% no-repeat;
+    pointer-events: none;
+    z-index: 8;
+    transform-origin: 0 0;
+}
+.equipment-avatar .avatar-helmet {
+    transform: translate(4%, 3%) scale(0.9);
+    clip-path: inset(0 0 48% 35%);
+}
+.equipment-avatar :is(.avatar-glove-near, .avatar-glove-far) {
+    background-position: 50% 0;
+    z-index: 9;
+}
+.equipment-avatar .avatar-glove-near {
+    clip-path: inset(40% 50% 25% 0);
+}
+.equipment-avatar .avatar-glove-far {
+    clip-path: inset(40% 0 25% 50%);
+}
+.equipment-avatar .avatar-boot-near {
+    clip-path: inset(60% 50% 0 0);
+}
+.equipment-avatar .avatar-boot-far {
+    clip-path: inset(60% 0 0 50%);
+}
+.equipment-avatar .avatar-glove-near {
+    transform: translate(24%, 17%) scale(0.72);
+}
+.equipment-avatar .avatar-glove-far {
+    transform: translate(32%, 21%) scale(0.65);
+}
+.equipment-avatar :is(.avatar-boot-near, .avatar-boot-far) {
+    background-position: 100% 0;
+    z-index: 7;
+}
+.equipment-avatar .avatar-boot-near {
+    transform: translate(15%, 25%) scale(0.75);
+}
+.equipment-avatar .avatar-boot-far {
+    transform: translate(20%, 25%) scale(0.75);
+}
+.equipment-avatar :is(.avatar-weapon, .avatar-secondary) {
+    position: absolute;
+    display: block;
+    top: 28%;
+    left: 34%;
+    right: auto;
+    bottom: auto;
+    width: 37%;
+    height: 37%;
+    z-index: 6;
+    pointer-events: none;
+}
+.equipment-avatar .avatar-secondary {
+    top: 44%;
+    left: 72%;
+    width: 27%;
+    height: 27%;
+}
+.equipment-avatar :is(.avatar-weapon, .avatar-secondary) .item-art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.equipment-avatar [data-weapon='goldDagger'] {
+    scale: 0.8;
+    transform-origin: 15% 90%;
+}
+.equipment-avatar [data-weapon='midasSword'] {
+    filter: sepia(0.8) saturate(2) drop-shadow(0 0 2px #ffc94f);
+}
+.equipment-avatar [data-element='fire'] {
+    filter: sepia(1) saturate(4) hue-rotate(325deg) drop-shadow(0 0 3px #ff7535);
+}
+.equipment-avatar [data-element='ice'] {
+    filter: sepia(0.6) saturate(3) hue-rotate(145deg) drop-shadow(0 0 3px #6bdaff);
+}
+.equipment-avatar [data-avatar-part][hidden] {
+    display: none;
+}
+.shop-economy-guide {
+    color: var(--menu-ink, #243c2b);
+    margin: 0 0 12px;
+    line-height: 1.6;
+    font-weight: 700;
+}
+.shop-economy-guide small {
+    font-weight: 400;
+}

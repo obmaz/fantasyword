@@ -607,7 +607,7 @@ function createBattleSession({
                 }
                 game.view.hit();
                 vibrate(200);
-                const penalty = Math.min(db.gold, db.has('shield') ? 50 : 100);
+                const penalty = battleRules.penalty(db.gold, db.has('shield'));
                 game.stats.lost += penalty;
                 db.subGold(penalty);
                 game.view.floatText(`-${penalty} G`, 'red');

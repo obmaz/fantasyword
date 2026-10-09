@@ -32,17 +32,17 @@ function runtime(equipped = {}, saved = {}) {
     return { ...r, game, start, choose };
 }
 
-test('오른손 무기는 3연속 정답에만 추가 10 G를 주며 오답은 연속 기록을 초기화한다', () => {
+test('오른손 무기는 3연속 정답에만 추가 3 G를 주며 오답은 연속 기록을 초기화한다', () => {
     const r = runtime({}, { v7_owned: '["basic"]' });
     r.start();
     for (let i = 0; i < 3; i++) {
         r.choose(true);
         if (i < 2) r.advance(800);
     }
-    assert.equal(r.game.stats.gain, 70);
-    assert.equal(r.evaluate('db.gold'), 1070);
-    assert.equal(r.getElement('dmg-txt').innerText, '+30 G');
-    assert.equal(r.getElement('dmg-txt').children.at(-1).innerText, '정답 +20 · 연속 +10');
+    assert.equal(r.game.stats.gain, 33);
+    assert.equal(r.evaluate('db.gold'), 1033);
+    assert.equal(r.getElement('dmg-txt').innerText, '+13 G');
+    assert.equal(r.getElement('dmg-txt').children.at(-1).innerText, '정답 +10 · 연속 +3');
     assert.equal(r.game.gear.combo, 0);
     r.advance(800);
     r.choose(false);
@@ -61,7 +61,7 @@ test('황금장갑은 장착할 때만 보상이 늘고 정답에서만 사용 �
         });
         r.start();
         r.choose(true);
-        assert.equal(r.game.stats.gain, equipped ? 30 : 20);
+        assert.equal(r.game.stats.gain, equipped ? 15 : 10);
         assert.equal(r.evaluate('db.durability.goldGlove'), equipped ? 1 : 2);
         r.advance(800);
         r.choose(false);
@@ -76,13 +76,13 @@ test('황금장갑의 마지막 정답에는 배율이 적용되고 소모 후 �
     );
     r.start();
     r.choose(true);
-    assert.equal(r.game.stats.gain, 30);
+    assert.equal(r.game.stats.gain, 15);
     assert.equal(r.evaluate('db.equipped.gloves'), undefined);
     assert.equal(r.evaluate('db.durability.goldGlove'), undefined);
     assert.equal(JSON.parse(r.store.get('v7_equipped')).gloves, undefined);
     r.advance(800);
     r.choose(true);
-    assert.equal(r.game.stats.gain, 50);
+    assert.equal(r.game.stats.gain, 25);
 });
 
 test('장비는 장착해야 능력이 켜지고 방패의 이전 오른손 저장은 왼손으로 복원된다', () => {
@@ -118,7 +118,7 @@ test('방패는 오답 1회 재도전을 주고 골드·통계를 중복 처리�
     assert.equal(r.game.sessionWrongWords.length, 1);
     r.advance(800);
     r.choose(false);
-    assert.equal(r.game.stats.lost, 100);
+    assert.equal(r.game.stats.lost, 6);
     assert.equal(r.evaluate('db.getBookStats().solved'), 2);
 });
 
@@ -183,8 +183,8 @@ test('시간 제한이 없는 문제도 풀이가 길어지면 기본 보상이 
     r.advance(15000);
     r.getElement('boss-input').value = 'apple';
     r.game.checkBossAnswer();
-    assert.equal(r.game.stats.gain, 18);
-    assert.equal(r.evaluate('db.gold'), 1018);
+    assert.equal(r.game.stats.gain, 7);
+    assert.equal(r.evaluate('db.gold'), 1007);
 });
 
 test('일반 전투에서는 부츠 경로 선택 없이 출제하고 스토리 전투에서만 경로를 고른다', () => {
@@ -218,13 +218,13 @@ test('보물 길은 전투 골드만 10% 늘리고 고정 복수 보상에는 �
     r.game.selectRoute('treasure');
     r.start();
     r.choose(true);
-    assert.equal(r.game.stats.gain, 22);
+    assert.equal(r.game.stats.gain, 11);
     r.game.exit();
     r.evaluate('revengeQuests.fail({...rawDataData[0],monsterId:"slime"})');
     r.game.init('revenge', 'all');
     r.advance(400);
     r.choose(true);
-    assert.equal(r.game.stats.gain, 70);
+    assert.equal(r.game.stats.gain, 14);
     assert.equal(r.evaluate('Object.values(db.revengeQuests[db.getBookKey()])[0].phase'), 'recall');
 });
 

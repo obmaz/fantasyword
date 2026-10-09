@@ -1,12 +1,17 @@
 /** DOM/저장소에 의존하지 않는 전투 출제·채점·보상 규칙. */
 const REWARD_POLICY = Object.freeze({
-    objective: 20,
-    subjective: 30,
-    boss: 40,
+    objective: 10,
+    subjective: 12,
+    boss: 12,
+    assault: 4,
+    mistake: 6,
     minimumShare: 0.25,
     untimedDecaySeconds: 30,
 });
 const battleRules = Object.freeze({
+    assaultReward: () => REWARD_POLICY.assault,
+    penalty: (gold, protectedGold = false) =>
+        Math.min(gold, protectedGold ? REWARD_POLICY.mistake / 2 : REWARD_POLICY.mistake),
     buildPool(day, source) {
         return day === 'all' || day === 'boss'
             ? source

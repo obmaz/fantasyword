@@ -1,5 +1,15 @@
 /** 장비의 전투 능력. 소유만 한 장비는 활성화하지 않는다. */
 const equipmentRules = Object.freeze({
+    comboBonus: 3,
+    appearance(equipped, durability, fallback = 'basic') {
+        return {
+            weapon: equipped['hand-1'] || fallback,
+            secondary: equipped['hand-2'] || null,
+            helmet: equipped.head === 'helmet',
+            gloves: equipped.gloves === 'goldGlove' && durability.goldGlove > 0,
+            boots: equipped['foot-1'] === 'boots' && equipped['foot-2'] === 'boots',
+        };
+    },
     load(equipped, weapons, fallback = 'basic') {
         const primary = weapons.find((w) => w.id === (equipped['hand-1'] || fallback));
         return {
@@ -18,9 +28,9 @@ const equipmentRules = Object.freeze({
     combo(state, correct) {
         if (!correct || !state.weapon) return { combo: 0, bonus: 0 };
         const combo = state.combo + 1;
-        return combo === 3 ? { combo: 0, bonus: 10 } : { combo, bonus: 0 };
+        return combo === 3 ? { combo: 0, bonus: equipmentRules.comboBonus } : { combo, bonus: 0 };
     },
-    routeBonus: (gain, route) => (route === 'treasure' ? Math.floor(gain * 0.1) : 0),
+    routeBonus: (gain, route) => (route === 'treasure' ? Math.round(gain * 0.1) : 0),
     routeSeconds: (route) => (route === 'safe' ? 5 : 0),
     hint(word) {
         const letters = [...word.trim()];

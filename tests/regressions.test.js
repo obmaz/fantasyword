@@ -195,10 +195,10 @@ test('구매는 카탈로그 가격을 사용하고 중복/없는 상품을 결�
     r.evaluate('inventory.render = () => {}; shop.render = () => {}');
     const shop = r.evaluate('shop');
     shop.buy('fire', 'weapon');
-    assert.equal(r.evaluate('db.gold'), 4700);
+    assert.equal(r.evaluate('db.gold'), 4910);
     shop.buy('fire', 'weapon');
     shop.buy('missing', 'skill');
-    assert.equal(r.evaluate('db.gold'), 4700);
+    assert.equal(r.evaluate('db.gold'), 4910);
     assert.equal(r.evaluate('db.owned.filter((id) => id === "fire").length'), 1);
 });
 

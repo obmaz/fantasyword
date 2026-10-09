@@ -216,15 +216,15 @@ test('정답 골드는 문제 수와 무관하고 남은 시간 또는 풀이 �
         rules.reward({ mode: 'battle', subjective: false, timeLeft, maxTime: 10 });
     const subjective = (elapsedSeconds, count = 10) =>
         rules.reward({ mode: 'battle', subjective: true, elapsedSeconds, count });
-    assert.equal(objective(10), 20);
-    assert.equal(objective(9.99), 20);
-    assert.equal(objective(7), 15);
-    assert.equal(objective(0), 5);
-    assert.equal(subjective(0), 30);
-    assert.equal(subjective(0.01), 30);
-    assert.equal(subjective(15), 18);
-    assert.equal(subjective(30, 100), 7);
-    assert.equal(rules.reward({ mode: 'boss', subjective: true, elapsedSeconds: 15 }), 25);
+    assert.equal(objective(10), 10);
+    assert.equal(objective(9.99), 10);
+    assert.equal(objective(7), 7);
+    assert.equal(objective(0), 2);
+    assert.equal(subjective(0), 12);
+    assert.equal(subjective(0.01), 12);
+    assert.equal(subjective(15), 7);
+    assert.equal(subjective(30, 100), 3);
+    assert.equal(rules.reward({ mode: 'boss', subjective: true, elapsedSeconds: 15 }), 7);
     assert.equal(
         rules.reward({
             mode: 'battle',
@@ -234,6 +234,6 @@ test('정답 골드는 문제 수와 무관하고 남은 시간 또는 풀이 �
             multiplier: 1.5,
             glove: true,
         }),
-        45
+        22
     );
 });

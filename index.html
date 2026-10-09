@@ -135,14 +135,50 @@
                     ></select>
                 </div>
 
-                <div class="char-wrapper" id="hero-wrapper">
-                    <div id="hero-head" class="hero-equip-slot"></div>
-                    <div id="hero-hand-1" class="hero-equip-slot"></div>
-                    <div id="hero-hand-2" class="hero-equip-slot"></div>
-                    <div id="hero-feet" class="hero-equip-slot"></div>
-                    <img id="hero-img" class="char-img" src="" alt="모험가" />
-                    <div id="hero-weapon" class="equipped-weapon"></div>
-                    <div id="hero-effect" class="hero-effect" style="display: none"></div>
+                <div class="char-wrapper equipment-avatar" id="hero-wrapper">
+                    <div
+                        id="hero-head"
+                        class="avatar-layer avatar-helmet"
+                        data-avatar-part="helmet"
+                        hidden
+                    ></div>
+                    <div
+                        id="hero-hand-1"
+                        class="avatar-layer avatar-glove-near"
+                        data-avatar-part="gloves"
+                        hidden
+                    ></div>
+                    <div
+                        id="hero-hand-2"
+                        class="avatar-layer avatar-glove-far"
+                        data-avatar-part="gloves"
+                        hidden
+                    ></div>
+                    <div
+                        id="hero-feet"
+                        class="avatar-layer avatar-boot-near"
+                        data-avatar-part="boots"
+                        hidden
+                    ></div>
+                    <div class="avatar-layer avatar-boot-far" data-avatar-part="boots" hidden></div>
+                    <img
+                        id="hero-img"
+                        class="char-img avatar-body"
+                        src="images/theme/parts/quest-hero.webp"
+                        alt=""
+                        aria-hidden="true"
+                    />
+                    <div
+                        id="hero-weapon"
+                        class="equipped-weapon avatar-weapon"
+                        data-avatar-part="weapon"
+                    ></div>
+                    <div
+                        id="hero-effect"
+                        class="hero-effect avatar-secondary"
+                        data-avatar-part="secondary"
+                        hidden
+                    ></div>
                 </div>
 
                 <div class="effect-layer" id="combat-effects" aria-hidden="true">
@@ -538,12 +574,47 @@
                 <div class="inv-container">
                     <div class="inv-player">
                         <div class="inventory-paperdoll">
-                            <img
-                                class="inventory-boy"
-                                src="images/theme/parts/approved-boy.webp"
-                                alt=""
-                                aria-hidden="true"
-                            />
+                            <div class="inventory-boy">
+                                <div class="equipment-avatar" id="inventory-avatar">
+                                    <img
+                                        class="avatar-body"
+                                        src="images/theme/parts/quest-hero.webp"
+                                        alt=""
+                                        aria-hidden="true"
+                                    />
+                                    <div
+                                        class="avatar-layer avatar-helmet"
+                                        data-avatar-part="helmet"
+                                        hidden
+                                    ></div>
+                                    <div
+                                        class="avatar-layer avatar-glove-near"
+                                        data-avatar-part="gloves"
+                                        hidden
+                                    ></div>
+                                    <div
+                                        class="avatar-layer avatar-glove-far"
+                                        data-avatar-part="gloves"
+                                        hidden
+                                    ></div>
+                                    <div
+                                        class="avatar-layer avatar-boot-near"
+                                        data-avatar-part="boots"
+                                        hidden
+                                    ></div>
+                                    <div
+                                        class="avatar-layer avatar-boot-far"
+                                        data-avatar-part="boots"
+                                        hidden
+                                    ></div>
+                                    <div class="avatar-weapon" data-avatar-part="weapon"></div>
+                                    <div
+                                        class="avatar-secondary"
+                                        data-avatar-part="secondary"
+                                        hidden
+                                    ></div>
+                                </div>
+                            </div>
                             <button
                                 type="button"
                                 class="inv-slot"
@@ -610,11 +681,11 @@
                             <dl>
                                 <div>
                                     <dt>머리</dt>
-                                    <dd>투구 · 전투당 무료 힌트 1회</dd>
+                                    <dd>통찰의 헬름 · 전투당 무료 힌트 1회</dd>
                                 </div>
                                 <div>
                                     <dt>오른손</dt>
-                                    <dd>주무기 · 골드 배율 · 3연속 정답 +10 G</dd>
+                                    <dd>주무기 · 골드 배율 · 3연속 정답 +3 G</dd>
                                 </div>
                                 <div>
                                     <dt>왼손</dt>
@@ -626,7 +697,7 @@
                                 </div>
                                 <div>
                                     <dt>장갑</dt>
-                                    <dd>황금장갑 · 장착 중 정답 골드 x1.5 · 30회 후 소모</dd>
+                                    <dd>미다스의 건틀릿 · 정답 골드 x1.5 · 30회 후 소모</dd>
                                 </div>
                             </dl>
                             <p>

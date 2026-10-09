@@ -8,13 +8,13 @@ const inventory = {
     slots: {
         gloves: {
             label: '장갑',
-            accepts: '황금장갑 · 정답 골드 x1.5 · 30회',
+            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 30회',
             placeholder: 'goldGlove',
         },
-        head: { label: '머리', accepts: '투구 · 무료 힌트 1회', placeholder: 'helmet' },
+        head: { label: '머리', accepts: '통찰의 헬름 · 무료 힌트 1회', placeholder: 'helmet' },
         'hand-1': {
             label: '오른손',
-            accepts: '주무기 · 골드 보너스 · 3연속 정답 +10 G',
+            accepts: `주무기 · 골드 보너스 · 3연속 정답 +${equipmentRules.comboBonus} G`,
             placeholder: 'basic',
         },
         'hand-2': {
@@ -123,34 +123,6 @@ const inventory = {
             }
         }
 
-        // 히어로 장비 표시 초기화
-        document.getElementById('hero-head').innerHTML = '';
-        document.getElementById('hero-hand-1').innerHTML = '';
-        document.getElementById('hero-hand-2').innerHTML = '';
-        document.getElementById('hero-feet').innerHTML = '';
-
-        // 히어로 스프라이트에 장착된 아이템 렌더링
-        const headItem = items.find((i) => i.id === db.equipped['head']);
-        if (headItem) {
-            const el = document.getElementById('hero-head');
-            if (el) el.innerHTML = itemIconMarkup(headItem);
-        }
-        const hand1Item = items.find((i) => i.id === db.equipped['hand-1']);
-        if (hand1Item) {
-            const el = document.getElementById('hero-hand-1');
-            if (el) el.innerHTML = itemIconMarkup(hand1Item);
-        }
-        const hand2Item = items.find((i) => i.id === db.equipped['hand-2']);
-        if (hand2Item) {
-            const el = document.getElementById('hero-hand-2');
-            if (el) el.innerHTML = itemIconMarkup(hand2Item);
-        }
-        const foot1Item = items.find((i) => i.id === db.equipped['foot-1']);
-        if (foot1Item) {
-            const el = document.getElementById('hero-feet');
-            if (el) el.innerHTML = itemIconMarkup(foot1Item);
-        }
-
         // 보관함의 아이템 렌더링
         db.inventory.forEach((itemId) => {
             const item = items.find((i) => i.id === itemId);
@@ -251,7 +223,7 @@ const inventory = {
         let description = `${itemData.desc}\n장착 위치: ${placement}`;
         if (itemData.durability) description += `\n남은 사용: ${db.durability[id] || 0}회`;
         if (type === 'weapon' && allowedSlots.includes('hand-1'))
-            description += '\n오른손: 3연속 정답마다 추가 공격 +10 G';
+            description += `\n오른손: 3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`;
         if (type === 'weapon' && itemData.multiplier > 1)
             description += '\n골드 보너스는 오른손에 장착했을 때 적용됩니다.';
         document.getElementById('detail-desc').innerText = description;

@@ -14,7 +14,6 @@ function createSkyfallSession({
 }) {
     const BASE_TIME = 5;
     const TIME_PER_WORD = 3;
-    const REWARD = 6;
     const MAX_LIVES = 5;
     let active = false;
     let items = [];
@@ -110,8 +109,9 @@ function createSkyfallSession({
         if (!(clockChecked ? active : canContinue()) || !items.includes(item)) return;
         if (correct) {
             score += 1;
-            earned += REWARD;
-            db.addGold(REWARD);
+            const reward = rules.assaultReward();
+            earned += reward;
+            db.addGold(reward);
             view.attack(item.id);
         } else {
             lives -= 1;

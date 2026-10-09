@@ -8,13 +8,13 @@ const word = { day: 1, word: 'apple', meaning: '사과', monsterId: 'goblin' };
 test('복수 성공과 24시간 뒤 회상 성공의 보상은 재실패·재로딩 뒤에도 한 번씩만 지급한다', () => {
     let entry = rules.failed(null, word);
     let result = rules.succeeded(entry, 1000);
-    assert.equal(result.bonus, 50);
+    assert.equal(result.bonus, 4);
     entry = result.entry;
     assert.equal(rules.ready(entry, entry.dueAt - 1), false);
     assert.equal(rules.succeeded(entry, entry.dueAt - 1).bonus, 0);
     assert.equal(rules.ready(entry, entry.dueAt), true);
     result = rules.succeeded(entry, entry.dueAt);
-    assert.equal(result.bonus, 100);
+    assert.equal(result.bonus, 8);
     assert.equal(result.entry.phase, 'complete');
     assert.equal(rules.succeeded(result.entry, 999999999).bonus, 0);
     entry = rules.failed(result.entry, word);
@@ -83,7 +83,7 @@ test('틀린 단어 하나도 복수 전투로 실행하고 원래 몬스터·�
     }
     game.checkBossAnswer();
     game.checkBossAnswer();
-    assert.equal(r.evaluate('db.gold'), 80);
+    assert.equal(r.evaluate('db.gold'), 16);
     assert.equal(r.evaluate('db.getBookStats().solved'), 1);
     assert.equal(quests.ready().length, 0);
     const persisted = JSON.parse(r.store.get('v7_revenge_quests'));

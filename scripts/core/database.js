@@ -425,12 +425,13 @@ const db = {
                     if (db.equipped[slot] === id) delete db.equipped[slot];
                 }
                 showToast(
-                    `[${id === 'goldGlove' ? '황금 장갑' : '아이템'}]이 파괴되었습니다!`,
+                    `[${id === 'goldGlove' ? '미다스의 건틀릿' : '아이템'}]이 소모되었습니다!`,
                     'warn'
                 );
             }
             db.save('dura', 'owned', 'inventory', 'equipped');
             ui.updateSkills(); // 황금장갑이 skill bar에 표시되므로
+            ui.updateVisuals();
         }
     },
 };

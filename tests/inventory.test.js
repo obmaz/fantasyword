@@ -15,7 +15,7 @@ function equipmentRuntime(saved = {}) {
 test('황금장갑 구매·장착·해제는 전용 슬롯과 보관함에 한 번만 저장된다', () => {
     const r = equipmentRuntime({ v7_gold: '2000' });
     r.evaluate('shop.buy("goldGlove", "item"); inventory.equip("goldGlove", "item")');
-    assert.equal(r.evaluate('db.gold'), 1000);
+    assert.equal(r.evaluate('db.gold'), 1940);
     assert.equal(r.evaluate('db.equipped.gloves'), 'goldGlove');
     assert.equal(r.evaluate('db.durability.goldGlove'), 30);
     assert.equal(r.evaluate('db.inventory.includes("goldGlove")'), false);

@@ -1,6 +1,8 @@
 /** 오답 재도전 → 하루 뒤 회상. 단어장과 UI에 의존하지 않는 저장 규칙. */
 const revengeRules = Object.freeze({
     recallDelay: 24 * 60 * 60 * 1000,
+    revengeBonus: 4,
+    recallBonus: 8,
     key: (q) => JSON.stringify([q.word.trim().toLowerCase(), q.meaning.trim()]),
     normalize(value) {
         const clean = {};
@@ -57,11 +59,11 @@ const revengeRules = Object.freeze({
                     dueAt: now + revengeRules.recallDelay,
                     revengeRewarded: true,
                 },
-                bonus: entry.revengeRewarded ? 0 : 50,
+                bonus: entry.revengeRewarded ? 0 : revengeRules.revengeBonus,
             };
         return {
             entry: { ...entry, phase: 'complete', recallRewarded: true },
-            bonus: entry.recallRewarded ? 0 : 100,
+            bonus: entry.recallRewarded ? 0 : revengeRules.recallBonus,
         };
     },
     entries(records, source) {

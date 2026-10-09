@@ -72,10 +72,10 @@ const revengeQuests = (() => {
                 q.phase === 'complete'
                     ? '기억 확인 완료'
                     : q.phase === 'revenge'
-                      ? `재도전 · ${q.revengeRewarded ? '보상 수령 완료' : '첫 성공 +50 G'}`
+                      ? `재도전 · ${q.revengeRewarded ? '보상 수령 완료' : `첫 성공 +${revengeRules.revengeBonus} G`}`
                       : wait
                         ? `다음 회상까지 ${Math.floor(wait / 60)}시간 ${wait % 60}분`
-                        : `오늘의 회상 · ${q.recallRewarded ? '보상 수령 완료' : '첫 성공 +100 G'}`;
+                        : `오늘의 회상 · ${q.recallRewarded ? '보상 수령 완료' : `첫 성공 +${revengeRules.recallBonus} G`}`;
             details.append(title, status);
             card.append(image, details);
             list.appendChild(card);

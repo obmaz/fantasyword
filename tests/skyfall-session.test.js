@@ -27,7 +27,11 @@ function runtime({
         db: { addGold: (value) => (gold += value) },
         getSource: () => source,
         questions: { getDistractors: () => ['다른 보기'], shuffle },
-        rules: { buildPool: (_day, source) => source },
+        rules: {
+            buildPool: (_day, source) => source,
+            assaultReward: loadScripts(['scripts/domain/battle-rules.js']).evaluate('battleRules')
+                .assaultReward,
+        },
         view: {
             hud(value) {
                 hud = value;
@@ -201,7 +205,7 @@ test('Day의 모든 단어는 한 번씩 출제하고 중복 정답 입력은 �
         choice.choose(choice.item.answer);
         choice.choose(choice.item.answer);
     }
-    assert.equal(r.gold, 12);
+    assert.equal(r.gold, 8);
     assert.equal(r.results[0].won, true);
     assert.equal(r.results[0].score, 2);
     assert.equal(r.session.active, false);
