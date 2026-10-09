@@ -13,6 +13,18 @@
     --menu-ink: #243626;
 }
 
+/* 녹색 선택창의 항목 제목은 밝게, 양피지 입력칸의 값은 기존 어두운 잉크로 표시한다. */
+.card.mode-selection .mode-selection-body > label,
+.card.mode-selection .mode-question-types legend {
+    color: #fff2d8;
+    font-weight: 800;
+    text-shadow: none;
+}
+#practice-mode-game .practice-explanation-hint {
+    color: #e9e3bf;
+    opacity: 1;
+}
+
 /* 로비 모드 이름은 이미지에 넣지 않고 게임·선택창과 같은 문구를 쓴다. */
 .title-menu-art #title-practice-btn {
     display: flex;
