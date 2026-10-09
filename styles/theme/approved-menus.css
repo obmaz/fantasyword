@@ -2957,3 +2957,37 @@ button.equipment-control {
         0 2px 0 #163b2d,
         0 0 0 2px #7cae72;
 }
+
+/* 설정의 두 토글과 골드 편집 영역은 같은 행 높이와 간격을 사용한다. */
+:is(#gold-adjuster-modal, #setting-modal) .modal-body {
+    gap: 14px;
+}
+:is(#gold-adjuster-modal, #setting-modal) .setting-option-row {
+    min-height: 60px;
+    margin: 0;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+:is(#gold-adjuster-modal, #setting-modal) .setting-checkbox-label {
+    align-items: center;
+    min-height: 34px;
+    line-height: 1.25;
+}
+:is(#gold-adjuster-modal, #setting-modal) .setting-icon {
+    width: 32px;
+    height: 32px;
+}
+:is(#gold-adjuster-modal, #setting-modal) .settings-gold-editor {
+    margin: 0;
+    padding: 14px 16px;
+}
+:is(#gold-adjuster-modal, #setting-modal) .settings-gold-editor h3 {
+    margin-bottom: 14px;
+}
+:is(#gold-adjuster-modal, #setting-modal) .settings-gold-apply {
+    margin-top: 14px;
+}
+:is(#gold-adjuster-modal, #setting-modal) .settings-actions {
+    gap: 12px;
+    margin-top: 0;
+}
