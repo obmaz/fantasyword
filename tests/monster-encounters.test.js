@@ -21,11 +21,15 @@ test('철자 조립의 방해 글자는 답에 없는 글자이며 흔한 글자
     for (const word of ['machine', 'turn a silver stone']) {
         const tiles = encounters.spellingTiles(word, (values) => [...values]);
         const letters = [...word].filter((letter) => /[a-z]/i.test(letter));
-        const extras = tiles.slice(letters.length);
+        const extras = tiles.filter((letter) => !word.includes(letter));
         assert.equal(extras.length, 3);
         assert.equal(new Set(extras).size, 3);
         assert.ok(extras.every((letter) => !word.includes(letter)));
-        assert.deepEqual([...tiles.slice(0, letters.length)], letters);
+        assert.deepEqual(
+            [...tiles.filter((letter) => word.includes(letter))].sort(),
+            [...letters].sort()
+        );
+        assert.deepEqual([...tiles], [...tiles].sort());
     }
 });
 

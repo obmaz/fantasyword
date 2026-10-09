@@ -60,7 +60,9 @@ const monsterEncounters = Object.freeze({
             (letter) => !used.has(letter) && !common.includes(letter)
         );
         const extras = [...shuffle(unusedCommon), ...shuffle(uncommon)].slice(0, 3);
-        return shuffle([...letters, ...extras]);
+        return [...letters, ...extras].sort((a, b) =>
+            a.toLowerCase().localeCompare(b.toLowerCase(), 'en')
+        );
     },
     spellingAnswer(word, tiles, chosen) {
         let index = 0;
