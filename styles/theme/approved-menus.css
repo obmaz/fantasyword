@@ -101,11 +101,103 @@
     background-size: cover;
 }
 
+/* 풀이·단어·뜻을 먼저 확보하고, 남는 높이만 배경에 사용한다. */
+#practice-mode-game .practice-memorization-arena {
+    flex: 0 999 clamp(44px, 18cqh, 180px);
+    min-height: 44px;
+}
+#practice-mode-game .practice-memorization-content {
+    flex: 1 1 auto;
+    margin-top: 0;
+    padding-block: 8px;
+    gap: 8px;
+}
+#practice-mode-game
+    :is(.practice-word-section, .practice-meaning-section, .practice-explanation-section) {
+    min-height: 0;
+    padding: 8px 12px;
+}
+#practice-mode-game .practice-meaning-text {
+    margin-top: 0;
+}
+#practice-mode-game .practice-explanation-text {
+    line-height: 1.4;
+}
+
 /* 연습 화면은 앱 프레임 안에서만 스크롤하고, 페이지 배경은 고정한다. */
 #practice-mode-game,
 #practice-mode-game .practice-memorization-container {
     overflow: hidden;
     overscroll-behavior: contain;
+}
+
+@media (max-height: 650px) {
+    #practice-mode-game .practice-memorization-content {
+        gap: 4px;
+        padding: 4px 10px;
+    }
+    #practice-mode-game
+        :is(.practice-word-section, .practice-meaning-section, .practice-explanation-section) {
+        border-width: 6px !important;
+        border-image-width: 6px !important;
+        padding: 4px 8px;
+    }
+    #practice-mode-game .practice-word-text {
+        font-size: 24px;
+        line-height: 1.15;
+    }
+    #practice-mode-game .practice-word-section::after {
+        display: none;
+    }
+    #practice-mode-game .practice-meaning-text {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    #practice-mode-game .practice-explanation-text {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+    #practice-mode-game .gameplay-card-label {
+        font-size: 11px;
+        margin-bottom: 2px;
+    }
+    #practice-mode-game .practice-explanation-hint {
+        margin-top: 2px;
+        font-size: 10px;
+    }
+    #practice-mode-game .practice-memorized-row {
+        padding: 4px 10px;
+    }
+    #practice-mode-game .practice-memorization-navigation {
+        padding: 0 10px max(4px, env(safe-area-inset-bottom));
+    }
+    #practice-mode-game .practice-nav-btn {
+        height: 44px;
+        min-height: 44px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    #practice-mode-game :is(#practice-prev-btn, #practice-next-btn)::before {
+        display: none;
+    }
+}
+@media (max-height: 420px) {
+    #practice-mode-game .practice-memorization-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: max-content max-content;
+        align-content: start;
+    }
+    #practice-mode-game .practice-explanation-section {
+        grid-column: 1 / -1;
+    }
+    #practice-mode-game .practice-meaning-section {
+        display: grid;
+        align-items: center;
+    }
+    #practice-mode-game .practice-memorization-header {
+        top: 0;
+    }
 }
 #practice-mode-game .practice-memorization-content {
     overflow-y: auto;
