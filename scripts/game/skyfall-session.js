@@ -11,6 +11,7 @@ function createSkyfallSession({
     cancelFrame,
     now,
     notify,
+    random = Math.random,
 }) {
     const BASE_TIME = 5;
     const TIME_PER_WORD = 3;
@@ -38,12 +39,17 @@ function createSkyfallSession({
     let pausedTotal = 0;
     let itemUsed = false;
     let sessionOptions = null;
+    const ELITE_CHANCE = 0.18;
+    const ELITE_SPEED = 1.45;
+    const ELITE_GOLD_BONUS = 8;
+    const ELITE_REWARDS = ['hint', 'hourglass', 'shield', 'backpack'];
 
     const rates = (seconds, item = null) => ({
         interval: Math.max(0.8, 2.4 - seconds * 0.032) * (modifier === 'rush' ? 0.7 : 1),
         speed:
             Math.min(0.28, 0.105 + seconds * 0.0028) *
-            (modifier === 'swift' && item?.swift ? 1.7 : 1),
+            (modifier === 'swift' && item?.swift ? 1.7 : 1) *
+            (item?.elite ? ELITE_SPEED : 1),
     });
     const limit = () => BASE_TIME + pool.length * TIME_PER_WORD;
     const elapsedNow = () => {
@@ -109,9 +115,22 @@ function createSkyfallSession({
         if (!(clockChecked ? active : canContinue()) || !items.includes(item)) return;
         if (correct) {
             score += 1;
-            const reward = rules.assaultReward();
+            const reward = rules.assaultReward() + (item.elite ? ELITE_GOLD_BONUS : 0);
             earned += reward;
             db.addGold(reward);
+            if (item.elite) {
+                const rewardId = ELITE_REWARDS[Math.floor(random() * ELITE_REWARDS.length)];
+                const canStore =
+                    Array.isArray(db.inventory) &&
+                    db.inventory.length < Number(db.inventoryCapacity || 3) &&
+                    !db.owned?.includes(rewardId);
+                if (canStore) {
+                    db.owned.push(rewardId);
+                    db.inventory.push(rewardId);
+                    db.save?.('owned', 'inventory');
+                    notify(`엘리트 악당 보상: ${rewardId} 획득!`);
+                } else notify('엘리트 악당 보상: 보관함이 가득 차 골드로 지급되었습니다.');
+            }
             view.attack(item.id);
         } else {
             lives -= 1;
@@ -153,6 +172,7 @@ function createSkyfallSession({
             x,
             y: 0.07,
             swift: modifier === 'swift' && nextWordIndex % 3 === 0,
+            elite: random() < ELITE_CHANCE,
         };
         items.push(item);
         view.addWord(item, () => select(item));

@@ -58,6 +58,10 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
             const element = document.createElement('button');
             element.type = 'button';
             element.className = 'skyfall-word';
+            if (item.elite) {
+                element.classList.add('skyfall-elite');
+                element.setAttribute('aria-label', `엘리트 악당 ${item.prompt}`);
+            }
             element.textContent = item.prompt;
             element.style.left = item.x + '%';
             element.style.top = item.y * 100 + '%';

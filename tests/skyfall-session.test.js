@@ -8,6 +8,7 @@ const createSession = loadScripts(['scripts/game/skyfall-session.js']).evaluate(
 function runtime({
     shuffle = (values) => values,
     nowStep = 0,
+    random = () => 0.9,
     source = [
         { word: 'apple', meaning: '사과' },
         { word: 'banana', meaning: '바나나' },
@@ -74,6 +75,7 @@ function runtime({
         playMusic() {},
         pauseMusic() {},
         notify() {},
+        random,
         requestFrame(callback) {
             const id = ++serial;
             frames.set(id, callback);
@@ -115,6 +117,26 @@ function runtime({
         },
     };
 }
+
+test('엘리트 단어 악당은 붉은 빠른 단어로 표시되고 추가 골드와 무작위 아이템을 준다', () => {
+    const source = [
+        { word: 'elite', meaning: '정예' },
+        { word: 'plain', meaning: '일반' },
+    ];
+    let calls = 0;
+    const r = runtime({
+        source,
+        random: () => (calls++ === 0 ? 0.1 : 0),
+    });
+    // 테스트 런타임의 기본 저장소 대신 보상 보관함을 제공한다.
+    r.session.start(1);
+    const elite = r.words.values().next().value.item;
+    assert.equal(elite.elite, true);
+    assert.ok(r.session.rates(0, elite).speed > r.session.rates(0).speed);
+    r.answer(true);
+    assert.equal(r.gold, 12);
+    assert.equal(r.results.length, 0);
+});
 
 test('스토리 총공세는 8문제로 줄이고 승리·복귀 콜백을 한 번씩 실행한다', () => {
     const source = Array.from({ length: 12 }, (_, index) => ({

@@ -121,16 +121,6 @@
     box-shadow: 0 -2px 0 #71352f;
     pointer-events: none;
 }
-.skyfall-danger-line span {
-    position: absolute;
-    right: 0;
-    top: 5px;
-    padding: 2px 6px;
-    background: #4b2928e6;
-    color: #fff4dc;
-    font-size: 10px;
-    font-weight: 800;
-}
 .skyfall-hero {
     position: absolute;
     z-index: 1;
@@ -176,6 +166,22 @@
     box-shadow:
         0 0 0 3px #78eddd,
         0 0 18px #fbeabb;
+}
+.skyfall-word.skyfall-elite {
+    border-color: #ff695c;
+    color: #fff5e8;
+    background: linear-gradient(160deg, #b52f38, #681d2c);
+    box-shadow:
+        0 3px 0 #421522,
+        0 0 0 2px #ffb06b,
+        0 0 20px #e6354c99;
+}
+.skyfall-word.skyfall-elite::before {
+    content: 'ELITE';
+    display: block;
+    color: #ffd37a;
+    font-size: 9px;
+    letter-spacing: 0.12em;
 }
 .skyfall-hit {
     position: absolute;
