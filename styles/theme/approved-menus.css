@@ -199,8 +199,18 @@
     max-width: 440px;
     aspect-ratio: 2 / 3;
     margin: 12px auto;
-    background: url('../../images/theme/story-map.webp') center / 100% 100% no-repeat;
+    isolation: isolate;
+    background: #19372d;
     box-shadow: 0 8px 20px #07140b88;
+}
+.story-map-path::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url('../../images/theme/story-map.webp') center / 100% 100% no-repeat;
+    filter: saturate(0.35) brightness(0.62);
+    pointer-events: none;
 }
 .story-map-row {
     display: contents;
@@ -212,13 +222,19 @@
     aspect-ratio: 1;
     padding: 0;
     transform: translate(-50%, -50%);
-    background: #18291d22;
+    background: #17382f;
     border: 3px solid #f9de8b;
     border-radius: 50%;
-    box-shadow:
-        0 0 0 2px #26331c,
-        0 0 12px #ffe59d;
+    box-shadow: 0 0 0 2px #26331c;
     cursor: pointer;
+}
+.story-map-node::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    background: var(--map-node-icon, url('../../images/theme/parts/ui-swords.webp')) center /
+        contain no-repeat;
+    pointer-events: none;
 }
 .story-map-row[data-stage='0'] .story-map-node[data-index='0'] {
     left: 50%;
@@ -279,9 +295,11 @@
 }
 .story-map-node-market {
     border-color: #cfadf4;
+    --map-node-icon: url('../../images/theme/parts/ui-chest.webp');
 }
 .story-map-node-boss {
     border-color: #ffaf80;
+    --map-node-icon: url('../../images/theme/parts/monster-dragon.webp');
 }
 .story-map-row[data-state='current'] .story-map-node-label {
     display: block;
@@ -290,8 +308,7 @@
     z-index: 2;
     box-shadow:
         0 0 0 3px #213523,
-        0 0 0 6px #f6df74ab,
-        0 0 18px #ffdc63;
+        0 0 0 5px #f6df7499;
 }
 .story-map-node:disabled {
     opacity: 0.58;
@@ -1583,8 +1600,7 @@ button img:not([class]) {
     margin-top: auto;
     grid-auto-rows: minmax(72px, auto);
 }
-#battle-mode-game[data-question-kind='listening'] .listening-panel,
-#battle-mode-game[data-question-kind='listening'] .options-grid {
+#battle-mode-game[data-question-kind='listening'] .listening-panel {
     margin-top: 0;
 }
 #battle-mode-game[data-question-kind='listening'] .quiz-area {

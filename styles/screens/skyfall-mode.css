@@ -51,11 +51,11 @@
 .skyfall-hud {
     z-index: 1;
     display: grid;
-    grid-template-columns: 34px 0.8fr 1fr 1.35fr 0.8fr;
+    grid-template-columns: 44px 0.8fr 1fr 1.35fr 0.8fr;
     align-items: center;
     gap: 3px;
     min-height: 68px;
-    padding: 4px 62px 4px 6px;
+    padding: 4px 62px 4px 10px;
     background: linear-gradient(#172f35, #244b45);
     border-bottom: 2px solid #d3ae69;
     box-shadow: 0 2px 8px #081b20a8;
@@ -85,8 +85,8 @@
     letter-spacing: -0.08em;
 }
 #skyfall-exit-btn {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -94,7 +94,7 @@
     background: var(--ui-small-control) center / 100% 100% no-repeat;
     filter: hue-rotate(240deg) saturate(1.6);
     font:
-        700 22px system-ui,
+        800 12px/1.2 system-ui,
         sans-serif;
 }
 .skyfall-field {
