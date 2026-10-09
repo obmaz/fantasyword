@@ -1025,6 +1025,47 @@
         </dialog>
 
         <dialog
+            id="story-mystery-modal"
+            class="screen-overlay"
+            aria-labelledby="story-mystery-title"
+            style="display: none"
+        >
+            <section class="card story-map-card">
+                <header class="story-map-header">
+                    <h2 id="story-mystery-title">알 수 없는 지점</h2>
+                    <button
+                        type="button"
+                        class="btn-gray"
+                        data-action="story-mystery-close"
+                        aria-label="닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </header>
+                <div class="story-popup-body">
+                    <p id="story-mystery-status" role="status"></p>
+                    <div class="story-market-actions">
+                        <button
+                            id="story-mystery-reveal"
+                            type="button"
+                            class="image-action-button"
+                            data-action="story-mystery-reveal"
+                        >
+                            100 G로 확인
+                        </button>
+                        <button
+                            type="button"
+                            class="image-action-button"
+                            data-action="story-mystery-enter"
+                        >
+                            그대로 들어가기
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </dialog>
+
+        <dialog
             id="story-treasure-modal"
             class="screen-overlay"
             aria-labelledby="story-treasure-title"

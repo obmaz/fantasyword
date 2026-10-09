@@ -5,6 +5,8 @@ const storyJourney = {
     pendingIndex: null,
     pendingBook: null,
     pendingKind: null,
+    mysterySelection: null,
+    mysteryRevealCost: 100,
     cancelBattleReturn() {
         storyJourney.returnAfterResult = false;
         storyJourney.pendingStage = null;
@@ -55,7 +57,8 @@ const storyJourney = {
                 const saved = events[`${stage}:${index}`]?.kind;
                 const resolved =
                     kind === 'mystery' &&
-                    ['battle', 'market', 'treasure', 'assault'].includes(saved)
+                    ['battle', 'market', 'treasure', 'assault'].includes(saved) &&
+                    events[`${stage}:${index}`]?.revealed !== false
                         ? saved
                         : kind;
                 return { kind: resolved, ...storyMapRules.encounters[resolved] };
@@ -167,12 +170,71 @@ const storyJourney = {
     },
     select(row, index) {
         if (!storyJourney.canSelect(row, index)) return;
+        if (storyJourney.nodes()[row]?.[index]?.kind === 'mystery') {
+            storyJourney.mysterySelection = { row, index, book: db.getBookKey() };
+            document.getElementById('story-mystery-status').textContent =
+                `정체를 미리 확인하려면 ${storyJourney.mysteryRevealCost} G가 필요합니다. 보유 골드 ${db.gold} G`;
+            document.getElementById('story-mystery-reveal').disabled = false;
+            resetScreenOverlay('story-map-modal');
+            openScreenOverlay('story-mystery-modal', false);
+            return;
+        }
+        storyJourney.enter(row, index);
+    },
+    mysteryIsCurrent() {
+        const selected = storyJourney.mysterySelection;
+        return (
+            selected &&
+            selected.book === db.getBookKey() &&
+            storyMapRules.rows[selected.row]?.[selected.index] === 'mystery' &&
+            storyJourney.canSelect(selected.row, selected.index)
+        );
+    },
+    mysteryKind(row, index) {
+        const kind = storyJourney.events[`${row}:${index}`]?.kind;
+        return ['battle', 'market', 'treasure', 'assault'].includes(kind)
+            ? kind
+            : storyMapRules.resolveMystery(storyJourney.random());
+    },
+    revealMystery() {
+        if (!storyJourney.mysteryIsCurrent()) return;
+        const { row, index } = storyJourney.mysterySelection;
+        const events = storyJourney.events;
+        const key = `${row}:${index}`;
+        if (events[key]?.revealed === true) return;
+        if (db.gold < storyJourney.mysteryRevealCost) {
+            document.getElementById('story-mystery-status').textContent =
+                `골드가 부족합니다. 확인 비용 ${storyJourney.mysteryRevealCost} G · 보유 골드 ${db.gold} G`;
+            return;
+        }
+        const kind = storyJourney.mysteryKind(row, index);
+        events[key] = { ...events[key], kind, revealed: true };
+        if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
+        db.subGold(storyJourney.mysteryRevealCost);
+        document.getElementById('story-mystery-status').textContent =
+            `${storyMapRules.encounters[kind].label} 지점입니다. 남은 골드 ${db.gold} G`;
+        document.getElementById('story-mystery-reveal').disabled = true;
+    },
+    leaveMystery() {
+        storyJourney.mysterySelection = null;
+        resetScreenOverlay('story-mystery-modal');
+        storyJourney.open();
+    },
+    enterMystery() {
+        if (!storyJourney.mysteryIsCurrent()) return;
+        const { row, index } = storyJourney.mysterySelection;
+        storyJourney.mysterySelection = null;
+        resetScreenOverlay('story-mystery-modal');
+        storyJourney.enter(row, index);
+    },
+    enter(row, index) {
+        if (!storyJourney.canSelect(row, index)) return;
         let node = storyJourney.nodes()[row]?.[index];
         if (!node) return;
         if (node.kind === 'mystery') {
             const events = storyJourney.events;
-            const kind = storyMapRules.resolveMystery(storyJourney.random());
-            events[`${row}:${index}`] = { kind };
+            const kind = storyJourney.mysteryKind(row, index);
+            events[`${row}:${index}`] = { kind, revealed: false };
             if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
             node = { kind, ...storyMapRules.encounters[kind] };
         }

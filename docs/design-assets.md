@@ -22,21 +22,22 @@
 
 ## 런타임 부품
 
-| 위치/파일 패턴                                                        | 실제 사용                                                                       |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `images/theme/quest-lobby-{forest,sunset,moonlight}.webp`             | 랜덤 로비 배경; 차분한 숲·남자아이                                              |
-| `images/theme/guild-titles.webp`                                      | 6가지 생성 로고의 2×3 atlas                                                     |
-| `images/theme/parts/menu-*.webp`                                      | 연습/도전/상점/장비/통계/설정 버튼과 스토리·1일 전투의 독립 생성 아이콘         |
-| `images/theme/parts/game-*.webp`                                      | 현행 실행·위험·마을·답안·상단 컨트롤, 음악 ON/OFF                               |
-| `images/theme/parts/approved-*.webp`                                  | 내부 메뉴 프레임·양피지·입력·슬롯·코인·집·남자아이 등                           |
-| `images/theme/parts/calm-*.webp`                                      | 보조 바탕과 적용/출력/초기화/공격 아이콘                                        |
-| `images/theme/parts/ui-*.webp`, `item-*.webp`                         | 메뉴·상점·장비·스킬별 투명 아이콘                                               |
-| `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                       |
-| `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                       |
-| `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                            |
-| `images/theme/story-map.webp`                                         | 이전 생성 지도 원본; 현행 지도는 approved-paper 양피지 위에 실제 경로·지점 표시 |
-| `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                     |
-| `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음      |
+| 위치/파일 패턴                                                        | 실제 사용                                                                        |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `images/theme/quest-lobby-{forest,sunset,moonlight}.webp`             | 랜덤 로비 배경; 차분한 숲·남자아이                                               |
+| `images/theme/guild-titles.webp`                                      | 6가지 생성 로고의 2×3 atlas                                                      |
+| `images/theme/parts/menu-*.webp`                                      | 연습/도전/상점/장비/통계/설정 버튼과 스토리·1일 전투의 독립 생성 아이콘          |
+| `images/theme/parts/game-*.webp`                                      | 현행 실행·위험·마을·답안·상단 컨트롤, 음악 ON/OFF                                |
+| `images/theme/parts/approved-*.webp`                                  | 내부 메뉴 프레임·양피지·입력·슬롯·코인·집·남자아이 등                            |
+| `images/theme/parts/calm-*.webp`                                      | 보조 바탕과 적용/출력/초기화/공격 아이콘                                         |
+| `images/theme/parts/ui-*.webp`, `item-*.webp`                         | 메뉴·상점·장비·스킬별 투명 아이콘                                                |
+| `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                        |
+| `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                        |
+| `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                             |
+| `images/theme/story-map.webp`                                         | 이전 생성 지도 원본; 아이콘·길이 포함된 참조 이미지                              |
+| `images/theme/story-map-background.webp`                              | 길·아이콘을 제거하고 중심을 밝게 비운 생성 배경 지도; 실제 선택 지점을 위에 표시 |
+| `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                      |
+| `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음       |
 
 `game-*`가 최종 버튼 재질을 제공하고 기존 `surface-*`는 공통 이미지 컴포넌트의 기본 재질이다.
 발음은 브라우저 영어 TTS를 우선 사용하고 실패 시 원격 TTS로 전환한다. 단어별 발음 파일은 배포하지 않는다.

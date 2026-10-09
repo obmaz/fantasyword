@@ -74,7 +74,7 @@ test('암시장 구매 실패는 골드만 차감하고 재구매할 수 있으�
     assert.equal(r.evaluate("db.has('shadowCompass')"), true);
 });
 
-test('물음표는 전투·암시장·보물·총공세로 열리며 다시 열어도 같은 결과다', () => {
+test('물음표는 미리 보여주지 않고 입장 후 전투·암시장·보물·총공세 결과를 고정한다', () => {
     for (const [random, kind] of [
         [0, 'battle'],
         [0.3, 'market'],
@@ -88,12 +88,18 @@ test('물음표는 전투·암시장·보물·총공세로 열리며 다시 열�
         );
         journey.random = () => random;
         journey.select(0, 1);
-        assert.equal(journey.nodes()[0][1].kind, kind);
+        assert.equal(journey.pendingKind, null);
+        assert.equal(journey.nodes()[0][1].kind, 'mystery');
+        journey.enterMystery();
+        assert.equal(journey.nodes()[0][1].kind, 'mystery');
+        assert.equal(journey.events['0:1'].kind, kind);
         assert.equal(journey.pendingKind, kind);
         journey.cancelBattleReturn();
         journey.random = () => 1 - random;
         journey.select(0, 1);
-        assert.equal(journey.nodes()[0][1].kind, kind);
+        journey.enterMystery();
+        assert.equal(journey.events['0:1'].kind, kind);
+        assert.equal(journey.pendingKind, kind);
         if (kind === 'assault') assert.equal(r.evaluate('window.assaultOptions.count'), 8);
     }
 });
@@ -103,15 +109,62 @@ test('보물 상자는 한 번만 골드를 주고 다음 단계로 진행하며
     const journey = r.evaluate('storyJourney');
     journey.random = () => 0.6;
     journey.select(0, 1);
+    journey.enterMystery();
     journey.leaveTreasure();
     assert.equal(r.evaluate('db.gold'), 0);
     assert.equal(journey.stage, 0);
     journey.select(0, 1);
+    journey.enterMystery();
     journey.claimTreasure();
     assert.equal(r.evaluate('db.gold'), 50);
     assert.equal(journey.stage, 1);
     journey.claimTreasure();
     assert.equal(r.evaluate('db.gold'), 50);
+});
+
+test('물음표 확인은 100골드를 한 번만 차감하고 저장·닫기·재입장 후에도 공개를 유지한다', () => {
+    const r = browserRuntime({ v7_gold: '250' });
+    const journey = r.evaluate('storyJourney');
+    journey.random = () => 0.3;
+    journey.select(0, 1);
+    assert.equal(r.evaluate('db.gold'), 250);
+    assert.deepEqual(Object.keys(journey.events), []);
+    journey.revealMystery();
+    assert.equal(r.evaluate('db.gold'), 150);
+    assert.equal(journey.nodes()[0][1].kind, 'market');
+    assert.equal(journey.stage, 0);
+    journey.revealMystery();
+    assert.equal(r.evaluate('db.gold'), 150);
+    journey.leaveMystery();
+    journey.random = () => 0.9;
+    journey.select(0, 1);
+    assert.equal(journey.pendingKind, 'market');
+    assert.equal(r.evaluate('db.gold'), 150);
+    assert.equal(journey.events['0:1'].revealed, true);
+});
+
+test('골드 부족·닫기·단어장 변경·연결되지 않은 지점은 물음표 정보나 골드를 바꾸지 않는다', () => {
+    const r = browserRuntime({ v7_gold: '99' });
+    const journey = r.evaluate('storyJourney');
+    journey.select(0, 1);
+    journey.revealMystery();
+    assert.equal(r.evaluate('db.gold'), 99);
+    assert.equal(journey.nodes()[0][1].kind, 'mystery');
+    assert.deepEqual(Object.keys(journey.events), []);
+    journey.leaveMystery();
+    journey.revealMystery();
+    assert.equal(r.evaluate('db.gold'), 99);
+    journey.select(0, 1);
+    journey.mysterySelection.book = 'other-book';
+    r.evaluate('db.addGold(101)');
+    journey.revealMystery();
+    assert.equal(r.evaluate('db.gold'), 200);
+    journey.mysterySelection.book = r.evaluate('db.getBookKey()');
+    journey.stage = 1;
+    journey.revealMystery();
+    journey.enterMystery();
+    assert.equal(r.evaluate('db.gold'), 200);
+    assert.equal(journey.pendingKind, null);
 });
 
 test('총공세 승리만 스토리를 진행하고 패배·중도 종료는 같은 지점으로 돌아간다', () => {
@@ -121,6 +174,7 @@ test('총공세 승리만 스토리를 진행하고 패배·중도 종료는 같
         r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
         journey.random = () => 0.9;
         journey.select(0, 1);
+        journey.enterMystery();
         r.evaluate(`window.storyAssault.onFinish(${won})`);
         assert.equal(journey.stage, won ? 1 : 0);
         r.evaluate('window.storyAssault.onExit()');
@@ -135,9 +189,11 @@ test('지난 총공세 완료 콜백은 다음 지점의 진행과 선택을 바
     r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
     journey.random = () => 0.9;
     journey.select(0, 1);
+    journey.enterMystery();
     r.evaluate('window.oldStoryAssault = window.storyAssault; window.storyAssault.onFinish(true)');
     journey.random = () => 0.3;
     journey.select(1, journey.connections(0, 1)[0]);
+    journey.enterMystery();
     r.evaluate('window.oldStoryAssault.onFinish(true); window.oldStoryAssault.onExit();');
     assert.equal(journey.stage, 1);
     assert.equal(journey.pendingKind, 'market');

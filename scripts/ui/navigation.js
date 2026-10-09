@@ -41,6 +41,10 @@ const navigation = (() => {
             storyJourney.leaveMarket();
             return;
         }
+        if (visible('story-mystery-modal')) {
+            storyJourney.leaveMystery();
+            return;
+        }
         if (visible('story-treasure-modal')) {
             storyJourney.leaveTreasure();
             return;

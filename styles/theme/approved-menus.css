@@ -323,7 +323,9 @@ dialog.screen-overlay .card.story-map-card {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: url('../../images/theme/parts/approved-paper.webp') center / 100% 100% no-repeat;
+    background:
+        linear-gradient(#fff6db22, #fff6db22),
+        url('../../images/theme/story-map-background.webp') center / cover no-repeat;
     pointer-events: none;
 }
 .story-map-row {
@@ -442,15 +444,16 @@ dialog.screen-overlay .card.story-map-card {
         0 0 0 3px #213523,
         0 0 0 5px #f6df7499;
 }
-.story-map-path .story-map-node:disabled {
-    opacity: 0.85;
-    cursor: default;
+.story-map-path .story-map-row .story-map-node:disabled {
+    opacity: 0.32;
+    filter: grayscale(0.8);
+    cursor: not-allowed;
+    pointer-events: none;
 }
 .story-map-row[data-state='passed'] .story-map-node {
     opacity: 0.6;
 }
 .story-map-row[data-state='passed'] .story-map-node[data-visited='true'] {
-    opacity: 1;
     border-color: #ffe69b;
     box-shadow: 0 0 0 3px #ffe69b88;
 }
