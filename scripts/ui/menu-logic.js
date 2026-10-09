@@ -25,7 +25,25 @@ function openBattleModeModal() {
     const group = document.getElementById('battle-mode-modal-question-type-group');
     const radio = group?.querySelector(`input[value="${type}"]`);
     if (radio) radio.checked = true;
+    const battleType =
+        gameStorage.get('v7_last_battle_type', 'battle') === 'boss' ? 'boss' : 'battle';
+    const battleRadio = document.querySelector(
+        `#battle-mode-modal-battle-type-group input[value="${battleType}"]`
+    );
+    if (battleRadio) battleRadio.checked = true;
+    syncBattleTypeSelection();
     openScreenOverlay('battle-mode-modal', false);
+}
+function syncBattleTypeSelection() {
+    const endurance =
+        document.querySelector('#battle-mode-modal-battle-type-group input:checked')?.value ===
+        'boss';
+    for (const id of ['battle-mode-modal-day-select', 'battle-mode-modal-count-select']) {
+        const select = document.getElementById(id);
+        if (select) select.disabled = endurance;
+    }
+    const description = document.getElementById('battle-endurance-description');
+    if (description) description.hidden = !endurance;
 }
 function openSkyfallModal() {
     restoreSelectedDay(document.getElementById('skyfall-mode-day-select'));

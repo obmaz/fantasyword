@@ -120,7 +120,7 @@ function createBattleSession({
             questionTools.getDistractors(correct, key, question, game._getRawData(), getDecoys),
         shuffle: (values) => questionTools.shuffle(values),
 
-        init(mode, day) {
+        init(mode, day, questionType = 'subjective') {
             if (game.active) return;
             game.stop();
             game.mode = mode;
@@ -152,7 +152,10 @@ function createBattleSession({
             game.sessionCorrectObjective = 0;
             game.sessionWrongWords = [];
             game.encounterHistory = [];
-            game.deck = mode === 'boss' ? game.shuffle(source) : [];
+            game.deck =
+                mode === 'boss'
+                    ? game._buildBattleList(source, source.length, questionType).reverse()
+                    : [];
             game.bossTotalWaves = game.deck.length;
             game.list =
                 mode === 'revenge'
@@ -209,21 +212,27 @@ function createBattleSession({
             }
             game.currentQ = game.mode === 'boss' ? game.deck.pop() : game.list[game.idx];
             game.rewardStartedAt = game.now();
-            if (game.mode === 'boss' && encounters) {
+            if (
+                game.mode === 'boss' &&
+                encounters &&
+                game.currentQ.isBoss &&
+                !game.currentQ.questionKind
+            ) {
                 game.currentQ = encounters.prepare(game.currentQ, 'dragon');
+            }
+            if (game.mode === 'boss') {
                 game.encounterHistory.push(game.currentQ);
             }
-            const subjective = game.mode === 'boss' || game.currentQ.isBoss;
+            const subjective = !!game.currentQ.isBoss;
             ui.updateGameInfo(game.mode, game.currentDay);
             game.beginQuestionView(subjective);
             game.currentAns = game.currentQ.word;
             game.options = [];
-            if (game.mode === 'boss') game.subjectiveTotal++;
+            if (game.mode === 'boss' && subjective) game.subjectiveTotal++;
             if (game.currentQ.questionKind) game.renderEncounter(game.currentQ);
             else if (subjective) game.renderBoss(game.currentQ, game.mode === 'boss');
             else game.renderNormal(game.currentQ);
-            if (game.mode === 'boss' || game.currentQ.isBoss)
-                game.view.timer(game.maxTime, game.maxTime, false);
+            if (game.currentQ.isBoss) game.view.timer(game.maxTime, game.maxTime, false);
             else if (game.currentQ.questionKind !== 'listening') game.startTimer();
             else game.view.timer(game.maxTime, game.maxTime, false);
             ui.updateSkills();
@@ -419,19 +428,13 @@ function createBattleSession({
             );
         },
         answerOption(index) {
-            if (!game.active || game.isProcessing || game.mode === 'boss' || game.currentQ?.isBoss)
-                return;
+            if (!game.active || game.isProcessing || game.currentQ?.isBoss) return;
             if (game.currentQ?.questionKind === 'listening' && !game.listeningReady) return;
             const option = game.options[index];
             if (option && !option.disabled) game.handleAnswer(option.correct, index);
         },
         checkBossAnswer() {
-            if (
-                !game.active ||
-                !game.currentQ ||
-                game.isProcessing ||
-                !(game.mode === 'boss' || game.currentQ.isBoss)
-            )
+            if (!game.active || !game.currentQ || game.isProcessing || !game.currentQ.isBoss)
                 return;
             const assembling = game.currentQ.questionKind === 'spelling';
             if (
@@ -461,7 +464,7 @@ function createBattleSession({
         },
         handleAnswer(isCorrect, selectedIndex) {
             if (!game.active || !game.currentQ || game.isProcessing) return;
-            const timed = game.mode !== 'boss' && !game.currentQ.isBoss;
+            const timed = !game.currentQ.isBoss;
             if (timed) {
                 game.timeLeft = game.remainingTime();
                 // 늦게 도착한 클릭도 마감 후라면 시간 초과로 처리한다.
@@ -470,7 +473,7 @@ function createBattleSession({
                     selectedIndex = null;
                 }
             }
-            if (!isCorrect && game.gear?.shield > 0) {
+            if (!isCorrect && game.mode !== 'boss' && game.gear?.shield > 0) {
                 game.hadRetry = true;
                 game.gear.shield--;
                 game.gear.combo = 0;
@@ -606,7 +609,7 @@ function createBattleSession({
                 game.handleAnswer(false, null);
                 return;
             }
-            if (!game.currentQ.isBoss && game.mode !== 'boss') {
+            if (!game.currentQ.isBoss) {
                 const wrong = game.options.flatMap((q, i) =>
                     !q.correct && !q.disabled ? [i] : []
                 );
@@ -626,7 +629,6 @@ function createBattleSession({
                 !game.active ||
                 !game.currentQ ||
                 game.isProcessing ||
-                game.mode === 'boss' ||
                 game.currentQ.isBoss ||
                 (game.currentQ.questionKind === 'listening' && !game.listeningReady) ||
                 db.skills.hint <= 0
@@ -655,7 +657,6 @@ function createBattleSession({
                 !game.active ||
                 !game.currentQ ||
                 game.isProcessing ||
-                game.mode === 'boss' ||
                 game.currentQ.isBoss ||
                 (game.currentQ.questionKind === 'listening' && !game.listeningReady) ||
                 db.skills.ultimate <= 0

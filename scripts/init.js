@@ -166,7 +166,6 @@ window.onload = () => {
         'title-battle-mode-btn': openBattleModeModal,
         'title-skyfall-btn': openSkyfallModal,
         'title-story-mode-btn': () => storyJourney.open(),
-        'title-boss-mode-btn': () => story.startBossDirectly(),
         'title-shop-btn': () => shop.open(),
         'title-inventory-btn': () => inventory.open(),
         'title-statistics-btn': () => statistics.open(),
@@ -295,12 +294,18 @@ window.onload = () => {
     const battleCancelBtn = document.getElementById('battle-mode-modal-cancel-btn');
     const battleDaySelect = document.getElementById('battle-mode-modal-day-select');
     const battleCountSelect = document.getElementById('battle-mode-modal-count-select');
+    const battleTypeGroup = document.getElementById('battle-mode-modal-battle-type-group');
+    battleTypeGroup?.addEventListener('change', syncBattleTypeSelection);
 
     if (battleStartBtn) {
         battleStartBtn.addEventListener('click', () => {
             const selectedDay = battleDaySelect ? battleDaySelect.value : 'all';
             const countValue = battleCountSelect ? battleCountSelect.value : '10';
             const selectedCount = countValue === 'all' ? 'all' : parseInt(countValue) || 10;
+            const selectedBattleType =
+                battleTypeGroup?.querySelector('input:checked')?.value === 'boss'
+                    ? 'boss'
+                    : 'battle';
 
             let selectedQuestionType = 'monsters';
             const questionTypeGroup = document.getElementById(
@@ -313,6 +318,7 @@ window.onload = () => {
                 if (checkedRadio) selectedQuestionType = checkedRadio.value;
             }
             gameStorage.set('v7_last_question_type', selectedQuestionType);
+            gameStorage.set('v7_last_battle_type', selectedBattleType);
             db.lastSelectedDay = selectedDay;
             gameStorage.set('v7_last_count', selectedCount);
             db.save();
@@ -327,7 +333,11 @@ window.onload = () => {
             closePracticeModal(true); // Helper acts for both practice and battle modals
 
             scheduleGameStart(() => {
-                game.init('battle', selectedDay);
+                game.init(
+                    selectedBattleType,
+                    selectedBattleType === 'boss' ? 'all' : selectedDay,
+                    selectedQuestionType
+                );
             });
         });
     }

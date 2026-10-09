@@ -61,15 +61,12 @@ const battleRules = Object.freeze({
                 : subjective
                   ? REWARD_POLICY.subjective
                   : REWARD_POLICY.objective;
-        const ratio =
-            mode === 'boss' || subjective
-                ? Math.max(
-                      0,
-                      1 -
-                          Math.floor(Math.max(0, elapsedSeconds)) /
-                              REWARD_POLICY.untimedDecaySeconds
-                  )
-                : Math.max(0, Math.min(1, Math.ceil(timeLeft) / maxTime));
+        const ratio = subjective
+            ? Math.max(
+                  0,
+                  1 - Math.floor(Math.max(0, elapsedSeconds)) / REWARD_POLICY.untimedDecaySeconds
+              )
+            : Math.max(0, Math.min(1, Math.ceil(timeLeft) / maxTime));
         let gain = Math.floor(
             base *
                 (REWARD_POLICY.minimumShare + ratio * (1 - REWARD_POLICY.minimumShare)) *
@@ -104,6 +101,31 @@ const battleRules = Object.freeze({
                 total: encounters.length,
             });
             return rows;
+        }
+        if (session.mode === 'boss' && encounters?.length) {
+            const objective = encounters.filter((q) => !q.isBoss);
+            const subjective = encounters.filter((q) => q.isBoss);
+            return [
+                ...(objective.length
+                    ? [
+                          {
+                              label: '📋 객관식',
+                              correct: objective.filter((q) => q.wasCorrect).length,
+                              total: objective.length,
+                          },
+                      ]
+                    : []),
+                ...(subjective.length
+                    ? [
+                          {
+                              label: '✍️ 주관식',
+                              correct: subjective.filter((q) => q.wasCorrect).length,
+                              total: subjective.length,
+                          },
+                      ]
+                    : []),
+                { label: '전체', correct: session.idx, total: encounters.length },
+            ];
         }
         if (session.mode === 'boss') {
             return [

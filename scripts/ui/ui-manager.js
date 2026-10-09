@@ -30,12 +30,12 @@ const ui = {
         if (title)
             title.textContent =
                 mode === 'story'
-                    ? '스토리 모드'
+                    ? '스토리'
                     : mode === 'boss'
                       ? '전체 단어 도전'
                       : mode === 'revenge'
                         ? '복수 퀘스트'
-                        : '1일 전투';
+                        : '도전';
         let dayText;
         if (mode === 'boss') {
             dayText = '전체 도전';
@@ -113,7 +113,6 @@ const ui = {
     updateSkills: () => {
         const gear = game.gear;
         const noUsefulHint =
-            game.mode !== 'boss' &&
             !game.currentQ?.isBoss &&
             game.options.filter((option) => !option.correct && !option.disabled).length <= 1;
         const equipmentBar = document.getElementById('equipment-display');
@@ -168,7 +167,7 @@ const ui = {
         const hintData = relics.find((r) => r.id === 'hint');
         const ultimateData = relics.find((r) => r.id === 'ultimate');
 
-        const isBossQuestion = game.mode === 'boss' || !!game.currentQ?.isBoss;
+        const isBossQuestion = !!game.currentQ?.isBoss;
         const waitingForSound = game.currentQ?.questionKind === 'listening' && !game.listeningReady;
 
         let hasSkills = false;

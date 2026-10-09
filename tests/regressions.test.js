@@ -99,6 +99,58 @@ test('빠른 재시작 시 이전 판 콜백이 새 판의 문제 번호를 바�
     assert.equal(game.isProcessing, false);
 });
 
+test('전체 단어 도전은 선택한 문제 유형으로 단어장 전체를 중복 없이 출제한다', () => {
+    for (const type of ['objective', 'subjective', 'mixed', 'monsters']) {
+        const r = browserRuntime();
+        r.evaluate(`game.init('boss', '1', '${type}')`);
+        const game = r.evaluate('game');
+        const size = r.evaluate('rawData.length');
+        assert.equal(game.deck.length, size);
+        const key = (q) => JSON.stringify([q.day, q.word, q.meaning]);
+        assert.deepEqual(
+            Array.from(game.deck, key).sort(),
+            Array.from(r.evaluate('rawData'), key).sort()
+        );
+        if (type === 'objective') assert.ok(game.deck.every((q) => !q.isBoss));
+        if (type === 'subjective') assert.ok(game.deck.every((q) => q.isBoss));
+        if (type === 'mixed')
+            assert.ok(game.deck.some((q) => q.isBoss) && game.deck.some((q) => !q.isBoss));
+        if (type === 'monsters') assert.ok(game.deck.every((q) => q.questionKind));
+    }
+});
+
+test('전체 단어 도전의 객관식은 정답 진행 후 첫 오답에 방패 재시도 없이 종료한다', () => {
+    const r = browserRuntime();
+    r.evaluate("game.init('boss', 'all', 'objective')");
+    r.advance(400);
+    const game = r.evaluate('game');
+    const correct = game.options.findIndex((q) => q.correct);
+    game.answerOption(correct);
+    r.advance(800);
+    assert.equal(game.idx, 1);
+    assert.equal(game.sessionCorrectObjective, 1);
+    assert.ok(game.deadline !== null);
+    game.gear = { shield: 1, combo: 0 };
+    game.answerOption(game.options.findIndex((q) => !q.correct));
+    assert.equal(game.hadRetry, false);
+    assert.equal(game.gear.shield, 1);
+    r.advance(2500);
+    assert.equal(game.active, false);
+    assert.equal(r.getElement('result-modal').open, true);
+});
+
+test('전체 단어 도전의 객관식 제한 시간이 끝나도 첫 실패로 종료한다', () => {
+    const r = browserRuntime();
+    r.evaluate("game.init('boss', 'all', 'objective')");
+    r.advance(400);
+    const game = r.evaluate('game');
+    r.advance(game.maxTime * 1000);
+    for (const callback of r.intervals.values()) callback();
+    r.advance(2600);
+    assert.equal(game.active, false);
+    assert.equal(game.idx, 0);
+});
+
 test('시작 애니메이션 도중 뒤로 가면 게임 진입이 취소된다', () => {
     const r = browserRuntime();
     r.evaluate('navigation.init()');

@@ -82,7 +82,7 @@
             <header class="gameplay-header">
                 <span class="game-emblem emblem-swords" aria-hidden="true"></span>
                 <div class="gameplay-heading">
-                    <h2 id="battle-screen-title">1일 전투</h2>
+                    <h2 id="battle-screen-title">도전</h2>
                     <p>WORD QUEST</p>
                 </div>
                 <div class="gameplay-actions">
@@ -111,7 +111,7 @@
             <div class="battle-arena">
                 <div class="battle-hud" aria-label="전투 정보">
                     <div class="battle-status">
-                        <div class="info-badge" id="game-info-badge">1일 전투 - Day 1</div>
+                        <div class="info-badge" id="game-info-badge">도전 - Day 1</div>
                         <div class="overlay-gold" aria-label="보유 골드">
                             <span class="gold-icon" aria-hidden="true">💰</span>
                             <span id="overlay-gold">0</span><span class="gold-unit">G</span>
@@ -380,7 +380,7 @@
                                 id="title-story-mode-btn"
                                 type="button"
                                 class="menu-hotspot story-menu-hotspot"
-                                aria-label="스토리 모드 · 지도 탐험"
+                                aria-label="스토리 · 지도 탐험"
                             >
                                 <img
                                     class="story-menu-icon"
@@ -388,13 +388,13 @@
                                     alt=""
                                     aria-hidden="true"
                                 />
-                                <span>스토리 모드</span>
+                                <span>스토리</span>
                             </button>
                             <button
                                 id="title-battle-mode-btn"
                                 type="button"
                                 class="menu-hotspot"
-                                aria-label="1일 전투 · 범위 선택, 문제 풀기"
+                                aria-label="도전 · 전투 유형 선택"
                             >
                                 <img
                                     class="battle-menu-icon"
@@ -402,33 +402,20 @@
                                     alt=""
                                     aria-hidden="true"
                                 />
-                                <span class="battle-menu-caption">1일 전투</span>
+                                <span class="battle-menu-caption">도전</span>
                             </button>
                             <button
                                 id="title-practice-btn"
                                 type="button"
                                 class="menu-hotspot"
-                                aria-label="단어 모험"
+                                aria-label="연습"
                             >
                                 <img
                                     src="images/theme/parts/ui-book.webp"
                                     alt=""
                                     aria-hidden="true"
                                 />
-                                <span class="practice-menu-caption">단어 모험</span>
-                            </button>
-                            <button
-                                id="title-boss-mode-btn"
-                                type="button"
-                                class="menu-hotspot"
-                                aria-label="전체 단어 도전"
-                            >
-                                <img
-                                    src="images/theme/parts/ui-dragon.webp"
-                                    alt=""
-                                    aria-hidden="true"
-                                />
-                                <span class="practice-menu-caption">전체 단어 도전</span>
+                                <span class="practice-menu-caption">연습</span>
                             </button>
                         </nav>
                         <nav class="menu-hotspots" aria-label="게임 메뉴">
@@ -678,14 +665,14 @@
                     <span class="game-emblem emblem-book" aria-hidden="true"></span>
                     <div>
                         <span class="menu-kicker">SPELLBOOK</span>
-                        <h2 id="practice-selection-title">단어 모험</h2>
+                        <h2 id="practice-selection-title">연습</h2>
                     </div>
                     <button
                         class="modal-close-x"
                         type="button"
                         id="practice-mode-modal-x-btn"
                         data-action="practice-mode-modal-close"
-                        aria-label="단어 모험 선택 닫기"
+                        aria-label="연습 선택 닫기"
                         title="닫기"
                     >
                         <span aria-hidden="true">×</span>
@@ -698,7 +685,7 @@
                 </div>
                 <div class="mode-actions">
                     <button id="practice-mode-modal-start-btn" type="button" class="mode-start">
-                        모험 시작
+                        연습 시작
                     </button>
                 </div>
             </section>
@@ -714,7 +701,7 @@
                     <span class="game-emblem emblem-swords" aria-hidden="true"></span>
                     <div>
                         <span class="menu-kicker">ADVENTURE</span>
-                        <h2 id="battle-selection-title">1일 전투</h2>
+                        <h2 id="battle-selection-title">도전</h2>
                     </div>
                     <button
                         class="modal-close-x"
@@ -771,6 +758,25 @@
                             />주관식</label
                         >
                     </fieldset>
+                    <fieldset id="battle-mode-modal-battle-type-group" class="mode-question-types">
+                        <legend>전투 유형</legend>
+                        <label
+                            ><input
+                                type="radio"
+                                name="battle-session-type"
+                                value="battle"
+                                checked
+                            />일반 전투</label
+                        >
+                        <label
+                            ><input type="radio" name="battle-session-type" value="boss" />전체 단어
+                            도전</label
+                        >
+                    </fieldset>
+                    <p id="battle-endurance-description" class="mode-description" hidden>
+                        단어장 전체를 중복 없이 출제합니다. 한 번 틀리면 종료됩니다. 최대한 오래
+                        정답을 이어가세요.
+                    </p>
                     <p class="mode-description">
                         몬스터별: 슬라임은 뜻, 고블린은 철자 조립, 박쥐는 듣기, 마지막 드래곤은 보스
                         문제입니다. 듣기는 발음이 끝난 뒤 시간 제한이 시작됩니다.
@@ -778,7 +784,7 @@
                 </div>
                 <div class="mode-actions">
                     <button id="battle-mode-modal-start-btn" type="button" class="mode-start">
-                        전투 시작
+                        도전 시작
                     </button>
                 </div>
             </section>
@@ -830,7 +836,7 @@
             <header class="gameplay-header">
                 <span class="game-emblem emblem-book" aria-hidden="true"></span>
                 <div class="gameplay-heading">
-                    <h2>단어 모험</h2>
+                    <h2>연습</h2>
                     <p>LEARN · DISCOVER · REMEMBER</p>
                 </div>
                 <div class="gameplay-actions">
@@ -1005,7 +1011,7 @@
                 <header class="story-map-header">
                     <div>
                         <span class="menu-kicker">ADVENTURE MAP</span>
-                        <h2 id="story-map-title">스토리 모드</h2>
+                        <h2 id="story-map-title">스토리</h2>
                     </div>
                     <button type="button" class="btn-gray" data-action="story-map-close">
                         <span class="modal-close-x-glyph" aria-hidden="true">×</span>
