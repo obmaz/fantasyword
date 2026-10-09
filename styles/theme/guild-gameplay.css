@@ -399,11 +399,10 @@ select {
 }
 #title-ui-gold,
 #overlay-gold {
-    flex: 0 0 5ch;
-    width: 5ch;
-    overflow: hidden;
+    flex: 0 0 auto;
+    width: auto;
+    overflow: visible;
     white-space: nowrap;
-    text-overflow: ellipsis;
     text-align: right;
 }
 .gold-icon {

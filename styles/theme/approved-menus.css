@@ -751,6 +751,7 @@ button .action-icon {
 
 .battle-status {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 8px;
     min-width: 0;
@@ -1082,6 +1083,8 @@ button .action-icon {
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+    width: max-content;
+    justify-self: end;
 }
 .menu-wallet img {
     width: 24px;
@@ -1875,12 +1878,12 @@ button img:not([class]) {
     letter-spacing: 0.01em;
 }
 #overlay-gold {
-    flex: 0 0 6ch;
-    width: 6ch;
+    flex: 0 0 auto;
+    width: auto;
     font-variant-numeric: tabular-nums;
 }
 #battle-mode-game .battle-status .overlay-gold {
-    min-width: 76px;
+    min-width: 0;
     justify-content: center;
 }
 :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .modal-title {
