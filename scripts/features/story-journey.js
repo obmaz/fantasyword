@@ -3,10 +3,14 @@ const storyJourney = {
     returnAfterResult: false,
     pendingStage: null,
     pendingIndex: null,
+    pendingBook: null,
+    pendingKind: null,
     cancelBattleReturn() {
         storyJourney.returnAfterResult = false;
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
+        storyJourney.pendingBook = null;
+        storyJourney.pendingKind = null;
     },
     purchaseSuccessRate: 0.75,
     random: () => Math.random(),
@@ -37,41 +41,32 @@ const storyJourney = {
         path[stage] = index;
         gameStorage.set(storyJourney.pathKey, JSON.stringify(path));
     },
+    get eventsKey() {
+        return `v7_story_events_${db.getBookKey()}`;
+    },
+    get events() {
+        const value = gameStorage.readJSON(storyJourney.eventsKey, {});
+        return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+    },
     nodes() {
-        const source = window.rawDataData || rawData;
-        const days = Object.keys(dayCatalog)
-            .filter((day) => /^\d+$/.test(day) && source.some((word) => String(word.day) === day))
-            .sort((a, b) => Number(a) - Number(b));
-        const day = (index) => days[Math.min(index, days.length - 1)] || 'all';
-        const widths = [2, 3, 4, 3, 4, 3, 2, 3, 4, 3, 4, 3, 3, 2, 1];
-        return widths.map((width, stage) =>
-            Array.from({ length: width }, (_, index) => ({
-                kind:
-                    stage === widths.length - 1
-                        ? 'boss'
-                        : stage > 0 && stage % 3 === 1 && index === 1
-                          ? 'market'
-                          : 'battle',
-                day: day(stage + index),
-            }))
+        const events = storyJourney.events;
+        return storyMapRules.rows.map((row, stage) =>
+            row.map((kind, index) => {
+                const saved = events[`${stage}:${index}`]?.kind;
+                const resolved =
+                    kind === 'mystery' &&
+                    ['battle', 'market', 'treasure', 'assault'].includes(saved)
+                        ? saved
+                        : kind;
+                return { kind: resolved, ...storyMapRules.encounters[resolved] };
+            })
         );
     },
     position(index, count) {
-        return ((index + 0.5) / count) * 100;
+        return storyMapRules.position(index, count);
     },
     connections(row, index, nodes = storyJourney.nodes()) {
-        const current = nodes[row];
-        const next = nodes[row + 1];
-        if (!current?.[index] || !next) return [];
-        const x = storyJourney.position(index, current.length);
-        return next
-            .map((_, target) => ({
-                target,
-                distance: Math.abs(storyJourney.position(target, next.length) - x),
-            }))
-            .sort((a, b) => a.distance - b.distance || a.target - b.target)
-            .slice(0, 2)
-            .map(({ target }) => target);
+        return storyMapRules.connections(row, index, nodes);
     },
     canSelect(row, index, nodes = storyJourney.nodes()) {
         if (row !== storyJourney.stage || !nodes[row]?.[index]) return false;
@@ -88,7 +83,9 @@ const storyJourney = {
         openScreenOverlay('story-map-modal', false);
         const card = document.getElementById('story-map-content');
         const map = document.getElementById('story-map-path');
-        const current = map.querySelector('.story-map-row[data-state="current"] .story-map-node');
+        const current = map.querySelector(
+            '.story-map-row[data-state="current"] .story-map-node:not(:disabled)'
+        );
         if (current)
             card.scrollTop =
                 map.offsetTop + current.offsetTop - (card.clientHeight - current.offsetHeight) / 2;
@@ -141,7 +138,7 @@ const storyJourney = {
                 button.style.left = `${storyJourney.position(index, row.length)}%`;
                 button.style.top = `${y(rowIndex)}px`;
                 if (rowIndex < stage) button.dataset.visited = String(path[rowIndex] === index);
-                const label = node.kind === 'market' ? '암시장' : `Day ${node.day}`;
+                const label = node.label;
                 button.setAttribute('aria-label', label);
                 button.title = label;
                 const caption = document.createElement('span');
@@ -160,6 +157,7 @@ const storyJourney = {
             restart.addEventListener('click', () => {
                 storyJourney.stage = 0;
                 gameStorage.set(storyJourney.pathKey, '[]');
+                gameStorage.set(storyJourney.eventsKey, '{}');
                 storyJourney.render();
                 const card = document.getElementById('story-map-content');
                 card.scrollTop = card.scrollHeight;
@@ -169,28 +167,113 @@ const storyJourney = {
     },
     select(row, index) {
         if (!storyJourney.canSelect(row, index)) return;
-        const node = storyJourney.nodes()[row]?.[index];
+        let node = storyJourney.nodes()[row]?.[index];
         if (!node) return;
+        if (node.kind === 'mystery') {
+            const events = storyJourney.events;
+            const kind = storyMapRules.resolveMystery(storyJourney.random());
+            events[`${row}:${index}`] = { kind };
+            if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
+            node = { kind, ...storyMapRules.encounters[kind] };
+        }
         storyJourney.pendingStage = row;
         storyJourney.pendingIndex = index;
+        storyJourney.pendingBook = db.getBookKey();
+        storyJourney.pendingKind = node.kind;
         resetScreenOverlay('story-map-modal');
         if (node.kind === 'market') {
             storyJourney.renderMarket();
             openScreenOverlay('story-market-modal', false);
             return;
         }
+        if (node.kind === 'treasure') {
+            const claimed = storyJourney.events[`${row}:${index}`]?.claimed;
+            if (claimed) storyJourney.completeBattle();
+            document.getElementById('story-treasure-status').textContent = claimed
+                ? '이미 연 상자입니다.'
+                : `상자를 열면 ${storyJourney.treasureGold(row)} G를 얻습니다.`;
+            document.getElementById('story-treasure-open').disabled = !!claimed;
+            openScreenOverlay('story-treasure-modal', false);
+            return;
+        }
+        if (node.kind === 'assault') {
+            const book = db.getBookKey();
+            const isCurrent = () =>
+                storyJourney.isPending() &&
+                storyJourney.pendingStage === row &&
+                storyJourney.pendingIndex === index &&
+                storyJourney.pendingKind === 'assault';
+            skyfall.start('all', {
+                count: node.count,
+                onFinish: (won) => {
+                    if (won && book === db.getBookKey() && isCurrent())
+                        storyJourney.completeBattle();
+                },
+                onExit: () => {
+                    if (book !== db.getBookKey()) return;
+                    if (storyJourney.pendingStage !== null && !isCurrent()) return;
+                    storyJourney.cancelBattleReturn();
+                    storyJourney.open();
+                },
+            });
+            return;
+        }
         storyJourney.returnAfterResult = true;
-        game.battleQuestionType = 'monsters';
-        document.getElementById('count-select').value = '10';
-        story.startIntro('story', node.day);
+        game.battleQuestionType = node.type;
+        story.startIntro('story', 'all');
+        const detail = node.minimumCorrectShare
+            ? ` · ${Math.ceil(node.count * node.minimumCorrectShare)}문제 이상 정답이면 통과`
+            : '';
+        document.getElementById('battle-mode-day-info').textContent = node.label;
+        document.getElementById('battle-mode-text').textContent =
+            `${node.label} · 단어장 전체에서 ${node.count}문제${detail}`;
+    },
+    isPending() {
+        return (
+            storyJourney.pendingStage === storyJourney.stage &&
+            storyJourney.pendingBook === db.getBookKey()
+        );
+    },
+    battleCount() {
+        return storyJourney.isPending()
+            ? storyMapRules.encounters[storyJourney.pendingKind]?.count
+            : null;
+    },
+    canComplete(correct, total) {
+        const share = storyMapRules.encounters[storyJourney.pendingKind]?.minimumCorrectShare || 0;
+        return !share || correct >= Math.ceil(total * share);
+    },
+    treasureGold(row) {
+        return 50 + Math.floor(row / 3) * 10;
+    },
+    claimTreasure() {
+        if (!storyJourney.isPending() || storyJourney.pendingKind !== 'treasure') return;
+        const row = storyJourney.pendingStage;
+        const key = `${row}:${storyJourney.pendingIndex}`;
+        const events = storyJourney.events;
+        if (events[key]?.claimed) return;
+        events[key] = { kind: 'treasure', claimed: true };
+        if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
+        const gold = storyJourney.treasureGold(row);
+        db.addGold(gold);
+        storyJourney.completeBattle();
+        document.getElementById('story-treasure-status').textContent = `${gold} G를 얻었습니다.`;
+        document.getElementById('story-treasure-open').disabled = true;
+    },
+    leaveTreasure() {
+        resetScreenOverlay('story-treasure-modal');
+        storyJourney.cancelBattleReturn();
+        storyJourney.open();
     },
     completeBattle() {
-        if (storyJourney.pendingStage === storyJourney.stage) {
+        if (storyJourney.isPending()) {
             storyJourney.remember(storyJourney.stage, storyJourney.pendingIndex);
             storyJourney.stage++;
         }
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
+        storyJourney.pendingBook = null;
+        storyJourney.pendingKind = null;
     },
     renderMarket(message = '') {
         const owned = db.has('shadowCompass');
@@ -221,12 +304,11 @@ const storyJourney = {
     },
     leaveMarket() {
         resetScreenOverlay('story-market-modal');
-        storyJourney.pendingStage = null;
-        storyJourney.pendingIndex = null;
+        storyJourney.cancelBattleReturn();
         storyJourney.open();
     },
     advanceMarket() {
-        if (storyJourney.pendingStage === storyJourney.stage) {
+        if (storyJourney.isPending()) {
             storyJourney.remember(storyJourney.stage, storyJourney.pendingIndex);
             storyJourney.stage++;
         }

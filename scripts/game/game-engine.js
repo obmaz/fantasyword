@@ -97,9 +97,7 @@ function createBattleSession({
         exit() {
             const returnToMap = game.mode === 'story';
             if (returnToMap) {
-                journey.returnAfterResult = false;
-                journey.pendingStage = null;
-                journey.pendingIndex = null;
+                journey.cancelBattleReturn();
             }
             navigation.track('title-screen');
             game.stop();
@@ -113,9 +111,23 @@ function createBattleSession({
         _buildPool: (day, source) => battleRules.buildPool(day, source || game._getRawData()),
         _interleave: (a, b) => battleRules.interleave(a, b),
         _buildBattleList: (pool, count, type) =>
-            type === 'monsters' && encounters
-                ? encounters.buildList(pool, count, game.shuffle)
-                : battleRules.buildList(pool, count, type, game.shuffle),
+            ['spelling', 'listening', 'dragon'].includes(type) && encounters
+                ? game
+                      .shuffle(pool)
+                      .slice(0, count)
+                      .map((q) =>
+                          encounters.prepare(
+                              q,
+                              type === 'spelling'
+                                  ? 'goblin'
+                                  : type === 'listening'
+                                    ? 'bat'
+                                    : 'dragon'
+                          )
+                      )
+                : type === 'monsters' && encounters
+                  ? encounters.buildList(pool, count, game.shuffle)
+                  : battleRules.buildList(pool, count, type, game.shuffle),
         getDistractors: (correct, key, question = null) =>
             questionTools.getDistractors(correct, key, question, game._getRawData(), getDecoys),
         shuffle: (values) => questionTools.shuffle(values),
@@ -136,7 +148,13 @@ function createBattleSession({
                 return;
             }
             const countValue = game.view.readCount();
-            const count = countValue === 'all' ? pool.length : parseInt(countValue, 10) || 10;
+            const storyCount = mode === 'story' ? journey.battleCount?.() : null;
+            const count =
+                Number.isInteger(storyCount) && storyCount > 0
+                    ? Math.min(pool.length, storyCount)
+                    : countValue === 'all'
+                      ? pool.length
+                      : parseInt(countValue, 10) || 10;
             game.active = true;
             game.view.lockTitle();
             navigation.track('battle-mode-game');
@@ -696,6 +714,12 @@ function createBattleSession({
         },
         end(win) {
             if (!game.active) return;
+            if (game.mode === 'story' && win)
+                win =
+                    journey.canComplete?.(
+                        game.subjectiveCorrect + game.sessionCorrectObjective,
+                        game.list.length
+                    ) ?? win;
             if (game.mode === 'story' && win) journey.completeBattle();
             resetScreenOverlays(GAME_ENTRY_OVERLAYS);
             openScreenOverlay('title-screen', false);

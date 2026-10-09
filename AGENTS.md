@@ -37,6 +37,6 @@
 - 전투 변경은 실제 정답/오답·보상·방패 재시도·문제 전환·나가기와 효과 정리를 검증한다. 학습/저장 규칙 변경은 의미 있는 기존 테스트를 확장한다.
 - README와 관련 현행 문서를 갱신한다. 임시 작업 기록을 현행 사양에 섞지 않는다.
 - Git 작성자·커미터 이름은 `obmaz`, 이메일은 `zambobmaz@gmail.com`을 사용한다. 커밋 전 저장소 로컬 `user.name`과 `user.email`을 확인하고 이 값으로 설정한다. 실명이나 다른 이메일을 새 커밋에 넣지 않는다. 기존 이력 재작성은 별도 명시 요청이 있을 때만 한다.
-- 푸시·배포는 해당 작업에서 사용자 요청이 있으면 수행한다. `obmaz/fantasyword`의 Pages가 `dokdok.quest`를 서비스한다. `git push origin HEAD:main` → 해당 HEAD의 `Validate` 성공 확인 → `gh workflow run pages.yml --repo obmaz/fantasyword --ref main` 순서다. `Deploy Pages`는 수동 실행이며 해당 HEAD의 배포 성공과 [실서비스](https://dokdok.quest/) 내용 해시를 확인한다.
+- 이 채팅에서는 사용자 상시 승인에 따라 수정·검증 후 항상 푸시·배포하고 실제 반영을 확인한다. `obmaz/fantasyword`의 Pages가 `dokdok.quest`를 서비스한다. `git push origin HEAD:main` → 해당 HEAD의 `Validate` 성공 확인 → `gh workflow run pages.yml --repo obmaz/fantasyword --ref main` 순서다. `Deploy Pages`는 수동 실행이며 해당 HEAD의 배포 성공과 [실서비스](https://dokdok.quest/) 내용 해시를 확인한다.
 - 체크아웃 브랜치명이 `work`일 수 있으므로 이름을 가정하지 않는다. 원격이 앞섰다면 변경을 확인하고 정상적으로 통합한다. 강제 푸시는 별도 요청 없이 하지 않는다.
 - 배포 완료는 워크플로와 실제 서비스로 확인한 뒤 보고한다. `dist/`는 커밋하지 않는다. 문서·시안·도구·테스트·npm 파일은 배포하지 않는다.

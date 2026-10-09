@@ -37,6 +37,7 @@ function createSkyfallSession({
     let pausedUntil = 0;
     let pausedFrom = 0;
     let pausedTotal = 0;
+    let sessionOptions = null;
 
     const rates = (seconds, item = null) => ({
         interval: Math.max(0.8, 2.4 - seconds * 0.032) * (modifier === 'rush' ? 0.7 : 1),
@@ -185,15 +186,19 @@ function createSkyfallSession({
         view.stop();
     }
     function exit() {
+        const onExit = sessionOptions?.onExit;
+        sessionOptions = null;
         stop();
         pauseMusic();
         view.exit();
+        onExit?.();
     }
     function finish(won) {
         if (!active) return;
         stop();
         pauseMusic();
         view.result({ won, score, target: pool.length, earned });
+        sessionOptions?.onFinish?.(won);
     }
     function useItem() {
         if (!active || pausedFrom || pausedUntil) return false;
@@ -202,11 +207,14 @@ function createSkyfallSession({
         updateHud();
         return true;
     }
-    function start(day) {
+    function start(day, options = null) {
         stop();
+        sessionOptions = options;
         pool = questions.shuffle(
             rules.buildPool(day, getSource()).filter((row) => row && row.word && row.meaning)
         );
+        if (Number.isInteger(options?.count) && options.count >= 2)
+            pool = pool.slice(0, options.count);
         if (pool.length < 2) {
             notify('선택한 범위에 단어가 부족합니다.');
             return;

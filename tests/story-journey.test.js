@@ -22,7 +22,14 @@ test('스토리 지도는 연결된 분기만 선택하고 모든 다음 행 지
     const r = browserRuntime();
     const journey = r.evaluate('storyJourney');
     const nodes = journey.nodes();
-    assert.ok(nodes.some((row) => row.length === 4));
+    assert.ok(nodes.some((row) => row.length === 1));
+    assert.ok(nodes.some((row) => row.length === 3));
+    const forks = new Set(
+        nodes.flatMap((row, stage) =>
+            row.map((_, index) => journey.connections(stage, index).length)
+        )
+    );
+    assert.ok(forks.has(1) && forks.has(2) && forks.has(3));
     assert.equal(nodes.at(-1)[0].kind, 'boss');
     for (let row = 0; row < nodes.length - 1; row++) {
         const reachable = new Set(
@@ -65,4 +72,119 @@ test('암시장 구매 실패는 골드만 차감하고 재구매할 수 있으�
     journey.buy();
     assert.equal(r.evaluate('db.gold'), 140);
     assert.equal(r.evaluate("db.has('shadowCompass')"), true);
+});
+
+test('물음표는 전투·암시장·보물·총공세로 열리며 다시 열어도 같은 결과다', () => {
+    for (const [random, kind] of [
+        [0, 'battle'],
+        [0.3, 'market'],
+        [0.6, 'treasure'],
+        [0.9, 'assault'],
+    ]) {
+        const r = browserRuntime();
+        const journey = r.evaluate('storyJourney');
+        r.evaluate(
+            'window.assaultOptions = null; skyfall.start = (day, options) => { window.assaultOptions = options; };'
+        );
+        journey.random = () => random;
+        journey.select(0, 1);
+        assert.equal(journey.nodes()[0][1].kind, kind);
+        assert.equal(journey.pendingKind, kind);
+        journey.cancelBattleReturn();
+        journey.random = () => 1 - random;
+        journey.select(0, 1);
+        assert.equal(journey.nodes()[0][1].kind, kind);
+        if (kind === 'assault') assert.equal(r.evaluate('window.assaultOptions.count'), 8);
+    }
+});
+
+test('보물 상자는 한 번만 골드를 주고 다음 단계로 진행하며 나가기는 보상을 주지 않는다', () => {
+    const r = browserRuntime({ v7_gold: '0' });
+    const journey = r.evaluate('storyJourney');
+    journey.random = () => 0.6;
+    journey.select(0, 1);
+    journey.leaveTreasure();
+    assert.equal(r.evaluate('db.gold'), 0);
+    assert.equal(journey.stage, 0);
+    journey.select(0, 1);
+    journey.claimTreasure();
+    assert.equal(r.evaluate('db.gold'), 50);
+    assert.equal(journey.stage, 1);
+    journey.claimTreasure();
+    assert.equal(r.evaluate('db.gold'), 50);
+});
+
+test('총공세 승리만 스토리를 진행하고 패배·중도 종료는 같은 지점으로 돌아간다', () => {
+    for (const won of [false, true]) {
+        const r = browserRuntime();
+        const journey = r.evaluate('storyJourney');
+        r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
+        journey.random = () => 0.9;
+        journey.select(0, 1);
+        r.evaluate(`window.storyAssault.onFinish(${won})`);
+        assert.equal(journey.stage, won ? 1 : 0);
+        r.evaluate('window.storyAssault.onExit()');
+        assert.equal(journey.pendingStage, null);
+        assert.equal(journey.stage, won ? 1 : 0);
+    }
+});
+
+test('지난 총공세 완료 콜백은 다음 지점의 진행과 선택을 바꾸지 않는다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
+    journey.random = () => 0.9;
+    journey.select(0, 1);
+    r.evaluate('window.oldStoryAssault = window.storyAssault; window.storyAssault.onFinish(true)');
+    journey.random = () => 0.3;
+    journey.select(1, journey.connections(0, 1)[0]);
+    r.evaluate('window.oldStoryAssault.onFinish(true); window.oldStoryAssault.onExit();');
+    assert.equal(journey.stage, 1);
+    assert.equal(journey.pendingKind, 'market');
+});
+
+test('고정 철자·듣기·보스 칸은 Day 없이 지정한 방식으로 출제한다', () => {
+    const r = browserRuntime();
+    for (const [type, kind] of [
+        ['spelling', 'spelling'],
+        ['listening', 'listening'],
+        ['dragon', 'riddle'],
+    ]) {
+        const questions = r.evaluate(`game._buildBattleList(rawData, 6, '${type}')`);
+        assert.equal(questions.length, 6);
+        assert.ok(
+            questions.every((q) =>
+                type === 'dragon'
+                    ? ['riddle', 'cloze'].includes(q.questionKind)
+                    : q.questionKind === kind
+            )
+        );
+    }
+    const journey = r.evaluate('storyJourney');
+    journey.pendingKind = 'miniboss';
+    assert.equal(journey.canComplete(2, 5), false);
+    assert.equal(journey.canComplete(3, 5), true);
+    journey.pendingKind = 'boss';
+    assert.equal(journey.canComplete(5, 8), false);
+    assert.equal(journey.canComplete(6, 8), true);
+});
+
+test('스토리 전투의 문제 수는 일반 전투 select와 독립적으로 5·6·8개를 사용한다', () => {
+    for (const [stage, index, count] of [
+        [0, 0, 8],
+        [2, 1, 6],
+        [4, 2, 6],
+        [7, 0, 5],
+        [14, 0, 8],
+    ]) {
+        const r = browserRuntime();
+        const journey = r.evaluate('storyJourney');
+        journey.stage = stage;
+        journey.select(stage, index);
+        r.getElement('count-select').value = '20';
+        r.evaluate("game.init('story', 'all')");
+        r.advance(400);
+        assert.equal(r.evaluate('game.list.length'), count);
+        assert.equal(r.evaluate('game.currentDay'), 'all');
+    }
 });

@@ -270,7 +270,8 @@
     overscroll-behavior: contain;
 }
 #story-map-modal .story-map-card,
-#story-market-modal .story-map-card {
+#story-market-modal .story-map-card,
+#story-treasure-modal .story-map-card {
     background: linear-gradient(155deg, #173e34, #172827 70%, #39271c) !important;
 }
 .story-map-header {
@@ -323,7 +324,7 @@
     max-width: 440px;
     margin: 12px auto;
     isolation: isolate;
-    background: #19372d;
+    background: #ecdcb6;
     box-shadow: 0 8px 20px #07140b88;
 }
 .story-map-path::before {
@@ -331,8 +332,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: url('../../images/theme/story-map.webp') center / 100% auto repeat-y;
-    filter: saturate(0.2) brightness(0.18);
+    background: url('../../images/theme/parts/approved-paper.webp') center / 100% 100% no-repeat;
     pointer-events: none;
 }
 .story-map-row {
@@ -348,19 +348,18 @@
 }
 .story-map-edges path {
     fill: none;
-    stroke: #b0bca0;
-    stroke-width: 2.5px;
-    stroke-dasharray: 5 5;
-    opacity: 0.8;
+    stroke: #836341;
+    stroke-width: 2px;
+    opacity: 0.5;
     vector-effect: non-scaling-stroke;
 }
 .story-map-edges path.available {
-    stroke: #fff2b3;
+    stroke: #31714c;
+    stroke-width: 3px;
     opacity: 1;
 }
 .story-map-edges path.visited {
-    stroke: #eac666;
-    stroke-dasharray: none;
+    stroke: #795923;
     opacity: 1;
 }
 .story-map-node {
@@ -407,7 +406,37 @@
 }
 .story-map-node-market {
     border-color: #cfadf4;
+    --map-node-icon: url('../../images/theme/parts/approved-coin.webp');
+}
+.story-map-node-treasure {
     --map-node-icon: url('../../images/theme/parts/ui-chest.webp');
+}
+.story-map-node-objective {
+    --map-node-icon: url('../../images/theme/parts/monster-slime.webp');
+}
+.story-map-node-spelling {
+    --map-node-icon: url('../../images/theme/parts/monster-goblin.webp');
+}
+.story-map-node-listening {
+    --map-node-icon: url('../../images/theme/parts/monster-bat.webp');
+}
+.story-map-node-assault {
+    --map-node-icon: url('../../images/theme/parts/calm-attack-icon.webp');
+    border-color: #a2d8e1;
+}
+.story-map-node-miniboss {
+    --map-node-icon: url('../../images/theme/parts/monster-dragon.webp');
+    border-color: #ffaf80;
+}
+.story-map-node-mystery::before {
+    content: '?';
+    background: none;
+    color: #fff3c8;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
 }
 .story-map-node-boss {
     border-color: #ffaf80;
@@ -422,12 +451,12 @@
         0 0 0 3px #213523,
         0 0 0 5px #f6df7499;
 }
-.story-map-node:disabled {
-    opacity: 0.58;
+.story-map-path .story-map-node:disabled {
+    opacity: 0.85;
     cursor: default;
 }
 .story-map-row[data-state='passed'] .story-map-node {
-    opacity: 0.45;
+    opacity: 0.6;
 }
 .story-map-row[data-state='passed'] .story-map-node[data-visited='true'] {
     opacity: 1;
@@ -442,6 +471,18 @@
     width: 56%;
     min-height: 44px;
     transform: translateX(-50%);
+}
+.story-treasure-art {
+    display: block;
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    margin: 16px auto;
+}
+.story-treasure-card > .image-action-button {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 10px;
 }
 @media (max-height: 500px) {
     .story-map-header h2 {

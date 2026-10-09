@@ -111,6 +111,38 @@ function runtime({
     };
 }
 
+test('스토리 총공세는 8문제로 줄이고 승리·복귀 콜백을 한 번씩 실행한다', () => {
+    const source = Array.from({ length: 12 }, (_, index) => ({
+        word: `word${index}`,
+        meaning: `뜻${index}`,
+    }));
+    const r = runtime({ source });
+    const finished = [];
+    let exits = 0;
+    r.session.start('all', {
+        count: 8,
+        onFinish: (won) => finished.push(won),
+        onExit: () => exits++,
+    });
+    assert.equal(r.hud.target, 8);
+    assert.equal(r.hud.remaining, 29);
+    for (let index = 0; index < 8; index++) {
+        r.answer(true);
+        if (index < 7) r.advance(2500);
+    }
+    assert.deepEqual(finished, [true]);
+    r.advance(10000);
+    assert.deepEqual(finished, [true]);
+    r.session.exit();
+    r.session.exit();
+    assert.equal(exits, 1);
+    assert.equal(source.length, 12);
+    r.session.start('all');
+    assert.equal(r.hud.target, 12);
+    r.session.exit();
+    assert.equal(exits, 1);
+});
+
 test('프레임이 멈춘 61초도 실제 제한 시간에 포함하고 결과를 한 번만 연다', () => {
     const r = runtime();
     r.session.start(1);

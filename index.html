@@ -1025,6 +1025,44 @@
         </dialog>
 
         <dialog
+            id="story-treasure-modal"
+            class="screen-overlay"
+            aria-labelledby="story-treasure-title"
+            style="display: none"
+        >
+            <section class="card story-map-card story-treasure-card">
+                <header class="story-map-header">
+                    <h2 id="story-treasure-title">보물 상자</h2>
+                    <button
+                        type="button"
+                        class="btn-gray"
+                        data-action="story-treasure-close"
+                        aria-label="보물 상자 닫기"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </header>
+                <img class="story-treasure-art" src="images/theme/parts/ui-chest.webp" alt="" />
+                <p id="story-treasure-status" role="status"></p>
+                <button
+                    class="image-action-button"
+                    type="button"
+                    id="story-treasure-open"
+                    data-action="story-treasure-open"
+                >
+                    상자 열기
+                </button>
+                <button
+                    class="image-action-button"
+                    type="button"
+                    data-action="story-treasure-close"
+                >
+                    지도 보기
+                </button>
+            </section>
+        </dialog>
+
+        <dialog
             id="story-market-modal"
             class="screen-overlay"
             aria-labelledby="story-market-title"
@@ -1745,6 +1783,7 @@
         <script src="data/battle-examples.js"></script>
         <script src="scripts/domain/monster-encounters.js"></script>
         <script src="scripts/domain/battle-rules.js"></script>
+        <script src="scripts/domain/story-map.js"></script>
         <script src="scripts/domain/attack-profiles.js"></script>
         <script src="scripts/domain/equipment-rules.js"></script>
         <script src="scripts/domain/revenge-rules.js"></script>

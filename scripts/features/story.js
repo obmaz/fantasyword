@@ -35,9 +35,7 @@ const story = {
     closeIntro: () => {
         resetScreenOverlay('battle-mode-story-modal');
         if (story.mode === 'story') {
-            storyJourney.returnAfterResult = false;
-            storyJourney.pendingStage = null;
-            storyJourney.pendingIndex = null;
+            storyJourney.cancelBattleReturn();
             storyJourney.open();
         } else openScreenOverlay('title-screen', false);
     },
