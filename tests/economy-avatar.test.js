@@ -125,3 +125,31 @@ test('착용 외형은 실제 슬롯에 맞추며 소모된 장갑과 한쪽만 
     delete equipped['foot-2'];
     assert.equal(rules.appearance(equipped, { goldGlove: 1 }).boots, false);
 });
+
+test('무기 이름과 ID가 다르면 아바타 레이어도 서로 다른 무기 아트를 사용한다', () => {
+    const r = economyRuntime();
+    const names = r.evaluate(
+        '["basic","sword","goldDagger","midasSword","tycoonAxe","fire","ice","lightning","void","shield_item"].map(id => itemIconMarkup({ id }))'
+    );
+    for (const id of [
+        'basic',
+        'sword',
+        'goldDagger',
+        'midasSword',
+        'tycoonAxe',
+        'fire',
+        'ice',
+        'lightning',
+        'void',
+        'shield_item',
+    ]) {
+        assert.ok(
+            names.find((markup) => markup.includes(`item-art-${id}`)),
+            id
+        );
+    }
+    assert.notEqual(
+        names.find((markup) => markup.includes('item-art-basic')),
+        names.find((markup) => markup.includes('item-art-sword'))
+    );
+});

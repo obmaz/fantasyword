@@ -22,7 +22,7 @@ function itemIconMarkup(item) {
         totalAssaultPause: 'item-hourglass',
     };
     const name = names[item.id] || 'item-scroll';
-    return `<img class="item-art" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;
+    return `<img class="item-art item-art-${item.id}" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;
 }
 
 function itemDisplayName(item) {
@@ -46,11 +46,8 @@ function renderEquipmentAvatar(root, { equipped, durability, weapons, items, fal
                 layer.hidden = !weapon;
                 layer.dataset.weapon = weapon?.id || '';
                 layer.dataset.element = weapon?.effect || 'basic';
-                // 공격 속성 아이콘 대신 손에 쥔 무기의 실루엣을 표시한다.
-                const blade = ['basic', 'sword', 'goldDagger', 'midasSword', 'fire', 'ice'];
-                layer.innerHTML = weapon
-                    ? itemIconMarkup(blade.includes(weapon.id) ? { id: 'sword' } : weapon)
-                    : '';
+                // 무기 ID별 아이콘과 실루엣 변형을 그대로 사용한다. 같은 칼 아이콘을 공유하지 않는다.
+                layer.innerHTML = weapon ? itemIconMarkup(weapon) : '';
             });
             if (weapon) names.push(itemDisplayName(weapon));
         } else {

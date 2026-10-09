@@ -384,8 +384,38 @@ dialog.screen-overlay select,
     object-fit: contain;
 }
 .equipment-avatar [data-weapon='goldDagger'] {
-    scale: 0.8;
+    scale: 0.68;
+    transform: rotate(-20deg) translate(-7%, 9%);
     transform-origin: 15% 90%;
+}
+.equipment-avatar [data-weapon='basic'] {
+    scale: 0.82;
+    transform: rotate(8deg) translate(2%, 2%);
+    transform-origin: 20% 90%;
+}
+.equipment-avatar [data-weapon='sword'] {
+    scale: 0.9;
+    transform: rotate(-8deg) translate(5%, -2%);
+    transform-origin: 20% 90%;
+}
+.equipment-avatar [data-weapon='tycoonAxe'] {
+    scale: 1.06;
+    transform: rotate(-12deg) translate(-4%, -1%);
+    transform-origin: 20% 90%;
+}
+.equipment-avatar [data-weapon='lightning'] {
+    scale: 0.92;
+    transform: rotate(4deg) translate(0, -2%);
+    transform-origin: 20% 90%;
+}
+.equipment-avatar [data-weapon='void'] {
+    scale: 0.82;
+    transform: translate(0, 8%);
+    filter: drop-shadow(0 0 5px #b97cff);
+}
+.equipment-avatar [data-weapon='shield_item'] {
+    scale: 1.08;
+    transform: translate(-2%, 3%);
 }
 .equipment-avatar [data-weapon='midasSword'] {
     filter: sepia(0.8) saturate(2) drop-shadow(0 0 2px #ffc94f);
