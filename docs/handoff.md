@@ -4,7 +4,7 @@
 [전체 코드 리뷰](review-2026-10-09.md)에 있고, 이전 리뷰는 [2026-10-08 기록](review-2026-10-08.md)과 [정리 기록](review.md)에 보존한다.
 새 기능을 자동으로 계속 만들거나 로드맵을 이미 승인된 작업으로 취급하지 않는다.
 
-이후 골드/가격 조정과 착용 아바타를 반영했다. [경제 기준](economy.md)의 가격표·수입 계산을 기준으로 이어가며, 저장된 골드나 장비 ID를 초기화하지 않는다. `equipmentRules.appearance` → `renderEquipmentAvatar` 경로를 장비 화면과 전투 화면이 공유하고, 생성 착용 부품은 `avatar-equipment.webp`다. `economy-avatar.test.js`가 실제 10문제 수입과 소비 아이템 수익 상한을 검증한다.
+이후 골드/가격 조정과 착용 아바타를 반영했다. [경제 기준](economy.md)의 가격표·수입 계산을 기준으로 이어가며, 저장된 골드나 장비 ID를 초기화하지 않는다. `equipmentRules.appearance` → `renderEquipmentAvatar` 경로를 장비 화면과 전투 화면이 공유한다. 헬름은 `quest-hero-helmet.webp`, 건틀릿/부츠는 `avatar-equipment.webp`, 무기는 이름별 `weapon-*.webp`를 사용한다. `HELD_WEAPON_POSES`의 실제 손잡이 좌표와 주먹 마스크로 자연스러운 착용을 유지한다. `economy-avatar.test.js`는 실제 수입·소비 아이템 수익 상한·고유 무기 경로·양손의 회전 중심과 해제를 검증한다.
 
 ## 먼저 읽을 것
 

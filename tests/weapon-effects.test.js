@@ -111,6 +111,9 @@ test('문제 전환과 전투 종료는 타격·잔상·보조 속성 콜백을 
             secondaryEffect: 'void',
             combo: true,
         });
+        r.game.view.hit();
+        assert(r.getElement('hero-img').classList.contains('hero-hit-anim'));
+        assert(r.getElement('hero-head').classList.contains('hero-hit-anim'));
         if (stop) r.game.exit();
         else r.game.nextLevel();
         r.advance(1000);
@@ -118,6 +121,8 @@ test('문제 전환과 전투 종료는 타격·잔상·보조 속성 콜백을 
         assert.equal(layer.classList.contains('is-attacking'), false);
         assert.equal(layer.classList.contains('has-secondary'), false);
         assert.equal(r.getElement('monster-img').classList.contains('mob-active'), false);
+        assert.equal(r.getElement('hero-img').classList.contains('hero-hit-anim'), false);
+        assert.equal(r.getElement('hero-head').classList.contains('hero-hit-anim'), false);
     }
 });
 

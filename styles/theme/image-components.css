@@ -324,8 +324,14 @@ dialog.screen-overlay select,
     transform-origin: 0 0;
 }
 .equipment-avatar .avatar-helmet {
-    transform: translate(4%, 3%) scale(0.9);
-    clip-path: inset(0 0 48% 35%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: none;
+    z-index: 5;
+}
+.equipment-avatar[data-helmet='true'] > .avatar-body {
+    visibility: hidden;
 }
 .equipment-avatar :is(.avatar-glove-near, .avatar-glove-far) {
     background-position: 50% 0;
@@ -344,10 +350,10 @@ dialog.screen-overlay select,
     clip-path: inset(60% 0 0 50%);
 }
 .equipment-avatar .avatar-glove-near {
-    transform: translate(24%, 17%) scale(0.72);
+    transform: translate(26%, 15%) scale(0.72);
 }
 .equipment-avatar .avatar-glove-far {
-    transform: translate(32%, 21%) scale(0.65);
+    transform: translate(37%, 22%) scale(0.65);
 }
 .equipment-avatar :is(.avatar-boot-near, .avatar-boot-far) {
     background-position: 100% 0;
@@ -362,69 +368,28 @@ dialog.screen-overlay select,
 .equipment-avatar :is(.avatar-weapon, .avatar-secondary) {
     position: absolute;
     display: block;
-    top: 28%;
-    left: 34%;
-    right: auto;
-    bottom: auto;
-    width: 37%;
-    height: 37%;
-    z-index: 6;
-    pointer-events: none;
-}
-.equipment-avatar .avatar-secondary {
-    top: 44%;
-    left: 72%;
-    width: 27%;
-    height: 27%;
-}
-.equipment-avatar :is(.avatar-weapon, .avatar-secondary) .item-art {
-    display: block;
+    inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 6;
+    pointer-events: none;
+    transform: none;
+    filter: none;
+    mask-image: radial-gradient(ellipse 6% 7% at 40.5% 60%, transparent 85%, #000 100%);
+}
+.equipment-avatar .avatar-secondary {
+    mask-image: radial-gradient(ellipse 6% 7% at 87% 57%, transparent 85%, #000 100%);
+}
+.equipment-avatar :is(.avatar-weapon, .avatar-secondary) .item-art {
+    position: absolute;
+    display: block;
+    left: var(--held-left);
+    top: var(--held-top);
+    width: var(--held-size);
+    height: var(--held-size);
     object-fit: contain;
-}
-.equipment-avatar [data-weapon='goldDagger'] {
-    scale: 0.68;
-    transform: rotate(-20deg) translate(-7%, 9%);
-    transform-origin: 15% 90%;
-}
-.equipment-avatar [data-weapon='basic'] {
-    scale: 0.82;
-    transform: rotate(8deg) translate(2%, 2%);
-    transform-origin: 20% 90%;
-}
-.equipment-avatar [data-weapon='sword'] {
-    scale: 0.9;
-    transform: rotate(-8deg) translate(5%, -2%);
-    transform-origin: 20% 90%;
-}
-.equipment-avatar [data-weapon='tycoonAxe'] {
-    scale: 1.06;
-    transform: rotate(-12deg) translate(-4%, -1%);
-    transform-origin: 20% 90%;
-}
-.equipment-avatar [data-weapon='lightning'] {
-    scale: 0.92;
-    transform: rotate(4deg) translate(0, -2%);
-    transform-origin: 20% 90%;
-}
-.equipment-avatar [data-weapon='void'] {
-    scale: 0.82;
-    transform: translate(0, 8%);
-    filter: drop-shadow(0 0 5px #b97cff);
-}
-.equipment-avatar [data-weapon='shield_item'] {
-    scale: 1.08;
-    transform: translate(-2%, 3%);
-}
-.equipment-avatar [data-weapon='midasSword'] {
-    filter: sepia(0.8) saturate(2) drop-shadow(0 0 2px #ffc94f);
-}
-.equipment-avatar [data-element='fire'] {
-    filter: sepia(1) saturate(4) hue-rotate(325deg) drop-shadow(0 0 3px #ff7535);
-}
-.equipment-avatar [data-element='ice'] {
-    filter: sepia(0.6) saturate(3) hue-rotate(145deg) drop-shadow(0 0 3px #6bdaff);
+    transform: rotate(var(--held-angle));
+    transform-origin: var(--held-grip-x) var(--held-grip-y);
 }
 .equipment-avatar [data-avatar-part][hidden] {
     display: none;

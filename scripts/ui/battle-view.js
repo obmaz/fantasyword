@@ -144,6 +144,7 @@ function createBattleView({
         clearAttack();
         for (const [id, classes] of [
             ['hero-img', ['hero-hit-anim']],
+            ['hero-head', ['hero-hit-anim']],
             ['monster-img', ['mob-attack-anim']],
             ['dmg-txt', ['float-up']],
         ])
@@ -583,10 +584,12 @@ function createBattleView({
         hit() {
             element('monster-img').classList.add('mob-attack-anim');
             element('hero-img').classList.add('hero-hit-anim');
+            element('hero-head').classList.add('hero-hit-anim');
             doc.querySelector('.battle-arena')?.classList.add('screen-shake');
             questionLater(() => {
                 element('monster-img').classList.remove('mob-attack-anim');
                 element('hero-img').classList.remove('hero-hit-anim');
+                element('hero-head').classList.remove('hero-hit-anim');
                 doc.querySelector('.battle-arena')?.classList.remove('screen-shake');
             }, 400);
         },

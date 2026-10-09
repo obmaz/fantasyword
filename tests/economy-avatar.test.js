@@ -148,8 +148,73 @@ test('무기 이름과 ID가 다르면 아바타 레이어도 서로 다른 무�
             id
         );
     }
-    assert.notEqual(
-        names.find((markup) => markup.includes('item-art-basic')),
-        names.find((markup) => markup.includes('item-art-sword'))
+    const sources = names.map((markup) => markup.match(/src="([^"]+)"/)[1]);
+    assert.equal(new Set(sources).size, 10);
+    assert.ok(sources.every((src) => src.startsWith('images/theme/parts/weapon-')));
+    for (const id of [
+        'basic',
+        'sword',
+        'goldDagger',
+        'midasSword',
+        'tycoonAxe',
+        'fire',
+        'ice',
+        'lightning',
+    ]) {
+        const source = names
+            .find((markup) => markup.includes(`item-art-${id}"`))
+            .match(/src="([^"]+)"/)[1];
+        const icon = r.evaluate(`battleAttackProfiles.resolve({ weaponId: '${id}' }).icon`);
+        assert.equal(`images/theme/parts/${icon}.webp`, source);
+    }
+});
+
+test('무기별 손잡이는 회전 중심에서도 양손에 고정되고 해제한 부품은 즉시 숨는다', () => {
+    const r = economyRuntime();
+    const layers = Object.fromEntries(
+        ['weapon', 'secondary', 'helmet', 'gloves', 'boots'].map((part) => {
+            const el = r.getElement(`avatar-test-${part}`);
+            el.style.setProperty = (name, value) => (el.style[name] = value);
+            return [part, [el]];
+        })
     );
+    const root = r.getElement('avatar-test');
+    root.querySelectorAll = (selector) => layers[selector.match(/"([^"]+)"/)[1]];
+    const render = (equipped) =>
+        r.evaluate('renderEquipmentAvatar')(root, {
+            equipped,
+            durability: { goldGlove: 30 },
+            weapons: r.evaluate('weapons'),
+            items: r.evaluate('items'),
+            fallback: 'basic',
+        });
+    const percentage = (layer, name) => parseFloat(layer.style[`--held-${name}`]) / 100;
+    for (const weapon of r.evaluate('weapons')) {
+        render({ 'hand-1': weapon.id, 'hand-2': weapon.id, head: 'helmet', gloves: 'goldGlove' });
+        for (const [part, handX, handY] of [
+            ['weapon', 0.405, 0.6],
+            ['secondary', 0.87, 0.57],
+        ]) {
+            const layer = layers[part][0];
+            const size = percentage(layer, 'size');
+            assert.ok(
+                Math.abs(percentage(layer, 'left') + percentage(layer, 'grip-x') * size - handX) <
+                    1e-10
+            );
+            assert.ok(
+                Math.abs(percentage(layer, 'top') + percentage(layer, 'grip-y') * size - handY) <
+                    1e-10
+            );
+            assert.equal(layer.hidden, false);
+            assert.equal(layer.dataset.weapon, weapon.id);
+        }
+        assert.equal(root.dataset.helmet, 'true');
+        assert.equal(layers.helmet[0].hidden, false);
+    }
+    render({});
+    assert.equal(root.dataset.helmet, 'false');
+    for (const part of ['secondary', 'helmet', 'gloves', 'boots'])
+        assert.equal(layers[part][0].hidden, true);
+    assert.equal(layers.secondary[0].innerHTML, '');
+    assert.equal(layers.weapon[0].dataset.weapon, 'basic');
 });
