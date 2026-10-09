@@ -208,6 +208,7 @@ test('바닥에 닿은 단어 5개는 생명을 모두 차감하고 결과를 �
     r.session.start(1);
     for (let index = 0; index < 310 && r.session.active; index++) r.advance(100);
     assert.equal(r.hud.lives, 0);
+    assert.equal(r.moves.filter(([, y]) => y === 0.84).length, 5);
     assert.equal(r.results.length, 1);
     assert.equal(r.results[0].won, false);
     assert.equal(r.gold, 0);

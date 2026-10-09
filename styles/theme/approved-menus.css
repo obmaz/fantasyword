@@ -2156,8 +2156,9 @@ button img:not([class]) {
     padding: 0 !important;
 }
 .revenge-shortcut .action-icon {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
     object-fit: contain;
 }
 #revenge-modal {
@@ -2366,8 +2367,10 @@ button.equipment-control {
     color: #eadfba;
 }
 .revenge-shortcut > span {
+    display: block;
+    white-space: nowrap;
     font-size: 10px;
-    line-height: 10px;
+    line-height: 12px;
 }
 .revenge-shortcut b {
     position: absolute;
