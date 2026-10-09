@@ -13,6 +13,29 @@
     --menu-ink: #243626;
 }
 
+/* 로비 모드 이름은 이미지에 넣지 않고 게임·선택창과 같은 문구를 쓴다. */
+.title-menu-art #title-practice-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background: var(--ui-action) center / 100% 100% no-repeat;
+}
+.title-menu-art #title-practice-btn > img {
+    width: 30%;
+    height: 65%;
+    flex: 0 0 30%;
+    object-fit: contain;
+}
+.practice-menu-caption {
+    color: #fff7e0;
+    font-size: clamp(12px, 3.7cqw, 20px);
+    font-weight: 900;
+    line-height: 1.1;
+    white-space: nowrap;
+    text-shadow: 0 2px 3px #16331e;
+}
+
 /* 모든 닫기 동작은 팝업 우상단의 작은 X로 통일한다. */
 :is(
     .card.rpg-modal,
