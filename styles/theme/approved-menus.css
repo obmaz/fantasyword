@@ -865,10 +865,60 @@ button .action-icon {
     content: none;
 }
 
-/* Keep the menu centers while reducing the illustrated controls to 80%. */
+/* 버튼은 이전보다 10% 키우고 내부 아이콘은 별도로 줄여 여백을 확보한다. */
 .title-menu-art :is(.menu-hotspot, #title-skyfall-btn) {
-    transform: scale(0.8);
+    transform: scale(0.88);
     transform-origin: center;
+}
+.title-menu-art
+    :is(#title-story-mode-btn, #title-battle-mode-btn, #title-practice-btn, #title-boss-mode-btn) {
+    gap: 6px;
+}
+.title-menu-art #title-boss-mode-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ui-action) center / 100% 100% no-repeat;
+}
+.title-menu-art
+    :is(#title-story-mode-btn, #title-battle-mode-btn, #title-practice-btn, #title-boss-mode-btn)
+    > img {
+    width: 22%;
+    height: 48%;
+    flex: 0 0 22%;
+    object-fit: contain;
+}
+.title-menu-art #title-boss-mode-btn .practice-menu-caption {
+    font-size: clamp(10px, 3cqw, 16px);
+}
+.title-menu-art
+    :is(#title-shop-btn, #title-inventory-btn, #title-statistics-btn, #title-setting-btn) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 5px;
+    background: var(--ui-small-control) center / 100% 100% no-repeat;
+    color: #fff7e0;
+    font-weight: 900;
+    font-size: clamp(10px, 2.8cqw, 14px);
+    line-height: 1;
+}
+.title-menu-art
+    :is(#title-shop-btn, #title-inventory-btn, #title-statistics-btn, #title-setting-btn)
+    > img {
+    width: 28%;
+    height: 35%;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+.title-toolbar .revenge-shortcut .action-icon {
+    transform: scale(0.75);
+}
+#title-skyfall-btn > span {
+    display: inline-block;
+    font-size: 0.75em;
 }
 
 /* Skyfall results share the illustrated frame, parchment and home control. */
