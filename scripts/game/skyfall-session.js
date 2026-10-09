@@ -37,6 +37,7 @@ function createSkyfallSession({
     let pausedUntil = 0;
     let pausedFrom = 0;
     let pausedTotal = 0;
+    let itemUsed = false;
     let sessionOptions = null;
 
     const rates = (seconds, item = null) => ({
@@ -48,7 +49,9 @@ function createSkyfallSession({
     const limit = () => BASE_TIME + pool.length * TIME_PER_WORD;
     const elapsedNow = () => {
         const current = now();
-        const activePause = pausedUntil > current ? current - pausedFrom : 0;
+        const activePause = pausedUntil
+            ? Math.max(0, Math.min(current, pausedUntil) - pausedFrom)
+            : 0;
         return Math.max(0, (current - startedAt - pausedTotal - activePause) / 1000);
     };
     function updateHud() {
@@ -59,7 +62,7 @@ function createSkyfallSession({
             lives,
             maxLives: MAX_LIVES,
             earned,
-            itemAvailable: !pausedFrom,
+            itemAvailable: !itemUsed,
             modifier,
         });
     }
@@ -76,19 +79,35 @@ function createSkyfallSession({
     function canContinue() {
         if (!active) return false;
         if (pausedUntil && now() >= pausedUntil) {
-            pausedTotal += now() - pausedFrom;
+            pausedTotal += pausedUntil - pausedFrom;
+            // 정지 이후 늦게 돌아온 프레임의 초과 시간은 그대로 진행한다.
+            lastFrame = Math.max(lastFrame, pausedUntil);
             pausedUntil = 0;
             pausedFrom = 0;
-            lastFrame = now();
         }
         elapsed = elapsedNow();
-        if (elapsed < limit()) return true;
-        updateHud();
-        finish(false);
-        return false;
+        if (elapsed >= limit()) {
+            updateHud();
+            finish(false);
+            return false;
+        }
+        const timestamp = now();
+        const delta = Math.max(0, (timestamp - lastFrame) / 1000);
+        // 입력과 프레임이 같은 시계를 사용하고 도착선 처리는 검사한 시각을 재사용한다.
+        lastFrame = timestamp;
+        if (!pausedUntil && delta > 0) {
+            spawnElapsed += delta;
+            for (const item of [...items]) {
+                item.y += delta * rates(elapsed, item).speed;
+                view.moveWord(item.id, Math.min(0.84, item.y));
+                if (item.y >= 0.84) hit(item, false, true);
+                if (!active) return false;
+            }
+        }
+        return true;
     }
-    function hit(item, correct) {
-        if (!canContinue() || !items.includes(item)) return;
+    function hit(item, correct, clockChecked = false) {
+        if (!(clockChecked ? active : canContinue()) || !items.includes(item)) return;
         if (correct) {
             score += 1;
             earned += REWARD;
@@ -146,17 +165,6 @@ function createSkyfallSession({
     }
     function tick() {
         if (!canContinue()) return;
-        const timestamp = now();
-        const delta = Math.max(0, (timestamp - lastFrame) / 1000);
-        lastFrame = timestamp;
-        spawnElapsed += delta;
-        for (const item of [...items]) {
-            if (pausedUntil) continue;
-            item.y += delta * rates(elapsed, item).speed;
-            view.moveWord(item.id, Math.min(0.84, item.y));
-            if (item.y >= 0.84) hit(item, false);
-            if (!active) return;
-        }
         // 긴 프레임 뒤에도 새로 등장한 단어는 시작 위치에서 출발한다.
         if (
             !pausedUntil &&
@@ -201,8 +209,10 @@ function createSkyfallSession({
         sessionOptions?.onFinish?.(won, { mistakes: MAX_LIVES - lives });
     }
     function useItem() {
-        if (!active || pausedFrom || pausedUntil) return false;
+        if (!canContinue() || itemUsed) return false;
+        itemUsed = true;
         pausedFrom = now();
+        lastFrame = pausedFrom;
         pausedUntil = pausedFrom + 3000;
         updateHud();
         return true;
@@ -231,6 +241,7 @@ function createSkyfallSession({
         pausedUntil = 0;
         pausedFrom = 0;
         pausedTotal = 0;
+        itemUsed = false;
         startedAt = now();
         lastFrame = startedAt;
         active = true;

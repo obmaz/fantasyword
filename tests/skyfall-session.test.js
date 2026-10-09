@@ -7,6 +7,7 @@ const createSession = loadScripts(['scripts/game/skyfall-session.js']).evaluate(
 );
 function runtime({
     shuffle = (values) => values,
+    nowStep = 0,
     source = [
         { word: 'apple', meaning: '사과' },
         { word: 'banana', meaning: '바나나' },
@@ -77,7 +78,7 @@ function runtime({
         cancelFrame(id) {
             frames.delete(id);
         },
-        now: () => clock,
+        now: () => (clock += nowStep),
     });
     return {
         session,
@@ -279,6 +280,66 @@ test('총공세 정지 장치는 한 번만 사용하고 3초 동안 낙하를 �
     assert.equal(r.moves.length, before);
     r.advance(600);
     assert.ok(r.moves.length > before);
+    assert.equal(r.hud.itemAvailable, false);
+    assert.equal(r.session.useItem(), false);
+    r.session.start(1);
+    assert.equal(r.hud.itemAvailable, true);
+    assert.equal(r.session.useItem(), true);
+});
+
+test('정지 장치 사용 중 긴 프레임도 3초만 제외하고 실제 마감 뒤 입력을 막는다', () => {
+    for (const input of ['frame', 'answer', 'item']) {
+        const r = runtime();
+        r.session.start(1);
+        r.words.values().next().value.select();
+        const choice = r.choice;
+        r.session.useItem();
+        r.advance(14000, input === 'frame');
+        if (input === 'answer') choice.choose(choice.item.answer);
+        if (input === 'item') assert.equal(r.session.useItem(), false);
+        assert.equal(r.session.active, false);
+        assert.equal(r.gold, 0);
+        assert.equal(r.results.length, 1);
+    }
+});
+
+test('정지가 끝난 프레임은 초과한 시간만큼 낙하와 등장 시간을 진행한다', () => {
+    const r = runtime();
+    r.session.start(1);
+    r.session.useItem();
+    r.advance(4000);
+    assert.equal(r.hud.remaining, 10);
+    assert.ok(r.moves[0][1] > 0.17);
+    assert.ok(r.moves[0][1] < 0.2);
+    assert.equal(r.words.size, 1);
+});
+
+test('프레임 재개 전 입력도 도착선에 닿은 단어를 제거하고 생명을 차감한다', () => {
+    for (const input of ['select', 'answer', 'item']) {
+        const r = runtime();
+        r.session.start(1);
+        const select = r.words.values().next().value.select;
+        select();
+        const choice = r.choice;
+        r.advance(9000, false);
+        if (input === 'select') select();
+        else if (input === 'answer') choice.choose(choice.item.answer);
+        else r.session.useItem();
+        assert.equal(r.hud.lives, 4);
+        assert.equal(r.words.size, 0);
+        assert.equal(r.choice, null);
+        assert.equal(r.gold, 0);
+    }
+});
+
+test('실제 시계처럼 매 호출 시간이 증가해도 도착선 판정은 재귀 없이 한 번 차감한다', () => {
+    const r = runtime({ nowStep: 0.1 });
+    r.session.start(1);
+    r.advance(9000);
+    assert.equal(r.session.active, true);
+    assert.equal(r.hud.lives, 4);
+    assert.equal(r.events.filter((event) => event === 'damage').length, 1);
+    assert.equal(r.frames.size, 1);
 });
 
 test('렌더러는 종료 즉시 공격 효과와 예약된 정리를 제거한다', () => {

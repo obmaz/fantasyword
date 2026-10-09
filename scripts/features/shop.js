@@ -132,28 +132,28 @@ const shop = {
             }
         }
 
-        // API 사용으로 clamp/persistence/UI 일관성 유지
-        db.subGold(cost);
+        // 구매 결과는 사본에서 계산하고, 비용과 함께 저장된 뒤에 적용한다.
+        const changes = { gold: db.gold - cost };
 
         if (type === 'item') {
-            db.inventory.push(id);
-            if (item.durability) db.durability[id] = item.durability;
+            changes.inventory = [...db.inventory, id];
+            if (item.durability) changes.durability = { ...db.durability, [id]: item.durability };
         } else if (type === 'backpack') {
-            db.inventoryCapacity++;
+            changes.inventoryCapacity = db.inventoryCapacity + 1;
         } else if (type === 'skill') {
             const skill = relics.find((r) => r.id === id);
             // hint/ultimate 외의 새 스킬은 db.skills에 키가 없어 undefined += n → NaN 이 되므로 가드
-            db.skills[id] = (db.skills[id] || 0) + skill.uses;
+            changes.skills = { ...db.skills, [id]: (db.skills[id] || 0) + skill.uses };
         } else {
             // 무기 및 기타 유물
-            db.owned.push(id);
+            changes.owned = [...db.owned, id];
             if (type === 'consumable') {
                 const relic = relics.find((r) => r.id === id);
-                db.durability[id] = relic.durability;
+                changes.durability = { ...db.durability, [id]: relic.durability };
             }
         }
 
-        db.save('gold', 'owned', 'dura', 'inventory', 'capacity', 'skills');
+        if (!db.commitChanges(changes)) return;
         shop.render();
         inventory.render(); // 인벤토리 화면도 업데이트
     },

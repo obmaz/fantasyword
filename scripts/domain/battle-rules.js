@@ -40,8 +40,8 @@ const battleRules = Object.freeze({
     checkSpelling(input, word) {
         const answer = word.trim().toLowerCase();
         const value = input.trim().toLowerCase();
-        // 기존 입력 규칙: 전체 철자 또는 맨 앞 한 글자를 제외한 철자를 허용한다.
-        return value.length > 0 && (value === answer || value === answer.slice(1));
+        // 밑줄 칸은 첫 글자도 비어 있으므로 전체 철자가 일치해야 한다.
+        return value.length > 0 && value === answer;
     },
     hintRemovalCount(wrongCount) {
         return Math.max(0, Math.min(2, wrongCount - 1));

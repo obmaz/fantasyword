@@ -4,6 +4,7 @@
  */
 
 const inventory = {
+    detailTrigger: null,
     slots: {
         gloves: {
             label: '장갑',
@@ -48,7 +49,7 @@ const inventory = {
         // title-screen은 숨기지 않고 모달만 표시
         openScreenOverlay('inventory-modal', true);
 
-        inventory.hideDetails(); // 열 때 상세 정보 숨김
+        inventory.hideDetails(false); // 열 때 이전 상세 화면과 포커스를 정리한다.
         inventory.render();
 
         // 접근성 / 작은 뷰포트 대응: 닫기 버튼이 도달 가능하도록 보장
@@ -75,6 +76,7 @@ const inventory = {
      * 인벤토리 모달을 닫습니다
      */
     close: () => {
+        inventory.hideDetails(false);
         navigation.track('title-screen');
         closeScreenOverlay('inventory-modal', true);
         // title-screen은 이미 표시되어 있으므로 다시 표시할 필요 없음
@@ -233,6 +235,13 @@ const inventory = {
         const itemData =
             type === 'item' ? items.find((i) => i.id === id) : weapons.find((w) => w.id === id);
         if (!itemData) return;
+        const trigger = document.activeElement;
+        inventory.detailTrigger =
+            trigger &&
+            document.getElementById('inventory-modal').contains(trigger) &&
+            !document.getElementById('inv-item-detail').contains(trigger)
+                ? trigger
+                : null;
 
         document.getElementById('detail-icon').innerHTML = itemIconMarkup(itemData);
         document.getElementById('detail-name').innerText = itemDisplayName(itemData);
@@ -308,9 +317,19 @@ const inventory = {
     /**
      * 아이템 상세 정보를 숨깁니다
      */
-    hideDetails: () => {
+    hideDetails: (restoreFocus = true) => {
+        const wasOpen = document.getElementById('inventory-modal').dataset.detailOpen === 'true';
         document.getElementById('inv-item-detail').style.display = 'none';
         document.getElementById('inventory-modal').dataset.detailOpen = 'false';
+        const trigger = inventory.detailTrigger;
+        inventory.detailTrigger = null;
+        if (restoreFocus && wasOpen) {
+            const target =
+                trigger?.isConnected && !trigger.disabled
+                    ? trigger
+                    : document.querySelector('#inventory-modal .modal-header .modal-close-x');
+            target?.focus({ preventScroll: true });
+        }
     },
 
     /**

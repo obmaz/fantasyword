@@ -487,7 +487,7 @@ test('철자 힌트/채점은 한 글자·구문·빈 입력을 일관되게 처
     assert.equal(rules.spellingHint('get up'), 'g__ u_');
     assert.equal(rules.spellingHint('a'), '_');
     assert.equal(rules.checkSpelling(' GET UP ', 'get up'), true);
-    assert.equal(rules.checkSpelling('et up', 'get up'), true);
+    assert.equal(rules.checkSpelling('et up', 'get up'), false);
     assert.equal(rules.checkSpelling('', 'a'), false);
     assert.equal(rules.checkSpelling('a', 'a'), true);
     assert.equal(rules.checkSpelling('et p', 'get up'), false);

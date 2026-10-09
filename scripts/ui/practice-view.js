@@ -20,10 +20,9 @@ function createPracticeView({ document, openScreen, closeScreen, syncLayout, tra
     const view = {
         filter(value) {
             document.querySelectorAll('#practice-filter-chips .practice-chip').forEach((chip) => {
-                chip.classList.toggle(
-                    'practice-chip-active',
-                    chip.getAttribute('data-filter') === value
-                );
+                const selected = chip.getAttribute('data-filter') === value;
+                chip.classList.toggle('practice-chip-active', selected);
+                chip.setAttribute('aria-pressed', String(selected));
             });
         },
         answer(hasWord) {
@@ -77,6 +76,7 @@ function createPracticeView({ document, openScreen, closeScreen, syncLayout, tra
             if (button) {
                 button.classList.remove('practice-memorized-active');
                 button.setAttribute('aria-pressed', 'false');
+                button.textContent = '외웠어요';
             }
         },
         open(label) {

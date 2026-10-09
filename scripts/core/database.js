@@ -91,6 +91,23 @@ function normalizeBookStats(value) {
     };
 }
 
+/** 기존 저장 키·필드·직렬화를 save와 묶음 저장에서 공유한다. */
+const DB_STORAGE_FIELDS = Object.freeze({
+    revenge: ['v7_revenge_quests', 'revengeQuests', JSON.stringify],
+    gold: ['v7_gold', 'gold', String],
+    owned: ['v7_owned', 'owned', JSON.stringify],
+    equip: ['v7_equip', 'equippedWeapon', String],
+    dura: ['v7_dura', 'durability', JSON.stringify],
+    stats: ['v7_stats', 'stats', JSON.stringify],
+    inventory: ['v7_inventory', 'inventory', JSON.stringify],
+    equipped: ['v7_equipped', 'equipped', JSON.stringify],
+    capacity: ['v7_inventory_capacity', 'inventoryCapacity', String],
+    skills: ['v7_skills', 'skills', JSON.stringify],
+    lastDay: ['v7_last_day', 'lastSelectedDay', String],
+    memorized: ['v7_practice_memorized', 'practiceMemorized', JSON.stringify],
+    settings: ['v7_settings', 'settings', JSON.stringify],
+});
+
 const db = {
     // 골드
     gold: nonnegativeInteger(gameStorage.get('v7_gold')),
@@ -209,29 +226,12 @@ const db = {
     })(),
 
     // 필드별 localStorage 직렬화 함수 (save에서 선택적으로 호출)
-    _writers: {
-        revenge: () => gameStorage.set('v7_revenge_quests', JSON.stringify(db.revengeQuests)),
-        gold: () => gameStorage.set('v7_gold', db.gold),
-        owned: () => gameStorage.set('v7_owned', JSON.stringify(db.owned)),
-        equip: () => gameStorage.set('v7_equip', db.equippedWeapon),
-        dura: () => gameStorage.set('v7_dura', JSON.stringify(db.durability)),
-        stats: () => gameStorage.set('v7_stats', JSON.stringify(db.stats)),
-        inventory: () => gameStorage.set('v7_inventory', JSON.stringify(db.inventory)),
-        equipped: () => gameStorage.set('v7_equipped', JSON.stringify(db.equipped)),
-        capacity: () => gameStorage.set('v7_inventory_capacity', db.inventoryCapacity),
-        skills: () => gameStorage.set('v7_skills', JSON.stringify(db.skills)),
-        lastDay: () => gameStorage.set('v7_last_day', db.lastSelectedDay),
-        memorized: () => {
-            if (db.practiceMemorized !== undefined) {
-                gameStorage.set('v7_practice_memorized', JSON.stringify(db.practiceMemorized));
-            }
-        },
-        settings: () => {
-            if (db.settings !== undefined) {
-                gameStorage.set('v7_settings', JSON.stringify(db.settings));
-            }
-        },
-    },
+    _writers: Object.fromEntries(
+        Object.entries(DB_STORAGE_FIELDS).map(([field, [key, property, serialize]]) => [
+            field,
+            () => db[property] === undefined || gameStorage.set(key, serialize(db[property])),
+        ])
+    ),
 
     /**
      * 데이터를 localStorage에 저장합니다.
@@ -268,6 +268,24 @@ const db = {
     subGold: (n) => {
         // addGold와 동일한 동작 유지
         return db.addGold(-(Number(n) || 0));
+    },
+
+    /** 구매 상태·비용·연결된 스토리 기록을 저장한 뒤에만 메모리 상태를 변경한다. */
+    commitChanges: (changes, relatedWrites = {}) => {
+        if ('gold' in changes && (!Number.isSafeInteger(changes.gold) || changes.gold < 0))
+            return false;
+        const writes = { ...relatedWrites };
+        const fields = Object.values(DB_STORAGE_FIELDS);
+        for (const [property, value] of Object.entries(changes)) {
+            const field = fields.find(([, name]) => name === property);
+            if (!field || value === undefined) return false;
+            const [key, , serialize] = field;
+            writes[key] = serialize(value);
+        }
+        if (!gameStorage.setBatch(writes)) return false;
+        Object.assign(db, changes);
+        ui.updateGold();
+        return true;
     },
 
     /**

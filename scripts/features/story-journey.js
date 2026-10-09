@@ -178,9 +178,16 @@ const storyJourney = {
             restart.className = 'btn-main story-map-restart';
             restart.textContent = '새 모험 시작';
             restart.addEventListener('click', () => {
-                storyJourney.stage = 0;
-                gameStorage.set(storyJourney.pathKey, '[]');
-                gameStorage.set(storyJourney.eventsKey, '{}');
+                if (
+                    !gameStorage.setBatch({
+                        [storyJourney.key]: '0',
+                        [storyJourney.pathKey]: '[]',
+                        [storyJourney.eventsKey]: '{}',
+                    })
+                )
+                    return;
+                storyJourney.cancelBattleReturn();
+                storyJourney.mysterySelection = null;
                 storyJourney.render();
                 const card = document.getElementById('story-map-content');
                 card.scrollTop = card.scrollHeight;
@@ -229,8 +236,15 @@ const storyJourney = {
         }
         const kind = storyJourney.mysteryKind(row, index);
         events[key] = { ...events[key], kind, revealed: true };
-        if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
-        db.subGold(storyJourney.mysteryRevealCost);
+        if (
+            !db.commitChanges(
+                { gold: db.gold - storyJourney.mysteryRevealCost },
+                {
+                    [storyJourney.eventsKey]: JSON.stringify(events),
+                }
+            )
+        )
+            return;
         document.getElementById('story-mystery-status').textContent =
             `${storyMapRules.encounters[kind].label} 지점입니다. 남은 골드 ${db.gold} G`;
         document.getElementById('story-mystery-reveal').disabled = true;
@@ -254,7 +268,7 @@ const storyJourney = {
         if (node.kind === 'mystery') {
             const events = storyJourney.events;
             const kind = storyJourney.mysteryKind(row, index);
-            events[`${row}:${index}`] = { kind, revealed: false };
+            events[`${row}:${index}`] = { ...events[`${row}:${index}`], kind, revealed: false };
             if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
             node = { kind, ...storyMapRules.encounters[kind] };
         }
@@ -334,10 +348,17 @@ const storyJourney = {
         const key = `${row}:${storyJourney.pendingIndex}`;
         const events = storyJourney.events;
         if (events[key]?.claimed) return;
-        events[key] = { kind: 'treasure', claimed: true };
-        if (!gameStorage.set(storyJourney.eventsKey, JSON.stringify(events))) return;
+        events[key] = { ...events[key], kind: 'treasure', claimed: true };
         const gold = storyJourney.treasureGold(row);
-        db.addGold(gold);
+        if (
+            !db.commitChanges(
+                { gold: db.gold + gold },
+                {
+                    [storyJourney.eventsKey]: JSON.stringify(events),
+                }
+            )
+        )
+            return;
         storyJourney.completeBattle();
         document.getElementById('story-treasure-status').textContent = `${gold} G를 얻었습니다.`;
         document.getElementById('story-treasure-open').disabled = true;
@@ -354,9 +375,16 @@ const storyJourney = {
             events[key] = { ...events[key], cleared: true };
             if (Number.isInteger(result?.mistakes) && result.mistakes >= 0)
                 events[key].mistakes = result.mistakes;
-            gameStorage.set(storyJourney.eventsKey, JSON.stringify(events));
-            storyJourney.remember(storyJourney.stage, storyJourney.pendingIndex);
-            storyJourney.stage++;
+            const path = storyJourney.path;
+            path[storyJourney.pendingStage] = storyJourney.pendingIndex;
+            if (
+                !gameStorage.setBatch({
+                    [storyJourney.eventsKey]: JSON.stringify(events),
+                    [storyJourney.pathKey]: JSON.stringify(path),
+                    [storyJourney.key]: String(storyJourney.stage + 1),
+                })
+            )
+                return;
         }
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
@@ -378,15 +406,20 @@ const storyJourney = {
             showToast('골드가 부족합니다.', 'error');
             return;
         }
-        db.subGold(relic.cost);
-        if (storyJourney.random() >= storyJourney.purchaseSuccessRate) {
+        const success = storyJourney.random() < storyJourney.purchaseSuccessRate;
+        if (
+            !db.commitChanges({
+                gold: db.gold - relic.cost,
+                ...(success ? { owned: [...db.owned, relic.id] } : {}),
+            })
+        )
+            return;
+        if (!success) {
             storyJourney.renderMarket(
                 `거래 실패 · ${relic.cost} G를 잃었습니다. 남은 골드 ${db.gold} G`
             );
             return;
         }
-        db.owned.push(relic.id);
-        db.save('owned');
         inventory.render();
         storyJourney.renderMarket();
     },

@@ -69,7 +69,7 @@ python3 -m http.server 8000 --directory dist
 푸시한 `main`을 배포하려면 `gh workflow run pages.yml --repo obmaz/fantasyword --ref main`을 실행하세요.
 `build-manifest.json`의 SHA-256과 공개 응답을 비교하면 실제 배포 반영을 확인할 수 있습니다.
 
-최근 [전체 코드 리뷰](docs/review-2026-10-08.md)에서 시간 제한·음성/음악·팝업·결과 이동·문제지 출력의 결함을 수정하고 재검증했습니다.
+최근 [전체 코드 리뷰](docs/review-2026-10-09.md)에서 총공세 시간·아이템·입력 판정, 주관식 채점, 구매/스토리 저장 실패, 초기화와 키보드 접근성의 결함을 수정하고 재검증했습니다.
 
 ## 구조
 
@@ -99,7 +99,7 @@ docs/               현행 문서, design/의 승인 시안, archive/의 과거 
 | [구조·코드 규칙](docs/architecture.md)             | 모듈 책임, 스타일 적용 순서, 컨벤션         |
 | [디자인 에셋](docs/design-assets.md)               | 승인 시안, 이미지 부품, 제작·최적화 기준    |
 | [정리·검증 기록](docs/review.md)                   | 이번 정리의 범위와 검증 근거                |
-| [전체 코드 리뷰](docs/review-2026-10-08.md)        | 우선순위별 문제, 수정·재리뷰와 검증 근거    |
+| [전체 코드 리뷰](docs/review-2026-10-09.md)        | P1~P3 문제, 수정·재리뷰와 검증 근거         |
 | [과거 디자인 기록](docs/archive/design-history.md) | 이전 프롬프트와 변경 경위; 현행 기준은 아님 |
 
 ## 제약
