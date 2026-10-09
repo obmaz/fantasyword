@@ -1494,14 +1494,25 @@ button .action-icon {
     background: var(--ui-small-control) center / 100% 100% no-repeat;
 }
 :is(#battle-mode-game, #practice-mode-game) .music-info-overlay::before {
-    content: '♫';
+    content: '';
     position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
+    top: 11px;
+    left: 12px;
+    width: 20px;
+    height: 14px;
+    background: repeating-linear-gradient(to bottom, #fff6dd 0 3px, transparent 3px 5.5px);
+    pointer-events: none;
+}
+:is(#battle-mode-game, #practice-mode-game) .music-info-overlay::after {
+    content: '곡';
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
     color: #fff6dd;
+    text-align: center;
     font:
-        900 23px/1 system-ui,
+        800 9px/1 system-ui,
         sans-serif;
     pointer-events: none;
 }
