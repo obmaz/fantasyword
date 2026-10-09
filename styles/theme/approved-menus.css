@@ -2415,7 +2415,8 @@ button.equipment-control {
     box-shadow: 0 3px 0 #0b2c29 !important;
     min-height: 68px;
     display: grid;
-    place-items: center;
+    place-items: safe center;
+    align-content: safe center;
 }
 
 /* 승인한 숲 모험 시안: 이미지 키와 HTML 글자를 분리한다. */
@@ -2488,13 +2489,15 @@ button.equipment-control {
     display: none;
 }
 #battle-mode-game[data-answer-entry='letters'] .quiz-area {
+    flex: 1 0 auto;
     padding: 6px 10px max(6px, env(safe-area-inset-bottom));
     gap: 5px;
     overflow: hidden;
 }
 #battle-mode-game[data-answer-entry='letters'] .question-box {
-    flex: 1 1 auto;
-    min-height: 54px;
+    flex: 1 0 auto;
+    min-height: calc(clamp(24px, 9cqw, 48px) * 1.25 + 36px);
+    max-height: max(min(30cqh, calc(100cqh - 330px)), calc(clamp(24px, 9cqw, 48px) * 1.25 + 36px));
     overflow: auto;
     padding: 6px;
 }
@@ -2543,6 +2546,9 @@ button.equipment-control {
     display: none !important;
 }
 #battle-mode-game .question-box .q-text {
+    margin: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     color: #342b25;
     text-shadow: none;
     line-height: 1.25;
