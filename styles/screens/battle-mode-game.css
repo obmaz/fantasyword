@@ -481,26 +481,6 @@
     filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
 }
 
-#hero-head {
-    top: -5px;
-    left: 30px;
-}
-
-#hero-hand-1 {
-    top: 40px;
-    left: -5px;
-}
-
-#hero-hand-2 {
-    top: 40px;
-    left: 65px;
-}
-
-#hero-feet {
-    bottom: -5px;
-    left: 30px;
-}
-
 /* 게임 화면 밝은 톤 — 객관식/보스 UI 오버라이드 */
 #battle-mode-game .option-btn {
     background: var(--game-card);
