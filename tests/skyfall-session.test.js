@@ -5,7 +5,13 @@ const { loadScripts } = require('./helpers/load-module');
 const createSession = loadScripts(['scripts/game/skyfall-session.js']).evaluate(
     'createSkyfallSession'
 );
-function runtime() {
+function runtime({
+    shuffle = (values) => values,
+    source = [
+        { word: 'apple', meaning: '사과' },
+        { word: 'banana', meaning: '바나나' },
+    ],
+} = {}) {
     let clock = 0;
     let serial = 0;
     let gold = 0;
@@ -18,11 +24,8 @@ function runtime() {
     const moves = [];
     const session = createSession({
         db: { addGold: (value) => (gold += value) },
-        getSource: () => [
-            { word: 'apple', meaning: '사과' },
-            { word: 'banana', meaning: '바나나' },
-        ],
-        questions: { getDistractors: () => ['다른 보기'], shuffle: (values) => values },
+        getSource: () => source,
+        questions: { getDistractors: () => ['다른 보기'], shuffle },
         rules: { buildPool: (_day, source) => source },
         view: {
             hud(value) {
@@ -130,8 +133,8 @@ test('느린 프레임에서도 낙하와 등장 간격은 실제 시간을 따�
     assert.equal(r.words.size, 2);
     assert.equal([...r.words.values()].at(-1).item.y, 0.07);
     r.advance(3200);
-    assert.equal(r.hud.lives, 5);
-    assert.ok(!r.events.includes('damage'));
+    assert.equal(r.hud.lives, 4);
+    assert.ok(r.events.includes('damage'));
 });
 
 test('프레임 재개 전 마감 직후 클릭하거나 정답을 제출해도 골드를 지급하지 않는다', () => {
@@ -150,7 +153,7 @@ test('프레임 재개 전 마감 직후 클릭하거나 정답을 제출해도 
     }
 });
 
-test('정답 12개는 기본 보상 72G를 한 번씩 지급하고 중복 입력은 무시한다', () => {
+test('Day의 모든 단어는 한 번씩 출제하고 중복 정답 입력은 보상을 늘리지 않는다', () => {
     const r = runtime();
     r.session.start(1);
     for (let count = 0; count < 2; count++) {
@@ -166,7 +169,7 @@ test('정답 12개는 기본 보상 72G를 한 번씩 지급하고 중복 입력
     assert.equal(r.session.active, false);
 });
 
-test('오답은 목숨을 차감하고 5번째에 종료하며 시간이 지나면 낙하 속도가 빨라진다', () => {
+test('오답은 생명을 차감하며 시간이 지나면 낙하 속도가 빨라진다', () => {
     const r = runtime();
     r.session.start(1);
     for (let count = 0; count < 2; count++) {
@@ -178,6 +181,37 @@ test('오답은 목숨을 차감하고 5번째에 종료하며 시간이 지나�
     assert.equal(r.results[0].won, false);
     assert.ok(r.session.rates(30).speed > r.session.rates(0).speed);
     assert.ok(r.session.rates(30).interval < r.session.rates(0).interval);
+});
+
+test('출제 덱을 섞은 순서로 모든 Day 단어를 중복 없이 내보낸다', () => {
+    const r = runtime({ shuffle: (values) => [...values].reverse() });
+    r.session.start(1);
+    const appeared = [];
+    for (let count = 0; count < 2; count++) {
+        while (!r.words.size && r.session.active) r.advance(100);
+        const item = r.words.values().next().value.item;
+        appeared.push(item.answerKey === 'meaning' ? item.prompt : item.answer);
+        r.answer(true);
+    }
+    assert.deepEqual(appeared, ['banana', 'apple']);
+    assert.equal(r.results[0].target, 2);
+    assert.equal(r.frames.size, 0);
+});
+
+test('바닥에 닿은 단어 5개는 생명을 모두 차감하고 결과를 한 번만 연다', () => {
+    const r = runtime({
+        source: Array.from({ length: 10 }, (_, index) => ({
+            word: `word-${index}`,
+            meaning: `뜻-${index}`,
+        })),
+    });
+    r.session.start(1);
+    for (let index = 0; index < 310 && r.session.active; index++) r.advance(100);
+    assert.equal(r.hud.lives, 0);
+    assert.equal(r.results.length, 1);
+    assert.equal(r.results[0].won, false);
+    assert.equal(r.gold, 0);
+    assert.equal(r.frames.size, 0);
 });
 
 test('종료 후 늦은 입력·프레임은 다시 시작한 세션을 갱신하지 않는다', () => {

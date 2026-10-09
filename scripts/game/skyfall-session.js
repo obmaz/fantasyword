@@ -114,7 +114,7 @@ function createSkyfallSession({
         if (items.length >= 5 || !pool.length) return;
         const row = pool[nextWordIndex++];
         if (!row) return;
-        const english = nextWordIndex % 2 === 0;
+        const english = Math.random() < 0.5;
         const answerKey = english ? 'meaning' : 'word';
         const prompt = String(english ? row.word : row.meaning).trim();
         const answer = String(row[answerKey]).trim();
@@ -153,10 +153,7 @@ function createSkyfallSession({
             if (pausedUntil) continue;
             item.y += delta * rates(elapsed, item).speed;
             view.moveWord(item.id, Math.min(0.84, item.y));
-            if (item.y >= 0.84) {
-                resolved += 1;
-                removeItem(item);
-            }
+            if (item.y >= 0.84) hit(item, false);
             if (!active) return;
         }
         // 긴 프레임 뒤에도 새로 등장한 단어는 시작 위치에서 출발한다.
@@ -168,7 +165,10 @@ function createSkyfallSession({
             spawnElapsed = 0;
             spawn();
         }
-        if (resolved >= pool.length && !items.length) finish(score === pool.length);
+        if (resolved >= pool.length && !items.length) {
+            finish(score === pool.length);
+            return;
+        }
         updateHud();
         queueFrame();
     }
@@ -204,7 +204,9 @@ function createSkyfallSession({
     }
     function start(day) {
         stop();
-        pool = rules.buildPool(day, getSource()).filter((row) => row && row.word && row.meaning);
+        pool = questions.shuffle(
+            rules.buildPool(day, getSource()).filter((row) => row && row.word && row.meaning)
+        );
         if (pool.length < 2) {
             notify('선택한 범위에 단어가 부족합니다.');
             return;
