@@ -2895,3 +2895,20 @@ button.equipment-control {
         display: none;
     }
 }
+
+/* 시작 버튼은 모드 성격을 색으로 바로 구분한다. */
+#battle-mode-modal .mode-actions .mode-start,
+#skyfall-mode-modal .mode-actions .mode-start {
+    background: linear-gradient(180deg, #c6534a, #8f2f35);
+    border-color: #f2a16a;
+    box-shadow:
+        0 4px 0 #5b2029,
+        0 0 0 1px #ffcf8e;
+}
+#practice-mode-modal .mode-actions .mode-start {
+    background: linear-gradient(180deg, #4b8ed8, #28559d);
+    border-color: #a9d5ff;
+    box-shadow:
+        0 4px 0 #193d78,
+        0 0 0 1px #d8efff;
+}
