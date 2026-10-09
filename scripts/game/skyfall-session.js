@@ -198,7 +198,7 @@ function createSkyfallSession({
         stop();
         pauseMusic();
         view.result({ won, score, target: pool.length, earned });
-        sessionOptions?.onFinish?.(won);
+        sessionOptions?.onFinish?.(won, { mistakes: MAX_LIVES - lives });
     }
     function useItem() {
         if (!active || pausedFrom || pausedUntil) return false;

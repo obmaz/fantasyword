@@ -356,6 +356,7 @@ dialog.screen-overlay .card.story-map-card {
     opacity: 1;
 }
 .story-map-node {
+    --crown-color: #ddc58d;
     position: absolute;
     z-index: 1;
     width: clamp(44px, 13%, 60px);
@@ -457,6 +458,48 @@ dialog.screen-overlay .card.story-map-card {
     border-color: #ffe69b;
     box-shadow: 0 0 0 3px #ffe69b88;
 }
+.story-map-path .story-map-node[data-cleared='true']:disabled {
+    opacity: 1;
+    filter: none;
+    border: 4px double var(--crown-color);
+    box-shadow: 0 0 0 2px #26331c;
+}
+.story-map-node[data-cleared='true']::before,
+.story-map-node[data-cleared='true'] .story-map-node-label {
+    opacity: 0.32;
+}
+.story-map-path .story-map-node[data-crown='gold'] {
+    --crown-color: #ffd45c;
+}
+.story-map-path .story-map-node[data-crown='silver'] {
+    --crown-color: #e2e8ec;
+}
+.story-map-path .story-map-node[data-crown='bronze'] {
+    --crown-color: #d79a60;
+}
+.story-map-crown {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+    color: var(--crown-color);
+    background: #17382f;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.story-map-crown svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
 .story-map-restart {
     position: absolute;
     z-index: 3;
@@ -507,13 +550,6 @@ dialog.screen-overlay .card.story-map-card {
 .story-market-actions button {
     flex: 1;
     min-width: 130px;
-}
-#story-market-modal .story-market-actions .btn-gray {
-    min-height: 50px;
-    border: 0;
-    background: var(--ui-home) center / 100% 100% no-repeat;
-    color: #fff8df;
-    font-weight: 800;
 }
 
 .lobby-weapon-burst {
@@ -2612,6 +2648,10 @@ button.equipment-control {
 #story-market-modal .story-market-actions .image-action-button {
     --ui-control-art: var(--ui-action);
     min-height: 50px;
+    min-width: 0;
+    flex: 1 1 0;
+    margin: 0;
+    padding: 8px 12px;
     font-weight: 800;
     font-size: 16px;
     color: #fff8df;

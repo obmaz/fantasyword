@@ -244,3 +244,52 @@ test('스토리 전투의 문제 수는 일반 전투 select와 독립적으로 
         assert.equal(r.evaluate('game.currentDay'), 'all');
     }
 });
+
+test('스토리 클리어는 실제 오답 수를 저장하고 0·1·2개에 금·은·동 왕관을 준다', () => {
+    for (const [mistakes, crown] of [
+        [0, 'gold'],
+        [1, 'silver'],
+        [2, 'bronze'],
+        [3, null],
+    ]) {
+        const r = browserRuntime();
+        const journey = r.evaluate('storyJourney');
+        journey.select(0, 0);
+        r.evaluate("game.init('story', 'all')");
+        r.advance(400);
+        r.evaluate('game.gear.shield = 0');
+        for (let index = 0; index < 8; index++) {
+            r.evaluate(`game.handleAnswer(${index >= mistakes}, null)`);
+            r.advance(index < mistakes ? 2500 : 800);
+        }
+        assert.equal(journey.stage, 1);
+        assert.equal(journey.events['0:0'].cleared, true);
+        assert.equal(journey.events['0:0'].mistakes, mistakes);
+        assert.equal(r.evaluate(`storyMapRules.crown(${mistakes})`), crown);
+        const saved = JSON.parse(r.evaluate('gameStorage.get(storyJourney.eventsKey)'));
+        assert.equal(saved['0:0'].mistakes, mistakes);
+    }
+});
+
+test('방패로 다시 맞춘 문제도 오답 횟수에 포함하고 실패·중도 종료는 클리어를 기록하지 않는다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    journey.select(0, 0);
+    r.evaluate("game.init('story', 'all')");
+    r.advance(400);
+    r.evaluate('game.gear.shield = 1; game.handleAnswer(false, null)');
+    r.advance(800);
+    for (let index = 0; index < 8; index++) {
+        r.evaluate('game.handleAnswer(true, null)');
+        r.advance(800);
+    }
+    assert.equal(journey.events['0:0'].mistakes, 1);
+    const failed = browserRuntime();
+    failed.evaluate("storyJourney.select(0, 0); game.init('story', 'all')");
+    failed.advance(400);
+    failed.evaluate('game.end(false)');
+    assert.equal(failed.evaluate('storyJourney.stage'), 0);
+    assert.equal(failed.evaluate("storyJourney.events['0:0']"), undefined);
+    failed.evaluate('storyJourney.cancelBattleReturn()');
+    assert.equal(failed.evaluate('storyMapRules.crown(undefined)'), null);
+});

@@ -32,6 +32,11 @@ const storyMapRules = Object.freeze({
     position(index, count) {
         return ((index + 0.5) / count) * 100;
     },
+    crown(mistakes) {
+        return Number.isInteger(mistakes) && mistakes >= 0 && mistakes <= 2
+            ? ['gold', 'silver', 'bronze'][mistakes]
+            : null;
+    },
     connections(row, index, rows = storyMapRules.rows) {
         const current = rows[row];
         const next = rows[row + 1];

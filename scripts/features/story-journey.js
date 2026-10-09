@@ -104,6 +104,7 @@ const storyJourney = {
         const stage = storyJourney.stage;
         const path = storyJourney.path;
         const nodes = storyJourney.nodes();
+        const events = storyJourney.events;
         const height = nodes.length * 112 + 112;
         const y = (row) => (nodes.length - row - 1) * 112 + 80;
         container.style.height = `${height}px`;
@@ -140,7 +141,9 @@ const storyJourney = {
                 button.disabled = !storyJourney.canSelect(rowIndex, index, nodes);
                 button.style.left = `${storyJourney.position(index, row.length)}%`;
                 button.style.top = `${y(rowIndex)}px`;
-                if (rowIndex < stage) button.dataset.visited = String(path[rowIndex] === index);
+                const cleared = rowIndex < stage && path[rowIndex] === index;
+                if (rowIndex < stage) button.dataset.visited = String(cleared);
+                if (cleared) button.dataset.cleared = 'true';
                 const label = node.label;
                 button.setAttribute('aria-label', label);
                 button.title = label;
@@ -148,6 +151,23 @@ const storyJourney = {
                 caption.className = 'story-map-node-label';
                 caption.textContent = label;
                 button.appendChild(caption);
+                const mistakes = events[`${rowIndex}:${index}`]?.mistakes;
+                const crown = cleared ? storyMapRules.crown(mistakes) : null;
+                if (crown) {
+                    button.dataset.crown = crown;
+                    const badge = document.createElement('span');
+                    badge.className = 'story-map-crown';
+                    badge.setAttribute('aria-hidden', 'true');
+                    badge.innerHTML =
+                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l5 4 4-7 4 7 5-4-2 13H5zM5 21h14" /></svg>';
+                    button.appendChild(badge);
+                    const grade = { gold: '금', silver: '은', bronze: '동' }[crown];
+                    button.title = `${label} 클리어 · ${grade} 왕관 · ${mistakes}개 틀림`;
+                    button.setAttribute('aria-label', button.title);
+                } else if (cleared) {
+                    button.title = `${label} 클리어`;
+                    button.setAttribute('aria-label', button.title);
+                }
                 button.addEventListener('click', () => storyJourney.select(rowIndex, index));
                 group.appendChild(button);
             });
@@ -267,9 +287,9 @@ const storyJourney = {
                 storyJourney.pendingKind === 'assault';
             skyfall.start('all', {
                 count: node.count,
-                onFinish: (won) => {
+                onFinish: (won, result = { mistakes: 0 }) => {
                     if (won && book === db.getBookKey() && isCurrent())
-                        storyJourney.completeBattle();
+                        storyJourney.completeBattle(result);
                 },
                 onExit: () => {
                     if (book !== db.getBookKey()) return;
@@ -327,8 +347,14 @@ const storyJourney = {
         storyJourney.cancelBattleReturn();
         storyJourney.open();
     },
-    completeBattle() {
+    completeBattle(result = null) {
         if (storyJourney.isPending()) {
+            const key = `${storyJourney.pendingStage}:${storyJourney.pendingIndex}`;
+            const events = storyJourney.events;
+            events[key] = { ...events[key], cleared: true };
+            if (Number.isInteger(result?.mistakes) && result.mistakes >= 0)
+                events[key].mistakes = result.mistakes;
+            gameStorage.set(storyJourney.eventsKey, JSON.stringify(events));
             storyJourney.remember(storyJourney.stage, storyJourney.pendingIndex);
             storyJourney.stage++;
         }
@@ -370,10 +396,7 @@ const storyJourney = {
         storyJourney.open();
     },
     advanceMarket() {
-        if (storyJourney.isPending()) {
-            storyJourney.remember(storyJourney.stage, storyJourney.pendingIndex);
-            storyJourney.stage++;
-        }
+        storyJourney.completeBattle();
         storyJourney.leaveMarket();
     },
 };

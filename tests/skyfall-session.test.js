@@ -118,10 +118,14 @@ test('스토리 총공세는 8문제로 줄이고 승리·복귀 콜백을 한 �
     }));
     const r = runtime({ source });
     const finished = [];
+    const mistakes = [];
     let exits = 0;
     r.session.start('all', {
         count: 8,
-        onFinish: (won) => finished.push(won),
+        onFinish: (won, result) => {
+            finished.push(won);
+            mistakes.push(result.mistakes);
+        },
         onExit: () => exits++,
     });
     assert.equal(r.hud.target, 8);
@@ -131,6 +135,7 @@ test('스토리 총공세는 8문제로 줄이고 승리·복귀 콜백을 한 �
         if (index < 7) r.advance(2500);
     }
     assert.deepEqual(finished, [true]);
+    assert.deepEqual(mistakes, [0]);
     r.advance(10000);
     assert.deepEqual(finished, [true]);
     r.session.exit();

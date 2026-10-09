@@ -58,6 +58,7 @@ function createBattleSession({
         subjectiveCorrect: 0,
         sessionCorrectObjective: 0,
         sessionWrongWords: [],
+        sessionMistakes: 0,
         bossTotalWaves: 0,
         active: false,
         gear: null,
@@ -168,6 +169,7 @@ function createBattleSession({
             game.idx = 0;
             game.subjectiveCorrect = 0;
             game.sessionCorrectObjective = 0;
+            game.sessionMistakes = 0;
             game.sessionWrongWords = [];
             game.encounterHistory = [];
             game.deck =
@@ -491,6 +493,7 @@ function createBattleSession({
                     selectedIndex = null;
                 }
             }
+            if (!isCorrect) game.sessionMistakes++;
             if (!isCorrect && game.mode !== 'boss' && game.gear?.shield > 0) {
                 game.hadRetry = true;
                 game.gear.shield--;
@@ -720,7 +723,8 @@ function createBattleSession({
                         game.subjectiveCorrect + game.sessionCorrectObjective,
                         game.list.length
                     ) ?? win;
-            if (game.mode === 'story' && win) journey.completeBattle();
+            if (game.mode === 'story' && win)
+                journey.completeBattle({ mistakes: game.sessionMistakes });
             resetScreenOverlays(GAME_ENTRY_OVERLAYS);
             openScreenOverlay('title-screen', false);
             openScreenOverlay('result-modal', true);
