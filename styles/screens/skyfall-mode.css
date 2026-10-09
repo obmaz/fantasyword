@@ -340,17 +340,6 @@
 .skyfall-result-stats strong {
     color: #ffe6a3;
 }
-#skyfall-result-close {
-    width: 100%;
-    min-height: 44px;
-    border: 1px solid #ffe0a0;
-    border-radius: 10px;
-    color: #fff5da;
-    background: #34675b;
-    font:
-        800 16px system-ui,
-        sans-serif;
-}
 @media (max-height: 500px) {
     .skyfall-answer-panel {
         padding-block: 5px;

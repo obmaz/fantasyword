@@ -193,9 +193,6 @@ window.onload = () => {
     document
         .getElementById('skyfall-pause-btn')
         ?.addEventListener('click', () => skyfall.useItem());
-    document
-        .getElementById('skyfall-result-close')
-        ?.addEventListener('click', () => skyfall.exit());
 
     // 연습 모드 모달 버튼
     const practiceStartBtn = document.getElementById('practice-mode-modal-start-btn');
