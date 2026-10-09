@@ -3,6 +3,57 @@ const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
 const { loadScripts } = require('./helpers/load-module');
 
+test('주관식은 입력·삭제한 문자를 밑줄 칸에 반영하고 Enter로 제출한다', () => {
+    const r = browserRuntime();
+    r.sandbox.onload();
+    r.evaluate(
+        "game.view.subjective({ word: 'honest', meaning: '진실한' }, '', '', () => window.submitted = true, false)"
+    );
+    const input = r.getElement('boss-input');
+    const slots = r.getElement('boss-letter-slots');
+    assert.equal(slots.children.length, 6);
+    // 가짜 DOM의 innerHTML 초기화는 자식 배열까지 비우지 않으므로 직접 초기화한다.
+    slots.children = [];
+    input.value = 'hon';
+    input.oninput();
+    assert.deepEqual(
+        slots.children.map((slot) => slot.textContent),
+        ['h', 'o', 'n', '\u00a0', '\u00a0', '\u00a0']
+    );
+    slots.children = [];
+    input.value = 'ho';
+    input.oninput();
+    assert.equal(slots.children[2].textContent, '\u00a0');
+    input.onkeydown({ key: 'Enter', isComposing: true });
+    assert.equal(r.sandbox.submitted, undefined);
+    input.onkeydown({ key: 'Enter', isComposing: false });
+    assert.equal(r.sandbox.submitted, true);
+});
+
+test('소프트 키보드의 높이·위치와 닫기를 전투 화면에 반영한다', () => {
+    const events = {};
+    const viewport = {
+        height: 667,
+        offsetTop: 0,
+        scale: 1,
+        addEventListener: (name, fn) => (events[name] = fn),
+    };
+    const r = browserRuntime({}, { visualViewport: viewport });
+    r.sandbox.onload();
+    r.sandbox.document.activeElement = r.getElement('boss-input');
+    viewport.height = 300;
+    viewport.offsetTop = 12;
+    events.resize();
+    assert.equal(r.getElement('battle-mode-game').dataset.keyboard, 'true');
+    viewport.height = 667;
+    events.resize();
+    assert.equal(r.getElement('battle-mode-game').dataset.keyboard, 'false');
+    viewport.height = 300;
+    viewport.scale = 2;
+    events.resize();
+    assert.equal(r.getElement('battle-mode-game').dataset.keyboard, 'false');
+});
+
 test('타이틀은 여섯 순열을 표시하고 직전 제목을 반복하지 않는다', () => {
     const variants = ['킹왕짱', '왕짱킹', '킹짱왕', '왕킹짱', '짱킹왕', '짱왕킹'];
     for (let index = 0; index < variants.length; index++) {
@@ -45,13 +96,13 @@ test('학습에서 제목으로 돌아오면 타이틀을 바꾸고 메뉴를 �
     assert.equal(runtime.getElement('title-background').src, returnedBackground);
 });
 
-test('너비 변경 시 게임 높이를 새 뷰포트로 갱신하고 높이만 변하면 키보드 크기에 맞춰 축소하지 않는다', () => {
+test('모바일 주소창 높이는 반영하고 키보드 입력 중 높이 변화는 유지한다', () => {
     const r = browserRuntime();
     r.sandbox.onload();
     r.sandbox.innerHeight = 400;
     r.events.resize();
     r.advance(100);
-    assert.equal(r.evaluate('getLockedAppHeight()'), 667);
+    assert.equal(r.evaluate('getLockedAppHeight()'), 400);
     r.sandbox.innerWidth = 667;
     r.sandbox.innerHeight = 375;
     r.events.resize();
@@ -67,9 +118,11 @@ test('너비 변경 시 게임 높이를 새 뷰포트로 갱신하고 높이만
     r.sandbox.syncScreenLayout();
     assert.equal(titleWidth, '281.25px');
     r.sandbox.innerHeight = 250;
+    r.sandbox.document.activeElement = { matches: () => true };
     r.events.resize();
     r.advance(100);
     assert.equal(r.getElement('battle-mode-game').style.height, '375px');
+    r.sandbox.document.activeElement = null;
     r.sandbox.innerWidth = 375;
     r.sandbox.innerHeight = 667;
     r.events.resize();

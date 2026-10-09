@@ -263,15 +263,22 @@
                 <div id="boss-box" class="boss-ui">
                     <div id="boss-title">⚠️ FINAL BOSS</div>
                     <div id="boss-hint" class="boss-hint"></div>
-                    <input
-                        type="text"
-                        id="boss-input"
-                        aria-labelledby="q-text"
-                        aria-describedby="boss-hint"
-                        class="boss-input"
-                        placeholder="정답 입력"
-                        autocomplete="off"
-                    />
+                    <div class="boss-letter-entry">
+                        <div id="boss-letter-slots" aria-hidden="true"></div>
+                        <input
+                            type="text"
+                            id="boss-input"
+                            aria-labelledby="q-text"
+                            aria-describedby="boss-hint"
+                            class="boss-input"
+                            autocomplete="off"
+                            autocapitalize="none"
+                            spellcheck="false"
+                            inputmode="text"
+                            enterkeyhint="done"
+                            lang="en"
+                        />
+                    </div>
                     <button class="boss-submit btn-danger" data-action="boss-submit">
                         <img
                             class="action-icon"

@@ -273,7 +273,10 @@ function createBattleSession({
             }
             if (data.questionKind === 'cloze' || data.questionKind === 'riddle') {
                 game.view.subjective(
-                    { meaning: data.encounterPrompt || data.englishExplanation || data.meaning },
+                    {
+                        word: data.word,
+                        meaning: data.encounterPrompt || data.englishExplanation || data.meaning,
+                    },
                     game.mode === 'boss' ? `드래곤 · WAVE ${game.idx + 1}` : '드래곤 · 보스 전투',
                     `뜻 힌트: ${data.meaning}`,
                     game.checkBossAnswer,

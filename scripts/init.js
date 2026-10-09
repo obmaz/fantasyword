@@ -123,22 +123,40 @@ window.onload = () => {
 
     rotateGameTitle();
 
-    // 회전과 데스크톱 창 크기 변경에 대응하며 모바일 주소창/키보드는 높이를 유지한다.
+    // 주소창 변화도 반영해 하단 버튼을 보이는 화면 안에 둔다. 키보드 입력 중에는 유지한다.
     let lastWidth = window.innerWidth;
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             const newWidth = window.innerWidth;
-            const desktopResize = window.matchMedia?.('(pointer: fine)').matches;
             const editing = document.activeElement?.matches('input, textarea, [contenteditable]');
-            if (Math.abs(newWidth - lastWidth) > 1 || (desktopResize && !editing)) {
+            if (Math.abs(newWidth - lastWidth) > 1 || !editing) {
                 lastWidth = newWidth;
                 initAppHeight(true);
                 syncScreenLayout();
             }
         }, 100);
     });
+
+    // 소프트 키보드가 덮는 영역을 제외하고 주관식 입력·공격 버튼을 배치한다.
+    const viewport = window.visualViewport;
+    function syncKeyboardLayout() {
+        const screen = document.getElementById('battle-mode-game');
+        const input = document.getElementById('boss-input');
+        const height = viewport?.height || window.innerHeight;
+        const keyboard =
+            document.activeElement === input &&
+            getLockedAppHeight() - height > 120 &&
+            (viewport?.scale || 1) === 1;
+        screen.dataset.keyboard = String(keyboard);
+        screen.style.setProperty('--keyboard-height', `${height}px`);
+        screen.style.setProperty('--keyboard-top', `${viewport?.offsetTop || 0}px`);
+    }
+    viewport?.addEventListener('resize', syncKeyboardLayout);
+    viewport?.addEventListener('scroll', syncKeyboardLayout);
+    document.addEventListener('focusin', syncKeyboardLayout);
+    document.addEventListener('focusout', () => setTimeout(syncKeyboardLayout, 0));
 
     // --- 이벤트 리스너 ---
 

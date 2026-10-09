@@ -166,55 +166,54 @@
     overscroll-behavior: contain;
 }
 
-@media (max-height: 650px) {
-    #practice-mode-game .practice-memorization-content {
-        gap: 4px;
-        padding: 4px 10px;
-    }
-    #practice-mode-game
-        :is(.practice-word-section, .practice-meaning-section, .practice-explanation-section) {
-        border-width: 6px !important;
-        border-image-width: 6px !important;
-        padding: 4px 8px;
-    }
-    #practice-mode-game .practice-word-text {
-        font-size: 24px;
-        line-height: 1.15;
-    }
-    #practice-mode-game .practice-word-section::after {
-        display: none;
-    }
-    #practice-mode-game .practice-meaning-text {
-        font-size: 16px;
-        line-height: 1.25;
-    }
-    #practice-mode-game .practice-explanation-text {
-        font-size: 14px;
-        line-height: 1.35;
-    }
-    #practice-mode-game .gameplay-card-label {
-        font-size: 11px;
-        margin-bottom: 2px;
-    }
-    #practice-mode-game .practice-explanation-hint {
-        margin-top: 2px;
-        font-size: 10px;
-    }
-    #practice-mode-game .practice-memorized-row {
-        padding: 4px 10px;
-    }
-    #practice-mode-game .practice-memorization-navigation {
-        padding: 0 10px max(4px, env(safe-area-inset-bottom));
-    }
-    #practice-mode-game .practice-nav-btn {
-        height: 44px;
-        min-height: 44px;
-        font-size: 13px;
-        white-space: nowrap;
-    }
-    #practice-mode-game :is(#practice-prev-btn, #practice-next-btn)::before {
-        display: none;
-    }
+/* 높이 경계에서 카드 크기가 갑자기 바뀌지 않도록 연속적으로 조절한다. */
+#practice-mode-game .practice-memorization-content {
+    gap: clamp(4px, 1cqh, 8px);
+    padding: clamp(4px, 1cqh, 8px) 10px;
+}
+#practice-mode-game
+    :is(.practice-word-section, .practice-meaning-section, .practice-explanation-section) {
+    border-width: 6px !important;
+    border-image-width: 6px !important;
+    padding: clamp(4px, 1cqh, 8px) 8px;
+}
+#practice-mode-game .practice-word-text {
+    font-size: clamp(24px, 4.2cqh, 36px);
+    line-height: 1.15;
+}
+#practice-mode-game .practice-word-section::after {
+    display: none;
+}
+#practice-mode-game .practice-meaning-text {
+    font-size: clamp(16px, 2.7cqh, 23px);
+    line-height: 1.25;
+}
+#practice-mode-game .practice-explanation-text {
+    font-size: clamp(14px, 2cqh, 16px);
+    line-height: 1.35;
+}
+#practice-mode-game .gameplay-card-label {
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+#practice-mode-game .practice-explanation-hint {
+    margin-top: 2px;
+    font-size: 10px;
+}
+#practice-mode-game .practice-memorized-row {
+    padding: 4px 10px;
+}
+#practice-mode-game .practice-memorization-navigation {
+    padding: 0 10px max(4px, env(safe-area-inset-bottom));
+}
+#practice-mode-game .practice-nav-btn {
+    height: 44px;
+    min-height: 44px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+#practice-mode-game :is(#practice-prev-btn, #practice-next-btn)::before {
+    display: none;
 }
 @media (max-height: 420px) {
     #practice-mode-game .practice-memorization-content {
@@ -1625,6 +1624,84 @@ button .action-icon {
     font-size: 12px;
     line-height: 1.5;
     margin: 8px 0 0;
+}
+
+#battle-mode-game .boss-letter-entry {
+    position: relative;
+    width: 100%;
+    min-height: 52px;
+}
+#battle-mode-game #boss-title,
+#battle-mode-game .boss-hint:not(.boss-hint-revealed) {
+    display: none;
+}
+#boss-letter-slots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px;
+}
+#boss-letter-slots .letter-slot {
+    width: 24px;
+    min-height: 32px;
+    font-size: 24px;
+    color: #fff6df;
+    border-bottom: 2px solid #b4ce9c;
+}
+#boss-letter-slots .letter-slot-active {
+    border-bottom-color: #ffd66b;
+}
+#battle-mode-game .boss-letter-entry #boss-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    font-size: 16px;
+    cursor: text;
+}
+#battle-mode-game .boss-letter-entry:focus-within {
+    outline: 2px solid #e8d28e;
+    outline-offset: 2px;
+}
+#battle-mode-game[data-keyboard='true'] {
+    height: var(--keyboard-height) !important;
+    top: var(--keyboard-top) !important;
+}
+#battle-mode-game[data-keyboard='true'] .battle-arena {
+    display: none;
+}
+#battle-mode-game[data-keyboard='true'] .quiz-area {
+    margin-top: 0;
+    padding: 6px 12px;
+    gap: 6px;
+}
+#battle-mode-game[data-keyboard='true'] #q-text {
+    font-size: 22px;
+}
+#battle-mode-game[data-keyboard='true'] .question-box {
+    padding: 4px;
+    min-height: 0;
+    border-width: 6px !important;
+    border-image-width: 6px !important;
+}
+#battle-mode-game[data-keyboard='true'] #skill-display {
+    display: none;
+}
+#battle-mode-game[data-keyboard='true'] .boss-ui {
+    gap: 4px !important;
+    padding-top: 0;
+    margin-top: auto;
+}
+#battle-mode-game[data-keyboard='true'] .boss-submit {
+    margin: 0 !important;
+    height: 44px;
+    min-height: 44px;
+    padding: 4px !important;
+    border-width: 6px !important;
+    border-image-width: 6px !important;
+    font-size: 14px;
 }
 
 /* Gameplay controls share one compact header. The scene remains visible behind it. */

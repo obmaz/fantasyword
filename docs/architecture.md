@@ -72,8 +72,8 @@ CSS의 이미지 상대 경로는 `../../images/`이며 빌드가 버전을 붙�
 ## 화면·팝업·전체화면
 
 `layout-manager.js`는 너비 `min(innerWidth, lockedAppHeight × 3/4)`로 세로 프레임을 계산한다.
-로비/연습/배틀에 같은 크기를 적용한다. 모바일 주소창·키보드의 높이 변화로 프레임이 흔들리지 않도록 높이를 고정하고
-너비 변경/회전·전체화면 전환에는 다시 측정한다. 데스크톱 높이 변경은 입력 중이 아닐 때 반영한다.
+로비/연습/배틀에 같은 크기를 적용한다. 주소창·회전·전체화면 변화 시 현재 보이는 높이를 다시 측정해
+하단 조작이 화면 밖으로 밀리지 않게 한다. 키보드 입력 중 높이 변화는 제외한다.
 
 일반 화면의 레이어는 CSS layer 변수로 관리한다. native `<dialog>.showModal()`은 top layer이며 배경 inert와 포커스 복원을 제공한다.
 `modal-manager`가 root dialog 열기/닫기, `navigation`이 history/popstate를 담당한다.

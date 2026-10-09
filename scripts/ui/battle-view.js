@@ -17,6 +17,27 @@ function createBattleView({
     let questionVersion = 0;
     let floatVersion = 0;
     let attackVersion = 0;
+    let inputPattern = '';
+    function updateInputSlots() {
+        const input = element('boss-input');
+        const slots = element('boss-letter-slots');
+        slots.innerHTML = '';
+        const typed = Array.from(input.value);
+        const pattern = Array.from(inputPattern);
+        for (let index = 0; index < Math.max(pattern.length, typed.length); index++) {
+            const slot = doc.createElement('span');
+            slot.className = /[a-z]/i.test(pattern[index] || 'a')
+                ? 'letter-slot'
+                : 'letter-separator';
+            slot.textContent =
+                typed[index] || (/[^a-z]/i.test(pattern[index] || 'a') ? pattern[index] : '\u00a0');
+            slot.classList.toggle(
+                'letter-slot-active',
+                index === (input.selectionStart ?? typed.length)
+            );
+            slots.appendChild(slot);
+        }
+    }
     function questionLater(callback, delay) {
         const version = questionVersion;
         schedule(() => {
@@ -189,6 +210,10 @@ function createBattleView({
             element('boss-hint').classList.remove('boss-hint-revealed');
             const input = element('boss-input');
             input.value = '';
+            inputPattern = data.word || '';
+            input.oninput = updateInputSlots;
+            input.onclick = updateInputSlots;
+            updateInputSlots();
             input.disabled = false;
             input.classList.remove('boss-input-correct', 'boss-input-wrong');
             input.onkeydown = (event) => {
@@ -348,6 +373,7 @@ function createBattleView({
             if (index !== null && index !== undefined)
                 optionButtons[index]?.classList.add('option-btn-picked-wrong');
             element('boss-input').value = '';
+            updateInputSlots();
             element('boss-input').disabled = true;
             const submit = doc.querySelector('#boss-box .boss-submit');
             if (submit) submit.disabled = true;
