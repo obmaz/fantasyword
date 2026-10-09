@@ -173,15 +173,15 @@ const ui = {
 
         let hasSkills = false;
 
-        // 황금장갑 (패시브 아이템 - 항상 활성)
-        if (db.has('goldGlove')) {
+        // 장갑 슬롯에 장착한 황금장갑만 활성화한다.
+        if (db.equipped.gloves === 'goldGlove' && db.durability.goldGlove > 0) {
             hasSkills = true;
             const gloveBtn = document.createElement('div');
             gloveBtn.className = 'skill-btn skill-passive';
             gloveBtn.innerHTML = `${itemIconMarkup({ id: 'goldGlove' })} <span class="skill-count">${
                 db.durability['goldGlove'] || 0
             }/30</span>`;
-            gloveBtn.title = '황금장갑 (패시브): 골드 획득 x1.5배';
+            gloveBtn.title = '황금장갑 (장착 중): 정답 골드 x1.5배';
             container.appendChild(gloveBtn);
         }
 

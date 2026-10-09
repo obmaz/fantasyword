@@ -402,12 +402,16 @@ const db = {
             if (db.durability[id] <= 0) {
                 delete db.durability[id];
                 db.owned = db.owned.filter((x) => x !== id);
+                db.inventory = db.inventory.filter((x) => x !== id);
+                for (const slot of Object.keys(db.equipped)) {
+                    if (db.equipped[slot] === id) delete db.equipped[slot];
+                }
                 showToast(
                     `[${id === 'goldGlove' ? '황금 장갑' : '아이템'}]이 파괴되었습니다!`,
                     'warn'
                 );
             }
-            db.save('dura', 'owned');
+            db.save('dura', 'owned', 'inventory', 'equipped');
             ui.updateSkills(); // 황금장갑이 skill bar에 표시되므로
         }
     },
@@ -416,6 +420,20 @@ const db = {
 // 이전 단일 무기 슬롯을 실제 손 슬롯으로 옮기고, 오른손과 골드 보너스의 무기를 맞춘다.
 if (!db.owned.includes('basic')) db.owned.unshift('basic');
 const previousEquipment = JSON.stringify(db.equipped);
+// 이전 자동 활성 유물은 장갑 슬롯으로 옮겨 효과와 남은 사용 횟수를 보존한다.
+if (db.owned.includes('goldGlove')) {
+    db.owned = db.owned.filter((id) => id !== 'goldGlove');
+    db.durability.goldGlove ??= 30;
+    if (!db.equipped.gloves) {
+        db.equipped.gloves = 'goldGlove';
+        db.inventory = db.inventory.filter((id) => id !== 'goldGlove');
+    } else if (db.equipped.gloves !== 'goldGlove' && !db.inventory.includes('goldGlove')) {
+        db.inventory.push('goldGlove');
+    }
+    db._writers.owned();
+    db._writers.inventory();
+    db._writers.dura();
+}
 const previousPrimaryWeapon = db.equippedWeapon;
 function restoreWeaponToHand(id) {
     const weapon = weapons.find((entry) => entry.id === id && db.has(id));

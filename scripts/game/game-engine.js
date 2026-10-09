@@ -542,13 +542,14 @@ function createBattleSession({
                     maxTime: game.maxTime,
                     elapsedSeconds: Math.max(0, (game.now() - game.rewardStartedAt) / 1000),
                     multiplier: weapon.multiplier || 1,
-                    glove: db.has('goldGlove'),
+                    glove: db.equipped?.gloves === 'goldGlove' && db.durability.goldGlove > 0,
                 });
                 const routeBonus = equipment?.routeBonus(baseGain, game.gear?.route) || 0;
                 const comboBonus = game.currentQ.comboBonus || 0;
                 const gain = baseGain + routeBonus + comboBonus + questBonus;
                 if (weapon.multiplier > 1) game.view.goldAttack();
-                if (db.has('goldGlove')) db.useItem('goldGlove');
+                if (db.equipped?.gloves === 'goldGlove' && db.durability.goldGlove > 0)
+                    db.useItem('goldGlove');
                 game.stats.gain += gain;
                 db.addGold(gain);
                 const rewardDetails = [

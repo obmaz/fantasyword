@@ -137,6 +137,7 @@ const shop = {
 
         if (type === 'item') {
             db.inventory.push(id);
+            if (item.durability) db.durability[id] = item.durability;
         } else if (type === 'backpack') {
             db.inventoryCapacity++;
         } else if (type === 'skill') {

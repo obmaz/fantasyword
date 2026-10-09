@@ -52,6 +52,39 @@ test('오른손 무기는 3연속 정답에만 추가 10 G를 주며 오답은 �
     assert.equal(rules.combo({ combo: 2, weapon: true }, false).combo, 0);
 });
 
+test('황금장갑은 장착할 때만 보상이 늘고 정답에서만 사용 횟수가 차감된다', () => {
+    for (const equipped of [false, true]) {
+        const r = runtime(equipped ? { gloves: 'goldGlove' } : {}, {
+            v7_owned: '["basic"]',
+            v7_inventory: equipped ? '[]' : '["goldGlove"]',
+            v7_dura: '{"goldGlove":2}',
+        });
+        r.start();
+        r.choose(true);
+        assert.equal(r.game.stats.gain, equipped ? 30 : 20);
+        assert.equal(r.evaluate('db.durability.goldGlove'), equipped ? 1 : 2);
+        r.advance(800);
+        r.choose(false);
+        assert.equal(r.evaluate('db.durability.goldGlove'), equipped ? 1 : 2);
+    }
+});
+
+test('황금장갑의 마지막 정답에는 배율이 적용되고 소모 후 슬롯과 저장에서 제거된다', () => {
+    const r = runtime(
+        { gloves: 'goldGlove' },
+        { v7_owned: '["basic"]', v7_dura: '{"goldGlove":1}' }
+    );
+    r.start();
+    r.choose(true);
+    assert.equal(r.game.stats.gain, 30);
+    assert.equal(r.evaluate('db.equipped.gloves'), undefined);
+    assert.equal(r.evaluate('db.durability.goldGlove'), undefined);
+    assert.equal(JSON.parse(r.store.get('v7_equipped')).gloves, undefined);
+    r.advance(800);
+    r.choose(true);
+    assert.equal(r.game.stats.gain, 50);
+});
+
 test('장비는 장착해야 능력이 켜지고 방패의 이전 오른손 저장은 왼손으로 복원된다', () => {
     const r = runtime({}, { v7_inventory: '["helmet","boots"]' });
     assert.equal(r.game.gear.shield, 0);

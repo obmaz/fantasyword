@@ -1267,6 +1267,10 @@ button .action-icon {
     grid-column: 1;
     grid-row: 1;
 }
+#inv-gloves {
+    grid-column: 3;
+    grid-row: 1;
+}
 #inv-hand-1 {
     grid-column: 1;
     grid-row: 2;
@@ -1380,6 +1384,7 @@ button .action-icon {
 #inventory-modal #inv-item-detail {
     max-height: calc(100% - 36px);
     overflow: auto;
+    z-index: 40;
 }
 #inventory-modal #detail-close {
     background: url('../../images/theme/parts/approved-control.webp') center / 100% 100% no-repeat;
@@ -1733,6 +1738,38 @@ button img:not([class]) {
 }
 #practice-mode-game .practice-memorized-btn {
     --ui-control-art: var(--ui-action);
+}
+#practice-mode-game .practice-memorized-row .practice-speak-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 68px;
+    height: 44px;
+    min-height: 44px;
+    border-width: 6px !important;
+    border-image-width: 6px !important;
+    padding: 2px !important;
+    font-size: 11px !important;
+    line-height: 1;
+    white-space: nowrap;
+}
+#practice-mode-game .practice-speak-btn > img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+#practice-mode-game .practice-speak-btn::after {
+    content: none;
+}
+#practice-mode-game .practice-memorized-row .practice-chip {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 2px !important;
+    font-size: clamp(10px, 2.8cqw, 12px);
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 #overlay-gold,
 .menu-wallet {

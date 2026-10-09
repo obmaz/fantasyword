@@ -131,14 +131,6 @@ window.relicsData = [
         storyOnly: true,
     },
     { id: 'hourglass', name: '⏳ 모래시계', cost: 500, desc: '제한시간 +5초', type: 'passive' },
-    {
-        id: 'goldGlove',
-        name: '🥊 황금장갑',
-        cost: 1000,
-        desc: '골드 x1.5배 (30회)',
-        type: 'consumable',
-        durability: 30,
-    },
     { id: 'shield', name: '🛡️ 수호 방패', cost: 1500, desc: '오답 손실 50% 방어', type: 'passive' },
     { id: 'backpack', name: '🎒 가방', cost: 2000, desc: '인벤토리 용량 +1', type: 'backpack' },
     {
@@ -160,6 +152,14 @@ window.relicsData = [
 ];
 
 window.itemsData = [
+    {
+        id: 'goldGlove',
+        name: '🥊 황금장갑',
+        cost: 1000,
+        desc: '장갑 장착: 정답 골드 x1.5배 · 30회 사용 후 소모',
+        slot: 'gloves',
+        durability: 30,
+    },
     {
         id: 'helmet',
         name: '⛑️ 투구',

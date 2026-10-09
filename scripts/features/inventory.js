@@ -5,6 +5,11 @@
 
 const inventory = {
     slots: {
+        gloves: {
+            label: '장갑',
+            accepts: '황금장갑 · 정답 골드 x1.5 · 30회',
+            placeholder: 'goldGlove',
+        },
         head: { label: '머리', accepts: '투구 · 무료 힌트 1회', placeholder: 'helmet' },
         'hand-1': {
             label: '오른손',
@@ -86,7 +91,10 @@ const inventory = {
         document.getElementById('inv-cap').innerText = inventory.getStoredCount();
         document.getElementById('inv-max-cap').innerText = db.inventoryCapacity;
         const weapon = weapons.find((w) => w.id === db.equippedWeapon);
-        document.getElementById('inv-gold-bonus').innerText = `×${weapon?.multiplier || 1}`;
+        const gloveMultiplier =
+            db.equipped.gloves === 'goldGlove' && db.durability.goldGlove > 0 ? 1.5 : 1;
+        document.getElementById('inv-gold-bonus').innerText =
+            `×${Number(((weapon?.multiplier || 1) * gloveMultiplier).toFixed(2))}`;
 
         // 표시하는 슬롯은 실제 장착 위치와 같다. 비어 있는 오른손은 기본 검을 사용한다.
         for (const [slot, rule] of Object.entries(inventory.slots)) {
@@ -232,6 +240,7 @@ const inventory = {
         const slotNames = allowedSlots.map((slot) => inventory.slots[slot]?.label).filter(Boolean);
         const placement = itemData.id === 'boots' ? '양발 함께' : slotNames.join(' 또는 ');
         let description = `${itemData.desc}\n장착 위치: ${placement}`;
+        if (itemData.durability) description += `\n남은 사용: ${db.durability[id] || 0}회`;
         if (type === 'weapon' && allowedSlots.includes('hand-1'))
             description += '\n오른손: 3연속 정답마다 추가 공격 +10 G';
         if (type === 'weapon' && itemData.multiplier > 1)

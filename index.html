@@ -585,6 +585,15 @@
                                 data-action="inventory-unequip"
                                 data-slot="foot-2"
                             ></button>
+                            <button
+                                type="button"
+                                class="inv-slot"
+                                id="inv-gloves"
+                                aria-label="장갑 슬롯"
+                                data-slot-label="장갑"
+                                data-action="inventory-unequip"
+                                data-slot="gloves"
+                            ></button>
                         </div>
                         <p class="inventory-slot-caption">
                             캐릭터 기준 · 장착한 장비를 누르면 해제
@@ -610,6 +619,10 @@
                                 <div>
                                     <dt>양발</dt>
                                     <dd>부츠 한 켤레 · 스토리 전투의 시간 또는 보상 경로 선택</dd>
+                                </div>
+                                <div>
+                                    <dt>장갑</dt>
+                                    <dd>황금장갑 · 장착 중 정답 골드 x1.5 · 30회 후 소모</dd>
                                 </div>
                             </dl>
                             <p>
@@ -918,10 +931,11 @@
                         type="button"
                         class="practice-speak-btn"
                         id="practice-speak-btn"
-                        title="음성 재생"
-                        aria-label="음성 재생"
+                        title="현재 단어의 영어 발음 다시 듣기"
+                        aria-label="영어 발음 다시 듣기"
                     >
-                        🗣️
+                        <img src="images/theme/parts/ui-music.webp" alt="" aria-hidden="true" />
+                        <span>다시 듣기</span>
                     </button>
                 </div>
 
