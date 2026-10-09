@@ -995,7 +995,7 @@ button .action-icon {
     object-fit: contain;
 }
 .title-toolbar .revenge-shortcut .action-icon {
-    transform: scale(0.75);
+    transform: none;
 }
 #title-skyfall-btn > span {
     display: inline-block;
@@ -2233,29 +2233,29 @@ button img:not([class]) {
 }
 
 .title-toolbar {
-    grid-template-columns: max-content minmax(0, 1fr) 48px 44px;
+    grid-template-columns: max-content minmax(0, 1fr) 44px 44px;
 }
-.revenge-shortcut {
+.title-toolbar .revenge-shortcut {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0;
-    width: 48px;
+    gap: 1px;
+    width: 44px;
     height: 44px;
     min-height: 44px;
     color: #fff5ce;
     font-size: 10px;
-    line-height: 12px;
+    line-height: 10px;
     border: 6px solid transparent !important;
-    border-image: var(--ui-action) 48 fill / 6px / 0 stretch !important;
+    border-image: var(--ui-small-control) 48 fill / 6px / 0 stretch !important;
     padding: 0 !important;
 }
 .revenge-shortcut .action-icon {
-    width: 14px;
-    height: 14px;
-    flex: 0 0 14px;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
     object-fit: contain;
 }
 #revenge-modal {
@@ -2467,20 +2467,9 @@ button.equipment-control {
     display: block;
     white-space: nowrap;
     font-size: 10px;
-    line-height: 12px;
-}
-.revenge-shortcut b {
-    position: absolute;
-    top: 2px;
-    right: 1px;
-    padding: 1px 2px;
-    border-radius: 4px;
-    background: #183e2b;
-    color: #fff5ce;
-    font-size: 8px;
     line-height: 10px;
+    font-weight: 800;
 }
-
 /* A parchment prompt separates the question from the green answer controls. */
 #battle-mode-game .question-box {
     border: 12px solid transparent !important;
