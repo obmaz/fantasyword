@@ -1042,23 +1042,25 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </header>
-                <img class="story-treasure-art" src="images/theme/parts/ui-chest.webp" alt="" />
-                <p id="story-treasure-status" role="status"></p>
-                <button
-                    class="image-action-button"
-                    type="button"
-                    id="story-treasure-open"
-                    data-action="story-treasure-open"
-                >
-                    상자 열기
-                </button>
-                <button
-                    class="image-action-button"
-                    type="button"
-                    data-action="story-treasure-close"
-                >
-                    지도 보기
-                </button>
+                <div class="story-popup-body">
+                    <img class="story-treasure-art" src="images/theme/parts/ui-chest.webp" alt="" />
+                    <p id="story-treasure-status" role="status"></p>
+                    <button
+                        class="image-action-button"
+                        type="button"
+                        id="story-treasure-open"
+                        data-action="story-treasure-open"
+                    >
+                        상자 열기
+                    </button>
+                    <button
+                        class="image-action-button"
+                        type="button"
+                        data-action="story-treasure-close"
+                    >
+                        지도 보기
+                    </button>
+                </div>
             </section>
         </dialog>
 
@@ -1079,23 +1081,25 @@
                         <span class="visually-hidden">닫기</span>
                     </button>
                 </header>
-                <p>그림자 나침반은 스토리 전투의 제한시간을 3초 늘려 줍니다.</p>
-                <div class="story-market-item">
-                    <span aria-hidden="true">🧭</span><strong>그림자 나침반</strong
-                    ><span>180 G</span>
-                </div>
-                <p class="story-market-risk">구매 성공률 75% · 실패해도 180 G를 잃습니다.</p>
-                <p id="story-market-status" role="status"></p>
-                <div class="story-market-actions">
-                    <button
-                        type="button"
-                        class="btn-main image-action-button"
-                        data-action="story-market-buy"
-                    >
-                        구매</button
-                    ><button type="button" class="btn-gray" data-action="story-market-advance">
-                        다음 지점
-                    </button>
+                <div class="story-popup-body">
+                    <p>그림자 나침반은 스토리 전투의 제한시간을 3초 늘려 줍니다.</p>
+                    <div class="story-market-item">
+                        <span aria-hidden="true">🧭</span><strong>그림자 나침반</strong
+                        ><span>180 G</span>
+                    </div>
+                    <p class="story-market-risk">구매 성공률 75% · 실패해도 180 G를 잃습니다.</p>
+                    <p id="story-market-status" role="status"></p>
+                    <div class="story-market-actions">
+                        <button
+                            type="button"
+                            class="btn-main image-action-button"
+                            data-action="story-market-buy"
+                        >
+                            구매</button
+                        ><button type="button" class="btn-gray" data-action="story-market-advance">
+                            다음 지점
+                        </button>
+                    </div>
                 </div>
             </section>
         </dialog>

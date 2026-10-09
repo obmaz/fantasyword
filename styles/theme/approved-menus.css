@@ -257,48 +257,39 @@
     --ui-control-art: var(--ui-small-control);
 }
 
-.story-map-card {
-    width: min(94vw, 480px);
-    max-height: min(88dvh, 780px);
-    overflow: auto;
-    padding: 20px;
+dialog.screen-overlay .card.story-map-card {
+    width: calc(var(--title-container-width, 100vw) - 32px);
+    max-width: min(600px, calc(var(--title-container-width, 100vw) - 32px));
+    max-height: calc(var(--app-height, 100dvh) - 84px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px;
     color: #f5eccd;
-    background: linear-gradient(155deg, #173e34, #172827 70%, #39271c);
-    border: 3px solid #b69556;
-    border-radius: 18px;
-    box-shadow: 0 16px 50px #08130bc9;
+    border-radius: 0;
+    border-image-slice: 15% fill !important;
     overscroll-behavior: contain;
-}
-#story-map-modal .story-map-card,
-#story-market-modal .story-map-card,
-#story-treasure-modal .story-map-card {
-    background: linear-gradient(155deg, #173e34, #172827 70%, #39271c) !important;
 }
 .story-map-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
-    position: sticky !important;
-    top: 0;
+    position: relative !important;
+    flex: 0 0 auto;
     z-index: 10;
     padding: 8px 0;
-    background: #173e34;
+    background: none;
 }
 .story-map-header h2 {
     margin: 2px 0 0;
-    color: #ffe2a0;
+    color: #fff3d2;
+    font-size: clamp(28px, 10cqw, 38px);
+    line-height: 1.2;
+    text-shadow: 0 2px 1px #133a27;
 }
-#story-map-modal .story-map-card {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-#story-map-modal .story-map-header {
-    position: relative !important;
-    flex: 0 0 auto;
-}
-#story-map-content {
+#story-map-content,
+.story-popup-body {
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -479,7 +470,7 @@
     object-fit: contain;
     margin: 16px auto;
 }
-.story-treasure-card > .image-action-button {
+.story-treasure-card .image-action-button {
     width: 100%;
     min-height: 44px;
     margin-top: 10px;

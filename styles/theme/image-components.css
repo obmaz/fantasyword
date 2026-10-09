@@ -60,7 +60,14 @@ button:disabled:not(.option-btn) {
 }
 
 /* Generated frames retain their corners while the empty center fits variable content. */
-dialog.screen-overlay :is(.card.rpg-modal, .card.mode-selection, .card.story-card, .result-modal),
+dialog.screen-overlay
+    :is(
+        .card.rpg-modal,
+        .card.mode-selection,
+        .card.story-card,
+        .card.story-map-card,
+        .result-modal
+    ),
 .app-confirm-box,
 #battle-mode-game .question-box,
 #practice-mode-game
