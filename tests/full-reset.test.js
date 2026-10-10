@@ -27,7 +27,7 @@ test('완전 초기화는 취소 시 보존하고 확정 시 모든 게임 진�
     assert.deepEqual([...r.store], [['unrelatedPreference', 'keep']]);
 
     const fresh = browserRuntime(Object.fromEntries(r.store));
-    assert.equal(fresh.evaluate('db.gold'), 100);
+    assert.equal(fresh.evaluate('db.gold'), 99);
     assert.deepEqual([...fresh.evaluate('db.owned')], ['basic']);
     assert.equal(fresh.evaluate('storyJourney.stage'), 0);
     assert.equal(fresh.evaluate('db.getBookStats().solved'), 0);

@@ -173,10 +173,10 @@ window.itemsData = [
     {
         id: 'goldGlove',
         name: '🥊 미다스의 건틀릿',
-        cost: 60,
-        desc: '장갑 장착: 정답 골드 x1.5배 · 정답 4회 후 소모',
+        cost: 100,
+        desc: '장갑 장착: 정답 골드 x1.5배 · 정답 10회 후 소모',
         slot: 'gloves',
-        durability: 4,
+        durability: 10,
     },
     {
         id: 'helmet',

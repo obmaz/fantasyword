@@ -121,7 +121,7 @@ const settingsManager = {
     },
     resetGame: async () => {
         const confirmed = await showConfirm(
-            '골드, 장비, 스토리 진행, 외운 단어, 복수 퀘스트, 통계와 설정을 모두 삭제하고 기본 100골드로 처음부터 시작합니다. 되돌릴 수 없습니다.',
+            '골드, 장비, 스토리 진행, 외운 단어, 복수 퀘스트, 통계와 설정을 모두 삭제하고 기본 99골드로 처음부터 시작합니다. 되돌릴 수 없습니다.',
             { okText: '모두 삭제', cancelText: '돌아가기' }
         );
         if (!confirmed) return;

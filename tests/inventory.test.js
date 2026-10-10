@@ -15,27 +15,27 @@ function equipmentRuntime(saved = {}) {
 test('황금장갑 구매·장착·해제는 전용 슬롯과 보관함에 한 번만 저장된다', () => {
     const r = equipmentRuntime({ v7_gold: '2000' });
     r.evaluate('shop.buy("goldGlove", "item"); inventory.equip("goldGlove", "item")');
-    assert.equal(r.evaluate('db.gold'), 1940);
+    assert.equal(r.evaluate('db.gold'), 1900);
     assert.equal(r.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 10);
     assert.equal(r.evaluate('db.inventory.includes("goldGlove")'), false);
     r.evaluate('inventory.unequip("gloves")');
     assert.equal(r.evaluate('db.equipped.gloves'), undefined);
     assert.equal(r.evaluate('db.inventory.filter(id => id === "goldGlove").length'), 1);
     const restored = equipmentRuntime(Object.fromEntries(r.store));
     assert.equal(restored.evaluate('db.inventory.includes("goldGlove")'), true);
-    assert.equal(restored.evaluate('db.durability.goldGlove'), 4);
+    assert.equal(restored.evaluate('db.durability.goldGlove'), 10);
 });
 
-test('이전 황금장갑 유물은 현행 4회 상한으로 장갑 슬롯에 한 번만 이전된다', () => {
+test('이전 황금장갑 유물은 현행 10회 상한으로 장갑 슬롯에 한 번만 이전된다', () => {
     const r = equipmentRuntime({ v7_owned: '["basic","goldGlove"]', v7_dura: '{"goldGlove":7}' });
     assert.equal(r.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 7);
     assert.equal(r.evaluate('db.owned.includes("goldGlove")'), false);
     assert.equal(r.evaluate('inventory.getStoredCount()'), 0);
     const restored = equipmentRuntime(Object.fromEntries(r.store));
     assert.equal(restored.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(restored.evaluate('db.durability.goldGlove'), 4);
+    assert.equal(restored.evaluate('db.durability.goldGlove'), 7);
     assert.equal(restored.evaluate('db.inventory.includes("goldGlove")'), false);
 });
 
@@ -50,6 +50,45 @@ test('오른손 전용 무기와 왼손 전용 이펙트는 잘못된 손 요청
     assert.equal(r.evaluate('db.equipped["hand-1"]'), 'midasSword');
     assert.equal(r.evaluate('db.equipped["hand-2"]'), 'void');
     assert.equal(r.evaluate('db.equippedWeapon'), 'midasSword');
+});
+
+test('같은 손의 새 무기는 이전 장비를 보관함으로 교체하고 다른 손은 유지한다', () => {
+    const r = equipmentRuntime({
+        v7_equipped: '{"hand-1":"midasSword","hand-2":"void"}',
+        v7_equip: 'midasSword',
+    });
+    r.evaluate('inventory.showDetails("goldDagger", "weapon")');
+    assert.equal(r.getElement('detail-actions').children[0].innerText, '오른손 교체');
+    r.getElement('detail-actions').children[0].click();
+    assert.equal(r.evaluate('db.equipped["hand-1"]'), 'goldDagger');
+    assert.equal(r.evaluate('db.equipped["hand-2"]'), 'void');
+    assert.equal(r.evaluate('db.equippedWeapon'), 'goldDagger');
+    assert.equal(r.evaluate('Object.values(db.equipped).includes("midasSword")'), false);
+    assert.equal(r.evaluate('db.has("midasSword")'), true);
+    r.evaluate('inventory.showDetails("goldDagger", "weapon")');
+    assert.equal(r.getElement('detail-actions').children.at(-3).disabled, true);
+    const restored = equipmentRuntime(Object.fromEntries(r.store));
+    assert.equal(restored.evaluate('db.equipped["hand-1"]'), 'goldDagger');
+    assert.equal(restored.evaluate('db.equipped["hand-2"]'), 'void');
+    assert.equal(restored.evaluate('db.equippedWeapon'), 'goldDagger');
+});
+
+test('무기 교체 저장이 실패하면 슬롯과 주무기 저장이 함께 이전 상태를 유지한다', () => {
+    const r = equipmentRuntime({
+        v7_equipped: '{"hand-1":"midasSword"}',
+        v7_equip: 'midasSword',
+    });
+    const storage = r.sandbox.localStorage;
+    const original = storage.setItem;
+    storage.setItem = (key, value) => {
+        if (key === 'v7_equip' && value === 'goldDagger') throw new Error('QuotaExceededError');
+        original(key, value);
+    };
+    r.evaluate('inventory.equip("goldDagger", "weapon", "hand-1")');
+    assert.equal(r.evaluate('db.equipped["hand-1"]'), 'midasSword');
+    assert.equal(r.evaluate('db.equippedWeapon'), 'midasSword');
+    assert.equal(JSON.parse(r.store.get('v7_equipped'))['hand-1'], 'midasSword');
+    assert.equal(r.store.get('v7_equip'), 'midasSword');
 });
 
 test('장비 상세에서 제공하는 손 선택은 실제 장착 위치와 일치한다', () => {

@@ -8,7 +8,7 @@ const inventory = {
     slots: {
         gloves: {
             label: '장갑',
-            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 4회',
+            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 10회',
             placeholder: 'goldGlove',
         },
         head: { label: '머리', accepts: '통찰의 헬름 · 무료 힌트 1회', placeholder: 'helmet' },
@@ -239,7 +239,9 @@ const inventory = {
             for (const slot of allowedSlots) {
                 const equipBtn = document.createElement('button');
                 equipBtn.className = 'btn-main';
-                equipBtn.innerText = `${inventory.slots[slot].label} 장착`;
+                const current = db.equipped[slot];
+                equipBtn.innerText = `${inventory.slots[slot].label} ${current === id ? '장착 중' : current ? '교체' : '장착'}`;
+                equipBtn.disabled = current === id;
                 equipBtn.onclick = () => {
                     inventory.equip(id, 'weapon', slot);
                     inventory.hideDetails();
@@ -360,9 +362,21 @@ const inventory = {
             showToast('인벤토리가 가득 찼습니다.', 'error');
             return;
         }
-        Object.assign(db, next);
-
-        db.save('owned', 'equip', 'dura', 'inventory', 'equipped');
+        const replaced = [
+            ...new Set(slots.map((s) => db.equipped[s]).filter((old) => old && old !== id)),
+        ];
+        if (!db.commitChanges(next)) return;
+        if (replaced.length) {
+            const previousNames = replaced.map((old) =>
+                itemDisplayName(
+                    weapons.find((w) => w.id === old) || items.find((i) => i.id === old)
+                )
+            );
+            showToast(
+                `${previousNames.join(', ')} 해제 · ${itemDisplayName(item)} 장착`,
+                'success'
+            );
+        }
         inventory.render();
         shop.render();
     },

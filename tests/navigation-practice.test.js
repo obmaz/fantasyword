@@ -132,8 +132,8 @@ test('별도 골드 수정창의 암호 확인을 취소하면 해당 수정창�
         'settingsManager.open(); secret.openGoldEditModal(); secret.updateGoldEdit(500); secret.applyGoldEdit(); secret.close()'
     );
     assert.equal(r.getElement('gold-edit-modal').style.display, 'flex');
-    assert.equal(r.evaluate('secret.editGold'), 600);
-    assert.equal(r.evaluate('db.gold'), 100);
+    assert.equal(r.evaluate('secret.editGold'), 599);
+    assert.equal(r.evaluate('db.gold'), 99);
 });
 
 test('게임 화면에서는 뒤에 있는 제목 컨트롤을 숨기고 종료 후 다시 활성화한다', () => {

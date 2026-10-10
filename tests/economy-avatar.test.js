@@ -84,7 +84,7 @@ test('자동 해결 스크롤은 최고 배율·보물 길·콤보까지 받아�
     }
 });
 
-test('기존 골드·장비 ID는 보존하고 건틀릿의 남은 횟수는 4회 상한을 적용한다', () => {
+test('기존 골드·장비 ID는 보존하고 건틀릿의 남은 횟수는 10회 상한을 적용한다', () => {
     const r = economyRuntime({
         v7_gold: '123456',
         v7_owned: '["basic","midasSword"]',
@@ -94,7 +94,7 @@ test('기존 골드·장비 ID는 보존하고 건틀릿의 남은 횟수는 4�
     });
     assert.equal(r.evaluate('db.gold'), 123456);
     assert.equal(r.evaluate('db.equippedWeapon'), 'midasSword');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 7);
     assert.match(r.evaluate('weapons.find(w => w.id === "midasSword").name'), /롱소드/);
 });
 

@@ -90,7 +90,7 @@ test('스토리 최종 보스는 실제 철자 타일로 답을 입력하고 동
     assert.equal(r.evaluate('storyMapRules.crown(storyJourney.events["14:0"].mistakes)'), 'bronze');
 });
 
-test('건틀릿은 4회로 제한하고 남은 1회 및 저장된 0골드는 보존한다', () => {
+test('건틀릿은 10회로 제한하고 남은 1회 및 저장된 0골드는 보존한다', () => {
     const r = browserRuntime({
         v7_gold: '0',
         v7_inventory: '["goldGlove"]',
@@ -98,8 +98,8 @@ test('건틀릿은 4회로 제한하고 남은 1회 및 저장된 0골드는 보
     });
     assert.equal(r.evaluate('db.gold'), 0);
     assert.equal(r.evaluate('db.durability.goldGlove'), 1);
-    assert.equal(r.evaluate('items.find(i => i.id === "goldGlove").durability'), 4);
+    assert.equal(r.evaluate('items.find(i => i.id === "goldGlove").durability'), 10);
     const old = browserRuntime({ v7_dura: '{"goldGlove":30}' });
-    assert.equal(old.evaluate('db.durability.goldGlove'), 4);
-    assert.equal(JSON.parse(old.store.get('v7_dura')).goldGlove, 4);
+    assert.equal(old.evaluate('db.durability.goldGlove'), 10);
+    assert.equal(JSON.parse(old.store.get('v7_dura')).goldGlove, 10);
 });

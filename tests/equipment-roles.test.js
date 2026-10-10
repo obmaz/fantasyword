@@ -86,6 +86,26 @@ test('황금장갑의 마지막 정답에는 배율이 적용되고 소모 후 �
     assert.equal(r.game.stats.gain, 25);
 });
 
+test('새 건틀릿은 정답 10회에 배율을 적용하고 11번째 정답부터 기본 보상을 준다', () => {
+    const r = runtime(
+        { gloves: 'goldGlove' },
+        {
+            v7_owned: '["basic"]',
+            v7_dura: '{"goldGlove":10}',
+        }
+    );
+    r.start();
+    r.game.list = [...r.game.list, ...r.game.list, ...r.game.list];
+    for (let i = 1; i <= 11; i++) {
+        const previousGain = r.game.stats.gain;
+        r.choose(true);
+        assert.equal(r.game.stats.gain - previousGain, (i <= 10 ? 15 : 10) + (i % 3 === 0 ? 3 : 0));
+        assert.equal(r.evaluate('db.durability.goldGlove'), i < 10 ? 10 - i : undefined);
+        if (i >= 10) assert.equal(r.evaluate('db.equipped.gloves'), undefined);
+        r.advance(800);
+    }
+});
+
 test('장비는 장착해야 능력이 켜지고 방패의 이전 오른손 저장은 왼손으로 복원된다', () => {
     const r = runtime({}, { v7_inventory: '["helmet","boots"]' });
     assert.equal(r.game.gear.shield, 0);
