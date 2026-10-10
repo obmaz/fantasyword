@@ -13,6 +13,7 @@ function fixture(t) {
         fs.mkdirSync(path.join(root, folder));
     fs.writeFileSync(path.join(root, 'index.html'), '<script src="scripts/app.js"></script>');
     fs.writeFileSync(path.join(root, 'CNAME'), 'example.test');
+    fs.writeFileSync(path.join(root, 'favicon.ico'), 'favicon');
     fs.writeFileSync(path.join(root, 'scripts/app.js'), 'const answer = 42;');
     fs.writeFileSync(path.join(root, 'data/music.mp3'), 'music');
     fs.writeFileSync(path.join(root, 'docs/review.md'), 'private development note');
@@ -53,6 +54,25 @@ test('HTML 참조가 배포 파일에 없으면 빌드를 실패시킨다', (t) 
     const root = fixture(t);
     fs.writeFileSync(path.join(root, 'index.html'), '<script src="missing.js"></script>');
     assert.throws(() => build(root), /빌드 에셋 누락/);
+});
+
+test('파비콘 ICO와 PNG는 배포되고 HTML 참조에 내용 해시를 붙인다', (t) => {
+    const root = fixture(t);
+    fs.writeFileSync(path.join(root, 'images/icon.png'), 'png icon');
+    fs.writeFileSync(
+        path.join(root, 'index.html'),
+        '<link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" href="images/icon.png">'
+    );
+    const { output, manifest } = build(root);
+    const html = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
+    for (const asset of ['favicon.ico', 'images/icon.png']) {
+        assert.ok(manifest[asset]);
+        assert.ok(html.includes(`${asset}?v=${manifest[asset].slice(0, 12)}`));
+        assert.deepEqual(
+            fs.readFileSync(path.join(output, asset)),
+            fs.readFileSync(path.join(root, asset))
+        );
+    }
 });
 
 test('이미지 변경은 CSS와 HTML의 캐시 버전을 갱신하고 원본/외부 URL은 보존한다', (t) => {

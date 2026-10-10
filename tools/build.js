@@ -6,7 +6,7 @@ const RUNTIME_DIRECTORIES = Object.freeze({
     scripts: new Set(['.js']),
     styles: new Set(['.css']),
     data: new Set(['.js', '.mp3']),
-    images: new Set(['.webp']),
+    images: new Set(['.webp', '.png']),
 });
 function build(root = path.resolve(__dirname, '..')) {
     root = fs.realpathSync(root);
@@ -37,7 +37,7 @@ function build(root = path.resolve(__dirname, '..')) {
         if (fs.lstatSync(source).isSymbolicLink()) throw new Error(`배포 링크 금지: ${relative}`);
         write(relative, fs.readFileSync(source));
     }
-    for (const file of ['index.html', 'CNAME']) copy(file);
+    for (const file of ['index.html', 'CNAME', 'favicon.ico']) copy(file);
     for (const [directory, extensions] of Object.entries(RUNTIME_DIRECTORIES)) {
         function walk(relative) {
             if (fs.lstatSync(path.join(root, relative)).isSymbolicLink())

@@ -24,6 +24,8 @@
 
 ## 런타임 부품
 
+파비콘은 [생성 원본](design/favicon.webp)의 숲색 타일·책·금색 왕관을 사용한다. `favicon.ico`는 16·32·48·64px을 포함하고 `images/icons/favicon-32.png`는 브라우저 탭, `images/icons/apple-touch-icon.png`는 180px 모바일 홈 화면용이다. 빌드가 세 파일을 복사하고 HTML 참조에 내용 해시를 붙인다.
+
 `images/theme/parts/revenge-icon.webp`는 로비 복수 바로가기용 생성 검·회전 화살표 투명 아이콘이다. 버튼 숫자를 이미지나 HTML에 표시하지 않으며 ‘복수’ 이름은 HTML로 유지한다.
 
 | 위치/파일 패턴                                                        | 실제 사용                                                                        |
