@@ -150,7 +150,8 @@
     font-weight: 800;
 }
 .hangman-meaning[hidden] {
-    display: none;
+    display: block;
+    visibility: hidden;
 }
 .hangman-word {
     max-width: 100%;
@@ -169,10 +170,15 @@
     color: #ffa8a0;
 }
 #hangman-status {
-    min-height: 24px;
+    width: 100%;
+    min-height: 28px;
     margin: 0;
     text-align: center;
     font-weight: 700;
+    color: #fff1b7;
+}
+#hangman-game .english-keyboard {
+    width: 100%;
 }
 @container (max-height: 500px) {
     #hangman-game[data-finished='true'] .english-keyboard {
@@ -194,7 +200,7 @@
         gap: 4px;
     }
     #hangman-status {
-        min-height: 18px;
+        min-height: 22px;
     }
     .hangman-next {
         padding-block: 7px;

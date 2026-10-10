@@ -34,6 +34,19 @@ test('행맨은 26글자를 제공하고 마지막 기회와 패배 후에 뜻�
     assert.equal(r.getElement('hangman-meaning').textContent, '뜻: 고양이');
 });
 
+test('행맨은 뜻과 정답 영역을 처음부터 예약해 힌트가 나타나도 키보드를 밀어내지 않는다', () => {
+    const r = setup();
+    const meaning = r.getElement('hangman-meaning');
+    const status = r.getElement('hangman-status');
+    assert.equal(meaning.hidden, true);
+    assert.equal(status.textContent, '알파벳을 골라 단어를 완성하세요.');
+    r.evaluate(
+        "hangman.choose('b'); hangman.choose('d'); hangman.choose('e'); hangman.choose('f'); hangman.choose('g'); hangman.choose('h')"
+    );
+    assert.equal(meaning.hidden, false);
+    assert.equal(r.getElement('hangman-status').textContent, '알파벳을 골라 단어를 완성하세요.');
+});
+
 test('행맨 정답 뒤 추가 오답과 새 단어·나가기 뒤의 이전 키 클릭을 무시한다', () => {
     const r = setup();
     r.evaluate("['c', 'a', 't', 'z'].forEach((letter) => hangman.choose(letter))");
