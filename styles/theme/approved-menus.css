@@ -1568,7 +1568,6 @@ button .action-icon {
 #setting-modal .gold-arrow {
     width: 44px;
     height: 44px;
-    font-size: 22px;
 }
 .settings-gold-apply {
     width: 100%;
@@ -2919,35 +2918,21 @@ button.equipment-control {
     position: relative;
     display: inline-grid;
     place-items: center;
-    width: 64px;
-    min-width: 64px;
-    height: 64px;
-    min-height: 64px;
-    padding: 0;
-    border: 3px solid #f6d98d;
-    border-radius: 14px;
-    background: linear-gradient(145deg, #277853, #124735);
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 !important;
+    border-width: 8px !important;
+    border-image-width: 8px !important;
     color: #ffe8a6;
-    box-shadow:
-        inset 0 2px 0 #ffffff66,
-        0 4px 0 #163b2d,
-        0 0 0 2px #7cae72;
-    font-size: 0;
-    line-height: 1;
+    font:
+        800 28px/1 system-ui,
+        sans-serif;
 }
 #setting-modal .gold-arrow::after,
 #gold-edit-modal .gold-arrow::after {
-    content: '+';
-    display: block;
-    color: #fff0ad;
-    font:
-        900 36px/1 system-ui,
-        sans-serif;
-    text-shadow: 0 2px 0 #8c5b20;
-}
-#setting-modal #gold-edit-down::after,
-#gold-edit-modal #gold-edit-down::after {
-    content: '−';
+    content: none;
 }
 #setting-modal .gold-arrow:active,
 #gold-edit-modal .gold-arrow:active {
@@ -2962,27 +2947,62 @@ button.equipment-control {
 :is(#gold-adjuster-modal, #setting-modal) .modal-body {
     gap: 14px;
 }
+#gold-adjuster-modal .modal-body > * {
+    flex-shrink: 0;
+}
 :is(#gold-adjuster-modal, #setting-modal) .setting-option-row {
+    width: 100%;
     min-height: 60px;
     margin: 0;
     padding: 12px 16px;
     box-sizing: border-box;
 }
 :is(#gold-adjuster-modal, #setting-modal) .setting-checkbox-label {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) 44px;
     align-items: center;
-    min-height: 34px;
-    line-height: 1.25;
+    min-height: 32px;
+    gap: 8px;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-align: left;
+}
+#setting-modal .setting-checkbox-label input {
+    margin: 0;
+}
+#setting-modal .setting-checkbox-label span {
+    display: block;
 }
 :is(#gold-adjuster-modal, #setting-modal) .setting-icon {
     width: 32px;
     height: 32px;
 }
 :is(#gold-adjuster-modal, #setting-modal) .settings-gold-editor {
+    width: 100%;
     margin: 0;
     padding: 14px 16px;
 }
 :is(#gold-adjuster-modal, #setting-modal) .settings-gold-editor h3 {
     margin-bottom: 14px;
+    line-height: 1.3;
+    text-align: left;
+}
+#setting-modal .gold-adjust-controls {
+    align-items: center;
+}
+#setting-modal .gold-display-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+}
+#setting-modal .gold-display-box[data-gold-size='long'] {
+    padding-inline: 2px;
+    font-size: clamp(12px, 4cqw, 18px);
 }
 :is(#gold-adjuster-modal, #setting-modal) .settings-gold-apply {
     margin-top: 14px;
@@ -2990,4 +3010,15 @@ button.equipment-control {
 :is(#gold-adjuster-modal, #setting-modal) .settings-actions {
     gap: 12px;
     margin-top: 0;
+}
+#setting-modal .settings-reset-game {
+    margin: 0;
+}
+#setting-modal .settings-reset-game > span {
+    word-break: keep-all;
+}
+@container (max-width: 300px) {
+    #gold-adjuster-modal :is(.setting-option-row, .settings-gold-editor) {
+        padding-inline: 8px;
+    }
 }

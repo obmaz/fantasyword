@@ -153,8 +153,11 @@ const secret = {
 
     updateGoldEdit: (amount) => {
         secret.editGold = Math.max(0, secret.editGold + amount); // 음수 방지
+        const formatted = formatMenuNumber(secret.editGold);
         for (const id of ['edit-gold-display', 'settings-edit-gold']) {
-            document.getElementById(id).innerText = formatMenuNumber(secret.editGold);
+            const output = document.getElementById(id);
+            output.innerText = formatted;
+            output.dataset.goldSize = formatted.length > 4 ? 'long' : 'short';
         }
     },
 
