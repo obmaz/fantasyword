@@ -199,6 +199,7 @@ const inventory = {
             };
         });
         ui.updateVisuals();
+        ui.updateSkills();
     },
 
     /**

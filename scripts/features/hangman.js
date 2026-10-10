@@ -72,14 +72,16 @@ const hangman = {
             .map((letter) => (letter === ' ' ? ' ' : this.guessed.has(letter) ? letter : '_'))
             .join(' ');
         const mistakes = HANGMAN_MAX_LIVES - this.lives;
+        const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
+        document.getElementById('hangman-game').dataset.finished = String(won || this.lives === 0);
         const meaning = document.getElementById('hangman-meaning');
-        meaning.textContent = this.lives === 1 ? `힌트: ${this.meaning}` : '';
-        meaning.hidden = this.lives !== 1;
+        const showMeaning = won || this.lives <= 1;
+        meaning.textContent = showMeaning ? `뜻: ${this.meaning}` : '';
+        meaning.hidden = !showMeaning;
         document.getElementById('hangman-lives').textContent = this.lives;
         const drawing = document.getElementById('hangman-drawing');
         drawing.dataset.mistakes = String(mistakes);
         drawing.innerHTML = HANGMAN_DRAWING;
-        const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
         const letters = document.getElementById('hangman-letters');
         const version = this.roundVersion;
         const buttons = renderEnglishKeyboard(letters, {

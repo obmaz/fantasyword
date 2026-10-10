@@ -220,3 +220,35 @@ test('무기별 손잡이는 회전 중심에서도 양손에 고정되고 해�
     assert.equal(layers.secondary[0].innerHTML, '');
     assert.equal(layers.weapon[0].dataset.weapon, 'basic');
 });
+
+test('오른손 무기 갱신은 HTML의 캐릭터 이미지 버전 주소를 덮어쓰지 않는다', () => {
+    const r = economyRuntime();
+    const hero = r.getElement('hero-img');
+    const versionedSource = 'images/theme/parts/quest-hero.webp?v=current-build';
+    hero.src = versionedSource;
+    r.evaluate('db.equipped = {"hand-1":"fire"}; db.equippedWeapon = "fire"; ui.updateVisuals()');
+    assert.equal(hero.src, versionedSource);
+    r.evaluate(
+        'db.equipped["hand-1"] = "midasSword"; db.equippedWeapon = "midasSword"; ui.updateVisuals()'
+    );
+    assert.equal(hero.src, versionedSource);
+});
+
+test('장착 무기를 바꾼 뒤 전투 연속 공격 표시도 현재 오른손 무기를 사용한다', () => {
+    for (const id of ['fire', 'midasSword']) {
+        const r = economyRuntime({
+            v7_owned: '["basic","fire","midasSword"]',
+            v7_equipped: '{"hand-1":"fire"}',
+            v7_equip: 'fire',
+        });
+        r.evaluate('inventory.render = () => {}; shop.render = () => {}');
+        r.evaluate(`inventory.equip('${id}', 'weapon', 'hand-1')`);
+        r.getElement('count-select').value = '10';
+        r.evaluate('game.init("battle", 1)');
+        r.advance(400);
+        const controls = r.getElement('equipment-display').children;
+        assert.match(controls[0].innerHTML, new RegExp(`item-art-${id}`));
+        assert.ok(!controls[0].innerHTML.includes('item-art-basic'));
+        r.evaluate('game.stop()');
+    }
+});

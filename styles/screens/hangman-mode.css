@@ -175,16 +175,19 @@
     font-weight: 700;
 }
 @container (max-height: 500px) {
+    #hangman-game[data-finished='true'] .english-keyboard {
+        display: none;
+    }
     .hangman-board {
         gap: 5px;
         padding-block: 6px 8px;
         font-size: 13px;
     }
     .hangman-drawing {
-        height: clamp(48px, 16cqh, 70px);
+        height: clamp(36px, 12cqh, 50px);
     }
     .hangman-meaning {
-        padding-block: 5px;
+        padding: 4px 8px;
     }
     #hangman-game .english-keyboard {
         padding-block: 4px;

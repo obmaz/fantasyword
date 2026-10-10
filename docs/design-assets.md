@@ -8,7 +8,7 @@
 
 주관식 영어 키보드의 현행 승인 시안은 [게임 내 영어 키보드](design/approved-english-keyboard.webp)다. `parts/quest-{hero,dragon,key,delete,paper,attack}.webp`는 해당 그림체로 생성한 독립 부품이며 글자는 HTML로 표시한다.
 
-행맨은 [생성 숲 공터 배경](../images/theme/hangman-clearing.webp)을 사용한다. 배경에는 글자나 버튼을 포함하지 않으며 졸라맨·뜻 힌트·단어·공통 이미지 키보드는 별도 UI로 겹친다.
+행맨은 [생성 숲 공터 배경](../images/theme/hangman-clearing.webp)을 사용한다. 배경에는 글자나 버튼을 포함하지 않으며 졸라맨·뜻·단어·공통 이미지 키보드는 별도 UI로 겹친다.
 
 | 파일                                              | 용도                                                            |
 | ------------------------------------------------- | --------------------------------------------------------------- |
@@ -28,22 +28,22 @@
 
 `images/theme/parts/revenge-icon.webp`는 로비 복수 바로가기용 생성 검·회전 화살표 투명 아이콘이다. 버튼 숫자를 이미지나 HTML에 표시하지 않으며 ‘복수’ 이름은 HTML로 유지한다.
 
-| 위치/파일 패턴                                                        | 실제 사용                                                                        |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `images/theme/quest-lobby-{forest,sunset,moonlight}.webp`             | 랜덤 로비 배경; 차분한 숲·남자아이                                               |
-| `images/theme/guild-titles.webp`                                      | 6가지 생성 로고의 2×3 atlas                                                      |
-| `images/theme/parts/menu-*.webp`                                      | 연습/도전/상점/장비/통계/설정 버튼과 스토리·1일 전투의 독립 생성 아이콘          |
-| `images/theme/parts/game-*.webp`                                      | 현행 실행·위험·마을·답안·상단 컨트롤, 음악 ON/OFF                                |
-| `images/theme/parts/approved-*.webp`                                  | 내부 메뉴 프레임·양피지·입력·슬롯·코인·집·남자아이 등                            |
-| `images/theme/parts/calm-*.webp`                                      | 보조 바탕과 적용/출력/초기화/공격 아이콘                                         |
-| `images/theme/parts/ui-*.webp`, `item-*.webp`                         | 메뉴·상점·장비·스킬별 투명 아이콘                                                |
-| `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                        |
-| `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                        |
-| `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                             |
-| `images/theme/story-map.webp`                                         | 이전 생성 지도 원본; 아이콘·길이 포함된 참조 이미지                              |
-| `images/theme/story-map-background.webp`                              | 길·아이콘을 제거하고 중심을 밝게 비운 생성 배경 지도; 실제 선택 지점을 위에 표시 |
-| `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                      |
-| `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음       |
+| 위치/파일 패턴                                                        | 실제 사용                                                                  |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `images/theme/quest-lobby-{forest,sunset,moonlight}.webp`             | 랜덤 로비 배경; 차분한 숲·남자아이                                         |
+| `images/theme/guild-titles.webp`                                      | 6가지 생성 로고의 2×3 atlas                                                |
+| `images/theme/parts/menu-*.webp`                                      | 연습/도전/상점/장비/통계/설정 버튼과 스토리·1일 전투의 독립 생성 아이콘    |
+| `images/theme/parts/game-*.webp`                                      | 현행 실행·위험·마을·답안·상단 컨트롤, 음악 ON/OFF                          |
+| `images/theme/parts/approved-*.webp`                                  | 내부 메뉴 프레임·양피지·입력·슬롯·코인·집·남자아이 등                      |
+| `images/theme/parts/calm-*.webp`                                      | 보조 바탕과 적용/출력/초기화/공격 아이콘                                   |
+| `images/theme/parts/ui-*.webp`, `item-*.webp`                         | 메뉴·상점·장비·스킬별 투명 아이콘                                          |
+| `images/theme/parts/monster-*.webp`                                   | 슬라임·고블린·박쥐·드래곤                                                  |
+| `images/theme/parts/combat-{basic,fire,ice,lightning,void,gold}.webp` | 독립된 투명 공격 효과 6개                                                  |
+| `images/theme/skyfall-field.webp`                                     | 단어 낙하전의 탑뷰 숲 공터 생성 배경                                       |
+| `images/theme/story-map.webp`                                         | 이전 생성 지도 원본; 아이콘·길이 포함된 참조 이미지                        |
+| `images/theme/story-map-background.webp`                              | 중앙 강·초원·연못·다리가 있는 생성 배경; 실제 선택 지점과 경로를 위에 표시 |
+| `images/battle/`                                                      | 기존 모험가와 기존 모드의 몬스터 스프라이트                                |
+| `images/theme/`의 기타 참조 에셋                                      | 기본/테마 CSS가 사용하는 장소·스킨·atlas; 참조를 검토하기 전 삭제하지 않음 |
 
 `game-*`가 최종 버튼 재질을 제공하고 기존 `surface-*`는 공통 이미지 컴포넌트의 기본 재질이다.
 발음은 브라우저 영어 TTS를 우선 사용하고 실패 시 원격 TTS로 전환한다. 단어별 발음 파일은 배포하지 않는다.
