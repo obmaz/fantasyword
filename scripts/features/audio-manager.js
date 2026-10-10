@@ -8,7 +8,20 @@
      */
     const MUSIC_TRACK_COUNT = APP_CONFIG.musicTrackCount;
 
-    const currentMusicIndices = { battle: null, practice: null, max: MUSIC_TRACK_COUNT };
+    const MUSIC_MODES = ['battle', 'practice', 'hangman'];
+    const currentMusicIndices = {
+        ...Object.fromEntries(MUSIC_MODES.map((mode) => [mode, null])),
+        max: MUSIC_TRACK_COUNT,
+    };
+
+    function musicElementIds(mode) {
+        const prefix = mode === 'battle' ? '' : `${mode}-`;
+        return {
+            overlay: `${prefix}music-info-overlay`,
+            filename: `${prefix}music-filename`,
+            select: `${prefix}music-select`,
+        };
+    }
 
     function resumeMusic(bgMusic) {
         bgMusic.play().then(
@@ -24,15 +37,16 @@
      * 특정 배경 음악 트랙을 재생하고 종료 이벤트 리스너를 설정합니다.
      * 내부 헬퍼 함수입니다.
      * @param {number} musicNum 음악 트랙 번호 (1부터 시작)
-     * @param {string} mode 'battle' | 'practice'
+     * @param {string} mode 'battle' | 'practice' | 'hangman'
      * @param {boolean} forcePlay 강제 재생 여부 (기본 false)
      */
     function _playMusic(musicNum, mode, forcePlay = false) {
         const bgMusic = document.getElementById('background-music');
-        const overlayId =
-            mode === 'practice' ? 'practice-music-info-overlay' : 'music-info-overlay';
-        const filenameId = mode === 'practice' ? 'practice-music-filename' : 'music-filename';
-        const selectId = mode === 'practice' ? 'practice-music-select' : 'music-select';
+        const {
+            overlay: overlayId,
+            filename: filenameId,
+            select: selectId,
+        } = musicElementIds(mode);
         const musicInfoOverlay = document.getElementById(overlayId);
         const musicFilenameEl = document.getElementById(filenameId);
         const musicSelectEl = document.getElementById(selectId);
@@ -77,7 +91,7 @@
     /**
      * 지정된 모드의 배경 음악 재생을 시작합니다 (현재 인덱스부터).
      * 이미 음악이 재생 중이면 계속 재생합니다.
-     * @param {string} mode 'battle' | 'practice'
+     * @param {string} mode 'battle' | 'practice' | 'hangman'
      */
     function playMusic(mode) {
         if (!currentMusicIndices[mode]) {
@@ -94,7 +108,7 @@
 
     /**
      * 지정된 모드의 다음 배경 음악 트랙을 순서대로 재생합니다.
-     * @param {string} mode 'battle' | 'practice'
+     * @param {string} mode 'battle' | 'practice' | 'hangman'
      */
     function playNextMusic(mode) {
         // 1..MUSIC_TRACK_COUNT 를 순환
@@ -114,7 +128,7 @@
             audio.onerror = () => updateMusicToggleButtons(false);
             updateMusicToggleButtons(!audio.paused);
         }
-        const selects = ['music-select', 'practice-music-select'];
+        const selects = MUSIC_MODES.map((mode) => musicElementIds(mode).select);
         selects.forEach((id) => {
             const el = document.getElementById(id);
             if (el) {
@@ -132,10 +146,9 @@
                         updateMusicToggleButtons(false);
 
                         // 텍스트 업데이트
-                        const filenameId =
-                            id === 'practice-music-select'
-                                ? 'practice-music-filename'
-                                : 'music-filename';
+                        const mode =
+                            id === 'music-select' ? 'battle' : id.replace('-music-select', '');
+                        const { filename: filenameId, overlay: overlayId } = musicElementIds(mode);
                         const musicFilenameEl = document.getElementById(filenameId);
                         if (musicFilenameEl) {
                             musicFilenameEl.innerText = `배경음악 ${musicNum}`;
@@ -146,14 +159,9 @@
                         resumeMusic(bgMusic);
 
                         // 모드 감지 (ID에 따라)
-                        const mode = id === 'practice-music-select' ? 'practice' : 'battle';
                         currentMusicIndices[mode] = musicNum;
 
                         // 음악 정보 오버레이 보이기
-                        const overlayId =
-                            mode === 'practice'
-                                ? 'practice-music-info-overlay'
-                                : 'music-info-overlay';
                         const musicInfoOverlay = document.getElementById(overlayId);
                         if (musicInfoOverlay) musicInfoOverlay.style.display = 'block';
 
@@ -166,7 +174,7 @@
         });
 
         // 음악 일시정지/재생 버튼 리스너
-        const toggleBtns = ['battle-music-toggle-btn', 'practice-music-toggle-btn'];
+        const toggleBtns = MUSIC_MODES.map((mode) => `${mode}-music-toggle-btn`);
         toggleBtns.forEach((id) => {
             const btn = document.getElementById(id);
             if (btn) {

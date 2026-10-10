@@ -251,31 +251,14 @@ function createBattleView({
             input.setAttribute('inputmode', 'none');
             element('battle-mode-game').dataset.answerEntry = 'letters';
             const keyboard = element('boss-keyboard');
-            keyboard.innerHTML = '';
-            keyboardButtons = [];
-            for (const row of ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM']) {
-                const line = doc.createElement('div');
-                line.className = 'english-keyboard-row';
-                for (const key of [...row, ...(row === 'ZXCVBNM' ? ['Backspace'] : [])]) {
-                    const button = doc.createElement('button');
-                    button.type = 'button';
-                    button.className =
-                        key === 'Backspace' ? 'english-key english-key-delete' : 'english-key';
-                    button.textContent = key === 'Backspace' ? '⌫' : key;
-                    button.setAttribute(
-                        'aria-label',
-                        key === 'Backspace' ? '한 글자 지우기' : `${key} 입력`
-                    );
-                    button.onclick = () => {
-                        if (version !== questionVersion || button.disabled) return;
-                        typeLetter(key);
-                        input.focus({ preventScroll: true });
-                    };
-                    line.appendChild(button);
-                    keyboardButtons.push(button);
-                }
-                keyboard.appendChild(line);
-            }
+            keyboardButtons = renderEnglishKeyboard(keyboard, {
+                document: doc,
+                onKey(key) {
+                    if (version !== questionVersion) return;
+                    typeLetter(key);
+                    input.focus({ preventScroll: true });
+                },
+            });
             input.classList.remove('boss-input-correct', 'boss-input-wrong');
             input.onkeydown = (event) => {
                 if (

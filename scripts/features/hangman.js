@@ -14,13 +14,26 @@ const hangman = {
     word: '',
     meaning: '',
     guessed: new Set(),
+    roundVersion: 0,
     lives: HANGMAN_MAX_LIVES,
+    init() {
+        document
+            .getElementById('hangman-header-host')
+            .replaceChildren(
+                createGameplayHeader({ mode: 'hangman', title: '행맨', onExit: () => this.exit() })
+            );
+    },
     start() {
         const source = window.rawDataData || rawData || [];
         const pool = source.filter((item) => item?.word && /^[a-z ]+$/i.test(item.word));
         const item = pool[Math.floor(Math.random() * pool.length)];
         if (!item) return;
+        if (!this.active) {
+            cancelPendingGameStart();
+            playMusic('hangman');
+        }
         this.active = true;
+        this.roundVersion += 1;
         this.word = item.word.toLowerCase();
         this.meaning = item.meaning;
         this.guessed = new Set();
@@ -31,11 +44,21 @@ const hangman = {
     },
     exit() {
         this.active = false;
+        this.roundVersion += 1;
+        document.getElementById('background-music')?.pause();
         document.getElementById('hangman-game').style.display = 'none';
         document.getElementById('title-screen').style.display = 'flex';
     },
     choose(letter) {
-        if (!this.active || this.guessed.has(letter) || this.lives <= 0) return;
+        const won = [...this.word].every((key) => key === ' ' || this.guessed.has(key));
+        if (
+            !this.active ||
+            !/^[a-z]$/.test(letter) ||
+            this.guessed.has(letter) ||
+            this.lives <= 0 ||
+            won
+        )
+            return;
         this.guessed.add(letter);
         if (!this.word.includes(letter)) this.lives -= 1;
         this.render();
@@ -51,23 +74,29 @@ const hangman = {
         const mistakes = HANGMAN_MAX_LIVES - this.lives;
         const meaning = document.getElementById('hangman-meaning');
         meaning.textContent = this.lives === 1 ? `힌트: ${this.meaning}` : '';
-        meaning.hidden = this.lives > 1;
+        meaning.hidden = this.lives !== 1;
         document.getElementById('hangman-lives').textContent = this.lives;
         const drawing = document.getElementById('hangman-drawing');
         drawing.dataset.mistakes = String(mistakes);
         drawing.innerHTML = HANGMAN_DRAWING;
         const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
         const letters = document.getElementById('hangman-letters');
-        letters.replaceChildren();
-        for (let code = 97; code <= 122; code += 1) {
-            const letter = String.fromCharCode(code);
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.textContent = letter;
+        const version = this.roundVersion;
+        const buttons = renderEnglishKeyboard(letters, {
+            withDelete: false,
+            onKey: (key) => {
+                if (version === this.roundVersion) this.choose(key.toLowerCase());
+            },
+        });
+        buttons.forEach((button) => {
+            const letter = button.textContent.toLowerCase();
             button.disabled = this.guessed.has(letter) || this.lives <= 0 || won;
-            button.addEventListener('click', () => this.choose(letter));
-            letters.append(button);
-        }
+            button.dataset.guess = this.guessed.has(letter)
+                ? this.word.includes(letter)
+                    ? 'correct'
+                    : 'wrong'
+                : '';
+        });
         const status = document.getElementById('hangman-status');
         status.textContent = won
             ? '정답입니다!'

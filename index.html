@@ -80,35 +80,7 @@
             </svg>
         </button>
         <div id="battle-mode-game" style="display: none; height: 100%; flex-direction: column">
-            <header class="gameplay-header">
-                <span class="game-emblem emblem-swords" aria-hidden="true"></span>
-                <div class="gameplay-heading">
-                    <h2 id="battle-screen-title">도전</h2>
-                    <p>WORD QUEST</p>
-                </div>
-                <div class="gameplay-actions">
-                    <span class="fullscreen-space" aria-hidden="true"></span>
-                    <button
-                        type="button"
-                        class="music-toggle-btn"
-                        id="battle-music-toggle-btn"
-                        data-music-state="off"
-                        aria-pressed="false"
-                        aria-label="배경음악 OFF, 켜기"
-                        title="배경음악 OFF, 켜기"
-                    >
-                        ⏸️
-                    </button>
-                    <button
-                        type="button"
-                        class="practice-nav-btn practice-nav-exit"
-                        id="battle-exit-btn"
-                        title="나가기"
-                    >
-                        나가기
-                    </button>
-                </div>
-            </header>
+            <div id="battle-header-host"></div>
             <div class="battle-arena">
                 <div class="battle-hud" aria-label="전투 정보">
                     <div class="battle-status">
@@ -780,18 +752,15 @@
             </section>
         </dialog>
         <section id="hangman-game" class="hangman-game" aria-label="행맨" style="display: none">
-            <header class="hangman-header">
-                <button id="hangman-exit-btn" type="button" aria-label="행맨 나가기">나가기</button>
-                <h2>행맨</h2>
-                <span>남은 기회 <strong id="hangman-lives">7</strong></span>
-            </header>
+            <div id="hangman-header-host"></div>
             <main class="hangman-board">
+                <span class="hangman-lives">남은 기회 <strong id="hangman-lives">7</strong></span>
                 <div id="hangman-drawing" class="hangman-drawing" aria-label="행맨 그림"></div>
                 <p id="hangman-meaning" class="hangman-meaning"></p>
                 <div id="hangman-word" class="hangman-word" aria-live="polite"></div>
                 <div
                     id="hangman-letters"
-                    class="hangman-letters"
+                    class="english-keyboard"
                     role="group"
                     aria-label="알파벳 선택"
                 ></div>
@@ -944,35 +913,7 @@
 
         <!-- Practice Mode Game (단어 암기 화면) -->
         <div id="practice-mode-game" style="display: none; height: 100%; flex-direction: column">
-            <header class="gameplay-header">
-                <span class="game-emblem emblem-book" aria-hidden="true"></span>
-                <div class="gameplay-heading">
-                    <h2>연습</h2>
-                    <p>LEARN · DISCOVER · REMEMBER</p>
-                </div>
-                <div class="gameplay-actions">
-                    <span class="fullscreen-space" aria-hidden="true"></span>
-                    <button
-                        type="button"
-                        class="music-toggle-btn"
-                        id="practice-music-toggle-btn"
-                        data-music-state="off"
-                        aria-pressed="false"
-                        aria-label="배경음악 OFF, 켜기"
-                        title="배경음악 OFF, 켜기"
-                    >
-                        ⏸️
-                    </button>
-                    <button
-                        type="button"
-                        class="practice-nav-btn practice-nav-exit"
-                        id="practice-exit-btn"
-                        title="나가기"
-                    >
-                        나가기
-                    </button>
-                </div>
-            </header>
+            <div id="practice-header-host"></div>
             <div class="practice-memorization-container">
                 <!-- 배틀 아레나 영역 (배틀 모드와 유사) -->
                 <div class="practice-memorization-arena">
@@ -1969,6 +1910,7 @@
         <script src="scripts/ui/setup-ui.js"></script>
         <script src="scripts/ui/battle-assets.js"></script>
         <script src="scripts/ui/ui-manager.js"></script>
+        <script src="scripts/ui/gameplay-controls.js"></script>
         <script src="scripts/ui/battle-view.js"></script>
         <script src="scripts/ui/practice-view.js"></script>
 

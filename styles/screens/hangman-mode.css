@@ -30,33 +30,32 @@
     letter-spacing: 0.11em;
 }
 .hangman-game {
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--title-container-width);
+    height: var(--app-height);
+    container-type: size;
+    overflow: auto;
     z-index: var(--layer-game);
     display: flex;
     flex-direction: column;
     color: #fff4dc;
-    background: #132f2c;
+    background:
+        linear-gradient(#102b2580, #102b25b0),
+        url('../../images/theme/hangman-clearing.webp') center / cover;
 }
-.hangman-header {
-    display: grid;
-    grid-template-columns: 64px minmax(0, 1fr) 90px;
-    align-items: center;
-    gap: 12px;
-    min-height: 68px;
-    padding: 8px 62px 8px 14px;
-    background: #173f38;
-    border-bottom: 2px solid #d4ac65;
+#hangman-game .gameplay-header {
+    padding-inline: var(--frame-gutter, 16px);
+    background: linear-gradient(#102b2580, #102b2540);
 }
-.hangman-header h2 {
-    margin: 0;
-    text-align: center;
-    font-size: clamp(20px, 5vw, 30px);
+#hangman-game .gameplay-heading h2 {
+    font-size: clamp(17px, 5cqw, 25px);
 }
-.hangman-header span {
-    white-space: nowrap;
+#hangman-game .gameplay-actions {
+    gap: 6px;
 }
-#hangman-exit-btn,
 .hangman-next {
     border: 0;
     border-radius: 8px;
@@ -67,17 +66,33 @@
 }
 .hangman-board {
     width: min(92%, 560px);
-    margin: auto;
+    margin: 0 auto;
+    flex: 1;
+    min-height: 0;
     display: grid;
+    align-content: center;
     justify-items: center;
-    gap: 18px;
-    padding: 20px 0 28px;
+    gap: clamp(6px, 1.5cqh, 16px);
+    padding: 8px 0 12px;
+    font-size: 15px;
+    line-height: 1.3;
+}
+.hangman-lives {
+    padding: 5px 14px;
+    border: 1px solid #d8b979;
+    border-radius: 8px;
+    background: #123c2fea;
+    font-weight: 800;
+}
+.hangman-lives strong {
+    font-size: 1.15em;
+    line-height: inherit;
 }
 .hangman-drawing {
-    width: min(190px, 52vw);
-    height: 150px;
-    min-height: 150px;
-    color: #f19b74;
+    width: min(240px, 70cqw);
+    height: clamp(66px, 23cqh, 210px);
+    color: #fff1c6;
+    filter: drop-shadow(0 2px 2px #102b25);
 }
 .hangman-drawing svg {
     width: 100%;
@@ -126,7 +141,7 @@
 .hangman-meaning {
     width: 100%;
     margin: 0;
-    padding: 16px;
+    padding: 8px 12px;
     border: 2px solid #e4c176;
     border-radius: 12px;
     color: #263b32;
@@ -138,47 +153,53 @@
     display: none;
 }
 .hangman-word {
-    min-height: 50px;
+    max-width: 100%;
+    min-height: 32px;
     color: #fff1b7;
-    font: 800 clamp(25px, 8vw, 44px) monospace;
-    letter-spacing: 8px;
+    font: 800 clamp(18px, 5cqw, 34px) monospace;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
     text-align: center;
 }
-.hangman-letters {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    width: 100%;
+#hangman-game .english-key[data-guess='correct'] {
+    color: #a4edbd;
+    opacity: 0.7;
 }
-.hangman-letters button {
-    min-height: 42px;
-    border: 2px solid #d7b66c;
-    border-radius: 8px;
-    color: #fff6dc;
-    background: #1f604b;
-    font:
-        800 18px system-ui,
-        sans-serif;
+#hangman-game .english-key[data-guess='wrong'] {
+    color: #ffa8a0;
 }
-.hangman-letters button:disabled {
-    opacity: 0.35;
-}
-.hangman-status {
+#hangman-status {
     min-height: 24px;
     margin: 0;
     text-align: center;
     font-weight: 700;
 }
-@media (max-width: 380px) {
+@container (max-height: 500px) {
     .hangman-board {
-        gap: 10px;
-        padding-top: 10px;
-    }
-    .hangman-letters {
         gap: 5px;
+        padding-block: 6px 8px;
+        font-size: 13px;
     }
-    .hangman-letters button {
-        min-height: 36px;
-        font-size: 15px;
+    .hangman-drawing {
+        height: clamp(48px, 16cqh, 70px);
+    }
+    .hangman-meaning {
+        padding-block: 5px;
+    }
+    #hangman-game .english-keyboard {
+        padding-block: 4px;
+        gap: 4px;
+    }
+    #hangman-status {
+        min-height: 18px;
+    }
+    .hangman-next {
+        padding-block: 7px;
+        font-size: 14px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hangman-part {
+        transition: none;
     }
 }

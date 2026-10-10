@@ -97,8 +97,16 @@ function setupActionDelegation() {
  * 게임 환경, 이벤트 리스너 및 UI 컴포넌트를 초기화합니다.
  */
 window.onload = () => {
+    for (const options of [
+        { mode: 'battle', title: '도전', subtitle: 'WORD QUEST', headingId: 'battle-screen-title' },
+        { mode: 'practice', title: '연습', subtitle: 'LEARN · DISCOVER · REMEMBER' },
+    ]) {
+        document
+            .getElementById(`${options.mode}-header-host`)
+            .replaceChildren(createGameplayHeader(options));
+    }
+    hangman.init();
     document.getElementById('title-hangman-btn')?.addEventListener('click', () => hangman.start());
-    document.getElementById('hangman-exit-btn')?.addEventListener('click', () => hangman.exit());
     document.getElementById('hangman-next-btn')?.addEventListener('click', () => hangman.next());
     // 최초 로드 시 뷰포트 높이를 고정 (모바일 주소창 대응)
     initAppHeight();
