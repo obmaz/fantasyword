@@ -62,6 +62,7 @@
         <link rel="stylesheet" href="styles/theme/approved-menus.css" />
         <link rel="stylesheet" href="styles/theme/weapon-effects.css" />
         <link rel="stylesheet" href="styles/screens/skyfall-mode.css" />
+        <link rel="stylesheet" href="styles/screens/hangman-mode.css" />
     </head>
 
     <body>
@@ -422,6 +423,9 @@
                         <button id="title-skyfall-btn" type="button" aria-label="총공세 시작">
                             <span aria-hidden="true">✦</span> 총공세 <small>TOTAL ASSAULT</small>
                         </button>
+                        <button id="title-hangman-btn" type="button" aria-label="행맨 연습 시작">
+                            <span aria-hidden="true">☠</span> 행맨 <small>HANGMAN</small>
+                        </button>
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
                                 id="title-story-mode-btn"
@@ -775,6 +779,28 @@
                 </div>
             </section>
         </dialog>
+        <section id="hangman-game" class="hangman-game" aria-label="행맨" style="display: none">
+            <header class="hangman-header">
+                <button id="hangman-exit-btn" type="button" aria-label="행맨 나가기">나가기</button>
+                <h2>행맨</h2>
+                <span>남은 기회 <strong id="hangman-lives">6</strong></span>
+            </header>
+            <main class="hangman-board">
+                <div id="hangman-drawing" class="hangman-drawing" aria-label="행맨 그림"></div>
+                <p id="hangman-meaning" class="hangman-meaning"></p>
+                <div id="hangman-word" class="hangman-word" aria-live="polite"></div>
+                <div
+                    id="hangman-letters"
+                    class="hangman-letters"
+                    role="group"
+                    aria-label="알파벳 선택"
+                ></div>
+                <p id="hangman-status" role="status" aria-live="polite"></p>
+                <button id="hangman-next-btn" class="hangman-next" type="button" hidden>
+                    다음 단어
+                </button>
+            </main>
+        </section>
         <dialog
             id="battle-mode-modal"
             class="screen-overlay"
@@ -1960,6 +1986,7 @@
         <script src="scripts/game/practice-session.js"></script>
         <script src="scripts/game/skyfall-session.js"></script>
         <script src="scripts/ui/skyfall-view.js"></script>
+        <script src="scripts/features/hangman.js"></script>
 
         <!-- 메인 애플리케이션 -->
         <script src="scripts/app.js"></script>

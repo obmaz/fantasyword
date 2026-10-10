@@ -97,6 +97,9 @@ function setupActionDelegation() {
  * 게임 환경, 이벤트 리스너 및 UI 컴포넌트를 초기화합니다.
  */
 window.onload = () => {
+    document.getElementById('title-hangman-btn')?.addEventListener('click', () => hangman.start());
+    document.getElementById('hangman-exit-btn')?.addEventListener('click', () => hangman.exit());
+    document.getElementById('hangman-next-btn')?.addEventListener('click', () => hangman.next());
     // 최초 로드 시 뷰포트 높이를 고정 (모바일 주소창 대응)
     initAppHeight();
     initFullscreenControls();

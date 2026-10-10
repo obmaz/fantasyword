@@ -301,16 +301,19 @@ function createBattleSession({
                 return;
             }
             if (data.questionKind === 'cloze' || data.questionKind === 'riddle') {
-                game.view.subjective(
-                    {
-                        word: data.word,
-                        meaning: data.encounterPrompt || data.englishExplanation || data.meaning,
-                    },
-                    game.mode === 'boss' ? `드래곤 · WAVE ${game.idx + 1}` : '드래곤 · 보스 전투',
-                    `뜻 힌트: ${data.meaning}`,
-                    game.checkBossAnswer,
-                    false
+                // 영어 예문/수수께끼는 자유 입력보다 철자 조립으로 출제해
+                // 모바일 키보드 부담을 줄이고 게임의 기존 철자 타일을 재사용한다.
+                game.spellingTiles = encounters.spellingTiles(data.word, game.shuffle);
+                game.spellingChosen = [];
+                game.view.spelling(
+                    data.encounterPrompt || data.englishExplanation || data.meaning,
+                    data.word.replace(/[a-z]/gi, '_'),
+                    game.spellingTiles,
+                    game.chooseSpellingLetter,
+                    game.removeSpellingLetter,
+                    game.checkBossAnswer
                 );
+                game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
                 return;
             }
             const listening = data.questionKind === 'listening';
