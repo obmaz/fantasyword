@@ -73,6 +73,11 @@ test('암시장 구매 실패는 골드만 차감하고 재구매할 수 있으�
     journey.buy();
     assert.equal(r.evaluate('db.gold'), 140);
     assert.equal(r.evaluate("db.has('shadowCompass')"), true);
+    journey.random = () => 0.9;
+    journey.buy('shadowLantern');
+    assert.equal(r.evaluate('db.gold'), 20);
+    assert.equal(r.evaluate("db.has('shadowLantern')"), false);
+    assert.match(r.getElement('story-market-status').textContent, /거래 실패/);
 });
 
 test('물음표는 미리 보여주지 않고 입장 후 전투·암시장·보물·총공세 결과를 고정한다', () => {

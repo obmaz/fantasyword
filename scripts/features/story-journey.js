@@ -532,12 +532,8 @@ const storyJourney = {
         storyJourney.pendingKind = null;
     },
     renderMarket(message = '') {
-        const owned = db.has('shadowCompass');
-        document.getElementById('story-market-status').textContent = owned
-            ? '그림자 나침반을 가지고 있습니다.'
-            : message || `보유 골드 ${db.gold} G`;
-        const buyButton = document.querySelector('[data-action="story-market-buy"]');
-        if (buyButton) buyButton.disabled = owned;
+        document.getElementById('story-market-status').textContent =
+            message || `보유 골드 ${db.gold} G`;
         const list = document.getElementById('story-market-products');
         list.replaceChildren();
         relics
