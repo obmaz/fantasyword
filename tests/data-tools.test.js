@@ -62,14 +62,15 @@ test('그룹 확장은 단어를 보존하고 제공 그룹을 4개 미만으로
     assert.deepEqual([...updated.flat()].sort(), [...groups.flat()].sort());
 });
 
-test('4번 단어장은 Day 1·2에 40개씩 있고 모든 풀이에 공식 사전 출처가 있다', () => {
+test('4번 단어장은 Day 1~40의 원본 개수를 유지하고 모든 풀이에 공식 사전 출처가 있다', () => {
     const rows = readData(path.join(ROOT, 'data/game-data-4.js'), 'rawData_4');
-    assert.equal(rows.length, 80);
-    assert.deepEqual([...new Set(rows.map((row) => row.day))], [1, 2]);
-    for (const day of [1, 2]) {
+    assert.equal(rows.length, 1595);
+    const days = Array.from({ length: 40 }, (_, index) => index + 1);
+    assert.deepEqual([...new Set(rows.map((row) => row.day))], days);
+    for (const day of days) {
         const words = rows.filter((row) => row.day === day).map((row) => row.word);
-        assert.equal(words.length, 40);
-        assert.equal(new Set(words).size, 40);
+        assert.equal(words.length, day === 26 ? 35 : 40, `Day ${day}`);
+        assert.equal(new Set(words).size, words.length, `Day ${day}`);
     }
     for (const row of rows) {
         assert.ok(row.englishExplanation.trim(), row.word);
@@ -80,7 +81,7 @@ test('4번 단어장은 Day 1·2에 40개씩 있고 모든 풀이에 공식 사�
         assert.ok(new URL(korean).searchParams.get('word_no'));
         assert.ok(koreanHeadword.trim());
     }
-    const byWord = new Map(rows.map((row) => [row.word, row]));
+    const byWord = new Map(rows.filter((row) => row.day <= 2).map((row) => [row.word, row]));
     assert.equal(byWord.get('carry out').meaning, '~을 수행하다, ~을 이행하다');
     assert.equal(byWord.get('be supposed to').day, 2);
     assert.equal(byWord.get('come up with').day, 2);
@@ -90,7 +91,7 @@ test('4번 단어장은 Day 1·2에 40개씩 있고 모든 풀이에 공식 사�
     assert.equal(byWord.get('reputation').explanationSources.koreanHeadword, '평판3');
 });
 
-test('4번 단어장의 80개 항목은 각각 고유한 유사 오답 후보를 세 개 이상 갖는다', () => {
+test('4번 단어장 전체 항목은 각각 고유한 유사 오답 후보를 세 개 이상 갖는다', () => {
     const r = loadScripts([
         'data/game-data-4.js',
         'data/decoy-words-set.js',
@@ -106,27 +107,68 @@ test('4번 단어장의 80개 항목은 각각 고유한 유사 오답 후보를
     assert.ok(r.sandbox.getDecoyWordCandidates('reputation').includes('repetition'));
 });
 
-test('4번 단어장을 선택하면 해당 Day만 로드하고 Day 2의 문제와 학습 풀이를 사용한다', () => {
+test('4번 단어장은 40개 Day를 선택할 수 있고 마지막 Day의 문제와 학습 풀이를 사용한다', () => {
     const r = browserRuntime({ selectedGameDataSet: '4' });
     assert.equal(r.sandbox.currentGameDataSetId, '4');
     assert.equal(r.sandbox.currentGameDataName, '능률보카 고등 기본 (2025개정)');
     assert.equal(r.sandbox.gameDataLoader.getAvailableDataSets().length, 4);
-    assert.equal(r.evaluate('rawData.length'), 80);
+    assert.equal(r.evaluate('rawData.length'), 1595);
     assert.deepEqual(
         Array.from(r.evaluate('Object.keys(dayCatalog).filter((key) => /^\\d+$/.test(key))')),
-        ['1', '2']
+        Array.from({ length: 40 }, (_, index) => String(index + 1))
     );
     const game = r.evaluate('game');
     r.getElement('count-select').value = '10';
-    game.init('battle', 2);
+    game.init('battle', 40);
     r.advance(400);
     assert.equal(game.list.length, 10);
-    assert.ok(game.list.every((word) => word.day === 2 && word.englishExplanation));
+    assert.ok(game.list.every((word) => word.day === 40 && word.englishExplanation));
     game.stop();
     const practice = r.evaluate('practiceMemorization');
-    practice.start('1');
+    practice.start('40');
     assert.equal(practice.words.length, 40);
-    assert.ok(practice.words.every((word) => word.day === 1 && word.koreanExplanation));
+    assert.ok(practice.words.every((word) => word.day === 40 && word.koreanExplanation));
+    practice.start('26');
+    assert.equal(practice.words.length, 35);
+    assert.ok(practice.words.every((word) => word.day === 26));
+});
+
+test('추가한 사전 풀이는 동음이의어를 구분하고 영문 정답을 그대로 노출하지 않는다', () => {
+    const rows = readData(path.join(ROOT, 'data/game-data-4.js'), 'rawData_4');
+    const byWord = new Map(rows.map((row) => [row.word, row]));
+    assert.equal(byWord.get('principal').explanationSources.koreanHeadword, '주요-하다');
+    assert.equal(byWord.get('institution').explanationSources.koreanHeadword, '기관11');
+    assert.equal(byWord.get('species').explanationSources.koreanHeadword, '종9');
+    assert.equal(byWord.get('outcome').explanationSources.koreanHeadword, '결과2');
+    assert.equal(byWord.get('consequence').explanationSources.koreanHeadword, '결과2');
+    assert.equal(byWord.get('exhausted').explanationSources.koreanHeadword, '지치다1');
+    assert.equal(byWord.get('verbal').explanationSources.koreanHeadword, '언어1');
+    assert.equal(byWord.get('break down').meaning, '고장 나다; ~을 부수다; ~을 분해하다');
+    assert.equal(rows.at(-1).word, 'contentment');
+    for (const row of rows.filter((row) => row.day > 2)) {
+        const escaped = row.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        assert.doesNotMatch(row.englishExplanation, new RegExp(`\\b${escaped}\\b`, 'i'), row.word);
+        assert.ok(row.englishExplanation.split(/\s+/).length <= 30, row.word);
+        assert.ok(row.koreanExplanation.length <= 140, row.word);
+    }
+});
+
+test('4번 단어장의 마지막 Day와 35개짜리 Day도 전체 문제지를 만들 수 있다', () => {
+    const r = loadScripts(['data/game-data-4.js', 'scripts/domain/worksheet-rules.js']);
+    for (const [day, count] of [
+        [26, 35],
+        [40, 40],
+    ]) {
+        const model = r.evaluate(
+            `worksheetRules.build(rawData_4, {day: ${day}, type: 'objective', limit: 100}, values => [...values])`
+        );
+        assert.equal(model.questions.length, count);
+        assert.equal(model.objectiveCount, count);
+        for (const question of model.questions) {
+            assert.equal(new Set(question.options).size, 4);
+            assert.equal(question.options[question.correctIndex], question.answer);
+        }
+    }
 });
 
 test('오답 풀 동기화는 신규 단어장을 발견하고 해당 그룹을 보존한다', (t) => {

@@ -1,5 +1,5 @@
-// 첨부 어휘 시험지의 Day 1·2: 각 40개 항목(파생어·구동사 포함).
-// 뜻은 첨부 정답표를 유지하며, 뜻풀이는 사전의 해당 의미를 참고해 짧게 재서술했다.
+// 첨부 어휘 시험지의 Day 1~40: 총 1,595개 항목(파생어·구동사 포함; Day 26은 35개).
+// 뜻은 첨부 정답표를 유지하며, 뜻풀이는 사전의 해당 의미를 참고해 학습용으로 짧게 정리했다.
 // 항목별 Oxford / 국립국어원 표준국어대사전 출처는 explanationSources에 기록한다.
 window.gameDataName_4 = '능률보카 고등 기본 (2025개정)';
 
@@ -16,6 +16,44 @@ window.storiesData_4 = {
         win: '',
         lose: '',
     },
+    3: { title: '', intro: '', win: '', lose: '' },
+    4: { title: '', intro: '', win: '', lose: '' },
+    5: { title: '', intro: '', win: '', lose: '' },
+    6: { title: '', intro: '', win: '', lose: '' },
+    7: { title: '', intro: '', win: '', lose: '' },
+    8: { title: '', intro: '', win: '', lose: '' },
+    9: { title: '', intro: '', win: '', lose: '' },
+    10: { title: '', intro: '', win: '', lose: '' },
+    11: { title: '', intro: '', win: '', lose: '' },
+    12: { title: '', intro: '', win: '', lose: '' },
+    13: { title: '', intro: '', win: '', lose: '' },
+    14: { title: '', intro: '', win: '', lose: '' },
+    15: { title: '', intro: '', win: '', lose: '' },
+    16: { title: '', intro: '', win: '', lose: '' },
+    17: { title: '', intro: '', win: '', lose: '' },
+    18: { title: '', intro: '', win: '', lose: '' },
+    19: { title: '', intro: '', win: '', lose: '' },
+    20: { title: '', intro: '', win: '', lose: '' },
+    21: { title: '', intro: '', win: '', lose: '' },
+    22: { title: '', intro: '', win: '', lose: '' },
+    23: { title: '', intro: '', win: '', lose: '' },
+    24: { title: '', intro: '', win: '', lose: '' },
+    25: { title: '', intro: '', win: '', lose: '' },
+    26: { title: '', intro: '', win: '', lose: '' },
+    27: { title: '', intro: '', win: '', lose: '' },
+    28: { title: '', intro: '', win: '', lose: '' },
+    29: { title: '', intro: '', win: '', lose: '' },
+    30: { title: '', intro: '', win: '', lose: '' },
+    31: { title: '', intro: '', win: '', lose: '' },
+    32: { title: '', intro: '', win: '', lose: '' },
+    33: { title: '', intro: '', win: '', lose: '' },
+    34: { title: '', intro: '', win: '', lose: '' },
+    35: { title: '', intro: '', win: '', lose: '' },
+    36: { title: '', intro: '', win: '', lose: '' },
+    37: { title: '', intro: '', win: '', lose: '' },
+    38: { title: '', intro: '', win: '', lose: '' },
+    39: { title: '', intro: '', win: '', lose: '' },
+    40: { title: '', intro: '', win: '', lose: '' },
 };
 
 window.rawData_4 = [
@@ -977,6 +1015,18973 @@ window.rawData_4 = [
             english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dramatically',
             korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=400575&searchKeywordTo=3',
             koreanHeadword: '극-적1',
+        },
+    },
+    {
+        day: 3,
+        word: 'originally',
+        meaning: '원래',
+        englishExplanation:
+            'used to describe the situation that existed at the beginning of a particular period or activity, especially before something was changed',
+        koreanExplanation: '처음부터 그러했거나 본디의 상태로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/originally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=468452&searchKeywordTo=3',
+            koreanHeadword: '원래1',
+        },
+    },
+    {
+        day: 3,
+        word: 'device',
+        meaning: '장치, 기기',
+        englishExplanation:
+            'an object or a piece of equipment that has been designed to do a particular job',
+        koreanExplanation: '어떤 목적에 따라 기능하도록 기계, 도구 따위를 그 장소에 장착함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/device',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476285&searchKeywordTo=3',
+            koreanHeadword: '장치5',
+        },
+    },
+    {
+        day: 3,
+        word: 'opposite',
+        meaning: '맞은편의; 정반대의; 반대되는 사람',
+        englishExplanation:
+            'on the other side of a particular area from a person or thing and usually facing them',
+        koreanExplanation: '위치나 방향, 성질이 서로 맞서거나 정반대인.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/opposite_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426442&searchKeywordTo=3',
+            koreanHeadword: '반대2',
+        },
+    },
+    {
+        day: 3,
+        word: 'disturb',
+        meaning: '방해하다',
+        englishExplanation: 'to interrupt a person when they are trying to work, sleep, etc.',
+        koreanExplanation: '남의 일을 간섭하고 막아 해를 끼치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disturb',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=136130&searchKeywordTo=3',
+            koreanHeadword: '방해-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'negotiate',
+        meaning: '협상하다',
+        englishExplanation: 'to try to reach an agreement by formal discussion',
+        koreanExplanation: '어떤 목적에 부합되는 결정을 하기 위하여 여럿이 서로 의논하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/negotiate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=369944&searchKeywordTo=3',
+            koreanHeadword: '협상-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'practical',
+        meaning: '실용적인; 실제적인',
+        englishExplanation: 'relating to real situations rather than with ideas or theories',
+        koreanExplanation: '실제로 쓰기에 알맞은 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/practical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=211110&searchKeywordTo=3',
+            koreanHeadword: '실용-적',
+        },
+    },
+    {
+        day: 3,
+        word: 'brief',
+        meaning: '잠시의, 짧은; 간결한',
+        englishExplanation: 'lasting only a short time',
+        koreanExplanation: '간단하고 깔끔하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/brief_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=5978&searchKeywordTo=3',
+            koreanHeadword: '간결-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'accurate',
+        meaning: '정확한',
+        englishExplanation: 'correct and true in every detail',
+        koreanExplanation: '바르고 확실하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accurate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480778&searchKeywordTo=3',
+            koreanHeadword: '정확-하다1',
+        },
+    },
+    {
+        day: 3,
+        word: 'accurately',
+        meaning: '정확하게',
+        englishExplanation: 'in a way that is correct and true in every detail',
+        koreanExplanation: '틀림이 없이 바르고 확실하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accurately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480778&searchKeywordTo=3',
+            koreanHeadword: '정확-하다1',
+        },
+    },
+    {
+        day: 3,
+        word: 'equipment',
+        meaning: '장비',
+        englishExplanation: 'the things that are needed for a particular purpose or activity',
+        koreanExplanation: '갖추어 차림. 또는 그 장치와 설비.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/equipment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476669&searchKeywordTo=3',
+            koreanHeadword: '장비4',
+        },
+    },
+    {
+        day: 3,
+        word: 'challenge',
+        meaning: '도전, 난제; 도전하다, 이의를 제기하다',
+        englishExplanation: 'a new or difficult task that tests a person’s ability and skill',
+        koreanExplanation: '정면으로 맞서 싸움을 걺.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/challenge_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=86622&searchKeywordTo=3',
+            koreanHeadword: '도전2',
+        },
+    },
+    {
+        day: 3,
+        word: 'consistently',
+        meaning: '일관되게',
+        englishExplanation: 'always the same',
+        koreanExplanation: '처음과 끝이 같은 태도나 방식으로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consistently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=265204&searchKeywordTo=3',
+            koreanHeadword: '일관-되다',
+        },
+    },
+    {
+        day: 3,
+        word: 'function',
+        meaning: '기능; 함수; 기능하다',
+        englishExplanation: 'a special activity or purpose of a person or thing',
+        koreanExplanation: '하는 구실이나 작용을 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/function_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401694&searchKeywordTo=3',
+            koreanHeadword: '기능3',
+        },
+    },
+    {
+        day: 3,
+        word: 'cooperative',
+        meaning: '협력적인, 협동하는',
+        englishExplanation:
+            'involving doing something together or working together with others towards a shared aim',
+        koreanExplanation: '힘을 합쳐 서로 돕는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cooperative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507416&searchKeywordTo=3',
+            koreanHeadword: '협력-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'conversation',
+        meaning: '대화',
+        englishExplanation: 'an informal talk involving a small group of people or only two',
+        koreanExplanation: '마주 대하여 이야기를 주고받음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conversation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412226&searchKeywordTo=3',
+            koreanHeadword: '대화6',
+        },
+    },
+    {
+        day: 3,
+        word: 'deal with',
+        meaning: '~을 다루다, ~을 처리하다; ~와 거래하다',
+        englishExplanation:
+            'to take appropriate action in a particular situation according to who you are talking to, managing, etc.',
+        koreanExplanation: '어떤 일이나 문제를 맡아서 처리하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/deal-with',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406713&searchKeywordTo=3',
+            koreanHeadword: '다루다',
+        },
+    },
+    {
+        day: 3,
+        word: 'detail',
+        meaning: '세부',
+        englishExplanation: 'a small individual fact or item',
+        koreanExplanation: '자세한 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/detail_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=190821&searchKeywordTo=3',
+            koreanHeadword: '세부3',
+        },
+    },
+    {
+        day: 3,
+        word: 'enroll',
+        meaning: '등록하다, 명부에 올리다',
+        englishExplanation:
+            'to arrange for yourself or for a person else to officially join a course, school, etc.',
+        koreanExplanation: '일정한 자격을 얻기 위하여 단체나 학교 따위에 문서나 이름을 올리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enrol',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417472&searchKeywordTo=3',
+            koreanHeadword: '등록-하다1',
+            englishBasis: 'enrol',
+        },
+    },
+    {
+        day: 3,
+        word: 'formal',
+        meaning: '격식을 차린; 공식적인; 형식적인',
+        englishExplanation: 'very correct and suitable for official or important occasions',
+        koreanExplanation: '국가적으로 규정되었거나 사회적으로 인정된 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/formal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=29348&searchKeywordTo=3',
+            koreanHeadword: '공식-적',
+        },
+    },
+    {
+        day: 3,
+        word: 'challenging',
+        meaning: '도전할 만한, 어려운',
+        englishExplanation: 'difficult in an interesting way that tests your ability',
+        koreanExplanation: '쉽게 해결하기 어려워 노력이나 능력이 필요한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/challenging',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=461579&searchKeywordTo=3',
+            koreanHeadword: '어렵다',
+        },
+    },
+    {
+        day: 3,
+        word: 'revolutionary',
+        meaning: '혁명의; 혁명적인',
+        englishExplanation: 'relating to political revolution',
+        koreanExplanation:
+            '헌법의 범위를 벗어나 국가 기초, 사회 제도, 경제 제도, 조직 따위를 근본적으로 고치는 일.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/revolutionary_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=501826&searchKeywordTo=3',
+            koreanHeadword: '혁명',
+        },
+    },
+    {
+        day: 3,
+        word: 'revolution',
+        meaning: '혁명; 대변혁, 개혁',
+        englishExplanation:
+            'an attempt, by a large number of people, to change the government of a country, especially by violent action',
+        koreanExplanation:
+            '헌법의 범위를 벗어나 국가 기초, 사회 제도, 경제 제도, 조직 따위를 근본적으로 고치는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/revolution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=501826&searchKeywordTo=3',
+            koreanHeadword: '혁명',
+        },
+    },
+    {
+        day: 3,
+        word: 'original',
+        meaning: '원래의, 최초의; 독창적인; 원본, 원작',
+        englishExplanation: 'existing at the beginning of a particular period, process or activity',
+        koreanExplanation: '사물이 전하여 내려온 그 처음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/original_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=468452&searchKeywordTo=3',
+            koreanHeadword: '원래1',
+        },
+    },
+    {
+        day: 3,
+        word: 'rapidly',
+        meaning: '급속히, 빠르게',
+        englishExplanation: 'very quickly',
+        koreanExplanation: '급하고 빠르게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rapidly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=47740&searchKeywordTo=3',
+            koreanHeadword: '급속-히',
+        },
+    },
+    {
+        day: 3,
+        word: 'consistent',
+        meaning: '일관된, 한결같은; ~와 일치하는',
+        englishExplanation:
+            'always behaving in the same way, or having the same opinions, standards, etc.',
+        koreanExplanation: '하나의 방법이나 태도로써 처음부터 끝까지 한결같이 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consistent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=265204&searchKeywordTo=3',
+            koreanHeadword: '일관-되다',
+        },
+    },
+    {
+        day: 3,
+        word: 'evidently',
+        meaning: '명백히, 분명히',
+        englishExplanation: 'clearly',
+        koreanExplanation: '의심할 바 없이 아주 뚜렷하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evidently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=115130&searchKeywordTo=3',
+            koreanHeadword: '명백-히',
+        },
+    },
+    {
+        day: 3,
+        word: 'formally',
+        meaning: '공식적으로',
+        englishExplanation:
+            'in a very correct way that is suitable for official or important occasions',
+        koreanExplanation: '공식적인 절차나 격식을 갖추어.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/formally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=29348&searchKeywordTo=3',
+            koreanHeadword: '공식-적',
+        },
+    },
+    {
+        day: 3,
+        word: 'cooperate',
+        meaning: '협력하다, 협동하다',
+        englishExplanation: 'to work together with a person else in order to achieve something',
+        koreanExplanation: '서로 힘을 합쳐 돕는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cooperate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507416&searchKeywordTo=3',
+            koreanHeadword: '협력-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'category',
+        meaning: '범주',
+        englishExplanation: 'a group of people or things with particular features in common',
+        koreanExplanation: '동일한 성질을 가진 부류나 범위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/category',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=431106&searchKeywordTo=3',
+            koreanHeadword: '범주5',
+        },
+    },
+    {
+        day: 3,
+        word: 'enrollment',
+        meaning: '등록',
+        englishExplanation: 'the process of officially joining a school, course or organization',
+        koreanExplanation: '일정한 자격을 얻기 위하여 단체나 학교 따위에 문서나 이름을 올림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enrolment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=95356&searchKeywordTo=3',
+            koreanHeadword: '등록1',
+            englishBasis: 'enrolment',
+        },
+    },
+    {
+        day: 3,
+        word: 'realistic',
+        meaning: '현실적인',
+        englishExplanation:
+            'accepting in a sensible way what it is actually possible to do or achieve in a particular situation',
+        koreanExplanation: '현재 실제로 존재하거나 실현될 수 있는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/realistic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=368914&searchKeywordTo=3',
+            koreanHeadword: '현실-적',
+        },
+    },
+    {
+        day: 3,
+        word: 'cooperation',
+        meaning: '협력, 협동',
+        englishExplanation:
+            'the fact of doing something together or of working together towards a shared aim',
+        koreanExplanation: '힘을 합하여 서로 도움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cooperation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=374568&searchKeywordTo=3',
+            koreanHeadword: '협력',
+        },
+    },
+    {
+        day: 3,
+        word: 'negotiation',
+        meaning: '협상',
+        englishExplanation: 'formal discussion between people who are trying to reach an agreement',
+        koreanExplanation: '어떤 목적에 부합되는 결정을 하기 위하여 여럿이 서로 의논함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/negotiation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=502884&searchKeywordTo=3',
+            koreanHeadword: '협상1',
+        },
+    },
+    {
+        day: 3,
+        word: 'reality',
+        meaning: '현실, 실제',
+        englishExplanation:
+            'the true situation and the problems that actually exist in life, in contrast to how you would like life to be',
+        koreanExplanation: '현재 실제로 존재하는 사실이나 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507153&searchKeywordTo=3',
+            koreanHeadword: '현실2',
+        },
+    },
+    {
+        day: 3,
+        word: 'colleague',
+        meaning: '동료',
+        englishExplanation: 'a person that you work with, especially in a profession or a business',
+        koreanExplanation: '같은 직장이나 같은 부문에서 함께 일하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/colleague',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=88693&searchKeywordTo=3',
+            koreanHeadword: '동료',
+        },
+    },
+    {
+        day: 3,
+        word: 'briefly',
+        meaning: '잠시 동안; 간략하게',
+        englishExplanation: 'for a short time',
+        koreanExplanation: '짧은 시간 동안 또는 요점만 간단하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/briefly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=6353&searchKeywordTo=3',
+            koreanHeadword: '간략-하다',
+        },
+    },
+    {
+        day: 3,
+        word: 'belief',
+        meaning: '신념, 확신; 생각, 믿음',
+        englishExplanation: 'a strong feeling that something/a person exists or is true',
+        koreanExplanation: '굳게 믿는 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/belief',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=204161&searchKeywordTo=3',
+            koreanHeadword: '신념1',
+        },
+    },
+    {
+        day: 3,
+        word: 'real',
+        meaning: '현실의, 진짜의',
+        englishExplanation: 'actually existing or happening and not imagined or pretended',
+        koreanExplanation: '사실의 경우나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/real_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452498&searchKeywordTo=3',
+            koreanHeadword: '실제2',
+        },
+    },
+    {
+        day: 3,
+        word: 'impact',
+        meaning: '영향, 효과; 충격, 충돌; 영향을 주다',
+        englishExplanation: 'the powerful effect that something has on a person or thing',
+        koreanExplanation: '어떤 사물의 효과나 작용이 다른 것에 미치는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impact_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463354&searchKeywordTo=3',
+            koreanHeadword: '영향4',
+        },
+    },
+    {
+        day: 3,
+        word: 'rapid',
+        meaning: '급속한, 빠른',
+        englishExplanation: 'happening quickly or in a short period of time',
+        koreanExplanation: '어떤 동작을 하는 데 걸리는 시간이 짧다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rapid',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157226&searchKeywordTo=3',
+            koreanHeadword: '빠르다',
+        },
+    },
+    {
+        day: 4,
+        word: 'describe',
+        meaning: '묘사하다, 서술하다',
+        englishExplanation: 'to say what a person or thing is like',
+        koreanExplanation:
+            '어떤 대상이나 사물, 현상 따위를 언어로 서술하거나 그림을 그려서 표현하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/describe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=119666&searchKeywordTo=3',
+            koreanHeadword: '묘사-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'operation',
+        meaning: '작동; 수술',
+        englishExplanation:
+            'the process of cutting open a part of a person’s body in order to remove or repair a damaged part',
+        koreanExplanation: '기계 따위가 작용을 받아 움직임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/operation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281246&searchKeywordTo=3',
+            koreanHeadword: '작동1',
+        },
+    },
+    {
+        day: 4,
+        word: 'cheat',
+        meaning: '속이다, 사기 치다; 부정행위를 하다; 사기',
+        englishExplanation:
+            'to trick a person or make them believe something that is not true in order to gain an advantage for yourself',
+        koreanExplanation: '거짓이나 꾀에 넘어가게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cheat_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449060&searchKeywordTo=3',
+            koreanHeadword: '속-이다',
+        },
+    },
+    {
+        day: 4,
+        word: 'extraordinary',
+        meaning: '대단한, 비범한; 기이한, 놀라운',
+        englishExplanation: 'unexpected, surprising or strange',
+        koreanExplanation: '매우 심하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extraordinary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411231&searchKeywordTo=3',
+            koreanHeadword: '대단-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'suitable',
+        meaning: '적합한, 적절한',
+        englishExplanation: 'right or appropriate for a particular purpose or occasion',
+        koreanExplanation: '일이나 조건 따위에 꼭 알맞다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suitable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279008&searchKeywordTo=3',
+            koreanHeadword: '적합-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'insurance',
+        meaning: '보험',
+        englishExplanation:
+            'an agreement in which regular payments protect you against the costs of accidents, illness or loss',
+        koreanExplanation: '손해를 물어 준다거나 일이 확실하게 이루어진다는 보증.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/insurance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435912&searchKeywordTo=3',
+            koreanHeadword: '보험',
+        },
+    },
+    {
+        day: 4,
+        word: 'identical',
+        meaning: '동일한, 똑같은',
+        englishExplanation: 'similar in every detail',
+        koreanExplanation: '어떤 것과 비교하여 똑같다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/identical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=89709&searchKeywordTo=3',
+            koreanHeadword: '동일-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'request',
+        meaning: '요청, 요구; 부탁하다, 요청하다',
+        englishExplanation: 'the action of asking for something formally and politely',
+        koreanExplanation: '필요한 어떤 일이나 행동을 청함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/request_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463424&searchKeywordTo=3',
+            koreanHeadword: '요청',
+        },
+    },
+    {
+        day: 4,
+        word: 'protect',
+        meaning: '보호하다, 지키다',
+        englishExplanation:
+            'to make sure that a person or thing is not harmed, injured, damaged, etc.',
+        koreanExplanation: '위험이나 곤란 따위가 미치지 아니하도록 잘 보살펴 돌보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/protect',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=145225&searchKeywordTo=3',
+            koreanHeadword: '보호-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'contact',
+        meaning: '접촉; 연락; 접촉하다; 연락하다',
+        englishExplanation: 'the act of communicating with a person, especially regularly',
+        koreanExplanation: '서로 맞닿음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contact_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476773&searchKeywordTo=3',
+            koreanHeadword: '접촉',
+        },
+    },
+    {
+        day: 4,
+        word: 'protector',
+        meaning: '보호자',
+        englishExplanation: 'a person, an organization or a thing that protects a person or thing',
+        koreanExplanation: '어떤 사람을 보호할 책임을 가지고 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/protector',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=144911&searchKeywordTo=3',
+            koreanHeadword: '보호-자',
+        },
+    },
+    {
+        day: 4,
+        word: 'argue',
+        meaning: '언쟁하다; 주장하다',
+        englishExplanation: 'to speak angrily to a person because you disagree with them',
+        koreanExplanation: '말로 옳고 그름을 가리려고 다투다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/argue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=227617&searchKeywordTo=3',
+            koreanHeadword: '언쟁-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'procedure',
+        meaning: '절차, 과정',
+        englishExplanation: 'a way of doing something, especially the usual or correct way',
+        koreanExplanation: '일을 치르는 데 거쳐야 하는 순서나 방법.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/procedure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477562&searchKeywordTo=3',
+            koreanHeadword: '절차2',
+        },
+    },
+    {
+        day: 4,
+        word: 'enormous',
+        meaning: '엄청난, 거대한',
+        englishExplanation: 'extremely large',
+        koreanExplanation: '엄청나게 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enormous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392576&searchKeywordTo=3',
+            koreanHeadword: '거대-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'strategy',
+        meaning: '전략',
+        englishExplanation: 'a plan that is intended to achieve a particular purpose',
+        koreanExplanation: '전쟁을 전반적으로 이끌어 가는 방법이나 책략. 전술보다 상위의 개념이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/strategy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=479330&searchKeywordTo=3',
+            koreanHeadword: '전략3',
+        },
+    },
+    {
+        day: 4,
+        word: 'inheritor',
+        meaning: '상속인, 후계자',
+        englishExplanation:
+            'a person who is affected by the work, ideas, etc. of people who lived before them',
+        koreanExplanation: '상속 개시 후에 재산이나 기타의 것을 물려받는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inheritor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=179734&searchKeywordTo=3',
+            koreanHeadword: '상속-인',
+        },
+    },
+    {
+        day: 4,
+        word: 'take over',
+        meaning: '인계받다, 이어받다',
+        englishExplanation: 'to become bigger or more important than something else',
+        koreanExplanation: '이미 이루어진 일의 결과나, 해 오던 일 또는 그 정신 따위를 전하여 받다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/take-over',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470442&searchKeywordTo=3',
+            koreanHeadword: '이어-받다',
+        },
+    },
+    {
+        day: 4,
+        word: 'direct',
+        meaning: '지도하다; 길을 안내하다; 감독하다; 직행의; 직접적인; 지도하다',
+        englishExplanation:
+            'going in the straightest line between two places without stopping or changing direction',
+        koreanExplanation: '어떤 목적이나 방향으로 남을 가르쳐 이끌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/direct_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=310214&searchKeywordTo=3',
+            koreanHeadword: '지도-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'explosive',
+        meaning: '폭발성의',
+        englishExplanation: 'easily able or likely to explode',
+        koreanExplanation: '폭발할 수 있는 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/explosive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=357270&searchKeywordTo=3',
+            koreanHeadword: '폭발-성1',
+        },
+    },
+    {
+        day: 4,
+        word: 'fare',
+        meaning: '운임, 요금',
+        englishExplanation: 'the money that you pay to travel by bus, plane, taxi, etc.',
+        koreanExplanation: '운반이나 운수 따위의 보수로 받거나 주는 돈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fare_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=467321&searchKeywordTo=3',
+            koreanHeadword: '운임',
+        },
+    },
+    {
+        day: 4,
+        word: 'protection',
+        meaning: '보호',
+        englishExplanation: 'the act of protecting a person or thing',
+        koreanExplanation: '위험이나 곤란 따위가 미치지 아니하도록 잘 보살펴 돌봄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/protection',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436203&searchKeywordTo=3',
+            koreanHeadword: '보호1',
+        },
+    },
+    {
+        day: 4,
+        word: 'brilliant',
+        meaning: '훌륭한; 밝은, 눈부신',
+        englishExplanation: 'extremely clever or impressive',
+        koreanExplanation: '썩 좋아서 나무랄 곳이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/brilliant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507795&searchKeywordTo=3',
+            koreanHeadword: '훌륭-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'entertainer',
+        meaning: '연예인',
+        englishExplanation:
+            'a person whose job is to sing, dance or perform for people so that they enjoy themselves',
+        koreanExplanation: '연예에 종사하는 배우, 가수, 무용가 등을 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/entertainer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=233341&searchKeywordTo=3',
+            koreanHeadword: '연예-인',
+        },
+    },
+    {
+        day: 4,
+        word: 'operate',
+        meaning: '작동하다; 조작하다; 수술하다',
+        englishExplanation: 'to work in a particular way',
+        koreanExplanation: '기계 따위가 작용을 받아 움직이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/operate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281247&searchKeywordTo=3',
+            koreanHeadword: '작동-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'realize',
+        meaning: '깨닫다; 실현하다',
+        englishExplanation: 'to understand or become aware of a particular fact or situation',
+        koreanExplanation: '사물의 본질이나 이치 따위를 생각하거나 궁리하여 알게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/realize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=404189&searchKeywordTo=3',
+            koreanHeadword: '깨닫다',
+        },
+    },
+    {
+        day: 4,
+        word: 'literally',
+        meaning: '글자 그대로',
+        englishExplanation: 'in a literal way',
+        koreanExplanation: '비유가 아니라 글자에 나타난 뜻 그대로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/literally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=404056&searchKeywordTo=3',
+            koreanHeadword: '글-자',
+        },
+    },
+    {
+        day: 4,
+        word: 'enormously',
+        meaning: '엄청나게',
+        englishExplanation: 'very',
+        koreanExplanation: '보통의 정도보다 훨씬 크게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enormously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=229424&searchKeywordTo=3',
+            koreanHeadword: '엄청-나다',
+        },
+    },
+    {
+        day: 4,
+        word: 'overall',
+        meaning: '전반적인, 전체의; 전반적으로, 전부',
+        englishExplanation:
+            'including all the things or people that are involved in a particular situation',
+        koreanExplanation: '어떤 일이나 부문에 대하여 그것과 관계되는 전체에 걸친 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/overall_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=284779&searchKeywordTo=3',
+            koreanHeadword: '전반-적',
+        },
+    },
+    {
+        day: 4,
+        word: 'sight',
+        meaning: '시력; 광경, 풍경',
+        englishExplanation: 'the ability to see',
+        koreanExplanation:
+            '물체의 존재나 형상을 인식하는 눈의 능력. 눈으로 두 광점을 구별할 수 있는 능력으로, 광도나 그 밖의 조건이 동일할 때, 시각 세포의 분포 밀도가 클수록 시력이 좋다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sight_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451828&searchKeywordTo=3',
+            koreanHeadword: '시력1',
+        },
+    },
+    {
+        day: 4,
+        word: 'surface',
+        meaning: '표면',
+        englishExplanation: 'the outside or top layer of something',
+        koreanExplanation: '사물의 가장 바깥쪽. 또는 가장 윗부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/surface_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500281&searchKeywordTo=3',
+            koreanHeadword: '표면',
+        },
+    },
+    {
+        day: 4,
+        word: 'entertain',
+        meaning: '즐겁게 하다',
+        englishExplanation: 'to interest a person or make a person laugh in order to please them',
+        koreanExplanation: '다른 사람이 즐거움을 느끼게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/entertain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483118&searchKeywordTo=3',
+            koreanHeadword: '즐겁다',
+        },
+    },
+    {
+        day: 4,
+        word: 'direction',
+        meaning: '방향; 지시, 명령',
+        englishExplanation: 'the general position a person or thing moves or points towards',
+        koreanExplanation: '어떤 방위를 향한 쪽.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/direction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432882&searchKeywordTo=3',
+            koreanHeadword: '방향1',
+        },
+    },
+    {
+        day: 4,
+        word: 'senior',
+        meaning: '선임의, 상급의; 연상의; 선임, 상급자; 연장자',
+        englishExplanation: 'high in rank or status',
+        koreanExplanation: '어떤 임무나 직무 따위를 먼저 맡음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/senior_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=185238&searchKeywordTo=3',
+            koreanHeadword: '선임1',
+        },
+    },
+    {
+        day: 4,
+        word: 'explode',
+        meaning: '폭발하다, 터지다',
+        englishExplanation: 'to burst or make something burst loudly and violently, causing damage',
+        koreanExplanation: '불이 일어나며 갑작스럽게 터지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/explode',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=356959&searchKeywordTo=3',
+            koreanHeadword: '폭발-하다2',
+        },
+    },
+    {
+        day: 4,
+        word: 'shelter',
+        meaning: '대피소, 피난처; 보호하다',
+        englishExplanation:
+            'the fact of having a place to live or stay, considered as a basic human need',
+        koreanExplanation: '비상시에 대피할 수 있도록 만들어 놓은 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/shelter_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=81488&searchKeywordTo=3',
+            koreanHeadword: '대피-소',
+        },
+    },
+    {
+        day: 4,
+        word: 'rescue',
+        meaning: '구조하다; 구조',
+        englishExplanation: 'to save a person or thing from a dangerous or harmful situation',
+        koreanExplanation: '재난 따위를 당하여 어려운 처지에 빠진 사람을 구하여 주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rescue_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397985&searchKeywordTo=3',
+            koreanHeadword: '구조-하다2',
+        },
+    },
+    {
+        day: 4,
+        word: 'inherit',
+        meaning: '상속하다, 물려받다',
+        englishExplanation: 'to receive money, property, etc. from a person when they die',
+        koreanExplanation: '재산이나 권리, 성질 등을 앞선 사람에게서 물려받는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inherit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443323&searchKeywordTo=3',
+            koreanHeadword: '상속-하다',
+        },
+    },
+    {
+        day: 4,
+        word: 'cut down on',
+        meaning: '줄이다',
+        englishExplanation: 'to kill a person',
+        koreanExplanation: '물체의 길이나 넓이, 부피 따위를 본디보다 작게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cut-down_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480097&searchKeywordTo=3',
+            koreanHeadword: '줄-이다',
+            englishBasis: 'cut-down_1',
+        },
+    },
+    {
+        day: 4,
+        word: 'description',
+        meaning: '묘사, 서술',
+        englishExplanation: 'a piece of writing or speech that says what a person or thing is like',
+        koreanExplanation:
+            '어떤 대상이나 사물, 현상 따위를 언어로 서술하거나 그림을 그려서 표현함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/description',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426649&searchKeywordTo=3',
+            koreanHeadword: '묘사2',
+        },
+    },
+    {
+        day: 4,
+        word: 'explosion',
+        meaning: '폭발',
+        englishExplanation:
+            'the sudden, violent bursting and loud noise of something such as a bomb exploding',
+        koreanExplanation: '불이 일어나며 갑작스럽게 터짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/explosion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=356957&searchKeywordTo=3',
+            koreanHeadword: '폭발2',
+        },
+    },
+    {
+        day: 5,
+        word: 'registration',
+        meaning: '등록, 기재',
+        englishExplanation: 'the act of making an official record of something/a person',
+        koreanExplanation: '일정한 자격을 얻기 위하여 단체나 학교 따위에 문서나 이름을 올림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/registration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=95356&searchKeywordTo=3',
+            koreanHeadword: '등록1',
+        },
+    },
+    {
+        day: 5,
+        word: 'apparently',
+        meaning: '분명히, 명백히',
+        englishExplanation: 'according to what you have heard or read',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apparently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432443&searchKeywordTo=3',
+            koreanHeadword: '분명-히',
+        },
+    },
+    {
+        day: 5,
+        word: 'intelligent',
+        meaning: '총명한, 지적인',
+        englishExplanation:
+            'good at learning, understanding and thinking in a logical way about things',
+        koreanExplanation: '보거나 들은 것을 오래 기억하는 힘이 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intelligent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=328745&searchKeywordTo=3',
+            koreanHeadword: '총명-하다',
+        },
+    },
+    {
+        day: 5,
+        word: 'desire',
+        meaning: '바라다, 원하다; 욕망',
+        englishExplanation: 'a strong wish to have or do something',
+        koreanExplanation:
+            '생각이나 바람대로 어떤 일이나 상태가 이루어지거나 그렇게 되었으면 하고 생각하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desire_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=428737&searchKeywordTo=3',
+            koreanHeadword: '바라다',
+        },
+    },
+    {
+        day: 5,
+        word: 'military',
+        meaning: '군의; 군대',
+        englishExplanation: 'relating to soldiers or the armed forces',
+        koreanExplanation: '일정한 규율과 질서를 가지고 조직된 군인의 집단.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/military_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396823&searchKeywordTo=3',
+            koreanHeadword: '군대2',
+        },
+    },
+    {
+        day: 5,
+        word: 'keep up with',
+        meaning: '~을 따라가다, 유행을 따르다; ~와 계속 연락하고 지내다',
+        englishExplanation: 'to continue to be in contact with a person',
+        koreanExplanation: '다른 사람이나 동물의 뒤에서, 그가 가는 대로 가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/keep-up-with',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=418294&searchKeywordTo=3',
+            koreanHeadword: '따라-가다',
+        },
+    },
+    {
+        day: 5,
+        word: 'accomplish',
+        meaning: '완수하다, 성취하다',
+        englishExplanation: 'to succeed in doing or completing something',
+        koreanExplanation: '뜻한 바를 완전히 이루거나 다 해내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accomplish',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=462995&searchKeywordTo=3',
+            koreanHeadword: '완수-하다1',
+        },
+    },
+    {
+        day: 5,
+        word: 'effective',
+        meaning: '효과적인; 유효한',
+        englishExplanation: 'producing the result that is wanted or intended',
+        koreanExplanation: '어떤 목적을 지닌 행위에 의하여 보람이나 좋은 결과가 드러나는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/effective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=379501&searchKeywordTo=3',
+            koreanHeadword: '효과-적',
+        },
+    },
+    {
+        day: 5,
+        word: 'fade',
+        meaning: '서서히 사라지다; 흐려지다',
+        englishExplanation: 'to become or to make something become paler or less bright',
+        koreanExplanation: '흐린 상태로 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fade',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=515649&searchKeywordTo=3',
+            koreanHeadword: '흐려-지다',
+        },
+    },
+    {
+        day: 5,
+        word: 'tendency',
+        meaning: '경향, 추세; 소질, 체질',
+        englishExplanation: 'a likelihood of behaving or developing in a particular way',
+        koreanExplanation: '현상이나 사상, 행동 따위가 어떤 방향으로 기울어짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tendency',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393088&searchKeywordTo=3',
+            koreanHeadword: '경향2',
+        },
+    },
+    {
+        day: 5,
+        word: 'achievement',
+        meaning: '성취, 업적',
+        englishExplanation:
+            'a thing that a person has done successfully, especially using their own effort and skill',
+        koreanExplanation: '목적한 바를 이룸.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/achievement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=185137&searchKeywordTo=3',
+            koreanHeadword: '성취2',
+        },
+    },
+    {
+        day: 5,
+        word: 'extreme',
+        meaning: '극단적인, 극도의; 지나친, 과도한; 극단, 극도',
+        englishExplanation: 'very great in degree',
+        koreanExplanation: '길이나 일의 진행이 끝까지 미쳐 더 나아갈 데가 없는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extreme_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401641&searchKeywordTo=3',
+            koreanHeadword: '극단-적',
+        },
+    },
+    {
+        day: 5,
+        word: 'awkward',
+        meaning: '서투른; 어색한; 곤란한, 난처한',
+        englishExplanation: 'making you feel embarrassed',
+        koreanExplanation:
+            '잘 모르거나 아니면 별로 만나고 싶지 않았던 사람과 마주 대하여 자연스럽지 못하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/awkward',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458323&searchKeywordTo=3',
+            koreanHeadword: '어색-하다2',
+        },
+    },
+    {
+        day: 5,
+        word: 'unique',
+        meaning: '유일한; 독특한, 특별한',
+        englishExplanation: 'being the only one of its type',
+        koreanExplanation: '같은 것이 없이 오직 하나뿐인.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/unique',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=256887&searchKeywordTo=3',
+            koreanHeadword: '유일-하다1',
+        },
+    },
+    {
+        day: 5,
+        word: 'immediate',
+        meaning: '즉각적인',
+        englishExplanation: 'happening or done without delay',
+        koreanExplanation: '당장에 곧 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/immediate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480857&searchKeywordTo=3',
+            koreanHeadword: '즉각-적',
+        },
+    },
+    {
+        day: 5,
+        word: 'adolescent',
+        meaning: '청소년',
+        englishExplanation: 'a young person who is developing from a child into an adult',
+        koreanExplanation: '청년과 소년을 아울러 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adolescent_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=333163&searchKeywordTo=3',
+            koreanHeadword: '청-소년',
+        },
+    },
+    {
+        day: 5,
+        word: 'attachment',
+        meaning: '부착',
+        englishExplanation: 'a document that you send to a person using email',
+        koreanExplanation: '떨어지지 아니하게 붙음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attachment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438905&searchKeywordTo=3',
+            koreanHeadword: '부착',
+        },
+    },
+    {
+        day: 5,
+        word: 'delight',
+        meaning: '기쁨, 즐거움; 기쁘게 하다',
+        englishExplanation: 'a feeling of great pleasure',
+        koreanExplanation: '욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/delight_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=49451&searchKeywordTo=3',
+            koreanHeadword: '기쁨',
+        },
+    },
+    {
+        day: 5,
+        word: 'intelligence',
+        meaning: '지능, 지성',
+        englishExplanation:
+            'the ability to learn, understand and think in a logical way about things',
+        koreanExplanation:
+            '계산이나 문장 작성 따위의 지적 작업에서, 성취 정도에 따라 정하여지는 적응 능력. 지능 지수 따위로 수치화할 수 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intelligence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481055&searchKeywordTo=3',
+            koreanHeadword: '지능',
+        },
+    },
+    {
+        day: 5,
+        word: 'eventually',
+        meaning: '결국, 마침내',
+        englishExplanation: 'at the end of a period of time or a series of events',
+        koreanExplanation: '일이 마무리되는 마당이나 일의 결과가 그렇게 돌아감을 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/eventually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=17346&searchKeywordTo=3',
+            koreanHeadword: '결국',
+        },
+    },
+    {
+        day: 5,
+        word: 'spread',
+        meaning: '확산되다; 펴다; 바르다',
+        englishExplanation:
+            'to affect or make something affect, be known by, or be used by more and more people',
+        koreanExplanation: '흩어져 널리 퍼지게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spread_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377772&searchKeywordTo=3',
+            koreanHeadword: '확산-되다',
+        },
+    },
+    {
+        day: 5,
+        word: 'break down',
+        meaning: '고장 나다; ~을 부수다; ~을 분해하다',
+        englishExplanation: 'to stop working because of a fault',
+        koreanExplanation: '단단한 물체를 여러 조각이 나게 두드려 깨뜨리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/break-down',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434909&searchKeywordTo=3',
+            koreanHeadword: '부수다',
+        },
+    },
+    {
+        day: 5,
+        word: 'achieve',
+        meaning: '성취하다',
+        englishExplanation:
+            'to succeed in reaching a particular goal, status or standard, especially by making an effort for a long time',
+        koreanExplanation: '목적한 바를 이루다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/achieve',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444813&searchKeywordTo=3',
+            koreanHeadword: '성취-하다2',
+        },
+    },
+    {
+        day: 5,
+        word: 'verbal',
+        meaning: '말의, 언어의, 말로 된',
+        englishExplanation: 'relating to words',
+        koreanExplanation: '사람이 생각과 느낌을 나타내는 말이나 언어에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/verbal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=224753&searchKeywordTo=3',
+            koreanHeadword: '언어1',
+        },
+    },
+    {
+        day: 5,
+        word: 'awkwardly',
+        meaning: '서투르게, 어색하게',
+        englishExplanation:
+            'in a way that makes you feel embarrassed or shows that a person is embarrassed',
+        koreanExplanation:
+            '잘 모르거나 아니면 별로 만나고 싶지 않았던 사람과 마주 대하여 자연스럽지 못하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/awkwardly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458323&searchKeywordTo=3',
+            koreanHeadword: '어색-하다2',
+        },
+    },
+    {
+        day: 5,
+        word: 'otherwise',
+        meaning: '다르게; 그렇지 않으면; 그 외에는',
+        englishExplanation:
+            'used to state what the result would be if something did not happen or if the situation were different',
+        koreanExplanation: '앞서 말한 것과 다르게 또는 그렇지 않으면.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/otherwise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72210&searchKeywordTo=3',
+            koreanHeadword: '다르다1',
+        },
+    },
+    {
+        day: 5,
+        word: 'immediately',
+        meaning: '즉시, 바로',
+        englishExplanation: 'without delay',
+        koreanExplanation: '어떤 일이 행하여지는 바로 그때.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/immediately_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=312696&searchKeywordTo=3',
+            koreanHeadword: '즉시',
+        },
+    },
+    {
+        day: 5,
+        word: 'register',
+        meaning: '등록하다, 기재하다; 등록부, 명부',
+        englishExplanation: 'to record your/a person’s/something’s name on an official list',
+        koreanExplanation: '일정한 자격을 얻기 위하여 단체나 학교 따위에 문서나 이름을 올리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/register_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417472&searchKeywordTo=3',
+            koreanHeadword: '등록-하다1',
+        },
+    },
+    {
+        day: 5,
+        word: 'threat',
+        meaning: '위협, 협박; 조짐, 징조',
+        englishExplanation:
+            'a statement in which you tell a person that you will punish or harm them, especially if they do not do what you want',
+        koreanExplanation: '상대가 겁을 먹도록 무서운 말이나 행동으로 협박함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/threat',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469442&searchKeywordTo=3',
+            koreanHeadword: '위협',
+        },
+    },
+    {
+        day: 5,
+        word: 'widespread',
+        meaning: '널리 퍼진, 광범위한, 만연한',
+        englishExplanation: 'existing or happening over a large area or among many people',
+        koreanExplanation: '범위가 넓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/widespread',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33334&searchKeywordTo=3',
+            koreanHeadword: '광범위-하다',
+        },
+    },
+    {
+        day: 5,
+        word: 'extremely',
+        meaning: '매우, 극도로',
+        englishExplanation: 'to a very high degree',
+        koreanExplanation: '보통 정도보다 훨씬 더.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extremely',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112701&searchKeywordTo=3',
+            koreanHeadword: '매우1',
+        },
+    },
+    {
+        day: 5,
+        word: 'initial',
+        meaning: '처음의, 초기의; 머리글자, 첫 글자',
+        englishExplanation: 'happening at the beginning',
+        koreanExplanation:
+            '주로 알파벳의 표기에서, 낱말이나 문장 혹은 고유 명사의 첫머리에 쓰는 대문자.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/initial_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420947&searchKeywordTo=3',
+            koreanHeadword: '머리-글자',
+        },
+    },
+    {
+        day: 5,
+        word: 'frequently',
+        meaning: '자주',
+        englishExplanation: 'often',
+        koreanExplanation: '같은 일을 잇따라 잦게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/frequently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471585&searchKeywordTo=3',
+            koreanHeadword: '자주1',
+        },
+    },
+    {
+        day: 5,
+        word: 'utilize',
+        meaning: '활용하다',
+        englishExplanation: 'to use something, especially for a practical purpose',
+        koreanExplanation: '도구나 물건 따위를 충분히 잘 이용하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/utilize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506320&searchKeywordTo=3',
+            koreanHeadword: '활용-하다',
+        },
+    },
+    {
+        day: 5,
+        word: 'eventual',
+        meaning: '최후의, 궁극적인',
+        englishExplanation: 'happening at the end of a period of time or of a process',
+        koreanExplanation: '맨 마지막.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/eventual',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=325866&searchKeywordTo=3',
+            koreanHeadword: '최후',
+        },
+    },
+    {
+        day: 5,
+        word: 'attach',
+        meaning: '붙이다, 첨부하다',
+        englishExplanation: 'to fasten or join one thing to another',
+        koreanExplanation: '맞닿아 떨어지지 않게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attach',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153137&searchKeywordTo=3',
+            koreanHeadword: '붙-이다',
+        },
+    },
+    {
+        day: 5,
+        word: 'critical',
+        meaning: '비판적인; 중요한, 결정적인',
+        englishExplanation: 'saying what you think is bad about a person or thing',
+        koreanExplanation: '현상이나 사물의 옳고 그름을 판단하여 밝히거나 잘못된 점을 지적하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/critical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=168209&searchKeywordTo=3',
+            koreanHeadword: '비판-적',
+        },
+    },
+    {
+        day: 5,
+        word: 'delighted',
+        meaning: '기쁜, 즐거워하는',
+        englishExplanation: 'very pleased',
+        koreanExplanation: '욕구가 충족되어 마음이 흐뭇하고 흡족하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/delighted',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=405464&searchKeywordTo=3',
+            koreanHeadword: '기쁘다',
+        },
+    },
+    {
+        day: 5,
+        word: 'apparent',
+        meaning: '분명한, 명백한',
+        englishExplanation: 'easy to see or understand',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apparent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=155625&searchKeywordTo=3',
+            koreanHeadword: '분명-하다1',
+        },
+    },
+    {
+        day: 5,
+        word: 'desirable',
+        meaning: '바람직한',
+        englishExplanation: 'that you would like to have or do',
+        koreanExplanation: '바랄 만한 가치가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desirable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=430009&searchKeywordTo=3',
+            koreanHeadword: '바람직-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'journey',
+        meaning: '여행, 여정; 여행하다',
+        englishExplanation:
+            'an act of travelling from one place to another, especially when they are far apart',
+        koreanExplanation: '일이나 유람을 목적으로 다른 고장이나 외국에 가는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/journey_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=459607&searchKeywordTo=3',
+            koreanHeadword: '여행2',
+        },
+    },
+    {
+        day: 6,
+        word: 'refuse',
+        meaning: '거절하다',
+        englishExplanation:
+            'to say or show that you will not do something that a person has asked you to do',
+        koreanExplanation: '상대편의 요구, 제안, 선물, 부탁 따위를 받아들이지 않고 물리치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/refuse1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=13623&searchKeywordTo=3',
+            koreanHeadword: '거절-하다1',
+        },
+    },
+    {
+        day: 6,
+        word: 'examiner',
+        meaning: '조사관, 심사 위원',
+        englishExplanation:
+            'a person who writes the questions for, or marks, a test of knowledge or ability',
+        koreanExplanation:
+            '사물의 내용, 사건의 정황 따위를 명확히 알기 위하여 자세히 살펴보거나 찾아보는 직책을 맡은 관리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/examiner',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=536162&searchKeywordTo=3',
+            koreanHeadword: '조사-관',
+        },
+    },
+    {
+        day: 6,
+        word: 'attempt',
+        meaning: '시도; 시도하다',
+        englishExplanation:
+            'an act of trying to do something, especially something difficult, often with no success',
+        koreanExplanation: '어떤 것을 이루어 보려고 계획하거나 행동함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attempt_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=450526&searchKeywordTo=3',
+            koreanHeadword: '시도8',
+        },
+    },
+    {
+        day: 6,
+        word: 'visual',
+        meaning: '시각의, 시각적인; 시각 자료',
+        englishExplanation: 'of or relating to seeing or sight',
+        koreanExplanation: '눈을 통해 빛의 자극을 받아들이는 감각 작용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/visual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447938&searchKeywordTo=3',
+            koreanHeadword: '시각5',
+        },
+    },
+    {
+        day: 6,
+        word: 'devoted',
+        meaning: '헌신적인, 전념하는',
+        englishExplanation:
+            'having great love for a person or thing and supporting them in everything',
+        koreanExplanation: '몸과 마음을 바쳐 있는 힘을 다하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/devoted',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=372423&searchKeywordTo=3',
+            koreanHeadword: '헌신-적',
+        },
+    },
+    {
+        day: 6,
+        word: 'concentrate',
+        meaning: '집중하다; 응축하다',
+        englishExplanation:
+            'to give all your attention to something and not think about anything else',
+        koreanExplanation: '한곳을 중심으로 하여 모이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/concentrate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=487425&searchKeywordTo=3',
+            koreanHeadword: '집중-하다2',
+        },
+    },
+    {
+        day: 6,
+        word: 'disaster',
+        meaning: '재난, 참사, 천재지변',
+        englishExplanation:
+            'an unexpected event, such as a very bad accident, a flood or a fire, that kills a lot of people or causes a lot of damage',
+        koreanExplanation: '뜻밖에 일어난 재앙과 고난.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disaster',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=286810&searchKeywordTo=3',
+            koreanHeadword: '재난',
+        },
+    },
+    {
+        day: 6,
+        word: 'voluntary',
+        meaning: '자발적인, 자원봉사의',
+        englishExplanation: 'done willingly, not because you are forced',
+        koreanExplanation: '남이 시키거나 요청하지 아니하여도 자기 스스로 나아가 행하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/voluntary_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475371&searchKeywordTo=3',
+            koreanHeadword: '자발-적',
+        },
+    },
+    {
+        day: 6,
+        word: 'sacrifice',
+        meaning: '희생하다; 희생; 제물',
+        englishExplanation:
+            'to give up something valuable in order to achieve a more important purpose',
+        koreanExplanation:
+            '다른 사람이나 어떤 목적을 위하여 자신의 목숨, 재산, 명예, 이익 따위를 바치거나 버리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sacrifice_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=389007&searchKeywordTo=3',
+            koreanHeadword: '희생-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'remarkable',
+        meaning: '주목할 만한, 놀라운',
+        englishExplanation: 'unusual or surprising in a way that causes people to take notice',
+        koreanExplanation: '감동을 일으킬 만큼 훌륭하거나 굉장하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/remarkable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403097&searchKeywordTo=3',
+            koreanHeadword: '놀랍다',
+        },
+    },
+    {
+        day: 6,
+        word: 'damage',
+        meaning: '손해, 손상; 손해를 입히다, 해치다',
+        englishExplanation:
+            'physical harm caused to something which makes it less attractive, useful or valuable',
+        koreanExplanation: '물질적으로나 정신적으로 밑짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/damage_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447838&searchKeywordTo=3',
+            koreanHeadword: '손해',
+        },
+    },
+    {
+        day: 6,
+        word: 'existence',
+        meaning: '존재; 생활',
+        englishExplanation: 'the state or fact of being real or living or of being present',
+        koreanExplanation: '현실에 실제로 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/existence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483843&searchKeywordTo=3',
+            koreanHeadword: '존재',
+        },
+    },
+    {
+        day: 6,
+        word: 'reservation',
+        meaning: '예약; 보호 구역',
+        englishExplanation:
+            'an arrangement for a seat on a plane or train, a room in a hotel, etc. to be kept for you',
+        koreanExplanation: '미리 약속함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reservation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=241601&searchKeywordTo=3',
+            koreanHeadword: '예약',
+        },
+    },
+    {
+        day: 6,
+        word: 'routine',
+        meaning: '일상적인 일, 일과; 일상적인',
+        englishExplanation: 'the normal order and way in which you regularly do things',
+        koreanExplanation: '날마다 규칙적으로 하는 일정한 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/routine_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=265196&searchKeywordTo=3',
+            koreanHeadword: '일과5',
+        },
+    },
+    {
+        day: 6,
+        word: 'examination',
+        meaning: '검사; 시험',
+        englishExplanation: 'a formal test used to find out how much a person knows or can do',
+        koreanExplanation:
+            '사실이나 일의 상태 또는 물질의 구성 성분 따위를 조사하여 옳고 그름과 낫고 못함을 판단하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/examination',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391694&searchKeywordTo=3',
+            koreanHeadword: '검사3',
+        },
+    },
+    {
+        day: 6,
+        word: 'refusal',
+        meaning: '거절, 거부',
+        englishExplanation:
+            'an act of saying or showing that you will not do, give or accept something',
+        koreanExplanation: '상대편의 요구, 제안, 선물, 부탁 따위를 받아들이지 않고 물리침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/refusal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393251&searchKeywordTo=3',
+            koreanHeadword: '거절1',
+        },
+    },
+    {
+        day: 6,
+        word: 'visualize',
+        meaning: '시각화하다',
+        englishExplanation: 'to form a picture of a person or thing in your mind',
+        koreanExplanation: '보이지 않는 것이 일정한 형태로 나타나 보이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/visualize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=450557&searchKeywordTo=3',
+            koreanHeadword: '시각화-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'exploration',
+        meaning: '탐사, 탐험',
+        englishExplanation:
+            'the act of travelling through a place in order to find out about it or look for something in it',
+        koreanExplanation: '알려지지 않은 사물이나 사실 따위를 샅샅이 더듬어 조사함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exploration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=342123&searchKeywordTo=3',
+            koreanHeadword: '탐사',
+        },
+    },
+    {
+        day: 6,
+        word: 'exist',
+        meaning: '존재하다; 살아가다',
+        englishExplanation: 'to be real',
+        koreanExplanation: '현실에 실재하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exist',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=296626&searchKeywordTo=3',
+            koreanHeadword: '존재-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'sign up',
+        meaning: '등록하다, 가입하다, 신청하다',
+        englishExplanation: 'to officially agree to join an activity, course or organization',
+        koreanExplanation: '일정한 자격을 얻기 위하여 단체나 학교 따위에 문서나 이름을 올리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sign-up',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417472&searchKeywordTo=3',
+            koreanHeadword: '등록-하다1',
+        },
+    },
+    {
+        day: 6,
+        word: 'fund',
+        meaning: '기금, 자금; 자금을 대다',
+        englishExplanation:
+            'an amount of money that has been saved or has been made available for a particular purpose',
+        koreanExplanation:
+            '어떤 목적이나 사업, 행사 따위에 쓸 기본적인 자금. 또는 기초가 되는 자금.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fund_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401461&searchKeywordTo=3',
+            koreanHeadword: '기금2',
+        },
+    },
+    {
+        day: 6,
+        word: 'surrounding',
+        meaning: '둘러싸는, 주변의; 환경',
+        englishExplanation: 'that is near or around something',
+        koreanExplanation: '생물에게 직접·간접으로 영향을 주는 자연적 조건이나 사회적 상황.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/surrounding',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505000&searchKeywordTo=3',
+            koreanHeadword: '환경1',
+        },
+    },
+    {
+        day: 6,
+        word: 'obey',
+        meaning: '따르다, 복종하다',
+        englishExplanation: 'to do what you are told or expected to do',
+        koreanExplanation: '남의 명령이나 의사를 그대로 따라서 좇다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/obey',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=150024&searchKeywordTo=3',
+            koreanHeadword: '복종-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'run out of',
+        meaning: '~을 다 써 버리다',
+        englishExplanation: 'if a supply of something runs out, it is used up or finished',
+        koreanExplanation: '가지고 있던 것을 모두 써서 더 이상 남지 않게 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/run-out_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=192682&searchKeywordTo=3',
+            koreanHeadword: '소진-하다1',
+            englishBasis: 'run-out',
+        },
+    },
+    {
+        day: 6,
+        word: 'violence',
+        meaning: '폭력; 격렬함, 격함',
+        englishExplanation: 'violent behaviour that is intended to hurt or kill a person',
+        koreanExplanation:
+            '남을 거칠고 사납게 제압할 때에 쓰는, 주먹이나 발 또는 몽둥이 따위의 수단이나 힘. 넓은 뜻으로는 무기로 억누르는 힘을 이르기도 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/violence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=356428&searchKeywordTo=3',
+            koreanHeadword: '폭력',
+        },
+    },
+    {
+        day: 6,
+        word: 'visually',
+        meaning: '시각적으로',
+        englishExplanation: 'in a way that is related to seeing or sight',
+        koreanExplanation: '눈으로 보고 인식하는 방식으로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/visually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=202526&searchKeywordTo=3',
+            koreanHeadword: '시각-적',
+        },
+    },
+    {
+        day: 6,
+        word: 'numerously',
+        meaning: '많이',
+        englishExplanation: 'in large numbers or quantities',
+        koreanExplanation: '사람이나 사물의 수가 많이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/numerous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=109560&searchKeywordTo=3',
+            koreanHeadword: '많-이',
+            englishBasis: 'numerous',
+        },
+    },
+    {
+        day: 6,
+        word: 'normally',
+        meaning: '보통, 일반적으로',
+        englishExplanation: 'usually',
+        koreanExplanation: '특별하지 아니하고 흔히 볼 수 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/normally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433983&searchKeywordTo=3',
+            koreanHeadword: '보통',
+        },
+    },
+    {
+        day: 6,
+        word: 'volunteer',
+        meaning: '자원하다; 자원봉사자',
+        englishExplanation: 'a person who does a job without being paid for it',
+        koreanExplanation: '어떤 일을 자기 스스로 하고자 하여 나서다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/volunteer_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472554&searchKeywordTo=3',
+            koreanHeadword: '자원-하다',
+        },
+    },
+    {
+        day: 6,
+        word: 'experiment',
+        meaning: '실험, 시험; 실험하다, 시험하다',
+        englishExplanation:
+            'a scientific test that is done in order to study what happens and to gain new knowledge',
+        koreanExplanation: '실제로 해 봄. 또는 그렇게 하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/experiment_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449099&searchKeywordTo=3',
+            koreanHeadword: '실험',
+        },
+    },
+    {
+        day: 6,
+        word: 'remarkably',
+        meaning: '놀랍게도, 매우',
+        englishExplanation:
+            'in a way that is unusual or surprising and causes people to take notice',
+        koreanExplanation: '보통 정도보다 훨씬 더.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/remarkably',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112701&searchKeywordTo=3',
+            koreanHeadword: '매우1',
+        },
+    },
+    {
+        day: 6,
+        word: 'violently',
+        meaning: '격렬히, 난폭하게',
+        englishExplanation:
+            'with great energy or strong movement, especially caused by a strong emotion such as fear or hate',
+        koreanExplanation: '말이나 행동이 세차고 사나운 태도로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/violently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18337&searchKeywordTo=3',
+            koreanHeadword: '격렬-히',
+        },
+    },
+    {
+        day: 6,
+        word: 'explorer',
+        meaning: '탐험가',
+        englishExplanation:
+            'a person who travels to places where few people have been before or places that are unknown to them, in order to find out more about them',
+        koreanExplanation:
+            '위험을 무릅쓰고 어떤 곳을 찾아가서 살펴보고 조사하는 일을 전문으로 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/explorer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=344721&searchKeywordTo=3',
+            koreanHeadword: '탐험-가',
+        },
+    },
+    {
+        day: 6,
+        word: 'surround',
+        meaning: '둘러싸다, 에워싸다',
+        englishExplanation: 'to be all around something/a person',
+        koreanExplanation: '둘러서 감싸다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/surround_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=92920&searchKeywordTo=3',
+            koreanHeadword: '둘러-싸다',
+        },
+    },
+    {
+        day: 6,
+        word: 'rotate',
+        meaning: '회전하다, 순환하다; 교대로 하다',
+        englishExplanation: 'to move or turn around a central fixed point',
+        koreanExplanation: '어떤 것을 축으로 물체 자체가 빙빙 돌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rotate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=379524&searchKeywordTo=3',
+            koreanHeadword: '회전-하다3',
+        },
+    },
+    {
+        day: 6,
+        word: 'trigger',
+        meaning: '방아쇠; 자극, 계기; 촉발하다',
+        englishExplanation: 'to make something happen suddenly',
+        koreanExplanation:
+            '소총이나 권총에서 총알을 발사하게 하는 장치. 굽은 쇠 모양이며 집게손가락으로 잡아당겨서 총을 쏘게 되어 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/trigger_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=137447&searchKeywordTo=3',
+            koreanHeadword: '방아-쇠',
+        },
+    },
+    {
+        day: 6,
+        word: 'normal',
+        meaning: '보통의, 평범한, 정상적인',
+        englishExplanation: 'typical, usual or ordinary',
+        koreanExplanation: '특별하지 아니하고 흔히 볼 수 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/normal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433983&searchKeywordTo=3',
+            koreanHeadword: '보통',
+        },
+    },
+    {
+        day: 6,
+        word: 'rotation',
+        meaning: '회전, 순환; 교대',
+        englishExplanation:
+            'the action of an object moving in a circle around a central fixed point',
+        koreanExplanation: '어떤 것을 축으로 물체 자체가 빙빙 돎.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rotation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506525&searchKeywordTo=3',
+            koreanHeadword: '회전4',
+        },
+    },
+    {
+        day: 6,
+        word: 'barely',
+        meaning: '간신히, 겨우; 거의 ~ 않다',
+        englishExplanation: 'in a way that is just possible but only with difficulty',
+        koreanExplanation: '겨우 또는 가까스로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/barely',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=387401&searchKeywordTo=3',
+            koreanHeadword: '간신-히',
+        },
+    },
+    {
+        day: 7,
+        word: 'ingredient',
+        meaning: '재료, 성분; 구성 요소',
+        englishExplanation:
+            'one of the things from which something is made, especially one of the foods that are used together to make a particular dish',
+        koreanExplanation: '물건을 만드는 데 들어가는 감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ingredient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477364&searchKeywordTo=3',
+            koreanHeadword: '재료1',
+        },
+    },
+    {
+        day: 7,
+        word: 'comparison',
+        meaning: '비교',
+        englishExplanation: 'the process of comparing two or more people or things',
+        koreanExplanation:
+            '둘 이상의 사물을 견주어 서로 간의 유사점, 차이점, 일반 법칙 따위를 고찰하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comparison',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433614&searchKeywordTo=3',
+            koreanHeadword: '비교1',
+        },
+    },
+    {
+        day: 7,
+        word: 'convince',
+        meaning: '납득시키다; 설득하다',
+        englishExplanation: 'to make a person/yourself believe that something is true',
+        koreanExplanation: '상대편이 이쪽 편의 이야기를 따르도록 여러 가지로 깨우쳐 말하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/convince',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=440724&searchKeywordTo=3',
+            koreanHeadword: '설득-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'symbolic',
+        meaning: '상징적인',
+        englishExplanation: 'containing symbols, or being used as a symbol',
+        koreanExplanation: '추상적인 개념이나 사물을 구체적인 사물로 나타내는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/symbolic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=172244&searchKeywordTo=3',
+            koreanHeadword: '상징-적',
+        },
+    },
+    {
+        day: 7,
+        word: 'come across',
+        meaning: '~을 우연히 마주치다, ~을 우연히 발견하다',
+        englishExplanation: 'to be understood',
+        koreanExplanation: '예상하지 못한 곳에서 사람이나 대상을 마주치는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/come-across',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420418&searchKeywordTo=3',
+            koreanHeadword: '마주-치다',
+        },
+    },
+    {
+        day: 7,
+        word: 'improve',
+        meaning: '개선하다',
+        englishExplanation: 'to become better than before',
+        koreanExplanation: '잘못된 것이나 부족한 것, 나쁜 것 따위를 고쳐 더 좋게 만들다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/improve_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394617&searchKeywordTo=3',
+            koreanHeadword: '개선-하다1',
+        },
+    },
+    {
+        day: 7,
+        word: 'melt',
+        meaning: '녹다',
+        englishExplanation: 'to become or make something become liquid as a result of heating',
+        koreanExplanation: '얼음이나 얼음같이 매우 차가운 것이 열을 받아 액체가 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/melt',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=408835&searchKeywordTo=3',
+            koreanHeadword: '녹다1',
+        },
+    },
+    {
+        day: 7,
+        word: 'ruin',
+        meaning: '파괴하다, 망치다; 몰락, 파멸; 잔해, 유적',
+        englishExplanation:
+            'to damage something so badly that it loses all its value, pleasure, etc.',
+        koreanExplanation: '때려 부수거나 깨뜨려 헐어 버리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ruin_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496564&searchKeywordTo=3',
+            koreanHeadword: '파괴-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'conceptual',
+        meaning: '개념의, 개념적인',
+        englishExplanation: 'relating to or based on ideas',
+        koreanExplanation: '어떤 사물이나 현상에 대한 일반적인 지식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conceptual',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392371&searchKeywordTo=3',
+            koreanHeadword: '개념',
+        },
+    },
+    {
+        day: 7,
+        word: 'competition',
+        meaning: '경쟁; 대회, 시합',
+        englishExplanation:
+            'an event in which people compete with each other to find out who is the best at something',
+        koreanExplanation: '같은 목적에 대하여 이기거나 앞서려고 서로 겨룸.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/competition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18268&searchKeywordTo=3',
+            koreanHeadword: '경쟁',
+        },
+    },
+    {
+        day: 7,
+        word: 'seek',
+        meaning: '찾다; 추구하다; 노력하다',
+        englishExplanation: 'to look for something/a person',
+        koreanExplanation:
+            '현재 주변에 없는 것을 얻거나 사람을 만나려고 여기저기를 뒤지거나 살피다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/seek',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=487295&searchKeywordTo=3',
+            koreanHeadword: '찾다',
+        },
+    },
+    {
+        day: 7,
+        word: 'haste',
+        meaning: '급함, 서두름',
+        englishExplanation:
+            'speed in doing something, especially because you do not have enough time',
+        koreanExplanation: '일을 빨리 해치우려고 급하게 바삐 움직이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/haste',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443312&searchKeywordTo=3',
+            koreanHeadword: '서두르다',
+        },
+    },
+    {
+        day: 7,
+        word: 'dynamic',
+        meaning: '동적인, 역동적인; 활발한',
+        englishExplanation: 'having a lot of energy and a strong personality',
+        koreanExplanation: '힘차고 활발하게 움직이는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dynamic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=461896&searchKeywordTo=3',
+            koreanHeadword: '역동-적',
+        },
+    },
+    {
+        day: 7,
+        word: 'strengthen',
+        meaning: '강화하다',
+        englishExplanation: 'to become more powerful or effective',
+        koreanExplanation: '세력이나 힘을 더 강하고 튼튼하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/strengthen',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=9159&searchKeywordTo=3',
+            koreanHeadword: '강화-하다2',
+        },
+    },
+    {
+        day: 7,
+        word: 'compete',
+        meaning: '경쟁하다',
+        englishExplanation: 'to take part in a contest or game',
+        koreanExplanation: '같은 목적에 대하여 이기거나 앞서려고 서로 겨루다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/compete',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=19376&searchKeywordTo=3',
+            koreanHeadword: '경쟁-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'reduction',
+        meaning: '감소, 감축',
+        englishExplanation: 'an act of making something less or smaller',
+        koreanExplanation: '양이나 수치가 줆. 또는 양이나 수치를 줄임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reduction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=7398&searchKeywordTo=3',
+            koreanHeadword: '감소1',
+        },
+    },
+    {
+        day: 7,
+        word: 'definite',
+        meaning: '명확한, 확실한',
+        englishExplanation: 'sure or certain',
+        koreanExplanation: '명백하고 확실하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/definite_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424876&searchKeywordTo=3',
+            koreanHeadword: '명확-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'method',
+        meaning: '방법, 방식',
+        englishExplanation: 'a particular way of doing something',
+        koreanExplanation: '어떤 일을 해 나가거나 목적을 이루기 위하여 취하는 수단이나 방식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/method',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=427077&searchKeywordTo=3',
+            koreanHeadword: '방법',
+        },
+    },
+    {
+        day: 7,
+        word: 'recommendation',
+        meaning: '추천, 권고',
+        englishExplanation: 'an official suggestion about the best thing to do',
+        koreanExplanation: '어떤 조건에 적합한 대상을 책임지고 소개함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recommendation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=331894&searchKeywordTo=3',
+            koreanHeadword: '추천3',
+        },
+    },
+    {
+        day: 7,
+        word: 'recommend',
+        meaning: '추천하다, 권고하다',
+        englishExplanation:
+            'to tell a person that something is good or useful, or that a person would be suitable for a particular job, etc.',
+        koreanExplanation: '어떤 조건에 적합한 대상을 책임지고 소개하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recommend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=331896&searchKeywordTo=3',
+            koreanHeadword: '추천-하다2',
+        },
+    },
+    {
+        day: 7,
+        word: 'strength',
+        meaning: '힘, 체력; 강점',
+        englishExplanation: 'the quality of being physically strong',
+        koreanExplanation:
+            '사람이나 동물이 몸에 갖추고 있으면서 스스로 움직이거나 다른 물건을 움직이게 하는 근육 작용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/strength',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507857&searchKeywordTo=3',
+            koreanHeadword: '힘',
+        },
+    },
+    {
+        day: 7,
+        word: 'spot',
+        meaning: '장소, 지점; 점, 얼룩; 발견하다; 더럽히다',
+        englishExplanation:
+            'a small, round area that has a different colour or feels different from the surface it is on',
+        koreanExplanation: '어떤 일이 이루어지거나 일어나는 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spot_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475867&searchKeywordTo=3',
+            koreanHeadword: '장소5',
+        },
+    },
+    {
+        day: 7,
+        word: 'reduce',
+        meaning: '줄이다, 낮추다',
+        englishExplanation: 'to make something less or smaller in size, quantity, price, etc.',
+        koreanExplanation: '물체의 길이나 넓이, 부피 따위를 본디보다 작게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reduce',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480097&searchKeywordTo=3',
+            koreanHeadword: '줄-이다',
+        },
+    },
+    {
+        day: 7,
+        word: 'death',
+        meaning: '죽음',
+        englishExplanation: 'the fact of a person dying or being killed',
+        koreanExplanation: '죽는 일. 생물의 생명이 없어지는 현상을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/death',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486102&searchKeywordTo=3',
+            koreanHeadword: '죽-음1',
+        },
+    },
+    {
+        day: 7,
+        word: 'hasty',
+        meaning: '성급한',
+        englishExplanation: 'said, made or done very quickly, especially when this has bad results',
+        koreanExplanation: '성질이 급하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hasty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446613&searchKeywordTo=3',
+            koreanHeadword: '성급-하다2',
+        },
+    },
+    {
+        day: 7,
+        word: 'concept',
+        meaning: '개념, 관념',
+        englishExplanation: 'an idea or a principle that is related to something abstract',
+        koreanExplanation: '어떤 사물이나 현상에 대한 일반적인 지식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/concept',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392371&searchKeywordTo=3',
+            koreanHeadword: '개념',
+        },
+    },
+    {
+        day: 7,
+        word: 'determination',
+        meaning: '결정',
+        englishExplanation:
+            'the quality that makes you continue trying to do something even when this is difficult',
+        koreanExplanation: '행동이나 태도를 분명하게 정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/determination',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=17648&searchKeywordTo=3',
+            koreanHeadword: '결정1',
+        },
+    },
+    {
+        day: 7,
+        word: 'comparable',
+        meaning: '비교할 만한, 필적하는',
+        englishExplanation: 'similar to a person or thing else and able to be compared',
+        koreanExplanation: '능력이나 세력이 엇비슷하여 서로 맞서다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comparable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500020&searchKeywordTo=3',
+            koreanHeadword: '필적-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'loss',
+        meaning: '손실, 상실; 패배',
+        englishExplanation: 'the state of no longer having something or as much of something',
+        koreanExplanation: '잃어버리거나 축나서 손해를 봄. 또는 그 손해.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/loss',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445597&searchKeywordTo=3',
+            koreanHeadword: '손실',
+        },
+    },
+    {
+        day: 7,
+        word: 'dead',
+        meaning: '죽은',
+        englishExplanation: 'no longer alive',
+        koreanExplanation: '생명이 없어지거나 끊어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dead_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480678&searchKeywordTo=3',
+            koreanHeadword: '죽다1',
+        },
+    },
+    {
+        day: 7,
+        word: 'recall',
+        meaning: '상기하다, 회상하다; 회수하다',
+        englishExplanation: 'to remember something',
+        koreanExplanation: '지난 일을 돌이켜 생각하여 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recall_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=178263&searchKeywordTo=3',
+            koreanHeadword: '상기-하다6',
+        },
+    },
+    {
+        day: 7,
+        word: 'honor',
+        meaning: '명예, 영광; 존경; 영예를 주다; 존경하다',
+        englishExplanation: 'great respect for a person',
+        koreanExplanation: '세상에서 훌륭하다고 인정되는 이름이나 자랑. 또는 그런 존엄이나 품위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/honour_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424918&searchKeywordTo=3',
+            koreanHeadword: '명예1',
+        },
+    },
+    {
+        day: 7,
+        word: 'comparative',
+        meaning: '비교의, 상대적인',
+        englishExplanation:
+            'measured or judged by how similar or different it is to something else',
+        koreanExplanation:
+            '둘 이상의 사물을 견주어 서로 간의 유사점, 차이점, 일반 법칙 따위를 고찰하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comparative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433614&searchKeywordTo=3',
+            koreanHeadword: '비교1',
+        },
+    },
+    {
+        day: 7,
+        word: 'determine',
+        meaning: '결정하다; 알아내다',
+        englishExplanation: 'to discover the facts about something',
+        koreanExplanation: '행동이나 태도를 분명하게 정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/determine',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=17709&searchKeywordTo=3',
+            koreanHeadword: '결정-하다1',
+        },
+    },
+    {
+        day: 7,
+        word: 'blame',
+        meaning: '탓하다, 비난하다',
+        englishExplanation:
+            'to think or say that a person or thing is responsible for something bad',
+        koreanExplanation: '핑계나 구실로 삼아 나무라거나 원망하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/blame_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=344316&searchKeywordTo=3',
+            koreanHeadword: '탓-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'symbolize',
+        meaning: '상징하다, 나타내다',
+        englishExplanation: 'to be a symbol of something',
+        koreanExplanation: '추상적인 개념이나 사물을 구체적인 사물로 나타내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/symbolize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=178792&searchKeywordTo=3',
+            koreanHeadword: '상징-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'period',
+        meaning: '기간, 시기; 마침표',
+        englishExplanation: 'a particular length of time',
+        koreanExplanation: '어느 때부터 다른 어느 때까지의 동안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/period_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=47500&searchKeywordTo=3',
+            koreanHeadword: '기간1',
+        },
+    },
+    {
+        day: 7,
+        word: 'dynamically',
+        meaning: '역동적으로, 다이내믹하게',
+        englishExplanation:
+            'in a way that reacts to what is happening in a particular situation, making the necessary changes',
+        koreanExplanation: '힘차고 활발하게 움직이는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dynamically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=461896&searchKeywordTo=3',
+            koreanHeadword: '역동-적',
+        },
+    },
+    {
+        day: 7,
+        word: 'convinced',
+        meaning: '확신하는',
+        englishExplanation: 'completely sure about something',
+        koreanExplanation: '굳게 믿다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/convinced',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505463&searchKeywordTo=3',
+            koreanHeadword: '확신-하다',
+        },
+    },
+    {
+        day: 7,
+        word: 'vast',
+        meaning: '거대한, 막대한',
+        englishExplanation: 'extremely large in area, size, amount, etc.',
+        koreanExplanation: '엄청나게 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vast',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392576&searchKeywordTo=3',
+            koreanHeadword: '거대-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'estimated',
+        meaning: '추측의, 어림잡은',
+        englishExplanation: 'judged approximately from available information',
+        koreanExplanation: '정확한 값 대신 자료를 바탕으로 어림잡은.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/estimate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=497588&searchKeywordTo=3',
+            koreanHeadword: '추정-하다1',
+            englishBasis: 'estimate_1',
+        },
+    },
+    {
+        day: 8,
+        word: 'flexible',
+        meaning: '융통성 있는, 탄력적인; 유연한',
+        englishExplanation: 'able to change to suit new conditions or situations',
+        koreanExplanation: '부드럽고 연하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/flexible',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471224&searchKeywordTo=3',
+            koreanHeadword: '유연-하다4',
+        },
+    },
+    {
+        day: 8,
+        word: 'document',
+        meaning: '문서, 서류; 기록하다',
+        englishExplanation:
+            'an official paper, book or electronic file that gives information about something, or that can be used as evidence or proof of something',
+        koreanExplanation: '글이나 기호 따위로 일정한 의사나 관념 또는 사상을 나타낸 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/document_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424779&searchKeywordTo=3',
+            koreanHeadword: '문서',
+        },
+    },
+    {
+        day: 8,
+        word: 'struggle',
+        meaning: '투쟁하다, 열심히 노력하다; 투쟁',
+        englishExplanation:
+            'to try very hard to do something when it is difficult or when there are a lot of problems',
+        koreanExplanation: '어떤 대상을 이기거나 극복하기 위해 싸우다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/struggle_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=349734&searchKeywordTo=3',
+            koreanHeadword: '투쟁-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'pressure',
+        meaning: '압력, 압박; 압력을 가하다',
+        englishExplanation: 'the act of trying to persuade or to force a person to do something',
+        koreanExplanation:
+            '두 물체가 접촉면을 경계로 하여 서로 그 면에 수직으로 누르는 단위 면적에서의 힘의 단위. 그 크기의 단위로는 dyn/㎠ 외에 공학에서는 kgW/㎠를 사용하고, 기상학에서는 밀리바, 헥토파스칼 따위를 사용한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pressure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457417&searchKeywordTo=3',
+            koreanHeadword: '압력',
+        },
+    },
+    {
+        day: 8,
+        word: 'harm',
+        meaning: '해, 손상; 해치다, 손상하다',
+        englishExplanation: 'damage or injury that is caused by a person or an event',
+        koreanExplanation: '이롭지 아니하게 하거나 손상을 입힘. 또는 그런 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/harm_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=365438&searchKeywordTo=3',
+            koreanHeadword: '해9',
+        },
+    },
+    {
+        day: 8,
+        word: 'relieve',
+        meaning: '완화시키다; 구제하다',
+        englishExplanation: 'to remove or reduce an unpleasant feeling or pain',
+        koreanExplanation:
+            '자연적인 재해나 사회적인 피해를 당하여 어려운 처지에 있는 사람을 도와주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relieve',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=38133&searchKeywordTo=3',
+            koreanHeadword: '구제-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'harmless',
+        meaning: '무해한',
+        englishExplanation: 'unable or unlikely to cause damage or harm',
+        koreanExplanation: '해로움이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/harmless',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=123844&searchKeywordTo=3',
+            koreanHeadword: '무해-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'fortunate',
+        meaning: '운 좋은, 행운인',
+        englishExplanation:
+            'having or bringing an advantage, an opportunity, a piece of good luck, etc.',
+        koreanExplanation: '좋은 운수. 또는 행복한 운수.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fortunate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505188&searchKeywordTo=3',
+            koreanHeadword: '행운2',
+        },
+    },
+    {
+        day: 8,
+        word: 'migratory',
+        meaning: '이주하는',
+        englishExplanation: 'relating to, or having the habit of, regular migration',
+        koreanExplanation: '살던 곳을 떠나 다른 곳으로 옮겨 가는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/migratory',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=262771&searchKeywordTo=3',
+            koreanHeadword: '이주-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'fortunately',
+        meaning: '다행히, 운 좋게',
+        englishExplanation: 'by good luck',
+        koreanExplanation: '뜻밖에 일이 잘되어 운이 좋게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fortunately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73675&searchKeywordTo=3',
+            koreanHeadword: '다행-히',
+        },
+    },
+    {
+        day: 8,
+        word: 'fortune',
+        meaning: '운; 재산',
+        englishExplanation: 'a large amount of money',
+        koreanExplanation: '이미 정하여져 있어 인간의 힘으로는 어쩔 수 없는 천운과 기수.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fortune',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=248233&searchKeywordTo=3',
+            koreanHeadword: '운6',
+        },
+    },
+    {
+        day: 8,
+        word: 'standard',
+        meaning: '표준, 기준, 규범; 표준의',
+        englishExplanation: 'a level of quality, especially one that people think is acceptable',
+        koreanExplanation: '사물의 정도나 성격 따위를 알기 위한 근거나 기준.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/standard_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500503&searchKeywordTo=3',
+            koreanHeadword: '표준1',
+        },
+    },
+    {
+        day: 8,
+        word: 'occur',
+        meaning: '생기다; 떠오르다',
+        englishExplanation: 'to happen',
+        koreanExplanation: '없던 것이 새로 있게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occur',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445811&searchKeywordTo=3',
+            koreanHeadword: '생기다',
+        },
+    },
+    {
+        day: 8,
+        word: 'destruction',
+        meaning: '파괴, 파멸',
+        englishExplanation: 'the act of destroying something',
+        koreanExplanation: '때려 부수거나 깨뜨려 헐어 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/destruction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=498143&searchKeywordTo=3',
+            koreanHeadword: '파괴',
+        },
+    },
+    {
+        day: 8,
+        word: 'smooth',
+        meaning: '매끄러운; 순조로운; 매끄럽게 하다',
+        englishExplanation: 'completely flat and even, without any rough areas or holes',
+        koreanExplanation: '거침없이 저절로 밀리어 나갈 정도로 반드럽다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/smooth_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420339&searchKeywordTo=3',
+            koreanHeadword: '매끄럽다',
+        },
+    },
+    {
+        day: 8,
+        word: 'prohibit',
+        meaning: '금지하다',
+        englishExplanation: 'to stop something from being done or used especially by law',
+        koreanExplanation: '법이나 규칙이나 명령 따위로 어떤 행위를 하지 못하도록 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prohibit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401711&searchKeywordTo=3',
+            koreanHeadword: '금지-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'estimate',
+        meaning: '추정하다; 판단하다; 견적; 판단',
+        englishExplanation:
+            'to form an idea of the cost, size, value, etc. of something, but without calculating it exactly',
+        koreanExplanation: '미루어 생각하여 판정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/estimate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=497588&searchKeywordTo=3',
+            koreanHeadword: '추정-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'preservation',
+        meaning: '보존, 유지',
+        englishExplanation:
+            'the act of keeping something in its original state or in good condition',
+        koreanExplanation: '잘 보호하고 간수하여 남김.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/preservation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433323&searchKeywordTo=3',
+            koreanHeadword: '보존',
+        },
+    },
+    {
+        day: 8,
+        word: 'chore',
+        meaning: '허드렛일, 잡일; 집안일',
+        englishExplanation: 'a task that you do regularly',
+        koreanExplanation: '중요하지 아니하고 허름한 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chore',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506782&searchKeywordTo=3',
+            koreanHeadword: '허드렛-일',
+        },
+    },
+    {
+        day: 8,
+        word: 'resolute',
+        meaning: '결의에 찬',
+        englishExplanation: 'strong and determined',
+        koreanExplanation: '뜻을 정하여 굳게 마음을 먹음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resolute',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18065&searchKeywordTo=3',
+            koreanHeadword: '결의1',
+        },
+    },
+    {
+        day: 8,
+        word: 'migrate',
+        meaning: '이주하다; 이동하다',
+        englishExplanation: 'to move from one part of the world to another according to the season',
+        koreanExplanation: '본래 살던 집에서 다른 집으로 거처를 옮기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/migrate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=262771&searchKeywordTo=3',
+            koreanHeadword: '이주-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'migrant',
+        meaning: '이주자; 철새',
+        englishExplanation:
+            'a person who moves from one place to another in order to find work or better living conditions',
+        koreanExplanation: '다른 곳으로 옮겨 가서 사는 사람. 또는 다른 곳에서 옮겨 와서 사는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/migrant_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=263354&searchKeywordTo=3',
+            koreanHeadword: '이주-자',
+        },
+    },
+    {
+        day: 8,
+        word: 'preserve',
+        meaning: '지키다, 보호하다; 보존하다',
+        englishExplanation: 'to keep a particular quality, feature, etc.',
+        koreanExplanation:
+            '재산, 이익, 안전 따위를 잃거나 침해당하지 아니하도록 보호하거나 감시하여 막다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/preserve_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488705&searchKeywordTo=3',
+            koreanHeadword: '지키다',
+        },
+    },
+    {
+        day: 8,
+        word: 'yield',
+        meaning: '내다; 굴복하다; 양도하다; 산출량',
+        englishExplanation: 'the total amount of crops, profits, etc. that are produced',
+        koreanExplanation: '물건을 생산하여 내거나 인물·사상 따위를 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/yield_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=175573&searchKeywordTo=3',
+            koreanHeadword: '산출-하다1',
+        },
+    },
+    {
+        day: 8,
+        word: 'component',
+        meaning: '요소, 성분, 부품; 구성하는',
+        englishExplanation: 'one of several parts of which something is made',
+        koreanExplanation: '사물의 성립이나 효력 발생 따위에 꼭 필요한 성분. 또는 근본 조건.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/component_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=243111&searchKeywordTo=3',
+            koreanHeadword: '요소4',
+        },
+    },
+    {
+        day: 8,
+        word: 'especially',
+        meaning: '특히',
+        englishExplanation:
+            'more with one person, thing, etc. than with others, or more in particular circumstances than in others',
+        koreanExplanation: '보통과 다르게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/especially',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499743&searchKeywordTo=3',
+            koreanHeadword: '특-히',
+        },
+    },
+    {
+        day: 8,
+        word: 'essential',
+        meaning: '필수의, 매우 중요한; 본질적인',
+        englishExplanation: 'completely necessary',
+        koreanExplanation: '꼭 있어야 하거나 하여야 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/essential_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499141&searchKeywordTo=3',
+            koreanHeadword: '필수2',
+        },
+    },
+    {
+        day: 8,
+        word: 'relief',
+        meaning: '완화; 구제',
+        englishExplanation:
+            'the feeling of happiness that you have when something unpleasant stops or does not happen',
+        koreanExplanation: '긴장된 상태나 급박한 것을 느슨하게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relief',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469932&searchKeywordTo=3',
+            koreanHeadword: '완화2',
+        },
+    },
+    {
+        day: 8,
+        word: 'conflict',
+        meaning: '갈등, 대립, 충돌; 대립하다',
+        englishExplanation:
+            'a situation in which people, groups or countries disagree strongly or are involved in a serious argument',
+        koreanExplanation:
+            '칡과 등나무가 서로 얽히는 것과 같이, 개인이나 집단 사이에 목표나 이해관계가 달라 서로 적대시하거나 충돌함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conflict_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=387446&searchKeywordTo=3',
+            koreanHeadword: '갈등',
+        },
+    },
+    {
+        day: 8,
+        word: 'essentially',
+        meaning: '본질적으로',
+        englishExplanation:
+            'when you think about the true, important or basic nature of a person or thing',
+        koreanExplanation: '본질에 관한 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/essentially',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=148466&searchKeywordTo=3',
+            koreanHeadword: '본질-적',
+        },
+    },
+    {
+        day: 8,
+        word: 'prohibition',
+        meaning: '금지',
+        englishExplanation: 'the act of stopping something being done or used, especially by law',
+        koreanExplanation: '법이나 규칙이나 명령 따위로 어떤 행위를 하지 못하도록 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prohibition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=48502&searchKeywordTo=3',
+            koreanHeadword: '금지4',
+        },
+    },
+    {
+        day: 8,
+        word: 'ultimate',
+        meaning: '궁극적인, 최종의',
+        englishExplanation: 'happening at the end of a long process',
+        koreanExplanation: '더할 나위 없는 지경에 도달하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ultimate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=40982&searchKeywordTo=3',
+            koreanHeadword: '궁극-적',
+        },
+    },
+    {
+        day: 8,
+        word: 'standardize',
+        meaning: '표준화하다',
+        englishExplanation:
+            'to make objects or activities of the same type have the same features or qualities',
+        koreanExplanation: '사물의 정도, 성격 따위를 알기 위한 근거나 기준을 마련하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/standardize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500355&searchKeywordTo=3',
+            koreanHeadword: '표준화-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'spare',
+        meaning: '예비의, 여분의; 할애하다; 면하게 하다; 예비품',
+        englishExplanation: 'available to do what you want with rather than work',
+        koreanExplanation: '소중한 시간, 돈, 공간 따위를 아깝게 여기지 아니하고 선뜻 내어주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spare_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505177&searchKeywordTo=3',
+            koreanHeadword: '할애-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'smoothly',
+        meaning: '매끄럽게, 원활하게',
+        englishExplanation: 'in an even way, without suddenly stopping and starting again',
+        koreanExplanation: '모난 데가 없고 원만하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/smoothly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=259332&searchKeywordTo=3',
+            koreanHeadword: '원활-하다',
+        },
+    },
+    {
+        day: 8,
+        word: 'ultimately',
+        meaning: '궁극적으로, 마침내',
+        englishExplanation: 'in the end',
+        koreanExplanation: '드디어 마지막에는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ultimately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=109986&searchKeywordTo=3',
+            koreanHeadword: '마침-내',
+        },
+    },
+    {
+        day: 8,
+        word: 'migration',
+        meaning: '이주',
+        englishExplanation:
+            'the movement every year of large numbers of birds or animals from one place to another',
+        koreanExplanation: '본래 살던 집에서 다른 집으로 거처를 옮김.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/migration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469124&searchKeywordTo=3',
+            koreanHeadword: '이주6',
+        },
+    },
+    {
+        day: 8,
+        word: 'rural',
+        meaning: '시골의',
+        englishExplanation: 'relating to or like the countryside',
+        koreanExplanation:
+            '도시에서 떨어져 있는 지역. 주로 도시보다 인구수가 적고 인공적인 개발이 덜 돼 자연을 접하기가 쉬운 곳을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rural',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=448067&searchKeywordTo=3',
+            koreanHeadword: '시골',
+        },
+    },
+    {
+        day: 8,
+        word: 'resolution',
+        meaning: '결심; 해결; 해상도',
+        englishExplanation: 'a definite decision to do or not to do something',
+        koreanExplanation: '할 일에 대하여 어떻게 하기로 마음을 굳게 정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resolution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391976&searchKeywordTo=3',
+            koreanHeadword: '결심1',
+        },
+    },
+    {
+        day: 9,
+        word: 'announcer',
+        meaning: '아나운서, 해설자',
+        englishExplanation:
+            'a person who introduces, or gives information about, programmes on the radio or television',
+        koreanExplanation: '뉴스 보도, 사회, 실황 중계의 방송을 맡아 하는 사람. 또는 그런 직책.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/announcer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=453529&searchKeywordTo=3',
+            koreanHeadword: '아나운서',
+        },
+    },
+    {
+        day: 9,
+        word: 'majority',
+        meaning: '대다수, 과반수',
+        englishExplanation: 'the largest part of a group of people or things',
+        koreanExplanation: '거의 모두 다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/majority',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411230&searchKeywordTo=3',
+            koreanHeadword: '대-다수',
+        },
+    },
+    {
+        day: 9,
+        word: 'situation',
+        meaning: '상황, 처지; 위치',
+        englishExplanation:
+            'all the circumstances and things that are happening at a particular time and in a particular place',
+        koreanExplanation: '일이 되어 가는 과정이나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/situation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445025&searchKeywordTo=3',
+            koreanHeadword: '상황2',
+        },
+    },
+    {
+        day: 9,
+        word: 'donor',
+        meaning: '기부자',
+        englishExplanation:
+            'a person or an organization that makes a gift of money, clothes, food, etc. to a charity, etc.',
+        koreanExplanation:
+            '자선 사업이나 공공사업을 돕기 위하여 돈이나 물건 따위를 대가 없이 내놓는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/donor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=49535&searchKeywordTo=3',
+            koreanHeadword: '기부-자',
+        },
+    },
+    {
+        day: 9,
+        word: 'edition',
+        meaning: '판',
+        englishExplanation: 'the form in which a book, newspaper, etc. is published',
+        koreanExplanation: '책이나 신문을 인쇄하여 펴낸 판본.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/edition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=498156&searchKeywordTo=3',
+            koreanHeadword: '-판13',
+        },
+    },
+    {
+        day: 9,
+        word: 'announcement',
+        meaning: '발표, 공지',
+        englishExplanation: 'a spoken or written statement that informs people about something',
+        koreanExplanation: '어떤 사실이나 결과, 작품 따위를 세상에 널리 드러내어 알림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/announcement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=142272&searchKeywordTo=3',
+            koreanHeadword: '발표1',
+        },
+    },
+    {
+        day: 9,
+        word: 'distant',
+        meaning: '먼',
+        englishExplanation: 'far away in space or time',
+        koreanExplanation: '공간이나 시간이 멀리 떨어져 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=421703&searchKeywordTo=3',
+            koreanHeadword: '멀다1',
+        },
+    },
+    {
+        day: 9,
+        word: 'handle',
+        meaning: '손잡이; 다루다, 처리하다',
+        englishExplanation:
+            'to deal with a situation, a person, an area of work or a strong emotion',
+        koreanExplanation: '손으로 어떤 것을 열거나 들거나 붙잡을 수 있도록 덧붙여 놓은 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/handle_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445970&searchKeywordTo=3',
+            koreanHeadword: '손-잡이',
+        },
+    },
+    {
+        day: 9,
+        word: 'punishment',
+        meaning: '처벌, 징계',
+        englishExplanation: 'an act or a way of punishing a person',
+        koreanExplanation: '죄를 지은 사람에게 제재를 가하거나 벌을 내림. 또는 그 제재나 벌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/punishment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=320513&searchKeywordTo=3',
+            koreanHeadword: '처벌',
+        },
+    },
+    {
+        day: 9,
+        word: 'celebrity',
+        meaning: '유명 인사; 명성',
+        englishExplanation: 'a famous person',
+        koreanExplanation: '세상에 널리 퍼져 평판 높은 이름.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/celebrity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=421972&searchKeywordTo=3',
+            koreanHeadword: '명성1',
+        },
+    },
+    {
+        day: 9,
+        word: 'personal',
+        meaning: '개인의, 사적인',
+        englishExplanation: 'your own',
+        koreanExplanation: '국가나 사회, 단체 등을 구성하는 낱낱의 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/personal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395786&searchKeywordTo=3',
+            koreanHeadword: '개인2',
+        },
+    },
+    {
+        day: 9,
+        word: 'isolation',
+        meaning: '고립, 격리',
+        englishExplanation: 'the act of separating a person or thing',
+        koreanExplanation:
+            '다른 사람과 어울리어 사귀지 아니하거나 다른 사람의 도움을 받지 못하여 외따로 떨어짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/isolation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391856&searchKeywordTo=3',
+            koreanHeadword: '고립1',
+        },
+    },
+    {
+        day: 9,
+        word: 'isolated',
+        meaning: '고립된',
+        englishExplanation: 'far away from any others',
+        koreanExplanation:
+            '다른 사람과 어울리어 사귀지 아니하거나 다른 사람의 도움을 받지 못하여 외따로 떨어지게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/isolated',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=24682&searchKeywordTo=3',
+            koreanHeadword: '고립-되다',
+        },
+    },
+    {
+        day: 9,
+        word: 'basically',
+        meaning: '기본적으로',
+        englishExplanation:
+            'in the most important ways, without considering things that are less important',
+        koreanExplanation: '사물의 근본이나 기초가 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/basically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=50152&searchKeywordTo=3',
+            koreanHeadword: '기본-적',
+        },
+    },
+    {
+        day: 9,
+        word: 'comfortable',
+        meaning: '편안한',
+        englishExplanation: 'making you feel physically relaxed',
+        koreanExplanation: '편하고 걱정 없이 좋다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comfortable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=353724&searchKeywordTo=3',
+            koreanHeadword: '편안-하다1',
+        },
+    },
+    {
+        day: 9,
+        word: 'editor',
+        meaning: '편집자',
+        englishExplanation:
+            'a person who is in charge of a newspaper, magazine, etc., or part of one, and who decides what should be included',
+        koreanExplanation: '편집을 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/editor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=358617&searchKeywordTo=3',
+            koreanHeadword: '편집-자',
+        },
+    },
+    {
+        day: 9,
+        word: 'personality',
+        meaning: '성격',
+        englishExplanation:
+            'the various aspects of a person’s character that combine to make them different from other people',
+        koreanExplanation: '개인이 가지고 있는 고유의 성질이나 품성.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/personality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444850&searchKeywordTo=3',
+            koreanHeadword: '성격2',
+        },
+    },
+    {
+        day: 9,
+        word: 'donate',
+        meaning: '기부하다',
+        englishExplanation:
+            'to give money, food, clothes, etc. to a person or thing, especially a charity',
+        koreanExplanation:
+            '자선 사업이나 공공사업을 돕기 위하여 돈이나 물건 따위를 대가 없이 내놓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/donate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402095&searchKeywordTo=3',
+            koreanHeadword: '기부-하다4',
+        },
+    },
+    {
+        day: 9,
+        word: 'basic',
+        meaning: '기본적인',
+        englishExplanation:
+            'forming the part of something that is most necessary and from which other things develop',
+        koreanExplanation: '사물의 근본이나 기초가 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/basic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=50152&searchKeywordTo=3',
+            koreanHeadword: '기본-적',
+        },
+    },
+    {
+        day: 9,
+        word: 'access',
+        meaning: '접근, 이용; 접근하다, 이용하다',
+        englishExplanation: 'the opportunity or right to use something or to see a person or thing',
+        koreanExplanation: '가까이 다가감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/access_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475143&searchKeywordTo=3',
+            koreanHeadword: '접근',
+        },
+    },
+    {
+        day: 9,
+        word: 'average',
+        meaning: '평균; 평균의, 보통의',
+        englishExplanation:
+            'calculated by adding several amounts together, finding a total, and dividing the total by the number of amounts',
+        koreanExplanation: '여러 사물의 질이나 양 따위를 통일적으로 고르게 한 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/average_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496006&searchKeywordTo=3',
+            koreanHeadword: '평균',
+        },
+    },
+    {
+        day: 9,
+        word: 'threat',
+        meaning: '위협, 협박',
+        englishExplanation:
+            'a statement in which you tell a person that you will punish or harm them, especially if they do not do what you want',
+        koreanExplanation: '상대가 겁을 먹도록 무서운 말이나 행동으로 협박함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/threat',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469442&searchKeywordTo=3',
+            koreanHeadword: '위협',
+        },
+    },
+    {
+        day: 9,
+        word: 'punish',
+        meaning: '처벌하다, 벌을 주다',
+        englishExplanation:
+            'to make a person suffer because they have broken the law or done something wrong',
+        koreanExplanation: '죄를 지은 사람에게 제재를 가하거나 벌을 내리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/punish',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=320514&searchKeywordTo=3',
+            koreanHeadword: '처벌-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'path',
+        meaning: '길, 보도; 방향, 진로',
+        englishExplanation:
+            'a way or track that is built or is made by the action of people walking',
+        koreanExplanation:
+            '사람이나 동물 또는 자동차 따위가 지나갈 수 있게 땅 위에 낸 일정한 너비의 공간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/path',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403593&searchKeywordTo=3',
+            koreanHeadword: '길1',
+        },
+    },
+    {
+        day: 9,
+        word: 'department',
+        meaning: '부서, 부문',
+        englishExplanation:
+            'a section of a large organization such as a government, business, university, etc.',
+        koreanExplanation:
+            '기관, 기업, 조직 따위에서 일이나 사업의 체계에 따라 나뉘어 있는, 사무의 각 부문.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/department',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=158986&searchKeywordTo=3',
+            koreanHeadword: '부서11',
+        },
+    },
+    {
+        day: 9,
+        word: 'gradual',
+        meaning: '점진적인',
+        englishExplanation: 'happening slowly over a long period',
+        koreanExplanation: '조금씩 앞으로 나아가는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/gradual',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=287657&searchKeywordTo=3',
+            koreanHeadword: '점진-적',
+        },
+    },
+    {
+        day: 9,
+        word: 'delivery',
+        meaning: '배달, 송달; 전달; 분만',
+        englishExplanation:
+            'the act of taking goods, letters, etc. to the people they have been sent to',
+        koreanExplanation: '물건을 가져다가 몫몫으로 나누어 돌림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/delivery',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=431026&searchKeywordTo=3',
+            koreanHeadword: '배달2',
+        },
+    },
+    {
+        day: 9,
+        word: 'properly',
+        meaning: '적절하게, 알맞게',
+        englishExplanation: 'in a way that is correct and/or appropriate',
+        koreanExplanation: '상황이나 목적에 꼭 알맞게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/properly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475292&searchKeywordTo=3',
+            koreanHeadword: '적절-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'threaten',
+        meaning: '위협하다, 위태롭게 하다',
+        englishExplanation:
+            'to say that you will cause trouble, hurt a person, etc. if you do not get what you want',
+        koreanExplanation: '상대가 겁을 먹도록 무서운 말이나 행동으로 협박하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/threaten',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=256697&searchKeywordTo=3',
+            koreanHeadword: '위협-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'set off',
+        meaning: '출발하다; ~을 폭발시키다; ~을 작동시키다',
+        englishExplanation: 'to begin a journey',
+        koreanExplanation: '목적지를 향하여 나아가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/set-off',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493027&searchKeywordTo=3',
+            koreanHeadword: '출발-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'proper',
+        meaning: '적절한, 알맞은',
+        englishExplanation: 'right, appropriate or correct',
+        koreanExplanation: '꼭 알맞다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/proper',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475292&searchKeywordTo=3',
+            koreanHeadword: '적절-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'mature',
+        meaning: '성숙한, 어른스러운; 잘 익은, 숙성한; 성숙해지다; 잘 익다, 숙성하다',
+        englishExplanation: 'behaving in a sensible way, like an adult',
+        koreanExplanation: '생물의 발육이 완전히 이루어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mature_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=187493&searchKeywordTo=3',
+            koreanHeadword: '성숙-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'empathy',
+        meaning: '공감, 감정 이입',
+        englishExplanation: 'the ability to understand another person’s feelings, experience, etc.',
+        koreanExplanation:
+            '남의 감정, 의견, 주장 따위에 대하여 자기도 그렇다고 느낌. 또는 그렇게 느끼는 기분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/empathy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391661&searchKeywordTo=3',
+            koreanHeadword: '공감',
+        },
+    },
+    {
+        day: 9,
+        word: 'empathetic',
+        meaning: '감정 이입의',
+        englishExplanation:
+            'able to understand how a person else feels because you can imagine what it is like to be that person',
+        koreanExplanation:
+            '자연의 풍경이나 예술 작품 따위에 자신의 감정이나 정신을 불어넣거나, 대상으로부터 느낌을 직접 받아들여 대상과 자기가 서로 통한다고 느끼는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/empathetic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=7573&searchKeywordTo=3',
+            koreanHeadword: '감정^이입',
+        },
+    },
+    {
+        day: 9,
+        word: 'deliver',
+        meaning: '배달하다; 하다; 출산하다',
+        englishExplanation:
+            'to take goods, letters, etc. to the person or people they have been sent to',
+        koreanExplanation: '물건을 가져다가 몫몫으로 나누어 돌리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/deliver',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434214&searchKeywordTo=3',
+            koreanHeadword: '배달-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'source',
+        meaning: '근원, 원천; 출처',
+        englishExplanation: 'a place, person or thing that you get something from',
+        koreanExplanation: '물줄기가 나오기 시작하는 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/source_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=44258&searchKeywordTo=3',
+            koreanHeadword: '근원',
+        },
+    },
+    {
+        day: 9,
+        word: 'comfort',
+        meaning: '위로하다, 안심시키다; 위로',
+        englishExplanation: 'the state of being physically relaxed and free from pain',
+        koreanExplanation: '따뜻한 말이나 행동으로 괴로움을 덜어 주거나 슬픔을 달래 주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comfort_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=252094&searchKeywordTo=3',
+            koreanHeadword: '위로-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'rely on',
+        meaning: '~에 의지하다',
+        englishExplanation: 'to need or depend on a person or thing',
+        koreanExplanation: '다른 것에 몸을 기대다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rely-on',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470073&searchKeywordTo=3',
+            koreanHeadword: '의지-하다',
+        },
+    },
+    {
+        day: 9,
+        word: 'basis',
+        meaning: '기초, 기반; 근거, 이유; 기준',
+        englishExplanation: 'the way things are organized or arranged',
+        koreanExplanation: '사물이나 일 따위의 기본이 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/basis',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402722&searchKeywordTo=3',
+            koreanHeadword: '기초6',
+        },
+    },
+    {
+        day: 9,
+        word: 'gradually',
+        meaning: '점차적으로, 서서히',
+        englishExplanation: 'slowly, over a long period of time',
+        koreanExplanation: '동작이나 태도가 급하지 아니하고 느리게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/gradually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=442571&searchKeywordTo=3',
+            koreanHeadword: '서서-히',
+        },
+    },
+    {
+        day: 10,
+        word: 'logical',
+        meaning: '논리적인',
+        englishExplanation: 'seeming natural, reasonable or sensible',
+        koreanExplanation: '논리에 맞는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/logical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=408878&searchKeywordTo=3',
+            koreanHeadword: '논리-적1',
+        },
+    },
+    {
+        day: 10,
+        word: 'hesitate',
+        meaning: '망설이다, 주저하다',
+        englishExplanation: 'to be slow to speak or act because you feel uncertain or nervous',
+        koreanExplanation: '이리저리 생각만 하고 태도를 결정하지 못하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hesitate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112369&searchKeywordTo=3',
+            koreanHeadword: '망설-이다',
+        },
+    },
+    {
+        day: 10,
+        word: 'variation',
+        meaning: '변화, 변형',
+        englishExplanation: 'a change, especially in the amount or level of something',
+        koreanExplanation: '사물의 성질, 모양, 상태 따위가 바뀌어 달라짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/variation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432677&searchKeywordTo=3',
+            koreanHeadword: '변화',
+        },
+    },
+    {
+        day: 10,
+        word: 'raw',
+        meaning: '날것의; 가공하지 않은',
+        englishExplanation: 'not cooked',
+        koreanExplanation: '말리거나 익히거나 가공하지 아니한 먹을거리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/raw_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=59795&searchKeywordTo=3',
+            koreanHeadword: '날-것1',
+        },
+    },
+    {
+        day: 10,
+        word: 'artificial',
+        meaning: '인공의, 인위적인',
+        englishExplanation: 'made or produced to copy something natural',
+        koreanExplanation: '자연적으로 생긴 것이 아니라 사람의 힘으로 만든.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/artificial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=264723&searchKeywordTo=3',
+            koreanHeadword: '인공1',
+        },
+    },
+    {
+        day: 10,
+        word: 'hesitant',
+        meaning: '망설이는, 주저하는',
+        englishExplanation:
+            'slow to speak or act because you feel uncertain, embarrassed or unwilling',
+        koreanExplanation: '이리저리 생각만 하고 태도를 결정하지 못하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hesitant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112369&searchKeywordTo=3',
+            koreanHeadword: '망설-이다',
+        },
+    },
+    {
+        day: 10,
+        word: 'generation',
+        meaning: '세대, 대',
+        englishExplanation: 'all the people who were born at about the same time',
+        koreanExplanation: '어린아이가 성장하여 부모 일을 계승할 때까지의 30년 정도 되는 기간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446464&searchKeywordTo=3',
+            koreanHeadword: '세대1',
+        },
+    },
+    {
+        day: 10,
+        word: 'generally',
+        meaning: '일반적으로, 대개',
+        englishExplanation: 'by or to most people',
+        koreanExplanation: '일의 큰 원칙으로 말하건대.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411415&searchKeywordTo=3',
+            koreanHeadword: '대개2',
+        },
+    },
+    {
+        day: 10,
+        word: 'bother',
+        meaning: '귀찮게 굴다, 괴롭히다; 성가심, 수고',
+        englishExplanation: 'to spend time and/or energy doing something',
+        koreanExplanation: '몸이나 마음이 편하지 않고 고통스럽게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bother_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33900&searchKeywordTo=3',
+            koreanHeadword: '괴롭-히다',
+        },
+    },
+    {
+        day: 10,
+        word: 'organize',
+        meaning: '조직하다; 정리하다',
+        englishExplanation: 'to make all the arrangements for something to happen or be provided',
+        koreanExplanation: '짜서 이루거나 얽어서 만들다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303443&searchKeywordTo=3',
+            koreanHeadword: '조직-하다',
+        },
+    },
+    {
+        day: 10,
+        word: 'factor',
+        meaning: '요인, 요소',
+        englishExplanation: 'one of several things that cause or influence something',
+        koreanExplanation: '사물이나 사건이 성립되는 까닭. 또는 조건이 되는 요소.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/factor_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244774&searchKeywordTo=3',
+            koreanHeadword: '요인3',
+        },
+    },
+    {
+        day: 10,
+        word: 'accept',
+        meaning: '받아들이다, 수락하다',
+        englishExplanation: 'to take willingly something that is offered',
+        koreanExplanation: '제안이나 요청, 주어지는 것을 기꺼이 받아들이는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accept',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426917&searchKeywordTo=3',
+            koreanHeadword: '받아-들이다',
+        },
+    },
+    {
+        day: 10,
+        word: 'prejudice',
+        meaning: '편견, 선입관; 편견을 갖게 하다',
+        englishExplanation:
+            'an unreasonable dislike of or preference for a person, group, custom, etc., especially when it is based on their race, religion, sex, etc.',
+        koreanExplanation: '공정하지 못하고 한쪽으로 치우친 생각.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prejudice_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499921&searchKeywordTo=3',
+            koreanHeadword: '편견',
+        },
+    },
+    {
+        day: 10,
+        word: 'peak',
+        meaning: '절정, 최고조; 꼭대기, 정상; 절정에 달하다',
+        englishExplanation:
+            'the point when a person or thing is best, most successful, strongest, etc.',
+        koreanExplanation: '높이나 정도가 가장 높은 지점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/peak_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481936&searchKeywordTo=3',
+            koreanHeadword: '절정3',
+        },
+    },
+    {
+        day: 10,
+        word: 'chase',
+        meaning: '뒤쫓다, 추격하다; 추구하다; 추적; 추구',
+        englishExplanation:
+            'to run, drive, etc. after a person or thing in order to catch them or it',
+        koreanExplanation: '뒤를 따라 쫓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chase_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417151&searchKeywordTo=3',
+            koreanHeadword: '뒤-쫓다',
+        },
+    },
+    {
+        day: 10,
+        word: 'offensive',
+        meaning: '모욕적인, 불쾌한',
+        englishExplanation:
+            'rude in a way that causes a person to feel upset or annoyed because it shows a lack of respect',
+        koreanExplanation: '깔보고 욕되게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/offensive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425712&searchKeywordTo=3',
+            koreanHeadword: '모욕-적',
+        },
+    },
+    {
+        day: 10,
+        word: 'injure',
+        meaning: '부상을 입다; 손상시키다',
+        englishExplanation:
+            'to harm yourself or a person else physically, especially in an accident',
+        koreanExplanation: '몸에 상처를 입음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/injure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157840&searchKeywordTo=3',
+            koreanHeadword: '부상5',
+        },
+    },
+    {
+        day: 10,
+        word: 'various',
+        meaning: '다양한',
+        englishExplanation: 'several different',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/various',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 10,
+        word: 'resolution',
+        meaning: '결의, 결단; 해결',
+        englishExplanation: 'a definite decision to do or not to do something',
+        koreanExplanation: '뜻을 정하여 굳게 마음을 먹음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resolution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18065&searchKeywordTo=3',
+            koreanHeadword: '결의1',
+        },
+    },
+    {
+        day: 10,
+        word: 'be known for',
+        meaning: '~로 알려져 있다',
+        englishExplanation:
+            'to be recognized by people because of a particular quality or activity',
+        koreanExplanation: '어떤 특징이나 활동 때문에 사람들에게 알려져 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/known_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=515618&searchKeywordTo=3',
+            koreanHeadword: '알려-지다',
+            englishBasis: 'known',
+        },
+    },
+    {
+        day: 10,
+        word: 'officially',
+        meaning: '공식적으로',
+        englishExplanation: 'publicly and by a person who is in a position of authority',
+        koreanExplanation: '국가적으로 규정되었거나 사회적으로 인정된 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/officially',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=29348&searchKeywordTo=3',
+            koreanHeadword: '공식-적',
+        },
+    },
+    {
+        day: 10,
+        word: 'severe',
+        meaning: '극심한, 심각한; 가혹한; 엄격한',
+        englishExplanation: 'extremely bad or serious',
+        koreanExplanation: '매우 심하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/severe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401867&searchKeywordTo=3',
+            koreanHeadword: '극심-하다',
+        },
+    },
+    {
+        day: 10,
+        word: 'aim',
+        meaning: '노리다, 목표로 삼다; 겨누다; 목표, 목적; 조준',
+        englishExplanation: 'to try or plan to achieve something',
+        koreanExplanation: '어떤 목적을 이루려고 지향하는 실제적 대상으로 삼음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aim_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=119571&searchKeywordTo=3',
+            koreanHeadword: '목표',
+        },
+    },
+    {
+        day: 10,
+        word: 'boost',
+        meaning: '신장시키다, 북돋우다; 밀어 올리기; 힘, 격려',
+        englishExplanation: 'to make something increase, or become better or more successful',
+        koreanExplanation: '기운이나 정신 따위를 더욱 높여 주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/boost_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438706&searchKeywordTo=3',
+            koreanHeadword: '북-돋우다',
+        },
+    },
+    {
+        day: 10,
+        word: 'vary',
+        meaning: '다르다; 변화하다',
+        englishExplanation: 'to be different from each other in size, shape, etc.',
+        koreanExplanation: '비교가 되는 두 대상이 서로 같지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72210&searchKeywordTo=3',
+            koreanHeadword: '다르다1',
+        },
+    },
+    {
+        day: 10,
+        word: 'resolve',
+        meaning: '결심하다; 해결하다',
+        englishExplanation: 'to find an acceptable solution to a problem or difficulty',
+        koreanExplanation: '할 일에 대하여 어떻게 하기로 마음을 굳게 정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resolve_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=16967&searchKeywordTo=3',
+            koreanHeadword: '결심-하다1',
+        },
+    },
+    {
+        day: 10,
+        word: 'injury',
+        meaning: '상처, 부상',
+        englishExplanation:
+            'harm done to a person’s or an animal’s body, for example in an accident',
+        koreanExplanation: '몸을 다쳐서 부상을 입은 자리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/injury',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439021&searchKeywordTo=3',
+            koreanHeadword: '상처2',
+        },
+    },
+    {
+        day: 10,
+        word: 'injured',
+        meaning: '상처 입은',
+        englishExplanation: 'physically hurt',
+        koreanExplanation: '몸에 상처를 입음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/injured',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157840&searchKeywordTo=3',
+            koreanHeadword: '부상5',
+        },
+    },
+    {
+        day: 10,
+        word: 'measure',
+        meaning: '측정하다; 판단하다; 기준, 척도; 조치, 방책',
+        englishExplanation: 'to find the size, quantity, etc. of something in standard units',
+        koreanExplanation: '양, 무게, 길이, 거리, 정도 따위를 재다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/measure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=489839&searchKeywordTo=3',
+            koreanHeadword: '측정-하다1',
+        },
+    },
+    {
+        day: 10,
+        word: 'odd',
+        meaning: '이상한, 별난; 홀수의',
+        englishExplanation: 'strange or unusual',
+        koreanExplanation: '사분원이나 사분면의 둘째 부분. 90도에서 180도 사이이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/odd',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=265479&searchKeywordTo=3',
+            koreanHeadword: '이-상한',
+        },
+    },
+    {
+        day: 10,
+        word: 'emergence',
+        meaning: '등장, 발생',
+        englishExplanation:
+            'the fact of a person or thing moving out of or away from something and becoming possible to see',
+        koreanExplanation: '무대나 연단 따위에 나옴.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emergence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=95518&searchKeywordTo=3',
+            koreanHeadword: '등장1',
+        },
+    },
+    {
+        day: 10,
+        word: 'logic',
+        meaning: '논리',
+        englishExplanation: 'a way of thinking or explaining something',
+        koreanExplanation:
+            '말이나 글에서 사고나 추리 따위를 이치에 맞게 이끌어 가는 과정이나 원리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/logic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=66837&searchKeywordTo=3',
+            koreanHeadword: '논리',
+        },
+    },
+    {
+        day: 10,
+        word: 'series',
+        meaning: '일련, 연속; 시리즈, 연속 출판물',
+        englishExplanation:
+            'a set of television or radio programmes or podcasts that deal with the same subject or that have the same characters',
+        koreanExplanation: '하나로 이어지는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/series',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472415&searchKeywordTo=3',
+            koreanHeadword: '일련1',
+        },
+    },
+    {
+        day: 10,
+        word: 'varied',
+        meaning: '가지각색의',
+        englishExplanation: 'of many different types',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/varied',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 10,
+        word: 'hesitation',
+        meaning: '망설임',
+        englishExplanation:
+            'the act of being slow to speak or act because you feel uncertain or nervous',
+        koreanExplanation: '이리저리 생각만 하고 태도를 결정하지 못함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hesitation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=110215&searchKeywordTo=3',
+            koreanHeadword: '망설임',
+        },
+    },
+    {
+        day: 10,
+        word: 'apology',
+        meaning: '사과, 사죄',
+        englishExplanation:
+            'a word or statement saying sorry for something that has been done wrong or that causes a problem',
+        koreanExplanation: '자기의 잘못을 인정하고 용서를 빎.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apology',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438135&searchKeywordTo=3',
+            koreanHeadword: '사과8',
+        },
+    },
+    {
+        day: 10,
+        word: 'claim',
+        meaning: '주장하다; 요구하다; 주장; 요구, 청구',
+        englishExplanation:
+            'to say that something is true although it has not been proved and other people may not believe it',
+        koreanExplanation: '자기의 의견이나 주의를 굳게 내세우다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/claim_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485439&searchKeywordTo=3',
+            koreanHeadword: '주장-하다1',
+        },
+    },
+    {
+        day: 10,
+        word: 'offend',
+        meaning: '기분을 상하게 하다',
+        englishExplanation:
+            'to make a person feel upset because of something you say or do that is rude or embarrassing',
+        koreanExplanation: '상대방의 기분을 상하게 하거나 불쾌하게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/offend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435786&searchKeywordTo=3',
+            koreanHeadword: '불쾌-하다',
+        },
+    },
+    {
+        day: 10,
+        word: 'organization',
+        meaning: '조직, 단체',
+        englishExplanation:
+            'a group of people who form a business, club, etc. together in order to achieve a particular aim',
+        koreanExplanation: '짜서 이루거나 얽어서 만듦.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organization',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478784&searchKeywordTo=3',
+            koreanHeadword: '조직',
+        },
+    },
+    {
+        day: 10,
+        word: 'apologize',
+        meaning: '사과하다',
+        englishExplanation:
+            'to say that you are sorry for doing something wrong or causing a problem',
+        koreanExplanation: '자기의 잘못을 인정하고 용서를 빌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apologize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=164947&searchKeywordTo=3',
+            koreanHeadword: '사과-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'confirm',
+        meaning: '사실임을 보여주다; 확정하다',
+        englishExplanation:
+            'to state or show that something is definitely true or correct, especially by providing evidence',
+        koreanExplanation: '일을 확실하게 정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confirm',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377223&searchKeywordTo=3',
+            koreanHeadword: '확정-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'absolutely',
+        meaning: '완전히, 확실히',
+        englishExplanation: 'used to emphasize that something is completely true',
+        koreanExplanation: '필요한 것이 모두 갖추어져 모자람이나 흠이 없이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/absolutely',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=247881&searchKeywordTo=3',
+            koreanHeadword: '완전-히',
+        },
+    },
+    {
+        day: 11,
+        word: 'adjust',
+        meaning: '적응하다; 조절하다',
+        englishExplanation:
+            'to change something slightly to make it more suitable for a new set of conditions or to make it work better',
+        koreanExplanation: '일정한 조건이나 환경 따위에 맞추어 응하거나 알맞게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adjust',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279654&searchKeywordTo=3',
+            koreanHeadword: '적응-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'absorb',
+        meaning: '흡수하다; 받아들이다',
+        englishExplanation:
+            'to take in a liquid, gas or other substance from the surface or space around',
+        koreanExplanation: '빨아서 거두어들이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/absorb',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=388542&searchKeywordTo=3',
+            koreanHeadword: '흡수-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'combination',
+        meaning: '조합, 결합',
+        englishExplanation: 'two or more things joined or mixed together to form a single unit',
+        koreanExplanation: '여럿을 한데 모아 한 덩어리로 짬.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/combination',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303745&searchKeywordTo=3',
+            koreanHeadword: '조합1',
+        },
+    },
+    {
+        day: 11,
+        word: 'declare',
+        meaning: '선언하다; 단언하다; 신고하다',
+        englishExplanation: 'to say something officially or publicly',
+        koreanExplanation: '널리 펴서 말하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/declare',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444018&searchKeywordTo=3',
+            koreanHeadword: '선언-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'exceed',
+        meaning: '넘다, 초과하다',
+        englishExplanation: 'to be greater than a particular number or amount',
+        koreanExplanation: '일정한 수나 한도 따위가 넘어가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exceed',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=491097&searchKeywordTo=3',
+            koreanHeadword: '초과-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'exhaust',
+        meaning: '지치게 하다; 다 써 버리다; 배기',
+        englishExplanation: 'waste gases that come out of a vehicle, an engine or a machine',
+        koreanExplanation: '속에 든 공기, 가스, 증기 따위를 밖으로 뽑아 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exhaust_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=430558&searchKeywordTo=3',
+            koreanHeadword: '배기3',
+        },
+    },
+    {
+        day: 11,
+        word: 'departure',
+        meaning: '출발, 떠남',
+        englishExplanation: 'an act of leaving a place',
+        koreanExplanation: '목적지를 향하여 나아감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/departure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490511&searchKeywordTo=3',
+            koreanHeadword: '출발',
+        },
+    },
+    {
+        day: 11,
+        word: 'balance',
+        meaning: '균형, 평형; 잔고; 균형을 잡다; 상쇄하다',
+        englishExplanation:
+            'a situation in which different things exist in equal, correct or good amounts',
+        koreanExplanation: '어느 한쪽으로 기울거나 치우치지 아니하고 고른 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/balance_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=43438&searchKeywordTo=3',
+            koreanHeadword: '균형',
+        },
+    },
+    {
+        day: 11,
+        word: 'amaze',
+        meaning: '놀라게 하다',
+        englishExplanation: 'to surprise a person very much',
+        koreanExplanation: '상대방이 몹시 놀라게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/amaze',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=68654&searchKeywordTo=3',
+            koreanHeadword: '놀라다',
+        },
+    },
+    {
+        day: 11,
+        word: 'excessive',
+        meaning: '과도한',
+        englishExplanation: 'greater than what seems reasonable or appropriate',
+        koreanExplanation: '정도에 지나치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/excessive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=30270&searchKeywordTo=3',
+            koreanHeadword: '과도-하다1',
+        },
+    },
+    {
+        day: 11,
+        word: 'accompany',
+        meaning: '동행하다; 반주하다; 수반하다',
+        englishExplanation: 'to travel or go somewhere with a person or thing',
+        koreanExplanation: '같이 길을 가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accompany',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=91457&searchKeywordTo=3',
+            koreanHeadword: '동행-하다1',
+        },
+    },
+    {
+        day: 11,
+        word: 'depart',
+        meaning: '출발하다, 떠나다',
+        englishExplanation: 'to leave a place, especially to start a trip',
+        koreanExplanation: '목적지를 향하여 나아가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/depart',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493027&searchKeywordTo=3',
+            koreanHeadword: '출발-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'exhausted',
+        meaning: '지친; 고갈된',
+        englishExplanation: 'very tired',
+        koreanExplanation: '힘든 일이나 시달림 때문에 기운이 몹시 빠진.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exhausted',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486000&searchKeywordTo=3',
+            koreanHeadword: '지치다1',
+        },
+    },
+    {
+        day: 11,
+        word: 'combine',
+        meaning: '결합하다; 겸비하다',
+        englishExplanation: 'to come together to form a single thing or group',
+        koreanExplanation: '둘 이상의 사물이나 사람이 서로 관계를 맺어 하나가 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/combine_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18589&searchKeywordTo=3',
+            koreanHeadword: '결합-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'confrontation',
+        meaning: '대결, 직면',
+        englishExplanation:
+            'a situation in which there is anger between people or groups who disagree because they have different opinions',
+        koreanExplanation: '양자가 맞서서 우열이나 승패를 가림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confrontation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=79895&searchKeywordTo=3',
+            koreanHeadword: '대결2',
+        },
+    },
+    {
+        day: 11,
+        word: 'anticipation',
+        meaning: '예상; 기대',
+        englishExplanation:
+            'the fact of seeing that something might happen in the future and perhaps doing something about it now',
+        koreanExplanation: '어떤 일을 직접 당하기 전에 미리 생각하여 둠. 또는 그런 내용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/anticipation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=461871&searchKeywordTo=3',
+            koreanHeadword: '예상2',
+        },
+    },
+    {
+        day: 11,
+        word: 'excess',
+        meaning: '과잉, 초과',
+        englishExplanation: 'more than is necessary, reasonable or acceptable',
+        koreanExplanation: '예정하거나 필요한 수량보다 많아 남음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/excess_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=31206&searchKeywordTo=3',
+            koreanHeadword: '과잉',
+        },
+    },
+    {
+        day: 11,
+        word: 'complaint',
+        meaning: '불평, 불만',
+        englishExplanation: 'a reason for not being satisfied',
+        koreanExplanation:
+            '마음에 들지 아니하여 못마땅하게 여김. 또는 못마땅한 것을 말이나 행동으로 드러냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complaint',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157474&searchKeywordTo=3',
+            koreanHeadword: '불평1',
+        },
+    },
+    {
+        day: 11,
+        word: 'exaggerate',
+        meaning: '과장하다',
+        englishExplanation:
+            'to make something seem larger, better, worse or more important than it really is',
+        koreanExplanation: '사실보다 지나치게 불려서 나타내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exaggerate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=31728&searchKeywordTo=3',
+            koreanHeadword: '과장-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'exposure',
+        meaning: '노출; 폭로',
+        englishExplanation:
+            'the state of being in a place or situation where there is no protection from something harmful or unpleasant',
+        koreanExplanation: '겉으로 드러나거나 드러냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exposure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=408702&searchKeywordTo=3',
+            koreanHeadword: '노출',
+        },
+    },
+    {
+        day: 11,
+        word: 'anticipate',
+        meaning: '예상하다; 기대하다',
+        englishExplanation: 'to expect something',
+        koreanExplanation: '어떤 일을 직접 당하기 전에 미리 생각하여 두다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/anticipate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=462078&searchKeywordTo=3',
+            koreanHeadword: '예상-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'admire',
+        meaning: '존경하다; 감탄하다',
+        englishExplanation:
+            'to respect a person for what they have done or to respect their qualities',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292168&searchKeywordTo=3',
+            koreanHeadword: '존경-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'expose',
+        meaning: '드러내다, 노출시키다; 폭로하다',
+        englishExplanation: 'to show something that is usually hidden',
+        koreanExplanation: '가려 있거나 보이지 않던 것을 보이게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expose_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=93851&searchKeywordTo=3',
+            koreanHeadword: '드러내다',
+        },
+    },
+    {
+        day: 11,
+        word: 'complain',
+        meaning: '불평하다; 호소하다',
+        englishExplanation:
+            'to say that you are annoyed, unhappy or not satisfied about a person or thing',
+        koreanExplanation: '마음에 들지 아니하여 못마땅하게 여기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436250&searchKeywordTo=3',
+            koreanHeadword: '불평-하다1',
+        },
+    },
+    {
+        day: 11,
+        word: 'twist',
+        meaning: '비틀기, 꼬임; 굽이; 꼬다, 감다, 비틀다; 삐다, 접질리다; 왜곡하다',
+        englishExplanation: 'to bend or turn something into a particular shape',
+        koreanExplanation: '힘 있게 바싹 꼬면서 틀다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/twist_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438031&searchKeywordTo=3',
+            koreanHeadword: '비틀다',
+        },
+    },
+    {
+        day: 11,
+        word: 'declaration',
+        meaning: '선언, 발표; 신고',
+        englishExplanation:
+            'an official or formal statement, especially about the plans of a government or an organization',
+        koreanExplanation: '널리 펴서 말함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/declaration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=187320&searchKeywordTo=3',
+            koreanHeadword: '선언1',
+        },
+    },
+    {
+        day: 11,
+        word: 'appoint',
+        meaning: '임명하다; 정하다',
+        englishExplanation: 'to choose a person for a job or position of responsibility',
+        koreanExplanation: '일정한 지위나 임무를 남에게 맡기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appoint',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=272268&searchKeywordTo=3',
+            koreanHeadword: '임명-하다1',
+        },
+    },
+    {
+        day: 11,
+        word: 'admiration',
+        meaning: '존경; 감탄',
+        englishExplanation: 'a feeling of respect for and approval of a person or thing',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admiration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481065&searchKeywordTo=3',
+            koreanHeadword: '존경',
+        },
+    },
+    {
+        day: 11,
+        word: 'confront',
+        meaning: '직면하다, 맞서다',
+        englishExplanation: 'to appear and need to be dealt with by a person',
+        koreanExplanation: '어떠한 일이나 사물을 직접 당하거나 접하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confront',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488410&searchKeywordTo=3',
+            koreanHeadword: '직면-하다',
+        },
+    },
+    {
+        day: 11,
+        word: 'amazed',
+        meaning: '놀란',
+        englishExplanation: 'very surprised',
+        koreanExplanation: '뜻밖의 일이나 무서움에 가슴이 두근거리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/amazed',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=68654&searchKeywordTo=3',
+            koreanHeadword: '놀라다',
+        },
+    },
+    {
+        day: 11,
+        word: 'advantage',
+        meaning: '이점, 유리한 점, 우위',
+        englishExplanation:
+            'a thing that helps you to be better or more successful than other people',
+        koreanExplanation: '이로운 점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advantage_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=467836&searchKeywordTo=3',
+            koreanHeadword: '이점1',
+        },
+    },
+    {
+        day: 11,
+        word: 'appointment',
+        meaning: '약속; 임명',
+        englishExplanation:
+            'a formal arrangement to meet or visit a person at a particular time, especially for a reason related to their work',
+        koreanExplanation:
+            '다른 사람과 앞으로의 일을 어떻게 할 것인가를 미리 정하여 둠. 또는 그렇게 정한 내용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appointment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457820&searchKeywordTo=3',
+            koreanHeadword: '약속',
+        },
+    },
+    {
+        day: 11,
+        word: 'export',
+        meaning: '수출하다; 수출',
+        englishExplanation: 'the selling and transporting of goods to another country',
+        koreanExplanation: '국내의 상품이나 기술을 외국으로 팔아 내보내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/export_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446842&searchKeywordTo=3',
+            koreanHeadword: '수출-하다3',
+        },
+    },
+    {
+        day: 11,
+        word: 'afford',
+        meaning: '~할 여유가 있다; 제공하다, 주다',
+        englishExplanation: 'to have enough money to be able to buy or do something',
+        koreanExplanation: '무엇을 내주거나 갖다 바치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/afford',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295387&searchKeywordTo=3',
+            koreanHeadword: '제공-하다2',
+        },
+    },
+    {
+        day: 11,
+        word: 'alike',
+        meaning: '서로 같은, 비슷한; 비슷하게, 똑같이',
+        englishExplanation: 'in a very similar way',
+        koreanExplanation: '모양, 성질, 분량 따위가 조금도 다른 데가 없이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/alike_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=93561&searchKeywordTo=3',
+            koreanHeadword: '똑같-이',
+        },
+    },
+    {
+        day: 11,
+        word: 'amazing',
+        meaning: '놀라운, 멋진',
+        englishExplanation: 'very surprising, especially in a way that you like or admire',
+        koreanExplanation: '감동을 일으킬 만큼 훌륭하거나 굉장하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/amazing',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403097&searchKeywordTo=3',
+            koreanHeadword: '놀랍다',
+        },
+    },
+    {
+        day: 11,
+        word: 'approach',
+        meaning: '다가가다, 접근하다; 가까워지다; 접근',
+        englishExplanation: 'a way of dealing with a person or thing',
+        koreanExplanation: '어떤 대상 쪽으로 가까이 가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/approach_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=410920&searchKeywordTo=3',
+            koreanHeadword: '다가-가다',
+        },
+    },
+    {
+        day: 11,
+        word: 'contrary',
+        meaning: '반대되는, 정반대의; 반대의 것',
+        englishExplanation: 'different from something',
+        koreanExplanation:
+            '두 사물이 모양, 위치, 방향, 순서 따위에서 등지거나 서로 맞섬. 또는 그런 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contrary1_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426442&searchKeywordTo=3',
+            koreanHeadword: '반대2',
+        },
+    },
+    {
+        day: 12,
+        word: 'disposal',
+        meaning: '폐기',
+        englishExplanation: 'the act of getting rid of something',
+        koreanExplanation: '못 쓰게 된 것을 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disposal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499273&searchKeywordTo=3',
+            koreanHeadword: '폐기2',
+        },
+    },
+    {
+        day: 12,
+        word: 'interpretation',
+        meaning: '해석; 통역',
+        englishExplanation: 'the particular way in which something is understood or explained',
+        koreanExplanation: '문장이나 사물 따위로 표현된 내용을 이해하고 설명함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interpretation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499048&searchKeywordTo=3',
+            koreanHeadword: '해석4',
+        },
+    },
+    {
+        day: 12,
+        word: 'interact',
+        meaning: '소통하다, 상호 작용하다',
+        englishExplanation:
+            'to communicate with a person, especially while you work, play or spend time with them',
+        koreanExplanation: '막히지 아니하고 잘 통하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interact',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447778&searchKeywordTo=3',
+            koreanHeadword: '소통-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'discourage',
+        meaning: '낙담시키다',
+        englishExplanation: 'to make someone less willing or confident about doing something',
+        koreanExplanation: '기운이나 의욕을 잃게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/discourage',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=58773&searchKeywordTo=3',
+            koreanHeadword: '낙담-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'endurable',
+        meaning: '참을 수 있는',
+        englishExplanation: 'that can be experienced or dealt with, especially without complaining',
+        koreanExplanation: '괴로움이나 어려움을 참고 견딜 수 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/endurable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488018&searchKeywordTo=3',
+            koreanHeadword: '참다',
+        },
+    },
+    {
+        day: 12,
+        word: 'different',
+        meaning: '다른',
+        englishExplanation: 'not the same as a person or thing',
+        koreanExplanation: '당장 문제 되거나 해당되는 것 이외의.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/different',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72782&searchKeywordTo=3',
+            koreanHeadword: '다른',
+        },
+    },
+    {
+        day: 12,
+        word: 'disposable',
+        meaning: '일회용의',
+        englishExplanation: 'made to be thrown away after use',
+        koreanExplanation: '한 번만 쓰고 버림. 또는 그런 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disposable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=269605&searchKeywordTo=3',
+            koreanHeadword: '일회-용',
+        },
+    },
+    {
+        day: 12,
+        word: 'encounter',
+        meaning: '마주치다; 직면하다; 우연한 마주침',
+        englishExplanation:
+            'to experience something, especially something unpleasant or difficult, while you are trying to do something else',
+        koreanExplanation: '서로 똑바로 부딪치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/encounter_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420418&searchKeywordTo=3',
+            koreanHeadword: '마주-치다',
+        },
+    },
+    {
+        day: 12,
+        word: 'enrich',
+        meaning: '풍부하게 하다, 질을 높이다; 부유하게 하다',
+        englishExplanation: 'to improve the quality of something, often by adding something to it',
+        koreanExplanation: '내용이나 자원을 더 풍부하게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enrich',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=357904&searchKeywordTo=3',
+            koreanHeadword: '풍부-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'interaction',
+        meaning: '상호 작용',
+        englishExplanation:
+            'the act of communicating with a person, especially while you work, play or spend time with them',
+        koreanExplanation:
+            '생물체 부분들의 기능 사이나, 생물체의 한 부분의 기능과 개체의 기능 사이에서 이루어지는 일정한 작용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interaction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=511532&searchKeywordTo=3',
+            koreanHeadword: '상호^작용',
+        },
+    },
+    {
+        day: 12,
+        word: 'enhancement',
+        meaning: '향상, 증대',
+        englishExplanation:
+            'the act of increasing or further improving the good quality, value or status of a person or thing',
+        koreanExplanation: '실력, 수준, 기술 따위가 나아짐. 또는 나아지게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enhancement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=370067&searchKeywordTo=3',
+            koreanHeadword: '향상1',
+        },
+    },
+    {
+        day: 12,
+        word: 'international',
+        meaning: '국제적인, 국가 간의',
+        englishExplanation: 'relating to or involving two or more countries',
+        koreanExplanation: '여러 나라에 관계되는 성격을 가지거나 그 범위가 여러 나라에 미치는 것.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/international_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=398102&searchKeywordTo=3',
+            koreanHeadword: '국제-적',
+        },
+    },
+    {
+        day: 12,
+        word: 'dispose',
+        meaning: '폐기하다; 배치하다',
+        englishExplanation: 'to arrange things or people in a particular way or position',
+        koreanExplanation: '못 쓰게 된 것을 버리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dispose',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499456&searchKeywordTo=3',
+            koreanHeadword: '폐기-하다2',
+        },
+    },
+    {
+        day: 12,
+        word: 'union',
+        meaning: '결합, 합체; 연합, 조합',
+        englishExplanation:
+            'an organization of workers, usually in a particular industry, that exists to protect their interests, improve conditions of work, etc.',
+        koreanExplanation: '둘 이상의 사물이나 사람이 서로 관계를 맺어 하나가 됨.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/union',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18587&searchKeywordTo=3',
+            koreanHeadword: '결합',
+        },
+    },
+    {
+        day: 12,
+        word: 'outcome',
+        meaning: '결과, 성과',
+        englishExplanation: 'the result or effect of an action or event',
+        koreanExplanation: '어떤 원인이나 행동에 따라 생긴 결말이나 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/outcome',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396134&searchKeywordTo=3',
+            koreanHeadword: '결과2',
+        },
+    },
+    {
+        day: 12,
+        word: 'disappear',
+        meaning: '사라지다, 없어지다',
+        englishExplanation: 'to become impossible to see',
+        koreanExplanation: '현상이나 물체의 자취 따위가 없어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disappear',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444131&searchKeywordTo=3',
+            koreanHeadword: '사라-지다',
+        },
+    },
+    {
+        day: 12,
+        word: 'informal',
+        meaning: '격식을 차리지 않는, 비공식의',
+        englishExplanation: 'relaxed and friendly',
+        koreanExplanation: '국가적으로나 사회적으로 인정되지 않은 사사로운 방식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/informal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=156447&searchKeywordTo=3',
+            koreanHeadword: '비-공식',
+        },
+    },
+    {
+        day: 12,
+        word: 'inherent',
+        meaning: '내재된, 타고난',
+        englishExplanation:
+            'that is a basic or permanent part of a person or thing and that cannot be removed',
+        koreanExplanation: '어떤 사물이나 범위의 안에 들어 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inherent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=62806&searchKeywordTo=3',
+            koreanHeadword: '내재-되다',
+        },
+    },
+    {
+        day: 12,
+        word: 'endure',
+        meaning: '견디다, 참다; 지속하다',
+        englishExplanation:
+            'to experience and deal with something that is painful or unpleasant without giving up',
+        koreanExplanation:
+            '사람이나 생물이 일정한 기간 동안 어려운 환경에 굴복하거나 죽지 않고 계속해서 버티면서 살아 나가는 상태가 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/endure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394336&searchKeywordTo=3',
+            koreanHeadword: '견디다',
+        },
+    },
+    {
+        day: 12,
+        word: 'interactive',
+        meaning: '상호적인',
+        englishExplanation:
+            'that allows information to be passed continuously and in both directions between a computer or other device and the person who uses it',
+        koreanExplanation: '이쪽과 저쪽이 서로 영향을 주고받는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interactive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443649&searchKeywordTo=3',
+            koreanHeadword: '상호4',
+        },
+    },
+    {
+        day: 12,
+        word: 'intake',
+        meaning: '섭취',
+        englishExplanation: 'the amount of food, drink, etc. that you take into your body',
+        koreanExplanation: '좋은 요소를 받아들임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intake',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443585&searchKeywordTo=3',
+            koreanHeadword: '섭취',
+        },
+    },
+    {
+        day: 12,
+        word: 'illustration',
+        meaning: '삽화; 실례',
+        englishExplanation:
+            'a drawing or picture in a book, magazine, for decoration or to explain something',
+        koreanExplanation:
+            '서적·신문·잡지 따위에서, 내용을 보충하거나 기사의 이해를 돕기 위하여 넣는 그림. 넓은 뜻으로는 서적이나 잡지의 표지, 컷, 광고 미술 따위도 포함한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/illustration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=176687&searchKeywordTo=3',
+            koreanHeadword: '삽화2',
+        },
+    },
+    {
+        day: 12,
+        word: 'outstanding',
+        meaning: '두드러진; 훌륭한, 뛰어난',
+        englishExplanation: 'extremely good',
+        koreanExplanation: '남보다 월등히 훌륭하거나 앞서 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/outstanding',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=419503&searchKeywordTo=3',
+            koreanHeadword: '뛰어-나다',
+        },
+    },
+    {
+        day: 12,
+        word: 'united',
+        meaning: '합친, 결합한',
+        englishExplanation: 'joined together as a political unit or by shared aims',
+        koreanExplanation: '둘 이상의 사물이나 사람이 서로 관계를 맺어 하나가 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/united',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18589&searchKeywordTo=3',
+            koreanHeadword: '결합-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'differ',
+        meaning: '다르다',
+        englishExplanation: 'to be different from a person or thing',
+        koreanExplanation: '비교가 되는 두 대상이 서로 같지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/differ',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72210&searchKeywordTo=3',
+            koreanHeadword: '다르다1',
+        },
+    },
+    {
+        day: 12,
+        word: 'enhance',
+        meaning: '향상하다, 강화하다',
+        englishExplanation:
+            'to increase or further improve the good quality, value or status of a person or thing',
+        koreanExplanation: '실력, 수준, 기술 따위가 나아지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enhance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=370347&searchKeywordTo=3',
+            koreanHeadword: '향상-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'insightful',
+        meaning: '통찰력 있는',
+        englishExplanation: 'showing a clear understanding of a person or situation',
+        koreanExplanation: '예리한 관찰력으로 사물을 꿰뚫어 봄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/insightful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=495465&searchKeywordTo=3',
+            koreanHeadword: '통찰1',
+        },
+    },
+    {
+        day: 12,
+        word: 'endurance',
+        meaning: '인내',
+        englishExplanation:
+            'the ability to continue doing something painful or difficult for a long period of time without giving up',
+        koreanExplanation: '괴로움이나 어려움을 참고 견딤.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/endurance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=271711&searchKeywordTo=3',
+            koreanHeadword: '인내2',
+        },
+    },
+    {
+        day: 12,
+        word: 'interfere',
+        meaning: '간섭하다; 방해하다',
+        englishExplanation:
+            'to get involved in and try to influence a situation that should not really involve you, in a way that annoys other people',
+        koreanExplanation: '직접 관계가 없는 남의 일에 부당하게 참견하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interfere',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390447&searchKeywordTo=3',
+            koreanHeadword: '간섭-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'independence',
+        meaning: '독립, 자립',
+        englishExplanation: 'freedom from political control by other countries',
+        koreanExplanation: '다른 것에 예속하거나 의존하지 아니하는 상태로 됨.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/independence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416674&searchKeywordTo=3',
+            koreanHeadword: '독립',
+        },
+    },
+    {
+        day: 12,
+        word: 'insight',
+        meaning: '통찰',
+        englishExplanation: 'an understanding of what something is like',
+        koreanExplanation: '예리한 관찰력으로 사물을 꿰뚫어 봄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/insight',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=495465&searchKeywordTo=3',
+            koreanHeadword: '통찰1',
+        },
+    },
+    {
+        day: 12,
+        word: 'interval',
+        meaning: '간격',
+        englishExplanation: 'a period of time between two events',
+        koreanExplanation: '공간적으로 벌어진 사이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interval',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390255&searchKeywordTo=3',
+            koreanHeadword: '간격2',
+        },
+    },
+    {
+        day: 12,
+        word: 'interpret',
+        meaning: '해석하다; 통역하다',
+        englishExplanation: 'to explain the meaning of something',
+        koreanExplanation: '문장이나 사물 따위로 표현된 내용을 이해하고 설명하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interpret',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=364957&searchKeywordTo=3',
+            koreanHeadword: '해석-하다2',
+        },
+    },
+    {
+        day: 12,
+        word: 'discouraged',
+        meaning: '낙담한',
+        englishExplanation: 'feeling less confident or enthusiastic about doing something',
+        koreanExplanation: '바라던 일이 뜻대로 되지 않아 마음이 몹시 상하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/discouraged',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=58773&searchKeywordTo=3',
+            koreanHeadword: '낙담-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'universal',
+        meaning: '보편적인, 전 세계의',
+        englishExplanation:
+            'done by or involving all the people in the world or in a particular group',
+        koreanExplanation: '모든 것에 두루 미치거나 통하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/universal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=150636&searchKeywordTo=3',
+            koreanHeadword: '보편-적',
+        },
+    },
+    {
+        day: 12,
+        word: 'independent',
+        meaning: '독립한; 독립심이 강한',
+        englishExplanation: 'having its own government',
+        koreanExplanation: '다른 것에 예속하거나 의존하지 아니하는 상태로 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/independent_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=86201&searchKeywordTo=3',
+            koreanHeadword: '독립-하다',
+        },
+    },
+    {
+        day: 12,
+        word: 'interference',
+        meaning: '간섭, 방해',
+        englishExplanation: 'unwanted involvement in a situation that mainly concerns other people',
+        koreanExplanation: '직접 관계가 없는 남의 일에 부당하게 참견함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interference',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=5976&searchKeywordTo=3',
+            koreanHeadword: '간섭',
+        },
+    },
+    {
+        day: 12,
+        word: 'interpreter',
+        meaning: '통역사',
+        englishExplanation:
+            'a person whose job is to translate what a person is saying into another language',
+        koreanExplanation: '통역할 자격을 가진 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interpreter',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=346996&searchKeywordTo=3',
+            koreanHeadword: '통역-사',
+        },
+    },
+    {
+        day: 12,
+        word: 'disagree',
+        meaning: '동의하지 않다, 일치하지 않다',
+        englishExplanation: 'to hold a different opinion from another person',
+        koreanExplanation: '어떤 행동이나 견해, 제안 따위에 따르지 아니하고 맞서 거스르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disagree',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=132337&searchKeywordTo=3',
+            koreanHeadword: '반대-하다1',
+        },
+    },
+    {
+        day: 12,
+        word: 'enable',
+        meaning: '~할 수 있게 하다, 가능하게 하다',
+        englishExplanation: 'to make it possible for a person or thing to do something',
+        koreanExplanation: '어떤 일을 할 수 있도록 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409&searchKeywordTo=3',
+            koreanHeadword: '가능-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'representative',
+        meaning: '대표자; 대표하는',
+        englishExplanation: 'a person chosen to speak, vote or act on behalf of others',
+        koreanExplanation:
+            '조직이나 집단을 대신하여 일을 맡아 하거나, 여러 사람의 의사를 대신하여 나타내는 사람.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/representative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=81363&searchKeywordTo=3',
+            koreanHeadword: '대표-자',
+        },
+    },
+    {
+        day: 13,
+        word: 'separate',
+        meaning: '분리하다, 나누다; 분리된, 별개의',
+        englishExplanation: 'forming a unit by itself',
+        koreanExplanation: '서로 나누어 떨어지게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/separate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153551&searchKeywordTo=3',
+            koreanHeadword: '분리-하다3',
+        },
+    },
+    {
+        day: 13,
+        word: 'persuasive',
+        meaning: '설득력 있는',
+        englishExplanation: 'able to persuade a person to do or believe something',
+        koreanExplanation: '상대가 믿거나 따르도록 이끄는 힘이 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/persuasive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=177963&searchKeywordTo=3',
+            koreanHeadword: '설득-력',
+        },
+    },
+    {
+        day: 13,
+        word: 'suffer',
+        meaning: '앓다, 고통을 겪다',
+        englishExplanation:
+            'to be badly affected by a disease, pain, sad feelings, a lack of something, etc.',
+        koreanExplanation: '병에 걸려 고통을 겪다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suffer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=215163&searchKeywordTo=3',
+            koreanHeadword: '앓다',
+        },
+    },
+    {
+        day: 13,
+        word: 'persistent',
+        meaning: '고집하는, 끈질긴; 지속하는',
+        englishExplanation:
+            'determined to do something despite difficulties, especially when other people are against you and think that you are being annoying or unreasonable',
+        koreanExplanation: '자기의 의견을 바꾸거나 고치지 않고 굳게 버티다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/persistent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=25109&searchKeywordTo=3',
+            koreanHeadword: '고집-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'retire',
+        meaning: '은퇴하다',
+        englishExplanation: 'to leave a job and stop working, usually because of age or illness',
+        koreanExplanation: '직임에서 물러나거나 사회 활동에서 손을 떼고 한가히 지내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/retire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=255951&searchKeywordTo=3',
+            koreanHeadword: '은퇴-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'separation',
+        meaning: '분리, 구분',
+        englishExplanation: 'the act of separating people or things',
+        koreanExplanation: '서로 나뉘어 떨어짐. 또는 그렇게 되게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/separation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153550&searchKeywordTo=3',
+            koreanHeadword: '분리4',
+        },
+    },
+    {
+        day: 13,
+        word: 'persuade',
+        meaning: '설득하다',
+        englishExplanation:
+            'to make a person do something by giving them good reasons for doing it',
+        koreanExplanation: '상대편이 이쪽 편의 이야기를 따르도록 여러 가지로 깨우쳐 말하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/persuade',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=440724&searchKeywordTo=3',
+            koreanHeadword: '설득-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'representation',
+        meaning: '대표; 표현',
+        englishExplanation: 'the act of presenting a person or thing in a particular way',
+        koreanExplanation: '전체의 상태나 성질을 어느 하나로 잘 나타냄. 또는 그런 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/representation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409168&searchKeywordTo=3',
+            koreanHeadword: '대표',
+        },
+    },
+    {
+        day: 13,
+        word: 'subtlety',
+        meaning: '미묘함',
+        englishExplanation: 'the quality of being subtle',
+        koreanExplanation: '뚜렷하지 않고 야릇하고 묘하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subtlety',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=129293&searchKeywordTo=3',
+            koreanHeadword: '미묘-하다2',
+        },
+    },
+    {
+        day: 13,
+        word: 'security',
+        meaning: '보안, 경비, 안전',
+        englishExplanation:
+            'the activities involved in protecting a country, building or person against attack, danger, etc.',
+        koreanExplanation: '안전을 유지함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/security',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436227&searchKeywordTo=3',
+            koreanHeadword: '보안1',
+        },
+    },
+    {
+        day: 13,
+        word: 'perspective',
+        meaning: '관점, 견해; 원근법',
+        englishExplanation: 'a particular attitude towards something',
+        koreanExplanation:
+            '사물이나 현상을 관찰할 때, 그 사람이 보고 생각하는 태도나 방향 또는 처지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/perspective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=400870&searchKeywordTo=3',
+            koreanHeadword: '관점2',
+        },
+    },
+    {
+        day: 13,
+        word: 'renewable',
+        meaning: '재생 가능한; 갱신 가능한',
+        englishExplanation:
+            'that is replaced naturally or controlled carefully and can therefore be used without the risk of using it all up',
+        koreanExplanation: '사용한 것이 다시 생겨나거나 계속 새로 공급될 수 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/renewable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473876&searchKeywordTo=3',
+            koreanHeadword: '재생1',
+        },
+    },
+    {
+        day: 13,
+        word: 'secure',
+        meaning: '안전한; 안전하게 하다, 지키다; 확보하다',
+        englishExplanation:
+            'to obtain or achieve something, especially when this means using a lot of effort',
+        koreanExplanation:
+            '재산, 이익, 안전 따위를 잃거나 침해당하지 아니하도록 보호하거나 감시하여 막다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/secure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488705&searchKeywordTo=3',
+            koreanHeadword: '지키다',
+        },
+    },
+    {
+        day: 13,
+        word: 'remain',
+        meaning: '여전히 있다; 남아 있다; 머무르다',
+        englishExplanation: 'to continue to be something',
+        koreanExplanation: '도중에 멈추거나 일시적으로 어떤 곳에 묵다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/remain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424856&searchKeywordTo=3',
+            koreanHeadword: '머무르다',
+        },
+    },
+    {
+        day: 13,
+        word: 'renewal',
+        meaning: '재개; 갱신',
+        englishExplanation:
+            'a situation in which something begins again after it stopped or was interrupted',
+        koreanExplanation: '어떤 활동이나 회의 따위를 한동안 중단했다가 다시 시작함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/renewal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=289663&searchKeywordTo=3',
+            koreanHeadword: '재개3',
+        },
+    },
+    {
+        day: 13,
+        word: 'removal',
+        meaning: '제거',
+        englishExplanation: 'the act of taking a person or thing away from a particular place',
+        koreanExplanation: '없애 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/removal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477173&searchKeywordTo=3',
+            koreanHeadword: '제거3',
+        },
+    },
+    {
+        day: 13,
+        word: 'overcome',
+        meaning: '극복하다, 이겨내다',
+        englishExplanation:
+            'to succeed in dealing with or controlling a problem that has been preventing you from achieving something',
+        koreanExplanation: '악조건이나 고생 따위를 이겨 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/overcome',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=400539&searchKeywordTo=3',
+            koreanHeadword: '극복-하다1',
+        },
+    },
+    {
+        day: 13,
+        word: 'overwhelm',
+        meaning: '압도하다; 어쩔 줄 모르게 만들다',
+        englishExplanation:
+            'to have such a strong emotional effect on a person that it is difficult for them to resist or know how to react',
+        koreanExplanation: '보다 뛰어난 힘이나 재주로 남을 눌러 꼼짝 못 하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/overwhelm',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=221403&searchKeywordTo=3',
+            koreanHeadword: '압도-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'recharge',
+        meaning: '충전하다',
+        englishExplanation: 'to fill a battery with electrical power',
+        koreanExplanation: '축전지나 축전기에 전기 에너지를 채워 넣다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recharge',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490127&searchKeywordTo=3',
+            koreanHeadword: '충전-하다2',
+        },
+    },
+    {
+        day: 13,
+        word: 'transformation',
+        meaning: '변화, 변신',
+        englishExplanation: 'a complete change in a person or thing',
+        koreanExplanation: '사물의 성질, 모양, 상태 따위가 바뀌어 달라짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transformation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432677&searchKeywordTo=3',
+            koreanHeadword: '변화',
+        },
+    },
+    {
+        day: 13,
+        word: 'replace',
+        meaning: '대신하다; 교체하다, 바꾸다',
+        englishExplanation: 'to be used instead of a person or thing else',
+        koreanExplanation: '어떤 대상의 자리나 구실을 바꾸어서 새로 맡다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/replace',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=79705&searchKeywordTo=3',
+            koreanHeadword: '대신-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'subtly',
+        meaning: '미묘하게',
+        englishExplanation: 'in a way that is not very obvious or easy to notice',
+        koreanExplanation: '뚜렷하지 않고 야릇하고 묘하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subtly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=129293&searchKeywordTo=3',
+            koreanHeadword: '미묘-하다2',
+        },
+    },
+    {
+        day: 13,
+        word: 'overlook',
+        meaning: '간과하다; 눈감아 주다; 내려다보다',
+        englishExplanation: 'to fail to see or notice something',
+        koreanExplanation: '큰 관심 없이 대강 보아 넘기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/overlook',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=5017&searchKeywordTo=3',
+            koreanHeadword: '간과-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'revival',
+        meaning: '재생, 회복; 부흥, 재유행',
+        englishExplanation: 'an improvement in the condition or strength of something',
+        koreanExplanation: '죽게 되었다가 다시 살아남.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/revival',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473876&searchKeywordTo=3',
+            koreanHeadword: '재생1',
+        },
+    },
+    {
+        day: 13,
+        word: 'translation',
+        meaning: '번역; 해석',
+        englishExplanation:
+            'the process of changing something that is written or spoken into another language',
+        koreanExplanation: '어떤 언어로 된 글을 다른 언어의 글로 옮김.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/translation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=431701&searchKeywordTo=3',
+            koreanHeadword: '번역',
+        },
+    },
+    {
+        day: 13,
+        word: 'produce',
+        meaning: '생산하다, 만들어 내다; 농산물',
+        englishExplanation: 'to make things to be sold, especially in large quantities',
+        koreanExplanation: '인간이 생활하는 데 필요한 각종 물건을 만들어 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/produce_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=176359&searchKeywordTo=3',
+            koreanHeadword: '생산-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'production',
+        meaning: '생산, 제작',
+        englishExplanation:
+            'the process of growing or making food, goods or materials, especially large quantities',
+        koreanExplanation: '인간이 생활하는 데 필요한 각종 물건을 만들어 냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/production',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443169&searchKeywordTo=3',
+            koreanHeadword: '생산',
+        },
+    },
+    {
+        day: 13,
+        word: 'progress',
+        meaning: '진행, 진전; 발전; 진전을 보이다, 진행하다; 발전하다',
+        englishExplanation:
+            'the process of improving or developing, or of getting nearer to achieving or completing something',
+        koreanExplanation: '앞으로 향하여 나아감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/progress_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485245&searchKeywordTo=3',
+            koreanHeadword: '진행',
+        },
+    },
+    {
+        day: 13,
+        word: 'represent',
+        meaning: '대표하다; 나타내다, 상징하다',
+        englishExplanation:
+            'to be a member of a group of people and act or speak for them at an event, a meeting, etc.',
+        koreanExplanation: '전체의 상태나 성질을 어느 하나로 잘 나타내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/represent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409362&searchKeywordTo=3',
+            koreanHeadword: '대표-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'predict',
+        meaning: '예측하다',
+        englishExplanation: 'to say that something will happen in the future',
+        koreanExplanation: '미리 헤아려 짐작하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/predict',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463717&searchKeywordTo=3',
+            koreanHeadword: '예측-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'replacement',
+        meaning: '대체, 교체',
+        englishExplanation:
+            'the act of replacing one thing with another, especially something that is newer or better',
+        koreanExplanation: '다른 것으로 대신함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/replacement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=81852&searchKeywordTo=3',
+            koreanHeadword: '대체2',
+        },
+    },
+    {
+        day: 13,
+        word: 'transform',
+        meaning: '바꾸다, 변형시키다',
+        englishExplanation: 'to change the form of something',
+        koreanExplanation: '원래 있던 것을 없애고 다른 것으로 채워 넣거나 대신하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transform',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=428745&searchKeywordTo=3',
+            koreanHeadword: '바꾸다',
+        },
+    },
+    {
+        day: 13,
+        word: 'persist',
+        meaning: '고집하다; 지속하다',
+        englishExplanation:
+            'to continue to do something despite difficulties or opposition, in a way that can seem unreasonable',
+        koreanExplanation: '자기의 의견을 바꾸거나 고치지 않고 굳게 버티다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/persist',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=25109&searchKeywordTo=3',
+            koreanHeadword: '고집-하다',
+        },
+    },
+    {
+        day: 13,
+        word: 'transfer',
+        meaning: '옮기다; 환승하다; 전송하다; 이동; 환승',
+        englishExplanation: 'to move from one place to another',
+        koreanExplanation: '어떤 곳에서 다른 곳으로 자리를 바꾸게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transfer_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=462208&searchKeywordTo=3',
+            koreanHeadword: '옮-기다',
+        },
+    },
+    {
+        day: 13,
+        word: 'separately',
+        meaning: '별도로, 따로',
+        englishExplanation: 'as a separate person or thing',
+        koreanExplanation: '한데 섞이거나 함께 있지 아니하고 혼자 떨어져서.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/separately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416585&searchKeywordTo=3',
+            koreanHeadword: '따로',
+        },
+    },
+    {
+        day: 13,
+        word: 'renew',
+        meaning: '재개하다; 갱신하다',
+        englishExplanation: 'to begin something again after it stopped or was interrupted',
+        koreanExplanation: '어떤 활동이나 회의 따위를 한동안 중단했다가 다시 시작하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/renew',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=287028&searchKeywordTo=3',
+            koreanHeadword: '재개-하다2',
+        },
+    },
+    {
+        day: 13,
+        word: 'prediction',
+        meaning: '예측, 예상',
+        englishExplanation: 'a statement that says what you think will happen',
+        koreanExplanation: '미리 헤아려 짐작함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prediction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463716&searchKeywordTo=3',
+            koreanHeadword: '예측',
+        },
+    },
+    {
+        day: 13,
+        word: 'overseas',
+        meaning: '해외로; 해외에 있는, 해외의',
+        englishExplanation:
+            'relating to foreign countries, especially those separated from your country by the sea or ocean',
+        koreanExplanation: '바다의 밖.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/overseas_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=502841&searchKeywordTo=3',
+            koreanHeadword: '해외',
+        },
+    },
+    {
+        day: 13,
+        word: 'subtle',
+        meaning: '미묘한, 감지하기 힘든; 교묘한',
+        englishExplanation: 'not very obvious or easy to notice',
+        koreanExplanation: '뚜렷하지 않고 야릇하고 묘하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subtle',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=129293&searchKeywordTo=3',
+            koreanHeadword: '미묘-하다2',
+        },
+    },
+    {
+        day: 14,
+        word: 'modify',
+        meaning: '수정하다; 수식하다',
+        englishExplanation:
+            'to change something slightly, especially in order to make it more suitable for a particular purpose',
+        koreanExplanation: '바로잡아 고치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/modify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=200796&searchKeywordTo=3',
+            koreanHeadword: '수정-하다3',
+        },
+    },
+    {
+        day: 14,
+        word: 'simplification',
+        meaning: '간소화',
+        englishExplanation: 'the process of making something easier to do or understand',
+        koreanExplanation: '간략하고 소박하게 됨. 또는 그렇게 되게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/simplification',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=387242&searchKeywordTo=3',
+            koreanHeadword: '간소-화',
+        },
+    },
+    {
+        day: 14,
+        word: 'ideally',
+        meaning: '이상적으로',
+        englishExplanation: 'perfectly',
+        koreanExplanation: '생각할 수 있는 범위 안에서 가장 완전하다고 여겨지는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ideally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=260348&searchKeywordTo=3',
+            koreanHeadword: '이상-적1',
+        },
+    },
+    {
+        day: 14,
+        word: 'ability',
+        meaning: '능력, 할 수 있음',
+        englishExplanation: 'the fact that a person or thing is able to do something',
+        koreanExplanation: '일을 감당해 낼 수 있는 힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ability_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=407745&searchKeywordTo=3',
+            koreanHeadword: '능력2',
+        },
+    },
+    {
+        day: 14,
+        word: 'fascinate',
+        meaning: '매료시키다, 사로잡다',
+        englishExplanation: 'to attract or interest a person very much',
+        koreanExplanation: '사람이나 짐승 따위를 산 채로 잡다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fascinate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=440114&searchKeywordTo=3',
+            koreanHeadword: '사로-잡다',
+        },
+    },
+    {
+        day: 14,
+        word: 'creative',
+        meaning: '창조적인, 창의적인',
+        englishExplanation:
+            'involving the use of skill and the imagination to produce something new or a work of art',
+        koreanExplanation: '새로운 것을 만들어내는 일과 관련되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/creative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493669&searchKeywordTo=3',
+            koreanHeadword: '창조-적',
+        },
+    },
+    {
+        day: 14,
+        word: 'costly',
+        meaning: '값비싼',
+        englishExplanation: 'costing a lot of money, especially more than you want to pay',
+        koreanExplanation: '물건값이나 사람 또는 물건을 쓰는 데 드는 비용이 보통보다 높다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/costly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436953&searchKeywordTo=3',
+            koreanHeadword: '비싸다',
+        },
+    },
+    {
+        day: 14,
+        word: 'frighten',
+        meaning: '두렵게 하다',
+        englishExplanation: 'to make a person suddenly feel afraid',
+        koreanExplanation: '두려움을 느끼게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/frighten',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416599&searchKeywordTo=3',
+            koreanHeadword: '두렵다',
+        },
+    },
+    {
+        day: 14,
+        word: 'angle',
+        meaning: '각도, 기울기; 관점',
+        englishExplanation:
+            'the space between two lines or surfaces that join, measured in degrees',
+        koreanExplanation:
+            '한 점에서 갈리어 나간 두 직선의 벌어진 정도. 원의 중심에서 원의 둘레를 360으로 등분한 것을 1도로 나타내고 이를 단위로 측정한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/angle_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=387158&searchKeywordTo=3',
+            koreanHeadword: '각도1',
+        },
+    },
+    {
+        day: 14,
+        word: 'violence',
+        meaning: '폭력',
+        englishExplanation: 'violent behaviour that is intended to hurt or kill a person',
+        koreanExplanation:
+            '남을 거칠고 사납게 제압할 때에 쓰는, 주먹이나 발 또는 몽둥이 따위의 수단이나 힘. 넓은 뜻으로는 무기로 억누르는 힘을 이르기도 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/violence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=356428&searchKeywordTo=3',
+            koreanHeadword: '폭력',
+        },
+    },
+    {
+        day: 14,
+        word: 'intelligence',
+        meaning: '지능',
+        englishExplanation:
+            'the ability to learn, understand and think in a logical way about things',
+        koreanExplanation:
+            '계산이나 문장 작성 따위의 지적 작업에서, 성취 정도에 따라 정하여지는 적응 능력. 지능 지수 따위로 수치화할 수 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intelligence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481055&searchKeywordTo=3',
+            koreanHeadword: '지능',
+        },
+    },
+    {
+        day: 14,
+        word: 'ideal',
+        meaning: '이상적인, 완벽한; 이상',
+        englishExplanation: 'perfect',
+        koreanExplanation: '생각할 수 있는 범위 안에서 가장 완전하다고 여겨지는 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ideal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=260347&searchKeywordTo=3',
+            koreanHeadword: '이상8',
+        },
+    },
+    {
+        day: 14,
+        word: 'competent',
+        meaning: '유능한',
+        englishExplanation:
+            'having enough skill or knowledge to do something well or to the necessary standard',
+        koreanExplanation: '어떤 일을 남들보다 잘하는 능력이 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/competent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465867&searchKeywordTo=3',
+            koreanHeadword: '유능-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'continue',
+        meaning: '계속하다',
+        englishExplanation: 'to keep existing or happening without stopping',
+        koreanExplanation: '끊지 않고 이어 나가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395575&searchKeywordTo=3',
+            koreanHeadword: '계속-하다3',
+        },
+    },
+    {
+        day: 14,
+        word: 'character',
+        meaning: '성격; 특성; 등장인물, 캐릭터',
+        englishExplanation: 'a person or an animal in a book, play or film',
+        koreanExplanation: '개인이 가지고 있는 고유의 성질이나 품성.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/character',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444850&searchKeywordTo=3',
+            koreanHeadword: '성격2',
+        },
+    },
+    {
+        day: 14,
+        word: 'literacy',
+        meaning: '읽고 쓸 줄 아는 능력',
+        englishExplanation: 'the ability to read and write',
+        koreanExplanation: '글을 읽고 쓰며 이해할 수 있는 능력.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/literacy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=515799&searchKeywordTo=3',
+            koreanHeadword: '문해',
+        },
+    },
+    {
+        day: 14,
+        word: 'merchandise',
+        meaning: '상품, 물품; 판매하다',
+        englishExplanation: 'goods that are bought or sold',
+        koreanExplanation: '사고파는 물품.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/merchandise_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=175694&searchKeywordTo=3',
+            koreanHeadword: '상품3',
+        },
+    },
+    {
+        day: 14,
+        word: 'originate',
+        meaning: '비롯되다, 유래하다, 생기다',
+        englishExplanation:
+            'to happen or appear for the first time in a particular place or situation',
+        koreanExplanation: '처음으로 시작되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/originate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=161214&searchKeywordTo=3',
+            koreanHeadword: '비롯-되다',
+        },
+    },
+    {
+        day: 14,
+        word: 'frightening',
+        meaning: '무서운',
+        englishExplanation: 'making you feel afraid',
+        koreanExplanation: '어떤 대상에 대하여 꺼려지거나 무슨 일이 일어날까 겁나는 데가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/frightening',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424035&searchKeywordTo=3',
+            koreanHeadword: '무섭다',
+        },
+    },
+    {
+        day: 14,
+        word: 'typically',
+        meaning: '전형적으로; 보통, 일반적으로',
+        englishExplanation:
+            'used to say that something usually happens in the way that you are stating',
+        koreanExplanation: '특별하지 아니하고 흔히 볼 수 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/typically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433983&searchKeywordTo=3',
+            koreanHeadword: '보통',
+        },
+    },
+    {
+        day: 14,
+        word: 'intelligent',
+        meaning: '총명한, 지성 있는',
+        englishExplanation:
+            'good at learning, understanding and thinking in a logical way about things',
+        koreanExplanation: '보거나 들은 것을 오래 기억하는 힘이 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intelligent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=328745&searchKeywordTo=3',
+            koreanHeadword: '총명-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'social',
+        meaning: '사회적인, 사회의; 사교적인',
+        englishExplanation: 'relating to activities in which people meet each other for pleasure',
+        koreanExplanation: '사회에 관계되거나 사회성을 지닌 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/social_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=162418&searchKeywordTo=3',
+            koreanHeadword: '사회-적',
+        },
+    },
+    {
+        day: 14,
+        word: 'continuously',
+        meaning: '계속해서',
+        englishExplanation:
+            'in a way that happens or exists for a period of time without being interrupted',
+        koreanExplanation: '끊이지 않고 이어 나가는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continuously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=22192&searchKeywordTo=3',
+            koreanHeadword: '계속-적',
+        },
+    },
+    {
+        day: 14,
+        word: 'violent',
+        meaning: '폭력적인, 난폭한; 격렬한',
+        englishExplanation:
+            'involving or caused by physical force that is intended to hurt or kill a person',
+        koreanExplanation: '폭력을 사용하거나 폭력의 방법으로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/violent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500228&searchKeywordTo=3',
+            koreanHeadword: '폭력-적',
+        },
+    },
+    {
+        day: 14,
+        word: 'residential',
+        meaning: '주거의',
+        englishExplanation: 'suitable for living in',
+        koreanExplanation: '일정한 곳에 머물러 삶. 또는 그런 집.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/residential',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485852&searchKeywordTo=3',
+            koreanHeadword: '주거2',
+        },
+    },
+    {
+        day: 14,
+        word: 'socialize',
+        meaning: '사회화하다, 어울리다',
+        englishExplanation:
+            'to meet and spend time with people in a friendly way, in order to enjoy yourself',
+        koreanExplanation: '인간이 사회의 한 성원으로 생활하도록 기성세대에 동화하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/socialize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438252&searchKeywordTo=3',
+            koreanHeadword: '사회화-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'residence',
+        meaning: '주택, 거주',
+        englishExplanation: 'a house, especially a large or impressive one',
+        koreanExplanation: '사람이 들어가 살 수 있게 지은 건물.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/residence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477459&searchKeywordTo=3',
+            koreanHeadword: '주택',
+        },
+    },
+    {
+        day: 14,
+        word: 'simplify',
+        meaning: '단순화하다',
+        englishExplanation: 'to make something easier to do or understand',
+        koreanExplanation: '복잡한 것을 간단하게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/simplify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=75282&searchKeywordTo=3',
+            koreanHeadword: '단순화-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'intellectual',
+        meaning: '지능의, 지적인',
+        englishExplanation:
+            'relating to or using a person’s ability to think in a logical way and understand things',
+        koreanExplanation:
+            '계산이나 문장 작성 따위의 지적 작업에서, 성취 정도에 따라 정하여지는 적응 능력. 지능 지수 따위로 수치화할 수 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intellectual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481055&searchKeywordTo=3',
+            koreanHeadword: '지능',
+        },
+    },
+    {
+        day: 14,
+        word: 'appearance',
+        meaning: '외모, 외관; 출현, 나타남',
+        englishExplanation: 'the way that a person or thing looks on the outside',
+        koreanExplanation: '겉으로 드러나 보이는 모양.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appearance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244890&searchKeywordTo=3',
+            koreanHeadword: '외모2',
+        },
+    },
+    {
+        day: 14,
+        word: 'various',
+        meaning: '다양한',
+        englishExplanation: 'several different',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/various',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'creature',
+        meaning: '생물; ~한 사람, ~한 자',
+        englishExplanation:
+            'a living thing, real or imaginary, that can move around, such as an animal',
+        koreanExplanation:
+            '생명을 가지고 스스로 생활 현상을 유지하여 나가는 물체. 영양·운동·생장·증식을 하며, 동물·식물·미생물로 나뉜다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/creature',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446236&searchKeywordTo=3',
+            koreanHeadword: '생물',
+        },
+    },
+    {
+        day: 14,
+        word: 'failure',
+        meaning: '실패; 실패자',
+        englishExplanation: 'lack of success in doing or achieving something',
+        koreanExplanation: '일을 잘못하여 뜻한 대로 되지 아니하거나 그르침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/failure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=204085&searchKeywordTo=3',
+            koreanHeadword: '실패2',
+        },
+    },
+    {
+        day: 14,
+        word: 'resident',
+        meaning: '거주자, 주민; 거주하고 있는',
+        englishExplanation: 'a person who lives in a particular place or who has their home there',
+        koreanExplanation: '일정한 곳에 거주하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resident_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=14186&searchKeywordTo=3',
+            koreanHeadword: '거주-자',
+        },
+    },
+    {
+        day: 14,
+        word: 'ritual',
+        meaning: '의식, 관례; 의식적인, 의례적인',
+        englishExplanation:
+            'a series of actions that are always performed in the same way, especially as part of a religious ceremony',
+        koreanExplanation: '행사를 치르는 일정한 법식. 또는 정하여진 방식에 따라 치르는 행사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ritual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=260913&searchKeywordTo=3',
+            koreanHeadword: '의식4',
+        },
+    },
+    {
+        day: 14,
+        word: 'characteristic',
+        meaning: '특징적인; 특성, 특징',
+        englishExplanation: 'a typical feature or quality that something/a person has',
+        koreanExplanation: '일정한 사물에만 있는 특수한 성질.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/characteristic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=348489&searchKeywordTo=3',
+            koreanHeadword: '특성1',
+        },
+    },
+    {
+        day: 14,
+        word: 'target',
+        meaning: '목표, 대상; 과녁; 표적으로 삼다',
+        englishExplanation: 'a result that you try to achieve',
+        koreanExplanation: '어떤 목적을 이루려고 지향하는 실제적 대상으로 삼음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/target_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=119571&searchKeywordTo=3',
+            koreanHeadword: '목표',
+        },
+    },
+    {
+        day: 14,
+        word: 'variety',
+        meaning: '여러 가지, 갖가지; 다양성; 종류, 품종',
+        englishExplanation: 'several different sorts of the same thing',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/variety',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 14,
+        word: 'socially',
+        meaning: '사회적으로',
+        englishExplanation: 'in a way that is related to society and the way it is organized',
+        koreanExplanation: '사회에 관계되거나 사회성을 지닌 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/socially',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=162418&searchKeywordTo=3',
+            koreanHeadword: '사회-적',
+        },
+    },
+    {
+        day: 14,
+        word: 'continuous',
+        meaning: '계속적인',
+        englishExplanation: 'happening or existing for a period of time without being interrupted',
+        koreanExplanation: '끊이지 않고 이어 나가는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continuous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=22192&searchKeywordTo=3',
+            koreanHeadword: '계속-적',
+        },
+    },
+    {
+        day: 15,
+        word: 'exclusive',
+        meaning: '배타적인, 독점적인; 독점 기사',
+        englishExplanation: 'only to be used by one particular person or group',
+        koreanExplanation: '남을 배척하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exclusive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=429483&searchKeywordTo=3',
+            koreanHeadword: '배타-적',
+        },
+    },
+    {
+        day: 15,
+        word: 'crisis',
+        meaning: '위기, 어려운 상황',
+        englishExplanation:
+            'a time of great danger, difficulty or doubt when problems must be solved or important decisions must be made',
+        koreanExplanation: '위험한 고비나 시기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crisis',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=466485&searchKeywordTo=3',
+            koreanHeadword: '위기1',
+        },
+    },
+    {
+        day: 15,
+        word: 'participate',
+        meaning: '참여하다',
+        englishExplanation: 'to take part in or become involved in an activity',
+        koreanExplanation: '어떤 일에 끼어들어 관계하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/participate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=487666&searchKeywordTo=3',
+            koreanHeadword: '참여-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'circuit',
+        meaning: '순환, 순회; 회로',
+        englishExplanation: 'a line, route or journey around a place',
+        koreanExplanation: '주기적으로 자꾸 되풀이하여 돎. 또는 그런 과정.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/circuit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197469&searchKeywordTo=3',
+            koreanHeadword: '순환1',
+        },
+    },
+    {
+        day: 15,
+        word: 'capable',
+        meaning: '유능한, 역량 있는; 할 수 있는',
+        englishExplanation: 'having the ability or qualities necessary for doing something',
+        koreanExplanation: '어떤 일을 남들보다 잘하는 능력이 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/capable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465867&searchKeywordTo=3',
+            koreanHeadword: '유능-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'alteration',
+        meaning: '변화, 변경',
+        englishExplanation: 'a change to something that makes it different',
+        koreanExplanation: '사물의 성질, 모양, 상태 따위가 바뀌어 달라짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/alteration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432677&searchKeywordTo=3',
+            koreanHeadword: '변화',
+        },
+    },
+    {
+        day: 15,
+        word: 'precision',
+        meaning: '정확',
+        englishExplanation: 'the quality of being exact, accurate and careful',
+        koreanExplanation: '바르고 확실함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/precision',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295987&searchKeywordTo=3',
+            koreanHeadword: '정확1',
+        },
+    },
+    {
+        day: 15,
+        word: 'cherish',
+        meaning: '소중히 하다',
+        englishExplanation: 'to love a person or thing very much and want to protect them or it',
+        koreanExplanation: '대상을 귀중하게 여기고 아끼는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cherish',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=196444&searchKeywordTo=3',
+            koreanHeadword: '소중-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'nobility',
+        meaning: '고귀함; 귀족',
+        englishExplanation:
+            'people of high social position who have titles such as that of duke or duchess',
+        koreanExplanation:
+            '가문이나 신분 따위가 좋아 정치적·사회적 특권을 가진 계층. 또는 그런 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/nobility',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=41915&searchKeywordTo=3',
+            koreanHeadword: '귀족1',
+        },
+    },
+    {
+        day: 15,
+        word: 'alter',
+        meaning: '변경하다, 바꾸다',
+        englishExplanation: 'to become different',
+        koreanExplanation: '다르게 바꾸어 새롭게 고치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/alter',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433193&searchKeywordTo=3',
+            koreanHeadword: '변경-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'occupation',
+        meaning: '직업; 점령',
+        englishExplanation: 'a job or profession',
+        koreanExplanation:
+            '생계를 유지하기 위하여 자신의 적성과 능력에 따라 일정한 기간 동안 계속하여 종사하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488039&searchKeywordTo=3',
+            koreanHeadword: '직업',
+        },
+    },
+    {
+        day: 15,
+        word: 'perception',
+        meaning: '지각, 인지',
+        englishExplanation:
+            'an idea, a belief or an image you have as a result of how you see or understand something',
+        koreanExplanation: '알아서 깨달음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/perception',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486298&searchKeywordTo=3',
+            koreanHeadword: '지각4',
+        },
+    },
+    {
+        day: 15,
+        word: 'perceive',
+        meaning: '인지하다, 알아차리다',
+        englishExplanation: 'to understand or think of a person or thing in a particular way',
+        koreanExplanation: '어떤 사실을 인정하여 알다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/perceive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=272055&searchKeywordTo=3',
+            koreanHeadword: '인지-하다2',
+        },
+    },
+    {
+        day: 15,
+        word: 'equality',
+        meaning: '평등, 동등',
+        englishExplanation: 'the fact of being equal in rights, status, advantages, etc.',
+        koreanExplanation: '권리, 의무, 자격 등이 차별 없이 고르고 한결같음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/equality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499799&searchKeywordTo=3',
+            koreanHeadword: '평등',
+        },
+    },
+    {
+        day: 15,
+        word: 'navigator',
+        meaning: '조종사, 항해사',
+        englishExplanation: 'a person who navigates, for example on a ship or an aircraft',
+        koreanExplanation:
+            '항공기를 일정한 방향과 속도로 움직이도록 다루는 기능과 자격을 갖춘 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/navigator',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=300333&searchKeywordTo=3',
+            koreanHeadword: '조종-사',
+        },
+    },
+    {
+        day: 15,
+        word: 'anniversary',
+        meaning: '기념일',
+        englishExplanation:
+            'a date that is an exact number of years after the date of an important or special event',
+        koreanExplanation:
+            '축하하거나 기릴 만한 일이 있을 때, 해마다 그 일이 있었던 날을 기억하는 날.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/anniversary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=49197&searchKeywordTo=3',
+            koreanHeadword: '기념-일',
+        },
+    },
+    {
+        day: 15,
+        word: 'occupancy',
+        meaning: '점유',
+        englishExplanation: 'the act of living in or using a building, room, piece of land, etc.',
+        koreanExplanation: '물건이나 영역, 지위 따위를 차지함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupancy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478936&searchKeywordTo=3',
+            koreanHeadword: '점유1',
+        },
+    },
+    {
+        day: 15,
+        word: 'agent',
+        meaning: '대리인, 중개인; 에이전트; 직원, 요원',
+        englishExplanation:
+            'a person whose job is to act for, or manage the affairs of, other people in business, politics, etc.',
+        koreanExplanation: '다른 사람을 대신하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/agent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411395&searchKeywordTo=3',
+            koreanHeadword: '대리-인',
+        },
+    },
+    {
+        day: 15,
+        word: 'recognition',
+        meaning: '인식, 알아봄; 승인, 인정',
+        englishExplanation:
+            'the act of remembering who a person is when you see them, or of identifying what something is',
+        koreanExplanation: '사물을 분별하고 판단하여 앎.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recognition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472610&searchKeywordTo=3',
+            koreanHeadword: '인식',
+        },
+    },
+    {
+        day: 15,
+        word: 'equivalence',
+        meaning: '같음, 동등함',
+        englishExplanation:
+            'the fact or state of being equal in value, amount, meaning, importance, etc.',
+        koreanExplanation: '등급이나 정도가 같다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/equivalence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=414013&searchKeywordTo=3',
+            koreanHeadword: '동등-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'exclude',
+        meaning: '제외하다, 배제하다',
+        englishExplanation:
+            'to deliberately not include something in what you are doing or considering',
+        koreanExplanation: '따로 떼어 내어 한데 헤아리지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exclude',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484790&searchKeywordTo=3',
+            koreanHeadword: '제외-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'concerned',
+        meaning: '걱정스러운; 관련된',
+        englishExplanation: 'worried and feeling concern about something/a person',
+        koreanExplanation: '안심이 되지 않아 속을 태우다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/concerned',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394343&searchKeywordTo=3',
+            koreanHeadword: '걱정-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'noble',
+        meaning: '고귀한, 숭고한; 귀족의',
+        englishExplanation:
+            'having or showing fine personal qualities that people admire, such as courage, honesty and care for others',
+        koreanExplanation: '훌륭하고 귀중하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/noble_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=399345&searchKeywordTo=3',
+            koreanHeadword: '고귀-하다2',
+        },
+    },
+    {
+        day: 15,
+        word: 'alternative',
+        meaning: '대안, 대체; 대신하는, 대체의',
+        englishExplanation:
+            'a thing that you can choose to do or have out of two or more possibilities',
+        koreanExplanation: '어떤 안을 대신하는 안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/alternative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=408921&searchKeywordTo=3',
+            koreanHeadword: '대안3',
+        },
+    },
+    {
+        day: 15,
+        word: 'ignore',
+        meaning: '무시하다, 못 본 척하다',
+        englishExplanation: 'to pay no attention to something',
+        koreanExplanation: '사물의 존재 의의나 가치를 알아주지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ignore',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423803&searchKeywordTo=3',
+            koreanHeadword: '무시-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'recognize',
+        meaning: '알아보다, 분간하다; 인정하다, 승인하다',
+        englishExplanation:
+            'to know who a person is or what something is when you see, hear or experience them/it, because you have seen, heard, etc. them/it before',
+        koreanExplanation: '조사하거나 살펴보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recognize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=456671&searchKeywordTo=3',
+            koreanHeadword: '알아-보다',
+        },
+    },
+    {
+        day: 15,
+        word: 'circumstance',
+        meaning: '상황, 환경',
+        englishExplanation:
+            'the conditions and facts that are related to and affect a situation, an event or an action',
+        koreanExplanation: '일이 되어 가는 과정이나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/circumstance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445025&searchKeywordTo=3',
+            koreanHeadword: '상황2',
+        },
+    },
+    {
+        day: 15,
+        word: 'capture',
+        meaning: '잡다, 포획하다; 점유하다; 포획; 점령',
+        englishExplanation:
+            'to catch a person or an animal and keep them as a prisoner or shut them in a space that they cannot escape from',
+        koreanExplanation: '손으로 움키고 놓지 않다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/capture_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281090&searchKeywordTo=3',
+            koreanHeadword: '잡다1',
+        },
+    },
+    {
+        day: 15,
+        word: 'equally',
+        meaning: '똑같이, 평등하게',
+        englishExplanation: 'to the same degree',
+        koreanExplanation: '모양, 성질, 분량 따위가 조금도 다른 데가 없이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/equally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=93561&searchKeywordTo=3',
+            koreanHeadword: '똑같-이',
+        },
+    },
+    {
+        day: 15,
+        word: 'ignorance',
+        meaning: '무지, 무식',
+        englishExplanation: 'a lack of knowledge or information about something',
+        koreanExplanation: '아는 것이 없음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ignorance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424176&searchKeywordTo=3',
+            koreanHeadword: '무지6',
+        },
+    },
+    {
+        day: 15,
+        word: 'occupant',
+        meaning: '점유자',
+        englishExplanation:
+            'a person who lives or works in a particular house, room, building, etc.',
+        koreanExplanation: '어떤 물건을 자기의 지배 아래에 두고 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=293175&searchKeywordTo=3',
+            koreanHeadword: '점유-자',
+        },
+    },
+    {
+        day: 15,
+        word: 'adequately',
+        meaning: '적당히, 충분히',
+        englishExplanation:
+            'in a way that is enough in quantity, or good enough in quality, for a particular purpose or need',
+        koreanExplanation: '정도에 알맞게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adequately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=290370&searchKeywordTo=3',
+            koreanHeadword: '적당-히',
+        },
+    },
+    {
+        day: 15,
+        word: 'react',
+        meaning: '반응하다',
+        englishExplanation:
+            'to change or behave in a particular way as a result of or in response to something',
+        koreanExplanation: '자극에 대응하여 어떤 현상이 일어나다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/react',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=130854&searchKeywordTo=3',
+            koreanHeadword: '반응-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'navigate',
+        meaning: '길을 찾다; 항해하다, 조종하다',
+        englishExplanation:
+            'to plan and direct the course of ship, plane, car, etc., for example by using a map',
+        koreanExplanation: '배를 타고 바다 위를 다니다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/navigate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503349&searchKeywordTo=3',
+            koreanHeadword: '항해-하다',
+        },
+    },
+    {
+        day: 15,
+        word: 'precise',
+        meaning: '정확한, 정밀한; 꼼꼼한, 세밀한',
+        englishExplanation: 'clear and accurate',
+        koreanExplanation: '바르고 확실하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/precise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480778&searchKeywordTo=3',
+            koreanHeadword: '정확-하다1',
+        },
+    },
+    {
+        day: 15,
+        word: 'adequate',
+        meaning: '적당한, 충분한',
+        englishExplanation:
+            'enough in quantity, or good enough in quality, for a particular purpose or need',
+        koreanExplanation: '정도에 알맞다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adequate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474919&searchKeywordTo=3',
+            koreanHeadword: '적당-하다2',
+        },
+    },
+    {
+        day: 15,
+        word: 'inclusion',
+        meaning: '통합, 포함',
+        englishExplanation: 'the fact of including a person or thing',
+        koreanExplanation: '둘 이상의 조직이나 기구 따위를 하나로 합침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inclusion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496095&searchKeywordTo=3',
+            koreanHeadword: '통합',
+        },
+    },
+    {
+        day: 15,
+        word: 'annual',
+        meaning: '해마다의, 연례의; 1년의, 한 해의',
+        englishExplanation: 'happening or done once every year',
+        koreanExplanation: '해마다 하는 정례.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/annual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=230289&searchKeywordTo=3',
+            koreanHeadword: '연례1',
+        },
+    },
+    {
+        day: 15,
+        word: 'inclusive',
+        meaning: '포괄적인',
+        englishExplanation:
+            'having the total cost, or the cost of something that is mentioned, contained in the price',
+        koreanExplanation:
+            '일정한 대상이나 현상 따위를 한데 묶어서 어떤 범위나 한계 안에 모두 들게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inclusive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500575&searchKeywordTo=3',
+            koreanHeadword: '포괄-적',
+        },
+    },
+    {
+        day: 15,
+        word: 'include',
+        meaning: '포함하다',
+        englishExplanation:
+            'if one thing includes another, it has the second thing as one of its parts',
+        koreanExplanation: '어떤 사물이나 현상 가운데 함께 들어가게 하거나 함께 넣다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/include',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494110&searchKeywordTo=3',
+            koreanHeadword: '포함-하다2',
+        },
+    },
+    {
+        day: 16,
+        word: 'guard',
+        meaning: '지키다, 보호하다; 경비원; 경계, 감시',
+        englishExplanation:
+            'a person, such as a soldier, a police officer or a prison officer, who protects a place or people, or prevents prisoners from escaping',
+        koreanExplanation:
+            '재산, 이익, 안전 따위를 잃거나 침해당하지 아니하도록 보호하거나 감시하여 막다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/guard_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488705&searchKeywordTo=3',
+            koreanHeadword: '지키다',
+        },
+    },
+    {
+        day: 16,
+        word: 'dedication',
+        meaning: '전념, 헌신',
+        englishExplanation:
+            'the hard work and effort that a person puts into an activity or a purpose because they think it is important',
+        koreanExplanation: '오직 한 가지 일에만 마음을 씀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dedication',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477803&searchKeywordTo=3',
+            koreanHeadword: '전념2',
+        },
+    },
+    {
+        day: 16,
+        word: 'regardless',
+        meaning: '관계없이',
+        englishExplanation:
+            'paying no attention, even if the situation is bad or there are difficulties',
+        koreanExplanation: '서로 아무런 관련이 없이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/regardless',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=32432&searchKeywordTo=3',
+            koreanHeadword: '관계없-이',
+        },
+    },
+    {
+        day: 16,
+        word: 'domestic',
+        meaning: '국내의; 가정의',
+        englishExplanation: 'of or inside a particular country',
+        koreanExplanation: '한 가정을 전담하여 계속적으로 건강에 관한 진료나 상담을 하는 의사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/domestic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=389336&searchKeywordTo=3',
+            koreanHeadword: '가정-의',
+        },
+    },
+    {
+        day: 16,
+        word: 'indicate',
+        meaning: '가리키다, 지적하다; 나타내다, 암시하다',
+        englishExplanation: 'to show that something is true or exists',
+        koreanExplanation: '손가락 따위로 어떤 방향이나 대상을 집어서 보이거나 말하거나 알리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/indicate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=383017&searchKeywordTo=3',
+            koreanHeadword: '가리키다1',
+        },
+    },
+    {
+        day: 16,
+        word: 'elaboration',
+        meaning: '정교화, 공들임',
+        englishExplanation: 'a detailed explanation or description of something',
+        koreanExplanation: '솜씨나 기술 따위가 정밀하고 교묘하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/elaboration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292596&searchKeywordTo=3',
+            koreanHeadword: '정교-하다2',
+        },
+    },
+    {
+        day: 16,
+        word: 'guardian',
+        meaning: '보호자, 수호자',
+        englishExplanation: 'a person who protects something',
+        koreanExplanation: '어떤 사람을 보호할 책임을 가지고 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/guardian',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=144911&searchKeywordTo=3',
+            koreanHeadword: '보호-자',
+        },
+    },
+    {
+        day: 16,
+        word: 'dedicated',
+        meaning: '전념하는, 헌신적인',
+        englishExplanation: 'working hard at something because it is very important to you',
+        koreanExplanation: '몸과 마음을 바쳐 있는 힘을 다하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dedicated',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506420&searchKeywordTo=3',
+            koreanHeadword: '헌신-하다',
+        },
+    },
+    {
+        day: 16,
+        word: 'reinforce',
+        meaning: '보강하다, 강화하다',
+        englishExplanation: 'to make a feeling, an idea, etc. stronger',
+        koreanExplanation: '보태거나 채워서 본디보다 더 튼튼하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reinforce',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=149547&searchKeywordTo=3',
+            koreanHeadword: '보강-하다1',
+        },
+    },
+    {
+        day: 16,
+        word: 'regard',
+        meaning: '~을 여기다; 존경, 경의; 관심, 고려; 안부',
+        englishExplanation: 'to think about a person or thing in a particular way',
+        koreanExplanation: '마음속으로 그러하다고 인정하거나 생각하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/regard_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=456923&searchKeywordTo=3',
+            koreanHeadword: '여기다',
+        },
+    },
+    {
+        day: 16,
+        word: 'formula',
+        meaning: '공식, 식; 방식',
+        englishExplanation: 'a series of letters, numbers or symbols that represent a rule or law',
+        koreanExplanation: '계산의 법칙을 문자와 기호로 나타낸 식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/formula',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394878&searchKeywordTo=3',
+            koreanHeadword: '공식1',
+        },
+    },
+    {
+        day: 16,
+        word: 'efficiently',
+        meaning: '효율적으로',
+        englishExplanation: 'in a good and careful way, with no waste of time, money or energy',
+        koreanExplanation: '들인 노력에 비하여 얻는 결과가 큰 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/efficiently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=384313&searchKeywordTo=3',
+            koreanHeadword: '효율-적',
+        },
+    },
+    {
+        day: 16,
+        word: 'formulate',
+        meaning: '만들어 내다, 공식화하다',
+        englishExplanation:
+            'to create or prepare something carefully, giving particular attention to the details',
+        koreanExplanation: '공적으로 정해진 형식이나 방식이 되게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/formulate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=29393&searchKeywordTo=3',
+            koreanHeadword: '공식화-하다',
+        },
+    },
+    {
+        day: 16,
+        word: 'efficiency',
+        meaning: '효율, 능률',
+        englishExplanation: 'the quality of doing something well with no waste of time or money',
+        koreanExplanation: '들인 노력과 얻은 결과의 비율.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/efficiency',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=384312&searchKeywordTo=3',
+            koreanHeadword: '효율',
+        },
+    },
+    {
+        day: 16,
+        word: 'founder',
+        meaning: '설립자, 창시자',
+        englishExplanation:
+            'a person who starts an organization, institution, etc. or causes something to be built',
+        koreanExplanation: '기관이나 조직체 따위를 새로 만들어 세운 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/founder_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=183766&searchKeywordTo=3',
+            koreanHeadword: '설립-자',
+        },
+    },
+    {
+        day: 16,
+        word: 'incredible',
+        meaning: '믿어지지 않는; 엄청난, 놀랄 만한',
+        englishExplanation: 'impossible or very difficult to believe',
+        koreanExplanation: '감동을 일으킬 만큼 훌륭하거나 굉장하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/incredible',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403097&searchKeywordTo=3',
+            koreanHeadword: '놀랍다',
+        },
+    },
+    {
+        day: 16,
+        word: 'fame',
+        meaning: '명성, 명망',
+        englishExplanation: 'the state of being known and talked about by many people',
+        koreanExplanation: '세상에 널리 퍼져 평판 높은 이름.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fame',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=421972&searchKeywordTo=3',
+            koreanHeadword: '명성1',
+        },
+    },
+    {
+        day: 16,
+        word: 'found',
+        meaning: '설립하다, 세우다; ~에 기초를 두다',
+        englishExplanation:
+            'to start something, such as an organization or an institution, especially by providing money',
+        koreanExplanation: '기관이나 조직체 따위를 만들어 일으키다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/found',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=183437&searchKeywordTo=3',
+            koreanHeadword: '설립-하다',
+        },
+    },
+    {
+        day: 16,
+        word: 'grab',
+        meaning: '붙잡다, 움켜쥐다; 잡아채다; 움켜잡으려고 함',
+        englishExplanation: 'to take or hold a person or thing with your hand suddenly or roughly',
+        koreanExplanation: '놓치지 않도록 단단히 쥐다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/grab_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436875&searchKeywordTo=3',
+            koreanHeadword: '붙-잡다',
+        },
+    },
+    {
+        day: 16,
+        word: 'indicator',
+        meaning: '지표, 지수',
+        englishExplanation:
+            'a sign that shows you what something is like or how a situation is changing',
+        koreanExplanation: '방향이나 목적, 기준 따위를 나타내는 표지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/indicator',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=310910&searchKeywordTo=3',
+            koreanHeadword: '지표3',
+        },
+    },
+    {
+        day: 16,
+        word: 'domain',
+        meaning: '영토; 분야, 영역; 도메인',
+        englishExplanation:
+            'an area of knowledge or activity, especially one that a person is responsible for',
+        koreanExplanation:
+            '국제법에서, 국가의 통치권이 미치는 구역. 흔히 토지로 이루어진 국가의 영역을 이르나 영해와 영공을 포함하는 경우도 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/domain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234401&searchKeywordTo=3',
+            koreanHeadword: '영토3',
+        },
+    },
+    {
+        day: 16,
+        word: 'benefit',
+        meaning: '이익, 혜택; 득을 보다',
+        englishExplanation: 'an advantage that something gives you',
+        koreanExplanation: '물질적으로나 정신적으로 보탬이 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/benefit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=263072&searchKeywordTo=3',
+            koreanHeadword: '이익2',
+        },
+    },
+    {
+        day: 16,
+        word: 'recruit',
+        meaning: '모집하다, 채용하다; 신병, 신입 회원',
+        englishExplanation:
+            'to find new people to join a company, an organization, the armed forces, etc.',
+        koreanExplanation: '사람이나 작품, 물품 따위를 일정한 조건 아래 널리 알려 뽑아 모으다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recruit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=118986&searchKeywordTo=3',
+            koreanHeadword: '모집-하다',
+        },
+    },
+    {
+        day: 16,
+        word: 'flood',
+        meaning: '홍수; 침수되다, 범람하다',
+        englishExplanation: 'a large amount of water covering an area that is usually dry',
+        koreanExplanation: '비가 많이 와서 강이나 개천에 갑자기 크게 불은 물.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/flood_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377674&searchKeywordTo=3',
+            koreanHeadword: '홍수1',
+        },
+    },
+    {
+        day: 16,
+        word: 'fundamental',
+        meaning: '기초적인, 근본적인; 핵심적인, 필수적인',
+        englishExplanation: 'serious and very important',
+        koreanExplanation: '사물이나 일 따위의 기본이 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fundamental_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=516052&searchKeywordTo=3',
+            koreanHeadword: '기초-적',
+        },
+    },
+    {
+        day: 16,
+        word: 'recreation',
+        meaning: '휴양, 오락',
+        englishExplanation:
+            'the act or process of making something that existed in the past exist or seem to exist again',
+        koreanExplanation: '편안히 쉬면서 몸과 마음을 보양함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recreation_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504232&searchKeywordTo=3',
+            koreanHeadword: '휴양',
+        },
+    },
+    {
+        day: 16,
+        word: 'dedicate',
+        meaning: '헌신하다, 바치다',
+        englishExplanation:
+            'to give a lot of your time and effort to a particular activity or purpose because you think it is important',
+        koreanExplanation: '몸과 마음을 바쳐 있는 힘을 다하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dedicate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506420&searchKeywordTo=3',
+            koreanHeadword: '헌신-하다',
+        },
+    },
+    {
+        day: 16,
+        word: 'infancy',
+        meaning: '유아기',
+        englishExplanation: 'the time when a child is a baby or very young',
+        koreanExplanation:
+            '만 1세부터 6세까지의 어린 시기. 자기중심성, 정서성, 구체성이 나타나며 만 3세까지의 전기에는 일상어의 습득, 생활 습관의 확립 따위가 이루어지고 후기에는 개성이 뚜렷하여진다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/infancy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=258888&searchKeywordTo=3',
+            koreanHeadword: '유아-기1',
+        },
+    },
+    {
+        day: 16,
+        word: 'foundation',
+        meaning: '창립; 기반',
+        englishExplanation:
+            'a principle, an idea or a fact that something is based on and that it grows from',
+        koreanExplanation: '기관이나 단체 따위를 새로 만들어 세움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/foundation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=326899&searchKeywordTo=3',
+            koreanHeadword: '창립2',
+        },
+    },
+    {
+        day: 16,
+        word: 'indication',
+        meaning: '표시, 징후',
+        englishExplanation:
+            'a remark or sign that shows that something is happening or what a person is thinking or feeling',
+        koreanExplanation: '겉으로 드러내 보임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/indication',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499314&searchKeywordTo=3',
+            koreanHeadword: '표시1',
+        },
+    },
+    {
+        day: 16,
+        word: 'reform',
+        meaning: '개혁, 개선; 개혁하다, 개선하다',
+        englishExplanation:
+            'change that is made to a social system, an organization, etc. in order to improve or correct it',
+        koreanExplanation: '제도나 기구 따위를 새롭게 뜯어고침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reform_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=389382&searchKeywordTo=3',
+            koreanHeadword: '개혁',
+        },
+    },
+    {
+        day: 16,
+        word: 'reinforcement',
+        meaning: '보강, 강화',
+        englishExplanation:
+            'extra soldiers or police officers who are sent to a place because more are needed',
+        koreanExplanation: '보태거나 채워서 본디보다 더 튼튼하게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reinforcement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=149545&searchKeywordTo=3',
+            koreanHeadword: '보강1',
+        },
+    },
+    {
+        day: 16,
+        word: 'effort',
+        meaning: '노력, 수고',
+        englishExplanation: 'an attempt to do something, especially when it is difficult to do',
+        koreanExplanation: '목적을 이루기 위하여 몸과 마음을 다하여 애를 씀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/effort',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=66635&searchKeywordTo=3',
+            koreanHeadword: '노력1',
+        },
+    },
+    {
+        day: 16,
+        word: 'grip',
+        meaning: '꽉 잡음, 움켜쥠; 통제, 지배; 꽉 잡다, 움켜잡다',
+        englishExplanation: 'an act of holding a person or thing tightly',
+        koreanExplanation: '일정한 방침이나 목적에 따라 행위를 제한하거나 제약함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/grip_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=495410&searchKeywordTo=3',
+            koreanHeadword: '통제2',
+        },
+    },
+    {
+        day: 16,
+        word: 'sufficient',
+        meaning: '충분한',
+        englishExplanation: 'enough for a particular purpose',
+        koreanExplanation: '모자람이 없이 넉넉하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sufficient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486375&searchKeywordTo=3',
+            koreanHeadword: '충분-하다1',
+        },
+    },
+    {
+        day: 16,
+        word: 'recreate',
+        meaning: '되살리다, 재현하다; 기분을 전환시키다',
+        englishExplanation:
+            'to make something that existed in the past exist or seem to exist again',
+        koreanExplanation: '죽거나 없어졌던 것을 다시 살리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recreate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=91318&searchKeywordTo=3',
+            koreanHeadword: '되살-리다',
+        },
+    },
+    {
+        day: 16,
+        word: 'regarding',
+        meaning: '~에 대하여',
+        englishExplanation: 'relating to a person or thing',
+        koreanExplanation: '어떤 일을 말하거나 생각하는 대상으로 하여.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/regarding',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=32723&searchKeywordTo=3',
+            koreanHeadword: '관-하다2',
+        },
+    },
+    {
+        day: 16,
+        word: 'efficient',
+        meaning: '효율적인, 능률적인',
+        englishExplanation:
+            'doing something in a good, careful and complete way, with no waste of time, money or energy',
+        koreanExplanation: '들인 노력에 비하여 얻는 결과가 큰 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/efficient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=384313&searchKeywordTo=3',
+            koreanHeadword: '효율-적',
+        },
+    },
+    {
+        day: 16,
+        word: 'infant',
+        meaning: '유아; 입문자; 유아의; 초기의',
+        englishExplanation: 'a baby or very young child',
+        koreanExplanation: '젖을 먹는 어린아이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/infant_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=258880&searchKeywordTo=3',
+            koreanHeadword: '유아3',
+        },
+    },
+    {
+        day: 16,
+        word: 'profound',
+        meaning: '심오한; 강한; 깊은',
+        englishExplanation: 'very great',
+        koreanExplanation: '사상이나 이론 따위가 깊이가 있고 오묘하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/profound',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=206467&searchKeywordTo=3',
+            koreanHeadword: '심오-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'elimination',
+        meaning: '제거',
+        englishExplanation: 'the process of removing or getting rid of something completely',
+        koreanExplanation: '없애 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/elimination',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477173&searchKeywordTo=3',
+            koreanHeadword: '제거3',
+        },
+    },
+    {
+        day: 17,
+        word: 'manipulate',
+        meaning: '조작하다, 잘 다루다; 조종하다',
+        englishExplanation:
+            'to control or influence a person or thing, often in a dishonest way so that they do not realize it',
+        koreanExplanation: '기계 따위를 일정한 방식에 따라 다루어 움직이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manipulate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=298696&searchKeywordTo=3',
+            koreanHeadword: '조작-하다2',
+        },
+    },
+    {
+        day: 17,
+        word: 'maintenance',
+        meaning: '유지, 관리, 보수',
+        englishExplanation:
+            'the act of keeping something in good condition by checking or repairing it regularly',
+        koreanExplanation: '어떤 상태나 상황을 그대로 보존하거나 변함없이 계속하여 지탱함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/maintenance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=256609&searchKeywordTo=3',
+            koreanHeadword: '유지8',
+        },
+    },
+    {
+        day: 17,
+        word: 'limitation',
+        meaning: '한정, 제한',
+        englishExplanation: 'the act or process of limiting or controlling a person or thing',
+        koreanExplanation: '수량이나 범위 따위를 제한하여 정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/limitation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=368196&searchKeywordTo=3',
+            koreanHeadword: '한정1',
+        },
+    },
+    {
+        day: 17,
+        word: 'generate',
+        meaning: '만들어 내다; 발생시키다',
+        englishExplanation: 'to produce energy, especially electricity',
+        koreanExplanation: '없던 것을 새로 만들어 내거나 생기게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=134470&searchKeywordTo=3',
+            koreanHeadword: '발생-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'maintain',
+        meaning: '유지하다; 유지하다; 주장하다',
+        englishExplanation: 'to make something continue at the same level, standard, etc.',
+        koreanExplanation: '어떤 상태나 상황을 그대로 보존하거나 변함없이 계속하여 지탱하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/maintain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=256909&searchKeywordTo=3',
+            koreanHeadword: '유지-하다2',
+        },
+    },
+    {
+        day: 17,
+        word: 'diminish',
+        meaning: '줄이다, 약해지다',
+        englishExplanation: 'to become smaller, weaker, etc.',
+        koreanExplanation: '물체의 길이나 넓이, 부피 따위를 본디보다 작게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/diminish',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480097&searchKeywordTo=3',
+            koreanHeadword: '줄-이다',
+        },
+    },
+    {
+        day: 17,
+        word: 'local',
+        meaning: '지역의, 현지의; 현지인',
+        englishExplanation:
+            'belonging to or relating to the particular place or area that you are talking about or with the place where you live',
+        koreanExplanation: '그 지역에 터전을 두고 사는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/local_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506186&searchKeywordTo=3',
+            koreanHeadword: '현지-인',
+        },
+    },
+    {
+        day: 17,
+        word: 'mention',
+        meaning: '언급하다, 말하다; 언급, 진술',
+        englishExplanation:
+            'to write or speak about something/a person, especially without giving much information',
+        koreanExplanation: '어떤 문제에 대하여 말하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mention_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457101&searchKeywordTo=3',
+            koreanHeadword: '언급-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'maximal',
+        meaning: '최대한의',
+        englishExplanation: 'as great or as large as possible',
+        koreanExplanation: '수나 양, 정도 따위가 가장 큼.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/maximal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=489297&searchKeywordTo=3',
+            koreanHeadword: '최대',
+        },
+    },
+    {
+        day: 17,
+        word: 'denial',
+        meaning: '부인, 부정',
+        englishExplanation: 'a statement that something is not true or does not exist',
+        koreanExplanation: '어떤 내용이나 사실을 옳거나 그러하다고 인정하지 아니함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/denial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153194&searchKeywordTo=3',
+            koreanHeadword: '부인2',
+        },
+    },
+    {
+        day: 17,
+        word: 'commonly',
+        meaning: '흔히, 일반적으로',
+        englishExplanation: 'usually',
+        koreanExplanation: '보통보다 더 자주 있거나 일어나서 쉽게 접할 수 있게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commonly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=384239&searchKeywordTo=3',
+            koreanHeadword: '흔-히',
+        },
+    },
+    {
+        day: 17,
+        word: 'maximum',
+        meaning: '최대, 최고; 최대의, 최고의',
+        englishExplanation: 'used after amounts to show that the amount is the highest possible',
+        koreanExplanation: '수나 양, 정도 따위가 가장 큼.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/maximum_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=489297&searchKeywordTo=3',
+            koreanHeadword: '최대',
+        },
+    },
+    {
+        day: 17,
+        word: 'minor',
+        meaning: '작은; 미성년자; 부전공',
+        englishExplanation: 'not very large, important or serious',
+        koreanExplanation:
+            '성년이 아닌 사람. 민법상 만 19세 미만의 사람을 이르며, 혼인한 미성년은 미성년자에서 제외된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/minor_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=125779&searchKeywordTo=3',
+            koreanHeadword: '미성년-자',
+        },
+    },
+    {
+        day: 17,
+        word: 'admit',
+        meaning: '인정하다; 자백하다; 허락하다',
+        englishExplanation: 'to agree, often unwillingly, that something is true',
+        koreanExplanation: '확실히 그렇다고 여기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=264902&searchKeywordTo=3',
+            koreanHeadword: '인정-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'comment',
+        meaning: '논평, 비평, 의견; 의견을 말하다, 논평하다',
+        englishExplanation:
+            'something that you say or write that gives an opinion on or explains a person or thing',
+        koreanExplanation: '어떤 글이나 말 또는 사건 따위의 내용에 대하여 논하여 비평함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/comment_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409200&searchKeywordTo=3',
+            koreanHeadword: '논평',
+        },
+    },
+    {
+        day: 17,
+        word: 'generation',
+        meaning: '세대; 발생',
+        englishExplanation: 'all the people who were born at about the same time',
+        koreanExplanation: '어린아이가 성장하여 부모 일을 계승할 때까지의 30년 정도 되는 기간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446464&searchKeywordTo=3',
+            koreanHeadword: '세대1',
+        },
+    },
+    {
+        day: 17,
+        word: 'leakage',
+        meaning: '누출',
+        englishExplanation: 'an amount of liquid or gas escaping through a hole in something',
+        koreanExplanation: '액체나 기체 따위가 밖으로 새어 나옴. 또는 그렇게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/leakage',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=69148&searchKeywordTo=3',
+            koreanHeadword: '누출',
+        },
+    },
+    {
+        day: 17,
+        word: 'manually',
+        meaning: '손으로, 수동으로',
+        englishExplanation: 'by hand rather than by machine or using electricity, etc.',
+        koreanExplanation: '다른 동력을 이용하지 않고 손의 힘만으로 움직임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=448877&searchKeywordTo=3',
+            koreanHeadword: '수동1',
+        },
+    },
+    {
+        day: 17,
+        word: 'manager',
+        meaning: '경영자, 감독',
+        englishExplanation:
+            'a person who is in charge of running a business, a shop or a similar organization or part of one',
+        koreanExplanation: '기업이나 사업을 관리하고 운영하는 사람이나 기관.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manager',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396345&searchKeywordTo=3',
+            koreanHeadword: '경영-자1',
+        },
+    },
+    {
+        day: 17,
+        word: 'community',
+        meaning: '공동체, 지역 사회; 단체',
+        englishExplanation:
+            'all the people who live in a particular area, country, etc. when talked about as a group',
+        koreanExplanation: '생활이나 행동 또는 목적 따위를 같이하는 집단.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/community',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397793&searchKeywordTo=3',
+            koreanHeadword: '공동-체',
+        },
+    },
+    {
+        day: 17,
+        word: 'admission',
+        meaning: '입학, 입장, 승인',
+        englishExplanation: 'the act of accepting a person into an institution, organization, etc.',
+        koreanExplanation: '학생이 되어 공부하기 위해 학교에 들어감. 또는 학교를 들어감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471315&searchKeywordTo=3',
+            koreanHeadword: '입학',
+        },
+    },
+    {
+        day: 17,
+        word: 'permission',
+        meaning: '허가, 허락',
+        englishExplanation:
+            'the act of allowing a person to do something, especially when this is done by a person in a position of authority',
+        koreanExplanation: '행동이나 일을 하도록 허용함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/permission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=370902&searchKeywordTo=3',
+            koreanHeadword: '허가1',
+        },
+    },
+    {
+        day: 17,
+        word: 'minimize',
+        meaning: '최소화하다',
+        englishExplanation:
+            'to reduce something, especially something bad, to the lowest possible level',
+        koreanExplanation: '가장 작게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/minimize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=335747&searchKeywordTo=3',
+            koreanHeadword: '최소화-하다1',
+        },
+    },
+    {
+        day: 17,
+        word: 'locate',
+        meaning: '~의 위치를 알아내다; 두다, 놓다',
+        englishExplanation: 'to find the exact position of a person or thing',
+        koreanExplanation: '일정한 곳에 놓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/locate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=90897&searchKeywordTo=3',
+            koreanHeadword: '두다',
+        },
+    },
+    {
+        day: 17,
+        word: 'meanwhile',
+        meaning: '그동안; 한편으로는',
+        englishExplanation: 'while something else is happening',
+        koreanExplanation:
+            '앞에서 이미 이야기한 만큼의 시간적 길이. 또는 다시 만나거나 연락하기 이전의 일정한 기간 동안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/meanwhile_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=43020&searchKeywordTo=3',
+            koreanHeadword: '그-동안',
+        },
+    },
+    {
+        day: 17,
+        word: 'genuine',
+        meaning: '진짜의, 진품의; 진실된, 거짓 없는; 순혈의',
+        englishExplanation: 'real',
+        koreanExplanation: '본뜨거나 거짓으로 만들어 낸 것이 아닌 참된 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/genuine',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=489213&searchKeywordTo=3',
+            koreanHeadword: '진짜',
+        },
+    },
+    {
+        day: 17,
+        word: 'immediately',
+        meaning: '즉시',
+        englishExplanation: 'without delay',
+        koreanExplanation: '어떤 일이 행하여지는 바로 그때.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/immediately_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=312696&searchKeywordTo=3',
+            koreanHeadword: '즉시',
+        },
+    },
+    {
+        day: 17,
+        word: 'commentary',
+        meaning: '주석, 해설; 실황 방송',
+        englishExplanation:
+            'a spoken description of an event that is given while it is happening, especially on the radio or television',
+        koreanExplanation: '낱말이나 문장의 뜻을 쉽게 풀이함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commentary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=305651&searchKeywordTo=3',
+            koreanHeadword: '주석7',
+        },
+    },
+    {
+        day: 17,
+        word: 'minimal',
+        meaning: '최소의, 아주 작은',
+        englishExplanation: 'very small in size or amount',
+        koreanExplanation: '수나 정도 따위가 가장 작음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/minimal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490113&searchKeywordTo=3',
+            koreanHeadword: '최소1',
+        },
+    },
+    {
+        day: 17,
+        word: 'lack',
+        meaning: '부족, 결핍; 결핍되다, 없다',
+        englishExplanation: 'the state of not having something or not having enough of something',
+        koreanExplanation: '필요한 양이나 기준에 미치지 못해 충분하지 아니함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/lack_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434879&searchKeywordTo=3',
+            koreanHeadword: '부족1',
+        },
+    },
+    {
+        day: 17,
+        word: 'minimum',
+        meaning: '최소, 최저; 최소인',
+        englishExplanation: 'used after amounts to show that the amount is the lowest possible',
+        koreanExplanation: '수나 정도 따위가 가장 작음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/minimum_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490113&searchKeywordTo=3',
+            koreanHeadword: '최소1',
+        },
+    },
+    {
+        day: 17,
+        word: 'limited',
+        meaning: '한정된',
+        englishExplanation: 'not very great in amount or extent',
+        koreanExplanation: '수량이나 범위 따위가 제한되어 정해지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/limited',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=368201&searchKeywordTo=3',
+            koreanHeadword: '한정-되다',
+        },
+    },
+    {
+        day: 17,
+        word: 'manual',
+        meaning: '설명서; 손의, 수동식의; 노동력을 사용하는',
+        englishExplanation: 'involving using the hands or physical strength',
+        koreanExplanation: '내용이나 이유, 사용법 따위를 설명한 글.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=184681&searchKeywordTo=3',
+            koreanHeadword: '설명-서',
+        },
+    },
+    {
+        day: 17,
+        word: 'remind',
+        meaning: '생각나게 하다, 상기시키다',
+        englishExplanation:
+            'to help a person remember something, especially something important that they must do',
+        koreanExplanation: '잊고 있던 일을 다시 생각나게 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/remind',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=178263&searchKeywordTo=3',
+            koreanHeadword: '상기-하다6',
+        },
+    },
+    {
+        day: 17,
+        word: 'master',
+        meaning: '대가, 정통한 사람; 주인; 석사; 숙달하다; 지배하다',
+        englishExplanation: 'a man who has people working for him, often as servants in his home',
+        koreanExplanation: '전문 분야에서 뛰어나 권위를 인정받는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/master_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411163&searchKeywordTo=3',
+            koreanHeadword: '대가3',
+        },
+    },
+    {
+        day: 17,
+        word: 'maximize',
+        meaning: '최대로 하다',
+        englishExplanation: 'to increase something as much as possible',
+        koreanExplanation: '크기나 양, 효과를 가능한 한 가장 크게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/maximize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=44281&searchKeywordTo=3',
+            koreanHeadword: '극대화-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'manipulation',
+        meaning: '조작',
+        englishExplanation:
+            'behaviour that controls or influences a person or thing, often in a dishonest way so that they do not realize it',
+        koreanExplanation: '기계 따위를 일정한 방식에 따라 다루어 움직임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manipulation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303755&searchKeywordTo=3',
+            koreanHeadword: '조작5',
+        },
+    },
+    {
+        day: 17,
+        word: 'deny',
+        meaning: '부인하다',
+        englishExplanation: 'to say that something is not true',
+        koreanExplanation: '어떤 내용이나 사실을 옳거나 그러하다고 인정하지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/deny',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=152671&searchKeywordTo=3',
+            koreanHeadword: '부인-하다',
+        },
+    },
+    {
+        day: 17,
+        word: 'monitor',
+        meaning: '모니터, 감시 장치; 감시하다, 관찰하다',
+        englishExplanation: 'a screen that shows information from a computer',
+        koreanExplanation:
+            '방송국이나 신문사의 의뢰를 받아 프로그램이나 기사에 대한 의견을 제출하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/monitor_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425561&searchKeywordTo=3',
+            koreanHeadword: '모니터',
+        },
+    },
+    {
+        day: 18,
+        word: 'emphasis',
+        meaning: '강조',
+        englishExplanation: 'special importance that is given to something',
+        koreanExplanation: '어떤 부분을 특별히 강하게 주장하거나 두드러지게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emphasis',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=9290&searchKeywordTo=3',
+            koreanHeadword: '강조2',
+        },
+    },
+    {
+        day: 18,
+        word: 'compete',
+        meaning: '경쟁하다, 겨루다; 참가하다',
+        englishExplanation: 'to take part in a contest or game',
+        koreanExplanation: '같은 목적에 대하여 이기거나 앞서려고 서로 겨루다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/compete',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=19376&searchKeywordTo=3',
+            koreanHeadword: '경쟁-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'originate',
+        meaning: '비롯되다, 유래하다',
+        englishExplanation:
+            'to happen or appear for the first time in a particular place or situation',
+        koreanExplanation: '처음으로 시작되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/originate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=161214&searchKeywordTo=3',
+            koreanHeadword: '비롯-되다',
+        },
+    },
+    {
+        day: 18,
+        word: 'repeat',
+        meaning: '반복하다, 되풀이하다',
+        englishExplanation: 'to say or write something again or more than once',
+        koreanExplanation: '같은 일을 되풀이하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/repeat_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=130578&searchKeywordTo=3',
+            koreanHeadword: '반복-하다1',
+        },
+    },
+    {
+        day: 18,
+        word: 'emotion',
+        meaning: '감정, 정서',
+        englishExplanation: 'a strong feeling such as love, fear or anger',
+        koreanExplanation: '어떤 현상이나 일에 대하여 일어나는 마음이나 느끼는 기분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emotion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=388167&searchKeywordTo=3',
+            koreanHeadword: '감정6',
+        },
+    },
+    {
+        day: 18,
+        word: 'complete',
+        meaning: '완전한; 완료된; 완료하다',
+        englishExplanation: 'including all the parts, etc. that are necessary',
+        koreanExplanation: '완전히 끝마치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complete_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244761&searchKeywordTo=3',
+            koreanHeadword: '완료-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'proportional',
+        meaning: '비례하는',
+        englishExplanation:
+            'increasing or decreasing in size, amount or degree according to changes in something else',
+        koreanExplanation:
+            '한쪽의 양이나 수가 증가하는 만큼 그와 관련 있는 다른 쪽의 양이나 수도 증가하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/proportional',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439270&searchKeywordTo=3',
+            koreanHeadword: '비례-하다1',
+        },
+    },
+    {
+        day: 18,
+        word: 'originally',
+        meaning: '원래, 처음에는',
+        englishExplanation:
+            'used to describe the situation that existed at the beginning of a particular period or activity, especially before something was changed',
+        koreanExplanation: '처음부터 그러했거나 본디의 상태로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/originally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=468452&searchKeywordTo=3',
+            koreanHeadword: '원래1',
+        },
+    },
+    {
+        day: 18,
+        word: 'orient',
+        meaning: '지향하게 하다; 자기 위치를 알다; 적응하다',
+        englishExplanation: 'to direct a person or thing towards something',
+        koreanExplanation: '일정한 조건이나 환경 따위에 맞추어 응하거나 알맞게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/orient_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279654&searchKeywordTo=3',
+            koreanHeadword: '적응-하다2',
+        },
+    },
+    {
+        day: 18,
+        word: 'origin',
+        meaning: '기원, 근원; 태생, 혈통',
+        englishExplanation: 'the point from which something starts',
+        koreanExplanation: '사물이 처음으로 생김. 또는 그런 근원.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/origin',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=51101&searchKeywordTo=3',
+            koreanHeadword: '기원5',
+        },
+    },
+    {
+        day: 18,
+        word: 'praise',
+        meaning: '칭찬, 찬사; 칭찬하다',
+        englishExplanation: 'words that show that you approve of and admire a person or thing',
+        koreanExplanation: '좋은 점이나 착하고 훌륭한 일을 높이 평가함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/praise_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494834&searchKeywordTo=3',
+            koreanHeadword: '칭찬',
+        },
+    },
+    {
+        day: 18,
+        word: 'phenomenon',
+        meaning: '현상',
+        englishExplanation:
+            'a fact or an event in nature or society, especially one that is not fully understood',
+        koreanExplanation: '인간이 지각할 수 있는, 사물의 모양과 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/phenomenon',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503709&searchKeywordTo=3',
+            koreanHeadword: '현상4',
+        },
+    },
+    {
+        day: 18,
+        word: 'particular',
+        meaning: '특정한; 특별한, 각별한; 까다로운',
+        englishExplanation:
+            'used to emphasize that you are referring to one individual person, thing or type of thing and not others',
+        koreanExplanation: '특별히 정하여져 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/particular_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=352302&searchKeywordTo=3',
+            koreanHeadword: '특정-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'remote',
+        meaning: '외딴, 동떨어진; 먼; 원격의',
+        englishExplanation: 'far away from places where other people live',
+        koreanExplanation: '외따로 떨어져 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/remote_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=242954&searchKeywordTo=3',
+            koreanHeadword: '외딴2',
+        },
+    },
+    {
+        day: 18,
+        word: 'complicated',
+        meaning: '복잡한',
+        englishExplanation: 'made of many different things or parts that are related',
+        koreanExplanation: '일이나 감정 따위가 갈피를 잡기 어려울 만큼 여러 가지가 얽혀 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complicated',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437504&searchKeywordTo=3',
+            koreanHeadword: '복잡-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'competitive',
+        meaning: '경쟁력을 지닌, 경쟁의',
+        englishExplanation:
+            'used to describe a situation in which people or organizations compete against each other',
+        koreanExplanation: '같은 목적에 대하여 이기거나 앞서려고 서로 겨룸.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/competitive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18268&searchKeywordTo=3',
+            koreanHeadword: '경쟁',
+        },
+    },
+    {
+        day: 18,
+        word: 'experience',
+        meaning: '경험; 경험하다',
+        englishExplanation:
+            'the knowledge and skill that you have gained through doing something for a period of time',
+        koreanExplanation: '자신이 실제로 해 보거나 겪어 봄. 또는 거기서 얻은 지식이나 기능.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/experience_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393110&searchKeywordTo=3',
+            koreanHeadword: '경험',
+        },
+    },
+    {
+        day: 18,
+        word: 'potentially',
+        meaning: '잠재적으로',
+        englishExplanation: 'used to say that something may develop into something',
+        koreanExplanation: '겉으로 드러나지 않고 숨은 상태로 존재하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/potentially',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475385&searchKeywordTo=3',
+            koreanHeadword: '잠재-적',
+        },
+    },
+    {
+        day: 18,
+        word: 'proportion',
+        meaning: '비율; 균형',
+        englishExplanation: 'a part or share of a whole',
+        koreanExplanation: '다른 수나 양에 대한 어떤 수나 양의 비.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/proportion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157692&searchKeywordTo=3',
+            koreanHeadword: '비율2',
+        },
+    },
+    {
+        day: 18,
+        word: 'possess',
+        meaning: '소유하다; 갖추다',
+        englishExplanation: 'to have or own something',
+        koreanExplanation: '가지고 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/possess',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=196163&searchKeywordTo=3',
+            koreanHeadword: '소유-하다1',
+        },
+    },
+    {
+        day: 18,
+        word: 'originality',
+        meaning: '독창성',
+        englishExplanation:
+            'the quality of being new and interesting in a way that is different from anything that has existed before',
+        koreanExplanation: '독창적인 성향이나 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/originality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416232&searchKeywordTo=3',
+            koreanHeadword: '독창-성',
+        },
+    },
+    {
+        day: 18,
+        word: 'appealing',
+        meaning: '매력적인, 마음을 끄는',
+        englishExplanation: 'attractive or interesting',
+        koreanExplanation: '사람의 마음을 사로잡아 끄는 힘이 있는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appealing',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=113393&searchKeywordTo=3',
+            koreanHeadword: '매력-적',
+        },
+    },
+    {
+        day: 18,
+        word: 'portion',
+        meaning: '부분, 일부; 몫, 할당',
+        englishExplanation: 'one part of something larger',
+        koreanExplanation: '전체를 이루는 작은 범위. 또는 전체를 몇 개로 나눈 것의 하나.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/portion_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435298&searchKeywordTo=3',
+            koreanHeadword: '부분1',
+        },
+    },
+    {
+        day: 18,
+        word: 'option',
+        meaning: '선택, 선택지; 옵션',
+        englishExplanation: 'something that you can choose to have or do',
+        koreanExplanation: '여럿 가운데서 필요한 것을 골라 뽑음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/option_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=186076&searchKeywordTo=3',
+            koreanHeadword: '선택',
+        },
+    },
+    {
+        day: 18,
+        word: 'apart',
+        meaning: '떨어져; 따로, 개별적으로',
+        englishExplanation: 'separated by a distance, of space or time',
+        koreanExplanation: '한데 섞이거나 함께 있지 아니하고 혼자 떨어져서.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apart',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416585&searchKeywordTo=3',
+            koreanHeadword: '따로',
+        },
+    },
+    {
+        day: 18,
+        word: 'emotional',
+        meaning: '감정의, 감정적인',
+        englishExplanation: 'relating to people’s feelings',
+        koreanExplanation: '어떤 현상이나 일에 대하여 일어나는 마음이나 느끼는 기분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emotional',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=388167&searchKeywordTo=3',
+            koreanHeadword: '감정6',
+        },
+    },
+    {
+        day: 18,
+        word: 'expertise',
+        meaning: '전문 지식',
+        englishExplanation: 'expert knowledge or skill in a particular subject, activity or job',
+        koreanExplanation:
+            '어떤 분야에 상당한 지식과 경험을 가지고 오직 그 분야만 연구하거나 맡음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expertise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478632&searchKeywordTo=3',
+            koreanHeadword: '전문8',
+        },
+    },
+    {
+        day: 18,
+        word: 'opinion',
+        meaning: '의견, 견해',
+        englishExplanation: 'your feelings or thoughts about a person or thing, rather than a fact',
+        koreanExplanation: '어떤 대상에 대하여 가지는 생각.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/opinion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475921&searchKeywordTo=3',
+            koreanHeadword: '의견1',
+        },
+    },
+    {
+        day: 18,
+        word: 'possession',
+        meaning: '소유; 소유물, 소지품',
+        englishExplanation: 'something that you own or have with you at a particular time',
+        koreanExplanation: '가지고 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/possession',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451111&searchKeywordTo=3',
+            koreanHeadword: '소유2',
+        },
+    },
+    {
+        day: 18,
+        word: 'coordination',
+        meaning: '조직화, 조정; 동등, 동격',
+        englishExplanation:
+            'the act of making parts of something, groups of people, etc. work together in an efficient and organized way',
+        koreanExplanation:
+            '사물이 일정한 질서를 갖고 유기적인 활동을 하게끔 통일이 이루어짐. 또는 그렇게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/coordination',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=299346&searchKeywordTo=3',
+            koreanHeadword: '조직-화',
+        },
+    },
+    {
+        day: 18,
+        word: 'implication',
+        meaning: '영향; 함축, 암시',
+        englishExplanation: 'a possible effect or result of an action or a decision',
+        koreanExplanation: '어떤 사물의 효과나 작용이 다른 것에 미치는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/implication',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463354&searchKeywordTo=3',
+            koreanHeadword: '영향4',
+        },
+    },
+    {
+        day: 18,
+        word: 'fancy',
+        meaning: '화려한, 장식이 많은; 고급의, 일류의; 공상, 상상; 원하다, ~하고 싶다',
+        englishExplanation: 'to want something or want to do something',
+        koreanExplanation: '환하게 빛나며 곱고 아름답다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fancy_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=509070&searchKeywordTo=3',
+            koreanHeadword: '화려-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'preciously',
+        meaning: '소중하게, 귀중하게',
+        englishExplanation: 'in a way that treats something as valuable or dearly loved',
+        koreanExplanation: '소중하고 귀중하게 여기는 방식으로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/precious_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=196444&searchKeywordTo=3',
+            koreanHeadword: '소중-하다',
+            englishBasis: 'precious',
+        },
+    },
+    {
+        day: 18,
+        word: 'imply',
+        meaning: '뜻을 내포하다; 암시하다',
+        englishExplanation:
+            'to suggest that something is true or that you feel or think something, without saying so directly',
+        koreanExplanation: '넌지시 알리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/imply',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=219171&searchKeywordTo=3',
+            koreanHeadword: '암시-하다1',
+        },
+    },
+    {
+        day: 18,
+        word: 'particularly',
+        meaning: '특히',
+        englishExplanation: 'especially',
+        koreanExplanation: '보통과 다르게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/particularly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499743&searchKeywordTo=3',
+            koreanHeadword: '특-히',
+        },
+    },
+    {
+        day: 18,
+        word: 'precious',
+        meaning: '소중한, 귀중한; 값비싼',
+        englishExplanation: 'rare and worth a lot of money',
+        koreanExplanation: '매우 귀중하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/precious_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=196444&searchKeywordTo=3',
+            koreanHeadword: '소중-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'coordinate',
+        meaning: '조직화하다; 조정하다; 동등하게 하다; 동등한; 좌표; 동등한 사람',
+        englishExplanation:
+            'to organize the different parts of an activity and the people involved in it so that it works well',
+        koreanExplanation: '사물이 일정한 질서를 갖고 유기적인 활동을 하게끔 통일이 이루어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/coordinate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=299347&searchKeywordTo=3',
+            koreanHeadword: '조직화-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'completion',
+        meaning: '완성',
+        englishExplanation: 'the act or process of finishing something',
+        koreanExplanation: '완전히 다 이룸.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/completion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=243718&searchKeywordTo=3',
+            koreanHeadword: '완성1',
+        },
+    },
+    {
+        day: 18,
+        word: 'complicate',
+        meaning: '복잡하게 하다',
+        englishExplanation: 'to make something more difficult to do, understand or deal with',
+        koreanExplanation: '여러 요소가 얽혀 복잡해지게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complicate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437504&searchKeywordTo=3',
+            koreanHeadword: '복잡-하다',
+        },
+    },
+    {
+        day: 18,
+        word: 'appeal',
+        meaning: '간청하다, 호소하다; 항소하다; 흥미를 끌다; 간청, 애원; 항소',
+        englishExplanation:
+            'a deeply felt request for money, help or information that is needed immediately, especially one made by a charity or by the police',
+        koreanExplanation: '간절히 청하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appeal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=4708&searchKeywordTo=3',
+            koreanHeadword: '간청-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'distinct',
+        meaning: '다른, 별개의; 뚜렷한, 확실한',
+        englishExplanation: 'easily or clearly heard, seen, felt, etc.',
+        koreanExplanation: '당장 문제 되거나 해당되는 것 이외의.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distinct',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72782&searchKeywordTo=3',
+            koreanHeadword: '다른',
+        },
+    },
+    {
+        day: 19,
+        word: 'assign',
+        meaning: '할당하다, 부여하다; 맡기다',
+        englishExplanation:
+            'to give a person something that they can use, or some work or responsibility',
+        koreanExplanation: '몫을 갈라 나누다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/assign',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=502569&searchKeywordTo=3',
+            koreanHeadword: '할당-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'consequent',
+        meaning: '~의 결과로 일어나는',
+        englishExplanation: 'happening as a result of something',
+        koreanExplanation: '앞선 일이나 원인으로 인해 뒤따라 생기는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consequent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18497&searchKeywordTo=3',
+            koreanHeadword: '결과1',
+        },
+    },
+    {
+        day: 19,
+        word: 'instinctive',
+        meaning: '본능적인',
+        englishExplanation: 'based on instinct, not thought or training',
+        koreanExplanation: '본능에 따라 움직이려고 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instinctive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153726&searchKeywordTo=3',
+            koreanHeadword: '본능-적',
+        },
+    },
+    {
+        day: 19,
+        word: 'significant',
+        meaning: '중요한, 중대한; 상당한',
+        englishExplanation: 'large or important enough to have an effect or to be noticed',
+        koreanExplanation: '귀중하고 요긴하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/significant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484241&searchKeywordTo=3',
+            koreanHeadword: '중요-하다2',
+        },
+    },
+    {
+        day: 19,
+        word: 'primarily',
+        meaning: '주로, 첫째로',
+        englishExplanation: 'mainly',
+        koreanExplanation: '기본으로 삼거나 특별히 중심이 되게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/primarily',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=297166&searchKeywordTo=3',
+            koreanHeadword: '주-로1',
+        },
+    },
+    {
+        day: 19,
+        word: 'significance',
+        meaning: '중요성, 의의',
+        englishExplanation:
+            'the importance of something, especially when this has an effect on what happens in the future',
+        koreanExplanation: '사물의 중요한 요소나 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/significance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=311442&searchKeywordTo=3',
+            koreanHeadword: '중요-성',
+        },
+    },
+    {
+        day: 19,
+        word: 'aspect',
+        meaning: '측면; 양상',
+        englishExplanation: 'a particular part or feature of a situation, an idea, a problem, etc.',
+        koreanExplanation: '앞뒤에 대하여 왼쪽이나 오른쪽의 면.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aspect',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493304&searchKeywordTo=3',
+            koreanHeadword: '측면',
+        },
+    },
+    {
+        day: 19,
+        word: 'instinct',
+        meaning: '본능, 본성',
+        englishExplanation:
+            'a natural quality that makes people and animals tend to behave in a particular way using the knowledge and abilities that they were born with rather than thought or training',
+        koreanExplanation:
+            '어떤 생물 조직체가 선천적으로 하게 되어 있는 동작이나 운동. 아기가 젖을 빤다든지 병아리가 알을 깨고 나오는 행동 따위이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instinct',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=431630&searchKeywordTo=3',
+            koreanHeadword: '본능',
+        },
+    },
+    {
+        day: 19,
+        word: 'consequently',
+        meaning: '결과적으로',
+        englishExplanation: 'as a result',
+        koreanExplanation: '앞선 일의 결과로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consequently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18497&searchKeywordTo=3',
+            koreanHeadword: '결과1',
+        },
+    },
+    {
+        day: 19,
+        word: 'priority',
+        meaning: '우선 사항, 우선권',
+        englishExplanation:
+            'something that you think is more important than other things and should be dealt with first',
+        koreanExplanation: '특별히 남보다 먼저 행사할 수 있는 권리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/priority',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=249197&searchKeywordTo=3',
+            koreanHeadword: '우선-권',
+        },
+    },
+    {
+        day: 19,
+        word: 'opposite',
+        meaning: '정반대의; 맞은편의; 반대의 것',
+        englishExplanation:
+            'on the other side of a particular area from a person or thing and usually facing them',
+        koreanExplanation: '위치나 방향, 성질이 서로 맞서거나 정반대인.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/opposite_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426442&searchKeywordTo=3',
+            koreanHeadword: '반대2',
+        },
+    },
+    {
+        day: 19,
+        word: 'approval',
+        meaning: '승인, 허가',
+        englishExplanation: 'the feeling that a person or thing is good or acceptable',
+        koreanExplanation: '어떤 사실을 마땅하다고 받아들임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/approval',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=203971&searchKeywordTo=3',
+            koreanHeadword: '승인2',
+        },
+    },
+    {
+        day: 19,
+        word: 'distinguished',
+        meaning: '저명한, 뛰어난; 뚜렷한',
+        englishExplanation: 'very successful and admired by other people',
+        koreanExplanation: '세상에 이름이 널리 드러나 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distinguished',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279626&searchKeywordTo=3',
+            koreanHeadword: '저명-하다1',
+        },
+    },
+    {
+        day: 19,
+        word: 'despite',
+        meaning: '~에도 불구하고',
+        englishExplanation:
+            'used to show that something happened or is true, although something else might have happened to prevent it',
+        koreanExplanation: '어떤 조건이나 방해가 있어도 그것에 얽매이지 않고.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/despite',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435479&searchKeywordTo=3',
+            koreanHeadword: '불구-하다2',
+        },
+    },
+    {
+        day: 19,
+        word: 'opponent',
+        meaning: '상대, 적; 반대자',
+        englishExplanation:
+            'a person that you are playing or fighting against in a game, competition, argument, etc.',
+        koreanExplanation: '서로 마주 대함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/opponent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445982&searchKeywordTo=3',
+            koreanHeadword: '상대4',
+        },
+    },
+    {
+        day: 19,
+        word: 'suspicious',
+        meaning: '의심스러운, 수상한',
+        englishExplanation:
+            'feeling that a person has done something wrong, illegal or dishonest, without having any proof',
+        koreanExplanation: '확실히 알 수 없어서 믿지 못할 만한 데가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suspicious',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=264256&searchKeywordTo=3',
+            koreanHeadword: '의심-스럽다',
+        },
+    },
+    {
+        day: 19,
+        word: 'rank',
+        meaning: '계급, 지위; 줄, 열; 등급을 매기다; 차지하다',
+        englishExplanation:
+            'the position, especially a high position, that a person has in a particular organization, society, etc.',
+        koreanExplanation: '사회나 일정한 조직 내에서의 지위, 관직 따위의 단계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rank_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392235&searchKeywordTo=3',
+            koreanHeadword: '계급2',
+        },
+    },
+    {
+        day: 19,
+        word: 'proof',
+        meaning: '증거, 증명',
+        englishExplanation: 'information, documents, etc. that show that something is true',
+        koreanExplanation: '어떤 사실을 증명할 수 있는 근거.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/proof_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=308105&searchKeywordTo=3',
+            koreanHeadword: '증거',
+        },
+    },
+    {
+        day: 19,
+        word: 'prove',
+        meaning: '입증하다; 판명되다',
+        englishExplanation: 'to use facts, evidence, etc. to show that something is true',
+        koreanExplanation: '어떤 증거 따위를 내세워 증명하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prove',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=275947&searchKeywordTo=3',
+            koreanHeadword: '입증-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'respect',
+        meaning: '존경, 존중; 면, 점, 사항; 존경하다, 존중하다',
+        englishExplanation:
+            'a strong feeling of approval of a person or thing because of their good qualities or achievements',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respect_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481065&searchKeywordTo=3',
+            koreanHeadword: '존경',
+        },
+    },
+    {
+        day: 19,
+        word: 'distinction',
+        meaning: '구별, 차이',
+        englishExplanation:
+            'a clear difference or contrast especially between people or things that are similar or related',
+        koreanExplanation: '성질이나 종류에 따라 차이가 남. 또는 성질이나 종류에 따라 갈라놓음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distinction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402573&searchKeywordTo=3',
+            koreanHeadword: '구별2',
+        },
+    },
+    {
+        day: 19,
+        word: 'signal',
+        meaning: '신호; 조짐, 징후; 신호를 보내다',
+        englishExplanation:
+            'a movement or sound that you make to give a person information, instructions, a warning, etc.',
+        koreanExplanation:
+            '일정한 부호, 표지, 소리, 몸짓 따위로 특정한 내용 또는 정보를 전달하거나 지시를 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/signal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449118&searchKeywordTo=3',
+            koreanHeadword: '신호1',
+        },
+    },
+    {
+        day: 19,
+        word: 'settle',
+        meaning: '확정하다, 정하다; 정착하다; 해결하다',
+        englishExplanation: 'to put an end to an argument or a disagreement',
+        koreanExplanation: '일을 확실하게 정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/settle_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377223&searchKeywordTo=3',
+            koreanHeadword: '확정-하다2',
+        },
+    },
+    {
+        day: 19,
+        word: 'prospect',
+        meaning: '가망, 가능성; 예상, 기대',
+        englishExplanation: 'the possibility that something will happen',
+        koreanExplanation: '될 만하거나 가능성이 있는 희망.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prospect_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=383567&searchKeywordTo=3',
+            koreanHeadword: '가망4',
+        },
+    },
+    {
+        day: 19,
+        word: 'oppose',
+        meaning: '반대하다',
+        englishExplanation:
+            'to disagree strongly with a person’s plan, policy, etc. and try to change it or prevent it from succeeding',
+        koreanExplanation: '어떤 행동이나 견해, 제안 따위에 따르지 아니하고 맞서 거스르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/oppose',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=132337&searchKeywordTo=3',
+            koreanHeadword: '반대-하다1',
+        },
+    },
+    {
+        day: 19,
+        word: 'pursue',
+        meaning: '추구하다; 뒤쫓다, 추적하다',
+        englishExplanation: 'to do something or try to achieve something over a period of time',
+        koreanExplanation: '목적을 이룰 때까지 뒤좇아 구하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pursue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=336100&searchKeywordTo=3',
+            koreanHeadword: '추구-하다1',
+        },
+    },
+    {
+        day: 19,
+        word: 'prime',
+        meaning: '주요한, 가장 중요한; 최상의; 전성기',
+        englishExplanation: 'main',
+        koreanExplanation: '가장 중요하거나 중심이 되는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prime_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=304854&searchKeywordTo=3',
+            koreanHeadword: '주요-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'suspicion',
+        meaning: '의혹, 의심',
+        englishExplanation:
+            'a feeling that a person has done something wrong, illegal or dishonest, even though you have no proof',
+        koreanExplanation: '의심하여 수상히 여김. 또는 그런 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suspicion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470025&searchKeywordTo=3',
+            koreanHeadword: '의혹',
+        },
+    },
+    {
+        day: 19,
+        word: 'sequence',
+        meaning: '연속적인 사건들; 순서',
+        englishExplanation:
+            'a set of events, actions, numbers, etc. that have a particular order and that lead to a particular result',
+        koreanExplanation: '정하여진 기준에서 말하는 전후, 좌우, 상하 따위의 차례 관계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sequence_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446540&searchKeywordTo=3',
+            koreanHeadword: '순서',
+        },
+    },
+    {
+        day: 19,
+        word: 'prospective',
+        meaning: '장래의, 가망이 있는',
+        englishExplanation: 'expected to do something or to become something',
+        koreanExplanation: '다가올 앞날.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prospective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476231&searchKeywordTo=3',
+            koreanHeadword: '장래',
+        },
+    },
+    {
+        day: 19,
+        word: 'ranking',
+        meaning: '순위, 랭킹',
+        englishExplanation:
+            'the position of a person or thing on a scale that shows how good or important they are in relation to other similar people or things, especially in sport',
+        koreanExplanation: '차례나 순서를 나타내는 위치나 지위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ranking_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447063&searchKeywordTo=3',
+            koreanHeadword: '순위',
+        },
+    },
+    {
+        day: 19,
+        word: 'assess',
+        meaning: '평가하다; 매기다',
+        englishExplanation: 'to make a judgement about the nature or quality of a person or thing',
+        koreanExplanation: '물건값을 헤아려 매기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/assess',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=358539&searchKeywordTo=3',
+            koreanHeadword: '평가-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'consequence',
+        meaning: '결과, 결말; 중요성',
+        englishExplanation:
+            'a result of something that has happened, especially an unpleasant result',
+        koreanExplanation: '어떤 원인이나 행동에 따라 생긴 결말이나 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consequence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396134&searchKeywordTo=3',
+            koreanHeadword: '결과2',
+        },
+    },
+    {
+        day: 19,
+        word: 'stimulus',
+        meaning: '자극',
+        englishExplanation:
+            'something that helps a person or thing to develop better or more quickly',
+        koreanExplanation: '어떠한 작용을 주어 감각이나 마음에 반응이 일어나게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stimulus',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473352&searchKeywordTo=3',
+            koreanHeadword: '자극1',
+        },
+    },
+    {
+        day: 19,
+        word: 'stimulation',
+        meaning: '자극',
+        englishExplanation:
+            'the act of encouraging of something so that it develops or becomes more active',
+        koreanExplanation: '어떠한 작용을 주어 감각이나 마음에 반응이 일어나게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stimulation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473352&searchKeywordTo=3',
+            koreanHeadword: '자극1',
+        },
+    },
+    {
+        day: 19,
+        word: 'specific',
+        meaning: '특정한; 구체적인',
+        englishExplanation: 'relating to one particular thing only',
+        koreanExplanation: '특별히 정하여져 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/specific',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=352302&searchKeywordTo=3',
+            koreanHeadword: '특정-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'respectful',
+        meaning: '존경하는, 경의를 표하는',
+        englishExplanation: 'showing or feeling respect',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respectful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292168&searchKeywordTo=3',
+            koreanHeadword: '존경-하다',
+        },
+    },
+    {
+        day: 19,
+        word: 'distinctive',
+        meaning: '특유의, 독특한',
+        englishExplanation:
+            'having a quality or characteristic that makes something different and easily noticed',
+        koreanExplanation: '일정한 사물만이 특별히 갖추고 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distinctive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=497077&searchKeywordTo=3',
+            koreanHeadword: '특유',
+        },
+    },
+    {
+        day: 19,
+        word: 'significantly',
+        meaning: '상당히, 크게',
+        englishExplanation:
+            'in a way that is large or important enough to have an effect on something or to be noticed',
+        koreanExplanation: '수준이나 실력이 꽤 높이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/significantly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=442531&searchKeywordTo=3',
+            koreanHeadword: '상당-히',
+        },
+    },
+    {
+        day: 20,
+        word: 'resemblance',
+        meaning: '닮음',
+        englishExplanation: 'the fact of being or looking similar to a person or thing',
+        koreanExplanation: '두 개의 기하학 도형이 각이나 길이의 비가 같음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resemblance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=75663&searchKeywordTo=3',
+            koreanHeadword: '닮-음',
+        },
+    },
+    {
+        day: 20,
+        word: 'instant',
+        meaning: '즉각의; 인스턴트의; 순간',
+        englishExplanation: 'happening immediately',
+        koreanExplanation: '아주 짧은 동안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instant_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452458&searchKeywordTo=3',
+            koreanHeadword: '순간3',
+        },
+    },
+    {
+        day: 20,
+        word: 'intensive',
+        meaning: '강한; 집중적인',
+        englishExplanation: 'involving a lot of work or activity done in a short time',
+        koreanExplanation:
+            '중국 양쯔강과 한수이강이 합류하는 곳. 우창, 한커우, 한양 지방을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intensive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392000&searchKeywordTo=3',
+            koreanHeadword: '강한1',
+        },
+    },
+    {
+        day: 20,
+        word: 'constant',
+        meaning: '일정한, 변함없는; 지속적인, 끊임없는',
+        englishExplanation: 'happening all the time or repeatedly',
+        koreanExplanation: '어떤 것의 크기, 모양, 범위, 시간 따위가 하나로 정하여져 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/constant_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472031&searchKeywordTo=3',
+            koreanHeadword: '일정-하다',
+        },
+    },
+    {
+        day: 20,
+        word: 'restriction',
+        meaning: '제한, 제약',
+        englishExplanation: 'a rule or law that limits what you can do or what can happen',
+        koreanExplanation: '일정한 한도를 정하거나 그 한도를 넘지 못하게 막음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/restriction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484748&searchKeywordTo=3',
+            koreanHeadword: '제한1',
+        },
+    },
+    {
+        day: 20,
+        word: 'restrict',
+        meaning: '제한하다',
+        englishExplanation: 'to limit the size, amount or range of something',
+        koreanExplanation: '일정한 한도를 정하거나 그 한도를 넘지 못하게 막다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/restrict',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292058&searchKeywordTo=3',
+            koreanHeadword: '제한-하다',
+        },
+    },
+    {
+        day: 20,
+        word: 'distress',
+        meaning: '고뇌, 고통; 괴롭히다, 고민하게 하다',
+        englishExplanation: 'a feeling of great worry or unhappiness',
+        koreanExplanation: '괴로워하고 번뇌함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distress_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=23272&searchKeywordTo=3',
+            koreanHeadword: '고뇌',
+        },
+    },
+    {
+        day: 20,
+        word: 'trait',
+        meaning: '특징, 특색',
+        englishExplanation: 'a particular quality in your personality',
+        koreanExplanation: '다른 것에 비하여 특별히 눈에 뜨이는 점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/trait',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=353454&searchKeywordTo=3',
+            koreanHeadword: '특징',
+        },
+    },
+    {
+        day: 20,
+        word: 'assist',
+        meaning: '도와주다, 돕다',
+        englishExplanation: 'to help a person to do something',
+        koreanExplanation: '남을 위하여 애써 주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/assist_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=84994&searchKeywordTo=3',
+            koreanHeadword: '도와-주다',
+        },
+    },
+    {
+        day: 20,
+        word: 'destroyer',
+        meaning: '파괴자',
+        englishExplanation: 'a small fast ship used in war, for example to protect larger ships',
+        koreanExplanation: '파괴하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/destroyer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=352614&searchKeywordTo=3',
+            koreanHeadword: '파괴-자',
+        },
+    },
+    {
+        day: 20,
+        word: 'destruction',
+        meaning: '파괴',
+        englishExplanation: 'the act of destroying something',
+        koreanExplanation: '때려 부수거나 깨뜨려 헐어 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/destruction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=498143&searchKeywordTo=3',
+            koreanHeadword: '파괴',
+        },
+    },
+    {
+        day: 20,
+        word: 'tendency',
+        meaning: '경향',
+        englishExplanation: 'a likelihood of behaving or developing in a particular way',
+        koreanExplanation: '현상이나 사상, 행동 따위가 어떤 방향으로 기울어짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tendency',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393088&searchKeywordTo=3',
+            koreanHeadword: '경향2',
+        },
+    },
+    {
+        day: 20,
+        word: 'institution',
+        meaning: '기관, 협회',
+        englishExplanation:
+            'a large, important organization that has a particular purpose, for example a university or bank',
+        koreanExplanation: '사회에서 일정한 역할이나 목적을 위해 설치한 조직.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/institution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401693&searchKeywordTo=3',
+            koreanHeadword: '기관11',
+        },
+    },
+    {
+        day: 20,
+        word: 'strict',
+        meaning: '엄격한; 정확한, 엄밀한',
+        englishExplanation: 'that must be obeyed exactly',
+        koreanExplanation: '말, 태도, 규칙 따위가 매우 엄하고 철저하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/strict',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457004&searchKeywordTo=3',
+            koreanHeadword: '엄격-하다2',
+        },
+    },
+    {
+        day: 20,
+        word: 'assumption',
+        meaning: '가정, 추측',
+        englishExplanation:
+            'a belief or feeling that something is true or that something will happen, although there is no proof',
+        koreanExplanation: '사실이 아니거나 또는 사실인지 아닌지 분명하지 않은 것을 임시로 인정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/assumption',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=3691&searchKeywordTo=3',
+            koreanHeadword: '가정7',
+        },
+    },
+    {
+        day: 20,
+        word: 'similar',
+        meaning: '비슷한, 유사한',
+        englishExplanation: 'like a person or thing but not exactly the same',
+        koreanExplanation:
+            '두 개의 대상이 크기, 모양, 상태, 성질 따위가 똑같지는 아니하지만 전체적 또는 부분적으로 일치하는 점이 많은 상태에 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/similar',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436692&searchKeywordTo=3',
+            koreanHeadword: '비슷-하다2',
+        },
+    },
+    {
+        day: 20,
+        word: 'assistance',
+        meaning: '지원, 도움, 보조',
+        englishExplanation: 'help or support',
+        koreanExplanation: '지지하여 도움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/assistance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=316483&searchKeywordTo=3',
+            koreanHeadword: '지원2',
+        },
+    },
+    {
+        day: 20,
+        word: 'instrument',
+        meaning: '기구, 도구; 악기',
+        englishExplanation:
+            'an object used for producing musical sounds, for example a piano or a drum',
+        koreanExplanation: '세간, 도구, 기계 따위를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instrument',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=50674&searchKeywordTo=3',
+            koreanHeadword: '기구14',
+        },
+    },
+    {
+        day: 20,
+        word: 'similarity',
+        meaning: '유사점, 닮은 점',
+        englishExplanation:
+            'the state of being similar to a person or thing but not exactly the same',
+        koreanExplanation: '서로 비슷한 점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/similarity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465654&searchKeywordTo=3',
+            koreanHeadword: '유사-점',
+        },
+    },
+    {
+        day: 20,
+        word: 'steady',
+        meaning: '꾸준한, 지속적인; 확고한, 안정된',
+        englishExplanation: 'developing, growing, etc. gradually and in an even and regular way',
+        koreanExplanation: '한결같이 부지런하고 끈기가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/steady_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=57512&searchKeywordTo=3',
+            koreanHeadword: '꾸준-하다',
+        },
+    },
+    {
+        day: 20,
+        word: 'restoration',
+        meaning: '회복, 복원',
+        englishExplanation:
+            'the work of repairing and cleaning an old building, a painting, etc. so that its condition is as good as it originally was',
+        koreanExplanation: '원래의 상태로 돌이키거나 원래의 상태를 되찾음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/restoration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=379770&searchKeywordTo=3',
+            koreanHeadword: '회복',
+        },
+    },
+    {
+        day: 20,
+        word: 'instantly',
+        meaning: '즉시',
+        englishExplanation: 'immediately',
+        koreanExplanation: '어떤 일이 행하여지는 바로 그때.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instantly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=312696&searchKeywordTo=3',
+            koreanHeadword: '즉시',
+        },
+    },
+    {
+        day: 20,
+        word: 'steadily',
+        meaning: '꾸준히, 점차',
+        englishExplanation: 'gradually and in an even and regular way',
+        koreanExplanation: '한결같이 부지런하고 끈기가 있는 태도로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/steadily',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=56026&searchKeywordTo=3',
+            koreanHeadword: '꾸준-히',
+        },
+    },
+    {
+        day: 20,
+        word: 'stabilize',
+        meaning: '안정시키다',
+        englishExplanation: 'to become or to make something become steady and unlikely to change',
+        koreanExplanation: '바뀌어 달라지지 아니하고 일정한 상태를 유지하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stabilize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=215632&searchKeywordTo=3',
+            koreanHeadword: '안정-하다1',
+        },
+    },
+    {
+        day: 20,
+        word: 'stability',
+        meaning: '안정',
+        englishExplanation:
+            'the quality or state of being steady and not changing or being upset in any way',
+        koreanExplanation: '바뀌어 달라지지 아니하고 일정한 상태를 유지함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stability',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=455549&searchKeywordTo=3',
+            koreanHeadword: '안정1',
+        },
+    },
+    {
+        day: 20,
+        word: 'pretended',
+        meaning: '~인 체하는, 거짓의',
+        englishExplanation: 'made to seem true even though it is not',
+        koreanExplanation: '실제로 그렇지 않은 것을 그런 것처럼 꾸민.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pretend_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390876&searchKeywordTo=3',
+            koreanHeadword: '거짓',
+            englishBasis: 'pretend_1',
+        },
+    },
+    {
+        day: 20,
+        word: 'substitute',
+        meaning: '대체하다; 대신하다; 대용품, 대리인',
+        englishExplanation:
+            'a person or thing that you use or have instead of the one you normally use or have',
+        koreanExplanation: '다른 것으로 대신하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/substitute_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412035&searchKeywordTo=3',
+            koreanHeadword: '대체-하다1',
+        },
+    },
+    {
+        day: 20,
+        word: 'resemble',
+        meaning: '닮다',
+        englishExplanation: 'to look like or be similar to another person or thing',
+        koreanExplanation: '사람 또는 사물이 서로 비슷한 생김새나 성질을 지니다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resemble',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=413530&searchKeywordTo=3',
+            koreanHeadword: '닮다',
+        },
+    },
+    {
+        day: 20,
+        word: 'resistant',
+        meaning: '저항하는, 견디는',
+        englishExplanation: 'not affected by something',
+        koreanExplanation: '어떤 힘이나 조건에 굽히지 아니하고 거역하거나 버티다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resistant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281014&searchKeywordTo=3',
+            koreanHeadword: '저항-하다',
+        },
+    },
+    {
+        day: 20,
+        word: 'substitution',
+        meaning: '대리, 대체, 대용',
+        englishExplanation: 'an act of using one person or thing in the place of another',
+        koreanExplanation: '남을 대신하여 일을 처리함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/substitution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=77879&searchKeywordTo=3',
+            koreanHeadword: '대리4',
+        },
+    },
+    {
+        day: 20,
+        word: 'restore',
+        meaning: '회복시키다; 복원하다',
+        englishExplanation: 'to bring back a situation or feeling that existed before',
+        koreanExplanation: '원래대로 회복하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/restore',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=154565&searchKeywordTo=3',
+            koreanHeadword: '복원-하다2',
+        },
+    },
+    {
+        day: 20,
+        word: 'establishment',
+        meaning: '설립; 기관, 시설',
+        englishExplanation: 'an organization, a large institution or a hotel',
+        koreanExplanation: '기관이나 조직체 따위를 만들어 일으킴.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/establishment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444421&searchKeywordTo=3',
+            koreanHeadword: '설립2',
+        },
+    },
+    {
+        day: 20,
+        word: 'consumer',
+        meaning: '소비자',
+        englishExplanation: 'a person who buys goods or uses services',
+        koreanExplanation: '재화를 소비하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consumer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=188447&searchKeywordTo=3',
+            koreanHeadword: '소비-자',
+        },
+    },
+    {
+        day: 20,
+        word: 'pretend',
+        meaning: '~인 체하다',
+        englishExplanation:
+            'to behave in a particular way, in order to make other people believe something that is not true',
+        koreanExplanation: '앞말이 뜻하는 행동이나 상태를 거짓으로 그럴듯하게 꾸밈을 나타내는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pretend_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488946&searchKeywordTo=3',
+            koreanHeadword: '체-하다1',
+        },
+    },
+    {
+        day: 20,
+        word: 'consume',
+        meaning: '소비하다, 다 써 버리다; 먹다, 마시다',
+        englishExplanation: 'to use something, especially fuel, energy or time',
+        koreanExplanation: '돈이나 물자, 시간, 노력 따위를 들이거나 써서 없애다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/consume',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=191669&searchKeywordTo=3',
+            koreanHeadword: '소비-하다',
+        },
+    },
+    {
+        day: 20,
+        word: 'tension',
+        meaning: '팽팽함; 긴장, 불안',
+        englishExplanation:
+            'a situation in which people do not trust each other, or feel unfriendly towards each other, and that may cause them to attack each other',
+        koreanExplanation: '마음을 조이고 정신을 바짝 차림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tension_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=400268&searchKeywordTo=3',
+            koreanHeadword: '긴장',
+        },
+    },
+    {
+        day: 20,
+        word: 'trail',
+        meaning: '뒤를 밟다, 추적하다; 질질 끌다; 오솔길; 자국, 단서',
+        englishExplanation: 'a long line or series of marks that is left by a person or thing',
+        koreanExplanation: '도망하는 사람의 뒤를 밟아서 쫓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/trail_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=337788&searchKeywordTo=3',
+            koreanHeadword: '추적-하다2',
+        },
+    },
+    {
+        day: 20,
+        word: 'resistance',
+        meaning: '저항',
+        englishExplanation: 'dislike of or opposition to a plan, an idea, etc.',
+        koreanExplanation: '어떤 힘이나 조건에 굽히지 아니하고 거역하거나 버팀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resistance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476378&searchKeywordTo=3',
+            koreanHeadword: '저항',
+        },
+    },
+    {
+        day: 20,
+        word: 'intense',
+        meaning: '강렬한, 격렬한; 열렬한, 열정적인',
+        englishExplanation: 'very great',
+        koreanExplanation: '강하고 세차다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/intense',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=9586&searchKeywordTo=3',
+            koreanHeadword: '강렬-하다2',
+        },
+    },
+    {
+        day: 20,
+        word: 'stable',
+        meaning: '안정적인, 안정된; 마구간',
+        englishExplanation: 'fixed or steady',
+        koreanExplanation: '바뀌거나 흔들리지 않고 일정한 상태를 유지하는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stable_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=215631&searchKeywordTo=3',
+            koreanHeadword: '안정-적',
+        },
+    },
+    {
+        day: 21,
+        word: 'warn',
+        meaning: '경고하다, 주의를 주다',
+        englishExplanation:
+            'to tell a person about something, especially something dangerous or unpleasant that is likely to happen, so that they can avoid it',
+        koreanExplanation: '조심하거나 삼가도록 미리 주의를 주다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/warn',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=16883&searchKeywordTo=3',
+            koreanHeadword: '경고-하다2',
+        },
+    },
+    {
+        day: 21,
+        word: 'vision',
+        meaning: '시력, 시각; 선견지명; 전망, 미래상',
+        englishExplanation: 'the ability to see',
+        koreanExplanation:
+            '물체의 존재나 형상을 인식하는 눈의 능력. 눈으로 두 광점을 구별할 수 있는 능력으로, 광도나 그 밖의 조건이 동일할 때, 시각 세포의 분포 밀도가 클수록 시력이 좋다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vision',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451828&searchKeywordTo=3',
+            koreanHeadword: '시력1',
+        },
+    },
+    {
+        day: 21,
+        word: 'provide',
+        meaning: '제공하다',
+        englishExplanation: 'to give something to a person or make it available for them to use',
+        koreanExplanation: '무엇을 내주거나 갖다 바치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/provide',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295387&searchKeywordTo=3',
+            koreanHeadword: '제공-하다2',
+        },
+    },
+    {
+        day: 21,
+        word: 'convenient',
+        meaning: '편리한, 간편한',
+        englishExplanation: 'useful, easy or quick to do',
+        koreanExplanation: '편하고 이로우며 이용하기 쉽다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/convenient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=497880&searchKeywordTo=3',
+            koreanHeadword: '편리-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'revision',
+        meaning: '개정, 수정',
+        englishExplanation: 'a change or set of changes to something',
+        koreanExplanation: '이미 정하였던 것을 고쳐 다시 정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/revision',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=10287&searchKeywordTo=3',
+            koreanHeadword: '개정3',
+        },
+    },
+    {
+        day: 21,
+        word: 'obtain',
+        meaning: '얻다, 획득하다',
+        englishExplanation: 'to get something, especially by making an effort',
+        koreanExplanation: '거저 주는 것을 받아 가지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/obtain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458308&searchKeywordTo=3',
+            koreanHeadword: '얻다1',
+        },
+    },
+    {
+        day: 21,
+        word: 'obtainable',
+        meaning: '획득할 수 있는',
+        englishExplanation: 'that can be obtained',
+        koreanExplanation: '얻어 내거나 얻어 가짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/obtainable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=385849&searchKeywordTo=3',
+            koreanHeadword: '획득',
+        },
+    },
+    {
+        day: 21,
+        word: 'suburb',
+        meaning: '교외, 근교',
+        englishExplanation: 'an area where people live that is outside the centre of a city',
+        koreanExplanation: '도시의 주변 지역.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suburb',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33490&searchKeywordTo=3',
+            koreanHeadword: '교외1',
+        },
+    },
+    {
+        day: 21,
+        word: 'evidence',
+        meaning: '증거, 근거; 흔적, 징후',
+        englishExplanation:
+            'the facts, signs or objects that make you believe that something is true',
+        koreanExplanation: '어떤 사실을 증명할 수 있는 근거.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evidence_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=308105&searchKeywordTo=3',
+            koreanHeadword: '증거',
+        },
+    },
+    {
+        day: 21,
+        word: 'souvenir',
+        meaning: '기념품, 기념 선물',
+        englishExplanation:
+            'a thing that you buy and/or keep to remind yourself of a place, an occasion or a holiday',
+        koreanExplanation: '기념으로 주거나 사는 물품.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/souvenir',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403115&searchKeywordTo=3',
+            koreanHeadword: '기념-품',
+        },
+    },
+    {
+        day: 21,
+        word: 'reverse',
+        meaning: '반대의, 거꾸로 된; 뒤의; 반대; 뒤; 뒤집다',
+        englishExplanation:
+            'to change something completely so that it is the opposite of what it was before',
+        koreanExplanation:
+            '두 사물이 모양, 위치, 방향, 순서 따위에서 등지거나 서로 맞섬. 또는 그런 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reverse_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426442&searchKeywordTo=3',
+            koreanHeadword: '반대2',
+        },
+    },
+    {
+        day: 21,
+        word: 'evaluation',
+        meaning: '평가, 분석',
+        englishExplanation:
+            'the act of forming an opinion of the amount, value or quality of something after thinking about it carefully',
+        koreanExplanation: '물건값을 헤아려 매김. 또는 그 값.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evaluation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=500681&searchKeywordTo=3',
+            koreanHeadword: '평가3',
+        },
+    },
+    {
+        day: 21,
+        word: 'convenience',
+        meaning: '편의, 편리',
+        englishExplanation: 'the quality of being useful, easy or suitable for a person',
+        koreanExplanation: '형편이나 조건 따위가 편하고 좋음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/convenience',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499948&searchKeywordTo=3',
+            koreanHeadword: '편의2',
+        },
+    },
+    {
+        day: 21,
+        word: 'diversify',
+        meaning: '다양화하다',
+        englishExplanation:
+            'to develop a wider range of products, interests, skills, etc. in order to be more successful or reduce risk',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많아지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/diversify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73347&searchKeywordTo=3',
+            koreanHeadword: '다양화-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'aware',
+        meaning: '알고 있는',
+        englishExplanation: 'knowing or realizing something',
+        koreanExplanation:
+            '교육이나 경험, 사고 행위를 통하여 사물이나 상황에 대한 정보나 지식을 갖추다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aware',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=213588&searchKeywordTo=3',
+            koreanHeadword: '알다',
+        },
+    },
+    {
+        day: 21,
+        word: 'previously',
+        meaning: '이전에, 과거에',
+        englishExplanation: 'at a time before the time that you are talking about',
+        koreanExplanation: '지금보다 앞선 때에.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/previously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470449&searchKeywordTo=3',
+            koreanHeadword: '이전3',
+        },
+    },
+    {
+        day: 21,
+        word: 'vertically',
+        meaning: '수직으로',
+        englishExplanation:
+            'straight up or down from a level surface or from top to bottom in a picture, etc.',
+        koreanExplanation: '똑바로 위아래 방향으로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vertically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=453005&searchKeywordTo=3',
+            koreanHeadword: '수직6',
+        },
+    },
+    {
+        day: 21,
+        word: 'visible',
+        meaning: '눈에 보이는',
+        englishExplanation: 'that can be seen',
+        koreanExplanation: '눈으로 대상의 존재나 형태적 특징을 알게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/visible',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436212&searchKeywordTo=3',
+            koreanHeadword: '보-이다1',
+        },
+    },
+    {
+        day: 21,
+        word: 'vividly',
+        meaning: '선명하게, 생생하게',
+        englishExplanation: 'in a way that produces very clear pictures in your mind',
+        koreanExplanation: '산뜻하고 뚜렷하여 다른 것과 혼동되지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vividly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=183574&searchKeywordTo=3',
+            koreanHeadword: '선명-하다2',
+        },
+    },
+    {
+        day: 21,
+        word: 'supervise',
+        meaning: '감독하다',
+        englishExplanation:
+            'to be in charge of a person or thing and make sure that everything is done correctly, safely, etc.',
+        koreanExplanation: '일이나 사람 따위가 잘못되지 아니하도록 살피어 단속하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/supervise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=510241&searchKeywordTo=3',
+            koreanHeadword: '감독-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'individually',
+        meaning: '개별적으로',
+        englishExplanation: 'separately, rather than as a group',
+        koreanExplanation: '여럿 중에서 하나씩 따로 나뉘어 있는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/individually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=8882&searchKeywordTo=3',
+            koreanHeadword: '개별-적',
+        },
+    },
+    {
+        day: 21,
+        word: 'evidently',
+        meaning: '분명히, 명백하게',
+        englishExplanation: 'clearly',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evidently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432443&searchKeywordTo=3',
+            koreanHeadword: '분명-히',
+        },
+    },
+    {
+        day: 21,
+        word: 'visual',
+        meaning: '시각의',
+        englishExplanation: 'of or relating to seeing or sight',
+        koreanExplanation: '눈을 통해 빛의 자극을 받아들이는 감각 작용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/visual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447938&searchKeywordTo=3',
+            koreanHeadword: '시각5',
+        },
+    },
+    {
+        day: 21,
+        word: 'vivid',
+        meaning: '선명한, 생생한',
+        englishExplanation: 'producing very clear pictures in your mind',
+        koreanExplanation: '산뜻하고 뚜렷하여 다른 것과 혼동되지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vivid',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=183574&searchKeywordTo=3',
+            koreanHeadword: '선명-하다2',
+        },
+    },
+    {
+        day: 21,
+        word: 'divide',
+        meaning: '나누다, 분리하다',
+        englishExplanation: 'to separate into parts',
+        koreanExplanation: '하나를 둘 이상으로 가르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/divide_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406097&searchKeywordTo=3',
+            koreanHeadword: '나누다',
+        },
+    },
+    {
+        day: 21,
+        word: 'convey',
+        meaning: '나르다, 운반하다; 전하다',
+        englishExplanation: 'to make ideas, feelings, etc. known to a person',
+        koreanExplanation: '물건을 한곳에서 다른 곳으로 옮기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/convey',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=57521&searchKeywordTo=3',
+            koreanHeadword: '나르다1',
+        },
+    },
+    {
+        day: 21,
+        word: 'provider',
+        meaning: '공급자',
+        englishExplanation:
+            'a person or an organization that supplies a person with something they need or want',
+        koreanExplanation: '공급하는 역할을 담당하는 사람이나 기관.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/provider',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=29146&searchKeywordTo=3',
+            koreanHeadword: '공급-자',
+        },
+    },
+    {
+        day: 21,
+        word: 'suburban',
+        meaning: '교외의',
+        englishExplanation: 'in or relating to a suburb',
+        koreanExplanation: '도시의 주변 지역.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suburban',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33490&searchKeywordTo=3',
+            koreanHeadword: '교외1',
+        },
+    },
+    {
+        day: 21,
+        word: 'warning',
+        meaning: '경고, 주의',
+        englishExplanation:
+            'a statement, an event, etc. telling a person that something bad or unpleasant may happen in the future so that they can try to avoid it',
+        koreanExplanation: '조심하거나 삼가도록 미리 주의를 줌. 또는 그 주의.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/warning_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395186&searchKeywordTo=3',
+            koreanHeadword: '경고4',
+        },
+    },
+    {
+        day: 21,
+        word: 'previous',
+        meaning: '이전의, 앞의, 사전의',
+        englishExplanation:
+            'happening or existing before the event or object that you are talking about',
+        koreanExplanation: '이제보다 전.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/previous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470449&searchKeywordTo=3',
+            koreanHeadword: '이전3',
+        },
+    },
+    {
+        day: 21,
+        word: 'contain',
+        meaning: '~이 들어 있다, 포함하다',
+        englishExplanation:
+            'if something contains something else, it has that thing inside it or as part of it',
+        koreanExplanation: '어떤 사물이나 현상 가운데 함께 들어가게 하거나 함께 넣다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494110&searchKeywordTo=3',
+            koreanHeadword: '포함-하다2',
+        },
+    },
+    {
+        day: 21,
+        word: 'vital',
+        meaning: '중대한, 매우 중요한; 생명 유지에 필수적인; 활기 있는',
+        englishExplanation: 'necessary or essential in order for something to succeed or exist',
+        koreanExplanation: '가볍게 여길 수 없을 만큼 매우 중요하고 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vital',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486719&searchKeywordTo=3',
+            koreanHeadword: '중대-하다1',
+        },
+    },
+    {
+        day: 21,
+        word: 'vitality',
+        meaning: '활력, 생명력',
+        englishExplanation: 'energy and enthusiasm',
+        koreanExplanation: '살아 움직이는 힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vitality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=385075&searchKeywordTo=3',
+            koreanHeadword: '활력',
+        },
+    },
+    {
+        day: 21,
+        word: 'diverse',
+        meaning: '다양한, 가지각색의',
+        englishExplanation: 'very different from each other and of various kinds',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/diverse',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'evident',
+        meaning: '명백한',
+        englishExplanation: 'clear',
+        koreanExplanation: '의심할 바 없이 아주 뚜렷하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evident',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=422097&searchKeywordTo=3',
+            koreanHeadword: '명백-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'devise',
+        meaning: '고안하다',
+        englishExplanation: 'to invent something new or a new way of doing something',
+        koreanExplanation: '연구하여 새로운 안을 생각해 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/devise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396790&searchKeywordTo=3',
+            koreanHeadword: '고안-하다',
+        },
+    },
+    {
+        day: 21,
+        word: 'converter',
+        meaning: '변환기',
+        englishExplanation: 'a person or thing that converts something',
+        koreanExplanation:
+            '한 형태의 전기 에너지를 다른 형태의 전기 에너지로 바꾸는 장치. 교류 전력을 직류 전력으로 변환하거나 직류 전력을 교류 전력으로 변환하는 것, 또는 어떤 주파수에서 다른 주파수로 변환하는 것 따위를 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/converter',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=148650&searchKeywordTo=3',
+            koreanHeadword: '변환-기1',
+        },
+    },
+    {
+        day: 21,
+        word: 'diversity',
+        meaning: '다양성',
+        englishExplanation:
+            'a range of many people or things that are very different from each other',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많은 특성.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/diversity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409729&searchKeywordTo=3',
+            koreanHeadword: '다양-성',
+        },
+    },
+    {
+        day: 21,
+        word: 'urban',
+        meaning: '도시의, 도심의',
+        englishExplanation: 'relating to a town or city',
+        koreanExplanation: '일정한 지역의 정치·경제·문화의 중심이 되는, 사람이 많이 사는 지역.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/urban',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=413172&searchKeywordTo=3',
+            koreanHeadword: '도시3',
+        },
+    },
+    {
+        day: 21,
+        word: 'entire',
+        meaning: '전체의',
+        englishExplanation: 'including everything, everyone or every part',
+        koreanExplanation:
+            '개개 또는 부분의 집합으로 구성된 것을 몰아서 하나의 대상으로 삼는 경우에 바로 그 대상.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/entire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478546&searchKeywordTo=3',
+            koreanHeadword: '전체1',
+        },
+    },
+    {
+        day: 22,
+        word: 'despair',
+        meaning: '절망; 절망하다',
+        englishExplanation: 'the feeling of having lost all hope',
+        koreanExplanation: '바라볼 것이 없게 되어 모든 희망을 끊어 버림. 또는 그런 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/despair_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478120&searchKeywordTo=3',
+            koreanHeadword: '절망2',
+        },
+    },
+    {
+        day: 22,
+        word: 'satisfy',
+        meaning: '만족시키다',
+        englishExplanation: 'to make a person pleased by doing or giving them what they want',
+        koreanExplanation: '다른 사람이 흡족하게 느끼도록 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/satisfy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423287&searchKeywordTo=3',
+            koreanHeadword: '만족-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'disappoint',
+        meaning: '실망시키다; 좌절시키다',
+        englishExplanation:
+            'to make a person feel sad because something that they hope for or expect to happen does not happen or is not as good as they hoped',
+        koreanExplanation: '희망이나 명망을 잃다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disappoint',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=202742&searchKeywordTo=3',
+            koreanHeadword: '실망-하다2',
+        },
+    },
+    {
+        day: 22,
+        word: 'confuse',
+        meaning: '혼란스럽게 하다; 혼동하다',
+        englishExplanation: 'to make a person unable to think clearly or understand something',
+        koreanExplanation: '구별하지 못하고 뒤섞어서 생각하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confuse',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=502199&searchKeywordTo=3',
+            koreanHeadword: '혼동-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'impatient',
+        meaning: '참을성 없는; 몹시 ~하고 싶어 하는',
+        englishExplanation:
+            'annoyed by a person or thing, especially because you have to wait for a long time',
+        koreanExplanation: '성질이 급하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impatient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446613&searchKeywordTo=3',
+            koreanHeadword: '성급-하다2',
+        },
+    },
+    {
+        day: 22,
+        word: 'confusing',
+        meaning: '혼란스럽게 하는',
+        englishExplanation: 'difficult to understand',
+        koreanExplanation: '보기에 뒤죽박죽이 되어 어지럽고 질서가 없는 데가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confusing',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504771&searchKeywordTo=3',
+            koreanHeadword: '혼란-스럽다1',
+        },
+    },
+    {
+        day: 22,
+        word: 'arrogant',
+        meaning: '오만한, 거만한',
+        englishExplanation:
+            'behaving in a proud, unpleasant way, showing little thought for other people',
+        koreanExplanation: '태도나 행동이 건방지거나 거만하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/arrogant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=245801&searchKeywordTo=3',
+            koreanHeadword: '오만-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'indifference',
+        meaning: '무관심',
+        englishExplanation: 'a lack of interest, feeling or reaction towards a person or thing',
+        koreanExplanation: '관심이나 흥미가 없음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/indifference',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426222&searchKeywordTo=3',
+            koreanHeadword: '무-관심',
+        },
+    },
+    {
+        day: 22,
+        word: 'desperately',
+        meaning: '절망적으로; 필사적으로',
+        englishExplanation:
+            'in a way that shows you have little hope and are ready to do anything without worrying about danger to yourself or others',
+        koreanExplanation: '바라볼 것이 없게 되어 모든 희망을 끊어 버리는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desperately',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=287302&searchKeywordTo=3',
+            koreanHeadword: '절망-적',
+        },
+    },
+    {
+        day: 22,
+        word: 'desperate',
+        meaning: '절망적인; 필사적인, 절실한; 극심한',
+        englishExplanation:
+            'feeling or showing that you have little hope and are ready to do anything without worrying about danger to yourself or others',
+        koreanExplanation: '바라볼 것이 없게 되어 모든 희망을 끊어 버리는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desperate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=287302&searchKeywordTo=3',
+            koreanHeadword: '절망-적',
+        },
+    },
+    {
+        day: 22,
+        word: 'confidence',
+        meaning: '자신감',
+        englishExplanation:
+            'the feeling that you can trust, believe in and be sure about the abilities or good qualities of a person or thing',
+        koreanExplanation: '자신이 있다는 느낌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confidence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=277179&searchKeywordTo=3',
+            koreanHeadword: '자신-감',
+        },
+    },
+    {
+        day: 22,
+        word: 'confident',
+        meaning: '자신 있는, 자신만만한; 확신하는',
+        englishExplanation: 'feeling sure about your own ability to do things and be successful',
+        koreanExplanation:
+            '어떤 일을 해낼 수 있다거나 어떤 일이 꼭 그렇게 되리라는 데 대하여 스스로 굳게 믿음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confident',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279810&searchKeywordTo=3',
+            koreanHeadword: '자신2',
+        },
+    },
+    {
+        day: 22,
+        word: 'confidently',
+        meaning: '자신 있게',
+        englishExplanation:
+            'in a way that shows that you feel sure about your own ability to do things and be successful',
+        koreanExplanation:
+            '어떤 일을 해낼 수 있다거나 어떤 일이 꼭 그렇게 되리라는 데 대하여 스스로 굳게 믿음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confidently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279810&searchKeywordTo=3',
+            koreanHeadword: '자신2',
+        },
+    },
+    {
+        day: 22,
+        word: 'curiosity',
+        meaning: '호기심',
+        englishExplanation: 'a strong desire to know about something',
+        koreanExplanation: '새롭고 신기한 것을 좋아하거나 모르는 것을 알고 싶어 하는 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/curiosity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505607&searchKeywordTo=3',
+            koreanHeadword: '호기-심',
+        },
+    },
+    {
+        day: 22,
+        word: 'disappointing',
+        meaning: '실망스러운, 실망시키는',
+        englishExplanation: 'not as good, successful, etc. as you had hoped',
+        koreanExplanation: '희망이나 명망을 잃다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disappointing',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=202742&searchKeywordTo=3',
+            koreanHeadword: '실망-하다2',
+        },
+    },
+    {
+        day: 22,
+        word: 'cautiously',
+        meaning: '신중히, 조심하여',
+        englishExplanation: 'carefully, especially in order to avoid danger, mistakes or risks',
+        koreanExplanation: '매우 조심스럽게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cautiously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452002&searchKeywordTo=3',
+            koreanHeadword: '신중-히',
+        },
+    },
+    {
+        day: 22,
+        word: 'helplessly',
+        meaning: '무력하게',
+        englishExplanation:
+            'in a way that shows that you are unable to do anything in a particular situation',
+        koreanExplanation: '힘이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/helplessly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=120509&searchKeywordTo=3',
+            koreanHeadword: '무력-하다1',
+        },
+    },
+    {
+        day: 22,
+        word: 'frustrate',
+        meaning: '좌절시키다',
+        englishExplanation:
+            'to make a person feel annoyed or impatient because they cannot do or achieve what they want',
+        koreanExplanation: '마음이나 기운이 꺾이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/frustrate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=302771&searchKeywordTo=3',
+            koreanHeadword: '좌절-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'caution',
+        meaning: '조심, 신중',
+        englishExplanation: 'care that you take in order to avoid danger or mistakes',
+        koreanExplanation: '잘못이나 실수가 없도록 말이나 행동에 마음을 씀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/caution_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482948&searchKeywordTo=3',
+            koreanHeadword: '조심2',
+        },
+    },
+    {
+        day: 22,
+        word: 'passionate',
+        meaning: '열정적인',
+        englishExplanation: 'having or showing strong feelings of sexual love or of anger, etc.',
+        koreanExplanation: '어떤 일에 열렬한 애정을 가지고 열중하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/passionate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234800&searchKeywordTo=3',
+            koreanHeadword: '열정-적',
+        },
+    },
+    {
+        day: 22,
+        word: 'impatiently',
+        meaning: '성급하게',
+        englishExplanation:
+            'in a way that shows you are annoyed, especially because you have to wait for a long time',
+        koreanExplanation: '기다리는 것을 견디지 못하고 마음이 급하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impatiently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446613&searchKeywordTo=3',
+            koreanHeadword: '성급-하다2',
+        },
+    },
+    {
+        day: 22,
+        word: 'thrilled',
+        meaning: '흥분한, 감격한',
+        englishExplanation: 'very excited and pleased',
+        koreanExplanation: '어떤 자극을 받아 감정이 북받쳐 일어나다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/thrilled',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=382841&searchKeywordTo=3',
+            koreanHeadword: '흥분-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'responsible',
+        meaning: '책임이 있는; 책임감 있는',
+        englishExplanation:
+            'having the job or duty of doing something or taking care of a person or thing',
+        koreanExplanation: '맡은 일이나 결과에 대해 의무를 지는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/responsible',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=487785&searchKeywordTo=3',
+            koreanHeadword: '책임',
+        },
+    },
+    {
+        day: 22,
+        word: 'irritated',
+        meaning: '화난, 짜증이 난',
+        englishExplanation: 'annoyed or angry',
+        koreanExplanation: '성이 나서 화기가 생기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/irritated',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377834&searchKeywordTo=3',
+            koreanHeadword: '화-나다',
+        },
+    },
+    {
+        day: 22,
+        word: 'modesty',
+        meaning: '겸손',
+        englishExplanation: 'the fact of not talking much about your abilities or possessions',
+        koreanExplanation: '남을 존중하고 자기를 내세우지 않는 태도가 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/modesty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391210&searchKeywordTo=3',
+            koreanHeadword: '겸손',
+        },
+    },
+    {
+        day: 22,
+        word: 'indifferent',
+        meaning: '무관심한',
+        englishExplanation: 'having or showing no interest in a person or thing',
+        koreanExplanation: '관심이나 흥미가 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/indifferent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=428767&searchKeywordTo=3',
+            koreanHeadword: '무관심-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'thoughtful',
+        meaning: '사려 깊은, 신중한; 생각에 잠긴',
+        englishExplanation: 'quiet, because you are thinking',
+        koreanExplanation: '여러 가지 일에 대하여 깊게 생각함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/thoughtful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=167521&searchKeywordTo=3',
+            koreanHeadword: '사려2',
+        },
+    },
+    {
+        day: 22,
+        word: 'neglectful',
+        meaning: '태만한, 소홀한',
+        englishExplanation: 'not giving enough care or attention to a person or thing',
+        koreanExplanation: '열심히 하려는 마음이 없고 게으르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/neglectful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=346136&searchKeywordTo=3',
+            koreanHeadword: '태만-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'enthusiastic',
+        meaning: '열정적인',
+        englishExplanation:
+            'feeling or showing a lot of excitement and interest about a person or thing',
+        koreanExplanation: '어떤 일에 열렬한 애정을 가지고 열중하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enthusiastic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234800&searchKeywordTo=3',
+            koreanHeadword: '열정-적',
+        },
+    },
+    {
+        day: 22,
+        word: 'confusion',
+        meaning: '혼란, 혼동',
+        englishExplanation:
+            'a state of not being certain about what is happening, what you should do, what something means, etc.',
+        koreanExplanation: '뒤죽박죽이 되어 어지럽고 질서가 없음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/confusion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=375623&searchKeywordTo=3',
+            koreanHeadword: '혼란2',
+        },
+    },
+    {
+        day: 22,
+        word: 'helplessness',
+        meaning: '무력함',
+        englishExplanation:
+            'the feeling of being unable to take care of yourself or do things without the help of other people',
+        koreanExplanation: '일을 해결하거나 자신을 지킬 힘이 없는 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/helplessness',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=120509&searchKeywordTo=3',
+            koreanHeadword: '무력-하다1',
+        },
+    },
+    {
+        day: 22,
+        word: 'neglect',
+        meaning: '무시하다, 방치하다; 무시, 방치',
+        englishExplanation: 'to fail to take care of a person or thing',
+        koreanExplanation: '사물의 존재 의의나 가치를 알아주지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/neglect_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423803&searchKeywordTo=3',
+            koreanHeadword: '무시-하다',
+        },
+    },
+    {
+        day: 22,
+        word: 'sympathetic',
+        meaning: '동정적인, 공감하는',
+        englishExplanation: 'kind to a person who is hurt or sad',
+        koreanExplanation: '남의 어려운 처지를 안타깝게 여기는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sympathetic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=89362&searchKeywordTo=3',
+            koreanHeadword: '동정-적',
+        },
+    },
+    {
+        day: 22,
+        word: 'impatience',
+        meaning: '성급함, 초조함',
+        englishExplanation:
+            'the feeling of being annoyed by a person or thing, especially because you have to wait for a long time',
+        koreanExplanation: '기다리지 못하고 마음이나 행동이 급해지는 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impatience',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446613&searchKeywordTo=3',
+            koreanHeadword: '성급-하다2',
+        },
+    },
+    {
+        day: 22,
+        word: 'irritate',
+        meaning: '짜증 나게 하다',
+        englishExplanation:
+            'to annoy a person, especially by something you continuously do or by something that continuously happens',
+        koreanExplanation: '마음에 꼭 맞지 아니하여 발칵 역정을 내는 짓. 또는 그런 성미.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/irritate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=311856&searchKeywordTo=3',
+            koreanHeadword: '짜증',
+        },
+    },
+    {
+        day: 22,
+        word: 'pity',
+        meaning: '동정, 연민; 유감스러운 일; 동정하다, 유감스러워하다',
+        englishExplanation: 'used to show that you are disappointed about something',
+        koreanExplanation: '남의 어려운 처지를 자기 일처럼 딱하고 가엾게 여김.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pity_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=414281&searchKeywordTo=3',
+            koreanHeadword: '동정5',
+        },
+    },
+    {
+        day: 22,
+        word: 'desperation',
+        meaning: '절망',
+        englishExplanation: 'the state of being desperate',
+        koreanExplanation: '바라볼 것이 없게 되어 모든 희망을 끊어 버림. 또는 그런 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desperation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478120&searchKeywordTo=3',
+            koreanHeadword: '절망2',
+        },
+    },
+    {
+        day: 22,
+        word: 'responsibility',
+        meaning: '책임',
+        englishExplanation: 'a duty to deal with or take care of a person or thing',
+        koreanExplanation: '맡아서 해야 할 임무나 의무.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/responsibility',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=487785&searchKeywordTo=3',
+            koreanHeadword: '책임',
+        },
+    },
+    {
+        day: 22,
+        word: 'thrill',
+        meaning: '전율, 스릴; 열광시키다, 전율케 하다',
+        englishExplanation: 'a strong feeling of excitement or pleasure',
+        koreanExplanation: '몹시 무섭거나 두려워 몸이 벌벌 떨림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/thrill_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481358&searchKeywordTo=3',
+            koreanHeadword: '전율2',
+        },
+    },
+    {
+        day: 22,
+        word: 'gratitude',
+        meaning: '감사, 감사하는 마음',
+        englishExplanation: 'the feeling of being grateful and wanting to express your thanks',
+        koreanExplanation: '고마움을 나타내는 인사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/gratitude',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=388278&searchKeywordTo=3',
+            koreanHeadword: '감사8',
+        },
+    },
+    {
+        day: 23,
+        word: 'psychology',
+        meaning: '심리',
+        englishExplanation: 'the scientific study of the mind and how it influences behaviour',
+        koreanExplanation: '마음의 작용과 의식의 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/psychology',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449278&searchKeywordTo=3',
+            koreanHeadword: '심리1',
+        },
+    },
+    {
+        day: 23,
+        word: 'motivate',
+        meaning: '동기를 주다; 이유가 되다',
+        englishExplanation:
+            'to be the reason why a person does something or behaves in a particular way',
+        koreanExplanation: '행동을 하게 되는 이유나 의욕을 주는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/motivate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=88197&searchKeywordTo=3',
+            koreanHeadword: '동기6',
+        },
+    },
+    {
+        day: 23,
+        word: 'athletic',
+        meaning: '운동 경기의; 탄탄한',
+        englishExplanation: 'physically strong, fit and active',
+        koreanExplanation: '사람이 몸을 단련하거나 건강을 위하여 몸을 움직이는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/athletic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465327&searchKeywordTo=3',
+            koreanHeadword: '운동2',
+        },
+    },
+    {
+        day: 23,
+        word: 'graduation',
+        meaning: '졸업',
+        englishExplanation:
+            'the act of successfully completing a university degree, or studies at an American high school',
+        koreanExplanation: '학생이 규정에 따라 소정의 교과 과정을 마침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/graduation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=298493&searchKeywordTo=3',
+            koreanHeadword: '졸업',
+        },
+    },
+    {
+        day: 23,
+        word: 'philosopher',
+        meaning: '철학자',
+        englishExplanation: 'a person who studies or writes about philosophy',
+        koreanExplanation: '철학을 전문적으로 연구하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/philosopher',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=330485&searchKeywordTo=3',
+            koreanHeadword: '철학-자',
+        },
+    },
+    {
+        day: 23,
+        word: 'professor',
+        meaning: '교수',
+        englishExplanation: 'a university teacher of the highest rank',
+        koreanExplanation: '대학에서, 학문을 가르치고 연구하는 사람. 교수, 부교수, 조교수가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/professor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=35987&searchKeywordTo=3',
+            koreanHeadword: '교수6',
+        },
+    },
+    {
+        day: 23,
+        word: 'motivation',
+        meaning: '동기',
+        englishExplanation: 'the reason why a person does something or behaves in a particular way',
+        koreanExplanation: '어떤 일이나 행동을 일으키게 하는 계기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/motivation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=88197&searchKeywordTo=3',
+            koreanHeadword: '동기6',
+        },
+    },
+    {
+        day: 23,
+        word: 'chemical',
+        meaning: '화학적인; 화학 물질',
+        englishExplanation: 'relating to chemistry',
+        koreanExplanation:
+            '자연 과학의 한 분야. 물질의 조성과 구조, 성질 및 변화, 제법, 응용 따위를 연구한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chemical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504837&searchKeywordTo=3',
+            koreanHeadword: '화학1',
+        },
+    },
+    {
+        day: 23,
+        word: 'scholarship',
+        meaning: '장학금; 학문',
+        englishExplanation:
+            'an amount of money given to a person by an organization to help pay for their education',
+        koreanExplanation:
+            '주로 성적은 우수하지만 경제적인 이유로 학업에 어려움을 겪는 학생에게 보조해 주는 돈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scholarship',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=280250&searchKeywordTo=3',
+            koreanHeadword: '장학-금',
+        },
+    },
+    {
+        day: 23,
+        word: 'motive',
+        meaning: '동기, 이유; 원동력이 되는',
+        englishExplanation: 'a reason for doing something',
+        koreanExplanation: '어떤 일이나 행동을 일으키게 하는 계기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/motive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=88197&searchKeywordTo=3',
+            koreanHeadword: '동기6',
+        },
+    },
+    {
+        day: 23,
+        word: 'qualify',
+        meaning: '자격을 주다',
+        englishExplanation:
+            'to reach the standard of ability or knowledge needed to do a particular job, for example by completing a course of study or passing exams',
+        koreanExplanation: '일정한 신분이나 지위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/qualify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470896&searchKeywordTo=3',
+            koreanHeadword: '자격4',
+        },
+    },
+    {
+        day: 23,
+        word: 'athlete',
+        meaning: '운동선수',
+        englishExplanation: 'a person who competes in sports',
+        koreanExplanation: '운동 경기에 뛰어난 재주가 있거나 전문적으로 운동을 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/athlete',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470530&searchKeywordTo=3',
+            koreanHeadword: '운동-선수',
+        },
+    },
+    {
+        day: 23,
+        word: 'specialist',
+        meaning: '전문가; 전문의',
+        englishExplanation: 'a person who is an expert in a particular area of work or study',
+        koreanExplanation:
+            '어떤 분야를 연구하거나 그 일에 종사하여 그 분야에 상당한 지식과 경험을 가진 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/specialist_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=288684&searchKeywordTo=3',
+            koreanHeadword: '전문-가',
+        },
+    },
+    {
+        day: 23,
+        word: 'qualification',
+        meaning: '자격; 자격 증명서',
+        englishExplanation:
+            'an exam that you have passed or a course of study that you have successfully completed',
+        koreanExplanation: '일정한 신분이나 지위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/qualification',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470896&searchKeywordTo=3',
+            koreanHeadword: '자격4',
+        },
+    },
+    {
+        day: 23,
+        word: 'admit',
+        meaning: '입장을 허락하다; 시인하다',
+        englishExplanation: 'to agree, often unwillingly, that something is true',
+        koreanExplanation: '어떤 내용이나 사실이 옳거나 그러하다고 인정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451338&searchKeywordTo=3',
+            koreanHeadword: '시인-하다1',
+        },
+    },
+    {
+        day: 23,
+        word: 'researcher',
+        meaning: '연구원',
+        englishExplanation:
+            'a person who studies something carefully and tries to discover new facts about it',
+        koreanExplanation: '연구에 종사하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/researcher',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234699&searchKeywordTo=3',
+            koreanHeadword: '연구-원1',
+        },
+    },
+    {
+        day: 23,
+        word: 'lawyer',
+        meaning: '변호사, 변호인',
+        englishExplanation:
+            'a person who is trained and qualified to advise people about the law and to represent them in court, and to write legal documents',
+        koreanExplanation:
+            '법률에 규정된 자격을 가지고 소송 당사자나 관계인의 의뢰 또는 법원의 명령에 따라 피고나 원고를 변론하며 그 밖의 법률에 관한 업무에 종사하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/lawyer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=137322&searchKeywordTo=3',
+            koreanHeadword: '변호-사',
+        },
+    },
+    {
+        day: 23,
+        word: 'certificate',
+        meaning: '증명서; 자격증',
+        englishExplanation:
+            'an official document that may be used to prove that the facts it states are true',
+        koreanExplanation: '어떤 사실을 증명하는 문서.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/certificate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=314073&searchKeywordTo=3',
+            koreanHeadword: '증명-서',
+        },
+    },
+    {
+        day: 23,
+        word: 'geography',
+        meaning: '지리학; 지형',
+        englishExplanation:
+            'the scientific study of the earth’s surface, physical features, divisions, products, population, etc.',
+        koreanExplanation:
+            '지표상에서 일어나는 자연 및 인문 현상을 지역적 관점에서 연구하는 학문. 전통적으로 계통 지리학과 지역 지리학으로 나뉘며, 이 가운데 계통 지리학은 다시 자연 지리학과 인문 지리학으로 구분된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/geography',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=308463&searchKeywordTo=3',
+            koreanHeadword: '지리-학',
+        },
+    },
+    {
+        day: 23,
+        word: 'philosophy',
+        meaning: '철학',
+        englishExplanation: 'the study of the nature and meaning of the universe and of human life',
+        koreanExplanation:
+            '인간과 세계에 대한 근본 원리와 삶의 본질 따위를 연구하는 학문. 흔히 인식, 존재, 가치의 세 기준에 따라 하위 분야를 나눌 수 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/philosophy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=330482&searchKeywordTo=3',
+            koreanHeadword: '철학',
+        },
+    },
+    {
+        day: 23,
+        word: 'physics',
+        meaning: '물리학',
+        englishExplanation:
+            'the scientific study of matter and energy and the relationships between them, including the study of forces, heat, light, sound, electricity and the structure of atoms',
+        koreanExplanation:
+            '물질의 물리적 성질과 그것이 나타내는 모든 현상, 그리고 그들 사이의 관계나 법칙을 연구하는 학문. 자연 과학의 한 분야이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/physics',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=126205&searchKeywordTo=3',
+            koreanHeadword: '물리-학',
+        },
+    },
+    {
+        day: 23,
+        word: 'psychologist',
+        meaning: '심리학자',
+        englishExplanation: 'a scientist who studies and is trained in psychology',
+        koreanExplanation: '심리학을 연구하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/psychologist',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=207000&searchKeywordTo=3',
+            koreanHeadword: '심리학-자',
+        },
+    },
+    {
+        day: 23,
+        word: 'specialize',
+        meaning: '전문으로 하다, 전공하다',
+        englishExplanation: 'to become an expert in a particular area of work, study or business',
+        koreanExplanation: '어느 한 분야를 전문적으로 연구하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/specialize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478694&searchKeywordTo=3',
+            koreanHeadword: '전공-하다1',
+        },
+    },
+    {
+        day: 23,
+        word: 'occupation',
+        meaning: '직업; 사용, 거주; 점령',
+        englishExplanation: 'a job or profession',
+        koreanExplanation:
+            '생계를 유지하기 위하여 자신의 적성과 능력에 따라 일정한 기간 동안 계속하여 종사하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488039&searchKeywordTo=3',
+            koreanHeadword: '직업',
+        },
+    },
+    {
+        day: 23,
+        word: 'logical',
+        meaning: '논리적인, 타당한',
+        englishExplanation: 'seeming natural, reasonable or sensible',
+        koreanExplanation: '논리에 맞는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/logical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=408878&searchKeywordTo=3',
+            koreanHeadword: '논리-적1',
+        },
+    },
+    {
+        day: 23,
+        word: 'instruction',
+        meaning: '교육; 지시',
+        englishExplanation: 'detailed information on how to do or use something',
+        koreanExplanation: '지식과 기술 따위를 가르치며 인격을 길러 줌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/instruction_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=398628&searchKeywordTo=3',
+            koreanHeadword: '교육',
+        },
+    },
+    {
+        day: 23,
+        word: 'graduate',
+        meaning: '졸업하다; 졸업생',
+        englishExplanation: 'a person who has a university degree',
+        koreanExplanation: '학생이 규정에 따라 소정의 교과 과정을 마치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/graduate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=298494&searchKeywordTo=3',
+            koreanHeadword: '졸업-하다',
+        },
+    },
+    {
+        day: 23,
+        word: 'chemistry',
+        meaning: '화학; 궁합',
+        englishExplanation:
+            'the scientific study of the structure of substances, how they react when combined or in contact with one another, and how they behave under different conditions',
+        koreanExplanation:
+            '자연 과학의 한 분야. 물질의 조성과 구조, 성질 및 변화, 제법, 응용 따위를 연구한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chemistry',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504837&searchKeywordTo=3',
+            koreanHeadword: '화학1',
+        },
+    },
+    {
+        day: 23,
+        word: 'professional',
+        meaning: '전문의, 직업의; 전문직 종사자; 프로',
+        englishExplanation: 'doing something as a paid job rather than as a hobby',
+        koreanExplanation: '의학의 일정한 분과를 전문으로 하는 의사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/professional_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=288704&searchKeywordTo=3',
+            koreanHeadword: '전문-의',
+        },
+    },
+    {
+        day: 23,
+        word: 'occupant',
+        meaning: '점유자',
+        englishExplanation:
+            'a person who lives or works in a particular house, room, building, etc.',
+        koreanExplanation: '어떤 물건을 자기의 지배 아래에 두고 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=293175&searchKeywordTo=3',
+            koreanHeadword: '점유-자',
+        },
+    },
+    {
+        day: 23,
+        word: 'academic',
+        meaning: '학업의, 대학의; 학구적인',
+        englishExplanation:
+            'relating to education, especially studying in schools and universities',
+        koreanExplanation: '공부하여 학문을 닦는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/academic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=495991&searchKeywordTo=3',
+            koreanHeadword: '학업',
+        },
+    },
+    {
+        day: 23,
+        word: 'theory',
+        meaning: '이론; 학설',
+        englishExplanation:
+            'a formal set of ideas that is intended to explain why something happens or exists',
+        koreanExplanation:
+            '사물의 이치나 지식 따위를 해명하기 위하여 논리적으로 정연하게 일반화한 명제의 체계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/theory',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471607&searchKeywordTo=3',
+            koreanHeadword: '이론1',
+        },
+    },
+    {
+        day: 23,
+        word: 'logic',
+        meaning: '논리',
+        englishExplanation: 'a way of thinking or explaining something',
+        koreanExplanation:
+            '말이나 글에서 사고나 추리 따위를 이치에 맞게 이끌어 가는 과정이나 원리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/logic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=66837&searchKeywordTo=3',
+            koreanHeadword: '논리',
+        },
+    },
+    {
+        day: 23,
+        word: 'profession',
+        meaning: '직업, 직종',
+        englishExplanation:
+            'a type of job that needs special training or skill, especially one that needs a high level of education',
+        koreanExplanation:
+            '생계를 유지하기 위하여 자신의 적성과 능력에 따라 일정한 기간 동안 계속하여 종사하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/profession',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488039&searchKeywordTo=3',
+            koreanHeadword: '직업',
+        },
+    },
+    {
+        day: 23,
+        word: 'lecture',
+        meaning: '강의, 강연; 설교, 훈계; 강의하다; 훈계하다',
+        englishExplanation:
+            'a talk that is given to a group of people to teach them about a particular subject, often as part of a university or college course',
+        koreanExplanation: '학문이나 기술의 일정한 내용을 체계적으로 설명하여 가르침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/lecture_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=9410&searchKeywordTo=3',
+            koreanHeadword: '강의2',
+        },
+    },
+    {
+        day: 23,
+        word: 'admission',
+        meaning: '입학, 입장; 시인',
+        englishExplanation: 'the act of accepting a person into an institution, organization, etc.',
+        koreanExplanation: '학생이 되어 공부하기 위해 학교에 들어감. 또는 학교를 들어감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/admission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471315&searchKeywordTo=3',
+            koreanHeadword: '입학',
+        },
+    },
+    {
+        day: 23,
+        word: 'biologist',
+        meaning: '생물학자',
+        englishExplanation: 'a scientist who studies biology',
+        koreanExplanation: '생물학을 연구하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/biologist',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=176571&searchKeywordTo=3',
+            koreanHeadword: '생물학-자',
+        },
+    },
+    {
+        day: 23,
+        word: 'occupy',
+        meaning: '차지하다, 점유하다; 점령하다',
+        englishExplanation: 'to fill or use a space, an area or an amount of time',
+        koreanExplanation: '사물이나 공간, 지위 따위를 자기 몫으로 가지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/occupy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485812&searchKeywordTo=3',
+            koreanHeadword: '차지-하다1',
+        },
+    },
+    {
+        day: 23,
+        word: 'executive',
+        meaning: '임원, 이사, 경영진; 행정부; 경영의; 행정의',
+        englishExplanation:
+            'a person who has an important job as a manager of a company or an organization',
+        koreanExplanation: '어떤 단체에 소속하여 그 단체의 중요한 일을 맡아보는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/executive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=277536&searchKeywordTo=3',
+            koreanHeadword: '임원1',
+        },
+    },
+    {
+        day: 23,
+        word: 'economics',
+        meaning: '경제학',
+        englishExplanation: 'the study of how a society organizes its money, trade and industry',
+        koreanExplanation:
+            '경제 현상을 분석하고 연구하는 학문. 사회 과학의 한 분야로 국민 경제학, 경영학, 재정학, 가정학을 통틀어 이르는 말인데 일반적으로는 국민 경제학을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/economics',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=22353&searchKeywordTo=3',
+            koreanHeadword: '경제-학',
+        },
+    },
+    {
+        day: 24,
+        word: 'commerce',
+        meaning: '무역, 상업',
+        englishExplanation: 'trade, especially between countries',
+        koreanExplanation: '지방과 지방 사이에 서로 물건을 사고팔거나 교환하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commerce',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=122515&searchKeywordTo=3',
+            koreanHeadword: '무역2',
+        },
+    },
+    {
+        day: 24,
+        word: 'advertise',
+        meaning: '광고하다, ~의 광고를 내다',
+        englishExplanation:
+            'to tell the public about a product or a service in order to encourage people to buy or to use it',
+        koreanExplanation: '세상에 널리 알리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advertise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=399381&searchKeywordTo=3',
+            koreanHeadword: '광고-하다2',
+        },
+    },
+    {
+        day: 24,
+        word: 'advertisement',
+        meaning: '광고',
+        englishExplanation:
+            'a notice, picture or film telling people about a product, job or service',
+        koreanExplanation: '세상에 널리 알림. 또는 그런 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advertisement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=34849&searchKeywordTo=3',
+            koreanHeadword: '광고2',
+        },
+    },
+    {
+        day: 24,
+        word: 'security',
+        meaning: '안보, 보안, 안전; 안도감, 안심; 보장',
+        englishExplanation:
+            'the activities involved in protecting a country, building or person against attack, danger, etc.',
+        koreanExplanation: '편안히 보전됨. 또는 편안히 보전함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/security',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=216279&searchKeywordTo=3',
+            koreanHeadword: '안보2',
+        },
+    },
+    {
+        day: 24,
+        word: 'airline',
+        meaning: '항공사',
+        englishExplanation:
+            'a company that provides regular flights to take passengers and goods to different places',
+        koreanExplanation: '항공 운송 사업을 하는 회사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/airline',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=364580&searchKeywordTo=3',
+            koreanHeadword: '항공-사2',
+        },
+    },
+    {
+        day: 24,
+        word: 'analysis',
+        meaning: '분석',
+        englishExplanation:
+            'the detailed study or examination of something in order to understand more about it',
+        koreanExplanation: '얽혀 있거나 복잡한 것을 풀어서 개별적인 요소나 성질로 나눔.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/analysis',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432018&searchKeywordTo=3',
+            koreanHeadword: '분석2',
+        },
+    },
+    {
+        day: 24,
+        word: 'accidentally',
+        meaning: '우연히, 우발적으로',
+        englishExplanation: 'by chance',
+        koreanExplanation: '어떤 일이 뜻하지 아니하게 저절로 이루어져 공교롭게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accidentally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=467609&searchKeywordTo=3',
+            koreanHeadword: '우연-히',
+        },
+    },
+    {
+        day: 24,
+        word: 'route',
+        meaning: '길, 경로; 수단, 방법',
+        englishExplanation: 'a way that you follow to get from one place to another',
+        koreanExplanation:
+            '사람이나 동물 또는 자동차 따위가 지나갈 수 있게 땅 위에 낸 일정한 너비의 공간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/route_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=403593&searchKeywordTo=3',
+            koreanHeadword: '길1',
+        },
+    },
+    {
+        day: 24,
+        word: 'privacy',
+        meaning: '사생활, 프라이버시',
+        englishExplanation:
+            'the state of being alone and not watched or interrupted by other people',
+        koreanExplanation: '개인의 사사로운 일상생활.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/privacy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=169220&searchKeywordTo=3',
+            koreanHeadword: '사-생활',
+        },
+    },
+    {
+        day: 24,
+        word: 'advanced',
+        meaning: '발전한, 선진의; 고급의',
+        englishExplanation: 'having the most modern and recently developed ideas, methods, etc.',
+        koreanExplanation: '더 낫고 좋은 상태나 더 높은 단계로 나아가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advanced',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=426908&searchKeywordTo=3',
+            koreanHeadword: '발전-하다1',
+        },
+    },
+    {
+        day: 24,
+        word: 'secure',
+        meaning: '안전한; 안전하게 하다; 확보하다',
+        englishExplanation:
+            'to obtain or achieve something, especially when this means using a lot of effort',
+        koreanExplanation: '확실히 보증하거나 가지고 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/secure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=378060&searchKeywordTo=3',
+            koreanHeadword: '확보-하다1',
+        },
+    },
+    {
+        day: 24,
+        word: 'analyst',
+        meaning: '분석가',
+        englishExplanation:
+            'a person whose job involves examining facts or materials in order to give an opinion on them',
+        koreanExplanation:
+            '사물의 현상을 분석하여 그 본질을 밝혀내는 데에 재능을 가지고 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/analyst',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153867&searchKeywordTo=3',
+            koreanHeadword: '분석-가',
+        },
+    },
+    {
+        day: 24,
+        word: 'passenger',
+        meaning: '승객, 여객',
+        englishExplanation:
+            'a person who is travelling in a car, bus, train, plane or ship and who is not driving it or working on it',
+        koreanExplanation: '차, 배, 비행기 따위의 탈것을 타는 손님.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/passenger',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=204859&searchKeywordTo=3',
+            koreanHeadword: '승객',
+        },
+    },
+    {
+        day: 24,
+        word: 'pedestrian',
+        meaning: '보행자; 도보의',
+        englishExplanation: 'a person walking in the street and not travelling in a vehicle',
+        koreanExplanation: '걸어서 길거리를 왕래하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pedestrian_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=143994&searchKeywordTo=3',
+            koreanHeadword: '보행-자',
+        },
+    },
+    {
+        day: 24,
+        word: 'analyze',
+        meaning: '분석하다',
+        englishExplanation:
+            'to examine the nature or structure of something, especially by separating it into its parts, in order to understand or explain it',
+        koreanExplanation: '얽혀 있거나 복잡한 것을 풀어서 개별적인 요소나 성질로 나누다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/analyse',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153865&searchKeywordTo=3',
+            koreanHeadword: '분석-하다2',
+        },
+    },
+    {
+        day: 24,
+        word: 'license',
+        meaning: '허가; 면허증; 허락하다; 면허를 주다',
+        englishExplanation:
+            'an official document that shows that permission has been given to do, own or use something',
+        koreanExplanation: '행동이나 일을 하도록 허용함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/licence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=370902&searchKeywordTo=3',
+            koreanHeadword: '허가1',
+        },
+    },
+    {
+        day: 24,
+        word: 'transport',
+        meaning: '운송하다; 이동시키다; 수송, 운송',
+        englishExplanation:
+            'a system for carrying people or goods from one place to another using vehicles, roads, etc.',
+        koreanExplanation: '사람을 태워 보내거나 물건 따위를 실어 보내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transport_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=246164&searchKeywordTo=3',
+            koreanHeadword: '운송-하다',
+        },
+    },
+    {
+        day: 24,
+        word: 'mobility',
+        meaning: '이동성, 기동성',
+        englishExplanation:
+            'the ability to move easily from one place, social class or job to another',
+        koreanExplanation: '한곳에 머무르지 아니하고 자주 옮겨 다니는 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mobility',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469995&searchKeywordTo=3',
+            koreanHeadword: '이동-성',
+        },
+    },
+    {
+        day: 24,
+        word: 'automobile',
+        meaning: '자동차',
+        englishExplanation: 'a car',
+        koreanExplanation:
+            '원동기를 장치하여 그 동력으로 바퀴를 굴려서 철길이나 가설된 선에 의하지 아니하고 땅 위를 움직이도록 만든 차. 승용차, 승합자동차, 화물 자동차, 특수 자동차 및 이륜자동차가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/automobile',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472747&searchKeywordTo=3',
+            koreanHeadword: '자동-차',
+        },
+    },
+    {
+        day: 24,
+        word: 'fuel',
+        meaning: '연료; 연료를 공급하다',
+        englishExplanation: 'any material that produces heat or power, usually when it is burnt',
+        koreanExplanation: '태워서 열이나 빛, 동력을 얻는 데 쓰는 물질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fuel_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=228032&searchKeywordTo=3',
+            koreanHeadword: '연료',
+        },
+    },
+    {
+        day: 24,
+        word: 'transmission',
+        meaning: '전송; 전염',
+        englishExplanation:
+            'the act or process of passing something from one person, place or thing to another',
+        koreanExplanation: '글이나 사진 따위를 전류나 전파를 이용하여 먼 곳에 보냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transmission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=290326&searchKeywordTo=3',
+            koreanHeadword: '전송4',
+        },
+    },
+    {
+        day: 24,
+        word: 'seal',
+        meaning: '봉하다, 밀봉하다; 도장, 직인; 바다표범',
+        englishExplanation:
+            'to close an envelope, etc. by sticking the edges of the opening together',
+        koreanExplanation: '문, 봉투, 그릇 따위를 열지 못하게 꼭 붙이거나 싸서 막다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/seal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434822&searchKeywordTo=3',
+            koreanHeadword: '봉-하다1',
+        },
+    },
+    {
+        day: 24,
+        word: 'vehicle',
+        meaning: '운송 수단, 탈것; 수단, 매개체',
+        englishExplanation:
+            'a thing that is used for transporting people or goods from one place to another, such as a car or lorry',
+        koreanExplanation: '자전거, 자동차 따위의 사람이 타고 다니는 물건을 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vehicle',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493597&searchKeywordTo=3',
+            koreanHeadword: '탈-것',
+        },
+    },
+    {
+        day: 24,
+        word: 'advertiser',
+        meaning: '광고주',
+        englishExplanation: 'a person or company that advertises',
+        koreanExplanation: '광고를 내는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advertiser',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=399597&searchKeywordTo=3',
+            koreanHeadword: '광고-주',
+        },
+    },
+    {
+        day: 24,
+        word: 'anonymously',
+        meaning: '익명으로',
+        englishExplanation: 'by a person who does not want their name to be known or made public',
+        koreanExplanation: '누구인지 이름을 밝히지 않고.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/anonymously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=268567&searchKeywordTo=3',
+            koreanHeadword: '익명',
+        },
+    },
+    {
+        day: 24,
+        word: 'forecast',
+        meaning: '예측하다; 예상, 예보',
+        englishExplanation:
+            'a statement about what will happen in the future, based on information that is available now',
+        koreanExplanation: '미리 헤아려 짐작하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/forecast_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463717&searchKeywordTo=3',
+            koreanHeadword: '예측-하다',
+        },
+    },
+    {
+        day: 24,
+        word: 'envelope',
+        meaning: '봉투',
+        englishExplanation:
+            'a flat paper container used for sending letters in, with a part that you stick down to close it',
+        koreanExplanation: '편지나 서류 따위를 넣기 위하여 종이로 만든 주머니.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/envelope',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434708&searchKeywordTo=3',
+            koreanHeadword: '봉투',
+        },
+    },
+    {
+        day: 24,
+        word: 'anonymous',
+        meaning: '익명의, 작자 불명의',
+        englishExplanation: 'with a name that is not known or that is not made public',
+        koreanExplanation: '이름을 숨김. 또는 숨긴 이름이나 그 대신 쓰는 이름.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/anonymous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=268567&searchKeywordTo=3',
+            koreanHeadword: '익명',
+        },
+    },
+    {
+        day: 24,
+        word: 'accidental',
+        meaning: '우발적인, 우연한',
+        englishExplanation: 'happening by chance',
+        koreanExplanation: '어떤 일이 예기치 아니하게 우연히 일어나는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/accidental',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=462486&searchKeywordTo=3',
+            koreanHeadword: '우발-적',
+        },
+    },
+    {
+        day: 24,
+        word: 'virtual',
+        meaning: '가상의; 실질적인, 사실상의',
+        englishExplanation:
+            'made to appear to exist by the use of computer software, for example on the internet',
+        koreanExplanation: '실물처럼 보이는 거짓 형상.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/virtual',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=2621&searchKeywordTo=3',
+            koreanHeadword: '가상6',
+        },
+    },
+    {
+        day: 24,
+        word: 'private',
+        meaning: '민간의, 개인의',
+        englishExplanation: 'belonging to or for the use of a particular person or group',
+        koreanExplanation: '개인에 속하거나 관계되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/private_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=13154&searchKeywordTo=3',
+            koreanHeadword: '개인-적',
+        },
+    },
+    {
+        day: 24,
+        word: 'transportation',
+        meaning: '교통; 운송',
+        englishExplanation:
+            'a system for carrying people or goods from one place to another using vehicles, roads, etc.',
+        koreanExplanation:
+            '자동차·기차·배·비행기 따위를 이용하여 사람이 오고 가거나, 짐을 실어 나르는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transportation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402169&searchKeywordTo=3',
+            koreanHeadword: '교통1',
+        },
+    },
+    {
+        day: 24,
+        word: 'commute',
+        meaning: '통근하다; 교환하다, 바꾸다; 통근',
+        englishExplanation:
+            'to travel regularly by bus, train, car, etc. between your place of work and your home',
+        koreanExplanation: '집에서 직장에 근무하러 다니다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commute_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=348562&searchKeywordTo=3',
+            koreanHeadword: '통근-하다',
+        },
+    },
+    {
+        day: 24,
+        word: 'advance',
+        meaning: '진보, 발전; 전진; 진보하다; 전진하다',
+        englishExplanation:
+            'progress or a development in a particular activity or area of understanding',
+        koreanExplanation: '정도나 수준이 나아지거나 높아짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/advance_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485072&searchKeywordTo=3',
+            koreanHeadword: '진보2',
+        },
+    },
+    {
+        day: 24,
+        word: 'transmit',
+        meaning: '전송하다, 보내다; 전염시키다',
+        englishExplanation: 'to send an electronic signal, radio or television broadcast, etc.',
+        koreanExplanation: '글이나 사진 따위를 전류나 전파를 이용하여 먼 곳에 보내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/transmit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=290612&searchKeywordTo=3',
+            koreanHeadword: '전송-하다4',
+        },
+    },
+    {
+        day: 24,
+        word: 'virtually',
+        meaning: '사실상; 가상으로',
+        englishExplanation: 'almost or very nearly, so that any slight difference is not important',
+        koreanExplanation: '실제로 있었던 상태. 또는 현재에 있는 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/virtually',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=170072&searchKeywordTo=3',
+            koreanHeadword: '사실-상',
+        },
+    },
+    {
+        day: 24,
+        word: 'network',
+        meaning: '망; 망; 네트워크',
+        englishExplanation:
+            'a complicated system of roads, lines, tubes, nerves, etc. that are connected to each other and operate together',
+        koreanExplanation: '그물처럼 만들어 가려 두거나 치거나 하는 물건을 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/network_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420332&searchKeywordTo=3',
+            koreanHeadword: '망7',
+        },
+    },
+    {
+        day: 24,
+        word: 'crash',
+        meaning: '충돌하다, 부딪치다; 굉음을 내다; 충돌; 굉음',
+        englishExplanation:
+            'an accident in which a vehicle hits something, for example another vehicle, usually causing damage and often injuring or killing the passengers',
+        koreanExplanation: '서로 맞부딪치거나 맞서다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crash_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=334415&searchKeywordTo=3',
+            koreanHeadword: '충돌-하다',
+        },
+    },
+    {
+        day: 24,
+        word: 'aircraft',
+        meaning: '항공기, 비행기',
+        englishExplanation: 'any vehicle that can fly and carry goods or passengers',
+        koreanExplanation:
+            '사람이나 물건을 싣고 공중을 비행할 수 있는 탈것을 통틀어 이르는 말. 미사일이나 우주 로켓 따위는 포함하지 않는다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aircraft',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=365387&searchKeywordTo=3',
+            koreanHeadword: '항공-기',
+        },
+    },
+    {
+        day: 24,
+        word: 'flight',
+        meaning: '날기, 비행; 항공편',
+        englishExplanation: 'a journey made by air, especially in a plane',
+        koreanExplanation: '공중으로 날아가거나 날아다님.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/flight_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439705&searchKeywordTo=3',
+            koreanHeadword: '비행3',
+        },
+    },
+    {
+        day: 25,
+        word: 'historic',
+        meaning: '역사적으로 중요한',
+        englishExplanation: 'important in history',
+        koreanExplanation: '인류 사회의 변천과 흥망의 과정. 또는 그 기록.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/historic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458484&searchKeywordTo=3',
+            koreanHeadword: '역사3',
+        },
+    },
+    {
+        day: 25,
+        word: 'invasion',
+        meaning: '침략; 침해, 침범',
+        englishExplanation:
+            'the act of an army entering another country by force in order to take control of it',
+        koreanExplanation: '남의 나라를 불법으로 쳐들어가서 약탈함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/invasion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=340523&searchKeywordTo=3',
+            koreanHeadword: '침략1',
+        },
+    },
+    {
+        day: 25,
+        word: 'territory',
+        meaning: '영토, 영역',
+        englishExplanation:
+            'land that is under the control of a particular country or political leader',
+        koreanExplanation:
+            '국제법에서, 국가의 통치권이 미치는 구역. 흔히 토지로 이루어진 국가의 영역을 이르나 영해와 영공을 포함하는 경우도 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/territory',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234401&searchKeywordTo=3',
+            koreanHeadword: '영토3',
+        },
+    },
+    {
+        day: 25,
+        word: 'border',
+        meaning: '국경, 경계; 접하다',
+        englishExplanation: 'the line that divides two countries or areas',
+        koreanExplanation: '나라와 나라의 영역을 가르는 경계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/border_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=37375&searchKeywordTo=3',
+            koreanHeadword: '국경1',
+        },
+    },
+    {
+        day: 25,
+        word: 'continent',
+        meaning: '대륙, 육지',
+        englishExplanation:
+            'relating to the control of your feelings, especially your desire to have sex',
+        koreanExplanation:
+            '넓은 면적을 가지고 해양의 영향이 내륙부에까지 직접적으로 미치지 않는 육지. 일반적으로 유럽, 아시아, 아프리카, 북아메리카, 남아메리카, 오스트레일리아, 남극 등을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continent_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411148&searchKeywordTo=3',
+            koreanHeadword: '대륙1',
+        },
+    },
+    {
+        day: 25,
+        word: 'agriculture',
+        meaning: '농업',
+        englishExplanation: 'the science or practice of farming',
+        koreanExplanation:
+            '땅을 이용하여 인간 생활에 필요한 식물을 가꾸거나, 유용한 동물을 기르거나 하는 산업. 또는 그런 직업. 특히 농경을 가리키는 경우가 많고, 넓은 뜻으로는 낙농업과 임업 따위도 포함한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/agriculture',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409521&searchKeywordTo=3',
+            koreanHeadword: '농업',
+        },
+    },
+    {
+        day: 25,
+        word: 'cultivation',
+        meaning: '재배, 경작; 양성',
+        englishExplanation: 'the preparation and use of land for growing plants or crops',
+        koreanExplanation: '식물을 심어 가꿈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cultivation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474287&searchKeywordTo=3',
+            koreanHeadword: '재배3',
+        },
+    },
+    {
+        day: 25,
+        word: 'continental',
+        meaning: '대륙의, 대륙성의',
+        englishExplanation: 'of or in the continent of Europe, not including Britain and Ireland',
+        koreanExplanation:
+            '넓은 면적을 가지고 해양의 영향이 내륙부에까지 직접적으로 미치지 않는 육지. 일반적으로 유럽, 아시아, 아프리카, 북아메리카, 남아메리카, 오스트레일리아, 남극 등을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continental_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411148&searchKeywordTo=3',
+            koreanHeadword: '대륙1',
+        },
+    },
+    {
+        day: 25,
+        word: 'enemy',
+        meaning: '적, 경쟁 상대; 적국, 적군; 장애물',
+        englishExplanation:
+            'a person who hates a person or who acts or speaks against a person or thing',
+        koreanExplanation: '서로 싸우거나 해치고자 하는 상대.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/enemy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478713&searchKeywordTo=3',
+            koreanHeadword: '적11',
+        },
+    },
+    {
+        day: 25,
+        word: 'cliff',
+        meaning: '절벽, 낭떠러지',
+        englishExplanation:
+            'a high area of rock with a very steep side, often at the edge of the sea or ocean',
+        koreanExplanation: '바위가 깎아 세운 것처럼 아주 높이 솟아 있는 험한 낭떠러지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cliff_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477895&searchKeywordTo=3',
+            koreanHeadword: '절벽',
+        },
+    },
+    {
+        day: 25,
+        word: 'landscape',
+        meaning: '경관, 풍경; 풍경화, 산수화',
+        englishExplanation:
+            'everything you can see when you look across a large area of land, especially in the country',
+        koreanExplanation: '산이나 들, 강, 바다 따위의 자연이나 지역의 풍경.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/landscape_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392858&searchKeywordTo=3',
+            koreanHeadword: '경관4',
+        },
+    },
+    {
+        day: 25,
+        word: 'ancient',
+        meaning: '고대의, 옛날의; 고대인',
+        englishExplanation:
+            'belonging to a period of history that is thousands of years in the past',
+        koreanExplanation: '고대에 살던 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ancient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=21458&searchKeywordTo=3',
+            koreanHeadword: '고대-인',
+        },
+    },
+    {
+        day: 25,
+        word: 'combat',
+        meaning: '싸우다; 전투, 싸움',
+        englishExplanation: 'fighting or a fight, especially during a time of war',
+        koreanExplanation: '말, 힘, 무기 따위를 가지고 서로 이기려고 다투다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/combat_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=454496&searchKeywordTo=3',
+            koreanHeadword: '싸우다',
+        },
+    },
+    {
+        day: 25,
+        word: 'pioneering',
+        meaning: '선구적인, 최초의',
+        englishExplanation: 'introducing ideas and methods that have never been used before',
+        koreanExplanation: '어떤 일이나 사상에서 그 시대의 맨 앞에 서는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pioneering',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=182428&searchKeywordTo=3',
+            koreanHeadword: '선구-적',
+        },
+    },
+    {
+        day: 25,
+        word: 'barrier',
+        meaning: '장벽, 장애물; 장벽, 장애',
+        englishExplanation:
+            'an object like a fence that prevents people from moving forward from one place to another',
+        koreanExplanation: '길게 쌓은 성벽.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/barrier',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477304&searchKeywordTo=3',
+            koreanHeadword: '장벽1',
+        },
+    },
+    {
+        day: 25,
+        word: 'cultivate',
+        meaning: '재배하다, 경작하다; 양성하다, 기르다',
+        englishExplanation: 'to prepare and use land for growing plants or crops',
+        koreanExplanation: '식물을 심어 가꾸다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cultivate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=280170&searchKeywordTo=3',
+            koreanHeadword: '재배-하다3',
+        },
+    },
+    {
+        day: 25,
+        word: 'pioneer',
+        meaning: '개척자, 선구자; 개척하다',
+        englishExplanation:
+            'a person who is the first to study and develop a particular area of knowledge, culture, etc. that other people then continue to develop',
+        koreanExplanation: '거친 땅을 일구어 쓸모 있는 땅으로 만드는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pioneer_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393798&searchKeywordTo=3',
+            koreanHeadword: '개척-자',
+        },
+    },
+    {
+        day: 25,
+        word: 'harvest',
+        meaning: '수확, 추수; 수확하다, 거둬들이다',
+        englishExplanation: 'the time of year when the crops are gathered in on a farm, etc.',
+        koreanExplanation: '익은 농작물을 거두어들임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/harvest_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452064&searchKeywordTo=3',
+            koreanHeadword: '수확2',
+        },
+    },
+    {
+        day: 25,
+        word: 'historical',
+        meaning: '역사의, 역사상의',
+        englishExplanation: 'relating to the past',
+        koreanExplanation: '인류 사회의 변천과 흥망의 과정. 또는 그 기록.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/historical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458484&searchKeywordTo=3',
+            koreanHeadword: '역사3',
+        },
+    },
+    {
+        day: 25,
+        word: 'tropical',
+        meaning: '열대의',
+        englishExplanation: 'coming from, found in or typical of the tropics',
+        koreanExplanation:
+            '적도를 중심으로 남북 회귀선 사이에 있는 지대. 연평균 기온이 20℃ 이상 또는 최한월 평균 기온이 18℃ 이상인 지역으로, 연중 기온이 높고 강우량이 많은 것이 특징이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tropical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=229306&searchKeywordTo=3',
+            koreanHeadword: '열대3',
+        },
+    },
+    {
+        day: 25,
+        word: 'ancestor',
+        meaning: '조상, 선조',
+        englishExplanation: 'a person in your family who lived a long time ago',
+        koreanExplanation: '돌아간 어버이 위로 대대의 어른.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ancestor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484814&searchKeywordTo=3',
+            koreanHeadword: '조상7',
+        },
+    },
+    {
+        day: 25,
+        word: 'coast',
+        meaning: '해안, 연안',
+        englishExplanation: 'the land next to or near to the sea or ocean',
+        koreanExplanation: '바다와 육지가 맞닿은 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/coast_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503114&searchKeywordTo=3',
+            koreanHeadword: '해안2',
+        },
+    },
+    {
+        day: 25,
+        word: 'agricultural',
+        meaning: '농업의',
+        englishExplanation: 'relating to the science or practice of farming',
+        koreanExplanation:
+            '땅을 이용하여 인간 생활에 필요한 식물을 가꾸거나, 유용한 동물을 기르거나 하는 산업. 또는 그런 직업. 특히 농경을 가리키는 경우가 많고, 넓은 뜻으로는 낙농업과 임업 따위도 포함한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/agricultural',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=409521&searchKeywordTo=3',
+            koreanHeadword: '농업',
+        },
+    },
+    {
+        day: 25,
+        word: 'coastal',
+        meaning: '해안의',
+        englishExplanation: 'of or near a coast',
+        koreanExplanation: '바다와 육지가 맞닿은 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/coastal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503114&searchKeywordTo=3',
+            koreanHeadword: '해안2',
+        },
+    },
+    {
+        day: 25,
+        word: 'conquer',
+        meaning: '정복하다; 극복하다',
+        englishExplanation: 'to take control of a country or city and its people by force',
+        koreanExplanation: '남의 나라나 이민족 따위를 정벌하여 복종시키다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conquer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295238&searchKeywordTo=3',
+            koreanHeadword: '정복-하다',
+        },
+    },
+    {
+        day: 25,
+        word: 'conqueror',
+        meaning: '정복자, 승리자',
+        englishExplanation: 'a person who conquers',
+        koreanExplanation: '남의 나라나 이민족 따위를 정벌하여 복종시킨 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conqueror',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295546&searchKeywordTo=3',
+            koreanHeadword: '정복-자',
+        },
+    },
+    {
+        day: 25,
+        word: 'crop',
+        meaning: '작물; 수확량; 자르다; 경작하다',
+        englishExplanation: 'a plant that is grown in large quantities, especially as food',
+        koreanExplanation: '논밭에 심어 가꾸는 곡식이나 채소.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crop_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=278244&searchKeywordTo=3',
+            koreanHeadword: '작물',
+        },
+    },
+    {
+        day: 25,
+        word: 'rainforest',
+        meaning: '열대 우림',
+        englishExplanation: 'a thick forest in tropical parts of the world that have a lot of rain',
+        koreanExplanation:
+            '열대 지방에 있는 삼림 식물대. 평균 기온은 20°C 이상으로, 식물의 종류가 풍부하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rainforest',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=229323&searchKeywordTo=3',
+            koreanHeadword: '열대-림',
+        },
+    },
+    {
+        day: 25,
+        word: 'soldier',
+        meaning: '군인, 병사',
+        englishExplanation: 'a member of an army, especially one who is not an officer',
+        koreanExplanation:
+            '군대에서 복무하는 사람. 육해공군의 장교, 부사관, 병사를 통틀어 이르는 말이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/soldier_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397044&searchKeywordTo=3',
+            koreanHeadword: '군인',
+        },
+    },
+    {
+        day: 25,
+        word: 'grain',
+        meaning: '곡물; 낟알',
+        englishExplanation: 'the small, hard seeds of food plants such as wheat, rice, etc.',
+        koreanExplanation:
+            '사람의 식량이 되는 쌀, 보리, 콩, 조, 기장, 수수, 밀, 옥수수 따위를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/grain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397133&searchKeywordTo=3',
+            koreanHeadword: '곡물',
+        },
+    },
+    {
+        day: 25,
+        word: 'territorial',
+        meaning: '영토의',
+        englishExplanation: 'relating to the land or sea that is owned by a particular country',
+        koreanExplanation:
+            '국제법에서, 국가의 통치권이 미치는 구역. 흔히 토지로 이루어진 국가의 영역을 이르나 영해와 영공을 포함하는 경우도 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/territorial_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=234401&searchKeywordTo=3',
+            koreanHeadword: '영토3',
+        },
+    },
+    {
+        day: 25,
+        word: 'primitive',
+        meaning: '원시의; 미개의, 문명화가 되지 않은',
+        englishExplanation: 'belonging to a very simple society with no industry, etc.',
+        koreanExplanation: '사물이 전하여 내려온 그 처음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/primitive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465232&searchKeywordTo=3',
+            koreanHeadword: '원시1',
+        },
+    },
+    {
+        day: 25,
+        word: 'pesticide',
+        meaning: '농약, 살충제',
+        englishExplanation: 'a chemical used for killing pests, especially insects',
+        koreanExplanation:
+            '농작물에 해로운 벌레, 병균, 잡초 따위를 없애거나 농작물이 잘 자라게 하는 약품. 살균제, 살충제, 발아제, 생장 촉진제 따위가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pesticide',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=67706&searchKeywordTo=3',
+            koreanHeadword: '농약',
+        },
+    },
+    {
+        day: 25,
+        word: 'weed',
+        meaning: '잡초; 잡초를 뽑다',
+        englishExplanation:
+            'a wild plant growing where it is not wanted, especially among crops or garden plants',
+        koreanExplanation:
+            '가꾸지 않아도 저절로 나서 자라는 여러 가지 풀. 농작물 따위의 다른 식물이 자라는 데 해가 되기도 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/weed_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=477276&searchKeywordTo=3',
+            koreanHeadword: '잡초2',
+        },
+    },
+    {
+        day: 25,
+        word: 'invade',
+        meaning: '침략하다; 침범하다; 침해하다',
+        englishExplanation:
+            'to enter a country, town, etc. using military force in order to take control of it',
+        koreanExplanation: '남의 나라를 불법으로 쳐들어가서 약탈하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/invade',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=492991&searchKeywordTo=3',
+            koreanHeadword: '침략-하다1',
+        },
+    },
+    {
+        day: 25,
+        word: 'modern',
+        meaning: '현대의; 최신의',
+        englishExplanation: 'of the present time or recent times',
+        koreanExplanation: '지금의 시대.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/modern',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=368868&searchKeywordTo=3',
+            koreanHeadword: '현대1',
+        },
+    },
+    {
+        day: 25,
+        word: 'empire',
+        meaning: '제국, 왕국',
+        englishExplanation:
+            'a group of countries or states that are controlled by one leader or government',
+        koreanExplanation: '황제가 다스리는 나라.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/empire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295332&searchKeywordTo=3',
+            koreanHeadword: '제국2',
+        },
+    },
+    {
+        day: 25,
+        word: 'conquest',
+        meaning: '정복, 점령',
+        englishExplanation: 'the act of taking control of a country, city, etc. by force',
+        koreanExplanation: '남의 나라나 이민족 따위를 정벌하여 복종시킴.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conquest',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482878&searchKeywordTo=3',
+            koreanHeadword: '정복2',
+        },
+    },
+    {
+        day: 25,
+        word: 'organic',
+        meaning: '유기체의; 장기의; 유기농의',
+        englishExplanation: 'produced or practised without using artificial chemicals',
+        koreanExplanation: '생물처럼 물질이 유기적으로 구성되어 생활 기능을 가지게 된 조직체.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=253775&searchKeywordTo=3',
+            koreanHeadword: '유기-체',
+        },
+    },
+    {
+        day: 25,
+        word: 'weapon',
+        meaning: '무기, 총기',
+        englishExplanation:
+            'an object such as a knife, gun, bomb, etc. that is used for fighting or attacking a person',
+        koreanExplanation: '전쟁이나 싸움에 사용되는 기구를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/weapon',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=120854&searchKeywordTo=3',
+            koreanHeadword: '무기3',
+        },
+    },
+    {
+        day: 26,
+        word: 'load',
+        meaning: '짐, 화물; 싣다; 실리다',
+        englishExplanation: 'something that is being carried by a person, vehicle, etc.',
+        koreanExplanation: '다른 곳으로 옮기기 위하여 챙기거나 꾸려 놓은 물건.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/load_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484460&searchKeywordTo=3',
+            koreanHeadword: '짐1',
+        },
+    },
+    {
+        day: 26,
+        word: 'stretchy',
+        meaning: '늘어나는, 신축성이 있는',
+        englishExplanation: 'that can easily be made longer or wider without tearing or breaking',
+        koreanExplanation: '물체가 늘어나고 줄어드는 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stretchy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=453795&searchKeywordTo=3',
+            koreanHeadword: '신축-성',
+        },
+    },
+    {
+        day: 26,
+        word: 'posture',
+        meaning: '자세, 포즈; 자세를 취하다',
+        englishExplanation: 'the position in which you hold your body when standing or sitting',
+        koreanExplanation: '몸을 움직이거나 가누는 모양.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/posture_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471542&searchKeywordTo=3',
+            koreanHeadword: '자세2',
+        },
+    },
+    {
+        day: 26,
+        word: 'stare',
+        meaning: '응시하다, 쳐다보다',
+        englishExplanation: 'to look at a person or thing for a long time',
+        koreanExplanation: '눈길을 모아 한곳을 똑바로 바라보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stare_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469115&searchKeywordTo=3',
+            koreanHeadword: '응시-하다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'lean',
+        meaning: '기대다, 기울이다; 기대어 놓다',
+        englishExplanation: 'to bend or move from a straight position to a sloping position',
+        koreanExplanation: '몸이나 물건을 무엇에 의지하면서 비스듬히 대다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/lean_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406362&searchKeywordTo=3',
+            koreanHeadword: '기대다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'sigh',
+        meaning: '한숨; 한숨 쉬다',
+        englishExplanation:
+            'to take and then let out a long, deep breath that can be heard, to show that you are disappointed, sad, tired, etc.',
+        koreanExplanation:
+            '근심이나 설움이 있을 때, 또는 긴장하였다가 안도할 때 길게 몰아서 내쉬는 숨.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sigh_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=365942&searchKeywordTo=3',
+            koreanHeadword: '한-숨2',
+        },
+    },
+    {
+        day: 26,
+        word: 'breathe',
+        meaning: '숨을 쉬다, 호흡하다',
+        englishExplanation:
+            'to take air into your lungs and send it out again through your nose or mouth',
+        koreanExplanation: '숨을 쉬다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/breathe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377469&searchKeywordTo=3',
+            koreanHeadword: '호흡-하다',
+        },
+    },
+    {
+        day: 26,
+        word: 'bury',
+        meaning: '파묻다, 매장하다',
+        englishExplanation: 'to place a dead body in the ground',
+        koreanExplanation: '파서 그 속에 묻다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bury',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=498362&searchKeywordTo=3',
+            koreanHeadword: '파-묻다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'scream',
+        meaning: '비명을 지르다, 소리치다; 비명, 절규',
+        englishExplanation:
+            'to give a loud, high shout, because you are hurt, frightened, excited, etc.',
+        koreanExplanation: '소리를 크게 지르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scream_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447307&searchKeywordTo=3',
+            koreanHeadword: '소리-치다',
+        },
+    },
+    {
+        day: 26,
+        word: 'bounce',
+        meaning: '튀다; 깡충깡충 뛰다; 튐, 튀어 오름',
+        englishExplanation: 'to move quickly away from a surface after hitting it',
+        koreanExplanation: '탄력 있는 물체가 솟아오르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bounce_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=492024&searchKeywordTo=3',
+            koreanHeadword: '튀다',
+        },
+    },
+    {
+        day: 26,
+        word: 'dig',
+        meaning: '파다, 발굴하다',
+        englishExplanation:
+            'to make a hole in the ground or to move soil from one place to another using your hands, a tool or a machine',
+        koreanExplanation: '구멍이나 구덩이를 만들다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dig_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=495961&searchKeywordTo=3',
+            koreanHeadword: '파다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'burial',
+        meaning: '매장',
+        englishExplanation: 'the act or ceremony of burying a dead body',
+        koreanExplanation: '시체나 유골 따위를 땅속에 묻음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/burial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112207&searchKeywordTo=3',
+            koreanHeadword: '매장2',
+        },
+    },
+    {
+        day: 26,
+        word: 'rub',
+        meaning: '문지르다, 비비다; 바르다',
+        englishExplanation:
+            'to move your hand, a cloth, etc., backwards and forwards over a surface while pressing it',
+        koreanExplanation: '무엇을 서로 눌러 대고 이리저리 밀거나 비비다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rub_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424752&searchKeywordTo=3',
+            koreanHeadword: '문지르다',
+        },
+    },
+    {
+        day: 26,
+        word: 'stir',
+        meaning: '휘젓다, 뒤섞다; 불러일으키다; 휘젓기; 동요, 충격',
+        englishExplanation:
+            'to move a liquid or substance around, using a spoon or something similar, in order to mix it completely',
+        koreanExplanation: '골고루 섞이도록 마구 젓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stir_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507736&searchKeywordTo=3',
+            koreanHeadword: '휘-젓다',
+        },
+    },
+    {
+        day: 26,
+        word: 'swing',
+        meaning: '흔들다; 휘두르다; 그네를 타다; 흔들림; 그네',
+        englishExplanation:
+            'to move backwards or forwards or from side to side while hanging from a fixed point',
+        koreanExplanation:
+            '사람이나 동물 등이 몸의 일부나 전체, 또는 손에 잡은 물체 따위를 좌우, 앞뒤, 상하로 자꾸 움직이게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/swing_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508980&searchKeywordTo=3',
+            koreanHeadword: '흔들다',
+        },
+    },
+    {
+        day: 26,
+        word: 'whisper',
+        meaning: '속삭이다, 귓속말하다; 속삭임; 소문',
+        englishExplanation:
+            'to speak very quietly to a person so that other people cannot hear what you are saying',
+        koreanExplanation: '남이 알아듣지 못하도록 나지막한 목소리로 가만가만 이야기하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/whisper_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447559&searchKeywordTo=3',
+            koreanHeadword: '속삭-이다',
+        },
+    },
+    {
+        day: 26,
+        word: 'spill',
+        meaning: '흐르다, 쏟아지다; 흘리다, 쏟다; 흘린 액체; 유출',
+        englishExplanation: 'to flow over the edge of a container by accident',
+        koreanExplanation: '걸치거나 두른 것이 미끄러지거나 처지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spill_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508767&searchKeywordTo=3',
+            koreanHeadword: '흐르다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'weep',
+        meaning: '울다, 눈물을 흘리다',
+        englishExplanation: 'to cry, usually because you are sad',
+        koreanExplanation:
+            '기쁨, 슬픔 따위의 감정을 억누르지 못하거나 아픔을 참지 못하여 눈물을 흘리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/weep_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465180&searchKeywordTo=3',
+            koreanHeadword: '울다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'wipe',
+        meaning: '닦다, 문지르다; 없애다, 지우다',
+        englishExplanation:
+            'to rub something against a surface, in order to remove dirt or liquid from it',
+        koreanExplanation: '때, 먼지 녹 따위의 더러운 것을 없애거나 윤기를 내려고 거죽을 문지르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wipe_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412401&searchKeywordTo=3',
+            koreanHeadword: '닦다',
+        },
+    },
+    {
+        day: 26,
+        word: 'fold',
+        meaning: '접다; 끼다, 포개다',
+        englishExplanation:
+            'to bend something, especially paper or cloth, so that one part lies on top of another part',
+        koreanExplanation: '천이나 종이 따위를 꺾어서 겹치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fold_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481802&searchKeywordTo=3',
+            koreanHeadword: '접다',
+        },
+    },
+    {
+        day: 26,
+        word: 'crush',
+        meaning: '부수다, 으깨다, 박살내다; 군중; 홀딱 반함',
+        englishExplanation: 'to press something so hard that it is damaged or loses its shape',
+        koreanExplanation: '단단한 물체를 여러 조각이 나게 두드려 깨뜨리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crush_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434909&searchKeywordTo=3',
+            koreanHeadword: '부수다',
+        },
+    },
+    {
+        day: 26,
+        word: 'squeeze',
+        meaning: '짜다, 압착하다; 꽉 쥐다',
+        englishExplanation: 'to press something, especially with your fingers',
+        koreanExplanation: '누르거나 비틀어서 물기나 기름 따위를 빼내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/squeeze_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=318733&searchKeywordTo=3',
+            koreanHeadword: '짜다2',
+        },
+    },
+    {
+        day: 26,
+        word: 'breath',
+        meaning: '숨, 호흡',
+        englishExplanation: 'the air that you take into your lungs and send out again',
+        koreanExplanation:
+            '사람이나 동물이 코 또는 입으로 공기를 들이마시고 내쉬는 기운. 또는 그렇게 하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/breath',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446264&searchKeywordTo=3',
+            koreanHeadword: '숨1',
+        },
+    },
+    {
+        day: 26,
+        word: 'crawl',
+        meaning: '기다, 기어가다; 천천히 하다',
+        englishExplanation:
+            'to move forward on your hands and knees or with your body close to the ground',
+        koreanExplanation: '가슴과 배를 바닥으로 향하고 손이나 팔다리 따위를 놀려 앞으로 나아가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crawl_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=405056&searchKeywordTo=3',
+            koreanHeadword: '기다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'swallow',
+        meaning: '삼키다; 억누르다, 참다; 삼키기; 제비',
+        englishExplanation: 'to make food, drink, etc. go down your throat into your stomach',
+        koreanExplanation: '무엇을 입에 넣어서 목구멍으로 넘기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/swallow_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=441936&searchKeywordTo=3',
+            koreanHeadword: '삼키다',
+        },
+    },
+    {
+        day: 26,
+        word: 'faint',
+        meaning: '기절하다, 실신하다; 희미한, 약한',
+        englishExplanation: 'that cannot be clearly seen, heard or smelt',
+        koreanExplanation: '두려움, 놀람, 충격 따위로 한동안 정신을 잃다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/faint_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=50607&searchKeywordTo=3',
+            koreanHeadword: '기절-하다2',
+        },
+    },
+    {
+        day: 26,
+        word: 'strike',
+        meaning: '치다, 부딪치다; 공격하다; 타격, 공격; 파업',
+        englishExplanation: 'to hit a person or thing hard or with force',
+        koreanExplanation: '손이나 손에 든 물건으로 세게 부딪게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/strike_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490114&searchKeywordTo=3',
+            koreanHeadword: '치다2',
+        },
+    },
+    {
+        day: 26,
+        word: 'tap',
+        meaning: '가볍게 두드리다; 가볍게 두드리기; 수도꼭지',
+        englishExplanation: 'to hit a person or thing quickly and lightly',
+        koreanExplanation: '수돗물을 나오게 하거나 막는 장치.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tap_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451499&searchKeywordTo=3',
+            koreanHeadword: '수도-꼭지',
+        },
+    },
+    {
+        day: 26,
+        word: 'stretch',
+        meaning: '늘이다, 늘어나다; 뻗다, 기지개를 켜다; 펴다, 당기다',
+        englishExplanation: 'to make something longer, wider or looser, for example by pulling it',
+        koreanExplanation: '본디보다 더 길어지게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stretch_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=410213&searchKeywordTo=3',
+            koreanHeadword: '늘-이다1',
+        },
+    },
+    {
+        day: 26,
+        word: 'glance',
+        meaning: '흘끗 보다, 대충 훑어보다; 흘끗 보기',
+        englishExplanation: 'to look quickly at something/a person',
+        koreanExplanation: '곁눈으로 슬쩍 한 번 흘겨보는 모양. ‘흘긋’보다 센 느낌을 준다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/glance_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=385192&searchKeywordTo=3',
+            koreanHeadword: '흘끗',
+        },
+    },
+    {
+        day: 26,
+        word: 'striking',
+        meaning: '눈에 띄는, 이목을 끄는',
+        englishExplanation: 'interesting and unusual enough to attract attention',
+        koreanExplanation: '엉클어지거나 흐리지 아니하고 아주 분명하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/striking',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417932&searchKeywordTo=3',
+            koreanHeadword: '뚜렷-하다',
+        },
+    },
+    {
+        day: 26,
+        word: 'bend',
+        meaning: '구부리다',
+        englishExplanation: 'to lean, or make something lean, in a particular direction',
+        koreanExplanation: '한쪽으로 구붓하게 굽히다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bend_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=36658&searchKeywordTo=3',
+            koreanHeadword: '구부리다',
+        },
+    },
+    {
+        day: 26,
+        word: 'foldable',
+        meaning: '접을 수 있는',
+        englishExplanation: 'that can be folded',
+        koreanExplanation: '천이나 종이 따위를 꺾어서 겹치다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/foldable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481802&searchKeywordTo=3',
+            koreanHeadword: '접다',
+        },
+    },
+    {
+        day: 26,
+        word: 'slip',
+        meaning: '미끄러지다; 미끄러짐; 실수',
+        englishExplanation: 'to slide a short distance by accident so that you fall or nearly fall',
+        koreanExplanation: '비탈지거나 미끄러운 곳에서 한쪽으로 밀리어 나가거나 넘어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/slip_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425344&searchKeywordTo=3',
+            koreanHeadword: '미끄러-지다',
+        },
+    },
+    {
+        day: 26,
+        word: 'sweep',
+        meaning: '청소하다, 쓸다; 휩쓸다, 휘몰아치다; 청소, 쓸기',
+        englishExplanation: 'to clean a room, surface, etc. using a broom',
+        koreanExplanation: '더럽거나 어지러운 것을 쓸고 닦아서 깨끗하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sweep_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488097&searchKeywordTo=3',
+            koreanHeadword: '청소-하다3',
+        },
+    },
+    {
+        day: 27,
+        word: 'civilization',
+        meaning: '문명',
+        englishExplanation: 'a state of human society that is very developed and organized',
+        koreanExplanation:
+            '인류가 이룩한 물질적, 기술적, 사회 구조적인 발전. 자연 그대로의 원시적 생활에 상대하여 발전되고 세련된 삶의 양태를 뜻한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/civilization',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424565&searchKeywordTo=3',
+            koreanHeadword: '문명3',
+        },
+    },
+    {
+        day: 27,
+        word: 'organization',
+        meaning: '조직, 기구, 단체; 준비',
+        englishExplanation:
+            'a group of people who form a business, club, etc. together in order to achieve a particular aim',
+        koreanExplanation: '짜서 이루거나 얽어서 만듦.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organization',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478784&searchKeywordTo=3',
+            koreanHeadword: '조직',
+        },
+    },
+    {
+        day: 27,
+        word: 'injustice',
+        meaning: '부정, 부당, 불공평',
+        englishExplanation:
+            'the fact of a situation being unfair and of people not being treated equally',
+        koreanExplanation: '한쪽으로 치우쳐 고르지 못함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/injustice',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=156535&searchKeywordTo=3',
+            koreanHeadword: '불-공평',
+        },
+    },
+    {
+        day: 27,
+        word: 'liberty',
+        meaning: '자유, 해방',
+        englishExplanation:
+            'freedom to live as you choose without too many limits from government or authority',
+        koreanExplanation:
+            '외부적인 구속이나 무엇에 얽매이지 아니하고 자기 마음대로 할 수 있는 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/liberty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470827&searchKeywordTo=3',
+            koreanHeadword: '자유3',
+        },
+    },
+    {
+        day: 27,
+        word: 'stereotype',
+        meaning: '고정 관념; 고정 관념을 형성하다, 정형화하다',
+        englishExplanation:
+            'a fixed and often inaccurate idea about a particular kind of person or thing',
+        koreanExplanation: '일정한 형식이나 틀에 맞추어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stereotype_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=536073&searchKeywordTo=3',
+            koreanHeadword: '정형화-하다',
+        },
+    },
+    {
+        day: 27,
+        word: 'morality',
+        meaning: '도덕성',
+        englishExplanation: 'principles relating to right and wrong or good and bad behaviour',
+        koreanExplanation:
+            '도덕적 품성. 곧 선악의 견지에서 본 인격, 판단, 행위 따위에 관한 가치를 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/morality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=415949&searchKeywordTo=3',
+            koreanHeadword: '도덕-성',
+        },
+    },
+    {
+        day: 27,
+        word: 'celebration',
+        meaning: '축하',
+        englishExplanation: 'a special event that people organize in order to celebrate something',
+        koreanExplanation: '남의 좋은 일을 기뻐하고 즐거워한다는 뜻으로 인사함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/celebration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=334398&searchKeywordTo=3',
+            koreanHeadword: '축하',
+        },
+    },
+    {
+        day: 27,
+        word: 'racial',
+        meaning: '인종의',
+        englishExplanation: 'happening or existing between people of different races',
+        koreanExplanation: '생물학적 특징에 따라 나눈 사람의 집단에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/racial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473828&searchKeywordTo=3',
+            koreanHeadword: '인종1',
+        },
+    },
+    {
+        day: 27,
+        word: 'dominance',
+        meaning: '지배, 우월',
+        englishExplanation:
+            'the fact of being more important, powerful or easy to notice than a person or thing else',
+        koreanExplanation:
+            '어떤 사람이나 집단, 조직, 사물 등을 자기의 의사대로 복종하게 하여 다스림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dominance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485386&searchKeywordTo=3',
+            koreanHeadword: '지배1',
+        },
+    },
+    {
+        day: 27,
+        word: 'celebrate',
+        meaning: '기념하다',
+        englishExplanation:
+            'to show that a day or an event is important by doing something special on it',
+        koreanExplanation:
+            '어떤 뜻깊은 일이나 훌륭한 인물 등을 오래도록 잊지 아니하고 마음에 간직하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/celebrate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=49258&searchKeywordTo=3',
+            koreanHeadword: '기념-하다',
+        },
+    },
+    {
+        day: 27,
+        word: 'conform',
+        meaning: '따르다, 순응하다; 일치시키다',
+        englishExplanation:
+            'to behave and think in the same way as most other people in a group or society',
+        koreanExplanation: '좋아하거나 존경하여 가까이 좇다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conform',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=416758&searchKeywordTo=3',
+            koreanHeadword: '따르다1',
+        },
+    },
+    {
+        day: 27,
+        word: 'integration',
+        meaning: '통합',
+        englishExplanation:
+            'the act or process of combining two or more things so that they work together',
+        koreanExplanation: '둘 이상의 조직이나 기구 따위를 하나로 합침.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/integration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496095&searchKeywordTo=3',
+            koreanHeadword: '통합',
+        },
+    },
+    {
+        day: 27,
+        word: 'normally',
+        meaning: '일반적으로, 보통은',
+        englishExplanation: 'usually',
+        koreanExplanation: '일부에 한정되지 아니하고 전체에 걸치는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/normally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=269840&searchKeywordTo=3',
+            koreanHeadword: '일반-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'collective',
+        meaning: '집단적인, 집단의',
+        englishExplanation: 'done or shared by all members of a group of people',
+        koreanExplanation: '집단을 이루거나 집단으로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/collective_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=316759&searchKeywordTo=3',
+            koreanHeadword: '집단-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'sacred',
+        meaning: '신성한, 성스러운',
+        englishExplanation: 'relating to God or a god',
+        koreanExplanation: '함부로 가까이할 수 없을 만큼 고결하고 거룩하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sacred',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=208073&searchKeywordTo=3',
+            koreanHeadword: '신성-하다1',
+        },
+    },
+    {
+        day: 27,
+        word: 'folk',
+        meaning: '사람들; 지역 주민; 민속의',
+        englishExplanation: 'people in general',
+        koreanExplanation:
+            '민간 생활과 결부된 신앙, 습관, 풍속, 전설, 기술, 전승 문화 따위를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/folk_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=429431&searchKeywordTo=3',
+            koreanHeadword: '민속1',
+        },
+    },
+    {
+        day: 27,
+        word: 'association',
+        meaning: '협회, 단체, 연합',
+        englishExplanation:
+            'an official group of people who have joined together for a particular purpose',
+        koreanExplanation: '같은 목적을 가진 사람들이 설립하여 유지해 나아가는 모임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/association',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=369567&searchKeywordTo=3',
+            koreanHeadword: '협회',
+        },
+    },
+    {
+        day: 27,
+        word: 'civil',
+        meaning: '시민의; 국가의',
+        englishExplanation: 'relating to the people who live in a country',
+        koreanExplanation: '국가나 도시의 구성원인 시민과 관련된.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/civil',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197826&searchKeywordTo=3',
+            koreanHeadword: '시민',
+        },
+    },
+    {
+        day: 27,
+        word: 'priest',
+        meaning: '성직자',
+        englishExplanation:
+            'a person who is qualified to perform religious duties and ceremonies in the Roman Catholic, Anglican and Orthodox Churches',
+        koreanExplanation: '종교적 직분을 맡은 교역자. 신부, 목사, 승려 따위이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/priest',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=190672&searchKeywordTo=3',
+            koreanHeadword: '성직-자',
+        },
+    },
+    {
+        day: 27,
+        word: 'native',
+        meaning: '태어난 곳의, 토착의; 타고난; 원주민, 현지인; ~ 태생인 사람',
+        englishExplanation:
+            'relating to the place where you were born and lived for the first years of your life',
+        koreanExplanation: '그 지역에 본디부터 살고 있는 사람들.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/native_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=258929&searchKeywordTo=3',
+            koreanHeadword: '원주-민',
+        },
+    },
+    {
+        day: 27,
+        word: 'liberal',
+        meaning: '자유주의의; 진보적인',
+        englishExplanation:
+            'willing to understand and respect other people’s behaviour, opinions, etc., especially when they are different from your own',
+        koreanExplanation: '개인의 자유와 권리를 중시하는 사상에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/liberal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471582&searchKeywordTo=3',
+            koreanHeadword: '자유-주의',
+        },
+    },
+    {
+        day: 27,
+        word: 'exotic',
+        meaning: '이국적인, 색다른; 외래의',
+        englishExplanation: 'from or in another country, especially a tropical one',
+        koreanExplanation: '자기 나라가 아닌 다른 나라에 특징적인 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exotic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=469841&searchKeywordTo=3',
+            koreanHeadword: '이국-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'faithful',
+        meaning: '충실한, 신의 있는',
+        englishExplanation:
+            'staying with or supporting a particular person, organization or belief',
+        koreanExplanation: '충직하고 성실하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/faithful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=329025&searchKeywordTo=3',
+            koreanHeadword: '충실-하다2',
+        },
+    },
+    {
+        day: 27,
+        word: 'institutional',
+        meaning: '협회의',
+        englishExplanation:
+            'relating to a large important organization, for example a university or bank',
+        koreanExplanation: '같은 목적을 가진 사람들이 설립하여 유지해 나아가는 모임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/institutional',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=369567&searchKeywordTo=3',
+            koreanHeadword: '협회',
+        },
+    },
+    {
+        day: 27,
+        word: 'morally',
+        meaning: '도덕적으로',
+        englishExplanation:
+            'according to principles of good behaviour and what is considered to be right or wrong',
+        koreanExplanation: '도덕에 관한 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/morally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=84450&searchKeywordTo=3',
+            koreanHeadword: '도덕-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'organize',
+        meaning: '조직하다',
+        englishExplanation: 'to make all the arrangements for something to happen or be provided',
+        koreanExplanation: '짜서 이루거나 얽어서 만들다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303443&searchKeywordTo=3',
+            koreanHeadword: '조직-하다',
+        },
+    },
+    {
+        day: 27,
+        word: 'humanity',
+        meaning: '인류, 인간; 인간성; 인류애',
+        englishExplanation: 'people in general',
+        koreanExplanation: '세계의 모든 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/humanity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=270224&searchKeywordTo=3',
+            koreanHeadword: '인류1',
+        },
+    },
+    {
+        day: 27,
+        word: 'dominant',
+        meaning: '지배적인, 우세한',
+        englishExplanation: 'more important, powerful or easy to notice than other things',
+        koreanExplanation:
+            '어떤 사람이나 집단, 조직, 사물 등을 자기의 의사대로 복종하게 하여 다스리는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dominant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485387&searchKeywordTo=3',
+            koreanHeadword: '지배-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'dominate',
+        meaning: '지배하다, 우위를 차지하다',
+        englishExplanation:
+            'to control or have a lot of influence over a person or thing, especially in an unpleasant way',
+        koreanExplanation:
+            '어떤 사람이나 집단, 조직, 사물 등을 자기의 의사대로 복종하게 하여 다스리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dominate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=308762&searchKeywordTo=3',
+            koreanHeadword: '지배-하다1',
+        },
+    },
+    {
+        day: 27,
+        word: 'tribe',
+        meaning: '부족, 집단',
+        englishExplanation:
+            'a traditional community sharing a language, culture and territory, often under one leader',
+        koreanExplanation: '필요한 양이나 기준에 미치지 못해 충분하지 아니함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tribe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434879&searchKeywordTo=3',
+            koreanHeadword: '부족1',
+        },
+    },
+    {
+        day: 27,
+        word: 'faith',
+        meaning: '믿음, 신뢰; 신앙',
+        englishExplanation: 'trust in a person’s ability or knowledge',
+        koreanExplanation: '어떤 사실이나 사람을 믿는 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/faith_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=428676&searchKeywordTo=3',
+            koreanHeadword: '믿-음',
+        },
+    },
+    {
+        day: 27,
+        word: 'moral',
+        meaning: '도덕의, 윤리의; 교훈적인; 교훈',
+        englishExplanation: 'relating to principles of right and wrong behaviour',
+        koreanExplanation:
+            '사회의 구성원들이 양심, 사회적 여론, 관습 따위에 비추어 스스로 마땅히 지켜야 할 행동 준칙이나 규범의 총체. 외적 강제력을 갖는 법률과 달리 각자의 내면적 원리로서 작용하며, 또 종교와 달리 초월자와의 관계가 아닌 인간 상호 관계를 규정한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/moral_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=413983&searchKeywordTo=3',
+            koreanHeadword: '도덕',
+        },
+    },
+    {
+        day: 27,
+        word: 'liberate',
+        meaning: '해방하다',
+        englishExplanation: 'to free a country or a person from the control of a person else',
+        koreanExplanation: '구속이나 억압, 부담 따위에서 벗어나게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/liberate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=367174&searchKeywordTo=3',
+            koreanHeadword: '해방-하다2',
+        },
+    },
+    {
+        day: 27,
+        word: 'tribal',
+        meaning: '부족의, 종족의',
+        englishExplanation: 'relating to a tribe or tribes',
+        koreanExplanation: '필요한 양이나 기준에 미치지 못해 충분하지 아니함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tribal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434879&searchKeywordTo=3',
+            koreanHeadword: '부족1',
+        },
+    },
+    {
+        day: 27,
+        word: 'bias',
+        meaning: '편견; 편견을 갖게 하다',
+        englishExplanation:
+            'a strong feeling in favour of or against one group of people, or one side in an argument, often not based on fair judgement',
+        koreanExplanation: '공정하지 못하고 한쪽으로 치우친 생각.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bias_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499921&searchKeywordTo=3',
+            koreanHeadword: '편견',
+        },
+    },
+    {
+        day: 27,
+        word: 'collectively',
+        meaning: '집단적으로',
+        englishExplanation: 'in a way that is done or shared by all members of a group of people',
+        koreanExplanation: '집단을 이루거나 집단으로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/collectively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=316759&searchKeywordTo=3',
+            koreanHeadword: '집단-적',
+        },
+    },
+    {
+        day: 27,
+        word: 'worship',
+        meaning: '예배, 숭배; 예배하다; 숭배하다',
+        englishExplanation:
+            'the practice of showing respect for God or a god, by saying prayers, singing with others, etc.',
+        koreanExplanation:
+            '신이나 부처와 같은 초월적 존재 앞에 경배하는 의식. 또는 그런 의식을 행함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/worship_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=464433&searchKeywordTo=3',
+            koreanHeadword: '예배',
+        },
+    },
+    {
+        day: 27,
+        word: 'associate',
+        meaning: '관련시키다; 동료',
+        englishExplanation: 'to make a connection between people or things in your mind',
+        koreanExplanation: '같은 직장이나 같은 부문에서 함께 일하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/associate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=88693&searchKeywordTo=3',
+            koreanHeadword: '동료',
+        },
+    },
+    {
+        day: 27,
+        word: 'survey',
+        meaning: '조사; 조사하다; 살피다',
+        englishExplanation:
+            'an investigation of the opinions, behaviour, etc. of a particular group of people, which is usually done by asking them questions',
+        koreanExplanation: '사물의 내용을 명확히 알기 위하여 자세히 살펴보거나 찾아봄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/survey_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484713&searchKeywordTo=3',
+            koreanHeadword: '조사29',
+        },
+    },
+    {
+        day: 27,
+        word: 'institution',
+        meaning: '기관, 협회; 제도, 관습',
+        englishExplanation:
+            'a large, important organization that has a particular purpose, for example a university or bank',
+        koreanExplanation: '사회에서 일정한 역할이나 목적을 위해 설치한 조직.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/institution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401693&searchKeywordTo=3',
+            koreanHeadword: '기관11',
+        },
+    },
+    {
+        day: 28,
+        word: 'context',
+        meaning: '문맥, 맥락',
+        englishExplanation:
+            'the situation in which something happens and that helps you to understand it',
+        koreanExplanation: '글월에 표현된 의미의 앞뒤 연결.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/context',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424413&searchKeywordTo=3',
+            koreanHeadword: '문맥',
+        },
+    },
+    {
+        day: 28,
+        word: 'performer',
+        meaning: '연기자, 연주자',
+        englishExplanation: 'a person who performs for an audience in a show, concert, etc.',
+        koreanExplanation: '영화나 연극 따위에서, 전문적으로 연기를 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/performer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458745&searchKeywordTo=3',
+            koreanHeadword: '연기-자',
+        },
+    },
+    {
+        day: 28,
+        word: 'impress',
+        meaning: '인상을 주다',
+        englishExplanation: 'if a person or thing impresses you, you admire them or it',
+        koreanExplanation: '상대의 마음에 깊은 느낌을 남기는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impress',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472973&searchKeywordTo=3',
+            koreanHeadword: '인상6',
+        },
+    },
+    {
+        day: 28,
+        word: 'portrait',
+        meaning: '초상화, 인물 사진; 묘사',
+        englishExplanation:
+            'a painting, drawing or photograph of a person, especially of the head and shoulders',
+        koreanExplanation: '사람의 얼굴을 중심으로 그린 그림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/portrait',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=332590&searchKeywordTo=3',
+            koreanHeadword: '초상-화',
+        },
+    },
+    {
+        day: 28,
+        word: 'poem',
+        meaning: '시',
+        englishExplanation:
+            'a piece of writing that expresses feelings or ideas through rhythm, sound and carefully chosen words',
+        koreanExplanation:
+            '문학의 한 장르. 자연이나 인생에 대하여 일어나는 감흥과 사상 따위를 함축적이고 운율적인 언어로 표현한 글이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/poem',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=201415&searchKeywordTo=3',
+            koreanHeadword: '시9',
+        },
+    },
+    {
+        day: 28,
+        word: 'collapse',
+        meaning: '무너지다, 붕괴하다; 쓰러지다, 의식을 잃다; 붕괴; 좌절, 실패',
+        englishExplanation: 'to fall down or fall in suddenly, often after breaking apart',
+        koreanExplanation: '쌓여 있거나 서 있는 것이 허물어져 내려앉다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/collapse_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423398&searchKeywordTo=3',
+            koreanHeadword: '무너-지다',
+        },
+    },
+    {
+        day: 28,
+        word: 'poetic',
+        meaning: '시적인, 시의',
+        englishExplanation: 'relating to poetry',
+        koreanExplanation: '시의 느낌이나 정취를 지닌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/poetic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=201416&searchKeywordTo=3',
+            koreanHeadword: '시-적1',
+        },
+    },
+    {
+        day: 28,
+        word: 'exhibit',
+        meaning: '전시하다, 보여 주다; 전시품, 진열품',
+        englishExplanation:
+            'to show something in a public place for people to enjoy or to give them information',
+        koreanExplanation: '여러 가지 물품을 한곳에 벌여 놓고 보게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exhibit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476900&searchKeywordTo=3',
+            koreanHeadword: '전시-하다1',
+        },
+    },
+    {
+        day: 28,
+        word: 'myth',
+        meaning: '신화; 통념',
+        englishExplanation:
+            'a story from ancient times, especially one that was told to explain natural events or to describe the early history of a people',
+        koreanExplanation:
+            '고대인의 사유나 표상이 반영된 신성한 이야기. 우주의 기원, 신이나 영웅의 사적, 민족의 태고 때의 역사나 설화 따위가 주된 내용이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/myth',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=208118&searchKeywordTo=3',
+            koreanHeadword: '신화4',
+        },
+    },
+    {
+        day: 28,
+        word: 'contextual',
+        meaning: '문맥상의',
+        englishExplanation: 'relating to a particular context',
+        koreanExplanation: '글월에 표현된 의미의 앞뒤 연결.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contextual',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424413&searchKeywordTo=3',
+            koreanHeadword: '문맥',
+        },
+    },
+    {
+        day: 28,
+        word: 'interior',
+        meaning: '내부의, 안쪽의; 내부; 인테리어',
+        englishExplanation: 'the inside part of something',
+        koreanExplanation: '안쪽의 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interior_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406768&searchKeywordTo=3',
+            koreanHeadword: '내부4',
+        },
+    },
+    {
+        day: 28,
+        word: 'compose',
+        meaning: '구성하다; 작곡하다; 작문하다',
+        englishExplanation: 'to write music',
+        koreanExplanation: '몇 가지 부분이나 요소들을 모아서 일정한 전체를 짜 이루다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/compose',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396549&searchKeywordTo=3',
+            koreanHeadword: '구성-하다',
+        },
+    },
+    {
+        day: 28,
+        word: 'linguist',
+        meaning: '언어학자',
+        englishExplanation: 'a person who knows several foreign languages well',
+        koreanExplanation: '언어학을 연구하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/linguist',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=227008&searchKeywordTo=3',
+            koreanHeadword: '언어학-자',
+        },
+    },
+    {
+        day: 28,
+        word: 'structure',
+        meaning: '구조; 건축물; 체계화하다',
+        englishExplanation:
+            'the way in which the parts of something are connected together, arranged or organized',
+        koreanExplanation: '부분이나 요소가 어떤 전체를 짜 이룸. 또는 그렇게 이루어진 얼개.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/structure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397986&searchKeywordTo=3',
+            koreanHeadword: '구조8',
+        },
+    },
+    {
+        day: 28,
+        word: 'impressive',
+        meaning: '인상적인',
+        englishExplanation:
+            'making you admire them, because they are very large, good, skilful, etc.',
+        koreanExplanation: '감격하여 마음에 깊이 새김. 또는 그 새겨진 느낌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/impressive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=7096&searchKeywordTo=3',
+            koreanHeadword: '감명',
+        },
+    },
+    {
+        day: 28,
+        word: 'literary',
+        meaning: '문학의, 문학적인',
+        englishExplanation: 'relating to literature',
+        koreanExplanation:
+            '사상이나 감정을 언어로 표현한 예술. 또는 그런 작품. 시, 소설, 희곡, 수필, 평론 따위가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/literary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424391&searchKeywordTo=3',
+            koreanHeadword: '문학1',
+        },
+    },
+    {
+        day: 28,
+        word: 'composition',
+        meaning: '구성; 작곡; 작문',
+        englishExplanation: 'the different parts that something is made of',
+        koreanExplanation:
+            '몇 가지 부분이나 요소들을 모아서 일정한 전체를 짜 이룸. 또는 그 이룬 결과.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/composition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=399563&searchKeywordTo=3',
+            koreanHeadword: '구성6',
+        },
+    },
+    {
+        day: 28,
+        word: 'theme',
+        meaning: '주제, 테마',
+        englishExplanation: 'the subject or main idea in a talk, piece of writing or work of art',
+        koreanExplanation: '대화나 연구 따위에서 중심이 되는 문제.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/theme_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482795&searchKeywordTo=3',
+            koreanHeadword: '주제4',
+        },
+    },
+    {
+        day: 28,
+        word: 'linguistic',
+        meaning: '언어의, 언어적인',
+        englishExplanation: 'relating to language or the scientific study of language',
+        koreanExplanation:
+            '생각, 느낌 따위를 나타내거나 전달하는 데에 쓰는 음성, 문자 따위의 수단. 또는 그 음성이나 문자 따위의 사회 관습적인 체계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/linguistic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=224753&searchKeywordTo=3',
+            koreanHeadword: '언어1',
+        },
+    },
+    {
+        day: 28,
+        word: 'masterpiece',
+        meaning: '걸작, 명작',
+        englishExplanation:
+            'a work of art such as a painting, film, book, etc. that is an excellent, or the best, example of the artist’s work',
+        koreanExplanation: '매우 훌륭한 작품.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/masterpiece',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392839&searchKeywordTo=3',
+            koreanHeadword: '걸작',
+        },
+    },
+    {
+        day: 28,
+        word: 'novel',
+        meaning: '소설; 기발한, 참신한',
+        englishExplanation:
+            'a story long enough to fill a complete book, in which the characters and events are usually imaginary',
+        koreanExplanation:
+            '사실 또는 작가의 상상력에 바탕을 두고 허구적으로 이야기를 꾸며 나간 산문체의 문학 양식. 일정한 구조 속에서 배경과 등장인물의 행동, 사상, 심리 따위를 통하여 인간의 모습이나 사회상을 드러낸다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/novel_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=184185&searchKeywordTo=3',
+            koreanHeadword: '소설3',
+        },
+    },
+    {
+        day: 28,
+        word: 'summarize',
+        meaning: '요약하다',
+        englishExplanation: 'to give a summary of something',
+        koreanExplanation: '말이나 글의 요점을 잡아서 간추리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/summarize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=248097&searchKeywordTo=3',
+            koreanHeadword: '요약-하다2',
+        },
+    },
+    {
+        day: 28,
+        word: 'architect',
+        meaning: '건축가',
+        englishExplanation: 'a person whose job is designing buildings',
+        koreanExplanation:
+            '건축에 대한 전문적인 지식이나 기술을 가진 사람. 건축 계획, 건축 설계, 구조 계획, 공사 감리 따위의 일을 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/architect_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391518&searchKeywordTo=3',
+            koreanHeadword: '건축-가',
+        },
+    },
+    {
+        day: 28,
+        word: 'express',
+        meaning: '표현하다, 나타내다; 고속의, 급행의; 급행',
+        englishExplanation:
+            'to show or make known a feeling, an opinion, etc. by words, looks or actions',
+        koreanExplanation: '생각이나 느낌 따위를 언어나 몸짓 따위의 형상으로 드러내어 나타내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/express_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499247&searchKeywordTo=3',
+            koreanHeadword: '표현-하다',
+        },
+    },
+    {
+        day: 28,
+        word: 'fictional',
+        meaning: '허구의',
+        englishExplanation: 'not real or true',
+        koreanExplanation: '사실에 없는 일을 사실처럼 꾸며 만듦.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fictional',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=372397&searchKeywordTo=3',
+            koreanHeadword: '허구2',
+        },
+    },
+    {
+        day: 28,
+        word: 'perform',
+        meaning: '수행하다, 행하다; 공연하다, 연기하다',
+        englishExplanation:
+            'to entertain an audience by playing a piece of music, acting in a play, etc.',
+        koreanExplanation: '생각하거나 계획한 대로 일을 해내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/perform',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=196360&searchKeywordTo=3',
+            koreanHeadword: '수행-하다2',
+        },
+    },
+    {
+        day: 28,
+        word: 'outline',
+        meaning: '윤곽; 개요; 윤곽을 그리다; 개요를 말하다',
+        englishExplanation:
+            'to give a description of the main facts or points involved in something',
+        koreanExplanation: '일이나 사건의 대체적인 줄거리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/outline_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=261432&searchKeywordTo=3',
+            koreanHeadword: '윤곽',
+        },
+    },
+    {
+        day: 28,
+        word: 'expressive',
+        meaning: '표현하는, 나타내는',
+        englishExplanation: 'showing or able to show your thoughts and feelings',
+        koreanExplanation: '생각이나 느낌 따위를 언어나 몸짓 따위의 형상으로 드러내어 나타내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expressive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499247&searchKeywordTo=3',
+            koreanHeadword: '표현-하다',
+        },
+    },
+    {
+        day: 28,
+        word: 'composer',
+        meaning: '작곡가',
+        englishExplanation: 'a person who writes music, especially classical music',
+        koreanExplanation: '작곡에 정통하여 전문적인 기술을 가지고 음악 창작에 종사하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/composer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=282647&searchKeywordTo=3',
+            koreanHeadword: '작곡-가',
+        },
+    },
+    {
+        day: 28,
+        word: 'legendary',
+        meaning: '전설적인',
+        englishExplanation: 'very famous and talked about a lot by people',
+        koreanExplanation: '전설과 같은 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/legendary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=287882&searchKeywordTo=3',
+            koreanHeadword: '전설-적',
+        },
+    },
+    {
+        day: 28,
+        word: 'exhibition',
+        meaning: '전시회',
+        englishExplanation:
+            'a collection of things, for example works of art, that are shown to the public',
+        koreanExplanation: '특정한 물건을 벌여 차려 놓고 일반에게 참고가 되게 하는 모임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exhibition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=285727&searchKeywordTo=3',
+            koreanHeadword: '전시-회',
+        },
+    },
+    {
+        day: 28,
+        word: 'display',
+        meaning: '전시하다; 보여 주다; 전시; 화면',
+        englishExplanation: 'to put something in a place where people can see it easily',
+        koreanExplanation: '여러 가지 물품을 한곳에 벌여 놓고 보게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/display_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476900&searchKeywordTo=3',
+            koreanHeadword: '전시-하다1',
+        },
+    },
+    {
+        day: 28,
+        word: 'summary',
+        meaning: '요약',
+        englishExplanation:
+            'a short statement that gives only the main points of something, not the details',
+        koreanExplanation: '말이나 글의 요점을 잡아서 간추림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/summary_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=247790&searchKeywordTo=3',
+            koreanHeadword: '요약2',
+        },
+    },
+    {
+        day: 28,
+        word: 'plot',
+        meaning: '줄거리; 음모, 계략; 계획하다',
+        englishExplanation: 'the series of events that form the story of a novel, play, film, etc.',
+        koreanExplanation: '잎이 다 떨어진 나뭇가지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/plot_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480274&searchKeywordTo=3',
+            koreanHeadword: '줄거리',
+        },
+    },
+    {
+        day: 28,
+        word: 'architecture',
+        meaning: '건축, 건축 양식; 건축학',
+        englishExplanation: 'the art and study of designing buildings',
+        koreanExplanation:
+            '집이나 성, 다리 따위의 구조물을 그 목적에 따라 설계하여 흙이나 나무, 돌, 벽돌, 쇠 따위를 써서 세우거나 쌓아 만드는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/architecture',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=15047&searchKeywordTo=3',
+            koreanHeadword: '건축1',
+        },
+    },
+    {
+        day: 28,
+        word: 'metaphoric',
+        meaning: '은유적인, 비유적인',
+        englishExplanation: 'using comparisons to describe one thing in terms of another',
+        koreanExplanation: '사물의 상태나 움직임을 암시적으로 나타내는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/metaphorical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=518316&searchKeywordTo=3',
+            koreanHeadword: '은유-적',
+        },
+    },
+    {
+        day: 28,
+        word: 'construction',
+        meaning: '건설, 공사',
+        englishExplanation:
+            'the process or method of building or making something, especially roads, buildings, bridges, etc.',
+        koreanExplanation: '건물, 설비, 시설 따위를 새로 만들어 세움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/construction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=14770&searchKeywordTo=3',
+            koreanHeadword: '건설',
+        },
+    },
+    {
+        day: 28,
+        word: 'legend',
+        meaning: '전설, 신화; 전설적인 인물',
+        englishExplanation:
+            'a story from ancient times about people and events, that may or may not be true',
+        koreanExplanation:
+            '옛날부터 민간에서 전하여 내려오는 이야기. 주로 구전되며 어떤 공동체의 내력이나 자연물의 유래, 이상한 체험 따위를 소재로 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/legend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474918&searchKeywordTo=3',
+            koreanHeadword: '전설4',
+        },
+    },
+    {
+        day: 28,
+        word: 'audience',
+        meaning: '관객, 청중',
+        englishExplanation: 'the group of people who have gathered to watch or listen to something',
+        koreanExplanation: '운동 경기, 공연, 영화 따위를 보거나 듣는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/audience',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401584&searchKeywordTo=3',
+            koreanHeadword: '관객',
+        },
+    },
+    {
+        day: 28,
+        word: 'novelty',
+        meaning: '새로움, 참신함',
+        englishExplanation: 'the quality of being new, different and interesting',
+        koreanExplanation: '새롭고 산뜻하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/novelty_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488416&searchKeywordTo=3',
+            koreanHeadword: '참신-하다2',
+        },
+    },
+    {
+        day: 29,
+        word: 'dietary',
+        meaning: '음식의, 식이 요법의',
+        englishExplanation: 'relating to or contained in the food that you eat and drink regularly',
+        koreanExplanation: '먹는 음식이나 식사 방법에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dietary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=206517&searchKeywordTo=3',
+            koreanHeadword: '식이',
+        },
+    },
+    {
+        day: 29,
+        word: 'immunity',
+        meaning: '면역; 면제',
+        englishExplanation:
+            'the body’s ability to avoid or not be affected by infection and disease',
+        koreanExplanation:
+            '반복되는 자극 따위에 반응하지 않고 무감각해지는 상태를 비유적으로 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/immunity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425283&searchKeywordTo=3',
+            koreanHeadword: '면역2',
+        },
+    },
+    {
+        day: 29,
+        word: 'wrinkle',
+        meaning: '주름; 주름지게 하다, 주름지다',
+        englishExplanation:
+            'a line or small fold in your skin, especially on your face, that forms as you get older',
+        koreanExplanation: '피부가 쇠하여 생긴 잔줄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wrinkle_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482770&searchKeywordTo=3',
+            koreanHeadword: '주름1',
+        },
+    },
+    {
+        day: 29,
+        word: 'infect',
+        meaning: '감염시키다; 오염시키다',
+        englishExplanation:
+            'to make a disease or an illness spread to a person, an animal or a plant',
+        koreanExplanation: '병원체인 미생물이 동물이나 식물의 몸 안에 들어가 증식하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/infect',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=7616&searchKeywordTo=3',
+            koreanHeadword: '감염-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'patient',
+        meaning: '환자; 참을성이 있는',
+        englishExplanation: 'a person who is receiving medical treatment, especially in a hospital',
+        koreanExplanation: '병들거나 다쳐서 치료를 받아야 할 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/patient_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=384792&searchKeywordTo=3',
+            koreanHeadword: '환자3',
+        },
+    },
+    {
+        day: 29,
+        word: 'prescribe',
+        meaning: '처방하다; 규정하다',
+        englishExplanation:
+            'to tell a person to take a particular medicine or have a particular treatment',
+        koreanExplanation: '병을 치료하는 방법을 제시하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prescribe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=534872&searchKeywordTo=3',
+            koreanHeadword: '처방-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'cure',
+        meaning: '치료; 치료하다',
+        englishExplanation: 'to make a person or an animal healthy again after an illness',
+        koreanExplanation: '병이나 상처 따위를 잘 다스려 낫게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=492905&searchKeywordTo=3',
+            koreanHeadword: '치료',
+        },
+    },
+    {
+        day: 29,
+        word: 'organ',
+        meaning: '장기, 기관',
+        englishExplanation:
+            'a part of the body that has a particular purpose, such as the heart or the brain',
+        koreanExplanation: '내장의 여러 기관.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/organ',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=283829&searchKeywordTo=3',
+            koreanHeadword: '장기19',
+        },
+    },
+    {
+        day: 29,
+        word: 'sore',
+        meaning: '아픈, 따가운; 상처',
+        englishExplanation: 'painful or irritated, especially after injury or overuse',
+        koreanExplanation: '몸을 다쳐서 부상을 입은 자리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sore_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439021&searchKeywordTo=3',
+            koreanHeadword: '상처2',
+        },
+    },
+    {
+        day: 29,
+        word: 'prescription',
+        meaning: '처방; 처방 약',
+        englishExplanation:
+            "an official piece of paper on which a doctor writes the type of medicine you should have, and which enables you to get it from a chemist's",
+        koreanExplanation: '병을 치료하는 방법을 제시함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prescription',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=316287&searchKeywordTo=3',
+            koreanHeadword: '처방',
+        },
+    },
+    {
+        day: 29,
+        word: 'poisonous',
+        meaning: '독성의',
+        englishExplanation: 'causing death or illness if swallowed or taken into the body',
+        koreanExplanation: '독이 있는 성분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/poisonous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=415841&searchKeywordTo=3',
+            koreanHeadword: '독성1',
+        },
+    },
+    {
+        day: 29,
+        word: 'digestion',
+        meaning: '소화; 이해, 터득',
+        englishExplanation: 'the process of digesting food',
+        koreanExplanation:
+            '섭취한 음식물을 분해하여 영양분을 흡수하기 쉬운 형태로 변화시키는 일. 또는 그런 작용. 음식물을 씹는 작용에 의한 기계적 소화와 소화 효소에 의한 화학적 소화가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/digestion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449138&searchKeywordTo=3',
+            koreanHeadword: '소화6',
+        },
+    },
+    {
+        day: 29,
+        word: 'chronically',
+        meaning: '만성적으로',
+        englishExplanation: 'for a long time, especially when an illness is difficult to cure',
+        koreanExplanation: '버릇이 되다시피 하여 쉽게 고쳐지지 아니하는 상태나 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chronically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=419994&searchKeywordTo=3',
+            koreanHeadword: '만성3',
+        },
+    },
+    {
+        day: 29,
+        word: 'infectious',
+        meaning: '전염성의',
+        englishExplanation: 'able to pass a disease easily from one person to another',
+        koreanExplanation: '남에게 옮아가는 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/infectious',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=283943&searchKeywordTo=3',
+            koreanHeadword: '전염-성',
+        },
+    },
+    {
+        day: 29,
+        word: 'chronic',
+        meaning: '만성의',
+        englishExplanation: 'lasting for a long time',
+        koreanExplanation: '버릇이 되다시피 하여 쉽게 고쳐지지 아니하는 상태나 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chronic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=419994&searchKeywordTo=3',
+            koreanHeadword: '만성3',
+        },
+    },
+    {
+        day: 29,
+        word: 'cell',
+        meaning: '세포; 감방, 독방',
+        englishExplanation:
+            'the smallest unit of living matter that can exist on its own. All plants and animals are made up of cells.',
+        koreanExplanation:
+            '생물체를 이루는 기본 단위. 핵막의 유무에 따라 진핵 세포와 원핵 세포로 나뉜다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cell',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445313&searchKeywordTo=3',
+            koreanHeadword: '세포2',
+        },
+    },
+    {
+        day: 29,
+        word: 'nervous',
+        meaning: '긴장한',
+        englishExplanation: 'anxious about something or afraid of something',
+        koreanExplanation: '마음을 조이고 정신을 바짝 차리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/nervous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=53373&searchKeywordTo=3',
+            koreanHeadword: '긴장-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'nerve',
+        meaning: '신경; 긴장; 용기',
+        englishExplanation:
+            'any of the long fibres that carry messages between the brain and parts of the body, enabling you to move, feel pain, etc.',
+        koreanExplanation:
+            '신경 세포의 돌기가 모여 결합 조직으로 된 막에 싸여 끈처럼 된 구조. 뇌와 척수 그리고 우리 몸 각 부분 사이에 필요한 정보를 서로 전달하는 구실을 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/nerve_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451239&searchKeywordTo=3',
+            koreanHeadword: '신경4',
+        },
+    },
+    {
+        day: 29,
+        word: 'nutrient',
+        meaning: '영양',
+        englishExplanation:
+            'a substance that is needed to keep a living thing alive and to help it to grow',
+        koreanExplanation:
+            '생물이 살아가는 데 필요한 에너지와 몸을 구성하는 성분을 외부에서 섭취하여 소화, 흡수, 순환, 호흡, 배설을 하는 과정. 또는 그것을 위하여 필요한 성분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/nutrient',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=460105&searchKeywordTo=3',
+            koreanHeadword: '영양5',
+        },
+    },
+    {
+        day: 29,
+        word: 'cellular',
+        meaning: '세포의',
+        englishExplanation: 'relating to or consisting of the cells of plants or animals',
+        koreanExplanation: '생물체를 이루는 기본 단위에 관계되는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cellular',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=445313&searchKeywordTo=3',
+            koreanHeadword: '세포2',
+        },
+    },
+    {
+        day: 29,
+        word: 'surgeon',
+        meaning: '외과 의사',
+        englishExplanation: 'a doctor who is trained to perform surgery',
+        koreanExplanation: '수술로 몸의 상처나 질병을 치료하는 의사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/surgeon',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244310&searchKeywordTo=3',
+            koreanHeadword: '외과1',
+        },
+    },
+    {
+        day: 29,
+        word: 'infection',
+        meaning: '감염, 전염',
+        englishExplanation: 'the act or process of causing or getting a disease',
+        koreanExplanation: '병원체인 미생물이 동물이나 식물의 몸 안에 들어가 증식하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/infection',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=7615&searchKeywordTo=3',
+            koreanHeadword: '감염2',
+        },
+    },
+    {
+        day: 29,
+        word: 'protein',
+        meaning: '단백질',
+        englishExplanation:
+            'a nutrient that forms body tissues and helps living things grow and stay healthy',
+        koreanExplanation:
+            '아미노산이 펩타이드 결합을 하여 생긴 여러 개의 아미노산으로 이루어진 고분자 화합물. 세포를 구성하고 생체 내 물질대사의 촉매 작용을 하여 생명 현상을 유지하는 물질로서, 사람의 3대 영양소 가운데 하나이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/protein',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412767&searchKeywordTo=3',
+            koreanHeadword: '단백-질',
+        },
+    },
+    {
+        day: 29,
+        word: 'cancer',
+        meaning: '암',
+        englishExplanation:
+            'a serious disease in which growths of cells, also called cancers, form in the body and kill normal body cells. The disease often causes death.',
+        koreanExplanation:
+            '생체 조직 안에서 세포가 무제한으로 증식하여 악성 종양을 일으키는 병. 결국에는 주위의 조직을 침범하거나 다른 장기에 전이하여 생체를 죽음에 이르게 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cancer_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457603&searchKeywordTo=3',
+            koreanHeadword: '암7',
+        },
+    },
+    {
+        day: 29,
+        word: 'symptom',
+        meaning: '증상; 징후',
+        englishExplanation: 'a change in your body or mind that shows that you are not healthy',
+        koreanExplanation: '병을 앓을 때 나타나는 여러 가지 상태나 모양.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/symptom',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=306388&searchKeywordTo=3',
+            koreanHeadword: '증상1',
+        },
+    },
+    {
+        day: 29,
+        word: 'digest',
+        meaning: '소화하다; 이해하다',
+        englishExplanation: 'to break food down into substances the body can absorb and use',
+        koreanExplanation: '섭취한 음식물을 분해하여 영양분을 흡수하기 쉬운 형태로 변화시키다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/digest_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449148&searchKeywordTo=3',
+            koreanHeadword: '소화-하다1',
+        },
+    },
+    {
+        day: 29,
+        word: 'pregnancy',
+        meaning: '임신',
+        englishExplanation: 'the state of being pregnant',
+        koreanExplanation: '아이나 새끼를 뱀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pregnancy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=471535&searchKeywordTo=3',
+            koreanHeadword: '임신2',
+        },
+    },
+    {
+        day: 29,
+        word: 'medically',
+        meaning: '의학적으로',
+        englishExplanation:
+            'in a way that is related to medicine and the treatment of illness and injury',
+        koreanExplanation:
+            '인체의 구조와 기능을 조사하여 인체의 보건, 질병이나 상해의 치료 및 예방에 관한 방법과 기술을 연구하는 학문. 기초 의학, 임상 의학, 사회 의학 따위가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/medically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=267306&searchKeywordTo=3',
+            koreanHeadword: '의학2',
+        },
+    },
+    {
+        day: 29,
+        word: 'recovery',
+        meaning: '회복',
+        englishExplanation: 'the process of becoming well again after an illness or injury',
+        koreanExplanation: '원래의 상태로 돌이키거나 원래의 상태를 되찾음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recovery',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=379770&searchKeywordTo=3',
+            koreanHeadword: '회복',
+        },
+    },
+    {
+        day: 29,
+        word: 'supplementary',
+        meaning: '보충의, 추가의',
+        englishExplanation:
+            'provided in addition to something else in order to improve or complete it',
+        koreanExplanation: '부족한 것을 보태어 채움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/supplementary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=148835&searchKeywordTo=3',
+            koreanHeadword: '보충',
+        },
+    },
+    {
+        day: 29,
+        word: 'digestive',
+        meaning: '소화의',
+        englishExplanation: 'relating to the digestion of food',
+        koreanExplanation:
+            '섭취한 음식물을 분해하여 영양분을 흡수하기 쉬운 형태로 변화시키는 일. 또는 그런 작용. 음식물을 씹는 작용에 의한 기계적 소화와 소화 효소에 의한 화학적 소화가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/digestive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449138&searchKeywordTo=3',
+            koreanHeadword: '소화6',
+        },
+    },
+    {
+        day: 29,
+        word: 'diagnose',
+        meaning: '진단하다',
+        englishExplanation: 'to say exactly what an illness or the cause of a problem is',
+        koreanExplanation: '의사가 환자의 병 상태를 판단하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/diagnose',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482359&searchKeywordTo=3',
+            koreanHeadword: '진단-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'immune',
+        meaning: '면역의, 면역이 된; 영향을 받지 않는',
+        englishExplanation: 'that cannot catch or be affected by a particular disease or illness',
+        koreanExplanation:
+            '반복되는 자극 따위에 반응하지 않고 무감각해지는 상태를 비유적으로 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/immune',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425283&searchKeywordTo=3',
+            koreanHeadword: '면역2',
+        },
+    },
+    {
+        day: 29,
+        word: 'recover',
+        meaning: '회복하다, 낫다; 돌아오다',
+        englishExplanation: 'to get well again after being ill, hurt, etc.',
+        koreanExplanation: '원래의 상태로 돌이키거나 원래의 상태를 되찾다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recover',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505082&searchKeywordTo=3',
+            koreanHeadword: '회복-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'heal',
+        meaning: '치유되다, 치료하다',
+        englishExplanation: 'to become healthy again',
+        koreanExplanation: '치료되어 병이 낫다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/heal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=332105&searchKeywordTo=3',
+            koreanHeadword: '치유-되다',
+        },
+    },
+    {
+        day: 29,
+        word: 'medical',
+        meaning: '의학의; 내과의',
+        englishExplanation: 'relating to illness and injury and their treatment',
+        koreanExplanation: '내과 질환의 진단이나 치료를 전문으로 하는 의사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/medical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=61588&searchKeywordTo=3',
+            koreanHeadword: '내과-의',
+        },
+    },
+    {
+        day: 29,
+        word: 'therapy',
+        meaning: '치료, 요법',
+        englishExplanation: 'the treatment of a physical problem or an illness',
+        koreanExplanation: '병이나 상처 따위를 잘 다스려 낫게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/therapy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=492905&searchKeywordTo=3',
+            koreanHeadword: '치료',
+        },
+    },
+    {
+        day: 29,
+        word: 'pregnant',
+        meaning: '임신한',
+        englishExplanation: 'having a baby or young animal developing inside her/its body',
+        koreanExplanation: '아이나 새끼를 배다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pregnant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=275121&searchKeywordTo=3',
+            koreanHeadword: '임신-하다',
+        },
+    },
+    {
+        day: 29,
+        word: 'treatment',
+        meaning: '치료; 처리; 대우, 취급',
+        englishExplanation:
+            'something that is done to cure an illness or injury, or to make a person look and feel good',
+        koreanExplanation: '병이나 상처 따위를 잘 다스려 낫게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/treatment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=492905&searchKeywordTo=3',
+            koreanHeadword: '치료',
+        },
+    },
+    {
+        day: 29,
+        word: 'surgery',
+        meaning: '수술',
+        englishExplanation:
+            'medical treatment of injuries or diseases that involves cutting open a person’s body and often removing or replacing some parts',
+        koreanExplanation:
+            '피부나 점막, 기타의 조직을 의료 기계를 사용하여 자르거나 째거나 꿰매거나 하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/surgery',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197980&searchKeywordTo=3',
+            koreanHeadword: '수술3',
+        },
+    },
+    {
+        day: 30,
+        word: 'hypothesis',
+        meaning: '가설; 추정, 추측',
+        englishExplanation:
+            'an idea or explanation of something that is based on a few known facts but that has not yet been proved to be true or correct',
+        koreanExplanation:
+            '어떤 사실을 설명하거나 어떤 이론 체계를 연역하기 위하여 설정한 가정. 이로부터 이론적으로 도출된 결과가 관찰이나 실험에 의하여 검증되면, 가설의 위치를 벗어나 일정한 한계 안에서 타당한 진리가 된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hypothesis',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=2651&searchKeywordTo=3',
+            koreanHeadword: '가설4',
+        },
+    },
+    {
+        day: 30,
+        word: 'acidity',
+        meaning: '산성',
+        englishExplanation: 'the state of having a bitter, sharp taste or of containing acid',
+        koreanExplanation:
+            '수용액에서 이온화할 때 수산 이온의 농도보다 수소 이온의 농도가 더 큰 물질의 성질. 수소 이온 농도 지수가 7보다 작고 물에 녹으면 신맛을 내고, 푸른색 리트머스 시험지를 붉은색으로 변화시키며, 염기를 중화시켜 염을 만든다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/acidity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443016&searchKeywordTo=3',
+            koreanHeadword: '산성4',
+        },
+    },
+    {
+        day: 30,
+        word: 'chemistry',
+        meaning: '화학; 궁합',
+        englishExplanation:
+            'the scientific study of the structure of substances, how they react when combined or in contact with one another, and how they behave under different conditions',
+        koreanExplanation:
+            '자연 과학의 한 분야. 물질의 조성과 구조, 성질 및 변화, 제법, 응용 따위를 연구한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chemistry',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504837&searchKeywordTo=3',
+            koreanHeadword: '화학1',
+        },
+    },
+    {
+        day: 30,
+        word: 'pure',
+        meaning: '순수한, 불순물이 없는',
+        englishExplanation: 'not mixed with anything else',
+        koreanExplanation: '전혀 다른 것의 섞임이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pure',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446727&searchKeywordTo=3',
+            koreanHeadword: '순수-하다2',
+        },
+    },
+    {
+        day: 30,
+        word: 'liquid',
+        meaning: '액체의, 유동성의; 액체',
+        englishExplanation:
+            'a substance that flows freely and is not a solid or a gas, for example water or oil',
+        koreanExplanation:
+            '일정한 부피는 가졌으나 일정한 형태를 가지지 못한 물질. 구성하는 분자나 원자의 간격이 기체의 경우보다 좁고, 고체에 비하여 응집력이 약하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/liquid_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=455732&searchKeywordTo=3',
+            koreanHeadword: '액체',
+        },
+    },
+    {
+        day: 30,
+        word: 'scarce',
+        meaning: '부족한, 드문',
+        englishExplanation: 'available in amounts that are too small to meet what is needed',
+        koreanExplanation: '필요한 양이나 기준에 미치지 못해 충분하지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scarce_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=160107&searchKeywordTo=3',
+            koreanHeadword: '부족-하다',
+        },
+    },
+    {
+        day: 30,
+        word: 'automatic',
+        meaning: '자동의, 자동적인',
+        englishExplanation: 'having controls that work without needing a person to operate them',
+        koreanExplanation:
+            '기계나 설비 따위가 자체 내에 있는 일정한 장치의 작용에 의하여 스스로 작동함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/automatic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=280640&searchKeywordTo=3',
+            koreanHeadword: '자동1',
+        },
+    },
+    {
+        day: 30,
+        word: 'coal',
+        meaning: '석탄',
+        englishExplanation:
+            'a hard black mineral that is found below the ground and burnt to produce heat',
+        koreanExplanation:
+            '태고 때의 식물질이 땅속 깊이 묻히어 오랫동안 지압과 지열을 받아 차츰 분해하여 생긴, 타기 쉬운 퇴적암. 검은색 또는 검은 갈색을 띠며 탄소·산소·수소를 주성분으로 하는데 약간의 유황과 많은 양의 회분과 수분이 들어 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/coal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444254&searchKeywordTo=3',
+            koreanHeadword: '석탄',
+        },
+    },
+    {
+        day: 30,
+        word: 'substance',
+        meaning: '물질; 본질, 핵심',
+        englishExplanation: 'a type of solid, liquid or gas that has particular qualities',
+        koreanExplanation: '물체의 본바탕.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/substance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=125846&searchKeywordTo=3',
+            koreanHeadword: '물질2',
+        },
+    },
+    {
+        day: 30,
+        word: 'metal',
+        meaning: '금속',
+        englishExplanation:
+            'a type of solid mineral substance that is usually hard and shiny and that heat and electricity can travel through, for example tin, iron and gold',
+        koreanExplanation:
+            '열이나 전기를 잘 전도하고, 펴지고 늘어나는 성질이 풍부하며, 특수한 광택을 가진 물질을 통틀어 이르는 말. 수은을 제외하고는 모두 상온에서 고체이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/metal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=47289&searchKeywordTo=3',
+            koreanHeadword: '금속1',
+        },
+    },
+    {
+        day: 30,
+        word: 'innovative',
+        meaning: '획기적인, 혁신적인',
+        englishExplanation: 'introducing or using new ideas, ways of doing something, etc.',
+        koreanExplanation:
+            '어떤 과정이나 분야에서 전혀 새로운 시기를 열어 놓을 만큼 뚜렷이 구분되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/innovative',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508081&searchKeywordTo=3',
+            koreanHeadword: '획기-적',
+        },
+    },
+    {
+        day: 30,
+        word: 'automatically',
+        meaning: '자동적으로',
+        englishExplanation: 'without needing a person to operate controls',
+        koreanExplanation: '다른 힘을 빌리지 아니하고 저절로 움직이거나 작용하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/automatically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472274&searchKeywordTo=3',
+            koreanHeadword: '자동-적',
+        },
+    },
+    {
+        day: 30,
+        word: 'invention',
+        meaning: '발명',
+        englishExplanation: 'a thing or an idea that has been invented',
+        koreanExplanation: '아직까지 없던 기술이나 물건을 새로 생각하여 만들어 냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/invention',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423572&searchKeywordTo=3',
+            koreanHeadword: '발명1',
+        },
+    },
+    {
+        day: 30,
+        word: 'atomic',
+        meaning: '원자의',
+        englishExplanation: 'relating to atoms or an atom',
+        koreanExplanation: '물질을 이루는 기본 입자에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/atomic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465041&searchKeywordTo=3',
+            koreanHeadword: '원자2',
+        },
+    },
+    {
+        day: 30,
+        word: 'purify',
+        meaning: '정화하다, 깨끗이 하다',
+        englishExplanation:
+            'to make something pure by removing substances that are dirty, harmful or not wanted',
+        koreanExplanation: '불순하거나 더러운 것을 깨끗하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/purify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481073&searchKeywordTo=3',
+            koreanHeadword: '정화-하다4',
+        },
+    },
+    {
+        day: 30,
+        word: 'iron',
+        meaning: '철; 다리미; 철의; 다림질하다',
+        englishExplanation:
+            'a strong metal used to make steel and needed in small amounts by the body',
+        koreanExplanation:
+            '주기율표의 8족 금속 원소의 하나. 은백색의 고체로, 적철광·자철석·황철광 따위에서 얻는다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/iron_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=324865&searchKeywordTo=3',
+            koreanHeadword: '철5',
+        },
+    },
+    {
+        day: 30,
+        word: 'molecular',
+        meaning: '분자의',
+        englishExplanation: 'relating to molecules',
+        koreanExplanation: '물질의 성질을 유지하는 작은 입자에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/molecular',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153720&searchKeywordTo=3',
+            koreanHeadword: '분자1',
+        },
+    },
+    {
+        day: 30,
+        word: 'scientific',
+        meaning: '과학적인',
+        englishExplanation: 'involving or relating to science',
+        koreanExplanation: '과학의 바탕에서 본 정확성이나 타당성이 있는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scientific',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=32099&searchKeywordTo=3',
+            koreanHeadword: '과학-적',
+        },
+    },
+    {
+        day: 30,
+        word: 'genetic',
+        meaning: '유전의',
+        englishExplanation: 'relating to genes or genetics',
+        koreanExplanation: '부모의 특징이 자손에게 전해지는 현상에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/genetic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=468541&searchKeywordTo=3',
+            koreanHeadword: '유전12',
+        },
+    },
+    {
+        day: 30,
+        word: 'electricity',
+        meaning: '전기',
+        englishExplanation:
+            'a form of energy from charged elementary particles, usually supplied as electric current through cables, wires, etc. for lighting, heating, driving machines, etc.',
+        koreanExplanation:
+            '물질 안에 있는 전자 또는 공간에 있는 자유 전자나 이온들의 움직임 때문에 생기는 에너지의 한 형태. 음전기와 양전기 두 가지가 있는데, 같은 종류의 전기는 밀어 내고 다른 종류의 전기는 끌어당기는 힘이 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/electricity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=283981&searchKeywordTo=3',
+            koreanHeadword: '전기14',
+        },
+    },
+    {
+        day: 30,
+        word: 'scientifically',
+        meaning: '과학적으로',
+        englishExplanation: 'in a way that involves science or is related to science',
+        koreanExplanation: '과학의 바탕에서 본 정확성이나 타당성이 있는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scientifically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=32099&searchKeywordTo=3',
+            koreanHeadword: '과학-적',
+        },
+    },
+    {
+        day: 30,
+        word: 'innovate',
+        meaning: '혁신하다',
+        englishExplanation: 'to introduce new things, ideas or ways of doing something',
+        koreanExplanation: '묵은 풍속, 관습, 조직, 방법 따위를 완전히 바꾸어서 새롭게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/innovate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=369049&searchKeywordTo=3',
+            koreanHeadword: '혁신-하다',
+        },
+    },
+    {
+        day: 30,
+        word: 'carbon',
+        meaning: '탄소',
+        englishExplanation:
+            'an element present in all living things and found in pure form in diamond and graphite',
+        koreanExplanation:
+            '주기율표 제14족에 속하는 비금속 원소의 하나. 유기 화합물의 주요 구성 원소로, 숯·석탄·금강석 따위로 산출된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/carbon',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=497350&searchKeywordTo=3',
+            koreanHeadword: '탄소1',
+        },
+    },
+    {
+        day: 30,
+        word: 'chemical',
+        meaning: '화학적인; 화학 물질',
+        englishExplanation: 'relating to chemistry',
+        koreanExplanation:
+            '자연 과학의 한 분야. 물질의 조성과 구조, 성질 및 변화, 제법, 응용 따위를 연구한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chemical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=504837&searchKeywordTo=3',
+            koreanHeadword: '화학1',
+        },
+    },
+    {
+        day: 30,
+        word: 'inventor',
+        meaning: '발명가',
+        englishExplanation: 'a person who has invented something or whose job is inventing things',
+        koreanExplanation:
+            '아직까지 없던 기술이나 물건을 새로 생각하여 만들어 내는 일을 전문적으로 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inventor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=134586&searchKeywordTo=3',
+            koreanHeadword: '발명-가',
+        },
+    },
+    {
+        day: 30,
+        word: 'steel',
+        meaning: '강철',
+        englishExplanation: 'a strong, hard metal that is made of a mixture of iron and carbon',
+        koreanExplanation:
+            '탄소의 함유량이 0.035~1.7%인 철. 열처리에 따라 성질을 크게 변화시킬 수 있어 여러 가지 기계, 기구의 재료로 쓴다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/steel_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=389851&searchKeywordTo=3',
+            koreanHeadword: '강철',
+        },
+    },
+    {
+        day: 30,
+        word: 'particle',
+        meaning: '입자; 미량, 극소',
+        englishExplanation: 'a very small piece of something',
+        koreanExplanation:
+            '물질을 구성하는 미세한 크기의 물체. 소립자, 원자, 분자, 콜로이드 따위를 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/particle',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=273617&searchKeywordTo=3',
+            koreanHeadword: '입자2',
+        },
+    },
+    {
+        day: 30,
+        word: 'purification',
+        meaning: '정화',
+        englishExplanation:
+            'the process of making something pure by removing substances that are dirty, harmful or not wanted',
+        koreanExplanation: '불순하거나 더러운 것을 깨끗하게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/purification',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480890&searchKeywordTo=3',
+            koreanHeadword: '정화8',
+        },
+    },
+    {
+        day: 30,
+        word: 'resource',
+        meaning: '자원; 자산',
+        englishExplanation:
+            'a supply of something that a country, an organization or a person has and can use, especially to increase their wealth',
+        koreanExplanation:
+            '인간 생활 및 경제 생산에 이용되는 원료로서의 광물, 산림, 수산물 따위를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resource_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=272215&searchKeywordTo=3',
+            koreanHeadword: '자원4',
+        },
+    },
+    {
+        day: 30,
+        word: 'acid',
+        meaning: '산; 산성 물질, 신 것; 산성의; 신맛이 나는',
+        englishExplanation:
+            'a substance with a pH below seven that can react with metals and may burn materials',
+        koreanExplanation:
+            '물에 녹았을 때 이온화하여 수소 이온을 만드는 물질. 신맛이 나고 청색 리트머스 종이를 붉게 변화시키며 염기와의 중화 반응에 의하여 물과 염을 만들고 이온화 열이 수소보다 큰 금속과 반응하여 염을 만들면서 수소를 발생시킨다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/acid_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436751&searchKeywordTo=3',
+            koreanHeadword: '산7',
+        },
+    },
+    {
+        day: 30,
+        word: 'input',
+        meaning: '입력하다; 입력, 투입',
+        englishExplanation:
+            'time, knowledge, ideas, etc. that you put into work, a project, etc. in order to make it succeed',
+        koreanExplanation: '문자나 숫자를 컴퓨터가 기억하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/input_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=277263&searchKeywordTo=3',
+            koreanHeadword: '입력-하다',
+        },
+    },
+    {
+        day: 30,
+        word: 'atom',
+        meaning: '원자',
+        englishExplanation: 'the smallest particle of a chemical element that can exist',
+        koreanExplanation:
+            '물질의 기본적 구성단위. 하나의 핵과 이를 둘러싼 여러 개의 전자로 구성되어 있고, 크기는 반지름이 10－7~10－8cm이며 한 개 또는 여러 개가 모여 분자를 이룬다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/atom',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465041&searchKeywordTo=3',
+            koreanHeadword: '원자2',
+        },
+    },
+    {
+        day: 30,
+        word: 'scarcity',
+        meaning: '부족, 결핍',
+        englishExplanation: 'a shortage of something that makes it difficult to obtain',
+        koreanExplanation: '필요한 양이나 기준에 미치지 못해 충분하지 아니함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scarcity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434879&searchKeywordTo=3',
+            koreanHeadword: '부족1',
+        },
+    },
+    {
+        day: 30,
+        word: 'electronic',
+        meaning: '전자의, 전자 공학의',
+        englishExplanation:
+            'having or using many small parts, such as microchips, that control and direct a small electric current',
+        koreanExplanation:
+            '음전하를 가지고 원자핵의 주위를 도는 소립자의 하나. 질량은 9.1090×10－31kg이며, 약 0.511MeV이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/electronic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=288113&searchKeywordTo=3',
+            koreanHeadword: '전자6',
+        },
+    },
+    {
+        day: 30,
+        word: 'rubber',
+        meaning: '고무',
+        englishExplanation:
+            'an elastic waterproof material made from plant sap or chemicals and used for tyres and other products',
+        koreanExplanation:
+            '고무나무의 껍질에서 분비하는 액체를 응고시켜 만든 생고무를 주원료로 하는 물질. 탄력성이 강하고 신축성이 좋으며 전기나 물, 가스를 통과시키지 않아 공업용품이나 생활용품으로 널리 쓰인다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rubber_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=22762&searchKeywordTo=3',
+            koreanHeadword: '고무1',
+        },
+    },
+    {
+        day: 30,
+        word: 'genetically',
+        meaning: '유전적으로',
+        englishExplanation:
+            'through the inherited biological units that control the characteristics of living things',
+        koreanExplanation: '부모에게서 물려받은 생물의 특징을 통해.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/genetically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=468541&searchKeywordTo=3',
+            koreanHeadword: '유전12',
+        },
+    },
+    {
+        day: 30,
+        word: 'scarcely',
+        meaning: '거의 ~ 않다; 겨우',
+        englishExplanation: 'only just',
+        koreanExplanation: '정도나 횟수가 아주 적어 거의 그렇지 않게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/scarcely',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=17292&searchKeywordTo=3',
+            koreanHeadword: '겨우',
+        },
+    },
+    {
+        day: 30,
+        word: 'hypothesize',
+        meaning: '가설을 세우다',
+        englishExplanation:
+            'to suggest a way of explaining something when you do not definitely know about it',
+        koreanExplanation: '현상을 설명하기 위해 검증할 수 있는 가정을 세우는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hypothesize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=2651&searchKeywordTo=3',
+            koreanHeadword: '가설4',
+        },
+    },
+    {
+        day: 30,
+        word: 'element',
+        meaning: '요소, 성분; 원소',
+        englishExplanation: 'a necessary or typical part of something',
+        koreanExplanation: '사물의 성립이나 효력 발생 따위에 꼭 필요한 성분. 또는 근본 조건.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/element',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=243111&searchKeywordTo=3',
+            koreanHeadword: '요소4',
+        },
+    },
+    {
+        day: 30,
+        word: 'innovation',
+        meaning: '혁신',
+        englishExplanation: 'the introduction of new things, ideas or ways of doing something',
+        koreanExplanation: '묵은 풍속, 관습, 조직, 방법 따위를 완전히 바꾸어서 새롭게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/innovation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505645&searchKeywordTo=3',
+            koreanHeadword: '혁신',
+        },
+    },
+    {
+        day: 31,
+        word: 'emit',
+        meaning: '방출하다, 내뿜다',
+        englishExplanation: 'to send out something such as light, heat, sound, gas, etc.',
+        koreanExplanation: '입자나 전자기파의 형태로 에너지를 내보내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=141982&searchKeywordTo=3',
+            koreanHeadword: '방출-하다1',
+        },
+    },
+    {
+        day: 31,
+        word: 'climate',
+        meaning: '기후',
+        englishExplanation: 'the regular pattern of weather conditions of a particular place',
+        koreanExplanation: '기온, 비, 눈, 바람 따위의 대기 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/climate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=50339&searchKeywordTo=3',
+            koreanHeadword: '기후5',
+        },
+    },
+    {
+        day: 31,
+        word: 'desert',
+        meaning: '사막; 버리다, 떠나다',
+        englishExplanation:
+            'a large area of land that has very little water and very few plants growing on it. Many deserts are covered by sand.',
+        koreanExplanation:
+            '강수량이 적어서 식생이 보이지 않거나 적고, 인간의 활동도 제약되는 지역. 성인에 따라 열대 사막, 해안 사막, 내륙 사막, 한랭지 사막으로 나눈다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/desert_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436743&searchKeywordTo=3',
+            koreanHeadword: '사막3',
+        },
+    },
+    {
+        day: 31,
+        word: 'conservation',
+        meaning: '보존, 보호; 절약',
+        englishExplanation: 'the protection of the natural environment',
+        koreanExplanation: '잘 보호하고 간수하여 남김.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conservation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433323&searchKeywordTo=3',
+            koreanHeadword: '보존',
+        },
+    },
+    {
+        day: 31,
+        word: 'wildlife',
+        meaning: '야생 동물',
+        englishExplanation:
+            'animals, birds, insects, etc. that are wild and live in a natural environment',
+        koreanExplanation: '사람이 기르지 않고 자연에서 살아가는 동물.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wildlife',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457628&searchKeywordTo=3',
+            koreanHeadword: '야생1',
+        },
+    },
+    {
+        day: 31,
+        word: 'extinct',
+        meaning: '멸종한',
+        englishExplanation: 'no longer in existence',
+        koreanExplanation: '생물의 한 종류가 아주 없어지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extinct',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=116498&searchKeywordTo=3',
+            koreanHeadword: '멸종-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'predator',
+        meaning: '포식자, 약탈자',
+        englishExplanation: 'an animal that kills and eats other animals',
+        koreanExplanation: '다른 동물을 먹이로 하는 동물.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/predator',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=353799&searchKeywordTo=3',
+            koreanHeadword: '포식-자',
+        },
+    },
+    {
+        day: 31,
+        word: 'sustainability',
+        meaning: '지속 가능성',
+        englishExplanation:
+            'the use of natural products and energy in a way that does not harm the environment',
+        koreanExplanation: '어떤 상태가 오래 계속됨. 또는 어떤 상태를 오래 계속함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sustainability',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=306632&searchKeywordTo=3',
+            koreanHeadword: '지속1',
+        },
+    },
+    {
+        day: 31,
+        word: 'pest',
+        meaning: '해충, 유해 동물',
+        englishExplanation: 'an insect or animal that destroys plants, food, etc.',
+        koreanExplanation:
+            '인간의 생활에 해를 끼치는 벌레를 통틀어 이르는 말. 사람의 몸에 기생하는 이·벼룩·회충 따위와 옷이나 음식물에 기생하는 좀·바퀴 따위, 농작물과 과실나무에 기생하는 응애 따위가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pest',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=498469&searchKeywordTo=3',
+            koreanHeadword: '해충',
+        },
+    },
+    {
+        day: 31,
+        word: 'recycling',
+        meaning: '재활용',
+        englishExplanation:
+            'the process of treating things that have already been used so that they can be used again',
+        koreanExplanation: '폐품 따위를 용도를 바꾸거나 가공하여 다시 씀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recycling',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=282835&searchKeywordTo=3',
+            koreanHeadword: '재-활용',
+        },
+    },
+    {
+        day: 31,
+        word: 'environment',
+        meaning: '환경, 상황',
+        englishExplanation: 'the natural world in which people, animals and plants live',
+        koreanExplanation: '생물에게 직접·간접으로 영향을 주는 자연적 조건이나 사회적 상황.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/environment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505000&searchKeywordTo=3',
+            koreanHeadword: '환경1',
+        },
+    },
+    {
+        day: 31,
+        word: 'inhabit',
+        meaning: '거주하다, 서식하다',
+        englishExplanation: 'to live in a particular place',
+        koreanExplanation: '일정한 곳에 머물러 살다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inhabit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392863&searchKeywordTo=3',
+            koreanHeadword: '거주-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'hatch',
+        meaning: '부화하다',
+        englishExplanation: 'to come out of an egg',
+        koreanExplanation: '동물의 알 속에서 새끼가 껍데기를 깨고 밖으로 나오다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hatch_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=148467&searchKeywordTo=3',
+            koreanHeadword: '부화-하다5',
+        },
+    },
+    {
+        day: 31,
+        word: 'predatory',
+        meaning: '약탈하는',
+        englishExplanation: 'living by killing and eating other animals',
+        koreanExplanation: '폭력을 써서 남의 것을 억지로 빼앗다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/predatory',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=454721&searchKeywordTo=3',
+            koreanHeadword: '약탈-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'ecosystem',
+        meaning: '생태계',
+        englishExplanation:
+            'all the plants and living creatures in a particular area considered in relation to their physical environment',
+        koreanExplanation:
+            '어느 환경 안에서 사는 생물군과 그 생물들을 제어하는 제반 요인을 포함한 복합 체계. 생태학의 대상이 된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ecosystem',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446546&searchKeywordTo=3',
+            koreanHeadword: '생태-계',
+        },
+    },
+    {
+        day: 31,
+        word: 'sustainable',
+        meaning: '지속 가능한',
+        englishExplanation:
+            'involving the use of natural products and energy in a way that does not harm the environment',
+        koreanExplanation: '어떤 상태가 오래 계속됨. 또는 어떤 상태를 오래 계속함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sustainable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=306632&searchKeywordTo=3',
+            koreanHeadword: '지속1',
+        },
+    },
+    {
+        day: 31,
+        word: 'environmental',
+        meaning: '환경의',
+        englishExplanation:
+            'relating to the natural conditions in which people, animals and plants live',
+        koreanExplanation: '생물에게 직접·간접으로 영향을 주는 자연적 조건이나 사회적 상황.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/environmental',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505000&searchKeywordTo=3',
+            koreanHeadword: '환경1',
+        },
+    },
+    {
+        day: 31,
+        word: 'shore',
+        meaning: '해안',
+        englishExplanation: 'the land along the edge of the sea, the ocean or a lake',
+        koreanExplanation: '바다와 육지가 맞닿은 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/shore_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503114&searchKeywordTo=3',
+            koreanHeadword: '해안2',
+        },
+    },
+    {
+        day: 31,
+        word: 'temperature',
+        meaning: '온도, 기온; 체온',
+        englishExplanation: 'the measurement in degrees of how hot or cold a thing or place is',
+        koreanExplanation:
+            '따뜻함과 차가움의 정도. 또는 그것을 나타내는 수치. 물리적으로는 열평형을 특징짓고 열이 이동하는 경향을 나타내는 양이며, 미시적으로는 계를 구성하는 입자가 가지는 에너지의 분포를 정하고 그 평균값의 표준이 되는 양이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/temperature',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=459073&searchKeywordTo=3',
+            koreanHeadword: '온도',
+        },
+    },
+    {
+        day: 31,
+        word: 'bush',
+        meaning: '관목, 덤불',
+        englishExplanation:
+            'a plant that grows thickly with several hard stems coming up from the root',
+        koreanExplanation:
+            '키가 작고 원줄기와 가지의 구별이 분명하지 않으며 밑동에서 가지를 많이 치는 나무. 무궁화, 진달래, 앵두나무 따위이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bush',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=398765&searchKeywordTo=3',
+            koreanHeadword: '관목3',
+        },
+    },
+    {
+        day: 31,
+        word: 'emission',
+        meaning: '배출; 배출물, 배기가스',
+        englishExplanation: 'the production or sending out of light, heat, gas, etc.',
+        koreanExplanation: '안에서 밖으로 밀어 내보냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=142366&searchKeywordTo=3',
+            koreanHeadword: '배출2',
+        },
+    },
+    {
+        day: 31,
+        word: 'sustain',
+        meaning: '지속하다; 떠받치다, 견디다',
+        englishExplanation:
+            'to provide enough of what a person or thing needs in order to live or exist',
+        koreanExplanation: '어떤 상태를 오래 계속하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sustain',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=314476&searchKeywordTo=3',
+            koreanHeadword: '지속-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'species',
+        meaning: '종',
+        englishExplanation:
+            'a biological group whose members can breed together and produce healthy offspring',
+        koreanExplanation: '서로 번식하여 정상적인 자손을 남길 수 있는 생물의 분류 단위.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/species',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=301012&searchKeywordTo=3',
+            koreanHeadword: '종9',
+        },
+    },
+    {
+        day: 31,
+        word: 'recycle',
+        meaning: '재활용하다',
+        englishExplanation:
+            'to treat things that have already been used so that they can be used again',
+        koreanExplanation: '폐품 따위를 용도를 바꾸거나 가공하여 다시 쓰다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recycle',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473944&searchKeywordTo=3',
+            koreanHeadword: '재활용-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'conserve',
+        meaning: '보존하다; 절약하다, 아끼다',
+        englishExplanation: 'to protect something and prevent it from being changed or destroyed',
+        koreanExplanation: '잘 보호하고 간수하여 남기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conserve_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=150664&searchKeywordTo=3',
+            koreanHeadword: '보존-하다',
+        },
+    },
+    {
+        day: 31,
+        word: 'litter',
+        meaning: '쓰레기, 잡동사니; 어지르다, 쓰레기를 버리다',
+        englishExplanation:
+            'small pieces of rubbish such as paper, cans and bottles that people have left lying in a public place',
+        koreanExplanation:
+            '비로 쓸어 낸 먼지나 티끌, 또는 못 쓰게 되어 내다 버릴 물건이나 내다 버린 물건을 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/litter_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=212186&searchKeywordTo=3',
+            koreanHeadword: '쓰레기',
+        },
+    },
+    {
+        day: 31,
+        word: 'soil',
+        meaning: '흙, 토양; 땅, 국토',
+        englishExplanation: 'the top layer of the earth in which plants, trees, etc. grow',
+        koreanExplanation:
+            '지구의 표면을 덮고 있는, 바위가 부스러져 생긴 가루인 무기물과 동식물에서 생긴 유기물이 섞여 이루어진 물질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/soil_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508771&searchKeywordTo=3',
+            koreanHeadword: '흙1',
+        },
+    },
+    {
+        day: 31,
+        word: 'seed',
+        meaning: '씨, 종자; 근원; 씨를 뿌리다',
+        englishExplanation:
+            'the small, hard part produced by a plant, from which a new plant can grow',
+        koreanExplanation: '식물의 열매 속에 있는, 장차 싹이 터서 새로운 개체가 될 단단한 물질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/seed_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=455012&searchKeywordTo=3',
+            koreanHeadword: '씨1',
+        },
+    },
+    {
+        day: 31,
+        word: 'pollution',
+        meaning: '오염, 공해',
+        englishExplanation: 'the process of making air, water, soil, etc. dirty',
+        koreanExplanation: '더럽게 물듦. 또는 더럽게 물들게 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pollution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463964&searchKeywordTo=3',
+            koreanHeadword: '오염',
+        },
+    },
+    {
+        day: 31,
+        word: 'fossil',
+        meaning: '화석',
+        englishExplanation:
+            'the parts of a dead animal or a plant that have become hard and turned into rock',
+        koreanExplanation:
+            '지질 시대에 생존한 동식물의 유해와 활동 흔적 따위가 퇴적물 중에 매몰된 채로 또는 지상에 그대로 보존되어 남아 있는 것을 통틀어 이르는 말. 생물의 진화, 그 시대의 지표 상태를 아는 데에 큰 도움이 된다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fossil',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=375682&searchKeywordTo=3',
+            koreanHeadword: '화석1',
+        },
+    },
+    {
+        day: 31,
+        word: 'stream',
+        meaning: '개울, 시내; 줄줄 흐르다',
+        englishExplanation: 'a small, narrow river',
+        koreanExplanation: '골짜기나 들에 흐르는 작은 물줄기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stream_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=11120&searchKeywordTo=3',
+            koreanHeadword: '개울',
+        },
+    },
+    {
+        day: 31,
+        word: 'pollute',
+        meaning: '더럽히다, 오염시키다',
+        englishExplanation:
+            'to add dirty or harmful substances to land, air, water, etc. so that it is no longer pleasant or safe to use',
+        koreanExplanation: '때나 찌꺼기 따위를 묻혀 지저분하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pollute',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=81407&searchKeywordTo=3',
+            koreanHeadword: '더럽-히다',
+        },
+    },
+    {
+        day: 31,
+        word: 'drought',
+        meaning: '가뭄',
+        englishExplanation: 'a long period of time when there is little or no rain',
+        koreanExplanation: '오랫동안 계속하여 비가 내리지 않아 메마른 날씨.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/drought',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390060&searchKeywordTo=3',
+            koreanHeadword: '가뭄',
+        },
+    },
+    {
+        day: 31,
+        word: 'extinction',
+        meaning: '멸종',
+        englishExplanation:
+            'a situation in which a plant, an animal, a way of life, etc. stops existing',
+        koreanExplanation: '생물의 한 종류가 아주 없어짐. 또는 생물의 한 종류를 아주 없애 버림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extinction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=421708&searchKeywordTo=3',
+            koreanHeadword: '멸종',
+        },
+    },
+    {
+        day: 31,
+        word: 'earthquake',
+        meaning: '지진',
+        englishExplanation: 'a sudden, violent shaking of the earth’s surface',
+        koreanExplanation:
+            '오랫동안 누적된 변형 에너지가 갑자기 방출되면서 지각이 흔들리는 일. 지학에서는, 지구 내부의 한곳에서 급격한 움직임이 일어나 그곳에서 지진파가 시작되어 지표까지 전하여지는 일을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/earthquake',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=310885&searchKeywordTo=3',
+            koreanHeadword: '지진2',
+        },
+    },
+    {
+        day: 31,
+        word: 'valley',
+        meaning: '계곡, 골짜기',
+        englishExplanation:
+            'an area of low land between hills or mountains, often with a river flowing through it',
+        koreanExplanation: '물이 흐르는 골짜기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/valley',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=20128&searchKeywordTo=3',
+            koreanHeadword: '계곡1',
+        },
+    },
+    {
+        day: 31,
+        word: 'pollutant',
+        meaning: '오염 물질',
+        englishExplanation: 'a substance that pollutes something, especially air and water',
+        koreanExplanation: '주변 환경을 더럽히거나 해롭게 하는 물질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pollutant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463964&searchKeywordTo=3',
+            koreanHeadword: '오염',
+        },
+    },
+    {
+        day: 31,
+        word: 'root',
+        meaning: '뿌리; 근원, 원인',
+        englishExplanation:
+            'the part of a plant that grows under the ground and takes in water and minerals that it sends to the rest of the plant',
+        koreanExplanation: '식물의 밑부분에서 양분과 물을 흡수하고 줄기를 지탱하는 기관.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/root_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435440&searchKeywordTo=3',
+            koreanHeadword: '뿌리',
+        },
+    },
+    {
+        day: 31,
+        word: 'stem',
+        meaning: '줄기; 생기다, 유래하다',
+        englishExplanation:
+            'the main long, thin part of a plant above the ground from which the leaves or flowers grow',
+        koreanExplanation:
+            '고등 식물에 있어서 기본 기관의 하나. 식물체를 받치고 뿌리로부터 흡수한 수분이나 양분을 체관부, 물관부를 통하여 각 부에 나르는 역할을 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stem_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=480480&searchKeywordTo=3',
+            koreanHeadword: '줄기1',
+        },
+    },
+    {
+        day: 31,
+        word: 'habitat',
+        meaning: '서식지',
+        englishExplanation:
+            'the place where a particular type of animal or plant is normally found',
+        koreanExplanation: '생물 따위가 일정한 곳에 자리를 잡고 사는 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/habitat',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=180401&searchKeywordTo=3',
+            koreanHeadword: '서식-지',
+        },
+    },
+    {
+        day: 32,
+        word: 'exchange',
+        meaning: '교환하다; 환전하다; 교환; 환전',
+        englishExplanation:
+            'an act of giving something to a person or doing something for a person and receiving something in return',
+        koreanExplanation: '서로 바꾸다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/exchange_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402562&searchKeywordTo=3',
+            koreanHeadword: '교환-하다1',
+        },
+    },
+    {
+        day: 32,
+        word: 'political',
+        meaning: '정치의, 정치에 관한',
+        englishExplanation: 'relating to the state, government or public affairs',
+        koreanExplanation:
+            '나라를 다스리는 일. 국가의 권력을 획득하고 유지하며 행사하는 활동으로, 국민들이 인간다운 삶을 영위하게 하고 상호 간의 이해를 조정하며, 사회 질서를 바로잡는 따위의 역할을 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/political',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484332&searchKeywordTo=3',
+            koreanHeadword: '정치3',
+        },
+    },
+    {
+        day: 32,
+        word: 'politician',
+        meaning: '정치인',
+        englishExplanation:
+            'a person whose job involves politics, especially as an elected member of parliament, etc.',
+        koreanExplanation: '정치를 맡아서 하는 사람. 또는 정치에 관한 학식과 경험이 풍부한 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/politician',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295593&searchKeywordTo=3',
+            koreanHeadword: '정치-인',
+        },
+    },
+    {
+        day: 32,
+        word: 'refundable',
+        meaning: '환불 가능한',
+        englishExplanation:
+            'able to have money returned if a purchase cannot be used or does not satisfy the buyer',
+        koreanExplanation: '이미 지불한 돈을 되돌려줌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/refundable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=382014&searchKeywordTo=3',
+            koreanHeadword: '환불2',
+        },
+    },
+    {
+        day: 32,
+        word: 'tolerate',
+        meaning: '용인하다; 참다',
+        englishExplanation: 'to allow a person to do something that you do not agree with or like',
+        koreanExplanation: '용납하여 인정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tolerate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=243205&searchKeywordTo=3',
+            koreanHeadword: '용인-하다3',
+        },
+    },
+    {
+        day: 32,
+        word: 'unemployment',
+        meaning: '실업',
+        englishExplanation: 'the fact of a number of people not having a job',
+        koreanExplanation: '생업을 잃음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/unemployment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=453189&searchKeywordTo=3',
+            koreanHeadword: '실업1',
+        },
+    },
+    {
+        day: 32,
+        word: 'fee',
+        meaning: '요금, 수수료',
+        englishExplanation: 'an amount of money that you pay for professional advice or services',
+        koreanExplanation: '물건이나 서비스 따위를 이용하는 대가로 내는 돈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fee',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244665&searchKeywordTo=3',
+            koreanHeadword: '요금1',
+        },
+    },
+    {
+        day: 32,
+        word: 'financial',
+        meaning: '금융의, 재정상의',
+        englishExplanation: 'relating to money and finance',
+        koreanExplanation:
+            '금전을 융통하는 일. 특히 이자를 붙여서 자금을 대차하는 일과 그 수급 관계를 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/financial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=46661&searchKeywordTo=3',
+            koreanHeadword: '금융',
+        },
+    },
+    {
+        day: 32,
+        word: 'expend',
+        meaning: '들이다, 소비하다',
+        englishExplanation: 'to use or spend a lot of time, money, energy, etc.',
+        koreanExplanation: '밖에서 속이나 안으로 향해 가게 하거나 오게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=417753&searchKeywordTo=3',
+            koreanHeadword: '들-이다',
+        },
+    },
+    {
+        day: 32,
+        word: 'hire',
+        meaning: '고용하다',
+        englishExplanation: 'to give a person a job',
+        koreanExplanation: '임금을 주고 일을 시키다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hire_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396080&searchKeywordTo=3',
+            koreanHeadword: '고용-하다2',
+        },
+    },
+    {
+        day: 32,
+        word: 'employ',
+        meaning: '고용하다; 이용하다, 쓰다',
+        englishExplanation: 'to give a person a job to do for payment',
+        koreanExplanation: '임금을 주고 일을 시키다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/employ_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=396080&searchKeywordTo=3',
+            koreanHeadword: '고용-하다2',
+        },
+    },
+    {
+        day: 32,
+        word: 'protest',
+        meaning: '시위, 항의; 항의하다, 이의를 제기하다',
+        englishExplanation: 'the expression of strong dislike of or opposition to something',
+        koreanExplanation: '위력이나 기세를 떨쳐 보임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/protest_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=205607&searchKeywordTo=3',
+            koreanHeadword: '시위4',
+        },
+    },
+    {
+        day: 32,
+        word: 'minimize',
+        meaning: '최소화하다; 축소하다',
+        englishExplanation:
+            'to reduce something, especially something bad, to the lowest possible level',
+        koreanExplanation: '가장 작게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/minimize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=335747&searchKeywordTo=3',
+            koreanHeadword: '최소화-하다1',
+        },
+    },
+    {
+        day: 32,
+        word: 'investigation',
+        meaning: '수사, 조사',
+        englishExplanation: 'an official examination of the facts about a situation, crime, etc.',
+        koreanExplanation: '찾아서 조사함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/investigation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=449763&searchKeywordTo=3',
+            koreanHeadword: '수사18',
+        },
+    },
+    {
+        day: 32,
+        word: 'purchase',
+        meaning: '구매하다; 구매',
+        englishExplanation: 'to buy something',
+        koreanExplanation: '물건 따위를 사들이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/purchase_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=393527&searchKeywordTo=3',
+            koreanHeadword: '구매-하다2',
+        },
+    },
+    {
+        day: 32,
+        word: 'democratic',
+        meaning: '민주주의의, 민주적인',
+        englishExplanation:
+            'controlled by representatives who are elected by the people of a country',
+        koreanExplanation:
+            '국민이 권력을 가지고 그 권력을 스스로 행사하는 제도. 또는 그런 정치를 지향하는 사상. 기본적 인권, 자유권, 평등권, 다수결의 원리, 법치주의 따위를 그 기본 원리로 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/democratic',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=427875&searchKeywordTo=3',
+            koreanHeadword: '민주-주의',
+        },
+    },
+    {
+        day: 32,
+        word: 'guilty',
+        meaning: '죄책감이 드는; 유죄의',
+        englishExplanation:
+            'feeling ashamed because you have done something that you know is wrong or have not done something that you should have done',
+        koreanExplanation: '잘못이나 죄가 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/guilty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465946&searchKeywordTo=3',
+            koreanHeadword: '유죄1',
+        },
+    },
+    {
+        day: 32,
+        word: 'witness',
+        meaning: '목격하다; 목격자',
+        englishExplanation:
+            'a person who sees something happen and is able to describe it to other people',
+        koreanExplanation: '눈으로 직접 보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/witness_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=117777&searchKeywordTo=3',
+            koreanHeadword: '목격-하다',
+        },
+    },
+    {
+        day: 32,
+        word: 'politics',
+        meaning: '정치',
+        englishExplanation:
+            'the activities involved in getting and using power in public life, and being able to influence decisions that affect a country or a society',
+        koreanExplanation:
+            '나라를 다스리는 일. 국가의 권력을 획득하고 유지하며 행사하는 활동으로, 국민들이 인간다운 삶을 영위하게 하고 상호 간의 이해를 조정하며, 사회 질서를 바로잡는 따위의 역할을 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/politics',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=484332&searchKeywordTo=3',
+            koreanHeadword: '정치3',
+        },
+    },
+    {
+        day: 32,
+        word: 'expense',
+        meaning: '비용, 지출, 소비',
+        englishExplanation: 'the money that you spend on something',
+        koreanExplanation: '어떤 일을 하는 데 드는 돈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expense',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436514&searchKeywordTo=3',
+            koreanHeadword: '비용2',
+        },
+    },
+    {
+        day: 32,
+        word: 'finance',
+        meaning: '재정, 금융; 자금을 대다',
+        englishExplanation: 'money used to run a business, an activity or a project',
+        koreanExplanation: '돈에 관한 여러 가지 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/finance_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473863&searchKeywordTo=3',
+            koreanHeadword: '재정5',
+        },
+    },
+    {
+        day: 32,
+        word: 'victim',
+        meaning: '피해자, 희생자',
+        englishExplanation:
+            'a person who has been attacked, injured or killed as the result of a crime, a disease, an accident, etc.',
+        koreanExplanation: '자신의 생명이나 신체, 재산, 명예 따위에 침해 또는 위협을 받은 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/victim',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499843&searchKeywordTo=3',
+            koreanHeadword: '피해-자',
+        },
+    },
+    {
+        day: 32,
+        word: 'profit',
+        meaning: '이익, 수익',
+        englishExplanation:
+            'the money that you make in business or by selling things, especially after paying the costs involved',
+        koreanExplanation: '물질적으로나 정신적으로 보탬이 되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/profit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=263072&searchKeywordTo=3',
+            koreanHeadword: '이익2',
+        },
+    },
+    {
+        day: 32,
+        word: 'incentive',
+        meaning: '장려책',
+        englishExplanation: 'something that encourages you to do something',
+        koreanExplanation: '어떤 일을 하도록 의욕을 북돋는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/incentive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=285280&searchKeywordTo=3',
+            koreanHeadword: '장려3',
+        },
+    },
+    {
+        day: 32,
+        word: 'investment',
+        meaning: '투자',
+        englishExplanation: 'the act of investing money in something',
+        koreanExplanation:
+            '이익을 얻기 위하여 어떤 일이나 사업에 자본을 대거나 시간이나 정성을 쏟음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/investment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=345196&searchKeywordTo=3',
+            koreanHeadword: '투자2',
+        },
+    },
+    {
+        day: 32,
+        word: 'industrialization',
+        meaning: '산업화',
+        englishExplanation: 'the process of developing industries in a country or an area',
+        koreanExplanation: '산업의 형태가 됨. 또는 그렇게 되게 함.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/industrialization',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=172402&searchKeywordTo=3',
+            koreanHeadword: '산업-화',
+        },
+    },
+    {
+        day: 32,
+        word: 'laborer',
+        meaning: '노동자',
+        englishExplanation:
+            'a person whose job involves hard physical work that does not need special skills, especially work that is done outdoors',
+        koreanExplanation: '노동력을 제공하고 얻은 임금으로 생활을 유지하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/labourer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411101&searchKeywordTo=3',
+            koreanHeadword: '노동-자',
+        },
+    },
+    {
+        day: 32,
+        word: 'employee',
+        meaning: '고용인, 종업원',
+        englishExplanation: 'a person who is paid to work for a person',
+        koreanExplanation: '고용 상태에 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/employee',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=24005&searchKeywordTo=3',
+            koreanHeadword: '고용-인2',
+        },
+    },
+    {
+        day: 32,
+        word: 'invest',
+        meaning: '투자하다; 쓰다, 쏟다',
+        englishExplanation:
+            'to buy property, shares in a company, etc. in the hope of making a profit',
+        koreanExplanation:
+            '이익을 얻기 위하여 어떤 일이나 사업에 자본을 대거나 시간이나 정성을 쏟다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/invest',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496817&searchKeywordTo=3',
+            koreanHeadword: '투자-하다2',
+        },
+    },
+    {
+        day: 32,
+        word: 'crime',
+        meaning: '범죄, 죄',
+        englishExplanation: 'activities that involve breaking the law',
+        koreanExplanation: '법규를 어기고 저지른 잘못.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crime',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=430393&searchKeywordTo=3',
+            koreanHeadword: '범죄',
+        },
+    },
+    {
+        day: 32,
+        word: 'refund',
+        meaning: '환불, 반환; 환불하다, 반환하다',
+        englishExplanation:
+            'a sum of money that is paid back to you, especially because you paid too much or because you returned goods to a shop',
+        koreanExplanation: '이미 지불한 돈을 되돌려줌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/refund_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=382014&searchKeywordTo=3',
+            koreanHeadword: '환불2',
+        },
+    },
+    {
+        day: 32,
+        word: 'investigate',
+        meaning: '수사하다; 조사하다',
+        englishExplanation:
+            'to carefully examine the facts of a situation, an event, a crime, etc. to find out the truth about it or how it happened',
+        koreanExplanation: '찾아서 조사하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/investigate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=192829&searchKeywordTo=3',
+            koreanHeadword: '수사-하다7',
+        },
+    },
+    {
+        day: 32,
+        word: 'income',
+        meaning: '소득, 수입',
+        englishExplanation:
+            'the money that a person, a region, a country, etc. earns from work, from investing money, from business, etc.',
+        koreanExplanation: '일한 결과로 얻은 정신적·물질적 이익.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/income',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=189044&searchKeywordTo=3',
+            koreanHeadword: '소득',
+        },
+    },
+    {
+        day: 32,
+        word: 'employment',
+        meaning: '고용, 취업',
+        englishExplanation: 'work, especially when it is done to earn money',
+        koreanExplanation: '임금을 주고 일을 시킴.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/employment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=24582&searchKeywordTo=3',
+            koreanHeadword: '고용2',
+        },
+    },
+    {
+        day: 32,
+        word: 'investigator',
+        meaning: '수사관, 조사관',
+        englishExplanation:
+            'a person who examines a situation such as an accident or a crime to find out the truth',
+        koreanExplanation: '범죄 수사를 하는 관리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/investigator',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197903&searchKeywordTo=3',
+            koreanHeadword: '수사-관',
+        },
+    },
+    {
+        day: 32,
+        word: 'policy',
+        meaning: '정책, 제도',
+        englishExplanation:
+            'a plan of action agreed or chosen by a political party, a business, etc.',
+        koreanExplanation: '정치적 목적을 실현하기 위한 방책.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/policy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=294905&searchKeywordTo=3',
+            koreanHeadword: '정책2',
+        },
+    },
+    {
+        day: 32,
+        word: 'tolerant',
+        meaning: '관대한',
+        englishExplanation:
+            'able to accept what other people say or do even if you do not agree with it',
+        koreanExplanation: '마음이 너그럽고 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tolerant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397822&searchKeywordTo=3',
+            koreanHeadword: '관대-하다2',
+        },
+    },
+    {
+        day: 32,
+        word: 'industrial',
+        meaning: '산업의, 산업이 발달한',
+        englishExplanation: 'relating to industry',
+        koreanExplanation: '직장에서 근로자의 건강을 관리하는 의사.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/industrial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=166480&searchKeywordTo=3',
+            koreanHeadword: '산업-의',
+        },
+    },
+    {
+        day: 32,
+        word: 'manufacture',
+        meaning: '제조; 제품; 제작하다',
+        englishExplanation: 'to make goods in large quantities, using machines',
+        koreanExplanation: '공장에서 큰 규모로 물건을 만듦.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/manufacture_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292363&searchKeywordTo=3',
+            koreanHeadword: '제조7',
+        },
+    },
+    {
+        day: 32,
+        word: 'employer',
+        meaning: '고용주',
+        englishExplanation: 'a person or company that pays people to work for them',
+        koreanExplanation: '임금을 주고 일을 시킬 권리가 있는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/employer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=391727&searchKeywordTo=3',
+            koreanHeadword: '고용-주',
+        },
+    },
+    {
+        day: 33,
+        word: 'physical',
+        meaning: '육체의; 물질의, 물리적인',
+        englishExplanation: 'relating to a person’s body rather than their mind',
+        koreanExplanation: '구체적인 물체로서 사람의 몸.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/physical_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=257244&searchKeywordTo=3',
+            koreanHeadword: '육체3',
+        },
+    },
+    {
+        day: 33,
+        word: 'latter',
+        meaning: '후자의; 후반의, 마지막의; 후자',
+        englishExplanation: 'used to refer to the second of two things or people mentioned',
+        koreanExplanation: '두 가지 사물이나 사람을 들어 말할 때, 뒤에 든 사물이나 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/latter_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=381973&searchKeywordTo=3',
+            koreanHeadword: '후자1',
+        },
+    },
+    {
+        day: 33,
+        word: 'permanent',
+        meaning: '영구적인',
+        englishExplanation: 'lasting for a long time or for all time in the future',
+        koreanExplanation: '오래도록 변하지 아니하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/permanent_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=236008&searchKeywordTo=3',
+            koreanHeadword: '영구-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'objective',
+        meaning: '객관적인; 목적, 목표',
+        englishExplanation: 'something that you are trying to achieve',
+        koreanExplanation: '자기와의 관계에서 벗어나 제삼자의 입장에서 사물을 보거나 생각하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/objective_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390530&searchKeywordTo=3',
+            koreanHeadword: '객관-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'demand',
+        meaning: '요구하다; 요구; 수요',
+        englishExplanation: 'a very strong request for something',
+        koreanExplanation: '받아야 할 것을 필요에 의하여 달라고 청하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/demand_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244311&searchKeywordTo=3',
+            koreanHeadword: '요구-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'superior',
+        meaning: '위의, 상급의; 뛰어난, 우수한; 윗사람, 상관',
+        englishExplanation: 'better in quality than a person or thing else',
+        koreanExplanation: '여럿 가운데 뛰어나다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/superior_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=248770&searchKeywordTo=3',
+            koreanHeadword: '우수-하다2',
+        },
+    },
+    {
+        day: 33,
+        word: 'broaden',
+        meaning: '넓어지다',
+        englishExplanation: 'to become wider',
+        koreanExplanation: '넓게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/broaden',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=515230&searchKeywordTo=3',
+            koreanHeadword: '넓어-지다',
+        },
+    },
+    {
+        day: 33,
+        word: 'subjectively',
+        meaning: '주관적으로',
+        englishExplanation:
+            "in a way that is based on a person's own ideas, opinions or feelings rather than the facts",
+        koreanExplanation: '자기의 견해나 관점을 기초로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subjectively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481945&searchKeywordTo=3',
+            koreanHeadword: '주관-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'obviously',
+        meaning: '분명하게',
+        englishExplanation:
+            'used when giving information that you expect other people to know already or agree with',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/obviously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=155625&searchKeywordTo=3',
+            koreanHeadword: '분명-하다1',
+        },
+    },
+    {
+        day: 33,
+        word: 'inferior',
+        meaning: '하위의; 열등한, 못한; 아랫사람, 하급자',
+        englishExplanation: 'not good or not as good as a person or thing else',
+        koreanExplanation: '보통의 수준이나 등급보다 낮다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inferior_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=236682&searchKeywordTo=3',
+            koreanHeadword: '열등-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'attraction',
+        meaning: '매력; 명소',
+        englishExplanation: 'an interesting or lively place to go or thing to do',
+        koreanExplanation: '사람의 마음을 사로잡아 끄는 힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attraction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112744&searchKeywordTo=3',
+            koreanHeadword: '매력',
+        },
+    },
+    {
+        day: 33,
+        word: 'obvious',
+        meaning: '분명한',
+        englishExplanation: 'easy to see or understand',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/obvious',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=155625&searchKeywordTo=3',
+            koreanHeadword: '분명-하다1',
+        },
+    },
+    {
+        day: 33,
+        word: 'passive',
+        meaning: '수동적인, 소극적인',
+        englishExplanation:
+            'accepting what happens or what people do without trying to change anything or oppose them',
+        koreanExplanation: '스스로 움직이지 않고 다른 것의 작용을 받아 움직이는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/passive_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=194228&searchKeywordTo=3',
+            koreanHeadword: '수동-적2',
+        },
+    },
+    {
+        day: 33,
+        word: 'cease',
+        meaning: '중단하다, 그만두다',
+        englishExplanation: 'to stop happening or existing',
+        koreanExplanation: '중도에서 끊다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cease',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483229&searchKeywordTo=3',
+            koreanHeadword: '중단-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'physically',
+        meaning: '육체적으로; 물리적으로',
+        englishExplanation: 'in a way that is related to a person’s body rather than their mind',
+        koreanExplanation: '육체에 관련되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/physically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470514&searchKeywordTo=3',
+            koreanHeadword: '육체-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'ambiguous',
+        meaning: '애매모호한, 여러 가지로 해석이 가능한',
+        englishExplanation: 'that can be understood in more than one way',
+        koreanExplanation: '말이나 태도가 흐리터분하여 분명하지 않다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ambiguous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423130&searchKeywordTo=3',
+            koreanHeadword: '모호-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'permanently',
+        meaning: '영구적으로',
+        englishExplanation: 'in a way that lasts for a long time or for all time in the future',
+        koreanExplanation: '오래도록 변하지 아니하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/permanently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=236008&searchKeywordTo=3',
+            koreanHeadword: '영구-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'supply',
+        meaning: '공급하다; 공급',
+        englishExplanation: 'an amount of something that is provided or available to be used',
+        koreanExplanation: '요구나 필요에 따라 물품 따위를 제공하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/supply_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=28447&searchKeywordTo=3',
+            koreanHeadword: '공급-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'external',
+        meaning: '외부의',
+        englishExplanation: 'relating to or located on the outside of something/a person',
+        koreanExplanation: '바깥 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/external',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=246250&searchKeywordTo=3',
+            koreanHeadword: '외부2',
+        },
+    },
+    {
+        day: 33,
+        word: 'subjective',
+        meaning: '주관적인',
+        englishExplanation:
+            'based on your own ideas or opinions rather than facts and therefore sometimes unfair',
+        koreanExplanation: '자기의 견해나 관점을 기초로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subjective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481945&searchKeywordTo=3',
+            koreanHeadword: '주관-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'former',
+        meaning: '이전의, 과거의; 전자의; 전자',
+        englishExplanation: 'that existed in earlier times',
+        koreanExplanation: '말하는 때 이전의 지나간 차례나 때.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/former_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481583&searchKeywordTo=3',
+            koreanHeadword: '전자3',
+        },
+    },
+    {
+        day: 33,
+        word: 'passively',
+        meaning: '소극적으로',
+        englishExplanation:
+            'without trying to change anything or oppose what happens or what people do',
+        koreanExplanation:
+            '스스로 앞으로 나아가거나 상황을 개선하려는 기백이 부족하고 비활동적인 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/passively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=447434&searchKeywordTo=3',
+            koreanHeadword: '소극-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'ambiguity',
+        meaning: '애매모호함',
+        englishExplanation: 'the state of having more than one possible meaning',
+        koreanExplanation: '말이나 태도가 흐리터분하여 분명하지 않다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ambiguity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423130&searchKeywordTo=3',
+            koreanHeadword: '모호-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'actively',
+        meaning: '적극적으로',
+        englishExplanation: 'in a way that involves doing something',
+        koreanExplanation: '대상에 대한 태도가 긍정적이고 능동적인 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/actively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279322&searchKeywordTo=3',
+            koreanHeadword: '적극-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'attract',
+        meaning: '끌어들이다, 끌어당기다; 끌다',
+        englishExplanation:
+            'if you are attracted by something, it interests you and makes you want it',
+        koreanExplanation: '남을 권하거나 꾀어서 자기편이 되게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attract',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=57490&searchKeywordTo=3',
+            koreanHeadword: '끌어-들이다',
+        },
+    },
+    {
+        day: 33,
+        word: 'reveal',
+        meaning: '폭로하다, 밝히다; 보이다, 드러내다',
+        englishExplanation: 'to make something known to a person',
+        koreanExplanation: '알려지지 않았거나 감춰져 있던 사실을 드러내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reveal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=357039&searchKeywordTo=3',
+            koreanHeadword: '폭로-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'decrease',
+        meaning: '감소하다, 줄이다; 감소',
+        englishExplanation: 'to become smaller in size, number, etc.',
+        koreanExplanation: '양이나 수치가 줄다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/decrease_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=6847&searchKeywordTo=3',
+            koreanHeadword: '감소-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'concrete',
+        meaning: '구체적인, 실재적인; 콘크리트로 된; 콘크리트',
+        englishExplanation: 'a building material made by mixing cement with sand, stones and water',
+        koreanExplanation:
+            '시멘트에 모래와 자갈, 골재 따위를 적당히 섞고 물에 반죽한 혼합물. 만드는 방법이 간단하고 내구성이 커서 토목 공사나 건축의 주요 재료로 쓴다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/concrete_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=333986&searchKeywordTo=3',
+            koreanHeadword: '콘크리트',
+        },
+    },
+    {
+        day: 33,
+        word: 'broadly',
+        meaning: '광범위하게',
+        englishExplanation: 'generally, without considering details',
+        koreanExplanation: '면이나 바닥 따위의 면적이 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/broadly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411080&searchKeywordTo=3',
+            koreanHeadword: '넓다',
+        },
+    },
+    {
+        day: 33,
+        word: 'temporarily',
+        meaning: '일시적으로, 임시로',
+        englishExplanation:
+            'in a way that lasts or is intended to last or be used only for a short time',
+        koreanExplanation: '짧은 한때의 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/temporarily',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=271225&searchKeywordTo=3',
+            koreanHeadword: '일시-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'internal',
+        meaning: '내부의',
+        englishExplanation: 'relating to the inside of something',
+        koreanExplanation: '안쪽의 부분.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/internal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406768&searchKeywordTo=3',
+            koreanHeadword: '내부4',
+        },
+    },
+    {
+        day: 33,
+        word: 'narrowly',
+        meaning: '좁게; 간신히, 가까스로',
+        englishExplanation: 'only by a small amount',
+        koreanExplanation: '겨우 또는 가까스로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/narrowly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=387401&searchKeywordTo=3',
+            koreanHeadword: '간신-히',
+        },
+    },
+    {
+        day: 33,
+        word: 'temporary',
+        meaning: '일시적인, 임시의',
+        englishExplanation: 'lasting or intended to last or be used only for a short time',
+        koreanExplanation: '짧은 한때의 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/temporary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=271225&searchKeywordTo=3',
+            koreanHeadword: '일시-적',
+        },
+    },
+    {
+        day: 33,
+        word: 'increasingly',
+        meaning: '점점 더, 더욱더',
+        englishExplanation: 'more and more all the time',
+        koreanExplanation: '‘더욱’을 강조하여 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/increasingly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=414917&searchKeywordTo=3',
+            koreanHeadword: '더욱-더',
+        },
+    },
+    {
+        day: 33,
+        word: 'mental',
+        meaning: '마음의, 정신의',
+        englishExplanation: 'relating to or happening in the mind',
+        koreanExplanation: '사람이 본래부터 지닌 성격이나 품성.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mental_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=422607&searchKeywordTo=3',
+            koreanHeadword: '마음',
+        },
+    },
+    {
+        day: 33,
+        word: 'ambiguously',
+        meaning: '애매모호하게',
+        englishExplanation:
+            'in a way that may not be understood as there is more than one possible meaning',
+        koreanExplanation: '말이나 태도가 흐리터분하여 분명하지 않다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ambiguously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423130&searchKeywordTo=3',
+            koreanHeadword: '모호-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'continue',
+        meaning: '계속하다',
+        englishExplanation: 'to keep existing or happening without stopping',
+        koreanExplanation: '끊지 않고 이어 나가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/continue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395575&searchKeywordTo=3',
+            koreanHeadword: '계속-하다3',
+        },
+    },
+    {
+        day: 33,
+        word: 'broad',
+        meaning: '넓은, 광범위한',
+        englishExplanation: 'wide',
+        koreanExplanation: '범위가 넓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/broad_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33334&searchKeywordTo=3',
+            koreanHeadword: '광범위-하다',
+        },
+    },
+    {
+        day: 33,
+        word: 'increase',
+        meaning: '증가하다, 늘리다; 증가',
+        englishExplanation: 'to become greater in amount, number, value, etc.',
+        koreanExplanation: '양이나 수치가 늘다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/increase_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=306367&searchKeywordTo=3',
+            koreanHeadword: '증가-하다1',
+        },
+    },
+    {
+        day: 33,
+        word: 'mentally',
+        meaning: '정신적으로',
+        englishExplanation: 'relating to or happening in the mind',
+        koreanExplanation: '정신에 관계되는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mentally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=294885&searchKeywordTo=3',
+            koreanHeadword: '정신-적',
+        },
+    },
+    {
+        day: 34,
+        word: 'complement',
+        meaning: '보완하다; 보완',
+        englishExplanation:
+            'to add to something in a way that improves it or makes it more attractive',
+        koreanExplanation: '모자라거나 부족한 것을 보충하여 완전하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complement_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433540&searchKeywordTo=3',
+            koreanHeadword: '보완-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'adaptation',
+        meaning: '적응, 개조',
+        englishExplanation:
+            'the action or process of changing something, or of being changed, to suit a new purpose or situation',
+        koreanExplanation: '일정한 조건이나 환경 따위에 맞추어 응하거나 알맞게 됨.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adaptation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474204&searchKeywordTo=3',
+            koreanHeadword: '적응2',
+        },
+    },
+    {
+        day: 34,
+        word: 'extension',
+        meaning: '확장; 연장',
+        englishExplanation:
+            'the act of increasing the area of activity, group of people, etc. that is affected by something',
+        koreanExplanation: '범위, 규모, 세력 따위를 늘려서 넓힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extension',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=380099&searchKeywordTo=3',
+            koreanHeadword: '확장',
+        },
+    },
+    {
+        day: 34,
+        word: 'compliment',
+        meaning: '칭찬, 찬사; 칭찬하다',
+        englishExplanation: 'a comment that expresses praise or approval of a person',
+        koreanExplanation: '좋은 점이나 착하고 훌륭한 일을 높이 평가함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/compliment_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494834&searchKeywordTo=3',
+            koreanHeadword: '칭찬',
+        },
+    },
+    {
+        day: 34,
+        word: 'attitude',
+        meaning: '태도, 자세',
+        englishExplanation: 'the way that you think and feel about a person or thing',
+        koreanExplanation: '몸의 동작이나 몸을 가누는 모양새.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attitude',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496650&searchKeywordTo=3',
+            koreanHeadword: '태도3',
+        },
+    },
+    {
+        day: 34,
+        word: 'addition',
+        meaning: '추가; 덧셈; 추가물',
+        englishExplanation: 'a thing that is added to something else',
+        koreanExplanation: '나중에 더 보탬.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/addition',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=331236&searchKeywordTo=3',
+            koreanHeadword: '추가2',
+        },
+    },
+    {
+        day: 34,
+        word: 'arouse',
+        meaning: '유발하다, 불러일으키다; 깨우다',
+        englishExplanation: 'to make a person have a particular feeling or attitude',
+        koreanExplanation: '어떤 것이 다른 일을 일어나게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/arouse',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=257678&searchKeywordTo=3',
+            koreanHeadword: '유발-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'addict',
+        meaning: '중독자',
+        englishExplanation:
+            'a person who is unable to stop using or doing something as a habit, especially something harmful',
+        koreanExplanation: '중독이 된 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/addict',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=311996&searchKeywordTo=3',
+            koreanHeadword: '중독-자',
+        },
+    },
+    {
+        day: 34,
+        word: 'requirement',
+        meaning: '요건',
+        englishExplanation: 'something that you need or want',
+        koreanExplanation: '어떤 일을 이루거나 갖추는 데 필요한 조건.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/requirement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=463241&searchKeywordTo=3',
+            koreanHeadword: '요건',
+        },
+    },
+    {
+        day: 34,
+        word: 'complementary',
+        meaning: '보완하는',
+        englishExplanation: 'different from each other but combining well to form a useful whole',
+        koreanExplanation: '모자라거나 부족한 것을 보충하여 완전하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complementary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=433540&searchKeywordTo=3',
+            koreanHeadword: '보완-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'classified',
+        meaning: '분류된; 기밀의',
+        englishExplanation: 'officially secret and available only to particular people',
+        koreanExplanation: '종류에 따라서 가르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/classified',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=151561&searchKeywordTo=3',
+            koreanHeadword: '분류-하다2',
+        },
+    },
+    {
+        day: 34,
+        word: 'adapt',
+        meaning: '적응하다',
+        englishExplanation:
+            'to change your behaviour in order to deal more successfully with a new situation',
+        koreanExplanation: '일정한 조건이나 환경 따위에 맞추어 응하거나 알맞게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adapt',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=279654&searchKeywordTo=3',
+            koreanHeadword: '적응-하다2',
+        },
+    },
+    {
+        day: 34,
+        word: 'arise',
+        meaning: '발생하다',
+        englishExplanation: 'to happen',
+        koreanExplanation: '어떤 일이나 사물이 생겨나다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/arise',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=134470&searchKeywordTo=3',
+            koreanHeadword: '발생-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'appreciation',
+        meaning: '감상, 감탄; 감사; 평가',
+        englishExplanation:
+            'pleasure that you have when you recognize and enjoy the good qualities of a person or thing',
+        koreanExplanation: '주로 예술 작품을 이해하여 즐기고 평가함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appreciation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=8307&searchKeywordTo=3',
+            koreanHeadword: '감상5',
+        },
+    },
+    {
+        day: 34,
+        word: 'acquire',
+        meaning: '얻다, 취득하다; 습득하다',
+        englishExplanation: 'to gain something by your own efforts, ability or behaviour',
+        koreanExplanation: '거저 주는 것을 받아 가지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/acquire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=458308&searchKeywordTo=3',
+            koreanHeadword: '얻다1',
+        },
+    },
+    {
+        day: 34,
+        word: 'altitude',
+        meaning: '고도',
+        englishExplanation: 'the height above sea level',
+        koreanExplanation: '평균 해수면 따위를 0으로 하여 측정한 대상 물체의 높이.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/altitude',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395683&searchKeywordTo=3',
+            koreanHeadword: '고도8',
+        },
+    },
+    {
+        day: 34,
+        word: 'addiction',
+        meaning: '중독',
+        englishExplanation:
+            'the condition of being unable to stop using or doing something as a habit, especially something harmful',
+        koreanExplanation: '생체가 음식물이나 약물의 독성에 의하여 기능 장애를 일으키는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/addiction',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486906&searchKeywordTo=3',
+            koreanHeadword: '중독',
+        },
+    },
+    {
+        day: 34,
+        word: 'extent',
+        meaning: '정도, 범위',
+        englishExplanation: 'how large, important, serious, etc. something is',
+        koreanExplanation: '사물의 성질이나 가치를 양부, 우열 따위에서 본 분량이나 수준.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/extent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=479967&searchKeywordTo=3',
+            koreanHeadword: '정도11',
+        },
+    },
+    {
+        day: 34,
+        word: 'classical',
+        meaning: '고전주의의; 클래식의',
+        englishExplanation:
+            'connected with traditional formal music rather than modern popular styles',
+        koreanExplanation: '고대의 전통적인 형식이나 조화와 균형을 중시하는 예술에 관한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/classical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395573&searchKeywordTo=3',
+            koreanHeadword: '고전-주의',
+        },
+    },
+    {
+        day: 34,
+        word: 'adoption',
+        meaning: '입양; 채택',
+        englishExplanation: 'the act of adopting a child',
+        koreanExplanation: '양자로 들어감. 또는 양자를 들임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adoption',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=273252&searchKeywordTo=3',
+            koreanHeadword: '입양',
+        },
+    },
+    {
+        day: 34,
+        word: 'additional',
+        meaning: '추가적인, 부가의',
+        englishExplanation: 'more than was first mentioned or is usual',
+        koreanExplanation: '나중에 더 보태는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/additional',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=331237&searchKeywordTo=3',
+            koreanHeadword: '추가-적',
+        },
+    },
+    {
+        day: 34,
+        word: 'astronomer',
+        meaning: '천문학자',
+        englishExplanation: 'a scientist who studies astronomy',
+        koreanExplanation: '천문을 연구하는 학자.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/astronomer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=319829&searchKeywordTo=3',
+            koreanHeadword: '천문학-자',
+        },
+    },
+    {
+        day: 34,
+        word: 'expand',
+        meaning: '확대하다, 팽창시키다',
+        englishExplanation: 'to become greater in size, number or importance',
+        koreanExplanation: '넓혀서 크게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expand',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377324&searchKeywordTo=3',
+            koreanHeadword: '확대-하다1',
+        },
+    },
+    {
+        day: 34,
+        word: 'expense',
+        meaning: '비용, 지출',
+        englishExplanation: 'the money that you spend on something',
+        koreanExplanation: '어떤 일을 하는 데 드는 돈.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expense',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=436514&searchKeywordTo=3',
+            koreanHeadword: '비용2',
+        },
+    },
+    {
+        day: 34,
+        word: 'clarification',
+        meaning: '정화; 설명, 해명',
+        englishExplanation:
+            'an explanation that makes a statement or situation easier to understand',
+        koreanExplanation: '뜻이나 내용이 분명해지도록 설명하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/clarification',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=364339&searchKeywordTo=3',
+            koreanHeadword: '해명2',
+        },
+    },
+    {
+        day: 34,
+        word: 'classic',
+        meaning: '일류의, 최고 수준의; 전형적인; 고전, 명작',
+        englishExplanation:
+            'accepted or deserving to be accepted as one of the best or most important of its type',
+        koreanExplanation: '이름난 훌륭한 작품.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/classic_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=116753&searchKeywordTo=3',
+            koreanHeadword: '명작',
+        },
+    },
+    {
+        day: 34,
+        word: 'appreciate',
+        meaning: '알아보다, 인정하다; 감사하다; 인식하다, 깨닫다',
+        englishExplanation: 'to recognize the good qualities of a person or thing',
+        koreanExplanation: '조사하거나 살펴보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appreciate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=456671&searchKeywordTo=3',
+            koreanHeadword: '알아-보다',
+        },
+    },
+    {
+        day: 34,
+        word: 'require',
+        meaning: '필요로 하다; 요구하다',
+        englishExplanation: 'to need something',
+        koreanExplanation: '받아야 할 것을 필요에 의하여 달라고 청하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/require',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244311&searchKeywordTo=3',
+            koreanHeadword: '요구-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'considerable',
+        meaning: '상당한, 꽤 많은; 중요한, 고려할 만한',
+        englishExplanation: 'great in amount, size, importance, etc.',
+        koreanExplanation: '일정한 액수나 수치, 정도 따위에 이르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/considerable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=173750&searchKeywordTo=3',
+            koreanHeadword: '상당-하다2',
+        },
+    },
+    {
+        day: 34,
+        word: 'expend',
+        meaning: '소비하다, 쓰다',
+        englishExplanation: 'to use or spend a lot of time, money, energy, etc.',
+        koreanExplanation: '돈이나 물자, 시간, 노력 따위를 들이거나 써서 없애다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=191669&searchKeywordTo=3',
+            koreanHeadword: '소비-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'adopt',
+        meaning: '채택하다; 입양하다',
+        englishExplanation:
+            'to take a person else’s child into your family and become its legal parent',
+        koreanExplanation: '작품, 의견, 제도 따위를 골라서 다루거나 뽑아 쓰다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/adopt',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=325065&searchKeywordTo=3',
+            koreanHeadword: '채택-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'considerate',
+        meaning: '사려 깊은, 배려하는',
+        englishExplanation: 'always thinking of other people’s wishes and feelings',
+        koreanExplanation: '도와주거나 보살펴 주려고 마음을 쓰다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/considerate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=134550&searchKeywordTo=3',
+            koreanHeadword: '배려-하다2',
+        },
+    },
+    {
+        day: 34,
+        word: 'aptitude',
+        meaning: '적성, 소질',
+        englishExplanation: 'natural ability or skill at doing something',
+        koreanExplanation: '어떤 일에 알맞은 성질이나 적응 능력. 또는 그와 같은 소질이나 성격.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aptitude',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474925&searchKeywordTo=3',
+            koreanHeadword: '적성5',
+        },
+    },
+    {
+        day: 34,
+        word: 'aboard',
+        meaning: '탄, 탑승한',
+        englishExplanation: 'on or onto a ship, plane, bus or train',
+        koreanExplanation: '배나 비행기, 차량 등에 올라타 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aboard',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494186&searchKeywordTo=3',
+            koreanHeadword: '탑승',
+        },
+    },
+    {
+        day: 34,
+        word: 'classify',
+        meaning: '분류하다',
+        englishExplanation:
+            'to arrange things or people in groups according to features that they have in common',
+        koreanExplanation: '종류에 따라서 가르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/classify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=151561&searchKeywordTo=3',
+            koreanHeadword: '분류-하다2',
+        },
+    },
+    {
+        day: 34,
+        word: 'inquire',
+        meaning: '문의하다, 묻다; 조사하다',
+        englishExplanation: 'to ask a person for some information',
+        koreanExplanation: '물어서 의논하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inquire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424621&searchKeywordTo=3',
+            koreanHeadword: '문의-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'clarify',
+        meaning: '명확하게 하다, 분명히 말하다',
+        englishExplanation: 'to make something clearer or easier to understand',
+        koreanExplanation: '내용이나 뜻을 분명하게 밝혀 알기 쉽게 만드는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/clarify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=424876&searchKeywordTo=3',
+            koreanHeadword: '명확-하다',
+        },
+    },
+    {
+        day: 34,
+        word: 'classification',
+        meaning: '분류, 등급',
+        englishExplanation: 'the act or process of putting people or things into a group or class',
+        koreanExplanation: '종류에 따라서 가름.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/classification',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=431865&searchKeywordTo=3',
+            koreanHeadword: '분류3',
+        },
+    },
+    {
+        day: 34,
+        word: 'expansion',
+        meaning: '확장, 확대',
+        englishExplanation:
+            'an act of increasing or making something increase in size, amount or importance',
+        koreanExplanation: '범위, 규모, 세력 따위를 늘려서 넓힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/expansion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=380099&searchKeywordTo=3',
+            koreanHeadword: '확장',
+        },
+    },
+    {
+        day: 34,
+        word: 'appropriate',
+        meaning: '적절한, 적합한',
+        englishExplanation: 'suitable, acceptable or correct for the particular circumstances',
+        koreanExplanation: '꼭 알맞다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/appropriate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475292&searchKeywordTo=3',
+            koreanHeadword: '적절-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'mass',
+        meaning: '덩어리; 많은; 무리, 집단; 질량; 대량의, 대중의',
+        englishExplanation:
+            'a large amount of a substance that does not have a definite shape or form',
+        koreanExplanation: '크게 뭉쳐서 이루어진 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mass_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=84318&searchKeywordTo=3',
+            koreanHeadword: '덩어리',
+        },
+    },
+    {
+        day: 35,
+        word: 'reap',
+        meaning: '거두다; 수확하다, 거두다',
+        englishExplanation:
+            'to obtain something, especially something good, as a direct result of something that you have done',
+        koreanExplanation: '익거나 다 자란 농수산물을 거두어들이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reap',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=190395&searchKeywordTo=3',
+            koreanHeadword: '수확-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'distribute',
+        meaning: '분배하다, 나눠 주다',
+        englishExplanation: 'to give things to a large number of people',
+        koreanExplanation: '몫몫이 별러 나누다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/distribute',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157346&searchKeywordTo=3',
+            koreanHeadword: '분배-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'leap',
+        meaning: '뛰다; 상승하다; 뛰기, 도약; 상승',
+        englishExplanation: 'to jump high or a long way',
+        koreanExplanation: '있던 자리로부터 몸을 높이 솟구쳐 오르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/leap_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=414830&searchKeywordTo=3',
+            koreanHeadword: '뛰다1',
+        },
+    },
+    {
+        day: 35,
+        word: 'cruel',
+        meaning: '잔인한, 무자비한',
+        englishExplanation:
+            'having a desire to cause physical or mental pain and make a person suffer',
+        koreanExplanation: '인정이 없고 아주 모질다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cruel_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=278274&searchKeywordTo=3',
+            koreanHeadword: '잔인-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'respectively',
+        meaning: '각각',
+        englishExplanation: 'in the same order as the people or things already mentioned',
+        koreanExplanation: '사람이나 물건의 하나하나.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respectively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=3378&searchKeywordTo=3',
+            koreanHeadword: '각각1',
+        },
+    },
+    {
+        day: 35,
+        word: 'generalize',
+        meaning: '일반화하다',
+        englishExplanation:
+            'to use a particular set of facts or ideas in order to form an opinion that is considered relevant to a different situation',
+        koreanExplanation: '개별적인 것이나 특수한 것이 일반적인 것으로 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generalize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=265803&searchKeywordTo=3',
+            koreanHeadword: '일반화-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'hospitality',
+        meaning: '환대, 대접',
+        englishExplanation: 'friendly and generous behaviour towards guests',
+        koreanExplanation: '반갑게 맞아 정성껏 후하게 대접함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hospitality',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508866&searchKeywordTo=3',
+            koreanHeadword: '환대2',
+        },
+    },
+    {
+        day: 35,
+        word: 'imitation',
+        meaning: '모방; 모조품',
+        englishExplanation: 'a copy of something, especially something expensive',
+        koreanExplanation: '다른 것을 본뜨거나 본받음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/imitation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=422215&searchKeywordTo=3',
+            koreanHeadword: '모방4',
+        },
+    },
+    {
+        day: 35,
+        word: 'emergency',
+        meaning: '비상사태, 응급 상황',
+        englishExplanation:
+            'a sudden serious and dangerous event or situation that needs immediate action to deal with it',
+        koreanExplanation: '큰일이 벌어진 위급한 상황.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emergency',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=160668&searchKeywordTo=3',
+            koreanHeadword: '비상-사태',
+        },
+    },
+    {
+        day: 35,
+        word: 'attribute',
+        meaning: '~의 탓으로 여기다; 특성, 속성',
+        englishExplanation: 'to say or believe that something is the result of a particular thing',
+        koreanExplanation: '일정한 사물에만 있는 특수한 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/attribute_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=348489&searchKeywordTo=3',
+            koreanHeadword: '특성1',
+        },
+    },
+    {
+        day: 35,
+        word: 'frame',
+        meaning: '뼈대, 체격; 액자, 틀; 안경테',
+        englishExplanation:
+            'a strong border or structure of wood, metal, etc. that holds a picture, door, piece of glass, etc. in position',
+        koreanExplanation: '우리 몸의 틀을 유지하는 뼈를 통틀어 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/frame_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=443451&searchKeywordTo=3',
+            koreanHeadword: '뼈-대',
+        },
+    },
+    {
+        day: 35,
+        word: 'involved',
+        meaning: '관련된; 몰두한',
+        englishExplanation: 'taking part in something',
+        koreanExplanation: '둘 이상의 사람, 사물, 현상 따위가 서로 얽혀서 가까운 관계에 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/involved',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394885&searchKeywordTo=3',
+            koreanHeadword: '관련-되다',
+        },
+    },
+    {
+        day: 35,
+        word: 'contribution',
+        meaning: '기여, 공헌',
+        englishExplanation:
+            'a gift or payment that is made to a person or an organization in order to help pay for something',
+        koreanExplanation: '도움이 되도록 이바지함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contribution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=402303&searchKeywordTo=3',
+            koreanHeadword: '기여2',
+        },
+    },
+    {
+        day: 35,
+        word: 'initiate',
+        meaning: '시작하다',
+        englishExplanation: 'to make something begin',
+        koreanExplanation: '어떤 일이나 행동의 처음 단계를 이루거나 그렇게 하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/initiate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=202306&searchKeywordTo=3',
+            koreanHeadword: '시작-하다1',
+        },
+    },
+    {
+        day: 35,
+        word: 'dependent',
+        meaning: '의존하는',
+        englishExplanation: 'needing a person or thing in order to survive or be successful',
+        koreanExplanation: '다른 것에 의지하여 존재하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dependent_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=259930&searchKeywordTo=3',
+            koreanHeadword: '의존-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'respect',
+        meaning: '존경하다',
+        englishExplanation:
+            'a strong feeling of approval of a person or thing because of their good qualities or achievements',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respect_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292168&searchKeywordTo=3',
+            koreanHeadword: '존경-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'royalty',
+        meaning: '왕정; 인세, 저작권 사용료',
+        englishExplanation: 'one or more members of a royal family',
+        koreanExplanation: '임금이 다스리는 정치.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/royalty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=467152&searchKeywordTo=3',
+            koreanHeadword: '왕정2',
+        },
+    },
+    {
+        day: 35,
+        word: 'emergence',
+        meaning: '출현, 발생',
+        englishExplanation:
+            'the fact of a person or thing moving out of or away from something and becoming possible to see',
+        koreanExplanation: '나타나거나 또는 나타나서 보임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/emergence',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496797&searchKeywordTo=3',
+            koreanHeadword: '출현',
+        },
+    },
+    {
+        day: 35,
+        word: 'evolution',
+        meaning: '진화; 발전',
+        englishExplanation:
+            'the slow steady development of plants, animals, etc. during the history of the earth, as they adapt to changes in their environment',
+        koreanExplanation: '일이나 사물 따위가 점점 발달하여 감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evolution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488379&searchKeywordTo=3',
+            koreanHeadword: '진화5',
+        },
+    },
+    {
+        day: 35,
+        word: 'messy',
+        meaning: '지저분한, 엉망인',
+        englishExplanation: 'dirty and/or untidy',
+        koreanExplanation: '정돈이 되어 있지 아니하고 어수선하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/messy',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=306620&searchKeywordTo=3',
+            koreanHeadword: '지저분-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'generous',
+        meaning: '관대한, 너그러운',
+        englishExplanation: 'giving or willing to give freely',
+        koreanExplanation: '마음이 너그럽고 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397822&searchKeywordTo=3',
+            koreanHeadword: '관대-하다2',
+        },
+    },
+    {
+        day: 35,
+        word: 'crucial',
+        meaning: '중대한, 아주 중요한, 결정적인',
+        englishExplanation: 'extremely important, because it will affect other things',
+        koreanExplanation: '가볍게 여길 수 없을 만큼 매우 중요하고 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/crucial',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=486719&searchKeywordTo=3',
+            koreanHeadword: '중대-하다1',
+        },
+    },
+    {
+        day: 35,
+        word: 'depend',
+        meaning: '의존하다; 달려 있다',
+        englishExplanation: 'according to',
+        koreanExplanation: '다른 것에 의지하여 존재하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/depend',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=259930&searchKeywordTo=3',
+            koreanHeadword: '의존-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'respective',
+        meaning: '각자의, 각각의',
+        englishExplanation:
+            'belonging or relating separately to each of the people or things already mentioned',
+        koreanExplanation: '각각의 자기 자신.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=5178&searchKeywordTo=3',
+            koreanHeadword: '각자2',
+        },
+    },
+    {
+        day: 35,
+        word: 'cruelty',
+        meaning: '잔인함',
+        englishExplanation:
+            'behaviour that causes physical or mental pain to others and makes them suffer, especially deliberately',
+        koreanExplanation: '인정이 없고 아주 모질다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cruelty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=278274&searchKeywordTo=3',
+            koreanHeadword: '잔인-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'initiative',
+        meaning: '계획, 개시; 주도권',
+        englishExplanation:
+            'a new plan for dealing with a particular problem or for achieving a particular purpose',
+        koreanExplanation: '앞으로 할 일의 절차, 방법, 규모 따위를 미리 헤아려 작정함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/initiative',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=392031&searchKeywordTo=3',
+            koreanHeadword: '계획1',
+        },
+    },
+    {
+        day: 35,
+        word: 'generosity',
+        meaning: '관대함',
+        englishExplanation: 'the fact of being generous',
+        koreanExplanation: '마음이 너그럽고 크다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/generosity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397822&searchKeywordTo=3',
+            koreanHeadword: '관대-하다2',
+        },
+    },
+    {
+        day: 35,
+        word: 'dependable',
+        meaning: '신뢰할 수 있는',
+        englishExplanation: 'that can be relied on to do what you want or need',
+        koreanExplanation: '굳게 믿고 의지하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dependable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452129&searchKeywordTo=3',
+            koreanHeadword: '신뢰-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'destination',
+        meaning: '목적지, 도착지',
+        englishExplanation: 'a place to which a person or thing is going or being sent',
+        koreanExplanation: '목적으로 삼는 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/destination_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=120320&searchKeywordTo=3',
+            koreanHeadword: '목적-지',
+        },
+    },
+    {
+        day: 35,
+        word: 'respectful',
+        meaning: '공손한, 존경심을 보이는',
+        englishExplanation: 'showing or feeling respect',
+        koreanExplanation: '말이나 행동이 겸손하고 예의 바르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respectful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395134&searchKeywordTo=3',
+            koreanHeadword: '공손-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'respectable',
+        meaning: '존경할 만한',
+        englishExplanation: 'considered by society to be acceptable, good or correct',
+        koreanExplanation: '남의 인격, 사상, 행위 따위를 받들어 공경하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/respectable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=292168&searchKeywordTo=3',
+            koreanHeadword: '존경-하다',
+        },
+    },
+    {
+        day: 35,
+        word: 'mess',
+        meaning: '엉망, 혼란; 엉망으로 만들다',
+        englishExplanation: 'a dirty or untidy state',
+        koreanExplanation:
+            '일이나 사물이 헝클어져서 갈피를 잡을 수 없을 만큼 결딴이 나거나 어수선한 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/mess_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=228988&searchKeywordTo=3',
+            koreanHeadword: '엉망',
+        },
+    },
+    {
+        day: 35,
+        word: 'flame',
+        meaning: '화염, 불꽃; 활활 타오르다',
+        englishExplanation:
+            'a hot bright stream of burning gas that comes from something that is on fire',
+        koreanExplanation: '타는 불에서 일어나는 붉은빛의 기운.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/flame_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507324&searchKeywordTo=3',
+            koreanHeadword: '화염2',
+        },
+    },
+    {
+        day: 35,
+        word: 'involvement',
+        meaning: '관련, 개입',
+        englishExplanation: 'the act of taking part in something or dealing with a person',
+        koreanExplanation: '둘 이상의 사람, 사물, 현상 따위가 서로 관계를 맺어 매여 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/involvement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394884&searchKeywordTo=3',
+            koreanHeadword: '관련',
+        },
+    },
+    {
+        day: 35,
+        word: 'hostility',
+        meaning: '적대감, 적의',
+        englishExplanation: 'aggressive or unfriendly feelings or behaviour',
+        koreanExplanation: '적으로 여기는 감정.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/hostility',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=282724&searchKeywordTo=3',
+            koreanHeadword: '적대-감',
+        },
+    },
+    {
+        day: 35,
+        word: 'loyal',
+        meaning: '충성스러운, 충실한',
+        englishExplanation: 'remaining constant in your support of a person or thing',
+        koreanExplanation: '충직하고 성실하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/loyal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=329025&searchKeywordTo=3',
+            koreanHeadword: '충실-하다2',
+        },
+    },
+    {
+        day: 35,
+        word: 'royal',
+        meaning: '국왕의, 왕실의',
+        englishExplanation: 'relating to or belonging to the king or queen of a country',
+        koreanExplanation: '임금의 집안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/royal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=244542&searchKeywordTo=3',
+            koreanHeadword: '왕실',
+        },
+    },
+    {
+        day: 35,
+        word: 'destiny',
+        meaning: '운명',
+        englishExplanation:
+            'what happens to a person or what will happen to them in the future, especially things that they cannot change or avoid',
+        koreanExplanation:
+            '인간을 포함한 모든 것을 지배하는 초인간적인 힘. 또는 그것에 의하여 이미 정하여져 있는 목숨이나 처지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/destiny',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=250972&searchKeywordTo=3',
+            koreanHeadword: '운명1',
+        },
+    },
+    {
+        day: 35,
+        word: 'evolve',
+        meaning: '진화하다; 발전하다',
+        englishExplanation:
+            'to develop gradually, especially from a simple to a more complicated form',
+        koreanExplanation: '일이나 사물 따위가 점점 발달하여 가다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/evolve',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=316434&searchKeywordTo=3',
+            koreanHeadword: '진화-하다1',
+        },
+    },
+    {
+        day: 36,
+        word: 'personnel',
+        meaning: '인원; 인사과',
+        englishExplanation: 'the people who work for an organization or one of the armed forces',
+        koreanExplanation: '단체를 이루고 있는 사람들. 또는 그 수효.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/personnel',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472971&searchKeywordTo=3',
+            koreanHeadword: '인원',
+        },
+    },
+    {
+        day: 36,
+        word: 'principal',
+        meaning: '주요한, 주된; 교장, 장',
+        englishExplanation: 'most important',
+        koreanExplanation: '주되고 중요한.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/principal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=304854&searchKeywordTo=3',
+            koreanHeadword: '주요-하다',
+        },
+    },
+    {
+        day: 36,
+        word: 'populate',
+        meaning: '살다, 거주하다; 이주시키다',
+        englishExplanation: 'to live in an area and form its population',
+        koreanExplanation: '생명을 지니고 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/populate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=442277&searchKeywordTo=3',
+            koreanHeadword: '살다1',
+        },
+    },
+    {
+        day: 36,
+        word: 'popularity',
+        meaning: '인기, 평판',
+        englishExplanation:
+            'the state of being liked, enjoyed or supported by a large number of people',
+        koreanExplanation: '어떤 대상에 쏠리는 대중의 높은 관심이나 좋아하는 기운.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/popularity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474052&searchKeywordTo=3',
+            koreanHeadword: '인기1',
+        },
+    },
+    {
+        day: 36,
+        word: 'principle',
+        meaning: '원리, 원칙',
+        englishExplanation: 'a moral rule or a strong belief that influences your actions',
+        koreanExplanation: '사물의 근본이 되는 이치.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/principle',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=465822&searchKeywordTo=3',
+            koreanHeadword: '원리2',
+        },
+    },
+    {
+        day: 36,
+        word: 'religious',
+        meaning: '종교의; 신앙심 깊은',
+        englishExplanation: 'relating to religion or to a particular religion',
+        koreanExplanation: '신이나 초자연적인 힘에 대한 믿음과 의식에 관계되는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/religious',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482670&searchKeywordTo=3',
+            koreanHeadword: '종교',
+        },
+    },
+    {
+        day: 36,
+        word: 'recent',
+        meaning: '최근의',
+        englishExplanation: 'that happened or began only a short time ago',
+        koreanExplanation: '얼마 되지 않은 지나간 날부터 현재 또는 바로 직전까지의 기간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490369&searchKeywordTo=3',
+            koreanHeadword: '최근',
+        },
+    },
+    {
+        day: 36,
+        word: 'phrasal',
+        meaning: '구의, 구로 된',
+        englishExplanation: 'of or relating to a phrase',
+        koreanExplanation: '말의 마디나 구절에 관계되는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/phrasal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=223835&searchKeywordTo=3',
+            koreanHeadword: '어구7',
+        },
+    },
+    {
+        day: 36,
+        word: 'resentful',
+        meaning: '분개한',
+        englishExplanation: 'feeling bitter or angry about something that you think is unfair',
+        koreanExplanation: '몹시 분하게 여기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resentful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438163&searchKeywordTo=3',
+            koreanHeadword: '분개-하다3',
+        },
+    },
+    {
+        day: 36,
+        word: 'region',
+        meaning: '지역, 지방',
+        englishExplanation: 'a large area of land, usually without exact limits or borders',
+        koreanExplanation: '일정하게 구획된 어느 범위의 토지.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/region',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481260&searchKeywordTo=3',
+            koreanHeadword: '지역2',
+        },
+    },
+    {
+        day: 36,
+        word: 'pray',
+        meaning: '기도하다, 빌다',
+        englishExplanation: 'to speak to God, especially to give thanks or ask for help',
+        koreanExplanation: '인간보다 능력이 뛰어나다고 생각하는 어떠한 절대적 존재에게 빌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pray_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401716&searchKeywordTo=3',
+            koreanHeadword: '기도-하다2',
+        },
+    },
+    {
+        day: 36,
+        word: 'spontaneous',
+        meaning: '자발적인; 자연스러운',
+        englishExplanation: 'not planned but done because you suddenly want to do it',
+        koreanExplanation: '남이 시키거나 요청하지 아니하여도 자기 스스로 나아가 행하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spontaneous',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475371&searchKeywordTo=3',
+            koreanHeadword: '자발-적',
+        },
+    },
+    {
+        day: 36,
+        word: 'neutral',
+        meaning: '중립의',
+        englishExplanation:
+            'not supporting or helping either side in a disagreement, competition, etc.',
+        koreanExplanation: '어느 편에도 치우치지 않고 중간적인 입장에 섬. 또는 그런 입장.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/neutral_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483045&searchKeywordTo=3',
+            koreanHeadword: '중립1',
+        },
+    },
+    {
+        day: 36,
+        word: 'spontaneously',
+        meaning: '자발적으로; 자연스럽게',
+        englishExplanation:
+            'in a way that is not planned but done because you suddenly want to do it',
+        koreanExplanation: '남이 시키거나 요청하지 아니하여도 자기 스스로 나아가 행하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spontaneously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475371&searchKeywordTo=3',
+            koreanHeadword: '자발-적',
+        },
+    },
+    {
+        day: 36,
+        word: 'pole',
+        meaning: '막대기, 기둥; 극, 극지방',
+        englishExplanation:
+            'a long thin straight piece of wood or metal, especially one with the end placed in the ground, used as a support',
+        koreanExplanation: '가늘고 기다라며 단단한 물건.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pole_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=419060&searchKeywordTo=3',
+            koreanHeadword: '막대기',
+        },
+    },
+    {
+        day: 36,
+        word: 'personal',
+        meaning: '개인의, 사적인',
+        englishExplanation: 'your own',
+        koreanExplanation: '국가나 사회, 단체 등을 구성하는 낱낱의 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/personal',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395786&searchKeywordTo=3',
+            koreanHeadword: '개인2',
+        },
+    },
+    {
+        day: 36,
+        word: 'poll',
+        meaning: '여론 조사; 투표, 선거',
+        englishExplanation:
+            'the process of questioning people who are representative of a larger group in order to get information about the general opinion',
+        koreanExplanation:
+            '선거를 하거나 가부를 결정할 때에 투표용지에 의사를 표시하여 일정한 곳에 내는 일. 또는 그런 표.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/poll_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=350088&searchKeywordTo=3',
+            koreanHeadword: '투표1',
+        },
+    },
+    {
+        day: 36,
+        word: 'naturally',
+        meaning: '자연스럽게, 당연히',
+        englishExplanation: 'in a way that you would expect',
+        koreanExplanation: '일의 앞뒤 사정을 놓고 볼 때 마땅히 그러하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/naturally',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=78632&searchKeywordTo=3',
+            koreanHeadword: '당연-히1',
+        },
+    },
+    {
+        day: 36,
+        word: 'relevance',
+        meaning: '관련',
+        englishExplanation:
+            'a close connection with the subject you are discussing or the situation you are in',
+        koreanExplanation: '둘 이상의 사람, 사물, 현상 따위가 서로 관계를 맺어 매여 있음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relevance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394884&searchKeywordTo=3',
+            koreanHeadword: '관련',
+        },
+    },
+    {
+        day: 36,
+        word: 'relative',
+        meaning: '비교적인, 상대적인; 친척',
+        englishExplanation: 'considered and judged by being compared with something else',
+        koreanExplanation: '친족과 외척을 아울러 이르는 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relative_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494794&searchKeywordTo=3',
+            koreanHeadword: '친척',
+        },
+    },
+    {
+        day: 36,
+        word: 'phase',
+        meaning: '단계, 국면; 양상',
+        englishExplanation: 'a stage in a process of change or development',
+        koreanExplanation: '일의 차례를 따라 나아가는 과정.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/phase_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412620&searchKeywordTo=3',
+            koreanHeadword: '단계2',
+        },
+    },
+    {
+        day: 36,
+        word: 'relatively',
+        meaning: '비교적, 상대적으로',
+        englishExplanation: 'to a fairly large degree, especially in comparison to something else',
+        koreanExplanation: '다른 것과 견주어서 판단하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relatively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=153562&searchKeywordTo=3',
+            koreanHeadword: '비교-적',
+        },
+    },
+    {
+        day: 36,
+        word: 'recently',
+        meaning: '최근에',
+        englishExplanation: 'not long ago',
+        koreanExplanation: '얼마 지나지 않은 가까운 과거에.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/recently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=490369&searchKeywordTo=3',
+            koreanHeadword: '최근',
+        },
+    },
+    {
+        day: 36,
+        word: 'natural',
+        meaning: '자연의; 자연스러운; 타고난',
+        englishExplanation: 'existing in nature',
+        koreanExplanation:
+            '사람의 힘이 더해지지 아니하고 세상에 스스로 존재하거나 우주에 저절로 이루어지는 모든 존재나 상태.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/natural_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472551&searchKeywordTo=3',
+            koreanHeadword: '자연1',
+        },
+    },
+    {
+        day: 36,
+        word: 'prayer',
+        meaning: '기도',
+        englishExplanation: 'words that you say to God giving thanks or asking for help',
+        koreanExplanation:
+            '인간보다 능력이 뛰어나다고 생각하는 어떠한 절대적 존재에게 빎. 또는 그런 의식.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prayer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=47843&searchKeywordTo=3',
+            koreanHeadword: '기도3',
+        },
+    },
+    {
+        day: 36,
+        word: 'population',
+        meaning: '인구, 주민 수; 주민',
+        englishExplanation: 'all the people who live in a particular area, city or country',
+        koreanExplanation: '일정한 지역에 사는 사람의 수.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/population',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473853&searchKeywordTo=3',
+            koreanHeadword: '인구1',
+        },
+    },
+    {
+        day: 36,
+        word: 'industrialization',
+        meaning: '산업화',
+        englishExplanation: 'the process of developing industries in a country or an area',
+        koreanExplanation: '산업의 형태가 됨. 또는 그렇게 되게 함.',
+        explanationSources: {
+            english:
+                'https://www.oxfordlearnersdictionaries.com/definition/english/industrialization',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=172402&searchKeywordTo=3',
+            koreanHeadword: '산업-화',
+        },
+    },
+    {
+        day: 36,
+        word: 'prey',
+        meaning: '먹이; 희생자, 피해자; 잡아먹다',
+        englishExplanation: 'an animal, a bird, etc. that is hunted, killed and eaten by another',
+        koreanExplanation:
+            '동물이 살아가기 위하여 먹어야 할 거리. 또는 사육하는 가축에게 주는 먹을거리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/prey_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420874&searchKeywordTo=3',
+            koreanHeadword: '먹-이',
+        },
+    },
+    {
+        day: 36,
+        word: 'sensitive',
+        meaning: '민감한, 예민한; 감수성이 풍부한',
+        englishExplanation: 'aware of and able to understand other people and their feelings',
+        koreanExplanation: '자극에 빠르게 반응을 보이거나 쉽게 영향을 받는 데가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sensitive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=128817&searchKeywordTo=3',
+            koreanHeadword: '민감-하다',
+        },
+    },
+    {
+        day: 36,
+        word: 'sensible',
+        meaning: '분별 있는, 현명한',
+        englishExplanation:
+            'able to make good judgements based on reason and experience rather than emotion',
+        koreanExplanation: '어질고 슬기로워 사리에 밝다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sensible',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=503284&searchKeywordTo=3',
+            koreanHeadword: '현명-하다1',
+        },
+    },
+    {
+        day: 36,
+        word: 'religion',
+        meaning: '종교',
+        englishExplanation:
+            'belief in gods or spiritual teachings and the practices associated with those beliefs',
+        koreanExplanation: '신이나 초자연적인 힘을 믿고 삶의 의미를 찾는 문화 체계.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/religion',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482670&searchKeywordTo=3',
+            koreanHeadword: '종교',
+        },
+    },
+    {
+        day: 36,
+        word: 'resent',
+        meaning: '분개하다, 화내다',
+        englishExplanation:
+            'to feel bitter or angry about something, especially because you feel it is unfair',
+        koreanExplanation: '몹시 분하게 여기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/resent',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=438163&searchKeywordTo=3',
+            koreanHeadword: '분개-하다3',
+        },
+    },
+    {
+        day: 36,
+        word: 'status',
+        meaning: '상태; 지위, 신분',
+        englishExplanation: 'the legal position of a person, group or country',
+        koreanExplanation: '사물·현상이 놓여 있는 모양이나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/status',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439560&searchKeywordTo=3',
+            koreanHeadword: '상태1',
+        },
+    },
+    {
+        day: 36,
+        word: 'quality',
+        meaning: '품질; 특성, 속성',
+        englishExplanation: 'the standard of something when it is compared to other things like it',
+        koreanExplanation: '물건의 성질과 바탕.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/quality_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=499822&searchKeywordTo=3',
+            koreanHeadword: '품질3',
+        },
+    },
+    {
+        day: 36,
+        word: 'relevant',
+        meaning: '관련 있는; 의의가 있는, 유의미한',
+        englishExplanation:
+            'closely related to the subject you are discussing or the situation you are in',
+        koreanExplanation: '의미가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/relevant',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=255391&searchKeywordTo=3',
+            koreanHeadword: '유의미-하다',
+        },
+    },
+    {
+        day: 36,
+        word: 'popular',
+        meaning: '인기 있는; 대중의',
+        englishExplanation: 'liked or enjoyed by a large number of people',
+        koreanExplanation: '많은 사람에게 관심과 사랑을 받는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/popular',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=82292&searchKeywordTo=3',
+            koreanHeadword: '대중2',
+        },
+    },
+    {
+        day: 36,
+        word: 'simultaneously',
+        meaning: '동시에',
+        englishExplanation: 'at the same time as something else',
+        koreanExplanation: '같은 때나 시기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/simultaneously',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=414449&searchKeywordTo=3',
+            koreanHeadword: '동시2',
+        },
+    },
+    {
+        day: 36,
+        word: 'industrious',
+        meaning: '근면한, 부지런한',
+        englishExplanation: 'working hard',
+        koreanExplanation: '꾸준하고 부지런하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/industrious',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=45917&searchKeywordTo=3',
+            koreanHeadword: '근면-하다',
+        },
+    },
+    {
+        day: 36,
+        word: 'statue',
+        meaning: '조각상',
+        englishExplanation:
+            'a figure of a person or an animal in stone, metal, etc., usually the same size as in real life or larger',
+        koreanExplanation: '재료를 새기거나 깎아서 만든 입체 형상.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/statue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=297382&searchKeywordTo=3',
+            koreanHeadword: '조각-상',
+        },
+    },
+    {
+        day: 36,
+        word: 'quantity',
+        meaning: '양, 수량',
+        englishExplanation: 'an amount or a number of something',
+        koreanExplanation: '세거나 잴 수 있는 분량이나 수량.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/quantity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=456873&searchKeywordTo=3',
+            koreanHeadword: '양18',
+        },
+    },
+    {
+        day: 37,
+        word: 'calculate',
+        meaning: '계산하다; 추정하다',
+        englishExplanation: 'to use numbers to find out a total number, amount, distance, etc.',
+        koreanExplanation: '수를 헤아리다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/calculate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=395513&searchKeywordTo=3',
+            koreanHeadword: '계산-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'stiffen',
+        meaning: '굳어지다',
+        englishExplanation:
+            'to make yourself or part of your body straight and still, especially because you are angry or frightened',
+        koreanExplanation: '누르는 자국이 나지 아니할 만큼 단단하게 되다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stiffen',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=41550&searchKeywordTo=3',
+            koreanHeadword: '굳어-지다',
+        },
+    },
+    {
+        day: 37,
+        word: 'variable',
+        meaning: '변하기 쉬운; 변덕스러운; 변수',
+        englishExplanation: 'a situation, number or quantity that can vary or be varied',
+        koreanExplanation: '어떤 상황의 가변적 요인.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/variable_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432282&searchKeywordTo=3',
+            koreanHeadword: '변수6',
+        },
+    },
+    {
+        day: 37,
+        word: 'wander',
+        meaning: '돌아다니다, 배회하다; 거닐기',
+        englishExplanation:
+            'to walk slowly around or to a place, often without any particular sense of purpose or direction',
+        koreanExplanation: '여기저기 여러 곳으로 다니다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wander_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=87120&searchKeywordTo=3',
+            koreanHeadword: '돌아-다니다',
+        },
+    },
+    {
+        day: 37,
+        word: 'inspiration',
+        meaning: '영감, 자극',
+        englishExplanation:
+            'something that gives a person exciting new ideas or a desire to create',
+        koreanExplanation: '신령스러운 예감이나 느낌.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/inspiration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=236427&searchKeywordTo=3',
+            koreanHeadword: '영감2',
+        },
+    },
+    {
+        day: 37,
+        word: 'successive',
+        meaning: '연속적인',
+        englishExplanation: 'following immediately one after the other',
+        koreanExplanation: '연달아 이어지는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/successive',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=232766&searchKeywordTo=3',
+            koreanHeadword: '연속-적',
+        },
+    },
+    {
+        day: 37,
+        word: 'wonderful',
+        meaning: '멋진, 놀라운',
+        englishExplanation: 'very good, pleasant or a lot of fun',
+        koreanExplanation: '썩 좋아서 나무랄 곳이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wonderful',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507795&searchKeywordTo=3',
+            koreanHeadword: '훌륭-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'variation',
+        meaning: '변화; 변형',
+        englishExplanation: 'a change, especially in the amount or level of something',
+        koreanExplanation: '사물의 성질, 모양, 상태 따위가 바뀌어 달라짐.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/variation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432677&searchKeywordTo=3',
+            koreanHeadword: '변화',
+        },
+    },
+    {
+        day: 37,
+        word: 'calculator',
+        meaning: '계산기',
+        englishExplanation:
+            'a small electronic device or piece of software for calculating with numbers',
+        koreanExplanation:
+            '여러 가지 계산을 빠르고 정확하게 하기 위하여 사용하는 기기. 수판, 계산자, 면적계, 전자계산기 따위를 통틀어 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/calculator',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=21650&searchKeywordTo=3',
+            koreanHeadword: '계산-기',
+        },
+    },
+    {
+        day: 37,
+        word: 'counsel',
+        meaning: '조언, 충고; 충고하다',
+        englishExplanation: 'advice, especially given by older people or experts',
+        koreanExplanation: '말로 거들거나 깨우쳐 주어서 도움. 또는 그 말.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/counsel_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=304322&searchKeywordTo=3',
+            koreanHeadword: '조언1',
+        },
+    },
+    {
+        day: 37,
+        word: 'stuff',
+        meaning: '물건, 것; 재료, 원료; 채우다',
+        englishExplanation:
+            'material or objects referred to collectively when their precise names are not important',
+        koreanExplanation: '일정한 형체를 갖춘 모든 물질적 대상.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stuff_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=125206&searchKeywordTo=3',
+            koreanHeadword: '물건',
+        },
+    },
+    {
+        day: 37,
+        word: 'vocational',
+        meaning: '직업의, 직업과 관련된',
+        englishExplanation:
+            'relating to the skills, knowledge, etc. that you need to have in order to do a particular job',
+        koreanExplanation:
+            '생계를 유지하기 위하여 자신의 적성과 능력에 따라 일정한 기간 동안 계속하여 종사하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vocational',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488039&searchKeywordTo=3',
+            koreanHeadword: '직업',
+        },
+    },
+    {
+        day: 37,
+        word: 'circulate',
+        meaning: '순환하다, 돌다; 퍼지다, 유포되다',
+        englishExplanation:
+            'when a liquid, gas or air circulates or is circulated, it moves continuously around a place or system',
+        koreanExplanation: '주기적으로 자꾸 되풀이하여 돌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/circulate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197470&searchKeywordTo=3',
+            koreanHeadword: '순환-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'circulation',
+        meaning: '순환; 유통',
+        englishExplanation: 'the movement of blood around the body',
+        koreanExplanation: '주기적으로 자꾸 되풀이하여 돎. 또는 그런 과정.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/circulation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=197469&searchKeywordTo=3',
+            koreanHeadword: '순환1',
+        },
+    },
+    {
+        day: 37,
+        word: 'spirit',
+        meaning: '정신, 영혼; 기분, 마음',
+        englishExplanation:
+            'the part of a person that includes their mind, feelings and character rather than their body',
+        koreanExplanation: '육체나 물질에 대립되는 영혼이나 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spirit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478445&searchKeywordTo=3',
+            koreanHeadword: '정신12',
+        },
+    },
+    {
+        day: 37,
+        word: 'aspiration',
+        meaning: '열망, 포부',
+        englishExplanation: 'a strong desire to have or do something',
+        koreanExplanation: '열렬하게 바람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aspiration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=460778&searchKeywordTo=3',
+            koreanHeadword: '열망',
+        },
+    },
+    {
+        day: 37,
+        word: 'vocation',
+        meaning: '직업, 천직; 사명감',
+        englishExplanation:
+            'a type of work or way of life that you believe is especially suitable for you',
+        koreanExplanation:
+            '생계를 유지하기 위하여 자신의 적성과 능력에 따라 일정한 기간 동안 계속하여 종사하는 일.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vocation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488039&searchKeywordTo=3',
+            koreanHeadword: '직업',
+        },
+    },
+    {
+        day: 37,
+        word: 'council',
+        meaning: '의회; 평의회, 협의회',
+        englishExplanation:
+            'a group of people who are elected to govern an area such as a city or county',
+        koreanExplanation:
+            '민선 의원으로 구성되고 입법 및 기타 중요한 국가 작용에 참여하는 권능을 가진 합의체. 입법 작용을 담당하는 것이 본디의 임무이므로 입법부라고도 하며, 국가 기관의 의회를 국회라 하고 지방 자치 단체 기관의 의회를 지방 의회라 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/council',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=269030&searchKeywordTo=3',
+            koreanHeadword: '의회2',
+        },
+    },
+    {
+        day: 37,
+        word: 'poverty',
+        meaning: '빈곤, 가난',
+        englishExplanation: 'the state of being poor',
+        koreanExplanation: '가난하여 살기가 어려움.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/poverty',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=168229&searchKeywordTo=3',
+            koreanHeadword: '빈곤',
+        },
+    },
+    {
+        day: 37,
+        word: 'citation',
+        meaning: '인용구',
+        englishExplanation: 'words or lines taken from a book or a speech',
+        koreanExplanation: '다른 글에서 끌어다 쓴 구절.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/citation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=272629&searchKeywordTo=3',
+            koreanHeadword: '인용-구',
+        },
+    },
+    {
+        day: 37,
+        word: 'successively',
+        meaning: '연속적으로',
+        englishExplanation: 'immediately one after the other',
+        koreanExplanation: '연달아 이어지는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/successively',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=232766&searchKeywordTo=3',
+            koreanHeadword: '연속-적',
+        },
+    },
+    {
+        day: 37,
+        word: 'successfully',
+        meaning: '성공적으로',
+        englishExplanation: 'in a way that achieves your aims or what was intended',
+        koreanExplanation: '성공하였다고 할 만한 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/successfully',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=440866&searchKeywordTo=3',
+            koreanHeadword: '성공-적',
+        },
+    },
+    {
+        day: 37,
+        word: 'counselor',
+        meaning: '상담자, 조언자',
+        englishExplanation:
+            'a person who has been trained to advise people with problems, especially personal problems',
+        koreanExplanation: '말로 거들거나 깨우쳐 주어서 도와주는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/counsellor',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=304327&searchKeywordTo=3',
+            koreanHeadword: '조언-자',
+        },
+    },
+    {
+        day: 37,
+        word: 'cite',
+        meaning: '인용하다; 예로 들다, 언급하다',
+        englishExplanation:
+            'to mention something as a reason or an example, or in order to support what you are saying',
+        koreanExplanation: '남의 말이나 글을 자신의 말이나 글 속에 끌어 쓰다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cite',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=472333&searchKeywordTo=3',
+            koreanHeadword: '인용-하다2',
+        },
+    },
+    {
+        day: 37,
+        word: 'terrific',
+        meaning: '아주 좋은, 훌륭한; 엄청난',
+        englishExplanation: 'excellent',
+        koreanExplanation: '썩 좋아서 나무랄 곳이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/terrific',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507795&searchKeywordTo=3',
+            koreanHeadword: '훌륭-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'session',
+        meaning: '기간, 시간; 회의',
+        englishExplanation: 'a period of time that is spent doing a particular activity',
+        koreanExplanation: '어느 때부터 다른 어느 때까지의 동안.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/session',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=47500&searchKeywordTo=3',
+            koreanHeadword: '기간1',
+        },
+    },
+    {
+        day: 37,
+        word: 'wonder',
+        meaning: '궁금해하다; ~일까 생각하다; 놀라다; 경이로운 것, 불가사의; 놀라움',
+        englishExplanation:
+            'to think about something and try to decide what is true, what will happen, what you should do, etc.',
+        koreanExplanation: '사물을 헤아리고 판단하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/wonder_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=440804&searchKeywordTo=3',
+            koreanHeadword: '생각-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'site',
+        meaning: '장소, 현장; 웹 사이트',
+        englishExplanation: 'a place where a building, town, etc. was, is or will be located',
+        koreanExplanation: '어떤 일이 이루어지거나 일어나는 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/site_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475867&searchKeywordTo=3',
+            koreanHeadword: '장소5',
+        },
+    },
+    {
+        day: 37,
+        word: 'variety',
+        meaning: '여러 가지, 다양함',
+        englishExplanation: 'several different sorts of the same thing',
+        koreanExplanation: '모양, 빛깔, 형태, 양식 따위가 여러 가지로 많다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/variety',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=73284&searchKeywordTo=3',
+            koreanHeadword: '다양-하다',
+        },
+    },
+    {
+        day: 37,
+        word: 'calculation',
+        meaning: '계산',
+        englishExplanation: 'the act or process of using numbers to find out an amount',
+        koreanExplanation: '수를 헤아림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/calculation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=21586&searchKeywordTo=3',
+            koreanHeadword: '계산1',
+        },
+    },
+    {
+        day: 37,
+        word: 'aspire',
+        meaning: '갈망하다',
+        englishExplanation: 'to have a strong desire to achieve or to become something',
+        koreanExplanation: '간절히 바라다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/aspire',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=8741&searchKeywordTo=3',
+            koreanHeadword: '갈망-하다2',
+        },
+    },
+    {
+        day: 37,
+        word: 'spiritual',
+        meaning: '정신의; 종교의',
+        englishExplanation: 'relating to the human spirit, rather than the body or physical things',
+        koreanExplanation: '육체나 물질에 대립되는 영혼이나 마음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/spiritual_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478445&searchKeywordTo=3',
+            koreanHeadword: '정신12',
+        },
+    },
+    {
+        day: 37,
+        word: 'property',
+        meaning: '재산, 소유물; 땅, 부동산; 특성, 속성',
+        englishExplanation: 'a thing or things that are owned by a person',
+        koreanExplanation:
+            '재화와 자산을 통틀어 이르는 말. 개인, 단체, 국가가 소유하는 토지, 가옥, 가구, 금전, 귀금속 따위의 금전적 가치가 있는 것을 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/property',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=475057&searchKeywordTo=3',
+            koreanHeadword: '재산',
+        },
+    },
+    {
+        day: 37,
+        word: 'chef',
+        meaning: '요리사, 주방장',
+        englishExplanation:
+            'a person whose job is to cook, especially the most senior person in a restaurant, hotel, etc.',
+        koreanExplanation: '요리를 전문으로 하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chef',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=243836&searchKeywordTo=3',
+            koreanHeadword: '요리-사',
+        },
+    },
+    {
+        day: 37,
+        word: 'section',
+        meaning: '부분, 구획; 구역',
+        englishExplanation: 'any of the parts into which something is divided',
+        koreanExplanation: '전체를 이루는 작은 범위. 또는 전체를 몇 개로 나눈 것의 하나.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/section_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=435298&searchKeywordTo=3',
+            koreanHeadword: '부분1',
+        },
+    },
+    {
+        day: 37,
+        word: 'ethnicity',
+        meaning: '민족성',
+        englishExplanation: 'the fact of belonging to a particular ethnic group',
+        koreanExplanation: '한 민족의 고유한 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ethnicity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=132367&searchKeywordTo=3',
+            koreanHeadword: '민족-성',
+        },
+    },
+    {
+        day: 37,
+        word: 'vary',
+        meaning: '다르다; 바꾸다',
+        englishExplanation: 'to be different from each other in size, shape, etc.',
+        koreanExplanation: '비교가 되는 두 대상이 서로 같지 아니하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/vary',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=72210&searchKeywordTo=3',
+            koreanHeadword: '다르다1',
+        },
+    },
+    {
+        day: 37,
+        word: 'split',
+        meaning: '쪼개다; 분열시키다; 분리, 균열',
+        englishExplanation: 'to divide, or to make something divide, into two or more parts',
+        koreanExplanation: '물체나 공간 따위를 둘 이상으로 나누다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/split_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488702&searchKeywordTo=3',
+            koreanHeadword: '쪼개다',
+        },
+    },
+    {
+        day: 37,
+        word: 'ethically',
+        meaning: '윤리적으로',
+        englishExplanation: 'in the correct way according to your beliefs and principles',
+        koreanExplanation: '윤리에 관련되거나 윤리를 따르는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/ethically',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470695&searchKeywordTo=3',
+            koreanHeadword: '윤리-적',
+        },
+    },
+    {
+        day: 37,
+        word: 'chief',
+        meaning: '주요한; 가장 높은, 최고의; 우두머리, 장',
+        englishExplanation: 'most important',
+        koreanExplanation:
+            '시인·언론인·정치가. 호는 송아. 김동인과 함께 문예지 ≪창조≫를 창간하고 최초의 자유시 <불놀이>를 창간호에 발표하였다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/chief_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483436&searchKeywordTo=3',
+            koreanHeadword: '주-요한',
+        },
+    },
+    {
+        day: 38,
+        word: 'stick',
+        meaning: '찌르다; 붙이다; 막대기, 나뭇가지; 채, 스틱',
+        englishExplanation: 'to fix something to something else, usually with a sticky substance',
+        koreanExplanation:
+            '끝이 뾰족하거나 날카로운 것으로 물체의 겉면이 뚫어지거나 쑥 들어가도록 세차게 들이밀다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stick_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=489404&searchKeywordTo=3',
+            koreanHeadword: '찌르다',
+        },
+    },
+    {
+        day: 38,
+        word: 'drawing',
+        meaning: '그림, 그림 그리기',
+        englishExplanation: 'a picture made using a pencil or pen rather than paint',
+        koreanExplanation: '선이나 색채를 써서 사물의 형상이나 이미지를 평면 위에 나타낸 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/drawing',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=43106&searchKeywordTo=3',
+            koreanHeadword: '그림1',
+        },
+    },
+    {
+        day: 38,
+        word: 'issue',
+        meaning: '쟁점, 문제; ~호, 발행물; 발행하다',
+        englishExplanation: 'an important topic that people are discussing or arguing about',
+        koreanExplanation: '서로 다투는 중심이 되는 점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/issue_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=283844&searchKeywordTo=3',
+            koreanHeadword: '쟁점',
+        },
+    },
+    {
+        day: 38,
+        word: 'identity',
+        meaning: '신원, 정체',
+        englishExplanation: 'who or what a person or thing is',
+        koreanExplanation:
+            '개인의 성장 과정과 관련된 자료. 곧 신분이나 평소 행실, 주소, 원적, 직업 따위를 이른다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/identity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=453601&searchKeywordTo=3',
+            koreanHeadword: '신원2',
+        },
+    },
+    {
+        day: 38,
+        word: 'figure',
+        meaning: '숫자; 수치; 인물; 모습, 체격; 생각하다',
+        englishExplanation:
+            'a number representing a particular amount, especially one given in official information',
+        koreanExplanation: '수를 나타내는 글자. 1, 2, 3 …… 또는 一, 二, 三 …… 따위이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/figure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452773&searchKeywordTo=3',
+            koreanHeadword: '숫자',
+        },
+    },
+    {
+        day: 38,
+        word: 'currently',
+        meaning: '현재, 지금',
+        englishExplanation: 'at the present time',
+        koreanExplanation: '지금의 시간.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/currently',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505822&searchKeywordTo=3',
+            koreanHeadword: '현재2',
+        },
+    },
+    {
+        day: 38,
+        word: 'certain',
+        meaning: '확신하는; 확실한, 틀림없는; 정해진, 특정한',
+        englishExplanation: 'strongly believing something',
+        koreanExplanation: '굳게 믿다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/certain_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=505463&searchKeywordTo=3',
+            koreanHeadword: '확신-하다',
+        },
+    },
+    {
+        day: 38,
+        word: 'lay',
+        meaning: '눕히다, 놓다; 알을 낳다',
+        englishExplanation:
+            'to put a person or thing in a particular position, especially when it is done gently or carefully',
+        koreanExplanation: '몸을 바닥 따위에 수평 상태로 길게 놓다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/lay_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=71408&searchKeywordTo=3',
+            koreanHeadword: '눕-히다',
+        },
+    },
+    {
+        day: 38,
+        word: 'demonstrate',
+        meaning: '입증하다; 보여 주다, 설명하다; 시위하다',
+        englishExplanation: 'to show something clearly by giving proof or evidence',
+        koreanExplanation: '어떤 증거 따위를 내세워 증명하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/demonstrate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=275947&searchKeywordTo=3',
+            koreanHeadword: '입증-하다',
+        },
+    },
+    {
+        day: 38,
+        word: 'solution',
+        meaning: '해결책, 해답; 용액, 용해',
+        englishExplanation: 'a way of solving a problem or dealing with a difficult situation',
+        koreanExplanation: '어떠한 일이나 문제 따위를 해결하기 위한 방책.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/solution',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=502531&searchKeywordTo=3',
+            koreanHeadword: '해결-책',
+        },
+    },
+    {
+        day: 38,
+        word: 'reflect',
+        meaning: '비추다; 반사하다; 반영하다; 곰곰이 생각하다, 심사숙고하다',
+        englishExplanation:
+            'to show the image of a person or thing on the surface of something such as a mirror, water or glass',
+        koreanExplanation: '빛을 내는 대상이 다른 대상에 빛을 보내어 밝게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reflect',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437549&searchKeywordTo=3',
+            koreanHeadword: '비추다',
+        },
+    },
+    {
+        day: 38,
+        word: 'stock',
+        meaning: '비축, 저장, 재고; 주식; 갖추다, 들여놓다, 사재다',
+        englishExplanation: 'a supply of goods that is available for sale in a shop',
+        koreanExplanation: '만약의 경우를 대비하여 미리 갖추어 모아 두거나 저축함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stock_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=160277&searchKeywordTo=3',
+            koreanHeadword: '비축',
+        },
+    },
+    {
+        day: 38,
+        word: 'trial',
+        meaning: '재판; 시험; 시련, 고난',
+        englishExplanation:
+            'a formal examination of evidence in court by a judge and often a jury, to decide if a person accused of a crime is guilty or not',
+        koreanExplanation: '옳고 그름을 따져 판단함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/trial_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=476610&searchKeywordTo=3',
+            koreanHeadword: '재판5',
+        },
+    },
+    {
+        day: 38,
+        word: 'deal',
+        meaning: '거래, 계약, 합의; 다루다, 취급하다',
+        englishExplanation: 'to give cards to each player in a game of cards',
+        koreanExplanation: '주고받음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/deal_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390591&searchKeywordTo=3',
+            koreanHeadword: '거래1',
+        },
+    },
+    {
+        day: 38,
+        word: 'sticky',
+        meaning: '끈적거리는, 달라붙는',
+        englishExplanation: 'made of or covered in a substance that sticks to things that touch it',
+        koreanExplanation: '끈끈하여 자꾸 척척 들러붙다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/sticky_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406985&searchKeywordTo=3',
+            koreanHeadword: '끈적-거리다',
+        },
+    },
+    {
+        day: 38,
+        word: 'conditional',
+        meaning: '조건부의',
+        englishExplanation: 'depending on something',
+        koreanExplanation: '무슨 일에 일정한 제한이 붙거나 제한을 붙임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conditional_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=485334&searchKeywordTo=3',
+            koreanHeadword: '조건-부',
+        },
+    },
+    {
+        day: 38,
+        word: 'orderly',
+        meaning: '정돈된, 단정한, 질서 정연한',
+        englishExplanation: 'arranged or organized in a neat, careful and logical way',
+        koreanExplanation: '어지럽게 흩어진 것을 규모 있게 고쳐 놓거나 가지런히 바로잡아 정리하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/orderly_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=479507&searchKeywordTo=3',
+            koreanHeadword: '정돈-하다2',
+        },
+    },
+    {
+        day: 38,
+        word: 'bow',
+        meaning: '고개를 숙이다, 절하다; 절, 경례; 활; 나비매듭',
+        englishExplanation:
+            'to move your head or the top half of your body forwards and downwards as a sign of respect or to say hello or goodbye',
+        koreanExplanation: '공경하는 뜻으로 몸을 굽히다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bow1_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=285457&searchKeywordTo=3',
+            koreanHeadword: '절-하다1',
+        },
+    },
+    {
+        day: 38,
+        word: 'reasoning',
+        meaning: '추론',
+        englishExplanation: 'the process of thinking about things in a logical way',
+        koreanExplanation: '미루어 생각하여 논함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reasoning',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=493941&searchKeywordTo=3',
+            koreanHeadword: '추론2',
+        },
+    },
+    {
+        day: 38,
+        word: 'degree',
+        meaning: '정도, 단계; 도; 학위',
+        englishExplanation: 'a unit for measuring temperature',
+        koreanExplanation: '사물의 성질이나 가치를 양부, 우열 따위에서 본 분량이나 수준.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/degree',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=479967&searchKeywordTo=3',
+            koreanHeadword: '정도11',
+        },
+    },
+    {
+        day: 38,
+        word: 'capital',
+        meaning: '수도, 중심지; 대문자; 대문자의; 자본; 자본의',
+        englishExplanation:
+            'the most important town or city of a country or region, where the government operates from',
+        koreanExplanation: '한 나라의 중앙 정부가 있는 도시.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/capital_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=193275&searchKeywordTo=3',
+            koreanHeadword: '수도9',
+        },
+    },
+    {
+        day: 38,
+        word: 'account',
+        meaning: '계좌; 서술, 설명; 설명하다; 차지하다',
+        englishExplanation:
+            'an arrangement that a person has with a bank, etc. to keep money there, take some out, etc.',
+        koreanExplanation:
+            '부기에서, 계정마다 금액의 증감을 차변과 대변으로 나누어 기록·계산하는 자리.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/account_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=20780&searchKeywordTo=3',
+            koreanHeadword: '계좌2',
+        },
+    },
+    {
+        day: 38,
+        word: 'reflection',
+        meaning: '모습; 반영',
+        englishExplanation: 'an image in a mirror, on a shiny surface, on water, etc.',
+        koreanExplanation: '사람의 생긴 모양.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reflection',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=425889&searchKeywordTo=3',
+            koreanHeadword: '모습1',
+        },
+    },
+    {
+        day: 38,
+        word: 'condition',
+        meaning: '상태; 상황, 환경; 조건',
+        englishExplanation: 'the state that something is in',
+        koreanExplanation: '사물·현상이 놓여 있는 모양이나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/condition_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439560&searchKeywordTo=3',
+            koreanHeadword: '상태1',
+        },
+    },
+    {
+        day: 38,
+        word: 'rate',
+        meaning: '비율; 요금, 가격; 평가하다',
+        englishExplanation: 'a measurement of the speed at which something happens',
+        koreanExplanation: '다른 수나 양에 대한 어떤 수나 양의 비.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/rate_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=157692&searchKeywordTo=3',
+            koreanHeadword: '비율2',
+        },
+    },
+    {
+        day: 38,
+        word: 'capitalism',
+        meaning: '자본주의',
+        englishExplanation:
+            'an economic system in which a country’s businesses and industry are controlled and run for profit by private owners rather than by the government',
+        koreanExplanation:
+            '생산 수단을 자본으로서 소유한 자본가가 이윤 획득을 위하여 생산 활동을 하도록 보장하는 사회 경제 체제.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/capitalism',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=474618&searchKeywordTo=3',
+            koreanHeadword: '자본-주의',
+        },
+    },
+    {
+        day: 38,
+        word: 'reflective',
+        meaning: '반사하는',
+        englishExplanation: 'thinking deeply about things',
+        koreanExplanation:
+            '일정한 방향으로 나아가던 파동이 다른 물체의 표면에 부딪쳐서 나아가던 방향이 반대로 바뀌다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reflective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=427208&searchKeywordTo=3',
+            koreanHeadword: '반사-하다1',
+        },
+    },
+    {
+        day: 38,
+        word: 'identify',
+        meaning: '확인하다, 식별하다; 동일시하다',
+        englishExplanation:
+            'to recognize a person or thing and be able to say who or what they are',
+        koreanExplanation: '틀림없이 그러한가를 알아보거나 인정하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/identify',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=375130&searchKeywordTo=3',
+            koreanHeadword: '확인-하다',
+        },
+    },
+    {
+        day: 38,
+        word: 'company',
+        meaning: '회사; 함께 있음',
+        englishExplanation:
+            'a business organization that makes money by producing or selling goods or services',
+        koreanExplanation:
+            '상행위 또는 그 밖의 영리 행위를 목적으로 하는 사단 법인. 주식회사, 유한 회사, 합자 회사, 합명 회사의 네 가지가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/company',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=381501&searchKeywordTo=3',
+            koreanHeadword: '회사4',
+        },
+    },
+    {
+        day: 38,
+        word: 'row',
+        meaning: '열, 줄; 노를 젓다',
+        englishExplanation: 'a number of people standing or sitting next to each other in a line',
+        koreanExplanation: '사람이나 물건이 죽 벌여 늘어선 줄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/row1_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=235076&searchKeywordTo=3',
+            koreanHeadword: '열4',
+        },
+    },
+    {
+        day: 38,
+        word: 'identical',
+        meaning: '동일한',
+        englishExplanation: 'similar in every detail',
+        koreanExplanation: '어떤 것과 비교하여 똑같다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/identical',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=89709&searchKeywordTo=3',
+            koreanHeadword: '동일-하다',
+        },
+    },
+    {
+        day: 38,
+        word: 'burst',
+        meaning: '터지다, 폭발하다; 파열, 폭발; 가득 차 있다, 터질 듯하다; 갑자기 ~하다; ~을 함',
+        englishExplanation: 'to break open or apart, especially because of pressure from inside',
+        koreanExplanation: '둘러싸여 막혔던 것이 갈라져서 무너지다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/burst_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=494560&searchKeywordTo=3',
+            koreanHeadword: '터지다',
+        },
+    },
+    {
+        day: 38,
+        word: 'grave',
+        meaning: '무덤, 묘; 중대한, 심각한',
+        englishExplanation: 'a place in the ground where a dead person is buried',
+        koreanExplanation:
+            '송장이나 유골을 땅에 묻어 놓은 곳. 흙으로 둥글게 쌓아 올리기도 하고 돌로 평평하게 만들기도 하는데, 대개 묘석을 세워 누구의 것인지 표시한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/grave1_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=120757&searchKeywordTo=3',
+            koreanHeadword: '무덤',
+        },
+    },
+    {
+        day: 38,
+        word: 'demonstration',
+        meaning: '입증; 설명; 시위',
+        englishExplanation:
+            'a public meeting or a march at which people show that they are protesting against or supporting a person or thing',
+        koreanExplanation: '어떤 증거 따위를 내세워 증명함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/demonstration',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=275364&searchKeywordTo=3',
+            koreanHeadword: '입증',
+        },
+    },
+    {
+        day: 38,
+        word: 'reason',
+        meaning: '이유, 원인; 이성; 추론하다, 판단하다',
+        englishExplanation:
+            'a cause or an explanation for something that has happened or that a person has done',
+        koreanExplanation: '어떠한 결론이나 결과에 이른 까닭이나 근거.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reason_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=470058&searchKeywordTo=3',
+            koreanHeadword: '이유4',
+        },
+    },
+    {
+        day: 38,
+        word: 'reasonable',
+        meaning: '합리적인, 합당한',
+        englishExplanation: 'fair, practical, and sensible',
+        koreanExplanation: '이론이나 이치에 합당한 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reasonable',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506072&searchKeywordTo=3',
+            koreanHeadword: '합리-적',
+        },
+    },
+    {
+        day: 38,
+        word: 'certainly',
+        meaning: '분명히, 확실히',
+        englishExplanation: 'without doubt',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하게.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/certainly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=432443&searchKeywordTo=3',
+            koreanHeadword: '분명-히',
+        },
+    },
+    {
+        day: 38,
+        word: 'object',
+        meaning: '물건, 물체; 대상; 목적, 목표; 반대하다',
+        englishExplanation: 'a thing that can be seen and touched, but is not alive',
+        koreanExplanation: '일정한 형체를 갖춘 모든 물질적 대상.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/object_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=125206&searchKeywordTo=3',
+            koreanHeadword: '물건',
+        },
+    },
+    {
+        day: 38,
+        word: 'custom',
+        meaning: '관습, 풍습; 습관; 관세, 세관; 맞춘, 주문 제작한',
+        englishExplanation:
+            'an accepted way of behaving or of doing things in a society or a community',
+        koreanExplanation:
+            '어떤 사회에서 오랫동안 지켜 내려와 그 사회 성원들이 널리 인정하는 질서나 풍습.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/custom_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=394864&searchKeywordTo=3',
+            koreanHeadword: '관습',
+        },
+    },
+    {
+        day: 38,
+        word: 'capitalize',
+        meaning: '대문자로 쓰다; 자본화하다, 투자하다',
+        englishExplanation: 'to write or print a letter of the alphabet as a capital',
+        koreanExplanation:
+            '이익을 얻기 위하여 어떤 일이나 사업에 자본을 대거나 시간이나 정성을 쏟다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/capitalize',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=496817&searchKeywordTo=3',
+            koreanHeadword: '투자-하다2',
+        },
+    },
+    {
+        day: 39,
+        word: 'release',
+        meaning: '석방하다; 석방; 방출하다; 방출; 개봉하다, 발매하다; 개봉, 발매',
+        englishExplanation:
+            'to let a person come out of a place where they have been kept or stuck and unable to leave or move',
+        koreanExplanation: '법에 의하여 구속하였던 사람을 풀어 자유롭게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/release_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=181491&searchKeywordTo=3',
+            koreanHeadword: '석방-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'flat',
+        meaning: '평평한, 납작한; 아파트, 플랫; 평평하게, 반듯이',
+        englishExplanation: 'a set of rooms for living in, usually on one floor of a building',
+        koreanExplanation:
+            '공동 주택 양식의 하나. 오 층 이상의 건물을 층마다 여러 집으로 일정하게 구획하여 각각의 독립된 가구가 생활할 수 있도록 만든 주거 형태이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/flat_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=455149&searchKeywordTo=3',
+            koreanHeadword: '아파트',
+        },
+    },
+    {
+        day: 39,
+        word: 'facility',
+        meaning: '시설, 설비; 재능, 솜씨',
+        englishExplanation:
+            'buildings, services, equipment, etc. that are provided for a particular purpose',
+        koreanExplanation: '도구, 기계, 장치 따위를 베풀어 설비함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/facility',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=450331&searchKeywordTo=3',
+            koreanHeadword: '시설2',
+        },
+    },
+    {
+        day: 39,
+        word: 'observance',
+        meaning: '준수',
+        englishExplanation:
+            'the practice of obeying a law, celebrating a festival or behaving according to a particular custom',
+        koreanExplanation: '전례나 규칙, 명령 따위를 그대로 좇아서 지킴.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/observance',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=305218&searchKeywordTo=3',
+            koreanHeadword: '준수3',
+        },
+    },
+    {
+        day: 39,
+        word: 'reference',
+        meaning: '언급; 참고, 참조',
+        englishExplanation: 'a thing you say or write that mentions a person or thing else',
+        koreanExplanation: '어떤 문제에 대하여 말함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/reference_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=224009&searchKeywordTo=3',
+            koreanHeadword: '언급',
+        },
+    },
+    {
+        day: 39,
+        word: 'pupil',
+        meaning: '학생, 문하생; 동공, 눈동자',
+        englishExplanation: 'a person who is being taught, especially a child in a school',
+        koreanExplanation: '학예를 배우는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pupil',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506467&searchKeywordTo=3',
+            koreanHeadword: '학생',
+        },
+    },
+    {
+        day: 39,
+        word: 'cast',
+        meaning: '던지다; 배역을 맡기다; 배역, 출연진; 드리우다',
+        englishExplanation: 'to look, smile, etc. in a particular direction',
+        koreanExplanation:
+            '손에 든 물건을 다른 곳에 떨어지게 팔과 손목을 움직여 공중으로 내보내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/cast_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=415145&searchKeywordTo=3',
+            koreanHeadword: '던지다',
+        },
+    },
+    {
+        day: 39,
+        word: 'submission',
+        meaning: '제출; 복종',
+        englishExplanation:
+            'the act of accepting that a person has defeated you and that you must obey them',
+        koreanExplanation: '문안이나 의견, 법안 따위를 냄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/submission',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303574&searchKeywordTo=3',
+            koreanHeadword: '제출2',
+        },
+    },
+    {
+        day: 39,
+        word: 'statesman',
+        meaning: '정치인',
+        englishExplanation: 'a man who is a wise, experienced and respected political leader',
+        koreanExplanation: '정치를 맡아서 하는 사람. 또는 정치에 관한 학식과 경험이 풍부한 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/statesman',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=295593&searchKeywordTo=3',
+            koreanHeadword: '정치-인',
+        },
+    },
+    {
+        day: 39,
+        word: 'observatory',
+        meaning: '관측소, 천문대',
+        englishExplanation:
+            'a special building with a telescope or other equipment that scientists use to watch the stars, the weather, etc.',
+        koreanExplanation: '적의 동태를 살피기 위하여 여러 가지 관측 장비를 설치한 곳.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/observatory',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33510&searchKeywordTo=3',
+            koreanHeadword: '관측-소',
+        },
+    },
+    {
+        day: 39,
+        word: 'grant',
+        meaning: '보조금; 수여하다, 주다; 인정하다, 승인하다',
+        englishExplanation:
+            'to agree to give a person what they ask for, especially formal or legal permission to do something',
+        koreanExplanation:
+            '정부나 공공 단체가 기업이나 개인에게 교부하는 돈. 특정 산업의 육성이나 특정 시책의 장려 따위와 같이 일정한 행정 목적을 달성하기 위한 것이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/grant_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=144922&searchKeywordTo=3',
+            koreanHeadword: '보조-금',
+        },
+    },
+    {
+        day: 39,
+        word: 'operate',
+        meaning: '작동하다; 운영하다; 수술하다',
+        englishExplanation: 'to work in a particular way',
+        koreanExplanation: '기계 따위가 작용을 받아 움직이다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/operate',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281247&searchKeywordTo=3',
+            koreanHeadword: '작동-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'character',
+        meaning: '성격; 특징, 특성; 등장인물; 문자, 부호',
+        englishExplanation: 'a person or an animal in a book, play or film',
+        koreanExplanation: '개인이 가지고 있는 고유의 성질이나 품성.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/character',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444850&searchKeywordTo=3',
+            koreanHeadword: '성격2',
+        },
+    },
+    {
+        day: 39,
+        word: 'fairly',
+        meaning: '꽤; 공정하게',
+        englishExplanation: 'to some extent but not very',
+        koreanExplanation: '보통보다 조금 더한 정도로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fairly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=401379&searchKeywordTo=3',
+            koreanHeadword: '꽤',
+        },
+    },
+    {
+        day: 39,
+        word: 'plain',
+        meaning: '분명한, 명백한; 소박한, 꾸미지 않은; 평원, 평야',
+        englishExplanation: 'not decorated or complicated',
+        koreanExplanation: '모습이나 소리 따위가 흐릿함이 없이 똑똑하고 뚜렷하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/plain_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=155625&searchKeywordTo=3',
+            koreanHeadword: '분명-하다1',
+        },
+    },
+    {
+        day: 39,
+        word: 'operation',
+        meaning: '작동, 운용; 수술',
+        englishExplanation:
+            'the process of cutting open a part of a person’s body in order to remove or repair a damaged part',
+        koreanExplanation: '기계 따위가 작용을 받아 움직임.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/operation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=281246&searchKeywordTo=3',
+            koreanHeadword: '작동1',
+        },
+    },
+    {
+        day: 39,
+        word: 'swear',
+        meaning: '맹세하다, 선언하다; 욕을 하다, 악담하다',
+        englishExplanation: 'to use rude or offensive language, usually because you are angry',
+        koreanExplanation: '일정한 약속이나 목표를 꼭 실천하겠다고 다짐하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/swear',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420892&searchKeywordTo=3',
+            koreanHeadword: '맹세-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'fair',
+        meaning: '공평한, 정당한; 상당한; 박람회',
+        englishExplanation: 'acceptable and appropriate in a particular situation',
+        koreanExplanation: '어느 쪽으로도 치우치지 않고 고르다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fair_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397376&searchKeywordTo=3',
+            koreanHeadword: '공평-하다1',
+        },
+    },
+    {
+        day: 39,
+        word: 'submit',
+        meaning: '제출하다; 복종하다',
+        englishExplanation:
+            'to present a document, proposal, etc. to a person in authority so that they can study or consider it',
+        koreanExplanation: '문안이나 의견, 법안 따위를 내다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/submit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=303575&searchKeywordTo=3',
+            koreanHeadword: '제출-하다2',
+        },
+    },
+    {
+        day: 39,
+        word: 'observe',
+        meaning: '관찰하다; 보다, 목격하다; 준수하다, 지키다',
+        englishExplanation: 'to see or notice a person or thing',
+        koreanExplanation: '사물이나 현상을 주의하여 자세히 살펴보다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/observe',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=398462&searchKeywordTo=3',
+            koreanHeadword: '관찰-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'article',
+        meaning: '기사, 논문; 조항, 항목',
+        englishExplanation:
+            'a piece of writing about a particular subject in a newspaper or magazine, on a website, etc.',
+        koreanExplanation: '사실을 적음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/article',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=405467&searchKeywordTo=3',
+            koreanHeadword: '기사10',
+        },
+    },
+    {
+        day: 39,
+        word: 'observer',
+        meaning: '관측자',
+        englishExplanation: 'a person who watches a person or thing',
+        koreanExplanation:
+            '육안이나 기계로 자연 현상 특히 천체나 기상의 상태, 추이, 변화 따위를 관찰하여 측정하는 사람.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/observer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=34533&searchKeywordTo=3',
+            koreanHeadword: '관측-자',
+        },
+    },
+    {
+        day: 39,
+        word: 'conduct',
+        meaning: '실시하다, 하다; 지휘하다; 안내하다; 전도하다; 행동, 품행; 행동하다',
+        englishExplanation: 'to organize and/or do a particular activity',
+        koreanExplanation: '실제로 시행하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/conduct_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=208383&searchKeywordTo=3',
+            koreanHeadword: '실시-하다3',
+        },
+    },
+    {
+        day: 39,
+        word: 'bill',
+        meaning: '계산서, 청구서; 지폐; 법안',
+        englishExplanation: 'a document that shows how much you owe a person for goods or services',
+        koreanExplanation: '계산한 내용을 자세히 적은 서류.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bill_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=21598&searchKeywordTo=3',
+            koreanHeadword: '계산-서',
+        },
+    },
+    {
+        day: 39,
+        word: 'observation',
+        meaning: '관찰, 관측',
+        englishExplanation:
+            'the act of watching a person or thing carefully for a period of time, especially to learn something',
+        koreanExplanation: '사물이나 현상을 주의하여 자세히 살펴봄.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/observation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=33227&searchKeywordTo=3',
+            koreanHeadword: '관찰1',
+        },
+    },
+    {
+        day: 39,
+        word: 'operational',
+        meaning: '가동상의',
+        englishExplanation: 'relating to the way in which a business, machine, system, etc. works',
+        koreanExplanation: '사람이나 기계 따위가 움직여 일함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/operational',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=667&searchKeywordTo=3',
+            koreanHeadword: '가동7',
+        },
+    },
+    {
+        day: 39,
+        word: 'fine',
+        meaning: '건강한; 훌륭한, 우수한, 고급의; 미세한; 벌금; 벌금을 부과하다',
+        englishExplanation: 'in good health',
+        koreanExplanation: '썩 좋아서 나무랄 곳이 없다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fine_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507795&searchKeywordTo=3',
+            koreanHeadword: '훌륭-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'block',
+        meaning: '블록, 구획; 큰 덩어리; 막다, 차단하다',
+        englishExplanation:
+            'a large piece of a solid material that is square or rectangular in shape and usually has flat sides',
+        koreanExplanation: '쌓아 올리도록 만든 장난감.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/block_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437091&searchKeywordTo=3',
+            koreanHeadword: '블록2',
+        },
+    },
+    {
+        day: 39,
+        word: 'address',
+        meaning: '주소; 주소를 쓰다; 연설; 연설하다; 다루다, 처리하다',
+        englishExplanation:
+            'details of where a person lives or works and where letters, etc. can be sent',
+        koreanExplanation:
+            '사람이 살고 있는 곳이나 기관, 회사 따위가 자리 잡고 있는 곳을 행정 구역으로 나타낸 이름.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/address_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=299271&searchKeywordTo=3',
+            koreanHeadword: '주소1',
+        },
+    },
+    {
+        day: 39,
+        word: 'bear',
+        meaning: '참다, 견디다; 견디다, 지탱하다; 낳다, 출산하다; 곰',
+        englishExplanation: 'to be able to accept and deal with something unpleasant',
+        koreanExplanation: '웃음, 울음, 아픔 따위를 억누르고 견디다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bear_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=488018&searchKeywordTo=3',
+            koreanHeadword: '참다',
+        },
+    },
+    {
+        day: 39,
+        word: 'refer',
+        meaning: '언급하다, 인용하다; 나타내다, 가리키다; 참조하다',
+        englishExplanation:
+            'to send a person or thing to a person or thing for help, advice or a decision',
+        koreanExplanation: '어떤 문제에 대하여 말하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/refer',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457101&searchKeywordTo=3',
+            koreanHeadword: '언급-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'amount',
+        meaning: '양, 액수; 총액, 총계; 합계가 ~에 달하다',
+        englishExplanation: 'a quantity of something',
+        koreanExplanation: '세거나 잴 수 있는 분량이나 수량.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/amount_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=456873&searchKeywordTo=3',
+            koreanHeadword: '양18',
+        },
+    },
+    {
+        day: 39,
+        word: 'arrangement',
+        meaning: '배열, 정리; 협정; 준비',
+        englishExplanation: 'a plan or preparation that you make so that something can happen',
+        koreanExplanation: '일정한 차례나 간격에 따라 벌여 놓음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/arrangement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=135616&searchKeywordTo=3',
+            koreanHeadword: '배열2',
+        },
+    },
+    {
+        day: 39,
+        word: 'humble',
+        meaning: '겸손한; 겸손하게 하다; 보잘것없는, 미천한',
+        englishExplanation: 'showing you do not think that you are as important as other people',
+        koreanExplanation: '남을 존중하고 자기를 내세우지 않는 태도가 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/humble_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=18821&searchKeywordTo=3',
+            koreanHeadword: '겸손-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'statement',
+        meaning: '발표, 진술',
+        englishExplanation:
+            'unusual and interesting, in a way that is intended to express something about the personality of the person who wears it, owns it, etc.',
+        koreanExplanation: '어떤 사실이나 결과, 작품 따위를 세상에 널리 드러내어 알림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/statement_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=142272&searchKeywordTo=3',
+            koreanHeadword: '발표1',
+        },
+    },
+    {
+        day: 39,
+        word: 'pressure',
+        meaning: '압력, 압박',
+        englishExplanation: 'the act of trying to persuade or to force a person to do something',
+        koreanExplanation:
+            '두 물체가 접촉면을 경계로 하여 서로 그 면에 수직으로 누르는 단위 면적에서의 힘의 단위. 그 크기의 단위로는 dyn/㎠ 외에 공학에서는 kgW/㎠를 사용하고, 기상학에서는 밀리바, 헥토파스칼 따위를 사용한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/pressure_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457417&searchKeywordTo=3',
+            koreanHeadword: '압력',
+        },
+    },
+    {
+        day: 39,
+        word: 'press',
+        meaning: '누르다, 밀다; 언론, 보도 기관',
+        englishExplanation: 'newspapers and magazines',
+        koreanExplanation: '물체의 전체 면이나 부분에 대하여 힘이나 무게를 가하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/press_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=406858&searchKeywordTo=3',
+            koreanHeadword: '누르다1',
+        },
+    },
+    {
+        day: 39,
+        word: 'decline',
+        meaning: '감소하다; 감소, 쇠퇴; 거절하다',
+        englishExplanation: 'to become smaller, fewer, weaker, etc.',
+        koreanExplanation: '양이나 수치가 줄다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/decline_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=6847&searchKeywordTo=3',
+            koreanHeadword: '감소-하다',
+        },
+    },
+    {
+        day: 39,
+        word: 'state',
+        meaning: '상태; 국가, 정부; 국가의, 정부의; 주; 주립의; 진술하다, 명시하다',
+        englishExplanation:
+            'a country considered as an organized political community controlled by one government',
+        koreanExplanation: '사물·현상이 놓여 있는 모양이나 형편.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/state_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=439560&searchKeywordTo=3',
+            koreanHeadword: '상태1',
+        },
+    },
+    {
+        day: 39,
+        word: 'dismiss',
+        meaning: '묵살하다; 해고하다; 해산시키다',
+        englishExplanation:
+            'to decide that a person or thing is not important and not worth thinking or talking about',
+        koreanExplanation: '의견이나 제안 따위를 듣고도 못 들은 척하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/dismiss',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=123095&searchKeywordTo=3',
+            koreanHeadword: '묵살-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'commander',
+        meaning: '사령관, 지휘관',
+        englishExplanation:
+            'a person who is in charge of something, especially an officer in charge of a particular group of soldiers or a military operation',
+        koreanExplanation:
+            '육군의 야전군, 해군의 함대, 공군의 작전 사령부 및 기지를 지휘·통솔하는 최고 지휘관.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commander',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=169136&searchKeywordTo=3',
+            koreanHeadword: '사령-관',
+        },
+    },
+    {
+        day: 40,
+        word: 'commitment',
+        meaning: '약속; 몰입, 전념',
+        englishExplanation: 'a promise to do something or to behave in a particular way',
+        koreanExplanation:
+            '다른 사람과 앞으로의 일을 어떻게 할 것인가를 미리 정하여 둠. 또는 그렇게 정한 내용.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commitment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=457820&searchKeywordTo=3',
+            koreanHeadword: '약속',
+        },
+    },
+    {
+        day: 40,
+        word: 'feature',
+        meaning: '특징; 특징을 이루다; 용모, 이목구비',
+        englishExplanation: 'something important, interesting or typical of a place or thing',
+        koreanExplanation: '다른 것에 비하여 특별히 눈에 뜨이는 점.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/feature_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=353454&searchKeywordTo=3',
+            koreanHeadword: '특징',
+        },
+    },
+    {
+        day: 40,
+        word: 'firmly',
+        meaning: '강하게, 확고하게',
+        englishExplanation: 'in a strong or definite way',
+        koreanExplanation: '태도나 상황 따위가 튼튼하고 굳다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/firmly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=377731&searchKeywordTo=3',
+            koreanHeadword: '확고-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'tough',
+        meaning: '단단한, 튼튼한; 고된, 어려운; 엄한, 냉정한',
+        englishExplanation: 'having or causing problems or difficulties',
+        koreanExplanation:
+            '어떤 힘을 받아도 쉽게 그 모양이 변하거나 부서지지 아니하는 상태에 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tough_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412395&searchKeywordTo=3',
+            koreanHeadword: '단단-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'discipline',
+        meaning: '훈련, 단련; 훈련하다; 규율, 질서; 훈육하다, 벌하다; 훈육',
+        englishExplanation: 'training people to follow rules and control their behaviour',
+        koreanExplanation: '기본자세나 동작 따위를 되풀이하여 익힘.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/discipline_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=507461&searchKeywordTo=3',
+            koreanHeadword: '훈련',
+        },
+    },
+    {
+        day: 40,
+        word: 'commit',
+        meaning: '저지르다; 전념하다, 헌신하다',
+        englishExplanation: 'to do something wrong or illegal',
+        koreanExplanation: '죄를 짓거나 잘못이 생겨나게 행동하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/commit',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=289096&searchKeywordTo=3',
+            koreanHeadword: '저지르다',
+        },
+    },
+    {
+        day: 40,
+        word: 'disciplined',
+        meaning: '훈련된, 단련된',
+        englishExplanation:
+            'trained to obey rules and orders and behave in a way that shows control',
+        koreanExplanation: '기본자세나 동작 따위를 되풀이하여 익히다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/disciplined',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=380476&searchKeywordTo=3',
+            koreanHeadword: '훈련-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'application',
+        meaning: '적용; 지원; 응용 프로그램',
+        englishExplanation:
+            'a formal request for something, such as a job, permission to do something or a place at a college or university',
+        koreanExplanation: '알맞게 이용하거나 맞추어 씀.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/application',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=473989&searchKeywordTo=3',
+            koreanHeadword: '적용',
+        },
+    },
+    {
+        day: 40,
+        word: 'major',
+        meaning: '주요한, 중대한; 전공하다; 전공; 소령',
+        englishExplanation: 'very large or important',
+        koreanExplanation:
+            '시인·언론인·정치가. 호는 송아. 김동인과 함께 문예지 ≪창조≫를 창간하고 최초의 자유시 <불놀이>를 창간호에 발표하였다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/major_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=483436&searchKeywordTo=3',
+            koreanHeadword: '주-요한',
+        },
+    },
+    {
+        day: 40,
+        word: 'stress',
+        meaning: '스트레스, 압박; 강조하다; 강조',
+        englishExplanation:
+            'pressure or worry caused by problems in a person’s life or by having too much to do',
+        koreanExplanation:
+            '적응하기 어려운 환경에 처할 때 느끼는 심리적·신체적 긴장 상태. 장기적으로 지속되면 심장병, 위궤양, 고혈압 따위의 신체적 질환을 일으키기도 하고 불면증, 신경증, 우울증 따위의 심리적 부적응을 나타내기도 한다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/stress_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=451927&searchKeywordTo=3',
+            koreanHeadword: '스트레스',
+        },
+    },
+    {
+        day: 40,
+        word: 'medium',
+        meaning: '중간의; 매체, 매개',
+        englishExplanation:
+            'in the middle between a larger and smaller size, amount, length, temperature, etc.',
+        koreanExplanation: '어떤 작용을 한쪽에서 다른 쪽으로 전달하는 물체. 또는 그런 수단.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/medium_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=112373&searchKeywordTo=3',
+            koreanHeadword: '매체',
+        },
+    },
+    {
+        day: 40,
+        word: 'engage',
+        meaning: '관여하다; 사로잡다',
+        englishExplanation:
+            'to succeed in attracting and keeping a person’s attention and interest',
+        koreanExplanation: '어떤 일에 관계하여 참여하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/engage',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=397979&searchKeywordTo=3',
+            koreanHeadword: '관여-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'presentation',
+        meaning: '발표; 제출, 제시',
+        englishExplanation:
+            'a meeting at which something, especially a new product or idea, or piece of work, is shown to a group of people',
+        koreanExplanation: '어떤 사실이나 결과, 작품 따위를 세상에 널리 드러내어 알림.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/presentation',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=142272&searchKeywordTo=3',
+            koreanHeadword: '발표1',
+        },
+    },
+    {
+        day: 40,
+        word: 'subject',
+        meaning: '주제, 화제, 논제; 과목, 교과; 대상; ~의 권한 아래에 있는; ~될 수 있는',
+        englishExplanation: 'a thing or person that is being discussed, described or dealt with',
+        koreanExplanation: '대화나 연구 따위에서 중심이 되는 문제.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subject_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=482795&searchKeywordTo=3',
+            koreanHeadword: '주제4',
+        },
+    },
+    {
+        day: 40,
+        word: 'engagement',
+        meaning: '약혼; 약속, 계약; 참여',
+        englishExplanation: 'an agreement to marry a person',
+        koreanExplanation: '혼인하기로 약속함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/engagement',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=221165&searchKeywordTo=3',
+            koreanHeadword: '약혼',
+        },
+    },
+    {
+        day: 40,
+        word: 'due',
+        meaning: '~하기로 예정된; ~로 인한, ~ 때문에',
+        englishExplanation: 'caused by a person or thing',
+        koreanExplanation: '앞으로 일어날 일이나 해야 할 일을 미리 정하거나 생각함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/due_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=461878&searchKeywordTo=3',
+            koreanHeadword: '예정2',
+        },
+    },
+    {
+        day: 40,
+        word: 'subjection',
+        meaning: '복종',
+        englishExplanation:
+            'the process of bringing a country or group of people under your control, especially by using force',
+        koreanExplanation: '남의 명령이나 의사를 그대로 따라서 좇음.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subjection',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=434101&searchKeywordTo=3',
+            koreanHeadword: '복종1',
+        },
+    },
+    {
+        day: 40,
+        word: 'subjective',
+        meaning: '주관적인',
+        englishExplanation:
+            'based on your own ideas or opinions rather than facts and therefore sometimes unfair',
+        koreanExplanation: '자기의 견해나 관점을 기초로 하는 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/subjective',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=481945&searchKeywordTo=3',
+            koreanHeadword: '주관-적',
+        },
+    },
+    {
+        day: 40,
+        word: 'launch',
+        meaning: '시작하다; 시작; 출시하다; 발표, 발매; 발사하다; 발사',
+        englishExplanation: 'to start an activity, especially an organized one',
+        koreanExplanation: '어떤 일이나 행동의 처음 단계를 이루거나 그렇게 하게 하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/launch_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=202306&searchKeywordTo=3',
+            koreanHeadword: '시작-하다1',
+        },
+    },
+    {
+        day: 40,
+        word: 'interesting',
+        meaning: '흥미로운',
+        englishExplanation:
+            'attracting your attention because it is/they are special, exciting or unusual',
+        koreanExplanation: '관심이나 재미를 느끼게 하는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interesting',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508595&searchKeywordTo=3',
+            koreanHeadword: '흥미',
+        },
+    },
+    {
+        day: 40,
+        word: 'present',
+        meaning: '선물; 출석해 있는; 현재의; 현재; 발표하다; 제시하다, 보여 주다',
+        englishExplanation: 'existing or happening now',
+        koreanExplanation: '남에게 어떤 물건 따위를 선사함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/present_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=444462&searchKeywordTo=3',
+            koreanHeadword: '선물3',
+        },
+    },
+    {
+        day: 40,
+        word: 'tissue',
+        meaning: '조직; 티슈, 화장지',
+        englishExplanation: 'a piece of soft paper, used especially as a handkerchief',
+        koreanExplanation: '같은 기능과 구조를 가진 세포들이 모인 집단.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/tissue',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=478784&searchKeywordTo=3',
+            koreanHeadword: '조직',
+        },
+    },
+    {
+        day: 40,
+        word: 'branch',
+        meaning: '가지, 나뭇가지; 지점, 지부; 분과, 부문, 분야; 갈라지다, 나뉘다',
+        englishExplanation:
+            'a part of a tree that grows out from the main stem and on which leaves, flowers and fruit grow',
+        koreanExplanation: '나무나 풀의 원줄기에서 뻗어 나온 줄기.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/branch_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=6051&searchKeywordTo=3',
+            koreanHeadword: '가지1',
+        },
+    },
+    {
+        day: 40,
+        word: 'content',
+        meaning: '만족하는; 만족시키다; 내용; 함량, 함유량',
+        englishExplanation: 'the things that are contained in something',
+        koreanExplanation: '흡족하게 여기다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/content1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423287&searchKeywordTo=3',
+            koreanHeadword: '만족-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'bar',
+        meaning: '술집, 바; 빗장, 창살; 덩어리; 막다, 금하다',
+        englishExplanation: 'a place where you can buy and drink alcoholic and other drinks',
+        koreanExplanation: '술을 파는 집.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/bar_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=446318&searchKeywordTo=3',
+            koreanHeadword: '술-집',
+        },
+    },
+    {
+        day: 40,
+        word: 'complexity',
+        meaning: '복잡',
+        englishExplanation: 'the state of being formed of many parts',
+        koreanExplanation: '여러 요소가 얽혀 간단하지 않은 성질.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complexity',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437504&searchKeywordTo=3',
+            koreanHeadword: '복잡-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'interested',
+        meaning: '흥미를 가진, 관심이 있는',
+        englishExplanation:
+            'giving your attention to something because you enjoy finding out about it or doing it',
+        koreanExplanation: '관심이나 재미를 느끼고 있는.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interested',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508595&searchKeywordTo=3',
+            koreanHeadword: '흥미',
+        },
+    },
+    {
+        day: 40,
+        word: 'committed',
+        meaning: '헌신적인',
+        englishExplanation: 'willing to work hard and give your time and energy to something',
+        koreanExplanation: '몸과 마음을 바쳐 있는 힘을 다하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/committed',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=506420&searchKeywordTo=3',
+            koreanHeadword: '헌신-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'complex',
+        meaning: '복잡한; 복합 건물, 단지; 콤플렉스, 열등감',
+        englishExplanation: 'made of many different things or parts that are related',
+        koreanExplanation: '일이나 감정 따위가 갈피를 잡기 어려울 만큼 여러 가지가 얽혀 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/complex_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=437504&searchKeywordTo=3',
+            koreanHeadword: '복잡-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'interestingly',
+        meaning: '흥미롭게도, 놀랍게도',
+        englishExplanation:
+            'in a way that attracts your attention because it is special, exciting or unusual',
+        koreanExplanation: '관심이나 재미를 끄는 방식으로.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interestingly',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508595&searchKeywordTo=3',
+            koreanHeadword: '흥미',
+        },
+    },
+    {
+        day: 40,
+        word: 'majority',
+        meaning: '대다수, 대부분',
+        englishExplanation: 'the largest part of a group of people or things',
+        koreanExplanation: '거의 모두 다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/majority',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=411230&searchKeywordTo=3',
+            koreanHeadword: '대-다수',
+        },
+    },
+    {
+        day: 40,
+        word: 'apply',
+        meaning: '신청하다, 지원하다; 적용되다; 바르다',
+        englishExplanation:
+            'to make a formal request, usually in writing, for something such as a job, a loan, permission for something, a place at a university, etc.',
+        koreanExplanation: '단체나 기관에 어떠한 사항을 말이나 문서로써 밝혀 요청하다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/apply',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=452391&searchKeywordTo=3',
+            koreanHeadword: '신청-하다1',
+        },
+    },
+    {
+        day: 40,
+        word: 'craft',
+        meaning: '기술, 기능; 공예; 공예품을 만들다, 공들여 만들다; 배, 비행기, 우주선',
+        englishExplanation:
+            'an activity involving a special skill at making things with your hands',
+        koreanExplanation:
+            '과학 이론을 실제로 적용하여 사물을 인간 생활에 유용하도록 가공하는 수단.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/craft_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=405436&searchKeywordTo=3',
+            koreanHeadword: '기술1',
+        },
+    },
+    {
+        day: 40,
+        word: 'firm',
+        meaning: '단단한, 견고한; 확고한, 변치 않는; 회사',
+        englishExplanation: 'a business or company',
+        koreanExplanation:
+            '어떤 힘을 받아도 쉽게 그 모양이 변하거나 부서지지 아니하는 상태에 있다.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/firm_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=412395&searchKeywordTo=3',
+            koreanHeadword: '단단-하다',
+        },
+    },
+    {
+        day: 40,
+        word: 'fit',
+        meaning: '꼭 맞다; 건강한; 알맞은, 적합한; 적합하다; 맞음새',
+        englishExplanation: 'to be the right shape and size for a person or thing',
+        koreanExplanation: '크기나 규격이 서로 어긋나지 않고 알맞은 것.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/fit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=420703&searchKeywordTo=3',
+            koreanHeadword: '맞다1',
+        },
+    },
+    {
+        day: 40,
+        word: 'suit',
+        meaning: '양복 한 벌, 정장; 소송; 어울리다; 적합하다',
+        englishExplanation:
+            'a set of clothes made of the same cloth, including a jacket and trousers or a skirt',
+        koreanExplanation: '정식의 복장을 함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/suit_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=479791&searchKeywordTo=3',
+            koreanHeadword: '정장4',
+        },
+    },
+    {
+        day: 40,
+        word: 'contract',
+        meaning: '계약; 계약하다; 줄어들다, 수축하다',
+        englishExplanation: 'an official written agreement',
+        koreanExplanation:
+            '관련되는 사람이나 조직체 사이에서 서로 지켜야 할 의무에 대하여 글이나 말로 정하여 둠. 또는 그런 약속.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contract_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=390929&searchKeywordTo=3',
+            koreanHeadword: '계약',
+        },
+    },
+    {
+        day: 40,
+        word: 'interest',
+        meaning: '흥미, 관심; 흥미를 끌다; 이자, 이율',
+        englishExplanation:
+            'the feeling that you have when you want to know or learn more about a person or thing',
+        koreanExplanation: '흥을 느끼는 재미.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/interest_1',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=508595&searchKeywordTo=3',
+            koreanHeadword: '흥미',
+        },
+    },
+    {
+        day: 40,
+        word: 'contentment',
+        meaning: '만족',
+        englishExplanation: 'a feeling of being happy or satisfied',
+        koreanExplanation: '마음에 흡족함.',
+        explanationSources: {
+            english: 'https://www.oxfordlearnersdictionaries.com/definition/english/contentment',
+            korean: 'https://stdict.korean.go.kr/search/searchView.do?word_no=423113&searchKeywordTo=3',
+            koreanHeadword: '만족1',
         },
     },
 ];
