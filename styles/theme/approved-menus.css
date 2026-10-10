@@ -3017,6 +3017,77 @@ button.equipment-control {
 #setting-modal .settings-reset-game > span {
     word-break: keep-all;
 }
+
+/* 통계는 긴 기록을 카드 안에서 읽고 스크롤할 수 있도록 고정한다. */
+#statistics-modal .card.rpg-modal {
+    max-height: calc(var(--app-height, 100dvh) - 24px);
+    min-height: 0;
+}
+#statistics-modal .modal-body {
+    padding: 8px 10px;
+    overscroll-behavior: contain;
+}
+#statistics-modal #statistics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#statistics-modal .statistics-book-info {
+    grid-column: auto;
+    margin: 0 0 2px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #285644;
+    color: #fff3d2;
+    text-align: center;
+    line-height: 1.3;
+}
+#statistics-modal .statistics-section {
+    margin: 4px 0 0;
+    padding: 0 4px 4px;
+    font-size: 15px;
+    line-height: 1.25;
+}
+#statistics-modal .statistics-section-major {
+    margin-top: 8px;
+}
+#statistics-modal .statistics-item {
+    width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+}
+#statistics-modal .statistics-stat-group {
+    min-width: 0;
+}
+#statistics-modal .statistics-stat-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 6px 14px;
+    line-height: 1.35;
+}
+#statistics-modal .statistics-stat-row .stat-metric:last-child {
+    text-align: right;
+}
+#statistics-modal .statistics-stat-row .statistics-label {
+    margin-left: 0;
+}
+#statistics-modal .statistics-value-wave {
+    font-size: 24px;
+}
+#statistics-modal .modal-footer {
+    padding-top: 8px;
+}
+@media (max-width: 360px) {
+    #statistics-modal .statistics-stat-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+    #statistics-modal .statistics-stat-row .stat-metric:last-child {
+        text-align: left;
+    }
+}
 @container (max-width: 300px) {
     #gold-adjuster-modal :is(.setting-option-row, .settings-gold-editor) {
         padding-inline: 8px;
