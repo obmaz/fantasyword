@@ -1715,7 +1715,7 @@
                 <div class="modal-header">
                     <h2 class="modal-title">
                         <span class="game-emblem emblem-quill" aria-hidden="true"></span
-                        ><span>Day 선택</span>
+                        ><span>문제 출력</span>
                     </h2>
                     <button
                         class="modal-close-x"
@@ -1728,7 +1728,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div style="margin: 20px 0">
+                    <div class="worksheet-field">
+                        <label for="print-day-select">출제 Day</label>
                         <select
                             id="print-day-select"
                             class="modal-btn-main"
@@ -1737,8 +1738,21 @@
                             <option value="">Day 선택...</option>
                         </select>
                     </div>
+                    <div class="worksheet-field">
+                        <label for="print-question-count">최대 문항 수</label>
+                        <select id="print-question-count" class="modal-btn-main">
+                            <option value="10">10문항</option>
+                            <option value="20" selected>20문항</option>
+                            <option value="30">30문항</option>
+                        </select>
+                    </div>
                     <!-- 문제 타입 라디오 버튼 (Print Modal 전용) -->
-                    <div id="print-question-type-group" class="print-radio-group">
+                    <div
+                        id="print-question-type-group"
+                        class="print-radio-group"
+                        role="group"
+                        aria-label="문제 유형"
+                    >
                         <label class="print-radio-label">
                             <input
                                 type="radio"
@@ -1768,28 +1782,19 @@
                             <span class="print-radio-text">주관식</span>
                         </label>
                     </div>
-                    <div style="text-align: center; width: 100%; margin-top: 20px">
-                        <button
-                            class="modal-btn-main"
-                            data-action="secret-print-generate"
-                            style="width: 80%; margin: 0 auto"
-                        >
+                    <p class="worksheet-help">
+                        A4 세로 인쇄용입니다. 단어 수에 따라 문항 수가 줄어들며, 안전한 보기가
+                        부족하면 주관식으로 나옵니다. 생성된 창에서 문제지·정답지를 따로 인쇄할 수
+                        있습니다.
+                    </p>
+                    <div class="worksheet-actions">
+                        <button class="modal-btn-main" data-action="secret-print-generate">
                             <img
                                 class="action-icon"
                                 src="images/theme/parts/calm-print-icon.webp"
                                 alt=""
                                 aria-hidden="true"
                             /><span>인쇄용 HTML 생성</span>
-                        </button>
-                    </div>
-                    <div style="text-align: center; width: 100%; margin-top: 10px">
-                        <button
-                            type="button"
-                            class="image-action-button"
-                            data-action="secret-print-close"
-                            aria-label="나가기"
-                        >
-                            <span>나가기</span>
                         </button>
                     </div>
                 </div>
@@ -1915,6 +1920,7 @@
 
         <!-- 핵심 시스템 모듈 -->
         <script src="scripts/domain/questions.js"></script>
+        <script src="scripts/domain/worksheet-rules.js"></script>
         <script src="data/battle-examples.js"></script>
         <script src="scripts/domain/monster-encounters.js"></script>
         <script src="scripts/domain/battle-rules.js"></script>

@@ -295,7 +295,8 @@ test('인쇄 시 보기가 부족하면 중복 정답 객관식 대신 주관식
     assert.ok(output.includes('&lt;i&gt;뜻&amp;&lt;/i&gt;'));
     assert.ok(!output.includes('undefined'));
     assert.ok(!output.includes('<b>word&</b>'));
-    assert.ok(output.includes('subjective-answer'));
+    assert.ok(output.includes('class="answer-line"'));
+    assert.ok(output.includes('객관식 0 · 주관식 1'));
 });
 
 test('통계 기록의 텍스트를 HTML로 실행하지 않고 그대로 표시한다', () => {

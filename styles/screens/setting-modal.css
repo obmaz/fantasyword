@@ -136,6 +136,46 @@
 }
 
 /* Print Modal 문제 타입 라디오 버튼 그룹 (Choice Chip 스타일) */
+#print-day-select-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.worksheet-field {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+}
+
+#print-day-select-modal .worksheet-field label {
+    color: #203e2e;
+    font-weight: 700;
+    text-align: left;
+}
+
+.worksheet-field select {
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+}
+
+#print-day-select-modal .worksheet-help {
+    color: #203e2e;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.worksheet-actions {
+    width: 100%;
+}
+
+.worksheet-actions .modal-btn-main {
+    width: 100%;
+    margin: 0;
+}
+
 .print-radio-group {
     position: relative;
     z-index: 10;
