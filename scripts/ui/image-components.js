@@ -20,6 +20,10 @@ function itemIconMarkup(item) {
         hint: 'item-potion',
         ultimate: 'item-lightning',
         totalAssaultPause: 'item-hourglass',
+        shadowCompass: 'item-scroll',
+        shadowLantern: 'item-potion',
+        wardingSigil: 'item-shield',
+        pilgrimMedal: 'approved-coin',
     };
     const name = names[item.id] || 'item-scroll';
     return `<img class="item-art item-art-${item.id}" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;

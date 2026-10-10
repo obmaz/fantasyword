@@ -66,6 +66,7 @@
         <link rel="stylesheet" href="styles/theme/weapon-effects.css" />
         <link rel="stylesheet" href="styles/screens/skyfall-mode.css" />
         <link rel="stylesheet" href="styles/screens/hangman-mode.css" />
+        <link rel="stylesheet" href="styles/screens/story-events.css" />
     </head>
 
     <body>
@@ -401,6 +402,14 @@
                         <button id="title-hangman-btn" type="button" aria-label="행맨 연습 시작">
                             <span aria-hidden="true">☠</span> 행맨 <small>HANGMAN</small>
                         </button>
+                        <div class="lobby-test-buttons">
+                            <button id="title-idiom-btn" type="button" class="image-action-button">
+                                사자성어 테스트
+                            </button>
+                            <button id="title-shell-btn" type="button" class="image-action-button">
+                                야바위 테스트
+                            </button>
+                        </div>
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
                                 id="title-story-mode-btn"
@@ -1081,8 +1090,118 @@
                 <div id="story-map-content">
                     <div id="story-map-path" class="story-map-path" aria-label="탐험 지도"></div>
                 </div>
+                <button
+                    type="button"
+                    class="image-action-button story-reset-button"
+                    data-action="story-reset"
+                >
+                    스토리 초기화 · 50골드
+                </button>
             </section>
         </dialog>
+        <dialog
+            id="story-confirm-modal"
+            class="screen-overlay"
+            aria-labelledby="story-confirm-title"
+            style="display: none"
+        >
+            <section class="card story-map-card">
+                <header class="story-map-header">
+                    <h2 id="story-confirm-title">진행 확인</h2>
+                    <button
+                        type="button"
+                        class="btn-gray"
+                        data-action="story-selection-cancel"
+                        aria-label="진행 확인 닫기"
+                    >
+                        ×
+                    </button>
+                </header>
+                <div class="story-popup-body">
+                    <p id="story-confirm-copy"></p>
+                    <div class="story-market-actions">
+                        <button
+                            type="button"
+                            class="image-action-button"
+                            data-action="story-selection-cancel"
+                        >
+                            돌아가기
+                        </button>
+                        <button
+                            id="story-confirm-start"
+                            type="button"
+                            class="image-action-button"
+                            data-action="story-selection-confirm"
+                        >
+                            진행
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </dialog>
+        <dialog
+            id="idiom-test-modal"
+            class="screen-overlay"
+            aria-labelledby="idiom-test-title"
+            style="display: none"
+        >
+            <section class="card story-map-card">
+                <header class="story-map-header">
+                    <h2 id="idiom-test-title">사자성어 테스트</h2>
+                    <button
+                        type="button"
+                        class="btn-gray"
+                        data-action="idiom-test-close"
+                        aria-label="사자성어 테스트 닫기"
+                    >
+                        ×
+                    </button>
+                </header>
+                <div class="story-popup-body">
+                    <label for="idiom-test-level">난이도</label>
+                    <select id="idiom-test-level">
+                        <option value="1">1단계 · 기본</option>
+                        <option value="2">2단계 · 응용</option>
+                        <option value="3">3단계 · 심화</option>
+                        <option value="4">4단계 · 도전</option>
+                    </select>
+                    <button
+                        type="button"
+                        class="image-action-button"
+                        data-action="idiom-test-start"
+                    >
+                        테스트 시작
+                    </button>
+                </div>
+            </section>
+        </dialog>
+        <section id="shell-game" class="shell-game" aria-label="야바위" style="display: none">
+            <div id="shell-header-host"></div>
+            <main class="shell-board">
+                <p id="shell-status" role="status" aria-live="polite"></p>
+                <div
+                    id="shell-die-preview"
+                    class="shell-die-preview"
+                    aria-label="숨길 주사위"
+                ></div>
+                <div id="shell-table" class="shell-table" role="group" aria-label="컵 선택"></div>
+                <div id="shell-double-choice" class="shell-double-choice" hidden>
+                    <div
+                        id="shell-color-options"
+                        class="shell-color-options"
+                        role="group"
+                        aria-label="주사위 색상"
+                    ></div>
+                    <div
+                        id="shell-number-options"
+                        class="shell-number-options"
+                        role="group"
+                        aria-label="주사위 숫자"
+                    ></div>
+                </div>
+                <div id="shell-controls" class="shell-controls"></div>
+            </main>
+        </section>
 
         <dialog
             id="story-mystery-modal"
@@ -1183,12 +1302,10 @@
                     </button>
                 </header>
                 <div class="story-popup-body">
-                    <p>그림자 나침반은 스토리 전투의 제한시간을 3초 늘려 줍니다.</p>
-                    <div class="story-market-item">
-                        <span aria-hidden="true">🧭</span><strong>그림자 나침반</strong
-                        ><span>180 G</span>
-                    </div>
-                    <p class="story-market-risk">구매 성공률 75% · 실패해도 180 G를 잃습니다.</p>
+                    <p class="story-market-risk">
+                        구매 성공률 75% · 실패하면 상품 가격만큼 잃습니다.
+                    </p>
+                    <div id="story-market-products"></div>
                     <p id="story-market-status" role="status"></p>
                     <div class="story-market-actions">
                         <button
@@ -1197,13 +1314,6 @@
                             data-action="story-market-advance"
                         >
                             나가기
-                        </button>
-                        <button
-                            type="button"
-                            class="image-action-button"
-                            data-action="story-market-buy"
-                        >
-                            구매
                         </button>
                     </div>
                 </div>
@@ -1886,6 +1996,7 @@
         <script src="data/game-data-2.js"></script>
         <script src="data/game-data-3.js"></script>
         <script src="data/game-data-4.js"></script>
+        <script src="data/story-idioms.js"></script>
         <!-- 유사 단어 집합 (decoy words set) -->
         <script src="data/decoy-words-set.js"></script>
         <script src="data/items-data.js"></script>
@@ -1909,6 +2020,7 @@
         <script src="scripts/domain/monster-encounters.js"></script>
         <script src="scripts/domain/battle-rules.js"></script>
         <script src="scripts/domain/story-map.js"></script>
+        <script src="scripts/domain/idiom-rules.js"></script>
         <script src="scripts/domain/attack-profiles.js"></script>
         <script src="scripts/domain/equipment-rules.js"></script>
         <script src="scripts/domain/revenge-rules.js"></script>
@@ -1944,6 +2056,8 @@
         <script src="scripts/game/game-engine.js"></script>
         <script src="scripts/game/practice-session.js"></script>
         <script src="scripts/game/skyfall-session.js"></script>
+        <script src="scripts/game/shell-session.js"></script>
+        <script src="scripts/ui/shell-view.js"></script>
         <script src="scripts/ui/skyfall-view.js"></script>
         <script src="scripts/features/hangman.js"></script>
 

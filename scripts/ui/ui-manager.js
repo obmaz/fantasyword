@@ -31,13 +31,17 @@ const ui = {
             title.textContent =
                 mode === 'story'
                     ? '스토리'
-                    : mode === 'boss'
-                      ? '생존 도전'
-                      : mode === 'revenge'
-                        ? '복수 퀘스트'
-                        : '도전';
+                    : mode === 'idiom-test'
+                      ? '사자성어 테스트'
+                      : mode === 'boss'
+                        ? '생존 도전'
+                        : mode === 'revenge'
+                          ? '복수 퀘스트'
+                          : '도전';
         let dayText;
-        if (mode === 'boss') {
+        if (mode === 'idiom-test' || (mode === 'story' && storyJourney.pendingKind === 'idiom')) {
+            dayText = `난이도 ${game.currentQ?.difficulty || game.list[0]?.difficulty || 1}`;
+        } else if (mode === 'boss') {
             dayText = '생존 도전';
         } else if (mode === 'revenge') {
             dayText = '복수 퀘스트';
@@ -137,17 +141,17 @@ const ui = {
                     `연속 ${gear.combo}/3`,
                     `3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`
                 );
-            if (gear.protection)
+            if (gear.protection || gear.shieldMax > 0)
                 append(
-                    'shield_item',
-                    `방패 ${gear.shield}/1`,
-                    '전투당 오답 1회 골드 손실 없이 재도전'
+                    gear.protection ? 'shield_item' : 'wardingSigil',
+                    `재도전 ${gear.shield}/${gear.shieldMax || 1}`,
+                    '남은 횟수만큼 골드 손실 없이 재도전'
                 );
-            if (gear.insight)
+            if (gear.insight || gear.hintMax > 0)
                 append(
-                    'helmet',
-                    `힌트 ${gear.hint}/1`,
-                    '투구 무료 힌트: 보기 제거 또는 일부 철자',
+                    gear.insight ? 'helmet' : 'shadowLantern',
+                    `힌트 ${gear.hint}/${gear.hintMax || 1}`,
+                    '무료 힌트: 보기 제거 또는 일부 철자',
                     game.useEquipmentHint,
                     !gear.hint ||
                         !game.currentQ ||

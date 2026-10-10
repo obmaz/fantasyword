@@ -610,7 +610,13 @@ function createBattleView({
             element('result-review-btn').hidden = wrongWords.length === 0;
             element('res-title').innerText = win || mode === 'boss' ? '전투 완료' : '도전 종료';
             element('res-subtitle').innerText =
-                mode === 'story' ? '스토리' : mode === 'boss' ? '생존 도전' : '도전';
+                mode === 'story'
+                    ? '스토리'
+                    : mode === 'idiom-test'
+                      ? '사자성어 테스트'
+                      : mode === 'boss'
+                        ? '생존 도전'
+                        : '도전';
             const total = rows.find(({ label }) => label === '전체') || rows.at(-1);
             element('res-summary').innerText = total
                 ? `정답 ${total.correct}/${total.total} · ${total.total ? Math.round((total.correct / total.total) * 100) : 0}%`

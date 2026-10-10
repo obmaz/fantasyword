@@ -40,6 +40,9 @@ const ACTION_HANDLERS = {
     'battle-spelling-clear': () => game.clearSpelling(),
     'story-close': () => story.closeIntro(),
     'story-map-close': () => storyJourney.close(),
+    'story-selection-confirm': () => storyJourney.confirmSelection(),
+    'story-selection-cancel': () => storyJourney.cancelSelection(),
+    'story-reset': () => storyJourney.requestReset(),
     'story-treasure-open': () => storyJourney.claimTreasure(),
     'story-mystery-reveal': () => storyJourney.revealMystery(),
     'story-mystery-enter': () => storyJourney.enterMystery(),
@@ -48,6 +51,12 @@ const ACTION_HANDLERS = {
     'story-market-buy': () => storyJourney.buy(),
     'story-market-leave': () => storyJourney.leaveMarket(),
     'story-market-advance': () => storyJourney.advanceMarket(),
+    'idiom-test-start': () => {
+        resetScreenOverlay('idiom-test-modal');
+        cancelPendingGameStart();
+        game.init('idiom-test', 'all');
+    },
+    'idiom-test-close': () => resetScreenOverlay('idiom-test-modal'),
 
     'shop-open': () => shop.open(),
     'shop-close': () => shop.close(),
@@ -106,6 +115,11 @@ window.onload = () => {
             .replaceChildren(createGameplayHeader(options));
     }
     hangman.init();
+    shellGame.init();
+    document.getElementById('title-shell-btn')?.addEventListener('click', () => shellGame.start());
+    document
+        .getElementById('title-idiom-btn')
+        ?.addEventListener('click', () => openScreenOverlay('idiom-test-modal', false));
     document.getElementById('title-hangman-btn')?.addEventListener('click', () => hangman.start());
     document.getElementById('hangman-next-btn')?.addEventListener('click', () => hangman.next());
     // 최초 로드 시 뷰포트 높이를 고정 (모바일 주소창 대응)

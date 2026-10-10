@@ -84,6 +84,7 @@ const battleRules = Object.freeze({
         const encounters = session.mode === 'boss' ? session.encounterHistory : session.list;
         if (encounters?.some((q) => q.questionKind)) {
             const rows = [
+                ['사자성어', ['idiom']],
                 ['뜻 고르기', ['meaning']],
                 ['철자 조립', ['spelling']],
                 ['발음 듣기', ['listening']],

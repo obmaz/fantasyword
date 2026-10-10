@@ -87,6 +87,7 @@
             'practice-mode-game',
             'skyfall-mode-game',
             'hangman-game',
+            'shell-game',
         ]) {
             const screen = document.getElementById(id);
             if (screen) {

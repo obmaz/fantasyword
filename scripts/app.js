@@ -10,6 +10,12 @@ const game = createBattleSession({
     encounters: monsterEncounters,
     quests: revengeQuests,
     equipment: equipmentRules,
+    idioms: idiomRules,
+    getIdiomTestPool: () =>
+        idiomRules.pool(
+            storyIdioms,
+            Number(document.getElementById('idiom-test-level').value) || 1
+        ),
     speech: createPracticeSpeech({
         getSynth: () => window.speechSynthesis,
         createUtterance: (text) =>
@@ -109,4 +115,19 @@ const skyfall = createSkyfallSession({
     },
     now: () => performance.now(),
     notify: showToast,
+});
+
+const shellGame = createShellSession({
+    view: createShellView({
+        document,
+        openScreen: openScreenOverlay,
+        resetScreen: resetScreenOverlay,
+    }),
+    random: () => Math.random(),
+    timers: { setTimeout, clearTimeout },
+    onOpen: () => {
+        cancelPendingGameStart();
+        playMusic('shell');
+    },
+    onExit: () => document.getElementById('background-music').pause(),
 });

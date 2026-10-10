@@ -11,6 +11,8 @@ function createBattleSession({
     speech = null,
     quests = null,
     equipment = null,
+    idioms = null,
+    getIdiomTestPool = () => [],
     getSource,
     getDecoys,
     getWeapons,
@@ -143,7 +145,12 @@ function createBattleSession({
             if (mode !== 'story') journey?.cancelBattleReturn?.();
             game.currentDay = day;
             closeScreenOverlay('battle-mode-story-modal', true);
-            const source = game._getRawData();
+            const source =
+                mode === 'idiom-test'
+                    ? getIdiomTestPool()
+                    : mode === 'story'
+                      ? journey.battlePool?.() || game._getRawData()
+                      : game._getRawData();
             const pool = game._buildPool(day, source);
             const revengeList = mode === 'revenge' ? quests?.ready() || [] : [];
             if (mode === 'revenge' ? !revengeList.length : pool.length < 4) {
@@ -152,7 +159,8 @@ function createBattleSession({
                 return;
             }
             const countValue = game.view.readCount();
-            const storyCount = mode === 'story' ? journey.battleCount?.() : null;
+            const storyCount =
+                mode === 'idiom-test' ? 5 : mode === 'story' ? journey.battleCount?.() : null;
             const count =
                 Number.isInteger(storyCount) && storyCount > 0
                     ? Math.min(pool.length, storyCount)
@@ -168,6 +176,14 @@ function createBattleSession({
             if (mode === 'story' && db.has('shadowCompass')) game.maxTime += 3;
             game.hadRetry = false;
             game.gear = equipment?.load(db.equipped, getWeapons(), db.equippedWeapon) || null;
+            if (mode === 'story' && game.gear) {
+                if (db.has('shadowLantern')) game.gear.hint++;
+                if (db.has('wardingSigil')) game.gear.shield++;
+            }
+            if (game.gear) {
+                game.gear.hintMax = game.gear.hint;
+                game.gear.shieldMax = game.gear.shield;
+            }
             game.stats = { gain: 0, lost: 0 };
             game.idx = 0;
             game.subjectiveCorrect = 0;
@@ -185,12 +201,15 @@ function createBattleSession({
                     ? revengeList
                     : mode === 'boss'
                       ? []
-                      : game._buildBattleList(
-                            pool,
-                            count,
-                            game.battleQuestionType,
-                            mode === 'story' ? journey.battleMonsterId?.() : null
-                        );
+                      : mode === 'idiom-test' ||
+                          (game.battleQuestionType === 'idiom' && mode === 'story')
+                        ? idioms.questions(pool, count, game.shuffle)
+                        : game._buildBattleList(
+                              pool,
+                              count,
+                              game.battleQuestionType,
+                              mode === 'story' ? journey.battleMonsterId?.() : null
+                          );
             game.subjectiveTotal = game.list.filter((q) => q.isBoss).length;
             game.later(() => {
                 openScreenOverlay('battle-mode-game', false);
@@ -214,6 +233,7 @@ function createBattleSession({
             game.nextLevel();
         },
         recordWrong(question) {
+            if (question.questionKind === 'idiom') return;
             quests?.fail(question);
             if (
                 !game.sessionWrongWords.some(
@@ -294,6 +314,12 @@ function createBattleSession({
             );
         },
         renderEncounter(data) {
+            if (data.questionKind === 'idiom') {
+                game.currentAns = data.word;
+                game.options = idioms.options(data, game.list, game.shuffle);
+                game.view.objective(data.meaning, game.options, game.answerOption);
+                return;
+            }
             if (data.questionKind === 'spelling') {
                 game.spellingTiles = encounters.spellingTiles(data.word, game.shuffle);
                 game.spellingChosen = [];
@@ -561,7 +587,7 @@ function createBattleSession({
             game.timer = null;
             game.deadline = null;
             const questionType = timed ? 'objective' : 'subjective';
-            db.addStats(isCorrect, questionType);
+            if (game.currentQ.questionKind !== 'idiom') db.addStats(isCorrect, questionType);
             if (isCorrect && questionType === 'objective') game.sessionCorrectObjective++;
             if (isCorrect && questionType === 'subjective') game.subjectiveCorrect++;
             if (!isCorrect) game.recordWrong(game.currentQ);
@@ -592,9 +618,16 @@ function createBattleSession({
                 });
                 const routeBonus = equipment?.routeBonus(baseGain, game.gear?.route) || 0;
                 const comboBonus = game.currentQ.comboBonus || 0;
-                const gain = baseGain + routeBonus + comboBonus + questBonus;
+                const gain =
+                    game.mode === 'idiom-test'
+                        ? 0
+                        : baseGain + routeBonus + comboBonus + questBonus;
                 if (weapon.multiplier > 1) game.view.goldAttack();
-                if (db.equipped?.gloves === 'goldGlove' && db.durability.goldGlove > 0)
+                if (
+                    game.mode !== 'idiom-test' &&
+                    db.equipped?.gloves === 'goldGlove' &&
+                    db.durability.goldGlove > 0
+                )
                     db.useItem('goldGlove');
                 game.stats.gain += gain;
                 db.addGold(gain);
@@ -605,7 +638,7 @@ function createBattleSession({
                     ...(questBonus ? [`퀘스트 +${questBonus}`] : []),
                 ];
                 game.view.floatText(
-                    `+${gain} G`,
+                    game.mode === 'idiom-test' ? '정답!' : `+${gain} G`,
                     'gold',
                     comboBonus || routeBonus || questBonus ? rewardDetails.join(' · ') : ''
                 );
@@ -626,10 +659,11 @@ function createBattleSession({
                 }
                 game.view.hit();
                 vibrate(200);
-                const penalty = battleRules.penalty(db.gold, db.has('shield'));
+                const penalty =
+                    game.mode === 'idiom-test' ? 0 : battleRules.penalty(db.gold, db.has('shield'));
                 game.stats.lost += penalty;
                 db.subGold(penalty);
-                game.view.floatText(`-${penalty} G`, 'red');
+                game.view.floatText(game.mode === 'idiom-test' ? '오답' : `-${penalty} G`, 'red');
                 game.later(() => {
                     game.idx++;
                     game.nextLevel();

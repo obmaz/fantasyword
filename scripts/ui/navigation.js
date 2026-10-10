@@ -37,6 +37,15 @@ const navigation = (() => {
             storyJourney.close();
             return;
         }
+        if (visible('story-confirm-modal')) {
+            storyJourney.cancelSelection();
+            return;
+        }
+        if (visible('idiom-test-modal')) {
+            resetScreenOverlay('idiom-test-modal');
+            navigation.track('title-screen');
+            return;
+        }
         if (visible('story-market-modal')) {
             storyJourney.leaveMarket();
             return;
@@ -73,7 +82,9 @@ const navigation = (() => {
             story.closeIntro();
             return;
         }
-        if (skyfall.active || visible('skyfall-mode-game')) skyfall.exit();
+        if (shellGame.active || visible('shell-game')) shellGame.exit();
+        else if (hangman.active || visible('hangman-game')) hangman.exit();
+        else if (skyfall.active || visible('skyfall-mode-game')) skyfall.exit();
         else if (game.active || visible('battle-mode-game')) game.exit();
         else if (visible('practice-mode-game')) practiceMemorization.exit();
         else {
