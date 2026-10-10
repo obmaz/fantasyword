@@ -83,7 +83,7 @@ test('틀린 단어 하나도 복수 전투로 실행하고 원래 몬스터·�
     }
     game.checkBossAnswer();
     game.checkBossAnswer();
-    assert.equal(r.evaluate('db.gold'), 16);
+    assert.equal(r.evaluate('db.gold'), 116);
     assert.equal(r.evaluate('db.getBookStats().solved'), 1);
     assert.equal(quests.ready().length, 0);
     const persisted = JSON.parse(r.store.get('v7_revenge_quests'));

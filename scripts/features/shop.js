@@ -38,6 +38,7 @@ const shop = {
 
         // 경제형 무기
         let html =
+            `<p class="shop-capacity-summary" role="status">보관함 ${inventory.getStoredCount()} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - inventory.getStoredCount())}칸</p>` +
             '<p class="shop-economy-guide">10문제 전투 약 50–75 G<br><small>정답률 80% · 문제당 4초 · 기본 장비 기준</small></p>' +
             '<div class="shop-section">마법 무기 · 골드 보너스</div>';
         weapons
@@ -95,7 +96,11 @@ const shop = {
         const name = isSkill
             ? `${itemDisplayName(item)} (현재 ${db.skills[item.id]}개)`
             : itemDisplayName(item);
-        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(item.desc)}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
+        const description =
+            type === 'backpack'
+                ? `최대 ${db.inventoryCapacity}칸 → ${db.inventoryCapacity + 1}칸 · 구매할 때마다 +1칸`
+                : item.desc;
+        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
     },
 
     /**
@@ -155,9 +160,15 @@ const shop = {
             }
         }
 
+        const previousCapacity = db.inventoryCapacity;
         if (!db.commitChanges(changes)) return;
         shop.render();
         inventory.render(); // 인벤토리 화면도 업데이트
+        if (type === 'backpack')
+            showToast(
+                `보관함이 ${previousCapacity}칸에서 ${db.inventoryCapacity}칸으로 늘었습니다.`,
+                'success'
+            );
     },
 
     /**

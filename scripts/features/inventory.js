@@ -8,7 +8,7 @@ const inventory = {
     slots: {
         gloves: {
             label: '장갑',
-            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 30회',
+            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 4회',
             placeholder: 'goldGlove',
         },
         head: { label: '머리', accepts: '통찰의 헬름 · 무료 힌트 1회', placeholder: 'helmet' },
@@ -36,7 +36,7 @@ const inventory = {
     /** 구매/장착/해제/표시에서 같은 보관함 용량 규칙을 사용한다. */
     getStoredCount: (state = db) =>
         state.inventory.length +
-        db.owned.filter(
+        (state.owned || db.owned).filter(
             (id) =>
                 id !== 'basic' &&
                 !Object.values(state.equipped).includes(id) &&
@@ -92,6 +92,9 @@ const inventory = {
         // 인벤토리 용량 표시
         document.getElementById('inv-cap').innerText = inventory.getStoredCount();
         document.getElementById('inv-max-cap').innerText = db.inventoryCapacity;
+        const used = inventory.getStoredCount();
+        document.getElementById('inventory-capacity-summary').textContent =
+            `보관함 ${used} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - used)}칸`;
         const weapon = weapons.find((w) => w.id === db.equippedWeapon);
         const gloveMultiplier =
             db.equipped.gloves === 'goldGlove' && db.durability.goldGlove > 0 ? 1.5 : 1;

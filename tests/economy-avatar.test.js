@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
+const { assembleAnswer, assembleWrongAnswer } = require('./helpers/assemble-answer');
 
 function economyRuntime(saved = {}) {
     return browserRuntime({
@@ -36,7 +37,8 @@ test('실제 10문제 전투: 4초 풀이·정답률 80%에서 선택 50 G, 철�
             if (monster === 'slime') {
                 game.answerOption(game.options.findIndex((q) => q.correct === correct));
             } else {
-                r.getElement('boss-input').value = correct ? game.currentQ.word : 'wrong';
+                if (correct) assembleAnswer(game);
+                else assembleWrongAnswer(game);
                 game.checkBossAnswer();
             }
             r.advance(correct ? 800 : 2500);
@@ -82,7 +84,7 @@ test('자동 해결 스크롤은 최고 배율·보물 길·콤보까지 받아�
     }
 });
 
-test('기존 골드·장비 ID·남은 횟수는 이름과 가격 변경 뒤에도 보존된다', () => {
+test('기존 골드·장비 ID는 보존하고 건틀릿의 남은 횟수는 4회 상한을 적용한다', () => {
     const r = economyRuntime({
         v7_gold: '123456',
         v7_owned: '["basic","midasSword"]',
@@ -92,7 +94,7 @@ test('기존 골드·장비 ID·남은 횟수는 이름과 가격 변경 뒤에�
     });
     assert.equal(r.evaluate('db.gold'), 123456);
     assert.equal(r.evaluate('db.equippedWeapon'), 'midasSword');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 7);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
     assert.match(r.evaluate('weapons.find(w => w.id === "midasSword").name'), /롱소드/);
 });
 

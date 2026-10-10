@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
+const { assembleAnswer, assembleWrongAnswer } = require('./helpers/assemble-answer');
 const POOL = [
     { day: 1, word: 'apple', meaning: '사과' },
     { day: 1, word: 'banana', meaning: '바나나' },
@@ -181,7 +182,7 @@ test('시간 제한이 없는 문제도 풀이가 길어지면 기본 보상이 
     const r = runtime();
     r.start('dragon');
     r.advance(15000);
-    r.getElement('boss-input').value = 'apple';
+    assembleAnswer(r.game);
     r.game.checkBossAnswer();
     assert.equal(r.game.stats.gain, 7);
     assert.equal(r.evaluate('db.gold'), 1007);
@@ -231,13 +232,13 @@ test('보물 길은 전투 골드만 10% 늘리고 고정 복수 보상에는 �
 test('드래곤 오답도 방패로 한 번 재도전하고 실제 재입력으로 해결할 수 있다', () => {
     const r = runtime({ 'hand-2': 'shield_item' });
     r.start('dragon');
-    r.getElement('boss-input').value = 'wrong';
+    assembleWrongAnswer(r.game);
     r.game.checkBossAnswer();
     assert.equal(r.game.idx, 0);
-    assert.equal(r.getElement('boss-input').value, '');
+    assert.equal(r.game.spellingChosen.length, 0);
     r.advance(800);
-    assert.equal(r.getElement('boss-input').disabled, false);
-    r.getElement('boss-input').value = 'apple';
+    assert.equal(r.game.isProcessing, false);
+    assembleAnswer(r.game);
     r.game.checkBossAnswer();
     assert.equal(r.game.subjectiveCorrect, 1);
     assert.equal(r.evaluate('db.getBookStats().solved'), 1);

@@ -110,7 +110,7 @@ const DB_STORAGE_FIELDS = Object.freeze({
 
 const db = {
     // 골드
-    gold: nonnegativeInteger(gameStorage.get('v7_gold')),
+    gold: nonnegativeInteger(gameStorage.get('v7_gold', '100'), 100),
 
     // 보유 아이템 ID 목록
     owned: storedIds('v7_owned', ['basic']),
@@ -442,7 +442,7 @@ const previousEquipment = JSON.stringify(db.equipped);
 // 이전 자동 활성 유물은 장갑 슬롯으로 옮겨 효과와 남은 사용 횟수를 보존한다.
 if (db.owned.includes('goldGlove')) {
     db.owned = db.owned.filter((id) => id !== 'goldGlove');
-    db.durability.goldGlove ??= 30;
+    db.durability.goldGlove ??= 4;
     if (!db.equipped.gloves) {
         db.equipped.gloves = 'goldGlove';
         db.inventory = db.inventory.filter((id) => id !== 'goldGlove');
@@ -454,6 +454,11 @@ if (db.owned.includes('goldGlove')) {
     db._writers.dura();
 }
 const previousPrimaryWeapon = db.equippedWeapon;
+// 건틀릿의 현행 수명은 최대 4회다. 이미 사용한 더 적은 횟수는 보존한다.
+if (db.durability.goldGlove > 4) {
+    db.durability.goldGlove = 4;
+    db._writers.dura();
+}
 function restoreWeaponToHand(id) {
     const weapon = weapons.find((entry) => entry.id === id && db.has(id));
     if (!weapon || Object.values(db.equipped).includes(id)) return;

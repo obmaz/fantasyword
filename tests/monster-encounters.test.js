@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
+const { assembleWrongAnswer } = require('./helpers/assemble-answer');
 const { loadScripts } = require('./helpers/load-module');
 
 const POOL = [
@@ -330,7 +331,7 @@ test('보스 빈칸은 검토된 예문에서 단어 전체만 가리고 예문�
     assert.equal(r.game.deadline, null);
     assert.equal(r.getElement('q-text').innerText, 'I ate an _____ after lunch.');
     assert.equal(r.encounters.checkAnswer('pple', 'apple'), false);
-    r.getElement('boss-input').value = '  APPLE  ';
+    r.assemble('apple');
     r.game.checkBossAnswer();
     assert.equal(r.game.subjectiveCorrect, 1);
 });
@@ -357,7 +358,7 @@ test('몬스터별 전체 전투는 실제 채점 방식과 유형별 결과 및
             r.assemble(r.game.currentQ.word);
             r.game.checkBossAnswer();
         } else if (['cloze', 'riddle'].includes(kind)) {
-            r.getElement('boss-input').value = r.game.currentQ.word;
+            r.assemble(r.game.currentQ.word);
             r.game.checkBossAnswer();
         } else {
             if (kind === 'listening') {
@@ -389,7 +390,7 @@ test('전체 단어 도전은 드래곤 문제로 출제하고 마지막 오답�
     r.game.init('boss', 'boss');
     r.advance(400);
     assert.equal(r.game.currentQ.monsterId, 'dragon');
-    r.getElement('boss-input').value = 'wrong';
+    assembleWrongAnswer(r.game);
     r.game.checkBossAnswer();
     const rows = r.evaluate('battleRules').resultRows(r.game, false);
     assert.equal(rows[0].total, 1);

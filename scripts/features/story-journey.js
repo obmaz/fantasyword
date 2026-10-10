@@ -301,8 +301,14 @@ const storyJourney = {
                 storyJourney.pendingKind === 'assault';
             skyfall.start('all', {
                 count: node.count,
+                maxMistakes: 2,
                 onFinish: (won, result = { mistakes: 0 }) => {
-                    if (won && book === db.getBookKey() && isCurrent())
+                    if (
+                        won &&
+                        storyMapRules.crown(result.mistakes) &&
+                        book === db.getBookKey() &&
+                        isCurrent()
+                    )
                         storyJourney.completeBattle(result);
                 },
                 onExit: () => {
@@ -317,12 +323,9 @@ const storyJourney = {
         storyJourney.returnAfterResult = true;
         game.battleQuestionType = node.type;
         story.startIntro('story', 'all');
-        const detail = node.minimumCorrectShare
-            ? ` · ${Math.ceil(node.count * node.minimumCorrectShare)}문제 이상 정답이면 통과`
-            : '';
         document.getElementById('battle-mode-day-info').textContent = node.label;
         document.getElementById('battle-mode-text').textContent =
-            `${node.label} · 단어장 전체에서 ${node.count}문제${detail}`;
+            `${node.label} · 단어장 전체에서 ${node.count}문제 · 오답 2개까지 왕관 획득 시 통과`;
     },
     isPending() {
         return (
@@ -335,9 +338,8 @@ const storyJourney = {
             ? storyMapRules.encounters[storyJourney.pendingKind]?.count
             : null;
     },
-    canComplete(correct, total) {
-        const share = storyMapRules.encounters[storyJourney.pendingKind]?.minimumCorrectShare || 0;
-        return !share || correct >= Math.ceil(total * share);
+    canComplete(correct, total, mistakes = total - correct) {
+        return total > 0 && !!storyMapRules.crown(mistakes);
     },
     treasureGold(row) {
         return 50 + Math.floor(row / 3) * 10;

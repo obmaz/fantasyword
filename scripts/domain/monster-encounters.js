@@ -9,6 +9,9 @@ const monsterEncounters = Object.freeze({
     normalize(value) {
         return String(value).trim().toLowerCase().replace(/\s+/g, ' ');
     },
+    usesSpelling(kind) {
+        return ['spelling', 'cloze', 'riddle'].includes(kind);
+    },
     cloze(data) {
         const sentence =
             data.exampleSentence || battleExamples[monsterEncounters.normalize(data.word)];

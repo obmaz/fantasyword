@@ -175,6 +175,28 @@ test('스토리 총공세는 8문제로 줄이고 승리·복귀 콜백을 한 �
     assert.equal(exits, 1);
 });
 
+test('스토리 총공세는 모든 단어 처리 후 오답 0·1·2회에만 왕관 기준으로 승리한다', () => {
+    for (const mistakes of [0, 1, 2, 3]) {
+        const source = Array.from({ length: 8 }, (_, i) => ({
+            word: `word${i}`,
+            meaning: `뜻${i}`,
+        }));
+        const r = runtime({ source });
+        const finished = [];
+        r.session.start('all', { count: 8, maxMistakes: 2, onFinish: (won) => finished.push(won) });
+        for (let i = 0; i < 8; i++) {
+            r.answer(i >= mistakes);
+            if (i < 7) r.advance(2500);
+        }
+        assert.equal(r.results[0].won, mistakes <= 2);
+        assert.deepEqual(finished, [mistakes <= 2]);
+    }
+    const timeout = runtime();
+    timeout.session.start('all', { maxMistakes: 2 });
+    timeout.advance(61000);
+    assert.equal(timeout.results[0].won, false);
+});
+
 test('프레임이 멈춘 61초도 실제 제한 시간에 포함하고 결과를 한 번만 연다', () => {
     const r = runtime();
     r.session.start(1);

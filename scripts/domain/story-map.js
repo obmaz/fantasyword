@@ -25,8 +25,8 @@ const storyMapRules = Object.freeze({
         market: { label: '암시장' },
         treasure: { label: '상자' },
         assault: { label: '총공세', count: 8 },
-        miniboss: { label: '미니보스', type: 'dragon', count: 5, minimumCorrectShare: 0.6 },
-        boss: { label: '보스', type: 'dragon', count: 8, minimumCorrectShare: 0.75 },
+        miniboss: { label: '미니보스', type: 'dragon', count: 5 },
+        boss: { label: '보스', type: 'dragon', count: 8 },
         mystery: { label: '?' },
     },
     position(index, count) {

@@ -6,6 +6,34 @@
  */
 
 const settingsManager = {
+    adminUnlocked: false,
+    musicTogglePairs: 0,
+    awaitingMusicOn: false,
+    musicToggleTimer: null,
+    hideAdmin: () => {
+        clearTimeout(settingsManager.musicToggleTimer);
+        settingsManager.musicTogglePairs = 0;
+        settingsManager.awaitingMusicOn = false;
+        settingsManager.adminUnlocked = false;
+        for (const id of ['settings-admin-gold', 'settings-admin-stats'])
+            document.getElementById(id).hidden = true;
+    },
+    recordMusicToggle: (enabled) => {
+        clearTimeout(settingsManager.musicToggleTimer);
+        if (settingsManager.adminUnlocked) return;
+        if (!enabled) settingsManager.awaitingMusicOn = true;
+        else if (settingsManager.awaitingMusicOn) {
+            settingsManager.musicTogglePairs += 1;
+            settingsManager.awaitingMusicOn = false;
+            if (settingsManager.musicTogglePairs === 3) {
+                settingsManager.adminUnlocked = true;
+                for (const id of ['settings-admin-gold', 'settings-admin-stats'])
+                    document.getElementById(id).hidden = false;
+                return;
+            }
+        } else settingsManager.musicTogglePairs = 0;
+        settingsManager.musicToggleTimer = setTimeout(settingsManager.hideAdmin, 5000);
+    },
     init: () => {
         // 1. 설정 데이터 검증 및 초기화
         // 참고: 음악 트랙 잠금(unlockedMusicTracks / musicUnlockThresholds)은 제거되었습니다.
@@ -23,6 +51,7 @@ const settingsManager = {
         if (musicCheck) {
             musicCheck.checked = db.settings.musicPlay !== false;
             musicCheck.addEventListener('change', () => {
+                settingsManager.recordMusicToggle(musicCheck.checked);
                 db.settings.musicPlay = musicCheck.checked;
                 db.save('settings');
                 // 오디오 매니저가 있다면 상태 업데이트가 필요할 수 있음
@@ -39,6 +68,7 @@ const settingsManager = {
         if (wordCheck) {
             wordCheck.checked = db.settings.wordRead !== false;
             wordCheck.addEventListener('change', () => {
+                if (!settingsManager.adminUnlocked) settingsManager.hideAdmin();
                 db.settings.wordRead = wordCheck.checked;
                 db.save('settings');
                 if (!wordCheck.checked) practiceMemorization.stopSpeech();
@@ -66,6 +96,7 @@ const settingsManager = {
     },
 
     open: () => {
+        settingsManager.hideAdmin();
         secret.cancelTimers();
         secret.entered = '';
         secret.pendingAction = null;
@@ -80,6 +111,7 @@ const settingsManager = {
         document.getElementById('settings-current-gold').innerText = formatMenuNumber(db.gold);
     },
     close: () => {
+        settingsManager.hideAdmin();
         secret.cancelTimers();
         secret.entered = '';
         secret.pendingAction = null;
@@ -89,7 +121,7 @@ const settingsManager = {
     },
     resetGame: async () => {
         const confirmed = await showConfirm(
-            '골드, 장비, 스토리 진행, 외운 단어, 복수 퀘스트, 통계와 설정을 모두 삭제하고 처음부터 시작합니다. 되돌릴 수 없습니다.',
+            '골드, 장비, 스토리 진행, 외운 단어, 복수 퀘스트, 통계와 설정을 모두 삭제하고 기본 100골드로 처음부터 시작합니다. 되돌릴 수 없습니다.',
             { okText: '모두 삭제', cancelText: '돌아가기' }
         );
         if (!confirmed) return;

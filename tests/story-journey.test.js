@@ -262,7 +262,11 @@ test('스토리 클리어는 실제 오답 수를 저장하고 0·1·2개에 금
             r.evaluate(`game.handleAnswer(${index >= mistakes}, null)`);
             r.advance(index < mistakes ? 2500 : 800);
         }
-        assert.equal(journey.stage, 1);
+        assert.equal(journey.stage, crown ? 1 : 0);
+        if (!crown) {
+            assert.equal(journey.events['0:0'], undefined);
+            continue;
+        }
         assert.equal(journey.events['0:0'].cleared, true);
         assert.equal(journey.events['0:0'].mistakes, mistakes);
         assert.equal(r.evaluate(`storyMapRules.crown(${mistakes})`), crown);

@@ -342,7 +342,7 @@ function createBattleSession({
             if (
                 !game.active ||
                 game.isProcessing ||
-                game.currentQ?.questionKind !== 'spelling' ||
+                !encounters?.usesSpelling(game.currentQ?.questionKind) ||
                 !Number.isInteger(index) ||
                 index < 0 ||
                 index >= game.spellingTiles.length ||
@@ -355,13 +355,21 @@ function createBattleSession({
             game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
         },
         removeSpellingLetter() {
-            if (!game.active || game.isProcessing || game.currentQ?.questionKind !== 'spelling')
+            if (
+                !game.active ||
+                game.isProcessing ||
+                !encounters?.usesSpelling(game.currentQ?.questionKind)
+            )
                 return;
             game.spellingChosen.pop();
             game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
         },
         clearSpelling() {
-            if (!game.active || game.isProcessing || game.currentQ?.questionKind !== 'spelling')
+            if (
+                !game.active ||
+                game.isProcessing ||
+                !encounters?.usesSpelling(game.currentQ?.questionKind)
+            )
                 return;
             game.spellingChosen = [];
             game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
@@ -459,7 +467,7 @@ function createBattleSession({
         checkBossAnswer() {
             if (!game.active || !game.currentQ || game.isProcessing || !game.currentQ.isBoss)
                 return;
-            const assembling = game.currentQ.questionKind === 'spelling';
+            const assembling = encounters?.usesSpelling(game.currentQ.questionKind);
             if (
                 assembling &&
                 game.spellingChosen.length !==
@@ -515,7 +523,7 @@ function createBattleSession({
                 )
                     game.options[selectedIndex].disabled = true;
                 game.spellingChosen = [];
-                if (game.currentQ.questionKind === 'spelling')
+                if (encounters?.usesSpelling(game.currentQ.questionKind))
                     game.view.spellingProgress(game.spellingTiles, []);
                 game.view.shieldBlock(selectedIndex);
                 game.view.floatText('방패 방어! 다시 도전', 'gold');
@@ -724,7 +732,8 @@ function createBattleSession({
                 win =
                     journey.canComplete?.(
                         game.subjectiveCorrect + game.sessionCorrectObjective,
-                        game.list.length
+                        game.list.length,
+                        game.sessionMistakes
                     ) ?? win;
             if (game.mode === 'story' && win)
                 journey.completeBattle({ mistakes: game.sessionMistakes });

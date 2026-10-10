@@ -1790,6 +1790,26 @@ button .action-icon {
     font-size: 14px;
 }
 
+[data-admin][hidden] {
+    display: none !important;
+}
+.settings-actions:has([data-admin][hidden]) {
+    grid-template-columns: 1fr;
+}
+.inventory-capacity-summary,
+.shop-capacity-summary {
+    margin: 0 0 12px;
+    padding: 10px 14px;
+    border: 1px solid #dcc17b;
+    border-radius: 8px;
+    background: #183e32;
+    color: #fff1cd;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    flex: 0 0 auto;
+}
 /* Gameplay controls share one compact header. The scene remains visible behind it. */
 :is(#battle-mode-game, #practice-mode-game, #hangman-game) .gameplay-header {
     position: relative;

@@ -148,7 +148,7 @@ window.relicsData = [
         id: 'backpack',
         name: '🎒 모험가의 배낭',
         cost: 120,
-        desc: '인벤토리 용량 +1',
+        desc: '보관함 최대 용량 +1칸 · 여러 번 구매 가능',
         type: 'backpack',
     },
     {
@@ -174,9 +174,9 @@ window.itemsData = [
         id: 'goldGlove',
         name: '🥊 미다스의 건틀릿',
         cost: 60,
-        desc: '장갑 장착: 정답 골드 x1.5배 · 30회 사용 후 소모',
+        desc: '장갑 장착: 정답 골드 x1.5배 · 정답 4회 후 소모',
         slot: 'gloves',
-        durability: 30,
+        durability: 4,
     },
     {
         id: 'helmet',

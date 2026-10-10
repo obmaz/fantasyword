@@ -558,6 +558,11 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                <p
+                    id="inventory-capacity-summary"
+                    class="inventory-capacity-summary"
+                    role="status"
+                ></p>
                 <div class="inv-container">
                     <div class="inv-player">
                         <div class="inventory-paperdoll">
@@ -687,7 +692,7 @@
                                 </div>
                                 <div>
                                     <dt>장갑</dt>
-                                    <dd>미다스의 건틀릿 · 정답 골드 x1.5 · 30회 후 소모</dd>
+                                    <dd>미다스의 건틀릿 · 정답 골드 x1.5 · 4회 후 소모</dd>
                                 </div>
                             </dl>
                             <p>
@@ -1514,7 +1519,12 @@
                             /><span>단어 바로 읽기</span>
                         </label>
                     </div>
-                    <section class="settings-gold-editor">
+                    <section
+                        id="settings-admin-gold"
+                        class="settings-gold-editor"
+                        data-admin
+                        hidden
+                    >
                         <h3>
                             <img
                                 class="setting-icon"
@@ -1577,6 +1587,9 @@
                         <button
                             class="modal-btn-main btn-danger"
                             data-action="secret-reset-statistics"
+                            id="settings-admin-stats"
+                            data-admin
+                            hidden
                         >
                             <img
                                 class="action-icon"

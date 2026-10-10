@@ -17,25 +17,25 @@ test('황금장갑 구매·장착·해제는 전용 슬롯과 보관함에 한 �
     r.evaluate('shop.buy("goldGlove", "item"); inventory.equip("goldGlove", "item")');
     assert.equal(r.evaluate('db.gold'), 1940);
     assert.equal(r.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 30);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
     assert.equal(r.evaluate('db.inventory.includes("goldGlove")'), false);
     r.evaluate('inventory.unequip("gloves")');
     assert.equal(r.evaluate('db.equipped.gloves'), undefined);
     assert.equal(r.evaluate('db.inventory.filter(id => id === "goldGlove").length'), 1);
     const restored = equipmentRuntime(Object.fromEntries(r.store));
     assert.equal(restored.evaluate('db.inventory.includes("goldGlove")'), true);
-    assert.equal(restored.evaluate('db.durability.goldGlove'), 30);
+    assert.equal(restored.evaluate('db.durability.goldGlove'), 4);
 });
 
-test('이전 황금장갑 유물은 남은 횟수를 보존해 장갑 슬롯으로 한 번만 이전된다', () => {
+test('이전 황금장갑 유물은 현행 4회 상한으로 장갑 슬롯에 한 번만 이전된다', () => {
     const r = equipmentRuntime({ v7_owned: '["basic","goldGlove"]', v7_dura: '{"goldGlove":7}' });
     assert.equal(r.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(r.evaluate('db.durability.goldGlove'), 7);
+    assert.equal(r.evaluate('db.durability.goldGlove'), 4);
     assert.equal(r.evaluate('db.owned.includes("goldGlove")'), false);
     assert.equal(r.evaluate('inventory.getStoredCount()'), 0);
     const restored = equipmentRuntime(Object.fromEntries(r.store));
     assert.equal(restored.evaluate('db.equipped.gloves'), 'goldGlove');
-    assert.equal(restored.evaluate('db.durability.goldGlove'), 7);
+    assert.equal(restored.evaluate('db.durability.goldGlove'), 4);
     assert.equal(restored.evaluate('db.inventory.includes("goldGlove")'), false);
 });
 

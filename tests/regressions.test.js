@@ -39,8 +39,8 @@ test('저장소 접근 거부/용량 초과 중에도 게임 진행과 UI 업데
             },
         }
     );
-    assert.equal(evaluate('db.gold'), 0);
-    assert.equal(evaluate('db.addGold(40)'), 40);
+    assert.equal(evaluate('db.gold'), 100);
+    assert.equal(evaluate('db.addGold(40)'), 140);
     assert.equal(evaluate('gameStorage.warned'), true);
     assert.equal(store.size, 0);
     evaluate('db.addStats(true, "objective")');

@@ -223,10 +223,13 @@ function createSkyfallSession({
     }
     function finish(won) {
         if (!active) return;
+        const mistakes = MAX_LIVES - lives;
+        if (Number.isInteger(sessionOptions?.maxMistakes))
+            won = resolved >= pool.length && mistakes <= sessionOptions.maxMistakes;
         stop();
         pauseMusic();
         view.result({ won, score, target: pool.length, earned });
-        sessionOptions?.onFinish?.(won, { mistakes: MAX_LIVES - lives });
+        sessionOptions?.onFinish?.(won, { mistakes });
     }
     function useItem() {
         if (!canContinue() || itemUsed) return false;
