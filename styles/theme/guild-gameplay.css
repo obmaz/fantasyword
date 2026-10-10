@@ -325,7 +325,7 @@
     min-width: 0;
     min-height: 0;
 }
-.battle-arena .char-wrapper::before {
+.battle-arena .char-wrapper:not(.equipment-avatar)::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -333,26 +333,17 @@
     filter: drop-shadow(0 8px 3px #123b3d55);
     pointer-events: none;
 }
-#hero-wrapper::before {
-    background-position: 0 0;
-}
 .battle-arena .char-wrapper:has(img[src*='monster_2'])::before {
     background-position: 0 100%;
 }
 .battle-arena .char-wrapper:has(img[src*='monster_3'])::before {
     background-position: 100% 100%;
 }
-.battle-arena .char-img {
+.battle-arena .char-wrapper:not(.equipment-avatar) .char-img {
     opacity: 0;
-}
-#hero-wrapper.hero-active::before {
-    animation: hero-atk 0.5s ease;
 }
 .battle-arena .char-wrapper:has(.mob-attack-anim)::before {
     animation: mob-atk 0.4s ease;
-}
-#hero-wrapper:has(.hero-hit-anim)::before {
-    animation: hero-hit 0.4s ease;
 }
 .title-toolbar {
     display: grid;

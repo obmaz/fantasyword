@@ -65,12 +65,15 @@ function renderEquipmentAvatar(root, { equipped, durability, weapons, items, fal
                 const secondary = part === 'secondary';
                 const shield = weapon?.id === 'shield_item';
                 const size = shield ? pose.size : pose.size * (secondary ? 0.67 : 1);
-                const handX = secondary ? 0.87 : 0.405;
-                const handY = secondary ? 0.57 : 0.6;
+                // 무기 없는 몸 그림의 주먹 중심. 손잡이와 손 마스크가 같은 좌표를 쓴다.
+                const handX = secondary ? 0.885 : 0.41;
+                const handY = secondary ? 0.585 : 0.62;
                 for (const [name, value] of Object.entries({
                     size,
                     left: handX - pose.gripX * size,
                     top: handY - pose.gripY * size,
+                    'hand-x': handX,
+                    'hand-y': handY,
                     'grip-x': pose.gripX,
                     'grip-y': pose.gripY,
                 }))

@@ -194,8 +194,8 @@ test('무기별 손잡이는 회전 중심에서도 양손에 고정되고 해�
     for (const weapon of r.evaluate('weapons')) {
         render({ 'hand-1': weapon.id, 'hand-2': weapon.id, head: 'helmet', gloves: 'goldGlove' });
         for (const [part, handX, handY] of [
-            ['weapon', 0.405, 0.6],
-            ['secondary', 0.87, 0.57],
+            ['weapon', 0.41, 0.62],
+            ['secondary', 0.885, 0.585],
         ]) {
             const layer = layers[part][0];
             const size = percentage(layer, 'size');
@@ -209,6 +209,8 @@ test('무기별 손잡이는 회전 중심에서도 양손에 고정되고 해�
             );
             assert.equal(layer.hidden, false);
             assert.equal(layer.dataset.weapon, weapon.id);
+            assert.equal(percentage(layer, 'hand-x'), handX);
+            assert.equal(percentage(layer, 'hand-y'), handY);
         }
         assert.equal(root.dataset.helmet, 'true');
         assert.equal(layers.helmet[0].hidden, false);
@@ -224,7 +226,7 @@ test('무기별 손잡이는 회전 중심에서도 양손에 고정되고 해�
 test('오른손 무기 갱신은 HTML의 캐릭터 이미지 버전 주소를 덮어쓰지 않는다', () => {
     const r = economyRuntime();
     const hero = r.getElement('hero-img');
-    const versionedSource = 'images/theme/parts/quest-hero.webp?v=current-build';
+    const versionedSource = 'images/theme/parts/quest-hero-unarmed.webp?v=current-build';
     hero.src = versionedSource;
     r.evaluate('db.equipped = {"hand-1":"fire"}; db.equippedWeapon = "fire"; ui.updateVisuals()');
     assert.equal(hero.src, versionedSource);
@@ -232,6 +234,38 @@ test('오른손 무기 갱신은 HTML의 캐릭터 이미지 버전 주소를 �
         'db.equipped["hand-1"] = "midasSword"; db.equippedWeapon = "midasSword"; ui.updateVisuals()'
     );
     assert.equal(hero.src, versionedSource);
+});
+
+test('오른손을 교체·복원하면 두 아바타에 새 무기만 남고 해제 때만 기본 검이 돌아온다', () => {
+    const saved = {
+        v7_owned: '["basic","fire","ice","midasSword"]',
+        v7_equipped: '{"hand-1":"basic"}',
+    };
+    const attachAvatars = (r) =>
+        ['hero-wrapper', 'inventory-avatar'].map((id) => {
+            const root = r.getElement(id);
+            const weapon = r.getElement(`${id}-test-weapon`);
+            root.querySelectorAll = (selector) =>
+                selector === '[data-avatar-part="weapon"]' ? [weapon] : [];
+            return weapon;
+        });
+    const r = economyRuntime(saved);
+    const layers = attachAvatars(r);
+    for (const id of ['fire', 'ice', 'midasSword']) {
+        r.evaluate(`inventory.equip('${id}', 'weapon', 'hand-1')`);
+        for (const layer of layers) {
+            assert.equal(layer.dataset.weapon, id);
+            assert.equal((layer.innerHTML.match(/<img /g) || []).length, 1);
+            assert.ok(layer.innerHTML.includes(`item-art-${id}`));
+            assert.ok(!layer.innerHTML.includes('item-art-basic'));
+        }
+    }
+    const restored = economyRuntime(Object.fromEntries(r.store));
+    const restoredLayers = attachAvatars(restored);
+    restored.evaluate('ui.updateVisuals()');
+    assert.ok(restoredLayers.every((layer) => layer.dataset.weapon === 'midasSword'));
+    restored.evaluate('inventory.unequip("hand-1")');
+    assert.ok(restoredLayers.every((layer) => layer.dataset.weapon === 'basic'));
 });
 
 test('장착 무기를 바꾼 뒤 전투 연속 공격 표시도 현재 오른손 무기를 사용한다', () => {

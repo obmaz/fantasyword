@@ -375,10 +375,11 @@ dialog.screen-overlay select,
     pointer-events: none;
     transform: none;
     filter: none;
-    mask-image: radial-gradient(ellipse 6% 7% at 40.5% 60%, transparent 85%, #000 100%);
-}
-.equipment-avatar .avatar-secondary {
-    mask-image: radial-gradient(ellipse 6% 7% at 87% 57%, transparent 85%, #000 100%);
+    mask-image: radial-gradient(
+        ellipse 6% 7% at var(--held-hand-x) var(--held-hand-y),
+        transparent 85%,
+        #000 100%
+    );
 }
 .equipment-avatar :is(.avatar-weapon, .avatar-secondary) .item-art {
     position: absolute;
