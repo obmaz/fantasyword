@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
+const { assembleAnswer, assembleWrongAnswer } = require('./helpers/assemble-answer');
 
 test('스토리 진행은 단어장별로 저장하고 암시장 유물은 일반 상점에서 살 수 없다', () => {
     const r = browserRuntime({ v7_gold: '500' });
@@ -223,6 +224,71 @@ test('고정 철자·듣기·보스 칸은 Day 없이 지정한 방식으로 출
     journey.pendingKind = 'boss';
     assert.equal(journey.canComplete(5, 8), false);
     assert.equal(journey.canComplete(6, 8), true);
+});
+
+test('두 미니보스는 드래곤 외형과 한국어 뜻 철자조립으로 출제하고 왕관으로 다음 길을 연다', () => {
+    for (const stage of [7, 11]) {
+        for (const mistakes of [0, 1, 2, 3]) {
+            const r = browserRuntime();
+            const journey = r.evaluate('storyJourney');
+            const game = r.evaluate('game');
+            journey.stage = stage;
+            journey.select(stage, 0);
+            game.init('story', 'all');
+            r.advance(400);
+            game.gear.shield = 0;
+            assert.equal(game.list.length, 5);
+            assert.ok(game.list.every((q) => q.monsterId === 'dragon'));
+            assert.ok(game.list.every((q) => q.questionKind === 'spelling'));
+            for (let index = 0; index < 5; index++) {
+                assert.equal(r.getElement('q-text').innerText, game.currentQ.meaning);
+                assert.equal(r.getElement('spelling-panel').hidden, false);
+                assert.equal(r.getElement('boss-box').style.display, 'none');
+                assert.equal(
+                    game.spellingTiles.length,
+                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length + 3
+                );
+                if (index < mistakes) assembleWrongAnswer(game);
+                else assembleAnswer(game);
+                game.checkBossAnswer();
+                r.advance(index < mistakes ? 2500 : 800);
+            }
+            assert.equal(journey.stage, mistakes <= 2 ? stage + 1 : stage);
+            if (mistakes <= 2) {
+                assert.equal(journey.events[`${stage}:0`].cleared, true);
+                assert.equal(journey.events[`${stage}:0`].mistakes, mistakes);
+                for (const index of journey.connections(stage, 0))
+                    assert.equal(journey.canSelect(stage + 1, index), true);
+            } else assert.equal(journey.events[`${stage}:0`], undefined);
+        }
+    }
+});
+
+test('미니보스 중도 종료 후 일반 철자조립은 고블린으로 돌아가고 마지막 보스는 영어 문제를 유지한다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    const game = r.evaluate('game');
+    journey.stage = 7;
+    journey.select(7, 0);
+    game.init('story', 'all');
+    r.advance(400);
+    game.exit();
+    assert.equal(journey.events['7:0'], undefined);
+    game.battleQuestionType = 'spelling';
+    game.init('battle', 1);
+    r.advance(400);
+    assert.ok(game.list.every((q) => q.monsterId === 'goblin'));
+    game.exit();
+    journey.stage = 14;
+    journey.select(14, 0);
+    game.init('story', 'all');
+    r.advance(400);
+    assert.equal(game.list.length, 8);
+    assert.ok(
+        game.list.every(
+            (q) => q.monsterId === 'dragon' && ['cloze', 'riddle'].includes(q.questionKind)
+        )
+    );
 });
 
 test('스토리 전투의 문제 수는 일반 전투 select와 독립적으로 5·6·8개를 사용한다', () => {

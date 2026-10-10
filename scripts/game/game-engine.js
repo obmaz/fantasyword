@@ -111,7 +111,7 @@ function createBattleSession({
         _getRawData: getSource,
         _buildPool: (day, source) => battleRules.buildPool(day, source || game._getRawData()),
         _interleave: (a, b) => battleRules.interleave(a, b),
-        _buildBattleList: (pool, count, type) =>
+        _buildBattleList: (pool, count, type, monsterId = null) =>
             ['spelling', 'listening', 'dragon'].includes(type) && encounters
                 ? game
                       .shuffle(pool)
@@ -119,11 +119,13 @@ function createBattleSession({
                       .map((q) =>
                           encounters.prepare(
                               q,
-                              type === 'spelling'
-                                  ? 'goblin'
-                                  : type === 'listening'
-                                    ? 'bat'
-                                    : 'dragon'
+                              monsterId ||
+                                  (type === 'spelling'
+                                      ? 'goblin'
+                                      : type === 'listening'
+                                        ? 'bat'
+                                        : 'dragon'),
+                              type === 'dragon' ? 'riddle' : type
                           )
                       )
                 : type === 'monsters' && encounters
@@ -182,7 +184,12 @@ function createBattleSession({
                     ? revengeList
                     : mode === 'boss'
                       ? []
-                      : game._buildBattleList(pool, count, game.battleQuestionType);
+                      : game._buildBattleList(
+                            pool,
+                            count,
+                            game.battleQuestionType,
+                            mode === 'story' ? journey.battleMonsterId?.() : null
+                        );
             game.subjectiveTotal = game.list.filter((q) => q.isBoss).length;
             game.later(() => {
                 openScreenOverlay('battle-mode-game', false);

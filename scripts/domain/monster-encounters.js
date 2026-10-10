@@ -23,11 +23,10 @@ const monsterEncounters = Object.freeze({
         const prompt = sentence.replace(pattern, (_, prefix) => `${prefix}_____`);
         return prompt !== sentence ? prompt : null;
     },
-    prepare(data, monsterId) {
-        const monster = monsterEncounters.catalog[monsterId];
-        const cloze = monsterId === 'dragon' ? monsterEncounters.cloze(data) : null;
+    prepare(data, monsterId, kind = monsterEncounters.catalog[monsterId].kind) {
+        const cloze = kind === 'riddle' ? monsterEncounters.cloze(data) : null;
         const riddle =
-            monsterId === 'dragon' && !cloze
+            kind === 'riddle' && !cloze
                 ? monsterEncounters.cloze({
                       word: data.word,
                       exampleSentence: data.englishExplanation,
@@ -36,9 +35,9 @@ const monsterEncounters = Object.freeze({
         return {
             ...data,
             monsterId,
-            questionKind: cloze ? 'cloze' : monster.kind,
+            questionKind: cloze ? 'cloze' : kind,
             encounterPrompt: cloze || riddle || null,
-            isBoss: !['meaning', 'listening'].includes(monster.kind),
+            isBoss: !['meaning', 'listening'].includes(kind),
         };
     },
     buildList(pool, count, shuffle) {

@@ -27,6 +27,7 @@ ES modules나 프레임워크·번들러 전환은 현재 실행/배포 계약�
 | `docs/design/`, `docs/archive/`   | 디자인 참고 이미지·과거 기록; 배포 제외               |
 
 `domain/`은 값과 함수만 입력받는다. `game/`은 저장소·시계·타이머·음성·화면 서비스를 주입받고 브라우저 전역을 조회하지 않는다.
+스토리 미니보스는 지점의 `type: spelling`, `monsterId: dragon` 정책으로 출제 방식과 외형을 분리한다. 세션은 진행 중인 지점의 선택적 몬스터 ID를 주입받아 기존 철자조립 렌더러를 사용하며 일반 전투에 영향을 주지 않는다.
 스토리 지도 종류·출제 수·통과 기준·분기 연결은 `domain/story-map.js`가 소유한다. `features/story-journey.js`는 지점 선택·이벤트 저장·보상·지도 복귀를 맡는다. 스토리 총공세는 세션 시작 옵션의 문제 수와 종료/복귀 콜백으로 연결하며 일반 총공세의 Day 전체 출제를 유지한다.
 전투/연습/낙하전 렌더러는 모델과 콜백을 받아 DOM을 갱신하고 `game`/`db`를 직접 조회하지 않는다.
 골드 기준·손실·총공세 보상은 `battle-rules.js`, 연속/경로 보너스와 착용 모델은 `equipment-rules.js`, 복수 보너스는 `revenge-rules.js`가 소유한다. 이름·가격은 ID를 유지한 `data/items-data.js`에서 관리한다. `renderEquipmentAvatar`는 주입된 장착 모델로 장비/전투의 같은 포즈에 착용 부품을 겹친다. `ui.updateVisuals`가 상태를 전달하며 장갑 소모도 이 경로를 갱신한다.

@@ -338,6 +338,11 @@ const storyJourney = {
             ? storyMapRules.encounters[storyJourney.pendingKind]?.count
             : null;
     },
+    battleMonsterId() {
+        return storyJourney.isPending()
+            ? storyMapRules.encounters[storyJourney.pendingKind]?.monsterId
+            : null;
+    },
     canComplete(correct, total, mistakes = total - correct) {
         return total > 0 && !!storyMapRules.crown(mistakes);
     },
