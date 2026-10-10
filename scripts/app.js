@@ -37,6 +37,7 @@ const game = createBattleSession({
     syncLayout: () => syncScreenLayout(),
     timers: { setTimeout, clearTimeout, setInterval, clearInterval },
     now: () => performance.now(),
+    random: () => Math.random(),
     vibrate: (duration) => navigator.vibrate?.(duration),
     notify: showToast,
 });

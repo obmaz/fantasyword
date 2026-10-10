@@ -153,7 +153,7 @@ function createSkyfallSession({
         if (items.length >= 5 || !pool.length) return;
         const row = pool[nextWordIndex++];
         if (!row) return;
-        const english = Math.random() < 0.5;
+        const english = random() < 0.5;
         const answerKey = english ? 'meaning' : 'word';
         const prompt = String(english ? row.word : row.meaning).trim();
         const answer = String(row[answerKey]).trim();
@@ -260,7 +260,7 @@ function createSkyfallSession({
         nextLane = 0;
         nextWordIndex = 0;
         resolved = 0;
-        modifier = ['steady', 'rush', 'swift'][Math.floor(Math.random() * 3)];
+        modifier = ['steady', 'rush', 'swift'][Math.floor(random() * 3)];
         pausedUntil = 0;
         pausedFrom = 0;
         pausedTotal = 0;

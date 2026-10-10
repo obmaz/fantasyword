@@ -22,6 +22,7 @@ function createBattleSession({
     syncLayout,
     timers,
     now,
+    random = Math.random,
     vibrate,
     notify,
 }) {
@@ -434,7 +435,7 @@ function createBattleSession({
             ui.updateSkills();
         },
         renderNormal(data) {
-            const isKor = Math.random() < 0.5;
+            const isKor = random() < 0.5;
             const answer = isKor ? data.word : data.meaning;
             const distractors = game.getDistractors(answer, isKor ? 'word' : 'meaning', data);
             if (distractors.length < 3) {
