@@ -101,7 +101,7 @@ Escape/모바일 뒤로 가기는 기존 닫기 흐름을 쓴다.
 
 ## 데이터 관리 도구
 
-`node tools/check-decoy.js [1|2|3]`는 오답 후보에 미등록된 단어를 조회한다.
+`node tools/check-decoy.js [단어장 ID]`는 오답 후보에 미등록된 단어를 조회한다.
 `sync-decoy-with-gamedata.js`와 `expand-small-groups.js`는 `data/decoy-words-set.js`를 실제로 다시 쓴다.
 단순 환경 설정/검증 중에는 실행하지 않는다. 데이터를 수정하는 작업에서 필요할 때만 실행하고 diff를 검토한다.
 단어장 원본은 기존 JS 래핑과 ID를 유지하며 Day·영단어·뜻을 보존한다. `data-tools.test.js`가 유효성과 원문 보존을 검사한다.
@@ -118,3 +118,5 @@ strict checkJs 대상은 연습 세션/렌더러/발음이며 전체 앱 타입 
 `Deploy Pages`는 수동 실행이며 검증·빌드·artifact·Pages 순서다. deploy job만 pages/id-token 쓰기 권한을 가진다.
 `obmaz/fantasyword`의 Pages는 Source가 GitHub Actions이며 Custom domain은 `dokdok.quest`, HTTPS 강제는 활성화 상태다.
 DNS는 GitHub Pages IP를 유지한다. 기존 저장소의 Custom domain 연결은 해제했다.
+
+새 단어장도 `data/game-data-N.js`의 classic script를 HTML에 등록한다. 데이터셋 로더는 이름·스토리·단어 배열을 탐색하며 기존 `book-ID` 저장 분리를 유지한다. 오답 풀 조회/동기화 도구는 단어장 파일을 기준으로 신규 ID를 지원한다. 4번 단어장의 `explanationSources`는 영문/국문 사전 링크와 국문 표제어를 보존하는 출처 메타데이터이며 게임 출제 필드는 기존과 같다.

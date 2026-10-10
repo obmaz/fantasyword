@@ -1,6 +1,6 @@
 /**
- * 1) game-data-1, 2, 3의 word 중 decoyWordsSet에 없으면 새 그룹으로 추가
- * 2) decoyWordsSet 그룹 중 game-data-1·2·3 모두에 없는 단어만 있는 그룹은 제거
+ * 1) 모든 game-data-N.js의 word 중 decoyWordsSet에 없으면 새 그룹으로 추가
+ * 2) 어떤 단어장에도 속하지 않는 단어만 있는 그룹은 제거
  * 실행: node tools/sync-decoy-with-gamedata.js
  */
 const fs = require('node:fs');
@@ -8,9 +8,6 @@ const path = require('node:path');
 const { readWords, readGroups } = require('./read-data');
 
 const dataDir = path.join(__dirname, '../data');
-const gameData1Path = path.join(dataDir, 'game-data-1.js');
-const gameData2Path = path.join(dataDir, 'game-data-2.js');
-const gameData3Path = path.join(dataDir, 'game-data-3.js');
 const decoyPath = path.join(dataDir, 'decoy-words-set.js');
 
 function norm(w) {
@@ -19,21 +16,18 @@ function norm(w) {
         .toLowerCase();
 }
 
-const words1 = readWords(gameData1Path, 1);
-const words2 = readWords(gameData2Path, 2);
-const words3 = readWords(gameData3Path, 3);
-const gameDataWords = new Set([...words1, ...words2, ...words3]);
+const bookFiles = fs.readdirSync(dataDir).filter((name) => /^game-data-[1-9]\d*\.js$/.test(name));
+if (!bookFiles.length) throw new Error('동기화할 단어장이 없습니다.');
+bookFiles.sort((a, b) => Number(a.match(/\d+/)[0]) - Number(b.match(/\d+/)[0]));
+const gameDataWords = new Set();
+for (const file of bookFiles) {
+    const id = file.match(/\d+/)[0];
+    const words = readWords(path.join(dataDir, file), id);
+    for (const word of words) gameDataWords.add(word);
+    console.error(file, 'words:', words.size);
+}
 const gameDataWordsNorm = new Set([...gameDataWords].map(norm));
-console.error(
-    'game-data-1 words:',
-    words1.size,
-    '| game-data-2 words:',
-    words2.size,
-    '| game-data-3 words:',
-    words3.size,
-    '| union:',
-    gameDataWords.size
-);
+console.error('All books union:', gameDataWords.size);
 
 const existingGroups = readGroups(decoyPath);
 console.error('Existing decoy groups:', existingGroups.length);
@@ -47,7 +41,7 @@ const notInDecoy = [...gameDataWords].filter((w) => !decoyWordSet.has(norm(w)));
 const newGroups = notInDecoy.map((w) => [w]);
 console.error('New single-word groups (game-data only, not in decoy):', newGroups.length);
 
-// 2) 그룹 전체가 game-data-1·2·3 모두에 없으면 제거
+// 2) 그룹 전체가 어떤 단어장에도 없으면 제거
 const keptGroups = existingGroups.filter((group) => {
     const hasAnyInGameData = group.some((w) => gameDataWordsNorm.has(norm(w)));
     if (!hasAnyInGameData) return false;

@@ -52,17 +52,18 @@ test('드래곤 설명에 정답이 있으면 빈칸으로 가리되 원본 단�
     assert.equal(word.englishExplanation.includes('cotton'), true);
 });
 
-test('실제 세 단어장의 모든 드래곤 설명 문제는 정답 단어를 그대로 노출하지 않는다', () => {
+test('실제 네 단어장의 모든 드래곤 설명 문제는 정답 단어를 그대로 노출하지 않는다', () => {
     const r = loadScripts([
         'data/game-data-1.js',
         'data/game-data-2.js',
         'data/game-data-3.js',
+        'data/game-data-4.js',
         'data/battle-examples.js',
         'scripts/domain/monster-encounters.js',
     ]);
     const encounters = r.evaluate('monsterEncounters');
     let checked = 0;
-    for (let id = 1; id <= 3; id++) {
+    for (let id = 1; id <= 4; id++) {
         for (const word of r.sandbox[`rawData_${id}`]) {
             const question = encounters.prepare(word, 'dragon');
             if (question.questionKind !== 'riddle') continue;
