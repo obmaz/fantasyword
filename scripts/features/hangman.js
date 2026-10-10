@@ -1,10 +1,20 @@
-/** 총공세 옆 시험용 행맨. 외부 상태를 바꾸지 않는 단어 연습 모드다. */
+/** 총공세 옆 시험용 행맨. 오답마다 단두대와 졸라맨이 단계적으로 그려진다. */
+const HANGMAN_MAX_LIVES = 7;
+const HANGMAN_DRAWING = `<svg viewBox="0 0 180 150" role="img" aria-label="오답 단계별 단두대 그림">
+    <path class="hangman-part part-gallows" d="M20 140H160M45 140V15H125M45 15H125M125 15V35" />
+    <circle class="hangman-part part-head" cx="125" cy="50" r="15" />
+    <path class="hangman-part part-body" d="M125 65V100" />
+    <path class="hangman-part part-arm-left" d="M125 75L103 88" />
+    <path class="hangman-part part-arm-right" d="M125 75L147 88" />
+    <path class="hangman-part part-leg-left" d="M125 100L105 125" />
+    <path class="hangman-part part-leg-right" d="M125 100L145 125" />
+</svg>`;
 const hangman = {
     active: false,
     word: '',
     meaning: '',
     guessed: new Set(),
-    lives: 6,
+    lives: HANGMAN_MAX_LIVES,
     start() {
         const source = window.rawDataData || rawData || [];
         const pool = source.filter((item) => item?.word && /^[a-z ]+$/i.test(item.word));
@@ -14,7 +24,7 @@ const hangman = {
         this.word = item.word.toLowerCase();
         this.meaning = item.meaning;
         this.guessed = new Set();
-        this.lives = 6;
+        this.lives = HANGMAN_MAX_LIVES;
         document.getElementById('title-screen').style.display = 'none';
         document.getElementById('hangman-game').style.display = 'flex';
         this.render();
@@ -38,9 +48,15 @@ const hangman = {
         word.textContent = [...this.word]
             .map((letter) => (letter === ' ' ? ' ' : this.guessed.has(letter) ? letter : '_'))
             .join(' ');
-        document.getElementById('hangman-meaning').textContent = this.meaning;
+        const mistakes = HANGMAN_MAX_LIVES - this.lives;
+        const meaning = document.getElementById('hangman-meaning');
+        meaning.textContent = this.lives === 1 ? `힌트: ${this.meaning}` : '';
+        meaning.hidden = this.lives > 1;
         document.getElementById('hangman-lives').textContent = this.lives;
-        document.getElementById('hangman-drawing').textContent = '☠'.repeat(6 - this.lives);
+        const drawing = document.getElementById('hangman-drawing');
+        drawing.dataset.mistakes = String(mistakes);
+        drawing.innerHTML = HANGMAN_DRAWING;
+        const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
         const letters = document.getElementById('hangman-letters');
         letters.replaceChildren();
         for (let code = 97; code <= 122; code += 1) {
@@ -48,11 +64,10 @@ const hangman = {
             const button = document.createElement('button');
             button.type = 'button';
             button.textContent = letter;
-            button.disabled = this.guessed.has(letter) || this.lives <= 0;
+            button.disabled = this.guessed.has(letter) || this.lives <= 0 || won;
             button.addEventListener('click', () => this.choose(letter));
             letters.append(button);
         }
-        const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
         const status = document.getElementById('hangman-status');
         status.textContent = won
             ? '정답입니다!'

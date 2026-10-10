@@ -74,10 +74,54 @@
     padding: 20px 0 28px;
 }
 .hangman-drawing {
-    min-height: 72px;
+    width: min(190px, 52vw);
+    height: 150px;
+    min-height: 150px;
     color: #f19b74;
-    font-size: 42px;
-    letter-spacing: 4px;
+}
+.hangman-drawing svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+.hangman-part {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 5;
+    opacity: 0;
+    transition: opacity 160ms ease;
+}
+.hangman-drawing[data-mistakes='1'] .part-gallows,
+.hangman-drawing[data-mistakes='2'] .part-gallows,
+.hangman-drawing[data-mistakes='3'] .part-gallows,
+.hangman-drawing[data-mistakes='4'] .part-gallows,
+.hangman-drawing[data-mistakes='5'] .part-gallows,
+.hangman-drawing[data-mistakes='6'] .part-gallows,
+.hangman-drawing[data-mistakes='7'] .part-gallows,
+.hangman-drawing[data-mistakes='2'] .part-head,
+.hangman-drawing[data-mistakes='3'] .part-head,
+.hangman-drawing[data-mistakes='4'] .part-head,
+.hangman-drawing[data-mistakes='5'] .part-head,
+.hangman-drawing[data-mistakes='6'] .part-head,
+.hangman-drawing[data-mistakes='7'] .part-head,
+.hangman-drawing[data-mistakes='3'] .part-body,
+.hangman-drawing[data-mistakes='4'] .part-body,
+.hangman-drawing[data-mistakes='5'] .part-body,
+.hangman-drawing[data-mistakes='6'] .part-body,
+.hangman-drawing[data-mistakes='7'] .part-body,
+.hangman-drawing[data-mistakes='4'] .part-arm-left,
+.hangman-drawing[data-mistakes='5'] .part-arm-left,
+.hangman-drawing[data-mistakes='6'] .part-arm-left,
+.hangman-drawing[data-mistakes='7'] .part-arm-left,
+.hangman-drawing[data-mistakes='5'] .part-arm-right,
+.hangman-drawing[data-mistakes='6'] .part-arm-right,
+.hangman-drawing[data-mistakes='7'] .part-arm-right,
+.hangman-drawing[data-mistakes='6'] .part-leg-left,
+.hangman-drawing[data-mistakes='7'] .part-leg-left,
+.hangman-drawing[data-mistakes='7'] .part-leg-right {
+    opacity: 1;
 }
 .hangman-meaning {
     width: 100%;
@@ -89,6 +133,9 @@
     background: #fff0c9;
     text-align: center;
     font-weight: 800;
+}
+.hangman-meaning[hidden] {
+    display: none;
 }
 .hangman-word {
     min-height: 50px;
