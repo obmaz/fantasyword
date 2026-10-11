@@ -12,8 +12,8 @@
     flex-direction: column;
     color: #fff4dc;
     background:
-        linear-gradient(#102b2580, #102b25b0),
-        url('../../images/theme/hangman-clearing.webp') center / cover;
+        linear-gradient(#102b251a, #102b2540),
+        url('../../images/theme/hangman-stage.webp') center / cover;
 }
 #hangman-game .gameplay-header {
     padding-inline: var(--frame-gutter, 16px);
