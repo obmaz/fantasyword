@@ -116,6 +116,52 @@ test('스토리 초기화는 50골드와 진행·왕관·지도 배치를 함께
     assert.equal(r.evaluate('db.gold'), 49);
 });
 
+test('스토리 전투 입장은 한 번 확인하면 추가 시작창 없이 선택한 Day와 유형으로 실행한다', () => {
+    for (const [stage, index, type, count] of [
+        [0, 0, 'monsters', 8],
+        [1, 0, 'objective', 6],
+        [2, 1, 'spelling', 6],
+        [4, 2, 'listening', 6],
+        [7, 0, 'spelling', 5],
+        [14, 0, 'dragon', 8],
+    ]) {
+        const r = browserRuntime();
+        const journey = r.evaluate('storyJourney');
+        journey.stage = stage;
+        journey.requestSelection(stage, index);
+        assert.equal(r.evaluate('game.active'), false);
+        const day = journey.selection.day;
+        journey.confirmSelection();
+        r.advance(400);
+        assert.equal(journey.selection, null);
+        assert.equal(r.getElement('story-confirm-modal').open, false);
+        assert.equal(r.getElement('battle-mode-story-modal').open, false);
+        assert.equal(r.getElement('battle-mode-story-modal').style.display, 'none');
+        assert.equal(r.getElement('battle-mode-game').style.display, 'flex');
+        assert.equal(r.evaluate('game.active'), true);
+        assert.equal(r.evaluate('game.mode'), 'story');
+        assert.equal(r.evaluate('game.currentDay'), day);
+        assert.equal(r.evaluate('game.battleQuestionType'), type);
+        assert.equal(r.evaluate('game.list.length'), count);
+        assert.equal(journey.pendingStage, stage);
+        assert.equal(journey.pendingIndex, index);
+    }
+});
+
+test('스토리 전투 확인을 취소하면 전투와 Day 배정을 시작하지 않는다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    journey.stage = 1;
+    journey.requestSelection(1, 0);
+    journey.cancelSelection();
+    r.advance(400);
+    assert.equal(r.evaluate('game.active'), false);
+    assert.equal(journey.events['1:0'], undefined);
+    assert.equal(journey.pendingStage, null);
+    assert.equal(r.getElement('battle-mode-story-modal').open, false);
+    assert.equal(r.getElement('story-map-modal').style.display, 'flex');
+});
+
 test('스토리 초기화 저장 실패는 골드와 이전 지도를 모두 보존한다', () => {
     const r = browserRuntime({ v7_gold: '100', 'v7_story_stage_book-1': '7' });
     const before = Object.fromEntries(r.store);

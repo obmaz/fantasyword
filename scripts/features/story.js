@@ -72,6 +72,12 @@ const story = {
         db.save('lastDay');
         story.day = mode === 'boss' ? 'boss' : daySel;
         story.mode = mode;
+        // 지도에서 이미 입장을 확인한 스토리 전투는 추가 시작창 없이 실행한다.
+        if (mode === 'story') {
+            resetScreenOverlay('battle-mode-story-modal');
+            game.init(mode, story.day);
+            return;
+        }
         const data = resolveStoryData(story.day);
 
         // 배틀만 이야기 카드를 거친다.

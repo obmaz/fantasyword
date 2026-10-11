@@ -464,9 +464,6 @@ const storyJourney = {
         storyJourney.returnAfterResult = true;
         game.battleQuestionType = node.type;
         story.startIntro('story', node.day || 'all');
-        document.getElementById('battle-mode-day-info').textContent = node.label;
-        document.getElementById('battle-mode-text').textContent =
-            `${node.label} · ${node.kind === 'idiom' ? `난이도 ${idiomRules.difficulty(row)}` : node.day && node.day !== 'all' ? `Day ${node.day}` : '단어장 전체'} · ${node.count}문제 · 오답 2개까지 왕관 획득 시 통과`;
     },
     isPending() {
         return (
