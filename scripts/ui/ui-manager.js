@@ -25,7 +25,12 @@ const ui = {
      * @param {string|number} day - Day 값
      */
     updateGameInfo: (mode, day) => {
-        document.getElementById('battle-mode-game').dataset.gameMode = mode;
+        const battleScreen = document.getElementById('battle-mode-game');
+        battleScreen.dataset.gameMode = mode;
+        battleScreen.dataset.questionKind =
+            mode === 'idiom-test' || (mode === 'story' && storyJourney.pendingKind === 'idiom')
+                ? 'idiom'
+                : '';
         const title = document.getElementById('battle-screen-title');
         if (title)
             title.textContent =

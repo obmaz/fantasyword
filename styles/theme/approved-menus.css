@@ -3126,3 +3126,15 @@ button.equipment-control {
         padding-inline: 8px;
     }
 }
+
+/* 사자성어는 전투 숲 화면 대신 서책·서예 퍼즐 분위기를 사용한다. */
+#battle-mode-game[data-question-kind='idiom'] {
+    background:
+        linear-gradient(#261b2b66, #171322c7),
+        url('../../images/theme/parts/item-scroll.webp') center / cover;
+}
+#battle-mode-game[data-question-kind='idiom'] .battle-stage,
+#battle-mode-game[data-question-kind='idiom'] .battle-question-panel {
+    background-color: #3f263d88;
+    border-color: #e1b96c;
+}

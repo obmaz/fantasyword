@@ -18,6 +18,18 @@
     background-image:
         linear-gradient(#173d3560, #173d35b0), url('../../images/theme/guild-courtyard.webp');
 }
+.story-puzzle-game[data-kind='proverb'] {
+    background:
+        linear-gradient(#4b281c66, #241615c7),
+        url('../../images/theme/parts/item-scroll.webp') center / cover;
+}
+.story-puzzle-game[data-kind='proverb'] .puzzle-board {
+    background: #3a201d55;
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
+    border-image-source: url('../../images/theme/parts/item-scroll.webp');
+    color: #40251d;
+}
 .puzzle-board {
     flex: 1;
     min-height: 0;
