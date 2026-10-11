@@ -935,7 +935,7 @@ button .action-icon {
 .title-menu-art {
     aspect-ratio: 1490 / 560;
 }
-.title-menu-art :is(.menu-hotspot, #title-skyfall-btn) {
+.title-menu-art .menu-hotspot {
     transform: scale(0.88);
     transform-origin: center;
 }
@@ -996,10 +996,6 @@ button .action-icon {
 }
 .title-toolbar .revenge-shortcut .action-icon {
     transform: none;
-}
-#title-skyfall-btn > span {
-    display: inline-block;
-    font-size: 0.75em;
 }
 
 /* Skyfall results share the illustrated frame, parchment and home control. */

@@ -61,7 +61,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             cancelAnimations();
             openScreen('shell-game', false);
             element('shell-double-choice').hidden = true;
-            element('shell-status').textContent = '주사위의 색과 숫자, 숨긴 컵을 기억하세요.';
+            element('shell-status').textContent = '';
             drawDie(die);
             const table = element('shell-table');
             const preview = element('shell-die-preview');

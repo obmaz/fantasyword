@@ -396,20 +396,6 @@
                         ></span>
                     </header>
                     <div class="title-menu-art">
-                        <button id="title-skyfall-btn" type="button" aria-label="총공세 시작">
-                            <span aria-hidden="true">✦</span> 총공세 <small>TOTAL ASSAULT</small>
-                        </button>
-                        <button id="title-hangman-btn" type="button" aria-label="행맨 연습 시작">
-                            <span aria-hidden="true">☠</span> 행맨 <small>HANGMAN</small>
-                        </button>
-                        <div class="lobby-test-buttons">
-                            <button id="title-idiom-btn" type="button" class="image-action-button">
-                                사자성어 테스트
-                            </button>
-                            <button id="title-shell-btn" type="button" class="image-action-button">
-                                야바위 테스트
-                            </button>
-                        </div>
                         <nav class="menu-hotspots" aria-label="학습 모드">
                             <button
                                 id="title-story-mode-btn"
@@ -1147,12 +1133,12 @@
         >
             <section class="card story-map-card">
                 <header class="story-map-header">
-                    <h2 id="idiom-test-title">사자성어 테스트</h2>
+                    <h2 id="idiom-test-title">사자성어</h2>
                     <button
                         type="button"
                         class="btn-gray"
                         data-action="idiom-test-close"
-                        aria-label="사자성어 테스트 닫기"
+                        aria-label="사자성어 닫기"
                     >
                         ×
                     </button>
@@ -1170,7 +1156,7 @@
                         class="image-action-button"
                         data-action="idiom-test-start"
                     >
-                        테스트 시작
+                        시작
                     </button>
                 </div>
             </section>
@@ -1688,6 +1674,60 @@
                             /><span>적용</span>
                         </button>
                     </section>
+                    <div id="settings-admin-games" class="settings-actions" data-admin hidden>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="hangman"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/ui-swords.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>행맨</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="assault"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/menu-day-battle-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>총공세</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="idiom"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/ui-book.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>사자성어</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="shell"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/shell-cup.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>야바위</span>
+                        </button>
+                    </div>
                     <div class="settings-actions">
                         <button class="modal-btn-main" data-action="secret-print-open">
                             <img

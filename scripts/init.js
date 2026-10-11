@@ -75,6 +75,7 @@ const ACTION_HANDLERS = {
     'secret-close': () => secret.close(),
     'secret-reset-statistics': () => secret.resetStatistics(),
     'settings-reset-game': () => settingsManager.resetGame(),
+    'admin-game-open': (el) => settingsManager.openAdminGame(el.dataset.game),
     'secret-gold-edit-open': () => secret.openGoldEditModal(),
     'secret-gold-edit-close': () => secret.closeGoldEditModal(),
     'secret-gold-edit-apply': () => secret.applyGoldEdit(),
@@ -116,11 +117,6 @@ window.onload = () => {
     }
     hangman.init();
     shellGame.init();
-    document.getElementById('title-shell-btn')?.addEventListener('click', () => shellGame.start());
-    document
-        .getElementById('title-idiom-btn')
-        ?.addEventListener('click', () => openScreenOverlay('idiom-test-modal', false));
-    document.getElementById('title-hangman-btn')?.addEventListener('click', () => hangman.start());
     document.getElementById('hangman-next-btn')?.addEventListener('click', () => hangman.next());
     // 최초 로드 시 뷰포트 높이를 고정 (모바일 주소창 대응)
     initAppHeight();
@@ -194,7 +190,6 @@ window.onload = () => {
     const titleActions = {
         'title-practice-btn': openPracticeModal,
         'title-battle-mode-btn': openBattleModeModal,
-        'title-skyfall-btn': openSkyfallModal,
         'title-story-mode-btn': () => storyJourney.open(),
         'title-shop-btn': () => shop.open(),
         'title-inventory-btn': () => inventory.open(),

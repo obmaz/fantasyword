@@ -6,6 +6,7 @@
  */
 
 const settingsManager = {
+    adminSectionIds: ['settings-admin-gold', 'settings-admin-stats', 'settings-admin-games'],
     adminUnlocked: false,
     musicTogglePairs: 0,
     awaitingMusicOn: false,
@@ -15,8 +16,7 @@ const settingsManager = {
         settingsManager.musicTogglePairs = 0;
         settingsManager.awaitingMusicOn = false;
         settingsManager.adminUnlocked = false;
-        for (const id of ['settings-admin-gold', 'settings-admin-stats'])
-            document.getElementById(id).hidden = true;
+        for (const id of settingsManager.adminSectionIds) document.getElementById(id).hidden = true;
     },
     recordMusicToggle: (enabled) => {
         clearTimeout(settingsManager.musicToggleTimer);
@@ -27,12 +27,26 @@ const settingsManager = {
             settingsManager.awaitingMusicOn = false;
             if (settingsManager.musicTogglePairs === 3) {
                 settingsManager.adminUnlocked = true;
-                for (const id of ['settings-admin-gold', 'settings-admin-stats'])
+                for (const id of settingsManager.adminSectionIds)
                     document.getElementById(id).hidden = false;
                 return;
             }
         } else settingsManager.musicTogglePairs = 0;
         settingsManager.musicToggleTimer = setTimeout(settingsManager.hideAdmin, 5000);
+    },
+    openAdminGame: (mode) => {
+        if (!settingsManager.adminUnlocked) return;
+        const starts = {
+            hangman: () => hangman.start(),
+            assault: openSkyfallModal,
+            idiom: () => openScreenOverlay('idiom-test-modal', false),
+            shell: () => shellGame.start(),
+        };
+        if (!Object.hasOwn(starts, mode)) return;
+        settingsManager.close();
+        resetScreenOverlay('setting-modal');
+        cancelPendingGameStart();
+        starts[mode]();
     },
     init: () => {
         // 1. 설정 데이터 검증 및 초기화

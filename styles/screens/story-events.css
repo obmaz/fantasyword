@@ -1,18 +1,3 @@
-.lobby-test-buttons {
-    position: absolute;
-    left: 5%;
-    bottom: calc(100% + 110px);
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-}
-.lobby-test-buttons button {
-    min-height: 40px;
-    padding: 8px;
-    font-size: clamp(12px, 3cqw, 17px);
-    color: #fff3d2;
-}
 .story-reset-button {
     flex-shrink: 0;
     margin-top: 12px;

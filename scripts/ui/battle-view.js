@@ -613,7 +613,7 @@ function createBattleView({
                 mode === 'story'
                     ? '스토리'
                     : mode === 'idiom-test'
-                      ? '사자성어 테스트'
+                      ? '사자성어'
                       : mode === 'boss'
                         ? '생존 도전'
                         : '도전';

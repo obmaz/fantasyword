@@ -34,12 +34,15 @@ test('관리 도구는 설정 음악 OFF→ON 3회에만 열리고 닫기·다�
         change(true);
     }
     assert.equal(r.getElement('settings-admin-gold').hidden, true);
+    assert.equal(r.getElement('settings-admin-games').hidden, true);
     change(false);
     change(true);
     assert.equal(r.getElement('settings-admin-gold').hidden, false);
     assert.equal(r.getElement('settings-admin-stats').hidden, false);
+    assert.equal(r.getElement('settings-admin-games').hidden, false);
     r.evaluate('settingsManager.close(); settingsManager.open()');
     assert.equal(r.getElement('settings-admin-gold').hidden, true);
+    assert.equal(r.getElement('settings-admin-games').hidden, true);
     change(false);
     change(true);
     r.advance(5001);
