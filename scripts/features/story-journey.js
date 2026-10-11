@@ -8,6 +8,7 @@ const storyJourney = {
     selection: null,
     mysterySelection: null,
     mysteryRevealCost: 100,
+    resetCost: 50,
     cancelBattleReturn() {
         storyJourney.returnAfterResult = false;
         storyJourney.pendingStage = null;
@@ -218,6 +219,7 @@ const storyJourney = {
         document.getElementById('story-confirm-copy').textContent =
             `${node.label}${day !== 'all' ? ` · Day ${day}` : ''} 지점을 진행할까요?`;
         document.getElementById('story-confirm-start').disabled = false;
+        document.getElementById('story-confirm-start').textContent = '진행';
         resetScreenOverlay('story-map-modal');
         openScreenOverlay('story-confirm-modal', false);
     },
@@ -229,20 +231,31 @@ const storyJourney = {
     requestReset() {
         storyJourney.selection = { reset: true, book: db.getBookKey() };
         document.getElementById('story-confirm-title').textContent = '스토리 초기화';
-        document.getElementById('story-confirm-copy').textContent =
-            '50골드를 사용해 스토리 진행과 왕관을 초기화하고 지점 배치를 새로 만들까요?';
-        document.getElementById('story-confirm-start').disabled = db.gold < 50;
+        storyJourney.updateResetConfirmation();
         resetScreenOverlay('story-map-modal');
         openScreenOverlay('story-confirm-modal', false);
+    },
+    updateResetConfirmation() {
+        const cost = storyJourney.resetCost;
+        const insufficient = db.gold < cost;
+        document.getElementById('story-confirm-copy').textContent = insufficient
+            ? `골드가 부족해 스토리를 초기화할 수 없습니다. 필요한 골드 ${cost}, 보유 골드 ${db.gold} (${cost - db.gold}골드 부족).`
+            : `${cost}골드를 사용해 스토리 진행과 왕관을 초기화하고 지점 배치를 새로 만들까요? 보유 골드 ${db.gold}.`;
+        const button = document.getElementById('story-confirm-start');
+        button.textContent = '초기화';
+        button.disabled = insufficient;
     },
     confirmSelection() {
         const selected = storyJourney.selection;
         if (!selected || selected.book !== db.getBookKey()) return;
         if (selected.reset) {
-            if (db.gold < 50) return;
+            if (db.gold < storyJourney.resetCost) {
+                storyJourney.updateResetConfirmation();
+                return;
+            }
             if (
                 !db.commitChanges(
-                    { gold: db.gold - 50 },
+                    { gold: db.gold - storyJourney.resetCost },
                     {
                         [storyJourney.key]: '0',
                         [storyJourney.pathKey]: '[]',
@@ -252,8 +265,11 @@ const storyJourney = {
                         ),
                     }
                 )
-            )
+            ) {
+                document.getElementById('story-confirm-copy').textContent =
+                    '스토리 초기화를 저장하지 못했습니다. 골드와 진행 기록은 그대로입니다. 다시 시도해 주세요.';
                 return;
+            }
             storyJourney.cancelBattleReturn();
             storyJourney.mysterySelection = null;
             storyJourney.cancelSelection();

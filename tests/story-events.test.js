@@ -128,6 +128,58 @@ test('스토리 초기화 저장 실패는 골드와 이전 지도를 모두 보
     assert.deepEqual(Object.fromEntries(r.store), before);
     assert.equal(r.evaluate('db.gold'), 100);
     assert.equal(r.evaluate('storyJourney.stage'), 7);
+    assert.match(r.getElement('story-confirm-copy').textContent, /저장하지 못했습니다/);
+    assert.equal(r.getElement('story-confirm-start').disabled, false);
+    r.sandbox.localStorage.setItem = write;
+    r.evaluate('storyJourney.confirmSelection()');
+    assert.equal(r.evaluate('db.gold'), 50);
+    assert.equal(r.evaluate('storyJourney.stage'), 0);
+    assert.equal(r.evaluate('storyJourney.selection'), null);
+});
+
+test('스토리 초기화는 부족한 금액을 표시하고 50골드부터 확인할 수 있다', () => {
+    for (const gold of [0, 49, 50]) {
+        const r = browserRuntime({ v7_gold: String(gold), 'v7_story_stage_book-1': '7' });
+        const before = Object.fromEntries(r.store);
+        r.evaluate('storyJourney.requestReset()');
+        const button = r.getElement('story-confirm-start');
+        const copy = r.getElement('story-confirm-copy').textContent;
+        assert.equal(button.textContent, '초기화');
+        assert.equal(button.disabled, gold < 50);
+        assert.ok(copy.includes(`보유 골드 ${gold}`));
+        if (gold < 50) {
+            assert.match(copy, /골드가 부족해 스토리를 초기화할 수 없습니다/);
+            assert.ok(copy.includes(`${50 - gold}골드 부족`));
+            r.evaluate('storyJourney.confirmSelection()');
+            assert.deepEqual(Object.fromEntries(r.store), before);
+            assert.equal(r.evaluate('db.gold'), gold);
+            assert.equal(r.evaluate('storyJourney.stage'), 7);
+        } else {
+            r.evaluate('storyJourney.confirmSelection()');
+            assert.equal(r.evaluate('db.gold'), 0);
+            assert.equal(r.evaluate('storyJourney.stage'), 0);
+        }
+    }
+});
+
+test('스토리 초기화 확인 도중 골드가 줄면 부족 안내로 갱신하고 진행을 보존한다', () => {
+    const r = browserRuntime({ v7_gold: '99', 'v7_story_stage_book-1': '7' });
+    r.evaluate('storyJourney.requestReset(); db.commitChanges({ gold: 10 })');
+    const before = Object.fromEntries(r.store);
+    r.evaluate('storyJourney.confirmSelection()');
+    assert.deepEqual(Object.fromEntries(r.store), before);
+    assert.equal(r.evaluate('storyJourney.stage'), 7);
+    assert.equal(r.getElement('story-confirm-start').disabled, true);
+    assert.match(r.getElement('story-confirm-copy').textContent, /40골드 부족/);
+});
+
+test('스토리 초기화 확인을 닫고 전투를 고르면 진행 버튼을 복원한다', () => {
+    const r = browserRuntime({ v7_gold: '0' });
+    r.evaluate('storyJourney.requestReset(); storyJourney.cancelSelection()');
+    r.evaluate('storyJourney.requestSelection(0, 0)');
+    assert.equal(r.getElement('story-confirm-start').textContent, '진행');
+    assert.equal(r.getElement('story-confirm-start').disabled, false);
+    assert.doesNotMatch(r.getElement('story-confirm-copy').textContent, /부족|초기화/);
 });
 
 test('사자성어 ? 전투와 테스트는 같은 객관식을 쓰고 영어 기록은 바꾸지 않는다', () => {

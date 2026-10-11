@@ -4,6 +4,20 @@
     padding: 10px;
     min-height: 40px;
 }
+#story-confirm-copy {
+    margin: 0 0 12px;
+    font-size: clamp(14px, 4cqw, 16px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+#story-confirm-modal .story-market-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+#story-confirm-modal .story-market-actions button {
+    min-width: 0;
+    font-size: 14px;
+}
 .story-map-node-casino {
     border-color: #edc67a;
     --map-node-icon: url('../../images/theme/parts/shell-cup.webp');
