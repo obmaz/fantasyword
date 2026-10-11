@@ -101,13 +101,13 @@ const inventory = {
         document.getElementById('inv-gold-bonus').innerText =
             `×${Number(((weapon?.multiplier || 1) * gloveMultiplier).toFixed(2))}`;
 
-        // 표시하는 슬롯은 실제 장착 위치와 같다. 비어 있는 오른손은 기본 검을 사용한다.
+        // 표시하는 슬롯은 실제 장착 위치와 같다. 장착하지 않은 슬롯은 빈 칸으로 둔다.
         for (const [slot, rule] of Object.entries(inventory.slots)) {
             const equipSlot = document.getElementById(`inv-${slot}`);
             if (!equipSlot) continue;
-            const itemId = db.equipped[slot] || (slot === 'hand-1' ? 'basic' : null);
+            const itemId = db.equipped[slot] || null;
             const item = items.find((i) => i.id === itemId) || weapons.find((w) => w.id === itemId);
-            const isDefault = item?.id === 'basic';
+            const isDefault = false;
             equipSlot.dataset.empty = String(!item);
             equipSlot.disabled = !item || isDefault;
             equipSlot.title = `${rule.label} · ${rule.accepts}`;
@@ -118,7 +118,7 @@ const inventory = {
                     `${rule.label}: ${itemDisplayName(item)}, ${isDefault ? '기본 장비' : '장착 해제'}`
                 );
             } else {
-                equipSlot.innerHTML = itemIconMarkup({ id: rule.placeholder });
+                equipSlot.innerHTML = '<span class="inv-slot-empty" aria-hidden="true">·</span>';
                 equipSlot.setAttribute(
                     'aria-label',
                     `${rule.label} 슬롯: 비어 있음 · ${rule.accepts}`

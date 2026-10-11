@@ -395,6 +395,17 @@ dialog.screen-overlay select,
 .equipment-avatar [data-avatar-part][hidden] {
     display: none;
 }
+.inv-slot-empty {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    color: #afc3a5;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.7;
+}
 .shop-economy-guide {
     color: var(--menu-ink, #243c2b);
     margin: 0 0 12px;

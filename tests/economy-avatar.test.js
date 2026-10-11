@@ -236,7 +236,7 @@ test('오른손 무기 갱신은 HTML의 캐릭터 이미지 버전 주소를 �
     assert.equal(hero.src, versionedSource);
 });
 
-test('오른손을 교체·복원하면 두 아바타에 새 무기만 남고 해제 때만 기본 검이 돌아온다', () => {
+test('오른손을 교체·복원하면 두 아바타에 새 무기만 남고 해제하면 빈 손으로 돌아온다', () => {
     const saved = {
         v7_owned: '["basic","fire","ice","midasSword"]',
         v7_equipped: '{"hand-1":"basic"}',
@@ -265,7 +265,8 @@ test('오른손을 교체·복원하면 두 아바타에 새 무기만 남고 �
     restored.evaluate('ui.updateVisuals()');
     assert.ok(restoredLayers.every((layer) => layer.dataset.weapon === 'midasSword'));
     restored.evaluate('inventory.unequip("hand-1")');
-    assert.ok(restoredLayers.every((layer) => layer.dataset.weapon === 'basic'));
+    assert.ok(restoredLayers.every((layer) => layer.dataset.weapon === ''));
+    assert.ok(restoredLayers.every((layer) => layer.hidden));
 });
 
 test('장착 무기를 바꾼 뒤 전투 연속 공격 표시도 현재 오른손 무기를 사용한다', () => {

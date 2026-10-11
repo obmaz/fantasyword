@@ -90,7 +90,9 @@ const ui = {
             durability: db.durability,
             weapons,
             items,
-            fallback: db.equippedWeapon,
+            // 기본 전투 무기는 규칙상 유지하지만, 장비 화면/아바타에는
+            // 실제로 장착한 무기만 그린다. 빈 손이 기본 상태다.
+            fallback: null,
         };
         for (const id of ['hero-wrapper', 'inventory-avatar']) {
             renderEquipmentAvatar(document.getElementById(id), avatarModel);
