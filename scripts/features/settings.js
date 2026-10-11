@@ -41,6 +41,8 @@ const settingsManager = {
             assault: openSkyfallModal,
             idiom: () => openScreenOverlay('idiom-test-modal', false),
             shell: () => shellGame.start(),
+            proverb: () => storyPuzzle.start('proverb'),
+            forge: () => storyPuzzle.start('forge'),
         };
         if (!Object.hasOwn(starts, mode)) return;
         settingsManager.close();

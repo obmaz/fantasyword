@@ -8,6 +8,8 @@ test('설정 게임 바로가기는 잠금 상태에서 실행하지 않고 해�
         ['assault', 'skyfall-mode-modal'],
         ['idiom', 'idiom-test-modal'],
         ['shell', 'shell-game'],
+        ['proverb', 'story-puzzle-game'],
+        ['forge', 'story-puzzle-game'],
     ]) {
         const r = browserRuntime();
         r.sandbox.onload();

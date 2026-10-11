@@ -82,7 +82,8 @@ const navigation = (() => {
             story.closeIntro();
             return;
         }
-        if (shellGame.active || visible('shell-game')) shellGame.exit();
+        if (storyPuzzle.active || visible('story-puzzle-game')) storyPuzzle.exit();
+        else if (shellGame.active || visible('shell-game')) shellGame.exit();
         else if (hangman.active || visible('hangman-game')) hangman.exit();
         else if (skyfall.active || visible('skyfall-mode-game')) skyfall.exit();
         else if (game.active || visible('battle-mode-game')) game.exit();

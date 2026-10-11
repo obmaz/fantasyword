@@ -88,6 +88,7 @@
             'skyfall-mode-game',
             'hangman-game',
             'shell-game',
+            'story-puzzle-game',
         ]) {
             const screen = document.getElementById(id);
             if (screen) {

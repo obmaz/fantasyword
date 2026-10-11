@@ -7,7 +7,7 @@ const storyMapRules = Object.freeze({
         ['mystery'],
         ['battle', 'objective', 'listening'],
         ['casino', 'spelling'],
-        ['assault', 'spelling', 'battle'],
+        ['assault', 'forge', 'proverb'],
         ['miniboss'],
         ['treasure', 'market'],
         ['objective', 'assault', 'spelling'],
@@ -30,9 +30,12 @@ const storyMapRules = Object.freeze({
         mystery: { label: '?' },
         idiom: { label: '사자성어', type: 'idiom', count: 5 },
         casino: { label: '도박장' },
+        proverb: { label: '속담', count: 5 },
+        forge: { label: '단어 대장간', count: 3 },
     },
+    mysteryKinds: ['battle', 'market', 'treasure', 'assault', 'proverb', 'forge', 'idiom'],
     nonCombat(kind) {
-        return ['market', 'treasure', 'casino', 'mystery'].includes(kind);
+        return ['market', 'treasure', 'casino', 'mystery', 'proverb', 'forge'].includes(kind);
     },
     validLayout(rows) {
         return (
@@ -60,8 +63,9 @@ const storyMapRules = Object.freeze({
     regenerate(shuffle) {
         // 전투 행을 사이에 둬 숨겨진 ? 결과도 비전투 지점과 연속되지 않게 한다.
         const rows = storyMapRules.rows.map((row) => [...row]);
-        const combat = ['battle', 'objective', 'spelling', 'listening', 'assault'];
-        const events = ['market', 'treasure', 'casino', 'mystery'];
+        const combat = shuffle(['battle', 'objective', 'spelling', 'listening', 'assault']);
+        let combatIndex = 0;
+        const events = ['market', 'treasure', 'casino', 'mystery', 'proverb', 'forge'];
         let eventIndex = 0;
         const order = shuffle(events);
         rows.forEach((row, stage) => {
@@ -69,7 +73,7 @@ const storyMapRules = Object.freeze({
                 row[index] =
                     stage % 2 === 1 && stage !== rows.length - 1
                         ? order[eventIndex++ % order.length]
-                        : shuffle(combat)[0];
+                        : combat[combatIndex++ % combat.length];
             });
         });
         rows[7] = ['miniboss'];
@@ -133,7 +137,7 @@ const storyMapRules = Object.freeze({
             .sort((a, b) => a - b);
     },
     resolveMystery(random) {
-        const kinds = ['battle', 'market', 'treasure', 'assault', 'idiom'];
+        const kinds = storyMapRules.mysteryKinds;
         return kinds[Math.max(0, Math.min(kinds.length - 1, Math.floor(random * kinds.length)))];
     },
 });

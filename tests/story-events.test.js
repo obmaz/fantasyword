@@ -45,6 +45,8 @@ test('기본 지도와 재배치 지도는 비전투가 연속되지 않고 모�
         assert.equal(rules.validLayout(rows), true);
         assert.ok(rows.flat().includes('casino'));
         assert.ok(rows.flat().includes('mystery'));
+        assert.ok(rows.flat().includes('proverb'));
+        assert.ok(rows.flat().includes('forge'));
         for (let stage = 0; stage < rows.length - 1; stage++) {
             const incoming = new Set();
             rows[stage].forEach((kind, index) => {

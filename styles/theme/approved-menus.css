@@ -762,10 +762,11 @@ button .action-icon {
     justify-content: center;
     line-height: 1.2;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game) {
     --header-top: max(12px, env(safe-area-inset-top));
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .gameplay-header {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .gameplay-header {
     height: calc(var(--header-top) + 57px);
     min-height: calc(var(--header-top) + 57px);
     padding-block: var(--header-top) 12px;
@@ -1807,19 +1808,21 @@ button .action-icon {
     flex: 0 0 auto;
 }
 /* Gameplay controls share one compact header. The scene remains visible behind it. */
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .gameplay-header {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .gameplay-header {
     position: relative;
     z-index: 20;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game)
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
     .gameplay-header
     > .game-emblem {
     display: none !important;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .gameplay-actions {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .gameplay-actions {
     position: static;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game)
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
     .gameplay-actions
     .practice-nav-exit {
     position: absolute;
@@ -1835,10 +1838,12 @@ button .action-icon {
     background: var(--ui-small-control) center / 100% 100% no-repeat !important;
     filter: hue-rotate(240deg) saturate(1.6);
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .gameplay-heading {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .gameplay-heading {
     margin-left: 46px;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .music-info-overlay {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .music-info-overlay {
     display: block !important;
     position: relative;
     top: auto;
@@ -1858,7 +1863,7 @@ button .action-icon {
     flex: 0 0 44px;
     background: var(--ui-small-control) center / 100% 100% no-repeat;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game)
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
     .music-info-overlay::before {
     content: '';
     position: absolute;
@@ -1869,7 +1874,8 @@ button .action-icon {
     background: repeating-linear-gradient(to bottom, #fff6dd 0 3px, transparent 3px 5.5px);
     pointer-events: none;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .music-info-overlay::after {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .music-info-overlay::after {
     content: '곡';
     position: absolute;
     bottom: 7px;
@@ -1882,7 +1888,8 @@ button .action-icon {
         sans-serif;
     pointer-events: none;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .music-track-select {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .music-track-select {
     width: 44px;
     height: 44px;
     padding: 0 4px;
@@ -1893,15 +1900,17 @@ button .action-icon {
     border-radius: 0;
     text-shadow: none;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game) .music-track-select option {
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
+    .music-track-select
+    option {
     color: #243626;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game)
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
     .music-info-overlay:focus-within {
     outline: 2px solid #ffe7a6;
     outline-offset: 2px;
 }
-:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game)
+:is(#battle-mode-game, #practice-mode-game, #hangman-game, #shell-game, #story-puzzle-game)
     .gameplay-actions
     .music-toggle-btn {
     margin-left: auto;
@@ -2527,7 +2536,7 @@ button.equipment-control {
     justify-content: center;
     gap: 3px;
 }
-:is(#battle-mode-game, #hangman-game, #shell-game) .english-key {
+:is(#battle-mode-game, #hangman-game, #shell-game, #story-puzzle-game) .english-key {
     flex: 0 0 calc((100% - 27px) / 10);
     min-width: 0;
     height: clamp(32px, 5.5cqh, 52px);
@@ -2546,13 +2555,13 @@ button.equipment-control {
     box-shadow: none;
     touch-action: manipulation;
 }
-:is(#battle-mode-game, #hangman-game, #shell-game) .english-key-delete {
+:is(#battle-mode-game, #hangman-game, #shell-game, #story-puzzle-game) .english-key-delete {
     background-image: url('../../images/theme/parts/quest-delete.webp') !important;
 }
-:is(#battle-mode-game, #hangman-game, #shell-game) .english-key:disabled {
+:is(#battle-mode-game, #hangman-game, #shell-game, #story-puzzle-game) .english-key:disabled {
     opacity: 0.5;
 }
-:is(#battle-mode-game, #hangman-game, #shell-game) .english-key:focus-visible {
+:is(#battle-mode-game, #hangman-game, #shell-game, #story-puzzle-game) .english-key:focus-visible {
     outline: 2px solid #ffe4a1;
     outline-offset: 1px;
 }

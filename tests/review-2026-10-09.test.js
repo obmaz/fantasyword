@@ -42,7 +42,7 @@ test('물음표 공개와 골드 저장 중 하나라도 실패하면 비용·�
 test('상자 보상 저장 실패는 상자를 소모하지 않으며 재시도 후 한 번만 보상한다', () => {
     const r = browserRuntime({ v7_gold: '0' });
     r.evaluate(
-        'storyJourney.random = () => 0.55; storyJourney.select(0, 1); storyJourney.enterMystery()'
+        'storyJourney.random = () => 0.35; storyJourney.select(0, 1); storyJourney.enterMystery()'
     );
     const restore = failWrite(r, 'v7_gold');
     r.evaluate('storyJourney.claimTreasure()');
@@ -58,7 +58,7 @@ test('상자 보상 저장 실패는 상자를 소모하지 않으며 재시도 
 test('진행 저장 실패 뒤 숨겨진 상자를 재입장해도 이미 받은 보상을 반복하지 않는다', () => {
     const r = browserRuntime({ v7_gold: '0' });
     r.evaluate(
-        'storyJourney.random = () => 0.55; storyJourney.select(0, 1); storyJourney.enterMystery()'
+        'storyJourney.random = () => 0.35; storyJourney.select(0, 1); storyJourney.enterMystery()'
     );
     const restore = failWrite(r, 'v7_story_stage_book-1');
     r.evaluate('storyJourney.claimTreasure()');

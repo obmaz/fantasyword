@@ -67,6 +67,7 @@
         <link rel="stylesheet" href="styles/screens/skyfall-mode.css" />
         <link rel="stylesheet" href="styles/screens/hangman-mode.css" />
         <link rel="stylesheet" href="styles/screens/story-events.css" />
+        <link rel="stylesheet" href="styles/screens/story-puzzles.css" />
     </head>
 
     <body>
@@ -1161,30 +1162,37 @@
                 </div>
             </section>
         </dialog>
+        <section
+            id="story-puzzle-game"
+            class="story-puzzle-game"
+            aria-labelledby="puzzle-title"
+            style="display: none"
+        >
+            <div id="puzzle-header-host"></div>
+            <main class="puzzle-board">
+                <div class="puzzle-content">
+                    <p id="puzzle-progress"></p>
+                    <div id="puzzle-prompt"></div>
+                    <p id="puzzle-current"></p>
+                    <p id="puzzle-guide"></p>
+                    <p id="puzzle-trail"></p>
+                    <p id="puzzle-feedback" role="status" aria-live="polite"></p>
+                </div>
+                <div
+                    id="puzzle-choices"
+                    class="puzzle-choices"
+                    role="group"
+                    aria-label="답 선택"
+                ></div>
+                <div id="puzzle-controls" class="puzzle-controls"></div>
+            </main>
+        </section>
         <section id="shell-game" class="shell-game" aria-label="야바위" style="display: none">
             <div id="shell-header-host"></div>
             <main class="shell-board">
                 <p id="shell-status" role="status" aria-live="polite"></p>
-                <div
-                    id="shell-die-preview"
-                    class="shell-die-preview"
-                    aria-label="숨길 주사위"
-                ></div>
+                <div id="shell-die-preview" class="shell-die-preview" aria-label="세 주사위"></div>
                 <div id="shell-table" class="shell-table" role="group" aria-label="컵 선택"></div>
-                <div id="shell-double-choice" class="shell-double-choice" hidden>
-                    <div
-                        id="shell-color-options"
-                        class="shell-color-options"
-                        role="group"
-                        aria-label="주사위 색상"
-                    ></div>
-                    <div
-                        id="shell-number-options"
-                        class="shell-number-options"
-                        role="group"
-                        aria-label="주사위 숫자"
-                    ></div>
-                </div>
                 <div id="shell-controls" class="shell-controls"></div>
             </main>
         </section>
@@ -1727,6 +1735,32 @@
                                 aria-hidden="true"
                             /><span>야바위</span>
                         </button>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="proverb"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/ui-book.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>속담</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="modal-btn-main"
+                            data-action="admin-game-open"
+                            data-game="forge"
+                        >
+                            <img
+                                class="action-icon"
+                                src="images/theme/parts/ui-swords.webp"
+                                alt=""
+                                aria-hidden="true"
+                            /><span>단어 대장간</span>
+                        </button>
                     </div>
                     <div class="settings-actions">
                         <button class="modal-btn-main" data-action="secret-print-open">
@@ -2037,6 +2071,7 @@
         <script src="data/game-data-3.js"></script>
         <script src="data/game-data-4.js"></script>
         <script src="data/story-idioms.js"></script>
+        <script src="data/story-puzzles.js"></script>
         <!-- 유사 단어 집합 (decoy words set) -->
         <script src="data/decoy-words-set.js"></script>
         <script src="data/items-data.js"></script>
@@ -2061,6 +2096,7 @@
         <script src="scripts/domain/battle-rules.js"></script>
         <script src="scripts/domain/story-map.js"></script>
         <script src="scripts/domain/idiom-rules.js"></script>
+        <script src="scripts/domain/story-puzzle-rules.js"></script>
         <script src="scripts/domain/attack-profiles.js"></script>
         <script src="scripts/domain/equipment-rules.js"></script>
         <script src="scripts/domain/revenge-rules.js"></script>
@@ -2097,6 +2133,8 @@
         <script src="scripts/game/practice-session.js"></script>
         <script src="scripts/game/skyfall-session.js"></script>
         <script src="scripts/game/shell-session.js"></script>
+        <script src="scripts/game/story-puzzle-session.js"></script>
+        <script src="scripts/ui/story-puzzle-view.js"></script>
         <script src="scripts/ui/shell-view.js"></script>
         <script src="scripts/ui/skyfall-view.js"></script>
         <script src="scripts/features/hangman.js"></script>

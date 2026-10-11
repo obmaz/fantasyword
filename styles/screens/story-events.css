@@ -60,7 +60,7 @@
     color: #fff1d2;
     background:
         linear-gradient(#173d35b0, #173d35d9),
-        url('../../images/theme/hangman-clearing.webp') center / cover;
+        url('../../images/theme/quest-lobby-sunset.webp') center / cover;
     overflow: hidden;
 }
 .shell-game .gameplay-header {
@@ -94,12 +94,13 @@
 .shell-die-preview {
     position: absolute;
     bottom: 8px;
-    transform: translateX(-50%);
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
+    left: 0;
+    width: 100%;
+    height: 54px;
 }
 .shell-die {
+    position: absolute;
+    transform: translateX(-50%);
     width: 54px;
     height: 54px;
     padding: 8px;
@@ -124,8 +125,7 @@
 [data-color='green'] {
     --die-color: #287b44;
 }
-.shell-die,
-.shell-color {
+.shell-die {
     background: var(--die-color);
 }
 .shell-die i {
@@ -191,38 +191,6 @@
     max-width: 260px;
     color: #fff4d0;
 }
-.shell-double-choice {
-    width: 100%;
-}
-.shell-double-choice[hidden] {
-    display: none;
-}
-.shell-color-options,
-.shell-number-options {
-    display: grid;
-    gap: 6px;
-    margin-block: 8px;
-}
-.shell-color-options {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.shell-number-options {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-.shell-color {
-    border: 2px solid #d7b779;
-    border-radius: 6px;
-    color: #fffbe8;
-    padding: 10px 2px;
-    font: inherit;
-    font-weight: 800;
-    text-shadow: 0 1px 2px #142e28;
-}
-.shell-color[aria-pressed='true'],
-.shell-number-options button[aria-pressed='true'] {
-    outline: 3px solid #fff2a6;
-    outline-offset: 1px;
-}
 @container (max-height: 500px) {
     .shell-board {
         gap: 5px;
@@ -230,7 +198,7 @@
         padding-top: 5px;
     }
     .shell-die-preview {
-        min-height: 38px;
+        height: 34px;
     }
     .shell-die {
         width: 34px;
@@ -245,13 +213,18 @@
     .shell-cup[data-lifted='true'] img {
         transform: translateY(-38px);
     }
-    .shell-color {
-        padding-block: 5px;
-        font-size: 12px;
-    }
 }
 @media (prefers-reduced-motion: reduce) {
     .shell-cup img {
         transition: none;
     }
+}
+
+.story-map-node-proverb {
+    --map-node-icon: url('../../images/theme/parts/ui-book.webp');
+    border-color: #e9cb86;
+}
+.story-map-node-forge {
+    --map-node-icon: url('../../images/theme/parts/ui-swords.webp');
+    border-color: #e9cb86;
 }

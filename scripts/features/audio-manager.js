@@ -8,7 +8,7 @@
      */
     const MUSIC_TRACK_COUNT = APP_CONFIG.musicTrackCount;
 
-    const MUSIC_MODES = ['battle', 'practice', 'hangman', 'shell'];
+    const MUSIC_MODES = ['battle', 'practice', 'hangman', 'shell', 'puzzle'];
     const currentMusicIndices = {
         ...Object.fromEntries(MUSIC_MODES.map((mode) => [mode, null])),
         max: MUSIC_TRACK_COUNT,

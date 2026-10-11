@@ -131,3 +131,21 @@ const shellGame = createShellSession({
     },
     onExit: () => document.getElementById('background-music').pause(),
 });
+
+const storyPuzzle = createStoryPuzzleSession({
+    view: createStoryPuzzleView({
+        document,
+        openScreen: openScreenOverlay,
+        resetScreen: resetScreenOverlay,
+    }),
+    rules: storyPuzzleRules,
+    proverbs: storyProverbs,
+    paths: wordForgePaths,
+    words: wordForgeWords,
+    shuffle: questionTools.shuffle,
+    onOpen: () => {
+        cancelPendingGameStart();
+        playMusic('puzzle');
+    },
+    onExit: () => document.getElementById('background-music').pause(),
+});

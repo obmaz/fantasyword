@@ -117,6 +117,7 @@ window.onload = () => {
     }
     hangman.init();
     shellGame.init();
+    storyPuzzle.init();
     document.getElementById('hangman-next-btn')?.addEventListener('click', () => hangman.next());
     // 최초 로드 시 뷰포트 높이를 고정 (모바일 주소창 대응)
     initAppHeight();

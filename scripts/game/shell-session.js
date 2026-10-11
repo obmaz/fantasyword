@@ -1,4 +1,4 @@
-/** 세 컵 야바위. 애니메이션 완료와 결과 지급은 세션 세대로 보호한다. */
+/** 세 컵·세 주사위 야바위. 늦은 입력과 지급은 세션 세대로 보호한다. */
 function createShellSession({ view, random, timers, onOpen, onExit }) {
     const { setTimeout, clearTimeout } = timers;
     let active = false;
@@ -6,19 +6,33 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
     let version = 0;
     let timer = null;
     let cups = [0, 1, 2];
+    let dice = [];
     let target = 0;
-    let die = null;
+    let query = null;
     let options = null;
-    let selectedColor = null;
-    let selectedNumber = null;
     let payout = 0;
-    const colors = ['red', 'blue', 'yellow', 'green'];
     const integer = (max) => Math.min(max - 1, Math.max(0, Math.floor(random() * max)));
+    const shuffle = (values) => {
+        const copy = [...values];
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = integer(i + 1);
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+    };
     const guard = (callback) => {
         const generation = version;
+        const step = phase;
         return (...args) => {
-            if (active && generation === version) callback(...args);
+            if (active && generation === version && step === phase) callback(...args);
         };
+    };
+    const ask = (attribute) => {
+        query = { attribute, value: dice[target][attribute] };
+        view.ready(
+            query,
+            guard((cup) => session.pick(cup))
+        );
     };
     const session = {
         get active() {
@@ -36,16 +50,14 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
             active = true;
             phase = 'preview';
             cups = [0, 1, 2];
-            target = integer(3);
-            die = { color: colors[integer(4)], number: integer(6) + 1 };
-            selectedColor = null;
-            selectedNumber = null;
+            const colors = shuffle(['red', 'blue', 'yellow', 'green']);
+            const numbers = shuffle([1, 2, 3, 4, 5, 6]);
+            dice = colors.slice(0, 3).map((color, cup) => ({ color, number: numbers[cup] }));
             payout = 0;
             options = settings;
             onOpen();
             view.open(
-                die,
-                target,
+                dice,
                 guard(() => session.begin())
             );
         },
@@ -59,7 +71,8 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
                 if (!active || version !== generation || phase !== 'mixing') return;
                 if (!remaining--) {
                     phase = 'pick';
-                    view.ready(guard((cup) => session.pick(cup)));
+                    target = integer(3);
+                    ask(integer(2) ? 'number' : 'color');
                     return;
                 }
                 const left = integer(3);
@@ -73,15 +86,20 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
             timer = setTimeout(swap, 240);
         },
         pick(cup) {
-            if (!active || phase !== 'pick' || !cups.includes(cup)) return;
+            if (!active || !['pick', 'double'].includes(phase) || !cups.includes(cup)) return;
             if (cup !== target) {
                 phase = 'settle';
-                view.reveal(die, target, cups.indexOf(target));
+                view.reveal(dice, cups);
                 session.settle(0);
                 return;
             }
+            if (phase === 'double') {
+                phase = 'settle';
+                view.reveal(dice, cups);
+                session.settle(20);
+                return;
+            }
             phase = 'offer';
-            // 컵을 찾은 뒤에는 주사위를 다시 보여주지 않아 색상·숫자 기억을 묻는다.
             view.offer(
                 guard(() => session.cashOut()),
                 guard(() => session.double())
@@ -90,45 +108,19 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
         cashOut() {
             if (!active || phase !== 'offer') return;
             phase = 'settle';
-            view.reveal(die, target, cups.indexOf(target));
+            view.reveal(dice, cups);
             session.settle(10);
         },
         double() {
             if (!active || phase !== 'offer') return;
             phase = 'double';
-            view.doubleChoice(
-                guard((color) => session.chooseColor(color)),
-                guard((number) => session.chooseNumber(number)),
-                guard(() => session.submitDouble())
-            );
-        },
-        chooseColor(color) {
-            if (!active || phase !== 'double' || !colors.includes(color)) return;
-            selectedColor = color;
-            view.selection(selectedColor, selectedNumber);
-        },
-        chooseNumber(number) {
-            if (
-                !active ||
-                phase !== 'double' ||
-                !Number.isInteger(number) ||
-                number < 1 ||
-                number > 6
-            )
-                return;
-            selectedNumber = number;
-            view.selection(selectedColor, selectedNumber);
-        },
-        submitDouble() {
-            if (!active || phase !== 'double' || !selectedColor || !selectedNumber) return;
-            phase = 'settle';
-            view.reveal(die, target, cups.indexOf(target));
-            session.settle(selectedColor === die.color && selectedNumber === die.number ? 20 : 0);
+            target = (target + 1 + integer(2)) % 3;
+            // 같은 정답 컵을 반복하지 않고 다른 속성으로 남은 주사위를 찾는다.
+            ask(query.attribute === 'color' ? 'number' : 'color');
         },
         settle(points) {
             if (!active || phase !== 'settle') return;
             payout = points;
-            // 지급 저장이 실패해도 다시 게임을 하지 않고 같은 결과의 저장만 재시도한다.
             if (options?.onSettle && !options.onSettle(points)) {
                 view.saveFailed(guard(() => session.settle(payout)));
                 return;

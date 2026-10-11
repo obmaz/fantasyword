@@ -65,7 +65,7 @@ const storyJourney = {
                 const saved = events[`${stage}:${index}`]?.kind;
                 const resolved =
                     kind === 'mystery' &&
-                    ['battle', 'market', 'treasure', 'assault', 'idiom'].includes(saved) &&
+                    storyMapRules.mysteryKinds.includes(saved) &&
                     events[`${stage}:${index}`]?.revealed !== false
                         ? saved
                         : kind;
@@ -301,7 +301,7 @@ const storyJourney = {
     },
     mysteryKind(row, index) {
         const kind = storyJourney.events[`${row}:${index}`]?.kind;
-        return ['battle', 'market', 'treasure', 'assault', 'idiom'].includes(kind)
+        return storyMapRules.mysteryKinds.includes(kind)
             ? kind
             : storyMapRules.resolveMystery(storyJourney.random());
     },
@@ -402,6 +402,27 @@ const storyJourney = {
             });
             return;
         }
+        if (['proverb', 'forge'].includes(node.kind)) {
+            const book = db.getBookKey();
+            const isCurrent = () =>
+                storyJourney.isPending() &&
+                storyJourney.pendingStage === row &&
+                storyJourney.pendingIndex === index &&
+                storyJourney.pendingKind === node.kind;
+            storyPuzzle.start(node.kind, {
+                onSettle: (result) =>
+                    book === db.getBookKey() &&
+                    isCurrent() &&
+                    storyJourney.claimPuzzle(row, index, result),
+                onExit: () => {
+                    if (book !== db.getBookKey()) return;
+                    if (storyJourney.pendingStage !== null && !isCurrent()) return;
+                    storyJourney.cancelBattleReturn();
+                    storyJourney.open();
+                },
+            });
+            return;
+        }
         if (node.kind === 'casino') {
             const book = db.getBookKey();
             shellGame.start({
@@ -449,6 +470,49 @@ const storyJourney = {
         return storyJourney.isPending() && storyJourney.pendingKind === 'idiom'
             ? idiomRules.pool(storyIdioms, idiomRules.difficulty(storyJourney.pendingStage))
             : null;
+    },
+    claimPuzzle(row, index, result) {
+        const kind = storyJourney.pendingKind;
+        if (
+            !storyJourney.isPending() ||
+            storyJourney.pendingStage !== row ||
+            storyJourney.pendingIndex !== index ||
+            !['proverb', 'forge'].includes(kind) ||
+            result?.kind !== kind ||
+            !Number.isInteger(result.mistakes) ||
+            result.mistakes < 0
+        )
+            return false;
+        if (result.won === false && result.points === 0 && result.mistakes > 2) return true;
+        const reward = storyMapRules.encounters[kind].count * 6;
+        if (
+            result.won !== true ||
+            !storyMapRules.crown(result.mistakes) ||
+            result.points !== reward
+        )
+            return false;
+        const events = storyJourney.events;
+        events[`${row}:${index}`] = {
+            ...events[`${row}:${index}`],
+            cleared: true,
+            mistakes: result.mistakes,
+            reward,
+        };
+        const path = storyJourney.path;
+        path[row] = index;
+        if (
+            !db.commitChanges(
+                { gold: db.gold + reward },
+                {
+                    [storyJourney.eventsKey]: JSON.stringify(events),
+                    [storyJourney.pathKey]: JSON.stringify(path),
+                    [storyJourney.key]: String(row + 1),
+                }
+            )
+        )
+            return false;
+        storyJourney.cancelBattleReturn();
+        return true;
     },
     claimCasino(row, index, points) {
         if (

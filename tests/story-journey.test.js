@@ -83,9 +83,11 @@ test('암시장 구매 실패는 골드만 차감하고 재구매할 수 있으�
 test('물음표는 미리 보여주지 않고 입장 후 전투·암시장·보물·총공세 결과를 고정한다', () => {
     for (const [random, kind] of [
         [0, 'battle'],
-        [0.3, 'market'],
-        [0.55, 'treasure'],
-        [0.75, 'assault'],
+        [0.2, 'market'],
+        [0.35, 'treasure'],
+        [0.5, 'assault'],
+        [0.65, 'proverb'],
+        [0.8, 'forge'],
         [0.95, 'idiom'],
     ]) {
         const r = browserRuntime();
@@ -114,7 +116,7 @@ test('물음표는 미리 보여주지 않고 입장 후 전투·암시장·보�
 test('보물 상자는 한 번만 골드를 주고 다음 단계로 진행하며 나가기는 보상을 주지 않는다', () => {
     const r = browserRuntime({ v7_gold: '0' });
     const journey = r.evaluate('storyJourney');
-    journey.random = () => 0.55;
+    journey.random = () => 0.35;
     journey.select(0, 1);
     journey.enterMystery();
     journey.leaveTreasure();
@@ -132,7 +134,7 @@ test('보물 상자는 한 번만 골드를 주고 다음 단계로 진행하며
 test('물음표 확인은 100골드를 한 번만 차감하고 저장·닫기·재입장 후에도 공개를 유지한다', () => {
     const r = browserRuntime({ v7_gold: '250' });
     const journey = r.evaluate('storyJourney');
-    journey.random = () => 0.3;
+    journey.random = () => 0.2;
     journey.select(0, 1);
     assert.equal(r.evaluate('db.gold'), 250);
     assert.deepEqual(Object.keys(journey.events), []);
@@ -179,7 +181,7 @@ test('총공세 승리만 스토리를 진행하고 패배·중도 종료는 같
         const r = browserRuntime();
         const journey = r.evaluate('storyJourney');
         r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
-        journey.random = () => 0.75;
+        journey.random = () => 0.5;
         journey.select(0, 1);
         journey.enterMystery();
         r.evaluate(`window.storyAssault.onFinish(${won})`);
@@ -194,11 +196,11 @@ test('지난 총공세 완료 콜백은 다음 지점의 진행과 선택을 바
     const r = browserRuntime();
     const journey = r.evaluate('storyJourney');
     r.evaluate('skyfall.start = (day, options) => { window.storyAssault = options; };');
-    journey.random = () => 0.75;
+    journey.random = () => 0.5;
     journey.select(0, 1);
     journey.enterMystery();
     r.evaluate('window.oldStoryAssault = window.storyAssault; window.storyAssault.onFinish(true)');
-    journey.random = () => 0.3;
+    journey.random = () => 0.2;
     journey.select(1, journey.connections(0, 1)[0]);
     r.evaluate('window.oldStoryAssault.onFinish(true); window.oldStoryAssault.onExit();');
     assert.equal(journey.stage, 1);

@@ -4,9 +4,6 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
     const labels = { red: '빨강', blue: '파랑', yellow: '노랑', green: '초록' };
     let cupButtons = [];
     let animations = [];
-    let colorButtons = [];
-    let numberButtons = [];
-    let submit;
     let version = 0;
     const cancelAnimations = () => {
         animations.forEach((animation) => animation.cancel());
@@ -27,28 +24,31 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             root.appendChild(button);
         }
     };
-    const drawDie = (die) => {
+    const drawDice = (dice, cups) => {
         const root = element('shell-die-preview');
         root.replaceChildren();
         root.style.visibility = 'visible';
-        const face = doc.createElement('span');
-        face.className = 'shell-die';
-        face.dataset.color = die.color;
-        face.setAttribute('aria-label', `${labels[die.color]} ${die.number}`);
-        const positions = {
-            1: [4],
-            2: [0, 8],
-            3: [0, 4, 8],
-            4: [0, 2, 6, 8],
-            5: [0, 2, 4, 6, 8],
-            6: [0, 2, 3, 5, 6, 8],
-        };
-        for (let i = 0; i < 9; i++) {
-            const pip = doc.createElement('i');
-            pip.dataset.visible = String(positions[die.number].includes(i));
-            face.appendChild(pip);
-        }
-        root.appendChild(face);
+        dice.forEach((die, cup) => {
+            const face = doc.createElement('span');
+            face.style.left = `${cups.indexOf(cup) * 33.333 + 16.666}%`;
+            face.className = 'shell-die';
+            face.dataset.color = die.color;
+            face.setAttribute('aria-label', `${labels[die.color]} ${die.number}`);
+            const positions = {
+                1: [4],
+                2: [0, 8],
+                3: [0, 4, 8],
+                4: [0, 2, 6, 8],
+                5: [0, 2, 4, 6, 8],
+                6: [0, 2, 3, 5, 6, 8],
+            };
+            for (let i = 0; i < 9; i++) {
+                const pip = doc.createElement('i');
+                pip.dataset.visible = String(positions[die.number].includes(i));
+                face.appendChild(pip);
+            }
+            root.appendChild(face);
+        });
     };
     return {
         init(onExit) {
@@ -56,16 +56,14 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
                 createGameplayHeader({ mode: 'shell', title: '야바위', onExit, document: doc })
             );
         },
-        open(die, target, begin) {
+        open(dice, begin) {
             version++;
             cancelAnimations();
             openScreen('shell-game', false);
-            element('shell-double-choice').hidden = true;
             element('shell-status').textContent = '';
-            drawDie(die);
+            drawDice(dice, [0, 1, 2]);
             const table = element('shell-table');
             const preview = element('shell-die-preview');
-            preview.style.left = `${target * 33.333 + 16.666}%`;
             table.replaceChildren(preview);
             cupButtons = [0, 1, 2].map((cup) => {
                 const button = doc.createElement('button');
@@ -73,7 +71,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
                 button.className = 'shell-cup';
                 button.disabled = true;
                 button.style.left = `${cup * 33.333}%`;
-                button.dataset.lifted = String(cup === target);
+                button.dataset.lifted = 'true';
                 button.setAttribute('aria-label', `${cup + 1}번째 컵 선택`);
                 const image = doc.createElement('img');
                 image.src = 'images/theme/parts/shell-cup.webp';
@@ -89,7 +87,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             cupButtons.forEach((button) => {
                 button.dataset.lifted = 'false';
             });
-            element('shell-status').textContent = '주사위가 든 컵을 눈으로 따라가세요.';
+            element('shell-status').textContent = '컵의 움직임을 따라가세요.';
             controls();
         },
         swap(first, second, left, right, duration) {
@@ -114,10 +112,14 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
                     );
             }
         },
-        ready(pick) {
+        ready(query, pick) {
             cancelAnimations();
             const generation = version;
-            element('shell-status').textContent = '주사위가 든 컵을 고르세요.';
+            controls();
+            element('shell-status').textContent =
+                query.attribute === 'color'
+                    ? `${labels[query.value]} 주사위가 든 컵은?`
+                    : `숫자 ${query.value}인 주사위가 든 컵은?`;
             cupButtons.forEach((button, cup) => {
                 button.disabled = false;
                 button.onclick = () => {
@@ -130,69 +132,16 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
                 button.disabled = true;
             });
             element('shell-status').textContent =
-                '컵을 찾았어요! 10을 받을까요, 색과 숫자를 맞혀 2배에 도전할까요?';
+                '정답! 10을 받을까요, 다른 주사위의 컵을 찾아 2배에 도전할까요?';
             controls(['10 받기', cash], ['2배 도전', double]);
         },
-        doubleChoice(color, number, onSubmit) {
-            const generation = version;
-            element('shell-status').textContent =
-                '주사위의 색상과 숫자를 모두 맞히면 20, 틀리면 0입니다.';
-            element('shell-double-choice').hidden = false;
-            const colors = element('shell-color-options');
-            const numbers = element('shell-number-options');
-            colors.replaceChildren();
-            numbers.replaceChildren();
-            colorButtons = Object.entries(labels).map(([key, label]) => {
-                const button = doc.createElement('button');
-                button.type = 'button';
-                button.className = 'shell-color';
-                button.dataset.color = key;
-                button.textContent = label;
-                button.setAttribute('aria-pressed', 'false');
-                button.onclick = () => {
-                    if (generation === version) color(key);
-                };
-                colors.appendChild(button);
-                return button;
-            });
-            numberButtons = [1, 2, 3, 4, 5, 6].map((value) => {
-                const button = doc.createElement('button');
-                button.type = 'button';
-                button.className = 'english-key';
-                button.textContent = value;
-                button.dataset.number = String(value);
-                button.setAttribute('aria-pressed', 'false');
-                button.onclick = () => {
-                    if (generation === version) number(value);
-                };
-                numbers.appendChild(button);
-                return button;
-            });
-            controls(['선택 완료', onSubmit]);
-            submit = element('shell-controls').children[0];
-            submit.disabled = true;
-        },
-        selection(color, number) {
-            colorButtons.forEach((button) =>
-                button.setAttribute('aria-pressed', String(button.dataset.color === color))
-            );
-            numberButtons.forEach((button) =>
-                button.setAttribute(
-                    'aria-pressed',
-                    String(Number(button.dataset.number) === number)
-                )
-            );
-            submit.disabled = !color || !number;
-        },
-        reveal(die, target, position) {
+        reveal(dice, cups) {
             cancelAnimations();
-            cupButtons.forEach((button, index) => {
+            cupButtons.forEach((button) => {
                 button.disabled = true;
-                button.dataset.lifted = String(index === target);
+                button.dataset.lifted = 'true';
             });
-            drawDie(die);
-            element('shell-die-preview').style.left = `${position * 33.333 + 16.666}%`;
-            element('shell-double-choice').hidden = true;
+            drawDice(dice, cups);
         },
         saveFailed(retry) {
             element('shell-status').textContent =
