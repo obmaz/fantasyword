@@ -26,8 +26,13 @@ const storyPuzzleRules = Object.freeze({
         return null;
     },
     proverbs(rows, shuffle) {
-        return shuffle(rows)
-            .slice(0, 5)
+        const levels = [1, 2, 3, 4].map(
+            (level) => shuffle(rows.filter((row) => row.level === level))[0]
+        );
+        const used = new Set(levels);
+        const extra = shuffle(rows.filter((row) => !used.has(row)))[0];
+        return shuffle([...levels, extra])
+            .filter(Boolean)
             .map((row) => ({
                 ...row,
                 choices: shuffle([row.answer, ...row.decoys]),

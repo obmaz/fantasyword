@@ -14,9 +14,11 @@ const proverbs = domain.evaluate('storyProverbs');
 const meanings = domain.evaluate('wordForgeMeanings');
 
 test('속담은 고유한 30문항·정답 하나의 네 보기이며 영어 학습 풀에 섞이지 않는다', () => {
-    assert.equal(proverbs.length, 30);
-    assert.equal(new Set(proverbs.map((q) => q.before + q.answer + q.after)).size, 30);
+    assert.ok(proverbs.length >= 70);
+    assert.deepEqual(new Set(proverbs.map((q) => q.level)), new Set([1, 2, 3, 4]));
+    assert.equal(new Set(proverbs.map((q) => q.before + q.answer + q.after)).size, proverbs.length);
     for (const q of proverbs) {
+        assert.ok([1, 2, 3, 4].includes(q.level));
         assert.equal(new Set([q.answer, ...q.decoys]).size, 4);
         assert.ok(q.meaning.length > 0);
     }
@@ -25,6 +27,15 @@ test('속담은 고유한 30문항·정답 하나의 네 보기이며 영어 학
         r.evaluate('rawData.some(row => storyProverbs.some(q => row.word === q.answer))'),
         false
     );
+});
+
+test('속담 출제는 네 난이도를 한 판에 하나씩 포함한다', () => {
+    for (let seed = 0; seed < 10; seed++) {
+        const picked = rules.proverbs(proverbs, (values) =>
+            values.slice(seed).concat(values.slice(0, seed))
+        );
+        assert.deepEqual(new Set(picked.map((q) => q.level)), new Set([1, 2, 3, 4]));
+    }
 });
 
 test('대장간 모든 문제는 사전에 있는 단어를 한 글자씩 바꾸는 해답이 존재한다', () => {
