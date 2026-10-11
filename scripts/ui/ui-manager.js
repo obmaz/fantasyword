@@ -27,22 +27,20 @@ const ui = {
     updateGameInfo: (mode, day) => {
         const battleScreen = document.getElementById('battle-mode-game');
         battleScreen.dataset.gameMode = mode;
-        battleScreen.dataset.questionKind =
-            mode === 'idiom-test' || (mode === 'story' && storyJourney.pendingKind === 'idiom')
-                ? 'idiom'
-                : '';
+        const isIdiom = game.currentQ?.questionKind === 'idiom';
         const title = document.getElementById('battle-screen-title');
         if (title)
-            title.textContent =
-                mode === 'story'
-                    ? '스토리'
-                    : mode === 'idiom-test'
-                      ? '사자성어'
-                      : mode === 'boss'
-                        ? '생존 도전'
-                        : mode === 'revenge'
-                          ? '복수 퀘스트'
-                          : '도전';
+            title.textContent = isIdiom
+                ? '사자성어'
+                : mode === 'story'
+                  ? '스토리'
+                  : mode === 'idiom-test'
+                    ? '사자성어'
+                    : mode === 'boss'
+                      ? '생존 도전'
+                      : mode === 'revenge'
+                        ? '복수 퀘스트'
+                        : '도전';
         let dayText;
         if (mode === 'idiom-test' || (mode === 'story' && storyJourney.pendingKind === 'idiom')) {
             dayText = `난이도 ${game.currentQ?.difficulty || game.list[0]?.difficulty || 1}`;

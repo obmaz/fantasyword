@@ -198,6 +198,12 @@ function createBattleView({
             screen.dataset.answerEntry = '';
             screen.dataset.monster = encounter?.id || '';
             screen.dataset.questionKind = encounter?.kind || '';
+            screen
+                .querySelector('.battle-hud')
+                ?.setAttribute(
+                    'aria-label',
+                    encounter?.kind === 'idiom' ? '풀이 정보' : '전투 정보'
+                );
             element('wave-badge').innerText = progress;
             element('equipment-hint').hidden = true;
             element('equipment-hint').innerText = '';
@@ -608,15 +614,23 @@ function createBattleView({
             element('res-retry-note').innerText =
                 '방패 재도전 사용 · 맞힌 개수는 최종 제출 기준입니다. 처음 틀린 단어는 복수 퀘스트에 남아 있어요.';
             element('result-review-btn').hidden = wrongWords.length === 0;
-            element('res-title').innerText = win || mode === 'boss' ? '전투 완료' : '도전 종료';
-            element('res-subtitle').innerText =
-                mode === 'story'
-                    ? '스토리'
-                    : mode === 'idiom-test'
-                      ? '사자성어'
-                      : mode === 'boss'
-                        ? '생존 도전'
-                        : '도전';
+            const isIdiom = element('battle-mode-game').dataset.questionKind === 'idiom';
+            element('res-title').innerText = isIdiom
+                ? win
+                    ? '풀이 완료'
+                    : '풀이 종료'
+                : win || mode === 'boss'
+                  ? '전투 완료'
+                  : '도전 종료';
+            element('res-subtitle').innerText = isIdiom
+                ? '사자성어'
+                : mode === 'story'
+                  ? '스토리'
+                  : mode === 'idiom-test'
+                    ? '사자성어'
+                    : mode === 'boss'
+                      ? '생존 도전'
+                      : '도전';
             const total = rows.find(({ label }) => label === '전체') || rows.at(-1);
             element('res-summary').innerText = total
                 ? `정답 ${total.correct}/${total.total} · ${total.total ? Math.round((total.correct / total.total) * 100) : 0}%`

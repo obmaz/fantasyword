@@ -310,7 +310,9 @@ function createBattleSession({
                           lesson: data.questionKind === 'cloze' ? '문장 빈칸' : monster.lesson,
                           instruction: instructions[data.questionKind],
                       }
-                    : null
+                    : data.questionKind === 'idiom'
+                      ? { kind: 'idiom', name: '사자성어' }
+                      : null
             );
         },
         renderEncounter(data) {

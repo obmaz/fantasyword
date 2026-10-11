@@ -20,15 +20,44 @@
 }
 .story-puzzle-game[data-kind='proverb'] {
     background:
-        linear-gradient(#4b281c66, #241615c7),
-        url('../../images/theme/parts/item-scroll.webp') center / cover;
+        linear-gradient(#17352812, #0e241b40),
+        url('../../images/theme/proverb-study.webp') center / cover;
 }
-.story-puzzle-game[data-kind='proverb'] .puzzle-board {
-    background: #3a201d55;
+.story-puzzle-game[data-kind='proverb'] .gameplay-header {
+    background: linear-gradient(#142e26c9, #142e265c);
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-progress {
+    align-self: flex-start;
+    padding: 6px 10px;
+    border: 1px solid #d8bf8580;
+    border-radius: 8px;
+    background: #173d2dcc;
+    color: #fff3cf;
+}
+.story-puzzle-game[data-kind='proverb'][data-phase='question'] .puzzle-word-pair {
+    margin-block: auto;
 }
 .story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
-    border-image-source: url('../../images/theme/parts/item-scroll.webp');
-    color: #40251d;
+    min-height: 140px;
+    padding: 24px 16px;
+    color: #342d21;
+    font-size: clamp(22px, 5.6cqw, 36px);
+    line-height: 1.6;
+    word-break: keep-all;
+    text-shadow: none;
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-feedback:not(:empty) {
+    padding: 12px;
+    background: #142e26e8;
+    border: 1px solid #d8bf8580;
+    border-radius: 8px;
+    color: #fff3cf;
+}
+.story-puzzle-game[data-kind='proverb'] .puzzle-choices button {
+    min-height: 76px;
+    font-size: clamp(17px, 4.6cqw, 26px);
+    line-height: 1.3;
+    word-break: keep-all;
 }
 .puzzle-board {
     flex: 1;
@@ -209,5 +238,109 @@
         min-height: 34px;
         padding: 7px 4px;
         font-size: 13px;
+    }
+    .story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
+        min-height: 88px;
+        padding: 10px;
+        font-size: 19px;
+        line-height: 1.4;
+    }
+    .story-puzzle-game[data-kind='proverb'] .puzzle-choices button {
+        min-height: 48px;
+        font-size: 15px;
+    }
+}
+
+/* 사자성어도 주입된 문제 유형으로 전용 장면을 선택한다. */
+#battle-mode-game[data-question-kind='idiom'] {
+    background:
+        linear-gradient(#142b3815, #0b202d40),
+        url('../../images/theme/idiom-study.webp') center / cover;
+}
+#battle-mode-game[data-question-kind='idiom']::before,
+#battle-mode-game[data-question-kind='idiom'] .battle-arena::after,
+#battle-mode-game[data-question-kind='idiom'] .char-wrapper,
+#battle-mode-game[data-question-kind='idiom'] #combat-effects,
+#battle-mode-game[data-question-kind='idiom'] #dmg-txt,
+#battle-mode-game[data-question-kind='idiom'] #equipment-display,
+#battle-mode-game[data-question-kind='idiom'] #skill-display,
+#battle-mode-game[data-question-kind='idiom'] .gameplay-heading p {
+    display: none !important;
+}
+:root[data-layout] #battle-mode-game[data-question-kind='idiom'] .battle-arena {
+    flex: 0 0 94px;
+    min-height: 94px;
+    max-height: 94px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+:root[data-layout] #battle-mode-game[data-question-kind='idiom'] .battle-hud {
+    top: 8px;
+    gap: 6px;
+}
+#battle-mode-game[data-question-kind='idiom'] .gameplay-header {
+    background: linear-gradient(#102733cc, #10273366);
+}
+:root[data-layout] #battle-mode-game[data-question-kind='idiom'] .quiz-area {
+    flex: 1;
+    min-height: 0;
+    margin: 0;
+    padding: 8px 12px max(12px, env(safe-area-inset-bottom));
+    border-radius: 0;
+    background: transparent;
+    gap: 12px;
+    overflow: auto;
+}
+#battle-mode-game[data-question-kind='idiom'] .question-box {
+    min-height: 140px;
+    display: grid;
+    place-items: center;
+    margin-block: auto;
+    padding: 20px 14px;
+}
+#battle-mode-game[data-question-kind='idiom'] .q-text {
+    color: #342d21;
+    font-size: clamp(22px, 5.6cqw, 36px);
+    line-height: 1.5;
+    word-break: keep-all;
+    text-shadow: none;
+}
+#battle-mode-game[data-question-kind='idiom'] .options-grid {
+    grid-auto-rows: minmax(76px, auto);
+    gap: 8px;
+    margin-top: 0;
+    padding-bottom: 0;
+}
+#battle-mode-game[data-question-kind='idiom'] .option-btn {
+    font-size: clamp(18px, 5cqw, 28px);
+    line-height: 1.3;
+    word-break: keep-all;
+}
+@container battle-game (max-height: 500px) {
+    :root[data-layout] #battle-mode-game[data-question-kind='idiom'] .battle-arena {
+        flex-basis: 80px;
+        min-height: 80px;
+        max-height: 80px;
+    }
+    :root[data-layout] #battle-mode-game[data-question-kind='idiom'] .quiz-area {
+        gap: 6px;
+        padding: 4px 8px 8px;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .question-box {
+        min-height: 70px;
+        padding: 8px;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .q-text {
+        font-size: 17px;
+        line-height: 1.35;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .options-grid {
+        grid-auto-rows: minmax(48px, auto);
+        gap: 5px;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .option-btn {
+        font-size: 16px;
+        padding: 3px 6px !important;
     }
 }

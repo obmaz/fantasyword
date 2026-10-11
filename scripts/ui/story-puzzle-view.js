@@ -59,6 +59,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         question(model, choose) {
             version++;
+            element('story-puzzle-game').dataset.phase = 'question';
             clearQuestion();
             actions();
             message('');
@@ -83,7 +84,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             }
             element('puzzle-guide').textContent =
                 model.kind === 'proverb'
-                    ? '빈칸에 들어갈 말을 고르세요.'
+                    ? ''
                     : `한 글자씩 바꾸세요 · 남은 변환 ${model.remaining}회`;
             element('puzzle-trail').textContent =
                 model.kind === 'forge'
@@ -105,6 +106,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         review(model, next) {
             version++;
+            element('story-puzzle-game').dataset.phase = 'review';
             clearQuestion();
             element('puzzle-prompt').textContent = model.words
                 ? wordPath(model.words, model.wordMeanings)
@@ -124,6 +126,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         done(result, story, again) {
             version++;
+            element('story-puzzle-game').dataset.phase = 'done';
             clearQuestion();
             element('puzzle-prompt').textContent = result.won ? '완료!' : '다시 도전해 보세요';
             element('puzzle-prompt').dataset.result = result.won ? 'correct' : 'wrong';

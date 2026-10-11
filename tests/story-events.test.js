@@ -142,6 +142,7 @@ test('사자성어 ? 전투와 테스트는 같은 객관식을 쓰고 영어 �
             )
         );
         assert.equal(r.evaluate('game.list.length'), 5);
+        assert.equal(r.getElement('battle-mode-game').dataset.questionKind, 'idiom');
         const before = r.evaluate('JSON.stringify(db.stats)');
         r.evaluate('game.gear.shield = 0; game.handleAnswer(false, null)');
         r.advance(2500);
@@ -160,6 +161,10 @@ test('사자성어 ? 전투와 테스트는 같은 객관식을 쓰고 영어 �
         r.evaluate('game.list.every(row => row.questionKind === "idiom" && row.difficulty === 1)')
     );
     assert.equal(r.getElement('q-text').innerText, r.evaluate('game.currentQ.meaning'));
+    assert.equal(r.getElement('battle-mode-game').dataset.questionKind, 'idiom');
+    r.evaluate('game.stop(); game.init("battle", 1)');
+    r.advance(400);
+    assert.notEqual(r.getElement('battle-mode-game').dataset.questionKind, 'idiom');
 });
 
 test('확장 암시장 유물은 스토리에만 추가 힌트·재도전·상자 보상을 준다', () => {

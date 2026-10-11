@@ -90,4 +90,4 @@
 `quest-menu-complete.webp`는 `docs/design/approved-lobby.webp`로 옮겼다. 과거 원본은 Git 이력으로도 복구할 수 있다.
 시안·PNG·검증 스크린샷은 배포용 images 폴더에 넣지 않는다. 변경 후 에셋 검사·빌드·실제 브라우저 확인이 필요하다.
 
-속담은 도서관, 단어 대장간은 길드 공터 생성 배경을 재사용하며 문제판은 `quest-paper.webp`, 보기는 공통 초록 이미지 버튼과 HTML 텍스트로 표현한다.
+속담은 `images/theme/proverb-study.webp`(낮의 서당·돌다리), 사자성어는 `images/theme/idiom-study.webp`(달빛 서예방·붓과 먹)의 전용 생성 배경을 사용한다. 배경에는 버튼·문제 글자를 포함하지 않는다. 문제판은 `quest-paper.webp`, 보기는 공통 초록 이미지 버튼과 HTML 텍스트로 표현하며 선택지는 하단에 둔다. 단어 대장간은 길드 공터 배경을 유지한다. 아이템 두루마리를 장면·문제판으로 확대하던 사용은 제거했다.
