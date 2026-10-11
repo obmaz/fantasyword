@@ -2068,7 +2068,7 @@ dialog.screen-overlay :is(select, select option),
     background: #176348;
 }
 .card.mode-selection .mode-question-types input {
-    accent-color: #176348;
+    accent-color: #f5ce77;
 }
 #battle-mode-game .boss-input {
     color: #263e30;

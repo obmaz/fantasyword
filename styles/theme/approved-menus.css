@@ -1578,6 +1578,9 @@ button .action-icon {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
 }
+#setting-modal .settings-primary-actions {
+    grid-template-columns: minmax(0, 1fr);
+}
 #setting-modal .settings-actions .modal-btn-main {
     min-width: 0;
     font-size: 13px;
