@@ -24,7 +24,21 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         element('puzzle-choices').replaceChildren();
         element('puzzle-trail').textContent = '';
         element('puzzle-current').textContent = '';
+        delete element('puzzle-current').dataset.word;
+        delete element('puzzle-prompt').dataset.word;
     };
+    const wordCard = (root, word, meaning, prefix = '') => {
+        const label = doc.createElement('span');
+        label.className = 'forge-word';
+        label.textContent = `${prefix}${word}`;
+        const description = doc.createElement('small');
+        description.className = 'forge-meaning';
+        description.textContent = meaning;
+        root.replaceChildren(label, description);
+        root.dataset.word = word;
+    };
+    const wordPath = (words, meanings) =>
+        words.map((word) => `${word} (${meanings[word]})`).join(' → ');
     return {
         init(onExit) {
             element('puzzle-header-host').replaceChildren(
@@ -51,21 +65,38 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             delete element('puzzle-prompt').dataset.result;
             element('puzzle-progress').textContent =
                 `${model.round} / ${model.total} · ${model.kind === 'proverb' ? `오답 ${model.mistakes} / 2` : `추가 변환 ${model.mistakes} / 2`}`;
-            element('puzzle-prompt').textContent =
-                model.kind === 'proverb' ? model.prompt : `목표 ${model.prompt}`;
-            element('puzzle-current').textContent = model.current || '';
+            if (model.kind === 'forge') {
+                wordCard(
+                    element('puzzle-prompt'),
+                    model.prompt,
+                    model.wordMeanings[model.prompt],
+                    '목표 '
+                );
+                wordCard(
+                    element('puzzle-current'),
+                    model.current,
+                    model.wordMeanings[model.current],
+                    '현재 '
+                );
+            } else {
+                element('puzzle-prompt').textContent = model.prompt;
+            }
             element('puzzle-guide').textContent =
                 model.kind === 'proverb'
                     ? '빈칸에 들어갈 말을 고르세요.'
                     : `한 글자씩 바꾸세요 · 남은 변환 ${model.remaining}회`;
-            element('puzzle-trail').textContent = model.trail?.join(' → ') || '';
+            element('puzzle-trail').textContent =
+                model.kind === 'forge'
+                    ? wordPath(model.trail.slice(0, -1), model.wordMeanings)
+                    : '';
             const root = element('puzzle-choices');
             const generation = version;
             for (const choice of model.choices) {
                 const button = doc.createElement('button');
                 button.type = 'button';
                 button.className = 'image-action-button';
-                button.textContent = choice;
+                if (model.kind === 'forge') wordCard(button, choice, model.wordMeanings[choice]);
+                else button.textContent = choice;
                 button.onclick = () => {
                     if (generation === version && !button.disabled) choose(choice);
                 };
@@ -75,7 +106,9 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         review(model, next) {
             version++;
             clearQuestion();
-            element('puzzle-prompt').textContent = model.answer;
+            element('puzzle-prompt').textContent = model.words
+                ? wordPath(model.words, model.wordMeanings)
+                : model.answer;
             element('puzzle-prompt').dataset.result = model.correct ? 'correct' : 'wrong';
             element('puzzle-guide').textContent = '';
             element('puzzle-progress').textContent = element('puzzle-progress').textContent.replace(

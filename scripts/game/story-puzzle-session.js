@@ -5,6 +5,7 @@ function createStoryPuzzleSession({
     proverbs,
     paths,
     words,
+    wordMeanings,
     shuffle,
     onOpen,
     onExit,
@@ -76,6 +77,7 @@ function createStoryPuzzleSession({
                             ? `${question.before}____${question.after}`
                             : question.goal,
                     current,
+                    wordMeanings: kind === 'forge' ? wordMeanings : null,
                     trail: [...trail],
                     remaining: kind === 'forge' ? question.minimum + 2 - (trail.length - 1) : null,
                     choices:
@@ -116,6 +118,8 @@ function createStoryPuzzleSession({
                         correct: true,
                         mistakes,
                         answer: trail.join(' → '),
+                        words: [...trail],
+                        wordMeanings,
                         meaning: `최단 ${question.minimum}회 · 사용 ${trail.length - 1}회`,
                     },
                     guard(() => session.continue())
@@ -128,6 +132,8 @@ function createStoryPuzzleSession({
                         correct: false,
                         mistakes,
                         answer: rules.path(question.start, question.goal, words).join(' → '),
+                        words: rules.path(question.start, question.goal, words),
+                        wordMeanings,
                         meaning: '변환 횟수를 모두 사용했습니다.',
                     },
                     guard(() => session.continue())

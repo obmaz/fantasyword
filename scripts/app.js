@@ -142,6 +142,7 @@ const storyPuzzle = createStoryPuzzleSession({
     proverbs: storyProverbs,
     paths: wordForgePaths,
     words: wordForgeWords,
+    wordMeanings: wordForgeMeanings,
     shuffle: questionTools.shuffle,
     onOpen: () => {
         cancelPendingGameStart();

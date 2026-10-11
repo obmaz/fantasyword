@@ -11,6 +11,7 @@ const rules = domain.evaluate('storyPuzzleRules');
 const words = domain.evaluate('wordForgeWords');
 const paths = domain.evaluate('wordForgePaths');
 const proverbs = domain.evaluate('storyProverbs');
+const meanings = domain.evaluate('wordForgeMeanings');
 
 test('속담은 고유한 30문항·정답 하나의 네 보기이며 영어 학습 풀에 섞이지 않는다', () => {
     assert.equal(proverbs.length, 30);
@@ -29,6 +30,8 @@ test('속담은 고유한 30문항·정답 하나의 네 보기이며 영어 학
 test('대장간 모든 문제는 사전에 있는 단어를 한 글자씩 바꾸는 해답이 존재한다', () => {
     assert.equal(new Set(words).size, words.length);
     assert.ok(words.every((word) => /^[A-Z]{3}$/.test(word)));
+    assert.deepEqual(Object.keys(meanings).sort(), Array.from(words).sort());
+    assert.ok(words.every((word) => /[가-힣]/.test(meanings[word])));
     for (const route of paths) {
         assert.ok(route.every((word) => words.includes(word)));
         assert.ok(route.slice(1).every((word, i) => rules.differsByOne(route[i], word)));
@@ -41,6 +44,32 @@ test('대장간 모든 문제는 사전에 있는 단어를 한 글자씩 바꾸
     assert.equal(rules.differsByOne('CAT', 'CATS'), false);
 });
 
+test('대장간 현재·목표·보기 뜻은 단어별로 표시하고 뜻을 눌러도 원래 영어 단어로 판정한다', () => {
+    const r = browserRuntime();
+    r.sandbox.onload();
+    r.evaluate("storyPuzzle.start('forge')");
+    const checkCard = (card) => {
+        const word = card.dataset.word;
+        assert.ok(words.includes(word));
+        assert.equal(card.children[1].textContent, meanings[word]);
+    };
+    const start = r.getElement('puzzle-current').dataset.word;
+    const goal = r.getElement('puzzle-prompt').dataset.word;
+    const route = rules.path(start, goal, words);
+    for (const next of route.slice(1)) {
+        checkCard(r.getElement('puzzle-current'));
+        checkCard(r.getElement('puzzle-prompt'));
+        const choices = r.getElement('puzzle-choices').children;
+        choices.forEach(checkCard);
+        choices.find((button) => button.dataset.word === next).click();
+    }
+    const answer = r.getElement('puzzle-prompt').textContent;
+    route.forEach((word) => assert.ok(answer.includes(`${word} (${meanings[word]})`)));
+    assert.match(r.getElement('puzzle-feedback').textContent, /최단/);
+    r.getElement('puzzle-controls').children[0].click();
+    checkCard(r.getElement('puzzle-current'));
+});
+
 function runtime(kind, options = null) {
     const seen = { results: [] };
     const session = domain.evaluate('createStoryPuzzleSession')({
@@ -48,6 +77,7 @@ function runtime(kind, options = null) {
         proverbs,
         paths,
         words,
+        wordMeanings: meanings,
         shuffle: (values) => [...values],
         onOpen() {},
         onExit() {},

@@ -71,8 +71,37 @@
 #puzzle-current {
     font-size: clamp(28px, 8cqw, 50px);
     font-weight: 900;
-    letter-spacing: 0.2em;
     text-align: center;
+}
+[data-kind='forge'] .puzzle-word-pair:has(#puzzle-current:not(:empty)) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    align-items: center;
+}
+[data-kind='forge'] #puzzle-prompt:has(.forge-word) {
+    min-height: 0;
+    padding: 12px 8px;
+}
+.forge-word {
+    display: block;
+    font-size: clamp(18px, 5cqw, 28px);
+    font-weight: 900;
+    line-height: 1.2;
+}
+.forge-meaning {
+    display: block;
+    margin-top: 3px;
+    font-size: clamp(12px, 3.3cqw, 16px);
+    font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+[data-kind='forge'] .puzzle-choices button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #puzzle-guide,
 #puzzle-trail,
@@ -140,6 +169,22 @@
         padding: 4px;
         border-width: 6px;
         border-image-width: 6px;
+    }
+    [data-kind='forge'] #puzzle-prompt:has(.forge-word) {
+        padding: 4px;
+    }
+    [data-kind='forge'] .forge-word {
+        font-size: 17px;
+        line-height: 1.1;
+    }
+    [data-kind='forge'] .forge-meaning {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    [data-kind='forge'] .puzzle-choices button {
+        border-width: 8px !important;
+        border-image-width: 8px !important;
+        padding: 2px 4px !important;
     }
     #puzzle-trail {
         min-height: 0;
