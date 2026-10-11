@@ -5,6 +5,7 @@
     --ui-danger: url('../../images/theme/parts/game-danger.webp');
     --ui-confirm-cancel: url('../../images/theme/parts/confirm-cancel.webp');
     --ui-confirm-execute: url('../../images/theme/parts/confirm-execute.webp');
+    --popup-title-size: clamp(22px, calc(var(--title-container-width, 100vw) * 0.075), 32px);
     --ui-home: url('../../images/theme/parts/game-home.webp');
     --ui-choice: url('../../images/theme/parts/game-answer.webp');
     --ui-small-control: url('../../images/theme/parts/game-control.webp');
@@ -3138,4 +3139,14 @@ button[data-confirm-tone='execute'] {
 }
 button[data-confirm-tone='warning'] {
     --ui-control-art: var(--ui-danger) !important;
+}
+
+/* Popup headings use the frame width, independent of each popup's own container. */
+dialog.screen-overlay h2,
+dialog.screen-overlay #detail-name {
+    font-family: inherit !important;
+    font-size: var(--popup-title-size) !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
 }
