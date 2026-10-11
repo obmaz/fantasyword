@@ -3,6 +3,8 @@
     --ui-action: url('../../images/theme/parts/game-action.webp');
     --ui-secondary: url('../../images/theme/parts/calm-secondary.webp');
     --ui-danger: url('../../images/theme/parts/game-danger.webp');
+    --ui-confirm-cancel: url('../../images/theme/parts/confirm-cancel.webp');
+    --ui-confirm-execute: url('../../images/theme/parts/confirm-execute.webp');
     --ui-home: url('../../images/theme/parts/game-home.webp');
     --ui-choice: url('../../images/theme/parts/game-answer.webp');
     --ui-small-control: url('../../images/theme/parts/game-control.webp');
@@ -3125,4 +3127,15 @@ button.equipment-control {
     #gold-adjuster-modal :is(.setting-option-row, .settings-gold-editor) {
         padding-inline: 8px;
     }
+}
+
+/* Confirmation colors describe the action while preserving the illustrated frame. */
+button[data-confirm-tone='cancel'] {
+    --ui-control-art: var(--ui-confirm-cancel) !important;
+}
+button[data-confirm-tone='execute'] {
+    --ui-control-art: var(--ui-confirm-execute) !important;
+}
+button[data-confirm-tone='warning'] {
+    --ui-control-art: var(--ui-danger) !important;
 }

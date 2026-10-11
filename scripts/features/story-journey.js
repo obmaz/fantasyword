@@ -220,6 +220,7 @@ const storyJourney = {
             `${node.label}${day !== 'all' ? ` · Day ${day}` : ''} 지점을 진행할까요?`;
         document.getElementById('story-confirm-start').disabled = false;
         document.getElementById('story-confirm-start').textContent = '진행';
+        document.getElementById('story-confirm-start').dataset.confirmTone = 'execute';
         resetScreenOverlay('story-map-modal');
         openScreenOverlay('story-confirm-modal', false);
     },
@@ -243,6 +244,7 @@ const storyJourney = {
             : `${cost}골드를 사용해 스토리 진행과 왕관을 초기화하고 지점 배치를 새로 만들까요? 보유 골드 ${db.gold}.`;
         const button = document.getElementById('story-confirm-start');
         button.textContent = '초기화';
+        button.dataset.confirmTone = 'warning';
         button.disabled = insufficient;
     },
     confirmSelection() {

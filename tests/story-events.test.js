@@ -145,6 +145,7 @@ test('스토리 초기화는 부족한 금액을 표시하고 50골드부터 확
         const button = r.getElement('story-confirm-start');
         const copy = r.getElement('story-confirm-copy').textContent;
         assert.equal(button.textContent, '초기화');
+        assert.equal(button.dataset.confirmTone, 'warning');
         assert.equal(button.disabled, gold < 50);
         assert.ok(copy.includes(`보유 골드 ${gold}`));
         if (gold < 50) {
@@ -178,6 +179,7 @@ test('스토리 초기화 확인을 닫고 전투를 고르면 진행 버튼을 
     r.evaluate('storyJourney.requestReset(); storyJourney.cancelSelection()');
     r.evaluate('storyJourney.requestSelection(0, 0)');
     assert.equal(r.getElement('story-confirm-start').textContent, '진행');
+    assert.equal(r.getElement('story-confirm-start').dataset.confirmTone, 'execute');
     assert.equal(r.getElement('story-confirm-start').disabled, false);
     assert.doesNotMatch(r.getElement('story-confirm-copy').textContent, /부족|초기화/);
 });

@@ -105,7 +105,7 @@ const secret = {
         const resetAction = async () => {
             const ok = await showConfirm(
                 '정말 통계를 초기화하시겠습니까? 이 작업은 되돌릴 수 없습니다.',
-                { okText: '초기화', cancelText: '취소' }
+                { okText: '초기화', cancelText: '취소', tone: 'warning' }
             );
             // 이전 확인창의 응답이 새로 열린 관리 작업을 덮어쓰지 않는다.
             if (secret.pendingAction !== resetAction) return;

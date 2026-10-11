@@ -96,9 +96,31 @@ test('확인창 뒤로 가기는 취소로 해석하고 부모 설정을 닫지 
     const r = browserRuntime();
     r.evaluate('settingsManager.open()');
     const answer = r.evaluate('showConfirm("확인")');
+    const dialog = r.sandbox.document.body.children.find((child) =>
+        child.classList.contains('app-confirm-overlay')
+    );
+    const actions = dialog.children[0].children[1];
+    assert.equal(actions.children[0].dataset.confirmTone, 'cancel');
+    assert.equal(actions.children[1].dataset.confirmTone, 'execute');
     r.evaluate('navigation.back()');
     assert.equal(await answer, false);
     assert.equal(r.getElement('setting-modal').open, true);
+});
+
+test('게임 완전 초기화는 경고 색상을 사용하고 취소하면 저장 데이터를 보존한다', async () => {
+    const r = browserRuntime({ v7_gold: '100', 'v7_story_stage_book-1': '7' });
+    const before = Object.fromEntries(r.store);
+    const answer = r.evaluate('settingsManager.resetGame()');
+    const dialog = r.sandbox.document.body.children.find((child) =>
+        child.classList.contains('app-confirm-overlay')
+    );
+    const actions = dialog.children[0].children[1];
+    assert.equal(actions.children[0].dataset.confirmTone, 'cancel');
+    assert.equal(actions.children[1].dataset.confirmTone, 'warning');
+    assert.equal(actions.children[1].textContent, '모두 삭제');
+    r.evaluate('dismissConfirm()');
+    await answer;
+    assert.deepEqual(Object.fromEntries(r.store), before);
 });
 
 test('암호 확인 예약 직후 닫으면 이전 작업이나 오류 표시가 실행되지 않는다', () => {

@@ -1,5 +1,7 @@
 # 현행 디자인과 생성 이미지
 
+확인 버튼은 기존 `game-action.webp`를 기준으로 생성한 `parts/confirm-cancel.webp`(회색 취소)와 `parts/confirm-execute.webp`(파란색 실행)를 쓴다. 경고·삭제는 `parts/game-danger.webp`(붉은색)를 재사용한다. `data-confirm-tone`이 세 이미지 재질을 고르고 글자·클릭·비활성화는 HTML이 처리한다.
+
 야바위는 전용 생성 도박장 배경 `images/theme/shell-tavern.webp`와 공통 헤더·이미지 버튼, 독립 컵 부품 `images/theme/parts/shell-cup.webp`를 사용한다. 넓은 초록 테이블에는 컵·주사위를 미리 그리지 않으며 세 컵과 색·눈·이동은 DOM/애니메이션으로 표시한다. 기존 갈색 테이블 그라데이션은 제거해 생성 배경의 테이블과 맞춘다.
 
 이 문서와 [사용자 요구사항](user-requirements.md)이 현재 기준이다.

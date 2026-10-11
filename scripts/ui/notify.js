@@ -45,12 +45,12 @@
     /**
      * 화면을 막지 않는 커스텀 확인 모달.
      * @param {string} message - 확인 메시지
-     * @param {{okText?: string, cancelText?: string}} [options]
+     * @param {{okText?: string, cancelText?: string, tone?: 'execute' | 'warning'}} [options]
      * @returns {Promise<boolean>} 확인=true, 취소/바깥클릭=false
      */
     function showConfirm(message, options = {}) {
         if (activeConfirm) activeConfirm(false);
-        const { okText = '확인', cancelText = '취소' } = options;
+        const { okText = '확인', cancelText = '취소', tone = 'execute' } = options;
         return new Promise((resolve) => {
             const overlay = document.createElement('dialog');
             overlay.className = 'app-confirm-overlay';
@@ -68,10 +68,12 @@
             const cancelBtn = document.createElement('button');
             cancelBtn.className = 'app-confirm-cancel';
             cancelBtn.textContent = cancelText;
+            cancelBtn.dataset.confirmTone = 'cancel';
 
             const okBtn = document.createElement('button');
             okBtn.className = 'app-confirm-ok';
             okBtn.textContent = okText;
+            okBtn.dataset.confirmTone = tone === 'warning' ? 'warning' : 'execute';
 
             actions.append(cancelBtn, okBtn);
             box.append(msg, actions);
