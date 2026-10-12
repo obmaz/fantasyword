@@ -203,7 +203,7 @@ const secret = {
         // Day 선택 옵션 채우기
         const printDaySelect = document.getElementById('print-day-select');
         if (printDaySelect) {
-            printDaySelect.innerHTML = '<option value="">Day 선택...</option>';
+            printDaySelect.innerHTML = '';
 
             // 현재 데이터셋의 rawData 사용
             const currentRawData =
@@ -226,7 +226,7 @@ const secret = {
                     typeof dayCatalog !== 'undefined' && dayCatalog[d] && dayCatalog[d].label
                         ? dayCatalog[d].label
                         : `Day ${d}`;
-                printDaySelect.innerHTML += `<option value="${d}">${escapeHTML(label)}</option>`;
+                printDaySelect.innerHTML += `<label class="worksheet-day"><input type="checkbox" name="print-day" value="${d}"><span>${escapeHTML(label)}</span></label>`;
             });
         }
     },

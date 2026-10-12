@@ -65,6 +65,8 @@ python -m http.server 8000 --directory dist
 
 변경 기록은 Git 이력에서 확인합니다. 현행 문서에 날짜별 작업 일지나 과거 테스트 수를 누적하지 않습니다.
 
+문제 출력은 여러 Day를 번호순으로 묶고, Day별 최대 문항 수를 적용합니다. 기본값은 제한 없는 모든 문제입니다.
+
 ## 배포
 
 `obmaz/fantasyword`의 GitHub Pages가 `dokdok.quest`를 서비스합니다.

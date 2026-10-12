@@ -1830,20 +1830,20 @@
                 </div>
                 <div class="modal-body">
                     <div class="worksheet-field">
-                        <label for="print-day-select">출제 Day</label>
-                        <select
+                        <span id="print-day-label">출제 Day (여러 개 선택)</span>
+                        <div
                             id="print-day-select"
-                            class="modal-btn-main"
-                            style="width: 100%; padding: 10px; font-size: 16px"
-                        >
-                            <option value="">Day 선택...</option>
-                        </select>
+                            class="worksheet-days"
+                            role="group"
+                            aria-labelledby="print-day-label"
+                        ></div>
                     </div>
                     <div class="worksheet-field">
-                        <label for="print-question-count">최대 문항 수</label>
+                        <label for="print-question-count">Day별 최대 문항 수</label>
                         <select id="print-question-count" class="modal-btn-main">
+                            <option value="all" selected>모든 문제</option>
                             <option value="10">10문항</option>
-                            <option value="20" selected>20문항</option>
+                            <option value="20">20문항</option>
                             <option value="30">30문항</option>
                         </select>
                     </div>
@@ -1884,9 +1884,9 @@
                         </label>
                     </div>
                     <p class="worksheet-help">
-                        A4 세로 인쇄용입니다. 단어 수에 따라 문항 수가 줄어들며, 안전한 보기가
-                        부족하면 주관식으로 나옵니다. 생성된 창에서 문제지·정답지를 따로 인쇄할 수
-                        있습니다.
+                        선택한 Day는 번호순으로 출력되며, 최대 문항 수는 Day마다 적용됩니다. A4 세로
+                        인쇄용입니다. 단어 수에 따라 문항 수가 줄어들며, 안전한 보기가 부족하면
+                        주관식으로 나옵니다. 생성된 창에서 문제지·정답지를 따로 인쇄할 수 있습니다.
                     </p>
                     <div class="worksheet-actions">
                         <button class="modal-btn-main" data-action="secret-print-generate">

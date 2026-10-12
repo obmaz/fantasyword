@@ -14,7 +14,25 @@ const worksheetRules = {
         const meanings = new Set(worksheetRules.meanings(left));
         return worksheetRules.meanings(right).some((meaning) => meanings.has(meaning));
     },
-    build: (source, { day, type = 'mixed', limit = 30 }, shuffle) => {
+    build: (source, { day, days, type = 'mixed', limit = 'all' }, shuffle) => {
+        if (days) {
+            const selectedDays = [...new Set(days.map(Number))]
+                .filter((value) => Number.isFinite(value) && value > 0)
+                .sort((a, b) => a - b);
+            const models = selectedDays.map((value) =>
+                worksheetRules.build(source, { day: value, type, limit }, shuffle)
+            );
+            const questions = models.flatMap((model) => model.questions);
+            questions.forEach((question, index) => {
+                question.num = index + 1;
+            });
+            const objectiveCount = models.reduce((total, model) => total + model.objectiveCount, 0);
+            return {
+                questions,
+                objectiveCount,
+                subjectiveCount: questions.length - objectiveCount,
+            };
+        }
         const rows = source
             .filter(
                 (row) =>
@@ -38,14 +56,21 @@ const worksheetRules = {
                 meanings.add(meaning);
                 return true;
             })
-            .slice(0, Math.max(0, Math.floor(limit)));
+            .slice(0, limit === 'all' ? Infinity : Math.max(0, Math.floor(Number(limit))));
         const questions = selected.map((item, index) => {
             const key = index % 2 === 0 ? 'word' : 'meaning';
             const objective =
                 type === 'objective' ||
                 (type === 'mixed' && index < Math.floor(selected.length / 2));
             const prompt = item[key === 'word' ? 'meaning' : 'word'];
-            const question = { num: index + 1, prompt, answer: item[key], key, options: null };
+            const question = {
+                num: index + 1,
+                day: Number(day),
+                prompt,
+                answer: item[key],
+                key,
+                options: null,
+            };
             if (!objective) return question;
             // 부분 동의어와 같은 영단어의 다른 풀이도 정답이 될 수 있으므로 제외한다.
             const sameWord = rows.filter(

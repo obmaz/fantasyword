@@ -285,7 +285,7 @@ test('인쇄 시 보기가 부족하면 중복 정답 객관식 대신 주관식
             open() {},
         }
     );
-    r.getElement('print-day-select').value = '1';
+    r.sandbox.document.querySelectorAll = () => [{ value: '1' }];
     const radio = { value: 'objective' };
     r.sandbox.document.querySelector = (selector) =>
         selector.includes('print-question-type') ? radio : null;

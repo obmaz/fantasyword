@@ -4,5 +4,4 @@ const APP_CONFIG = Object.freeze({
     musicTrackCount: 20,
     objectiveSeconds: 10,
     hourglassSeconds: 15,
-    printMaxQuestions: 30,
 });

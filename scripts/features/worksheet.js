@@ -7,7 +7,7 @@ const worksheet = {
             (question) => `
             <li class="question">
                 <div class="question-heading"><strong class="question-number">${question.num}.</strong>
-                    <div><p class="question-text">${e(question.prompt)}</p></div></div>
+                    <div><small>Day ${question.day}</small><p class="question-text">${e(question.prompt)}</p></div></div>
                 ${
                     question.options
                         ? `<ol class="options${question.options.every((option) => Array.from(option).length <= 14) ? ' options-compact' : ''}">${question.options
@@ -127,21 +127,24 @@ const worksheet = {
         return result;
     },
     generate: () => {
-        const selectedDay = document.getElementById('print-day-select')?.value;
-        if (!selectedDay) {
+        const selectedDays = Array.from(
+            document.querySelectorAll('#print-day-select input:checked'),
+            (input) => Number(input.value)
+        ).sort((a, b) => a - b);
+        if (!selectedDays.length) {
             showToast('Day를 선택해주세요.', 'warn');
             return;
         }
         const source = window.rawDataData || rawData;
         const type =
             document.querySelector('input[name="print-question-type"]:checked')?.value || 'mixed';
-        const requestedLimit = Number(document.getElementById('print-question-count')?.value) || 20;
+        const requestedLimit = document.getElementById('print-question-count')?.value || 'all';
         const model = worksheetRules.build(
             source,
             {
-                day: selectedDay,
+                days: selectedDays,
                 type,
-                limit: Math.min(requestedLimit, APP_CONFIG.printMaxQuestions),
+                limit: requestedLimit,
             },
             questionTools.shuffle
         );
@@ -149,12 +152,14 @@ const worksheet = {
             showToast('선택한 Day에 단어가 없습니다.', 'warn');
             return;
         }
-        const dayLabel = window.dayCatalog?.[selectedDay]?.label || `Day ${selectedDay}`;
+        const dayLabel = selectedDays
+            .map((day) => window.dayCatalog?.[day]?.label || `Day ${day}`)
+            .join(', ');
         const html = worksheet.createDocument(model, dayLabel);
         const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
         const link = document.createElement('a');
         link.href = url;
-        link.download = `word_test_day_${selectedDay}.html`;
+        link.download = `word_test_day_${selectedDays.join('_')}.html`;
         document.body.appendChild(link);
         link.click();
         link.remove();

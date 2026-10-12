@@ -120,6 +120,7 @@ test('생성 문서: A4, 답란, 정답 분리, 이스케이프 및 다운로드
         document: {
             getElementById: (id) => ({ value: id === 'print-question-count' ? '10' : '1' }),
             querySelector: () => ({ value: 'subjective' }),
+            querySelectorAll: () => [{ value: '1' }],
             createElement: () => ({
                 click() {
                     downloaded = true;
@@ -161,4 +162,40 @@ test('생성 문서: A4, 답란, 정답 분리, 이스케이프 및 다운로드
     assert.match(html, /&lt;script&gt;bad&lt;\/script&gt;/);
     assert.doesNotMatch(html, /<script>bad/);
     assert.match(html, /A &amp; B/);
+});
+
+test('여러 Day는 번호순으로 묶고 상한과 중복 제거를 Day마다 적용한다', () => {
+    const r = loadRules();
+    r.sandbox.source = [5, 1, 3, 2].flatMap((day) =>
+        Array.from({ length: 40 }, (_, index) => ({
+            day,
+            word: `word${index}`,
+            meaning: `뜻${index}`,
+        }))
+    );
+    r.sandbox.shuffle = (values) => [...values].reverse();
+    const original = JSON.stringify(r.sandbox.source);
+    const limited = r.evaluate(
+        "worksheetRules.build(source, {days:[5,1,3,1], type:'mixed', limit:10}, shuffle)"
+    );
+    assert.equal(limited.questions.length, 30);
+    assert.deepEqual(
+        Array.from(limited.questions, (q) => q.day),
+        [...Array(10).fill(1), ...Array(10).fill(3), ...Array(10).fill(5)]
+    );
+    assert.deepEqual(
+        Array.from(limited.questions, (q) => q.num),
+        Array.from({ length: 30 }, (_, i) => i + 1)
+    );
+    assert.equal(limited.objectiveCount, 15);
+    const all = r.evaluate('worksheetRules.build(source, {days:[1,3,5]}, shuffle)');
+    assert.equal(all.questions.length, 120);
+    for (const day of [1, 3, 5]) {
+        assert.equal(all.questions.filter((q) => q.day === day).length, 40);
+    }
+    assert.equal(JSON.stringify(r.sandbox.source), original);
+    assert.equal(
+        r.evaluate('worksheetRules.build(source, {days:[]}, shuffle).questions.length'),
+        0
+    );
 });
