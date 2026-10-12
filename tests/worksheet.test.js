@@ -185,7 +185,7 @@ test('여러 Day는 번호순으로 묶고 상한과 중복 제거를 Day마다 
     );
     assert.deepEqual(
         Array.from(limited.questions, (q) => q.num),
-        Array.from({ length: 30 }, (_, i) => i + 1)
+        [1, 3, 5].flatMap(() => Array.from({ length: 10 }, (_, i) => i + 1))
     );
     assert.equal(limited.objectiveCount, 15);
     const all = r.evaluate('worksheetRules.build(source, {days:[1,3,5]}, shuffle)');
@@ -198,4 +198,34 @@ test('여러 Day는 번호순으로 묶고 상한과 중복 제거를 Day마다 
         r.evaluate('worksheetRules.build(source, {days:[]}, shuffle).questions.length'),
         0
     );
+});
+
+test('Day별 독립 문제지와 답안지는 단일 Day 생성 결과와 같고 인쇄 Day를 고를 수 있다', () => {
+    const r = loadScripts(['scripts/domain/worksheet-rules.js', 'scripts/features/worksheet.js'], {
+        source: [1, 3, 4].flatMap((day) => source.map((row) => ({ ...row, day }))),
+        shuffle: (values) => [...values],
+        escapeHTML: (value) => String(value),
+    });
+    const papers = r.evaluate(`[1,3,4].map(day => ({day, label:'Day '+day,
+        model:worksheetRules.build(source, {day, limit:10}, shuffle)}))`);
+    r.sandbox.papers = papers;
+    const html = r.evaluate('worksheet.createDocuments(papers)');
+    assert.equal((html.match(/class="day-worksheet"/g) || []).length, 3);
+    assert.equal((html.match(/class="question-number">1\./g) || []).length, 3);
+    assert.equal((html.match(/교사용 정답지/g) || []).length, 3);
+    assert.match(html, /id="print-day"/);
+    assert.match(html, /sheet.hidden = day !== 'all'/);
+    assert.match(html, /day-worksheet \+ .day-worksheet \{ break-before: page/);
+    for (const paper of papers) {
+        r.sandbox.paper = paper;
+        const single = r.evaluate('worksheet.createDocument(paper.model, paper.label)');
+        const body = single.slice(single.indexOf('<main>') + 6, single.indexOf('</main>'));
+        assert.ok(
+            html.includes(`<div class="day-worksheet" data-day="${paper.day}">${body}</div>`)
+        );
+        assert.deepEqual(
+            Array.from(paper.model.questions, (q) => q.num),
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        );
+    }
 });

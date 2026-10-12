@@ -23,9 +23,6 @@ const worksheetRules = {
                 worksheetRules.build(source, { day: value, type, limit }, shuffle)
             );
             const questions = models.flatMap((model) => model.questions);
-            questions.forEach((question, index) => {
-                question.num = index + 1;
-            });
             const objectiveCount = models.reduce((total, model) => total + model.objectiveCount, 0);
             return {
                 questions,

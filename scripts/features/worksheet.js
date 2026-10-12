@@ -126,6 +126,39 @@ const worksheet = {
         }
         return result;
     },
+    createDocuments: (papers) => {
+        const documents = papers.map((paper) => worksheet.createDocument(paper.model, paper.label));
+        const sections = documents.map((html, index) => {
+            const content = html.slice(html.indexOf('<main>') + 6, html.indexOf('</main>'));
+            return `<div class="day-worksheet" data-day="${papers[index].day}">${content}</div>`;
+        });
+        const dayControl = `<label for="print-day">출제 Day</label><select id="print-day"><option value="all">모든 Day</option>${papers
+            .map((paper) => `<option value="${paper.day}">${escapeHTML(paper.label)}</option>`)
+            .join('')}</select>`;
+        return documents[0]
+            .replace(
+                /<title>.*?<\/title>/,
+                `<title>${escapeHTML(papers.map((paper) => paper.label).join(', '))} · 단어 문제지</title>`
+            )
+            .replace(/<main>[\s\S]*?<\/main>/, `<main>${sections.join('')}</main>`)
+            .replace('<div class="controls">', `<div class="controls">${dayControl}`)
+            .replace(
+                '</style>',
+                `.day-worksheet[hidden] { display: none; }
+    @media print { .day-worksheet + .day-worksheet { break-before: page; page-break-before: always; } }
+</style>`
+            )
+            .replace(
+                "    document.getElementById('print-target')",
+                `    document.getElementById('print-day').addEventListener('change', function () {
+        const day = this.value;
+        document.querySelectorAll('.day-worksheet').forEach(function (sheet) {
+            sheet.hidden = day !== 'all' && sheet.dataset.day !== day;
+        });
+    });
+    document.getElementById('print-target')`
+            );
+    },
     generate: () => {
         const selectedDays = Array.from(
             document.querySelectorAll('#print-day-select input:checked'),
@@ -139,23 +172,22 @@ const worksheet = {
         const type =
             document.querySelector('input[name="print-question-type"]:checked')?.value || 'mixed';
         const requestedLimit = document.getElementById('print-question-count')?.value || 'all';
-        const model = worksheetRules.build(
-            source,
-            {
-                days: selectedDays,
-                type,
-                limit: requestedLimit,
-            },
-            questionTools.shuffle
-        );
-        if (!model.questions.length) {
+        const papers = selectedDays
+            .map((day) => ({
+                day,
+                label: window.dayCatalog?.[day]?.label || `Day ${day}`,
+                model: worksheetRules.build(
+                    source,
+                    { day, type, limit: requestedLimit },
+                    questionTools.shuffle
+                ),
+            }))
+            .filter((paper) => paper.model.questions.length);
+        if (!papers.length) {
             showToast('선택한 Day에 단어가 없습니다.', 'warn');
             return;
         }
-        const dayLabel = selectedDays
-            .map((day) => window.dayCatalog?.[day]?.label || `Day ${day}`)
-            .join(', ');
-        const html = worksheet.createDocument(model, dayLabel);
+        const html = worksheet.createDocuments(papers);
         const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
         const link = document.createElement('a');
         link.href = url;
