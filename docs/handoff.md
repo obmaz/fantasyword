@@ -1,140 +1,57 @@
-# 다음 작업을 위한 인계
+# 작업 인계
 
-2026-10-10 전체 코드 리뷰와 수정 기준. 최근 결함·수정·재검증 근거는
-[전체 코드 리뷰](review-2026-10-10.md)에 있고, 이전 리뷰는 [2026-10-09 기록](review-2026-10-09.md), [2026-10-08 기록](review-2026-10-08.md)과 [정리 기록](review.md)에 보존한다.
-새 기능을 자동으로 계속 만들거나 로드맵을 이미 승인된 작업으로 취급하지 않는다.
+현재 기능은 구현되어 있다. 이 문서는 새 환경에서 작업을 재개하는 절차이며 추가 기능 개발을 승인한 계획이 아니다.
+게임 규칙은 [사양](spec.md), 구현 위치는 [아키텍처](architecture.md), 디자인은 [에셋 문서](design-assets.md)를 따른다.
+과거 리뷰·디자인 변경 기록은 Git 이력에서 확인한다.
 
-이후 골드/가격 조정과 착용 아바타를 반영했다. [경제 기준](economy.md)의 가격표·수입 계산을 기준으로 이어가며, 저장된 골드나 장비 ID를 초기화하지 않는다. `equipmentRules.appearance` → `renderEquipmentAvatar` 경로를 장비 화면과 전투 화면이 공유한다. 기본 몸은 `quest-hero-unarmed.webp`, 헬름은 `quest-hero-unarmed-helmet.webp`, 건틀릿/부츠는 `avatar-equipment.webp`, 무기는 이름별 `weapon-*.webp`를 사용한다. 두 몸 그림 모두 무기·칼집이 없는 전용 에셋이며 기존 무장 sprite 의사 요소는 적용하지 않는다. `HELD_WEAPON_POSES`의 실제 손잡이 좌표와 같은 위치를 공유하는 주먹 마스크로 자연스러운 착용을 유지한다. 전투의 연속 공격 아이콘도 현재 오른손 무기를 표시하며 장비 화면 갱신 시 함께 갱신한다. 캐릭터 몸 그림의 주소는 HTML 빌드의 버전 주소를 그대로 유지한다. `economy-avatar.test.js`는 실제 수입·소비 아이템 수익 상한·고유 무기 경로·양손의 회전 중심과 해제를 검증한다.
+## 재개 순서
 
-## 먼저 읽을 것
+1. [AGENTS.md](../AGENTS.md)와 [사용자 요구사항](user-requirements.md)을 읽고 변경 대상의 상세 문서를 확인한다.
+2. `git status --short`, 현재 브랜치와 원격 HEAD를 확인한다. 사용자 변경을 보존하고 기존 체크아웃에서 작업한다. 원격이 앞섰다면 변경 내용을 확인하고 정상적으로 통합한다.
+3. Node.js 22 이상에서 `npm ci`, `npm run check`, `npm run build`를 실행한다. CI는 Node.js 24다.
+4. UI를 바꿀 때는 새 정적 서버와 이용 가능한 실제 브라우저로 검증한다. 저장소 루트의 `python -m http.server 8000 --directory dist`를 사용할 수 있다.
+5. 이전 임시 경로·서버·검사 스크립트가 남아 있다고 가정하지 않는다. 인증·프록시는 환경 설정을 재사용하며 비밀 값을 출력하지 않는다.
 
-2026-10-11 실행 버튼·제목 여백: `confirm-execute.webp`를 기존 부품 기반 생성 이미지로 밝고 차분한 파랑으로 교체했다. 메뉴/모드/스토리 제목은 세로 8px 패딩과 가운데 정렬을 사용한다. 모드 카드 세로 패딩은 12px로 줄이고 닫기 버튼을 제목 행의 흐름 안에 배치해 제목과 중심을 맞춘다.
+## 구현을 이어갈 때 주의할 점
 
-2026-10-11 기본 무장 시각화 제거: `ui-manager`가 장비 아바타를 갱신할 때 기본 무기 fallback을 주입하지 않는다. `inventory.render`도 오른손 미장착 상태를 기본 검으로 채우지 않고 빈 슬롯 점으로 표시한다. 전투의 기본 무기 판정은 `equipmentRules.load`와 게임 세션에 남긴다.
+- `index.html`의 classic script와 CSS 로드 순서, 화면 ID와 저장 형식을 유지한다.
+- 스토리 입장 확인 후 게임을 바로 시작한다. 별도 시작 팝업을 다시 추가하지 않는다.
+- 퍼즐·사자성어 데이터는 영어 단어장·Day·인쇄·복수 기록과 분리한다. 보상과 스토리 진행은 함께 저장하며 실패 시 같은 결과를 재시도한다.
+- 장비/전투는 같은 착용 렌더러를 사용한다. 빈 오른손은 시각적으로 빈 손이며 전투 판정의 기본 무기와 구분한다. 몸 그림의 빌드 버전 주소와 무기별 손잡이 좌표를 유지한다.
+- 장착한 오른손 무기와 왼손 속성을 독립적으로 처리한다. 이전 문제/판의 타이머·음성·효과·저장 콜백은 다음 상태에 적용하지 않는다.
+- 골드·아이템 ID·단어장별 기록을 보존한다. 보상·가격 변경은 [경제 기준](economy.md), 단어장 수정은 [출처 기준](vocabulary-book-4.md)을 함께 갱신한다.
 
-2026-10-11 설정 주요 동작 배치: 문제 출력·통계 초기화의 묶음에 `settings-primary-actions`를 붙여 모든 화면 폭에서 한 열로 배치한다. 어드민 게임 버튼 묶음과 통계 초기화 잠금은 유지한다.
+## 검증
 
-2026-10-11 도전 라디오 대비: 최초 선택은 이미 복원되지만 `guild-gameplay.css`의 체크 accent가 선택된 칸의 배경과 같았다. 체크만 밝은 금색 `#f5ce77`로 바꾸고 기본값·저장값 복원과 native 라디오 조작은 유지한다.
+모든 변경은 `npm run check`와 `npm run build`를 통과시킨다. 테스트 수·실패·스킵은 해당 실행 결과로 보고한다.
+문서만 바꾸면 로컬 링크·포맷과 빌드 제외 정책을 확인한다.
 
-2026-10-11 팝업 제목·중복 닫기 정리: `--popup-title-size`가 게임 프레임 폭에 따라 22~32px로 계산되며 모든 dialog 제목과 장비 상세 이름에 같은 800 굵기·1.2 줄 높이를 적용한다. 스토리 확인창은 X 취소와 실행 버튼 하나만 둔다. 상점/통계/설정 하위창/복수 메뉴의 중복 닫기도 HTML에서 제거했다. X가 없는 공통 확인창의 회색 취소는 유지한다.
+UI 또는 런타임 에셋/경로를 바꾸면 실제 브라우저에서 다음을 확인한다.
 
-2026-10-11 스토리 중복 시작창 제거: 지도 입장 확인 후 `story.startIntro('story', day)`는 Day/모드를 설정하고 바로 `game.init`을 호출한다. 전투 설명·모험 시작 팝업은 열지 않는다. 일반 지점·미니보스·보스·? 사자성어에도 적용하며 출제 수·타입·왕관·지도 복귀는 유지한다. `tests/story-events.test.js`가 여섯 전투 종류의 직접 시작과 취소 시 미시작을 검증한다.
+- 390×844, 320×427, 768×1024, 844×390의 가운데 세로 프레임, 넘침과 내부 스크롤.
+- 로비·모드 선택·게임·결과·상점·장비·통계·설정·복수 목록과 native dialog의 포커스/닫기/뒤로 가기.
+- 밝은 입력칸과 select/option의 어두운 글자, 어두운 패널의 밝은 글자, 음악 20곡 선택과 실제 ON/OFF 상태.
+- 전체화면 버튼의 고정 위치, 팝업 내부 조작, 전환 후 입력·스크롤 유지.
+- 캐릭터·양손/양발 슬롯·제목·답안·콤보·상단 조작의 정렬, 골드 0·5자리·6자리 이상.
+- 실제 정답/오답·시간 초과·보상·방패 재시도·문제 전환·나가기, 효과/발음 취소와 reduced motion.
+- 스토리 변경은 지점 확인·왕관·지도 복귀·저장 실패 재시도와 일반 전투 복귀까지 확인한다.
 
-2026-10-11 확인창 색상: `data-confirm-tone`의 cancel/execute/warning이 회색·파란색 신규 이미지/기존 붉은색 이미지를 고른다. 공통 `showConfirm`은 기본 실행색과 선택적 `tone: 'warning'`을 지원하며 게임·통계 초기화에 경고색을 지정했다. 스토리 확인은 일반 진행/초기화 전환 때 색상을 다시 설정한다. 취소·뒤로가기·전체화면과 저장 계약은 그대로다.
+테스트용 가짜 DOM은 실제 레이아웃·음성 청취·브라우저 포커스를 대신하지 않는다.
 
-2026-10-11 스토리 초기화 안내: 골드가 50 미만이면 확인창에 보유 골드·부족분을 표시한다. 확인 순간에도 잔액을 재검사하며 저장 실패는 같은 창에서 안내·재시도한다. 확인창의 본문 글자 크기를 제한하고 두 버튼은 한 줄로 배치해 짧은 가로 화면에서도 조작을 표시한다. `tests/story-events.test.js`가 0/49/50 경계·확인 도중 잔액 감소·저장 실패 후 재시도·일반 진행 버튼 복원을 검증한다.
+## 푸시와 배포
 
-2026-10-11 행맨·야바위 배경: `hangman-stage.webp`/`shell-tavern.webp` 전용 생성 장면을 추가했다. 행맨 그림은 칠판 위에, 야바위 컵은 초록 테이블 위에 별도 UI로 표시한다. 야바위의 갈색 CSS 테이블 그라데이션은 제거했다. 게임 세션·입력·보상 규칙은 변경하지 않았다.
-
-2026-10-11 속담·사자성어 UI: 전용 서당/서예방 생성 배경을 `proverb-study.webp`/`idiom-study.webp`로 추가했다. `story-puzzles.css`에 공통 퍼즐 배치와 사자성어 전투 연출 숨김을 모았다. 사자성어 유형은 세션의 `beginQuestion` 모델로 주입해 뷰가 관리하며 헤더가 별도로 설정하지 않는다. 속담 안내 문구는 지웠다. 변경 검증은 70개 속담/120개 사자성어와 네 기준 화면의 완료·일반 전투 복귀를 포함한다.
-
-2026-10-11 대장간 뜻 표시: `wordForgeMeanings`의 70개 한국어 뜻을 세션에 주입하고 현재·목표·보기·변환 경로에 표시한다. 판정에는 원래 영어 토큰을 사용하며 짧은 화면에서도 보기는 하단에 유지한다.
-
-2026-10-11 퍼즐 확장: 야바위는 각 컵에 서로 다른 색·숫자의 주사위 하나를 넣고, 섞기 완료 뒤 한 속성으로 정답 컵을 묻는다. 2배 도전도 남은 다른 주사위의 컵을 찾는다. 속담 70문항(난이도 1~4, 판마다 네 난이도 보장)과 단어 대장간 15종(3문제/판)은 스토리 직접 지점·?와 어드민 설정에 연결했다. 별도 데이터/도메인/공유 세션/뷰는 `story-puzzles.js`, `story-puzzle-rules.js`, `story-puzzle-session.js`, `story-puzzle-view.js`다. 왕관·골드·진행을 한 번에 저장한다. 기존 저장 배치는 보존하며 새 배치에 두 지점을 포함한다. 변경 검증은 `tests/story-puzzles.test.js`, `tests/shell-session.test.js`와 [코드 재검토](review-story-puzzles-2026-10-11.md)를 따른다.
-
-2026-10-11: 메인의 행맨·총공세·사자성어·야바위 바로가기는 제거하고 설정의 어드민 영역으로 옮겼다. 음악 OFF→ON 3회 해금/설정 닫기 재잠금은 골드 수정과 공유한다. `settingsManager.openAdminGame`이 잠금 확인과 설정 닫기/각 게임 진입을 담당한다. 네 버튼은 기존 메뉴 이미지 스타일과 한국어 이름을 사용한다. 스토리 ?의 사자성어와 도박장의 야바위는 그대로 접근할 수 있다. 야바위 시작 시 색·숫자를 기억하라는 안내는 삭제했다.
-
-스토리 이벤트 확장의 수정·검증 근거는 [변경 코드 재검토](review-story-events-2026-10-10.md)에 있다.
-
-2026-10-10 스토리 이벤트 확장: 별도 사자성어 120개/사전 출처, 메인 테스트, 입장 확인 후 고정 전투 Day 배정, 암시장 4종, 도박장 야바위, 현재 단어장의 스토리 50골드 초기화가 구현됐다. 비전투 지점(결과가 숨겨진 ? 포함)은 서로 연결하지 않고 경로의 끊김도 검증한다. 초기화 배치는 `v7_story_layout_book-ID`에 저장한다. `tests/story-events.test.js`, `tests/shell-session.test.js`가 데이터 독립성·지급/저장 재시도·재배치/연결·늦은 콜백을 검증한다. 사자성어 난이도는 편집 기준이며 사전의 공식 난이도가 아니다.
-
-[AGENTS.md](../AGENTS.md) → [사용자 요구사항](user-requirements.md) → [현행 사양](spec.md).
-구현 위치는 [아키텍처](architecture.md), 그림 기준은 [디자인 에셋](design-assets.md),
-최근 검증 근거는 [전체 코드 리뷰](review-2026-10-09.md)를 확인한다. `archive/`는 과거 기록이다.
-
-## 완료된 기능과 찾아갈 코드
-
-| 주제                    | 시작 파일                                                                                           | 테스트                                                           |
-| ----------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| 몬스터별 문제           | `scripts/domain/monster-encounters.js`, `data/battle-examples.js`                                   | `monster-encounters.test.js`                                     |
-| 오답 재도전·24시간 회상 | `scripts/domain/revenge-rules.js`, `scripts/features/revenge-quests.js`                             | `revenge-quests.test.js`                                         |
-| 장비의 학습/전투 역할   | `scripts/domain/equipment-rules.js`, `scripts/data/items-loader.js`                                 | `equipment-roles.test.js`, `inventory.test.js`                   |
-| 무기별 모션·보조 속성   | `scripts/domain/attack-profiles.js`, `scripts/ui/battle-view.js`, `styles/theme/weapon-effects.css` | `weapon-effects.test.js`                                         |
-| 채점·보상·진행          | `scripts/domain/battle-rules.js`, `scripts/game/game-engine.js`                                     | `game-engine.test.js`, `regressions.test.js`                     |
-| 연습·발음               | `scripts/game/practice-session.js`, `scripts/features/speech.js`, `scripts/ui/practice-view.js`     | `practice-session.test.js`, `speech-fallback.test.js`            |
-| 낙하전·효과 정리        | `scripts/game/skyfall-session.js`, `scripts/ui/skyfall-view.js`                                     | `skyfall-session.test.js`                                        |
-| 비동기 전환 회귀        | `scripts/ui/layout-manager.js`, `scripts/features/speech.js`, `scripts/features/story-journey.js`   | `review-regressions.test.js`                                     |
-| HTML 문제지 출력        | `scripts/features/worksheet.js`                                                                     | `worksheet.test.js`                                              |
-| 저장/복원               | `scripts/core/database.js`, `scripts/core/storage.js`                                               | `inventory.test.js`, `smoke-load.test.js`, `regressions.test.js` |
-| 비율·전체화면·화면 전환 | `scripts/ui/layout-manager.js`, `scripts/ui/modal-manager.js`, `scripts/ui/navigation.js`           | `design-improvements.test.js`, `navigation-practice.test.js`     |
-| 최종 메뉴/버튼 디자인   | `styles/theme/approved-menus.css`, `styles/theme/image-components.css`                              | 실제 브라우저 확인                                               |
-
-테스트 파일은 `tests/` 아래에 있다. 세션/뷰 연결은 `scripts/app.js`, DOM 이벤트는 `scripts/init.js`에서 찾는다.
-몬스터 방식·퀘스트·장비 역할·무기 모션은 이미 구현되었으므로 다시 계획 단계로 돌아가지 않는다.
-
-## 새 환경에서 재개
-
-1. 현재 브랜치, `git status --short`, remote를 확인하고 사용자 변경을 보존한다. 이전 임시 경로/프로세스가 살아 있다고 가정하지 않는다.
-2. Node.js 22 이상인지 확인하고 `npm ci`를 실행한다. npm lockfile을 유지한다.
-3. `npm run check`, `npm run build`로 기준 상태를 확인한다.
-4. 저장소 루트에서 `python3 -m http.server 8000 --directory dist`로 새 정적 서버를 시작한다. Python은 개발 편의 도구이며 배포 의존성은 아니다.
-5. 브라우저 자동화 도구가 환경에 있으면 재사용하고, 없다면 이용 가능한 실제 브라우저로 확인한다. `/workspace/.browser-tools`, `/tmp`의 이전 검사 스크립트는 저장소 의존성이 아니다.
-6. 인증은 환경의 HTTPS Git 프록시를 재사용한다. 변수에 토큰이 안 보여도 `git ls-remote origin HEAD`로 실제 읽기를 먼저 확인한다. 비밀 값 출력이나 임의 로그인 설정을 하지 않는다.
-
-## 브라우저 검증 목록
-
-- 390×844 긴 폰, 320×427 작은 3:4 화면, 768×1024 큰 3:4 화면, 844×390 가로 뷰포트에서 가운데 세로 프레임 확인.
-- 로비 → 배틀/연습 선택 → 실제 게임 → 결과 → 마을. 상점·장비·통계·설정·복수 목록도 열어 본다.
-- 글자 대비, select/option 20곡, 번호 없는 답안 글자 중앙, 제목/5자리 골드/상단 조작의 여백과 넘침 확인.
-- 전체화면 공통 버튼의 모서리·프레임 우상단 위치·팝업 내부 동작 확인. 지원하지 않는 브라우저의 안내도 유지.
-- 연습 화면은 뜻·설명을 바로 표시하고 회상 안내/뜻 확인 버튼이 없는지, 긴 내용 스크롤이 게임 프레임 안에 머무는지, 필터·발음·이동 버튼 이미지 재질이 같은지 확인.
-- 철자 조합 타일의 알파벳 중앙 정렬과 연습/단어 낙하전 상단 배경 연결을 확인.
-- 짧은 화면의 남자아이, 양손/양발 행, 실제 장착 선택/외형/설명 일치 확인.
-- 슬라임 뜻·고블린 조립·박쥐 듣기/실패 폴백·드래곤 입력, 정답/오답/타임아웃과 결과 확인.
-- 무기 형태/속성/보조 속성·방패 가드가 구별되고 reduced motion에서 이동이 줄어드는지 확인.
-- 다음 문제·나가기 후 효과/음성이 남지 않고 저장/복습/퀘스트/보상이 중복 처리되지 않는지 확인.
-
-단위 테스트용 가짜 DOM은 실제 렌더링/포커스를 검증하지 않는다. 경로 변경도 브라우저 에셋 로딩 확인이 필요하다.
-
-## 푸시·배포 절차
-
-현재 저장소는 `obmaz/fantasyword`, 작업 경로는 `/workspace/fantasyword`다. 새 Git 이력은 `init` 하나로 시작한다.
-브랜치 이름을 확인하며 초기 브랜치는 `main`이다.
+이 채팅에서는 수정·검증 후 항상 푸시·배포하고 실제 반영을 확인한다. 브랜치 이름은 가정하지 않는다.
 
 ```sh
 git push origin HEAD:main
+gh run list --repo obmaz/fantasyword --workflow validate.yml --commit <전체-HEAD-SHA>
+# 해당 HEAD의 Validate 성공을 확인한 뒤 실행
+gh workflow run pages.yml --repo obmaz/fantasyword --ref main
+gh run list --repo obmaz/fantasyword --workflow pages.yml --commit <전체-HEAD-SHA>
 ```
 
-새 저장소는 `Validate`가 push 시 실행되고 `Deploy Pages`는 수동 실행이다.
-`dokdok.quest`는 이 저장소의 Pages에 연결됐고 HTTPS 인증서와 강제 설정이 적용돼 있다.
-기존 저장소의 Custom domain은 해제했으며 DNS는 GitHub Pages IP를 그대로 사용한다.
-`Validate` 성공 후 `gh workflow run pages.yml --repo obmaz/fantasyword --ref main`으로 배포한다.
-GitHub의 `Validate`, `Deploy Pages`를 **방금 푸시한 전체 HEAD SHA** 기준으로 확인한다.
-두 workflow가 성공해도 공개 페이지가 이전 버전일 수 있으므로 `https://dokdok.quest/build-manifest.json`을
-로컬 `dist/build-manifest.json`과 비교하고 변경된 HTML/CSS/JS/이미지 응답의 SHA-256을 검사한다.
-HTTP 캐시 확인에는 현재 커밋을 쿼리로 붙일 수 있다. TLS 검증·환경 프록시는 유지한다.
-실패했다면 새 배포를 완료했다고 보고하지 않고 실패 단계와 마지막 정상 배포를 구분한다.
-
-이전 커밋과 Git 메타데이터는 새 저장소로 가져오지 않았다. 최신 전투 상단/골드 배치까지 포함한 현재 코드 스냅샷이다.
-재개 시 Git 원격과 workflow를 다시 읽는다.
-현재 배포의 정확한 SHA는 Git 이력과 Actions에서 확인한다.
-
-## 단어장 4
-
-`data/game-data-4.js`에 능률보카 고등 기본 (2025개정) Day 1~40 전체 1,595개를 추가했다.
-Day 26은 35개, 나머지는 각 40개로 파생어·구동사와 첨부 정답표의 순서/뜻을 유지한다.
-Oxford와 국립국어원 사전의 대표 의미를 짧게 정리한 풀이 및 항목별 출처를 기록했다.
-[범위·출처 기준](vocabulary-book-4.md)을 따른다. 공유 유사 오답 풀에는 처음 80개 그룹에 이어
-497개 그룹을 보완했고 모든 항목에 고유한 후보 세 개 이상이 있다. 기존 단어장 ID와 저장 상태는 유지한다.
-
-## 남은 제약과 선택 가능한 후속 작업
-
-다음은 제약이며 이번 요청에서 추가 구현을 승인한 목록이 아니다.
-
-- 일부 상점/설정/통계 서비스의 전역 결합과 큰 CSS cascade가 남아 있다. 폴더는 정리했지만 전면 재설계하지 않았다.
-- strict 타입 검사는 연습/발음 경로만 대상으로 한다. 전체 TypeScript/ES modules 전환은 별도 결정이다.
-- 모든 단어에 검토된 예문이 있지는 않다. 드래곤의 뜻 풀이 폴백을 유지한다.
-- 복수 퀘스트는 24시간 회상 1회다. 전체 단어 장기 간격 반복·숙련도 모델·계정 동기화는 없다.
-- 발음 품질·오프라인 재생은 브라우저 설치 음성에 의존하고 원격 TTS는 서비스 가용성에 의존한다.
-- 장비 손 슬롯·보상·복수 상태·기존 저장 키는 계약이다. 확장할 때 마이그레이션과 의미 있는 테스트가 필요하다.
-- 생성 PNG 원본 전체는 현재 환경에만 있을 수 있다. Git의 승인 시안과 WebP만으로도 이어갈 수 있게 한다.
-
-행맨은 마지막 기회·정답 완료·패배 후 ‘뜻’을 표시하고 다음 단어에서 감춘다. 짧은 화면에서는 그림 높이를 줄이고 완료한 판의 비활성 키보드를 감춰 뜻과 다음 단어 버튼을 화면 안에 표시한다. 다음 단어에서 키보드는 다시 나타난다. 지도 배경은 나무 반복을 줄인 들판·호수·붉은 협곡·설산·화산의 생성 이미지다. 중앙을 흐르는 강은 유지하고, 모바일의 중앙 크롭에서도 구간별 지형과 색을 구분한다. 경로/지점 버튼은 기존 규칙과 저장 계약을 유지한다.
-
-## 스토리 미니보스
-
-8·12번째 행의 미니보스는 드래곤 외형을 유지하고 한국어 뜻 철자조립 5문제로 출제한다.
-`story-map.js`의 `type`과 선택적 `monsterId`로 출제 방식과 외형을 분리하며,
-`battleMonsterId()`는 진행 중인 스토리 지점에만 적용한다. 일반 고블린 조립과 마지막 보스의
-영어 예문/풀이 문제는 유지한다. `story-journey.test.js`에서 실제 조립 채점, 금·은·동 왕관,
-다음 경로 열기, 실패·중도 종료와 일반 전투 복귀를 검증한다.
+`Deploy Pages`의 해당 HEAD 배포 성공 후 `https://dokdok.quest/build-manifest.json`을 로컬 `dist/build-manifest.json`과 비교한다.
+실제 서비스의 `index.html`과 변경된 런타임 응답도 SHA-256으로 확인한다. 캐시 확인용 쿼리에 HEAD SHA를 붙일 수 있다.
+문서만 바뀌면 런타임 manifest가 같을 수 있으므로 워크플로의 HEAD와 서비스 응답을 함께 확인한다.
+TLS 검증·환경 프록시를 유지하고 강제 푸시는 하지 않는다.
+실패한 단계는 명시하며 workflow 성공만으로 실제 반영을 완료했다고 보고하지 않는다.
