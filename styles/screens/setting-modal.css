@@ -265,31 +265,40 @@
     transform: translateY(-2px);
 }
 
+/* Small Day chips use crisp CSS edges instead of stretching illustrated borders. */
 .worksheet-days {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
     grid-auto-rows: max-content;
     align-content: start;
     max-height: 160px;
     overflow-y: auto;
-    padding: 4px;
+    padding: 3px;
     scrollbar-color: #617b62 #f4ebd4;
     scrollbar-width: thin;
 }
 
 .worksheet-day {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 4px;
     min-width: 0;
     min-height: 44px;
-    padding: 6px;
-    border: 6px solid transparent;
-    border-image: var(--art-panel) 16% fill / 6px / 0 stretch;
-    border-radius: 10px;
+    padding: 4px;
+    border: 1px solid #b5a77d;
+    border-radius: 8px;
+    background: #fff8e7;
+    box-shadow: inset 0 1px 0 #ffffffb3;
     cursor: pointer;
-    overflow-wrap: anywhere;
+}
+
+.worksheet-day span {
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .worksheet-day input {
@@ -297,21 +306,21 @@
     appearance: none;
     display: grid;
     place-content: center;
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     margin: 0;
-    border: 2px solid #617b62;
-    border-radius: 6px;
+    border: 1px solid #617b62;
+    border-radius: 4px;
     background: #fff8e7;
     cursor: pointer;
 }
 
 .worksheet-day input::after {
     content: '';
-    width: 10px;
-    height: 6px;
-    border-left: 3px solid #f5ce77;
-    border-bottom: 3px solid #f5ce77;
+    width: 8px;
+    height: 5px;
+    border-left: 2px solid #f5ce77;
+    border-bottom: 2px solid #f5ce77;
     transform: translateY(-1px) rotate(-45deg) scale(0);
 }
 
@@ -326,20 +335,16 @@
 
 #print-day-select-modal .worksheet-day:has(input:checked) {
     color: #fff6df;
-    border-image-source: var(--art-jade);
+    border-color: #315c42;
+    background: #23553d;
+    box-shadow: inset 0 1px 0 #ffffff26;
 }
 
 .worksheet-day:has(input:focus-visible) {
     outline: 3px solid #c89d3e;
-    outline-offset: -2px;
+    outline-offset: 1px;
 }
 
 .worksheet-day input:focus-visible {
     outline: none;
-}
-
-@media (max-width: 350px) {
-    .worksheet-days {
-        grid-template-columns: minmax(0, 1fr);
-    }
 }

@@ -226,7 +226,7 @@ const secret = {
                     typeof dayCatalog !== 'undefined' && dayCatalog[d] && dayCatalog[d].label
                         ? dayCatalog[d].label
                         : `Day ${d}`;
-                printDaySelect.innerHTML += `<label class="worksheet-day"><input type="checkbox" name="print-day" value="${d}"><span>${escapeHTML(label)}</span></label>`;
+                printDaySelect.innerHTML += `<label class="worksheet-day" title="${escapeHTML(label)}"><input type="checkbox" name="print-day" value="${d}" aria-label="${escapeHTML(label)}"><span>Day ${d}</span></label>`;
             });
         }
     },

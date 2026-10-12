@@ -7,7 +7,7 @@ const worksheet = {
             (question) => `
             <li class="question">
                 <div class="question-heading"><strong class="question-number">${question.num}.</strong>
-                    <div><small>Day ${question.day}</small><p class="question-text">${e(question.prompt)}</p></div></div>
+                    <div><p class="question-text">${e(question.prompt)}</p></div></div>
                 ${
                     question.options
                         ? `<ol class="options${question.options.every((option) => Array.from(option).length <= 14) ? ' options-compact' : ''}">${question.options
