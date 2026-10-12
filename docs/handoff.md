@@ -88,7 +88,6 @@
 
 ## 푸시·배포 절차
 
-해당 작업에서 사용자가 요청한 경우 검증 후 수행한다. 작성자·커미터 이름은 `obmaz`, 이메일은 `zambobmaz@gmail.com`으로 유지한다. 커밋 전 저장소 로컬 Git 설정을 확인한다.
 현재 저장소는 `obmaz/fantasyword`, 작업 경로는 `/workspace/fantasyword`다. 새 Git 이력은 `init` 하나로 시작한다.
 브랜치 이름을 확인하며 초기 브랜치는 `main`이다.
 
