@@ -229,3 +229,134 @@ test('Day별 독립 문제지와 답안지는 단일 Day 생성 결과와 같고
         );
     }
 });
+
+for (const type of ['objective', 'mixed', 'subjective']) {
+    test(`문항 제한 ${type}: 활용형·파생형은 하나만 고르고 다른 단어로 상한까지 채운다`, () => {
+        const r = loadRules();
+        r.sandbox.source = [
+            'isolation',
+            'isolated',
+            'isolate',
+            'educate',
+            'education',
+            'educational',
+            'educated',
+            'study',
+            'studies',
+            'studied',
+            'studying',
+            'apple',
+            'forest',
+            'river',
+            'planet',
+            'quiet',
+            'cloud',
+            'window',
+            'chair',
+        ].map((word, index) => ({ day: 1, word, meaning: `풀이${index}` }));
+        const original = JSON.stringify(r.sandbox.source);
+        for (const reverse of [false, true]) {
+            r.sandbox.shuffle = (values) => (reverse ? [...values].reverse() : [...values]);
+            const model = r.evaluate(
+                `worksheetRules.build(source, {day:1, type:'${type}', limit:10}, shuffle)`
+            );
+            const targets = Array.from(model.questions, (q) =>
+                q.key === 'word' ? q.answer : q.prompt
+            );
+            for (const family of [
+                ['isolation', 'isolated', 'isolate'],
+                ['educate', 'education', 'educational', 'educated'],
+                ['study', 'studies', 'studied', 'studying'],
+            ])
+                assert.ok(targets.filter((word) => family.includes(word)).length <= 1);
+            assert.equal(targets.length, 10);
+            assert.ok(targets.includes(reverse ? 'studying' : 'isolation'));
+            assert.deepEqual(
+                Array.from(model.questions, (q) => q.num),
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            );
+            for (const q of model.questions) {
+                if (q.options) assert.equal(q.options[q.correctIndex], q.answer);
+            }
+        }
+        assert.equal(JSON.stringify(r.sandbox.source), original);
+    });
+}
+
+test('활용형 제한은 Day별로 독립적이고 후보 부족 시 파생형으로 다시 채우지 않는다', () => {
+    const r = loadRules();
+    r.sandbox.source = [1, 3].flatMap((day) => [
+        { day, word: 'isolation', meaning: '고립, 격리' },
+        { day, word: 'isolated', meaning: '고립된' },
+    ]);
+    const limited = r.evaluate(
+        "worksheetRules.build(source, {days:[3,1], type:'subjective', limit:10}, shuffle)"
+    );
+    assert.deepEqual(
+        Array.from(limited.questions, (q) => [q.day, q.num, q.answer]),
+        [
+            [1, 1, 'isolation'],
+            [3, 1, 'isolation'],
+        ]
+    );
+    for (const options of [
+        "{day:1, type:'subjective', limit:'all'}",
+        "{day:1, type:'subjective'}",
+    ]) {
+        const all = r.evaluate(`worksheetRules.build(source, ${options}, shuffle)`);
+        assert.equal(all.questions.length, 2);
+        assert.deepEqual(
+            Array.from(all.questions, (q) => (q.key === 'word' ? q.answer : q.prompt)),
+            ['isolation', 'isolated']
+        );
+    }
+});
+
+test('공통 앞부분만 있는 별개 단어와 짧은 단어·숙어는 합치지 않는다', () => {
+    const r = loadRules();
+    const words = [
+        'policy',
+        'police',
+        'rat',
+        'rate',
+        'item',
+        'stem',
+        'system',
+        'go',
+        'to',
+        'look at',
+        'look after',
+    ];
+    r.sandbox.source = words.map((word, index) => ({ day: 1, word, meaning: `풀이${index}` }));
+    const model = r.evaluate(
+        "worksheetRules.build(source, {day:1, type:'subjective', limit:30}, shuffle)"
+    );
+    assert.deepEqual(
+        Array.from(model.questions, (q) => (q.key === 'word' ? q.answer : q.prompt)),
+        words
+    );
+});
+
+test('실제 4번 단어장 Day 9의 isolation/isolated는 제한 출력에서 중복되지 않는다', () => {
+    const r = loadScripts(['data/game-data-4.js', 'scripts/domain/worksheet-rules.js'], {
+        shuffle: (values) => [...values],
+    });
+    const model = r.evaluate(
+        "worksheetRules.build(window.rawData_4, {day:9, type:'subjective', limit:30}, shuffle)"
+    );
+    const targets = Array.from(model.questions, (q) => (q.key === 'word' ? q.answer : q.prompt));
+    assert.ok(targets.includes('isolation'));
+    assert.ok(!targets.includes('isolated'));
+    r.sandbox.shuffle = (values) => [...values].reverse();
+    const reverse = r.evaluate(
+        "worksheetRules.build(window.rawData_4, {day:9, type:'subjective', limit:30}, shuffle)"
+    );
+    const reversed = Array.from(reverse.questions, (q) => (q.key === 'word' ? q.answer : q.prompt));
+    assert.ok(reversed.includes('isolated'));
+    assert.ok(!reversed.includes('isolation'));
+    const all = r.evaluate(
+        "worksheetRules.build(window.rawData_4, {day:9, type:'subjective', limit:'all'}, shuffle)"
+    );
+    const allTargets = Array.from(all.questions, (q) => (q.key === 'word' ? q.answer : q.prompt));
+    assert.ok(allTargets.includes('isolated') && allTargets.includes('isolation'));
+});

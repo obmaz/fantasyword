@@ -14,6 +14,115 @@ const worksheetRules = {
         const meanings = new Set(worksheetRules.meanings(left));
         return worksheetRules.meanings(right).some((meaning) => meanings.has(meaning));
     },
+    // Porter 어간 규칙으로 활용형·접미 파생형을 묶는다. 숙어는 서로 합치지 않는다.
+    familyKey: (value) => {
+        let word = worksheetRules.normalize(value);
+        if (!/^[a-z]{3,}$/.test(word)) return word;
+        const isConsonant = (text, index) => {
+            const letter = text[index];
+            if ('aeiou'.includes(letter)) return false;
+            if (letter === 'y') return index === 0 || !isConsonant(text, index - 1);
+            return true;
+        };
+        const measure = (text) => {
+            let count = 0;
+            for (let index = 1; index < text.length; index++) {
+                if (!isConsonant(text, index - 1) && isConsonant(text, index)) count++;
+            }
+            return count;
+        };
+        const hasVowel = (text) => Array.from(text).some((_, index) => !isConsonant(text, index));
+        const shortSyllable = (text) => {
+            const last = text.length - 1;
+            return (
+                last >= 2 &&
+                isConsonant(text, last) &&
+                !isConsonant(text, last - 1) &&
+                isConsonant(text, last - 2) &&
+                !'wxy'.includes(text[last])
+            );
+        };
+        const replaceSuffix = (rules, minimumMeasure) => {
+            for (const [suffix, replacement] of rules) {
+                if (!word.endsWith(suffix)) continue;
+                const stem = word.slice(0, -suffix.length);
+                if (measure(stem) >= minimumMeasure) word = stem + replacement;
+                break;
+            }
+        };
+        if (word.endsWith('sses')) word = word.slice(0, -2);
+        else if (word.endsWith('ies')) word = word.slice(0, -2);
+        else if (!word.endsWith('ss') && word.endsWith('s')) word = word.slice(0, -1);
+        if (word.endsWith('eed')) {
+            if (measure(word.slice(0, -3)) > 0) word = word.slice(0, -1);
+        } else {
+            const suffix = word.endsWith('ing') ? 'ing' : word.endsWith('ed') ? 'ed' : '';
+            const stem = suffix ? word.slice(0, -suffix.length) : '';
+            if (suffix && hasVowel(stem)) {
+                word = stem;
+                if (/(at|bl|iz)$/.test(word)) word += 'e';
+                else if (
+                    /(\w)\1$/.test(word) &&
+                    isConsonant(word, word.length - 1) &&
+                    !'lsz'.includes(word.at(-1))
+                )
+                    word = word.slice(0, -1);
+                else if (measure(word) === 1 && shortSyllable(word)) word += 'e';
+            }
+        }
+        if (word.endsWith('y') && hasVowel(word.slice(0, -1))) word = word.slice(0, -1) + 'i';
+        replaceSuffix(
+            [
+                ['ational', 'ate'],
+                ['tional', 'tion'],
+                ['enci', 'ence'],
+                ['anci', 'ance'],
+                ['izer', 'ize'],
+                ['bli', 'ble'],
+                ['alli', 'al'],
+                ['entli', 'ent'],
+                ['eli', 'e'],
+                ['ousli', 'ous'],
+                ['ization', 'ize'],
+                ['ation', 'ate'],
+                ['ator', 'ate'],
+                ['alism', 'al'],
+                ['iveness', 'ive'],
+                ['fulness', 'ful'],
+                ['ousness', 'ous'],
+                ['aliti', 'al'],
+                ['iviti', 'ive'],
+                ['biliti', 'ble'],
+                ['logi', 'log'],
+            ],
+            1
+        );
+        replaceSuffix(
+            [
+                ['icate', 'ic'],
+                ['ative', ''],
+                ['alize', 'al'],
+                ['iciti', 'ic'],
+                ['ical', 'ic'],
+                ['ful', ''],
+                ['ness', ''],
+            ],
+            1
+        );
+        const suffix = word.match(
+            /(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ion|ou|ism|ate|iti|ous|ive|ize)$/
+        )?.[0];
+        if (suffix) {
+            const stem = word.slice(0, -suffix.length);
+            if (measure(stem) > 1 && (suffix !== 'ion' || /[st]$/.test(stem))) word = stem;
+        }
+        if (word.endsWith('e')) {
+            const stem = word.slice(0, -1);
+            if (measure(stem) > 1 || (measure(stem) === 1 && !shortSyllable(stem))) word = stem;
+        }
+        if (word.endsWith('ll') && measure(word) > 1) word = word.slice(0, -1);
+        return word;
+    },
     build: (source, { day, days, type = 'mixed', limit = 'all' }, shuffle) => {
         if (days) {
             const selectedDays = [...new Set(days.map(Number))]
@@ -44,13 +153,17 @@ const worksheetRules = {
             }));
         const words = new Set();
         const meanings = new Set();
+        const families = new Set();
         const selected = shuffle(rows.filter((row) => Number(row.day) === Number(day)))
             .filter((row) => {
                 const word = worksheetRules.normalize(row.word);
                 const meaning = worksheetRules.normalize(row.meaning);
-                if (words.has(word) || meanings.has(meaning)) return false;
+                const family = limit === 'all' ? null : worksheetRules.familyKey(word);
+                if (words.has(word) || meanings.has(meaning) || (family && families.has(family)))
+                    return false;
                 words.add(word);
                 meanings.add(meaning);
+                if (family) families.add(family);
                 return true;
             })
             .slice(0, limit === 'all' ? Infinity : Math.max(0, Math.floor(Number(limit))));

@@ -160,7 +160,7 @@ test('4번 단어장의 마지막 Day와 35개짜리 Day도 전체 문제지를 
         [40, 40],
     ]) {
         const model = r.evaluate(
-            `worksheetRules.build(rawData_4, {day: ${day}, type: 'objective', limit: 100}, values => [...values])`
+            `worksheetRules.build(rawData_4, {day: ${day}, type: 'objective', limit: 'all'}, values => [...values])`
         );
         assert.equal(model.questions.length, count);
         assert.equal(model.objectiveCount, count);
