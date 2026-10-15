@@ -107,17 +107,26 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         review(model, next) {
             version++;
             element('story-puzzle-game').dataset.phase = 'review';
-            clearQuestion();
-            element('puzzle-prompt').textContent = model.words
-                ? wordPath(model.words, model.wordMeanings)
-                : model.answer;
-            element('puzzle-prompt').dataset.result = model.correct ? 'correct' : 'wrong';
+            const proverb = element('story-puzzle-game').dataset.kind === 'proverb';
+            if (proverb) {
+                element('puzzle-choices')
+                    .querySelectorAll('button')
+                    .forEach((button) => {
+                        button.disabled = true;
+                    });
+            } else {
+                clearQuestion();
+                element('puzzle-prompt').textContent = model.words
+                    ? wordPath(model.words, model.wordMeanings)
+                    : model.answer;
+                element('puzzle-prompt').dataset.result = model.correct ? 'correct' : 'wrong';
+            }
             element('puzzle-guide').textContent = '';
             element('puzzle-progress').textContent = element('puzzle-progress').textContent.replace(
                 /(?:오답|추가 변환) \d+ \/ 2$/,
                 `${element('story-puzzle-game').dataset.kind === 'proverb' ? '오답' : '추가 변환'} ${model.mistakes} / 2`
             );
-            message(model.meaning);
+            message(proverb ? `정답: ${model.answer}\n${model.meaning}` : model.meaning);
             actions(['다음', next]);
         },
         saveFailed(retry) {

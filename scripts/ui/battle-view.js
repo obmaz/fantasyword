@@ -15,6 +15,8 @@ function createBattleView({
     let letterButtons = [];
     let spellingResizeObserver;
     let spellingPattern = '';
+    let spellingHints = '';
+    let inputHints = '';
     let questionVersion = 0;
     let floatVersion = 0;
     let attackVersion = 0;
@@ -60,6 +62,10 @@ function createBattleView({
                 'letter-slot-active',
                 index === (input.selectionStart ?? typed.length)
             );
+            if (!typed[index] && /[a-z]/i.test(inputHints[index] || '')) {
+                slot.textContent = inputHints[index];
+                slot.classList.add('letter-slot-hint');
+            }
             slots.appendChild(slot);
         }
     }
@@ -249,6 +255,7 @@ function createBattleView({
             const input = element('boss-input');
             input.value = '';
             inputPattern = data.word || '';
+            inputHints = hint || '';
             input.oninput = updateInputSlots;
             input.onclick = updateInputSlots;
             updateInputSlots();
@@ -291,9 +298,10 @@ function createBattleView({
             const submit = doc.querySelector('#boss-box .boss-submit');
             if (submit) submit.disabled = false;
         },
-        spelling(prompt, pattern, tiles, onPick, onRemove, onSubmit) {
+        spelling(prompt, pattern, tiles, onPick, onRemove, onSubmit, hints = '') {
             const version = questionVersion;
             spellingPattern = pattern;
+            spellingHints = hints;
             element('boss-box').style.display = 'none';
             element('options-box').style.display = 'none';
             const panel = element('spelling-panel');
@@ -371,10 +379,15 @@ function createBattleView({
             const answer = element('spelling-answer');
             answer.innerHTML = '';
             let index = 0;
-            for (const character of spellingPattern) {
+            for (const [position, character] of [...spellingPattern].entries()) {
                 const slot = doc.createElement('span');
                 slot.className = character === '_' ? 'letter-slot' : 'letter-separator';
-                slot.innerText = character === '_' ? tiles[chosen[index++]] || '·' : character;
+                const picked = character === '_' ? tiles[chosen[index++]] : null;
+                const hint = /[a-z]/i.test(spellingHints[position] || '')
+                    ? spellingHints[position]
+                    : '';
+                slot.innerText = character === '_' ? picked || hint || '·' : character;
+                if (character === '_' && !picked && hint) slot.classList.add('letter-slot-hint');
                 answer.appendChild(slot);
             }
             letterButtons.forEach((button, i) => {
@@ -510,7 +523,8 @@ function createBattleView({
             } else if (subjective) {
                 element('boss-hint').innerText = answer;
                 element('boss-hint').classList.add('boss-hint-revealed');
-            } else optionButtons[correctIndex]?.classList.add('option-btn-correct');
+            } else
+                optionButtons[correctIndex]?.classList.add('option-btn-correct', 'answer-revealed');
         },
         attack(input) {
             clearAttack();

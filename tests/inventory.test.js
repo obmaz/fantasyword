@@ -180,3 +180,86 @@ test('이전 이펙트 무기와 잘못된 손 위치를 복원하고 같은 무
     assert.equal(duplicate.evaluate('db.equipped["hand-2"]'), undefined);
     assert.equal(duplicate.evaluate('db.equippedWeapon'), 'fire');
 });
+
+test('암시장 유물 구매 후 보관함 아이콘 수·용량·상세 정보는 같은 아이템을 센다', () => {
+    const r = browserRuntime({ v7_gold: '2000', v7_inventory_capacity: '12' });
+    r.sandbox.onload();
+    r.evaluate('storyJourney.random=()=>0; storyJourney.buy("shadowCompass"); inventory.render()');
+    const entries = r.evaluate('inventory.getStoredEntries()');
+    assert.equal(entries.length, 1);
+    assert.equal(entries[0].item.id, 'shadowCompass');
+    assert.equal(r.evaluate('inventory.getStoredCount()'), 1);
+    const icons = r.sandbox.document.querySelector('.inv-items').children;
+    assert.equal(icons.length, 1);
+    icons[0].click();
+    assert.match(r.getElement('detail-desc').innerText, /보유 중 효과 적용/);
+    assert.equal(r.getElement('detail-actions').children.length, 0);
+    const restored = browserRuntime(Object.fromEntries(r.store));
+    assert.equal(restored.evaluate('inventory.getStoredCount()'), 1);
+    assert.equal(restored.evaluate('db.has("shadowCompass")'), true);
+});
+
+test('장착·보관 목록의 중복 항목과 슬롯 없는 유물은 칸 수에 한 번만 반영한다', () => {
+    const r = browserRuntime({
+        v7_inventory: '["helmet","boots"]',
+        v7_owned: '["basic","hourglass"]',
+        v7_equipped: '{"head":"helmet"}',
+    });
+    assert.equal(r.evaluate('inventory.getStoredCount()'), 2);
+    assert.deepEqual(
+        Array.from(r.evaluate('inventory.getStoredEntries()'), (entry) => entry.item.id).sort(),
+        ['boots', 'hourglass']
+    );
+});
+
+test('이전 총공세 보상은 중복 보관을 해소하고 포션·배낭 효과를 한 번만 복원한다', () => {
+    const r = browserRuntime({
+        v7_owned: '["basic","hint","backpack","hourglass"]',
+        v7_inventory: '["hint","backpack","hourglass"]',
+        v7_skills: '{"hint":2}',
+        v7_inventory_capacity: '3',
+    });
+    assert.equal(r.evaluate('db.skills.hint'), 6);
+    assert.equal(r.evaluate('db.inventoryCapacity'), 4);
+    assert.equal(r.evaluate('inventory.getStoredCount()'), 1);
+    assert.equal(r.evaluate('db.inventory.length'), 0);
+    assert.equal(r.evaluate('db.has("hourglass")'), true);
+    const restored = browserRuntime(Object.fromEntries(r.store));
+    assert.equal(restored.evaluate('db.skills.hint'), 6);
+    assert.equal(restored.evaluate('db.inventoryCapacity'), 4);
+    assert.equal(restored.evaluate('inventory.getStoredCount()'), 1);
+});
+
+test('새 총공세 보상은 용량·스킬·유물로 나누어 저장하고 가득 찬 보관함을 넘지 않는다', () => {
+    const r = browserRuntime({
+        v7_owned: '["basic","hourglass","shadowCompass","shadowLantern"]',
+        v7_inventory_capacity: '3',
+    });
+    r.evaluate('inventory.render=()=>{};shop.render=()=>{}');
+    assert.equal(r.evaluate('inventory.grantReward("shield")'), null);
+    assert.equal(r.evaluate('db.has("shield")'), false);
+    assert.ok(r.evaluate('inventory.grantReward("backpack")'));
+    assert.equal(r.evaluate('db.inventoryCapacity'), 4);
+    assert.ok(r.evaluate('inventory.grantReward("shield")'));
+    assert.equal(r.evaluate('inventory.getStoredCount()'), 4);
+    assert.ok(r.evaluate('inventory.grantReward("hint")'));
+    assert.equal(r.evaluate('db.skills.hint'), 4);
+    assert.equal(r.evaluate('db.inventory.length'), 0);
+    assert.equal(r.evaluate('db.has("backpack")||db.has("hint")'), false);
+    const restored = browserRuntime(Object.fromEntries(r.store));
+    assert.equal(restored.evaluate('db.skills.hint'), 4);
+    assert.equal(restored.evaluate('inventory.getStoredCount()'), 4);
+});
+
+test('총공세 보상 저장 실패는 용량·아이템·포션 횟수를 증가시키지 않는다', () => {
+    const r = browserRuntime();
+    r.sandbox.localStorage.setItem = () => {
+        throw new Error('QuotaExceededError');
+    };
+    assert.equal(r.evaluate('inventory.grantReward("backpack")'), null);
+    assert.equal(r.evaluate('db.inventoryCapacity'), 3);
+    assert.equal(r.evaluate('inventory.grantReward("hint")'), null);
+    assert.equal(r.evaluate('db.skills.hint'), 0);
+    assert.equal(r.evaluate('inventory.grantReward("hourglass")'), null);
+    assert.equal(r.evaluate('db.has("hourglass")'), false);
+});

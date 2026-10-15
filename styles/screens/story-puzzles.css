@@ -34,8 +34,8 @@
     background: #173d2dcc;
     color: #fff3cf;
 }
-.story-puzzle-game[data-kind='proverb'][data-phase='question'] .puzzle-word-pair {
-    margin-block: auto;
+.story-puzzle-game[data-kind='proverb'] .puzzle-word-pair {
+    margin: 0;
 }
 .story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
     min-height: 140px;
@@ -51,7 +51,7 @@
     background: #142e26e8;
     border: 1px solid #d8bf8580;
     border-radius: 8px;
-    color: #fff3cf;
+    color: #b9e2ff;
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-choices button {
     min-height: 76px;
@@ -343,4 +343,27 @@
         font-size: 16px;
         padding: 3px 6px !important;
     }
+}
+
+.story-puzzle-game[data-kind='proverb'] .puzzle-board {
+    display: block;
+    overflow: auto;
+}
+.story-puzzle-game[data-kind='proverb'] .puzzle-content {
+    display: contents;
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-feedback {
+    white-space: pre-line;
+    color: #b9e2ff;
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-feedback,
+.story-puzzle-game[data-kind='proverb'] .puzzle-controls {
+    margin-top: 12px;
+}
+.story-puzzle-game[data-kind='proverb'] #puzzle-progress,
+.story-puzzle-game[data-kind='proverb'] .puzzle-word-pair {
+    margin-bottom: 12px;
+}
+.story-puzzle-game[data-kind='proverb'] .puzzle-choices {
+    margin-top: 12px;
 }

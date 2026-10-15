@@ -5,6 +5,24 @@
 
 const inventory = {
     detailTrigger: null,
+    /** 총공세 보상도 상점과 같은 저장·용량 규칙을 따른다. */
+    grantReward: (id) => {
+        const relic = relics.find((entry) => entry.id === id);
+        if (!relic) return null;
+        let changes;
+        if (relic.type === 'skill') {
+            changes = { skills: { ...db.skills, [id]: (db.skills[id] || 0) + (relic.uses || 1) } };
+        } else if (relic.type === 'backpack') {
+            changes = { inventoryCapacity: db.inventoryCapacity + 1 };
+        } else if (relic.type === 'passive') {
+            if (db.has(id) || inventory.getStoredCount() >= db.inventoryCapacity) return null;
+            changes = { owned: [...db.owned, id] };
+        } else return null;
+        if (!db.commitChanges(changes)) return null;
+        inventory.render();
+        shop.render();
+        return itemDisplayName(relic);
+    },
     slots: {
         gloves: {
             label: '장갑',
@@ -34,14 +52,28 @@ const inventory = {
         },
     },
     /** 구매/장착/해제/표시에서 같은 보관함 용량 규칙을 사용한다. */
-    getStoredCount: (state = db) =>
-        state.inventory.length +
-        (state.owned || db.owned).filter(
-            (id) =>
-                id !== 'basic' &&
-                !Object.values(state.equipped).includes(id) &&
-                id !== state.equippedWeapon
-        ).length,
+    getStoredEntries: (state = db) => {
+        const equipped = Object.values(state.equipped);
+        const ids = [...new Set([...state.inventory, ...(state.owned || db.owned)])];
+        return ids
+            .filter((id) => id !== 'basic' && id !== state.equippedWeapon && !equipped.includes(id))
+            .map((id) => {
+                const item = items.find((entry) => entry.id === id);
+                const weapon = weapons.find((entry) => entry.id === id);
+                const relic = relics.find(
+                    (entry) => entry.id === id && ['passive', 'consumable'].includes(entry.type)
+                );
+                return item
+                    ? { item, type: 'item' }
+                    : weapon
+                      ? { item: weapon, type: 'weapon' }
+                      : relic
+                        ? { item: relic, type: 'relic' }
+                        : null;
+            })
+            .filter(Boolean);
+    },
+    getStoredCount: (state = db) => inventory.getStoredEntries(state).length,
     /**
      * 인벤토리 모달을 엽니다
      */
@@ -87,7 +119,7 @@ const inventory = {
      */
     render: () => {
         const invContainer = document.querySelector('.inv-items');
-        invContainer.innerHTML = '';
+        invContainer.replaceChildren();
 
         // 인벤토리 용량 표시
         document.getElementById('inv-cap').innerText = inventory.getStoredCount();
@@ -126,37 +158,15 @@ const inventory = {
             }
         }
 
-        // 보관함의 아이템 렌더링
-        db.inventory.forEach((itemId) => {
-            const item = items.find((i) => i.id === itemId);
-            if (item) {
-                const itemEl = document.createElement('button');
-                itemEl.type = 'button';
-                itemEl.setAttribute('aria-label', item.name);
-                itemEl.className = 'inv-item';
-                itemEl.innerHTML = itemIconMarkup(item);
-                itemEl.onclick = () => inventory.showDetails(itemId, 'item');
-                invContainer.appendChild(itemEl);
-            }
-        });
-
-        // 보관함의 보유 무기 렌더링
-        db.owned.forEach((weaponId) => {
-            const weapon = weapons.find((w) => w.id === weaponId);
-            if (
-                weapon &&
-                weapon.id !== 'basic' &&
-                weapon.id !== db.equippedWeapon &&
-                !Object.values(db.equipped).includes(weaponId)
-            ) {
-                const itemEl = document.createElement('button');
-                itemEl.type = 'button';
-                itemEl.setAttribute('aria-label', weapon.name);
-                itemEl.className = 'inv-item';
-                itemEl.innerHTML = itemIconMarkup(weapon);
-                itemEl.onclick = () => inventory.showDetails(weaponId, 'weapon');
-                invContainer.appendChild(itemEl);
-            }
+        // 용량에 포함되는 장비와 슬롯 없는 유물을 같은 목록에 표시한다.
+        inventory.getStoredEntries().forEach(({ item, type }) => {
+            const itemEl = document.createElement('button');
+            itemEl.type = 'button';
+            itemEl.setAttribute('aria-label', itemDisplayName(item));
+            itemEl.className = 'inv-item';
+            itemEl.innerHTML = itemIconMarkup(item);
+            itemEl.onclick = () => inventory.showDetails(item.id, type);
+            invContainer.appendChild(itemEl);
         });
 
         if (!invContainer.children.length) {
@@ -168,7 +178,7 @@ const inventory = {
 
         // 보유 유물 렌더링
         const relicsContainer = document.querySelector('.inv-relics');
-        relicsContainer.innerHTML = '';
+        relicsContainer.replaceChildren();
         db.owned.forEach((itemId) => {
             const relic = relics.find(
                 (r) =>
@@ -209,7 +219,11 @@ const inventory = {
      */
     showDetails: (id, type) => {
         const itemData =
-            type === 'item' ? items.find((i) => i.id === id) : weapons.find((w) => w.id === id);
+            type === 'item'
+                ? items.find((i) => i.id === id)
+                : type === 'relic'
+                  ? relics.find((r) => r.id === id)
+                  : weapons.find((w) => w.id === id);
         if (!itemData) return;
         const trigger = document.activeElement;
         inventory.detailTrigger =
@@ -224,7 +238,10 @@ const inventory = {
         const allowedSlots = type === 'weapon' ? weaponEquipSlots(itemData) : [itemData.slot];
         const slotNames = allowedSlots.map((slot) => inventory.slots[slot]?.label).filter(Boolean);
         const placement = itemData.id === 'boots' ? '양발 함께' : slotNames.join(' 또는 ');
-        let description = `${itemData.desc}\n장착 위치: ${placement}`;
+        let description =
+            type === 'relic'
+                ? `${itemData.desc}\n보유 중 효과 적용 · 보관함 1칸 사용`
+                : `${itemData.desc}\n장착 위치: ${placement}`;
         if (itemData.durability) description += `\n남은 사용: ${db.durability[id] || 0}회`;
         if (type === 'weapon' && allowedSlots.includes('hand-1'))
             description += `\n오른손: 3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`;
@@ -233,7 +250,7 @@ const inventory = {
         document.getElementById('detail-desc').innerText = description;
 
         const actionsContainer = document.getElementById('detail-actions');
-        actionsContainer.innerHTML = '';
+        actionsContainer.replaceChildren();
 
         // 무기의 경우 정의된 슬롯에 장착 허용
         if (type === 'weapon') {
@@ -262,7 +279,7 @@ const inventory = {
                 };
                 actionsContainer.appendChild(unequipBtn);
             }
-        } else {
+        } else if (type === 'item') {
             // 아이템 (소모품 / 장비)
             const equipBtn = document.createElement('button');
             equipBtn.className = 'btn-main';

@@ -331,7 +331,8 @@ function createBattleSession({
                     game.spellingTiles,
                     game.chooseSpellingLetter,
                     game.removeSpellingLetter,
-                    game.checkBossAnswer
+                    game.checkBossAnswer,
+                    battleRules.spellingHint(data.word)
                 );
                 game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
                 return;
@@ -347,7 +348,17 @@ function createBattleSession({
                     game.spellingTiles,
                     game.chooseSpellingLetter,
                     game.removeSpellingLetter,
-                    game.checkBossAnswer
+                    game.checkBossAnswer,
+                    battleRules.spellingHint(
+                        data.word,
+                        data.questionKind === 'riddle' &&
+                            /[a-z]/i.test(
+                                data.encounterPrompt || data.englishExplanation || data.meaning
+                            ) &&
+                            !/[가-힣]/.test(
+                                data.encounterPrompt || data.englishExplanation || data.meaning
+                            )
+                    )
                 );
                 game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
                 return;
@@ -490,7 +501,10 @@ function createBattleSession({
             game.view.subjective(
                 data,
                 title,
-                battleRules.spellingHint(data.word),
+                battleRules.spellingHint(
+                    data.word,
+                    /[a-z]/i.test(data.meaning) && !/[가-힣]/.test(data.meaning)
+                ),
                 game.checkBossAnswer
             );
         },

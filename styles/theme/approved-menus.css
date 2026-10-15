@@ -3161,3 +3161,26 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
     flex-shrink: 0;
     margin-inline-start: auto;
 }
+
+/* Hints remain visible without filling or skipping any answer letters. */
+#battle-mode-game .letter-slot-hint {
+    color: #f5d891;
+    border-color: #bfa86d;
+}
+#battle-mode-game :is(.spelling-revealed, .boss-hint-revealed) {
+    color: #b9e2ff;
+    background: #163849;
+    border: 1px solid #8ecfff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 800;
+    opacity: 1;
+}
+#battle-mode-game .option-btn.answer-revealed {
+    background: #b9e2ff !important;
+    color: #14364e !important;
+    outline: 3px solid #72bcf3;
+    outline-offset: -3px;
+    opacity: 1;
+    filter: none;
+}

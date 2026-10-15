@@ -262,3 +262,27 @@ test('대장간 이전 보기·다음 콜백은 새 문제에서 작동하지 �
     assert.equal(r.seen.results[0].won, true);
     assert.equal(r.seen.results[0].mistakes, 2);
 });
+
+test('속담 정오답 뒤에도 문제와 보기를 유지하고 정답·설명은 아래에 표시한다', () => {
+    for (const correct of [true, false]) {
+        const r = browserRuntime();
+        r.sandbox.onload();
+        r.evaluate("storyPuzzle.start('proverb')");
+        const prompt = r.getElement('puzzle-prompt').textContent;
+        const question = r
+            .evaluate('storyProverbs')
+            .find((q) => `${q.before}____${q.after}` === prompt);
+        const choices = r.getElement('puzzle-choices').children;
+        const choose = choices.find(
+            (button) => (button.textContent === question.answer) === correct
+        );
+        choose.click();
+        assert.equal(r.getElement('puzzle-prompt').textContent, prompt);
+        assert.equal(r.getElement('puzzle-choices').children.length, 4);
+        assert.match(r.getElement('puzzle-feedback').textContent, /정답:/);
+        assert.ok(r.getElement('puzzle-feedback').textContent.includes(question.meaning));
+        const before = r.getElement('puzzle-feedback').textContent;
+        choices[0].click();
+        assert.equal(r.getElement('puzzle-feedback').textContent, before);
+    }
+});

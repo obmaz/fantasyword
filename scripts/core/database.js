@@ -495,3 +495,35 @@ if (
     db._writers.equipped();
     db._writers.equip();
 }
+
+// 이전 총공세 보상은 owned와 inventory에 동시에 저장되었다.
+// 포션·배낭은 실제 효과로 한 번만 복구하고 유물은 owned에 보존한다.
+const legacyRewardIds = new Set([...db.owned, ...db.inventory]);
+const legacyRewards = relics.filter(
+    (relic) =>
+        legacyRewardIds.has(relic.id) &&
+        (['skill', 'backpack'].includes(relic.type) ||
+            (relic.type === 'passive' && db.inventory.includes(relic.id)))
+);
+if (legacyRewards.length) {
+    const changes = {
+        inventory: db.inventory.filter((id) => !legacyRewards.some((relic) => relic.id === id)),
+        owned: db.owned.filter(
+            (id) => !legacyRewards.some((relic) => relic.id === id && relic.type !== 'passive')
+        ),
+        skills: { ...db.skills },
+        inventoryCapacity: db.inventoryCapacity,
+    };
+    for (const relic of legacyRewards) {
+        if (relic.type === 'skill')
+            changes.skills[relic.id] = (changes.skills[relic.id] || 0) + (relic.uses || 1);
+        else if (relic.type === 'backpack') changes.inventoryCapacity++;
+        else if (!changes.owned.includes(relic.id)) changes.owned.push(relic.id);
+    }
+    const writes = {};
+    for (const [key, property, serialize] of Object.values(DB_STORAGE_FIELDS)) {
+        if (property in changes) writes[key] = serialize(changes[property]);
+    }
+    // 로드 중에는 UI를 갱신하지 않고 저장 성공 후에만 메모리에도 적용한다.
+    if (gameStorage.setBatch(writes)) Object.assign(db, changes);
+}

@@ -12,6 +12,7 @@ function createSkyfallSession({
     now,
     notify,
     random = Math.random,
+    grantReward = () => null,
 }) {
     const BASE_TIME = 5;
     const TIME_PER_WORD = 3;
@@ -120,16 +121,9 @@ function createSkyfallSession({
             db.addGold(reward);
             if (item.elite) {
                 const rewardId = ELITE_REWARDS[Math.floor(random() * ELITE_REWARDS.length)];
-                const canStore =
-                    Array.isArray(db.inventory) &&
-                    db.inventory.length < Number(db.inventoryCapacity || 3) &&
-                    !db.owned?.includes(rewardId);
-                if (canStore) {
-                    db.owned.push(rewardId);
-                    db.inventory.push(rewardId);
-                    db.save?.('owned', 'inventory');
-                    notify(`엘리트 악당 보상: ${rewardId} 획득!`);
-                } else notify('엘리트 악당 보상: 보관함이 가득 차 골드로 지급되었습니다.');
+                const rewardName = grantReward(rewardId);
+                if (rewardName) notify(`엘리트 악당 보상: ${rewardName} 획득!`);
+                else notify('추가 아이템을 받을 수 없어 엘리트 골드 보너스만 지급되었습니다.');
             }
             view.attack(item.id);
         } else {

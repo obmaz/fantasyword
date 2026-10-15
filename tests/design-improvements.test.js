@@ -485,7 +485,7 @@ test('철자 힌트/채점은 한 글자·구문·빈 입력을 일관되게 처
     const r = browserRuntime();
     const rules = r.evaluate('battleRules');
     assert.equal(rules.spellingHint('get up'), 'g__ u_');
-    assert.equal(rules.spellingHint('a'), '_');
+    assert.equal(rules.spellingHint('a'), 'a');
     assert.equal(rules.checkSpelling(' GET UP ', 'get up'), true);
     assert.equal(rules.checkSpelling('et up', 'get up'), false);
     assert.equal(rules.checkSpelling('', 'a'), false);
@@ -590,4 +590,23 @@ test('Day 선택 목록은 60일 제한 대신 실제 데이터의 유효한 Day
     const html = r.getElement('battle-mode-modal-day-select').innerHTML;
     assert.ok(html.includes('value="61"'));
     assert.ok(!html.includes('value="Infinity"'));
+});
+
+test('영어 뜻만 나온 7글자 이상 단어는 끝 글자 힌트를 주고 전체 입력을 요구한다', () => {
+    const r = browserRuntime();
+    const rules = r.evaluate('battleRules');
+    assert.equal(rules.spellingHint('balloon', true), 'b_____n');
+    assert.equal(rules.spellingHint('honest', true), 'h_____');
+    assert.equal(rules.spellingHint('balloon', false), 'b______');
+    r.sandbox.onload();
+    r.evaluate(
+        "game.view.subjective({word:'balloon',meaning:'a bag filled with air'}, '', battleRules.spellingHint('balloon', true), ()=>{}, false)"
+    );
+    const slots = r.getElement('boss-letter-slots').children;
+    assert.equal(slots[0].textContent, 'b');
+    assert.equal(slots[6].textContent, 'n');
+    assert.ok(slots[0].classList.contains('letter-slot-hint'));
+    assert.equal(r.getElement('boss-input').value, '');
+    assert.equal(rules.checkSpelling('alloo', 'balloon'), false);
+    assert.equal(rules.checkSpelling('balloon', 'balloon'), true);
 });

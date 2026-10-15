@@ -89,6 +89,7 @@ const practiceMemorization = createPracticeSession({
 
 const skyfall = createSkyfallSession({
     db,
+    grantReward: (id) => inventory.grantReward(id),
     getSource: () => window.rawDataData || rawData,
     questions: questionTools,
     rules: battleRules,

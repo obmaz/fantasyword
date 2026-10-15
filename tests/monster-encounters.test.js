@@ -398,3 +398,18 @@ test('전체 단어 도전은 드래곤 문제로 출제하고 마지막 오답�
     assert.equal(rows[0].correct, 0);
     assert.equal(r.game.sessionWrongWords.length, 1);
 });
+
+test('철자 조립의 첫·끝 힌트는 타일 입력을 채우지 않고 문제 종류에 따라 표시한다', () => {
+    const r = runtime();
+    for (const [monster, last] of [
+        ['goblin', false],
+        ['dragon', true],
+    ]) {
+        r.start(monster, 'balloon');
+        const slots = r.getElement('spelling-answer').children.slice(-7);
+        assert.equal(slots[0].innerText, 'b');
+        assert.equal(slots[6].innerText, last ? 'n' : '·');
+        assert.equal(r.game.spellingChosen.length, 0);
+        assert.equal(r.getElement('spelling-submit').disabled, true);
+    }
+});

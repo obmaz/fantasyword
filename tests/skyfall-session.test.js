@@ -9,6 +9,7 @@ function runtime({
     shuffle = (values) => values,
     nowStep = 0,
     random = () => 0.9,
+    grantReward = () => null,
     source = [
         { word: 'apple', meaning: '사과' },
         { word: 'banana', meaning: '바나나' },
@@ -75,6 +76,7 @@ function runtime({
         playMusic() {},
         pauseMusic() {},
         notify() {},
+        grantReward,
         random,
         requestFrame(callback) {
             const id = ++serial;
@@ -447,4 +449,20 @@ test('렌더러는 종료 즉시 공격 효과와 예약된 정리를 제거한�
     assert.equal(pending.size, 0);
     view.addWord({ id: 2, prompt: 'banana', x: 16, y: 0.07 }, () => {});
     assert.equal(field.children.length, 1);
+});
+
+test('엘리트 아이템은 주입된 보상 서비스로 지급하고 추가 골드를 유지한다', () => {
+    const rewards = [];
+    const r = runtime({
+        random: () => 0.1,
+        grantReward: (id) => {
+            rewards.push(id);
+            return '통찰의 포션';
+        },
+    });
+    r.session.start(1);
+    assert.equal(r.words.values().next().value.item.elite, true);
+    r.answer(true);
+    assert.deepEqual(rewards, ['hint']);
+    assert.equal(r.gold, 12);
 });

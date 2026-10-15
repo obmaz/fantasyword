@@ -37,15 +37,18 @@ const battleRules = Object.freeze({
             shuffle(selected.slice(0, midpoint).map((q) => ({ ...q, isBoss: true })))
         );
     },
-    spellingHint(word) {
-        return word.replace(/\S+/g, (part) =>
-            part.length === 1 ? '_' : part[0] + '_'.repeat(part.length - 1)
+    spellingHint(word, englishOnly = false) {
+        const letters = [...word.matchAll(/[a-z]/gi)].map((match) => match.index);
+        const starts = new Set([...word.matchAll(/\b[a-z]/gi)].map((match) => match.index));
+        const last = englishOnly && letters.length > 6 ? letters.at(-1) : -1;
+        return word.replace(/[a-z]/gi, (letter, index) =>
+            starts.has(index) || index === last ? letter : '_'
         );
     },
     checkSpelling(input, word) {
         const answer = word.trim().toLowerCase();
         const value = input.trim().toLowerCase();
-        // 밑줄 칸은 첫 글자도 비어 있으므로 전체 철자가 일치해야 한다.
+        // 힌트는 표시만 하며 첫 글자를 포함한 전체 철자를 입력해야 한다.
         return value.length > 0 && value === answer;
     },
     hintRemovalCount(wrongCount) {
