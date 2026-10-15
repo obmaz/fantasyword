@@ -68,13 +68,6 @@
     overflow: hidden;
     background: transparent;
 }
-.skyfall-field::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(#08201517 0%, transparent 22%, transparent 75%, #0c2b2870);
-}
 .skyfall-hero {
     position: absolute;
     z-index: 1;
@@ -199,7 +192,7 @@
     min-height: 0;
     padding: 8px 9px max(9px, env(safe-area-inset-bottom));
     border-top: 2px solid #d3ae69;
-    background: #102f2bd9;
+    background: transparent;
 }
 .skyfall-item {
     display: block;
@@ -228,6 +221,9 @@
     flex: 0 0 32px;
     overflow: auto;
     text-align: center;
+    text-shadow:
+        0 1px 2px #071b14,
+        0 0 4px #071b14;
     font:
         800 clamp(11px, 3.1vw, 15px)/1.2 system-ui,
         sans-serif;
