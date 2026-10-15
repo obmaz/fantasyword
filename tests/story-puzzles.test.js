@@ -224,7 +224,8 @@ test('스토리 퍼즐 실패·중도 나가기는 같은 지점으로 돌아가
                     )
         );
         wrong.click();
-        r.getElement('puzzle-controls').children[0].click();
+        // 속담 복습은 별도 다음 버튼 없이 잠시 후 자동으로 진행된다.
+        r.evaluate('storyPuzzle.continue()');
     }
     assert.equal(r.evaluate('db.gold'), 99);
     assert.equal(r.evaluate('storyJourney.stage'), 6);
@@ -233,7 +234,11 @@ test('스토리 퍼즐 실패·중도 나가기는 같은 지점으로 돌아가
     assert.equal(r.evaluate('storyJourney.pendingStage'), null);
     assert.equal(r.getElement('story-map-modal').style.display, 'flex');
     r.evaluate("storyJourney.close(); storyPuzzle.start('proverb')");
-    for (let i = 0; i < 5; i++) {
+    for (
+        let i = 0;
+        i < 10 && !r.getElement('puzzle-feedback').textContent.includes('테스트 점수');
+        i++
+    ) {
         const prompt = r.getElement('puzzle-prompt').textContent;
         const q = r
             .evaluate('storyProverbs')
@@ -241,7 +246,7 @@ test('스토리 퍼즐 실패·중도 나가기는 같은 지점으로 돌아가
         r.getElement('puzzle-choices')
             .children.find((btn) => btn.textContent === q.answer)
             .click();
-        r.getElement('puzzle-controls').children[0].click();
+        r.evaluate('storyPuzzle.continue()');
     }
     assert.equal(r.evaluate('db.gold'), 99);
     assert.match(r.getElement('puzzle-feedback').textContent, /테스트 점수 30/);

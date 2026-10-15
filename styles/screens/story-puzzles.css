@@ -348,6 +348,9 @@
 .story-puzzle-game[data-kind='proverb'] .puzzle-board {
     overflow: hidden;
 }
+.story-puzzle-game[data-kind='proverb'] .puzzle-choices {
+    margin-top: auto;
+}
 .story-puzzle-game[data-kind='proverb'] #puzzle-feedback {
     white-space: pre-line;
     color: #b9e2ff;

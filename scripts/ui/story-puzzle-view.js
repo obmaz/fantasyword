@@ -2,6 +2,7 @@
 function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
     const element = (id) => doc.getElementById(id);
     let version = 0;
+    let proverbReviewTimer = null;
     const actions = (...buttons) => {
         const root = element('puzzle-controls');
         root.replaceChildren();
@@ -22,6 +23,10 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         element('puzzle-feedback').textContent = text;
     };
     const clearQuestion = () => {
+        if (proverbReviewTimer !== null) {
+            clearTimeout(proverbReviewTimer);
+            proverbReviewTimer = null;
+        }
         element('puzzle-choices').replaceChildren();
         element('puzzle-trail').textContent = '';
         element('puzzle-current').textContent = '';
@@ -155,7 +160,25 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
                 `${element('story-puzzle-game').dataset.kind === 'proverb' ? '오답' : '추가 변환'} ${model.mistakes} / 2`
             );
             message(model.meaning);
-            actions(['다음', next]);
+            if (proverb) {
+                // 해설을 잠시 읽을 수 있도록 보여준 뒤 다음 문제로 자동 진행한다.
+                const continueReview = () => {
+                    if (proverbReviewTimer !== null) {
+                        clearTimeout(proverbReviewTimer);
+                        proverbReviewTimer = null;
+                    }
+                    next();
+                };
+                proverbReviewTimer = setTimeout(() => {
+                    proverbReviewTimer = null;
+                    next();
+                }, 1600);
+                actions(['다음', continueReview]);
+                // 자동 진행을 사용하되 화면에는 별도 다음 버튼을 노출하지 않는다.
+                Array.from(element('puzzle-controls').children).forEach((button) => {
+                    button.hidden = true;
+                });
+            } else actions(['다음', next]);
         },
         saveFailed(retry) {
             message('결과를 저장하지 못했습니다. 같은 결과를 다시 저장할 수 있습니다.');
