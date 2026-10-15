@@ -13,6 +13,33 @@ function createBattleView({
     const element = (id) => doc.getElementById(id);
     let optionButtons = [];
     let letterButtons = [];
+    let spellingResizeObserver = null;
+    let spellingLayoutKey = '';
+    function balanceSpellingTiles() {
+        const box = element('spelling-tiles');
+        const viewport = doc.defaultView;
+        if (!viewport || !letterButtons.length) return;
+        const width = box.getBoundingClientRect().width;
+        const keyWidth = parseFloat(viewport.getComputedStyle(letterButtons[0]).width);
+        const gap = parseFloat(viewport.getComputedStyle(box).columnGap) || 0;
+        if (!width || !keyWidth) return;
+        const layoutKey = `${width}:${keyWidth}:${gap}:${letterButtons.length}`;
+        if (layoutKey === spellingLayoutKey) return;
+        spellingLayoutKey = layoutKey;
+        const capacity = Math.max(1, Math.floor((width + gap + 0.01) / (keyWidth + gap)));
+        const rows = spellingTileRowCounts(letterButtons.length, capacity);
+        const columns = Math.max(...rows);
+        // Half-key tracks center a shorter upper row without changing any key dimensions.
+        box.style.gridTemplateColumns = `repeat(${columns * 2}, ${(keyWidth - gap) / 2}px)`;
+        let index = 0;
+        rows.forEach((count, row) => {
+            for (let column = 0; column < count; column++) {
+                const button = letterButtons[index++];
+                button.style.gridRow = String(row + 1);
+                button.style.gridColumn = `${1 + columns - count + column * 2} / span 2`;
+            }
+        });
+    }
     let spellingPattern = '';
     let spellingHints = '';
     let inputHints = '';
@@ -361,6 +388,14 @@ function createBattleView({
                     }
                 }
             };
+            spellingLayoutKey = '';
+            if (!spellingResizeObserver && doc.defaultView?.ResizeObserver) {
+                spellingResizeObserver = new doc.defaultView.ResizeObserver(() => {
+                    doc.defaultView.requestAnimationFrame(balanceSpellingTiles);
+                });
+                spellingResizeObserver.observe(box);
+            }
+            balanceSpellingTiles();
             element('spelling-submit').disabled = true;
             letterButtons[0]?.focus({ preventScroll: true });
         },

@@ -3275,6 +3275,9 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
     justify-content: center;
     gap: 3px;
 }
+#battle-mode-game .spelling-tiles .letter-tile {
+    max-width: none;
+}
 #battle-mode-game .letter-tile > span {
     transform: none;
 }

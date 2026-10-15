@@ -1,3 +1,12 @@
+/** Keep rows balanced and place any extra tiles on the lower rows. */
+function spellingTileRowCounts(count, maxColumns) {
+    if (count < 1 || maxColumns < 1) return [];
+    const rows = Math.ceil(count / maxColumns);
+    const base = Math.floor(count / rows);
+    const extra = count % rows;
+    return Array.from({ length: rows }, (_, row) => base + (row >= rows - extra ? 1 : 0));
+}
+
 /** Reusable image keyboard for answer entry and letter guessing. */
 function renderEnglishKeyboard(root, { document: doc = document, onKey, withDelete = true }) {
     root.replaceChildren();
