@@ -3236,3 +3236,145 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
     overflow: hidden;
     pointer-events: none;
 }
+
+/* All English letter controls use the same key art and geometry. */
+:is(#battle-mode-game, #hangman-game) {
+    --letter-key-width: clamp(20px, calc((100cqw - 64px) / 10), 52px);
+    --letter-key-height: clamp(32px, 5.5cqh, 52px);
+    --letter-key-font: clamp(16px, 4.5cqw, 26px);
+}
+:root[data-layout] :is(#battle-mode-game, #hangman-game) .english-key {
+    flex: 0 0 var(--letter-key-width);
+    width: var(--letter-key-width);
+    height: var(--letter-key-height);
+    min-height: var(--letter-key-height);
+    margin: 0;
+    padding: 0;
+    border: 0 !important;
+    border-image: none !important;
+    border-radius: 0;
+    background: url('../../images/theme/parts/quest-key.webp') center / 100% 100% no-repeat !important;
+    color: #fff2d0;
+    font-family: Georgia, serif;
+    font-size: var(--letter-key-font);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 0 1px 1px #102e24;
+    box-shadow: none;
+}
+:root[data-layout] :is(#battle-mode-game, #hangman-game) .english-key-delete {
+    background-image: url('../../images/theme/parts/quest-delete.webp') !important;
+}
+:root[data-layout] #battle-mode-game .spelling-tiles {
+    --tile-size: var(--letter-key-width);
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, var(--letter-key-width));
+    justify-content: center;
+    gap: 3px;
+}
+#battle-mode-game .letter-tile > span {
+    transform: none;
+}
+#hangman-game .hangman-board {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: clamp(8px, 2cqw, 20px);
+    overflow: hidden;
+}
+.hangman-content {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    gap: clamp(5px, 1.2cqh, 12px);
+    overflow: auto;
+}
+.hangman-content > * {
+    flex-shrink: 0;
+}
+#hangman-game .english-keyboard {
+    flex: 0 0 auto;
+}
+#hangman-game #hangman-next-btn {
+    flex: 0 0 54px;
+    width: 100%;
+    height: 54px;
+    min-height: 54px;
+    padding: 4px 8px !important;
+    font-size: clamp(13px, 3.4cqw, 19px);
+    font-weight: 800;
+}
+#hangman-game #hangman-next-btn[hidden] {
+    display: block;
+    visibility: hidden;
+}
+#shell-game .shell-board {
+    margin: 0 auto;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+#shell-game .shell-table {
+    margin-block: auto;
+    flex-shrink: 1;
+    min-height: 95px;
+}
+#shell-game .shell-controls {
+    margin-top: auto;
+    min-height: 76px;
+}
+#shell-game .shell-controls button {
+    min-height: 76px;
+    max-width: none;
+    font-size: clamp(18px, 5cqw, 28px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+@container (max-height: 500px) {
+    #shell-game .shell-controls,
+    #shell-game .shell-controls button {
+        min-height: 48px;
+    }
+    #shell-game .shell-controls button {
+        font-size: 16px;
+    }
+}
+.puzzle-sentence {
+    display: block;
+}
+.puzzle-blank {
+    display: inline-block;
+    min-width: var(--blank-width, 4em);
+    text-align: center;
+}
+#story-puzzle-game .puzzle-answer {
+    color: #216ba4;
+}
+#puzzle-choices button[data-result='correct'] {
+    background: #b9e2ff !important;
+    border: 2px solid #72bcf3 !important;
+    border-image: none !important;
+    color: #14364e !important;
+    opacity: 1;
+}
+#puzzle-choices button[data-result='wrong'] {
+    background: #f3b0ab !important;
+    border: 2px solid #da6863 !important;
+    border-image: none !important;
+    color: #671c19 !important;
+    opacity: 1;
+}
+
+#hangman-game #hangman-next-btn,
+#story-puzzle-game[data-kind='proverb'] .puzzle-controls button {
+    height: 54px;
+    min-height: 54px;
+    padding: 4px 8px !important;
+    font-size: clamp(13px, 3.4cqw, 19px);
+    font-weight: 800;
+    line-height: 1.3;
+}

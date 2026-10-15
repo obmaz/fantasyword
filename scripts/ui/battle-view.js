@@ -13,7 +13,6 @@ function createBattleView({
     const element = (id) => doc.getElementById(id);
     let optionButtons = [];
     let letterButtons = [];
-    let spellingResizeObserver;
     let spellingPattern = '';
     let spellingHints = '';
     let inputHints = '';
@@ -170,7 +169,6 @@ function createBattleView({
     return {
         stop() {
             questionVersion++;
-            spellingResizeObserver?.disconnect();
             floatVersion++;
             resetEffects();
             lockKeyboard(true);
@@ -203,7 +201,6 @@ function createBattleView({
         beginQuestion(sprite, progress, encounter = null) {
             element('battle-mode-game').dataset.inputLocked = 'false';
             questionVersion++;
-            spellingResizeObserver?.disconnect();
             floatVersion++;
             resetEffects();
             optionButtons = [];
@@ -322,16 +319,11 @@ function createBattleView({
             });
             element('q-text').innerText = prompt;
             const box = element('spelling-tiles');
-            spellingResizeObserver?.disconnect();
-            box.style.setProperty(
-                '--tile-columns',
-                String(Math.max(1, Math.ceil(tiles.length / 2)))
-            );
             box.innerHTML = '';
             letterButtons = tiles.map((letter, index) => {
                 const button = doc.createElement('button');
                 button.type = 'button';
-                button.className = 'letter-tile';
+                button.className = 'letter-tile english-key';
                 const label = doc.createElement('span');
                 label.textContent = letter;
                 button.appendChild(label);
@@ -342,20 +334,6 @@ function createBattleView({
                 box.appendChild(button);
                 return button;
             });
-            if (typeof ResizeObserver !== 'undefined') {
-                spellingResizeObserver = new ResizeObserver(([entry]) => {
-                    const style = getComputedStyle(box);
-                    const size = Number.parseFloat(style.getPropertyValue('--tile-size')) || 44;
-                    const gap = Number.parseFloat(style.columnGap) || 0;
-                    const columns =
-                        tiles.length * size + Math.max(0, tiles.length - 1) * gap <=
-                        entry.contentRect.width
-                            ? tiles.length
-                            : Math.ceil(tiles.length / 2);
-                    box.style.setProperty('--tile-columns', String(Math.max(1, columns)));
-                });
-                spellingResizeObserver.observe(box);
-            }
             panel.onkeydown = (event) => {
                 if (
                     version !== questionVersion ||

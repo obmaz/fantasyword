@@ -263,7 +263,7 @@ test('대장간 이전 보기·다음 콜백은 새 문제에서 작동하지 �
     assert.equal(r.seen.results[0].mistakes, 2);
 });
 
-test('속담 정오답 뒤에도 문제와 보기를 유지하고 정답·설명은 아래에 표시한다', () => {
+test('속담은 빈칸에 파란 정답을 넣고 오답 보기를 구분하며 해설에 정답을 반복하지 않는다', () => {
     for (const correct of [true, false]) {
         const r = browserRuntime();
         r.sandbox.onload();
@@ -277,9 +277,27 @@ test('속담 정오답 뒤에도 문제와 보기를 유지하고 정답·설명
             (button) => (button.textContent === question.answer) === correct
         );
         choose.click();
-        assert.equal(r.getElement('puzzle-prompt').textContent, prompt);
+        assert.equal(
+            r.getElement('puzzle-prompt').textContent,
+            question.before + question.answer + question.after
+        );
+        assert.equal(
+            r.getElement('puzzle-prompt').children[0].children[1].textContent,
+            question.answer
+        );
+        assert.ok(
+            r
+                .getElement('puzzle-prompt')
+                .children[0].children[1].classList.contains('puzzle-answer')
+        );
+        assert.equal(
+            choices.find((button) => button.textContent === question.answer).dataset.result,
+            'correct'
+        );
+        if (!correct) assert.equal(choose.dataset.result, 'wrong');
+        assert.ok(choices.every((button) => button.disabled));
         assert.equal(r.getElement('puzzle-choices').children.length, 4);
-        assert.match(r.getElement('puzzle-feedback').textContent, /정답:/);
+        assert.equal(r.getElement('puzzle-feedback').textContent, question.meaning);
         assert.ok(r.getElement('puzzle-feedback').textContent.includes(question.meaning));
         const before = r.getElement('puzzle-feedback').textContent;
         choices[0].click();

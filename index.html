@@ -759,18 +759,27 @@
         <section id="hangman-game" class="hangman-game" aria-label="행맨" style="display: none">
             <div id="hangman-header-host"></div>
             <main class="hangman-board">
-                <span class="hangman-lives">남은 기회 <strong id="hangman-lives">7</strong></span>
-                <div id="hangman-drawing" class="hangman-drawing" aria-label="행맨 그림"></div>
-                <p id="hangman-meaning" class="hangman-meaning"></p>
-                <div id="hangman-word" class="hangman-word" aria-live="polite"></div>
-                <p id="hangman-status" role="status" aria-live="polite"></p>
+                <div class="hangman-content">
+                    <span class="hangman-lives"
+                        >남은 기회 <strong id="hangman-lives">7</strong></span
+                    >
+                    <div id="hangman-drawing" class="hangman-drawing" aria-label="행맨 그림"></div>
+                    <p id="hangman-meaning" class="hangman-meaning"></p>
+                    <div id="hangman-word" class="hangman-word" aria-live="polite"></div>
+                    <p id="hangman-status" role="status" aria-live="polite"></p>
+                </div>
                 <div
                     id="hangman-letters"
                     class="english-keyboard"
                     role="group"
                     aria-label="알파벳 선택"
                 ></div>
-                <button id="hangman-next-btn" class="hangman-next" type="button" hidden>
+                <button
+                    id="hangman-next-btn"
+                    class="hangman-next image-action-button"
+                    type="button"
+                    hidden
+                >
                     다음 단어
                 </button>
             </main>

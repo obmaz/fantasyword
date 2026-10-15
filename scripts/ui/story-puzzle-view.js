@@ -27,6 +27,23 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         delete element('puzzle-current').dataset.word;
         delete element('puzzle-prompt').dataset.word;
     };
+    const proverbSentence = (before, answer, after, reveal = false) => {
+        const root = element('puzzle-prompt');
+        const sentence = doc.createElement('span');
+        sentence.className = 'puzzle-sentence';
+        for (const [text, className] of [
+            [before, ''],
+            [answer, reveal ? 'puzzle-blank puzzle-answer' : 'puzzle-blank'],
+            [after, ''],
+        ]) {
+            const part = doc.createElement('span');
+            part.className = className;
+            part.textContent = text;
+            sentence.appendChild(part);
+        }
+        root.textContent = before + answer + after;
+        root.replaceChildren(sentence);
+    };
     const wordCard = (root, word, meaning, prefix = '') => {
         const label = doc.createElement('span');
         label.className = 'forge-word';
@@ -80,7 +97,11 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
                     '현재 '
                 );
             } else {
-                element('puzzle-prompt').textContent = model.prompt;
+                element('puzzle-prompt').style.setProperty(
+                    '--blank-width',
+                    `${Math.max(4, ...model.choices.map((choice) => [...choice].length))}em`
+                );
+                proverbSentence(model.before, '____', model.after);
             }
             element('puzzle-guide').textContent =
                 model.kind === 'proverb'
@@ -109,11 +130,16 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             element('story-puzzle-game').dataset.phase = 'review';
             const proverb = element('story-puzzle-game').dataset.kind === 'proverb';
             if (proverb) {
-                element('puzzle-choices')
-                    .querySelectorAll('button')
-                    .forEach((button) => {
-                        button.disabled = true;
-                    });
+                proverbSentence(model.before, model.correctAnswer, model.after, true);
+                Array.from(element('puzzle-choices').children).forEach((button) => {
+                    button.disabled = true;
+                    button.dataset.result =
+                        button.textContent === model.correctAnswer
+                            ? 'correct'
+                            : button.textContent === model.selected
+                              ? 'wrong'
+                              : '';
+                });
             } else {
                 clearQuestion();
                 element('puzzle-prompt').textContent = model.words
@@ -126,7 +152,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
                 /(?:오답|추가 변환) \d+ \/ 2$/,
                 `${element('story-puzzle-game').dataset.kind === 'proverb' ? '오답' : '추가 변환'} ${model.mistakes} / 2`
             );
-            message(proverb ? `정답: ${model.answer}\n${model.meaning}` : model.meaning);
+            message(model.meaning);
             actions(['다음', next]);
         },
         saveFailed(retry) {

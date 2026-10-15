@@ -76,6 +76,8 @@ function createStoryPuzzleSession({
                         kind === 'proverb'
                             ? `${question.before}____${question.after}`
                             : question.goal,
+                    before: kind === 'proverb' ? question.before : null,
+                    after: kind === 'proverb' ? question.after : null,
                     current,
                     wordMeanings: kind === 'forge' ? wordMeanings : null,
                     trail: [...trail],
@@ -99,6 +101,10 @@ function createStoryPuzzleSession({
                     {
                         correct,
                         mistakes,
+                        before: question.before,
+                        after: question.after,
+                        selected: choice,
+                        correctAnswer: question.answer,
                         answer: `${question.before}${question.answer}${question.after}`,
                         meaning: question.meaning,
                     },
