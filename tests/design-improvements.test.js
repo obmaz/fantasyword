@@ -318,8 +318,9 @@ test('전투 진행은 DOM 없는 렌더러를 주입해 시작·채점·종료�
         has: () => false,
         addStats() {},
         recordPerfectDay() {},
-        addGold(value) {
+        grantGold(value) {
             this.gold += value;
+            return true;
         },
     };
     const globals = {

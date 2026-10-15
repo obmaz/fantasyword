@@ -11,21 +11,35 @@
     color: #fff5dc;
     background: #112b2c;
     isolation: isolate;
+    container-type: size;
 }
 .skyfall-hud {
     z-index: 1;
     display: grid;
-    grid-template-columns: 44px 0.8fr 1fr 1.35fr 0.8fr;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
     align-items: center;
-    gap: 3px;
-    min-height: 68px;
-    padding: 4px 62px 4px 10px;
+    gap: 6px 8px;
+    flex: 0 0 auto;
+    min-height: 108px;
+    padding: max(12px, env(safe-area-inset-top)) 12px 8px max(10px, env(safe-area-inset-left));
     background: linear-gradient(#172f35, #244b45);
     border-bottom: 2px solid #d3ae69;
     box-shadow: 0 2px 8px #081b20a8;
     text-align: center;
 }
-.skyfall-hud > div {
+.skyfall-hud h2 {
+    margin: 0;
+    font-size: clamp(17px, 5cqw, 25px);
+    font-weight: 800;
+    text-align: left;
+}
+.skyfall-hud .skyfall-status {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr) minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 6px;
+}
+.skyfall-status > div {
     display: grid;
     gap: 1px;
     min-width: 0;
@@ -39,13 +53,13 @@
 }
 .skyfall-hud strong {
     font:
-        800 clamp(12px, 3.5vw, 17px) system-ui,
+        800 clamp(11px, 3.4cqw, 17px) system-ui,
         sans-serif;
     white-space: nowrap;
 }
 .skyfall-hud .skyfall-heart strong {
     color: #ff929a;
-    font-size: clamp(12px, 3.4vw, 17px);
+    font-size: clamp(11px, 3.4cqw, 17px);
     letter-spacing: -0.08em;
 }
 #skyfall-exit-btn {

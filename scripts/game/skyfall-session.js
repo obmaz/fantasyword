@@ -118,9 +118,12 @@ function createSkyfallSession({
         if (correct) {
             score += 1;
             const reward = rules.assaultReward() + (item.elite ? ELITE_GOLD_BONUS : 0);
-            earned += reward;
+            const previousGold = db.gold;
             db.addGold(reward);
-            if (item.elite) {
+            const received = db.gold - previousGold;
+            earned += received;
+            if (received !== reward) view.notice?.('정답 보상을 저장하지 못했습니다.');
+            else if (item.elite) {
                 const rewardId = ELITE_REWARDS[Math.floor(random() * ELITE_REWARDS.length)];
                 const rewardName = grantReward(rewardId);
                 if (rewardName) view.notice?.(`엘리트 보상: ${rewardName} 획득!`);
@@ -149,15 +152,23 @@ function createSkyfallSession({
         if (items.length >= 5 || !pool.length) return;
         const row = pool[nextWordIndex++];
         if (!row) return;
-        const english = random() < 0.5;
-        const answerKey = english ? 'meaning' : 'word';
+        let answerKey = random() < 0.5 ? 'meaning' : 'word';
+        const decoys = (key) =>
+            questions.getDistractors(String(row[key]).trim(), key, row, getSource());
+        let distractors = decoys(answerKey);
+        if (!distractors.length) {
+            answerKey = answerKey === 'meaning' ? 'word' : 'meaning';
+            distractors = decoys(answerKey);
+        }
+        if (!distractors.length) {
+            notify('서로 다른 보기를 만들 단어가 부족합니다. 다른 범위를 선택해 주세요.', 'warn');
+            exit();
+            return;
+        }
+        const english = answerKey === 'meaning';
         const prompt = String(english ? row.word : row.meaning).trim();
         const answer = String(row[answerKey]).trim();
-        const options = questions.shuffle([
-            answer,
-            ...questions.getDistractors(answer, answerKey, row, pool),
-        ]);
-        if (options.length < 2) return;
+        const options = questions.shuffle([answer, ...distractors]);
         const x = [16, 50, 84][nextLane++ % 3];
         const item = {
             id: ++serial,
@@ -189,6 +200,7 @@ function createSkyfallSession({
         ) {
             spawnElapsed = 0;
             spawn();
+            if (!active) return;
         }
         if (resolved >= pool.length && !items.length) {
             finish(score === pool.length);
@@ -268,7 +280,7 @@ function createSkyfallSession({
         updateHud();
         playMusic('battle');
         spawn();
-        queueFrame();
+        if (active) queueFrame();
     }
     return {
         start,

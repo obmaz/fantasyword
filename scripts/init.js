@@ -212,8 +212,7 @@ window.onload = () => {
     });
     document.getElementById('skyfall-modal-start')?.addEventListener('click', () => {
         const day = document.getElementById('skyfall-mode-day-select').value;
-        db.lastSelectedDay = day;
-        db.save();
+        db.commitChanges({ lastSelectedDay: day });
         skyfall.start(day);
     });
     document.getElementById('skyfall-exit-btn')?.addEventListener('click', () => skyfall.exit());
@@ -230,8 +229,7 @@ window.onload = () => {
         practiceStartBtn.addEventListener('click', () => {
             const selectedDay = practiceDaySelect ? practiceDaySelect.value : 'all';
 
-            db.lastSelectedDay = selectedDay;
-            db.save();
+            db.commitChanges({ lastSelectedDay: selectedDay });
 
             const daySelect = document.getElementById('day-select');
             if (daySelect) daySelect.value = selectedDay;
@@ -345,11 +343,14 @@ window.onload = () => {
                 );
                 if (checkedRadio) selectedQuestionType = checkedRadio.value;
             }
-            gameStorage.set('v7_last_question_type', selectedQuestionType);
-            gameStorage.set('v7_last_battle_type', selectedBattleType);
-            db.lastSelectedDay = selectedDay;
-            gameStorage.set('v7_last_count', selectedCount);
-            db.save();
+            db.commitChanges(
+                { lastSelectedDay: selectedDay },
+                {
+                    v7_last_question_type: selectedQuestionType,
+                    v7_last_battle_type: selectedBattleType,
+                    v7_last_count: String(selectedCount),
+                }
+            );
 
             game.battleQuestionType = selectedQuestionType;
 

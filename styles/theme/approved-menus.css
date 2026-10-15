@@ -116,6 +116,10 @@
     background: var(--ui-small-control) center / 100% 100% no-repeat;
     color: #fff7df;
     box-shadow: none;
+    flex: 0 0 44px;
+    font:
+        800 25px/1 system-ui,
+        sans-serif;
 }
 .story-map-header > .btn-gray:hover {
     filter: brightness(1.12);
@@ -299,13 +303,11 @@ dialog.screen-overlay .card.story-map-card {
     position: relative;
 }
 .story-map-header button {
-    min-width: 72px;
+    min-width: 44px;
     min-height: 44px;
     border: 0;
     background: var(--ui-home) center / 100% 100% no-repeat;
     color: #fff8df;
-    font: inherit;
-    font-weight: 800;
     cursor: pointer;
 }
 #story-market-status {
@@ -2929,23 +2931,6 @@ button.equipment-control {
     }
 }
 
-/* 시작 버튼은 모드 성격을 색으로 바로 구분한다. */
-#battle-mode-modal .mode-actions .mode-start,
-#skyfall-mode-modal .mode-actions .mode-start {
-    background: linear-gradient(180deg, #c6534a, #8f2f35);
-    border-color: #f2a16a;
-    box-shadow:
-        0 4px 0 #5b2029,
-        0 0 0 1px #ffcf8e;
-}
-#practice-mode-modal .mode-actions .mode-start {
-    background: linear-gradient(180deg, #4b8ed8, #28559d);
-    border-color: #a9d5ff;
-    box-shadow:
-        0 4px 0 #193d78,
-        0 0 0 1px #d8efff;
-}
-
 /* 골드 조정은 방향 문자가 튀지 않도록 금빛 증감 버튼으로 통일한다. */
 #setting-modal .gold-arrow,
 #gold-edit-modal .gold-arrow {
@@ -3369,11 +3354,11 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
 }
 
 #hangman-game #hangman-next-btn,
-#story-puzzle-game[data-kind='proverb'] .puzzle-controls button {
-    height: 54px;
-    min-height: 54px;
+#story-puzzle-game .puzzle-controls button {
+    height: var(--action-height, 54px);
+    min-height: var(--action-height, 54px);
     padding: 4px 8px !important;
-    font-size: clamp(13px, 3.4cqw, 19px);
+    font-size: var(--action-font-size);
     font-weight: 800;
     line-height: 1.3;
 }

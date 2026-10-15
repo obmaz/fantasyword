@@ -257,12 +257,12 @@ const inventory = {
             for (const slot of allowedSlots) {
                 const equipBtn = document.createElement('button');
                 equipBtn.className = 'btn-main';
+                equipBtn.dataset.confirmTone = 'execute';
                 const current = db.equipped[slot];
                 equipBtn.innerText = `${inventory.slots[slot].label} ${current === id ? '장착 중' : current ? '교체' : '장착'}`;
                 equipBtn.disabled = current === id;
                 equipBtn.onclick = () => {
-                    inventory.equip(id, 'weapon', slot);
-                    inventory.hideDetails();
+                    if (inventory.equip(id, 'weapon', slot)) inventory.hideDetails();
                 };
                 actionsContainer.appendChild(equipBtn);
             }
@@ -271,11 +271,11 @@ const inventory = {
             if (db.equippedWeapon === id || Object.values(db.equipped).includes(id)) {
                 const unequipBtn = document.createElement('button');
                 unequipBtn.className = 'btn-main btn-blue';
+                unequipBtn.dataset.confirmTone = 'cancel';
                 unequipBtn.innerText = '해제';
                 unequipBtn.onclick = () => {
                     const slot = Object.keys(db.equipped).find((s) => db.equipped[s] === id);
-                    inventory.unequipWeapon(slot);
-                    inventory.hideDetails();
+                    if (inventory.unequipWeapon(slot)) inventory.hideDetails();
                 };
                 actionsContainer.appendChild(unequipBtn);
             }
@@ -283,10 +283,10 @@ const inventory = {
             // 아이템 (소모품 / 장비)
             const equipBtn = document.createElement('button');
             equipBtn.className = 'btn-main';
+            equipBtn.dataset.confirmTone = 'execute';
             equipBtn.innerText = `${itemData.id === 'boots' ? '양발' : slotNames[0]} 장착`;
             equipBtn.onclick = () => {
-                inventory.equip(id, type);
-                inventory.hideDetails();
+                if (inventory.equip(id, type)) inventory.hideDetails();
             };
             actionsContainer.appendChild(equipBtn);
 
@@ -295,10 +295,10 @@ const inventory = {
             if (isConsumable) {
                 const useBtn = document.createElement('button');
                 useBtn.className = 'btn-main btn-blue';
+                useBtn.dataset.confirmTone = 'execute';
                 useBtn.innerText = '사용하기';
                 useBtn.onclick = () => {
-                    db.useItem(id);
-                    inventory.hideDetails();
+                    if (db.useItem(id)) inventory.hideDetails();
                 };
                 actionsContainer.appendChild(useBtn);
             }
@@ -383,7 +383,10 @@ const inventory = {
         const replaced = [
             ...new Set(slots.map((s) => db.equipped[s]).filter((old) => old && old !== id)),
         ];
-        if (!db.commitChanges(next)) return;
+        if (!db.commitChanges(next)) {
+            showToast('장착 변경을 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
+            return false;
+        }
         if (replaced.length) {
             const previousNames = replaced.map((old) =>
                 itemDisplayName(
@@ -397,6 +400,7 @@ const inventory = {
         }
         inventory.render();
         shop.render();
+        return true;
     },
 
     /**
@@ -406,7 +410,7 @@ const inventory = {
     unequipWeapon: (slot) => {
         const target =
             slot || Object.keys(db.equipped).find((s) => db.equipped[s] === db.equippedWeapon);
-        if (target) inventory.unequip(target);
+        if (target) return inventory.unequip(target);
     },
 
     /**
@@ -425,22 +429,27 @@ const inventory = {
             return;
         }
 
+        const equipped = { ...db.equipped };
         if (itemId === 'boots') {
-            delete db.equipped['foot-1'];
-            delete db.equipped['foot-2'];
+            delete equipped['foot-1'];
+            delete equipped['foot-2'];
         } else {
-            delete db.equipped[slot];
+            delete equipped[slot];
         }
-
-        // 활성 equippedWeapon이었다면 해제
-        if (db.equippedWeapon === itemId) db.equippedWeapon = 'basic';
-
-        // 무기가 아닌 아이템만 배낭 인벤토리에 추가
-        if (!isWeapon && !db.inventory.includes(itemId)) {
-            db.inventory.push(itemId);
+        const changes = {
+            equipped,
+            equippedWeapon: db.equippedWeapon === itemId ? 'basic' : db.equippedWeapon,
+            inventory:
+                !isWeapon && !db.inventory.includes(itemId)
+                    ? [...db.inventory, itemId]
+                    : [...db.inventory],
+        };
+        if (!db.commitChanges(changes)) {
+            showToast('장비 해제를 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
+            return false;
         }
-
-        db.save('owned', 'equip', 'dura', 'inventory', 'equipped');
         inventory.render();
+        shop.render();
+        return true;
     },
 };

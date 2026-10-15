@@ -95,16 +95,19 @@ const settingsManager = {
         if (musicCheck) {
             musicCheck.checked = db.settings.musicPlay !== false;
             musicCheck.addEventListener('change', () => {
+                if (
+                    !db.commitChanges({
+                        settings: { ...db.settings, musicPlay: musicCheck.checked },
+                    })
+                ) {
+                    musicCheck.checked = db.settings.musicPlay;
+                    showToast('음악 설정을 저장하지 못했습니다.', 'error');
+                    return;
+                }
                 settingsManager.recordMusicToggle(musicCheck.checked);
-                db.settings.musicPlay = musicCheck.checked;
-                db.save('settings');
-                // 오디오 매니저가 있다면 상태 업데이트가 필요할 수 있음
-                // (현재 playMusic 함수는 호출 시 db.settings를 확인하므로 즉시 반영됨)
                 if (!db.settings.musicPlay) {
                     const bgMusic = document.getElementById('background-music');
                     if (bgMusic) bgMusic.pause();
-                } else {
-                    // 켜면 현재 모드 음악 재생 시도? (일단 보류, 사용자가 직접 켜는 흐름)
                 }
             });
         }
@@ -113,8 +116,13 @@ const settingsManager = {
             wordCheck.checked = db.settings.wordRead !== false;
             wordCheck.addEventListener('change', () => {
                 if (!settingsManager.adminUnlocked) settingsManager.hideAdmin();
-                db.settings.wordRead = wordCheck.checked;
-                db.save('settings');
+                if (
+                    !db.commitChanges({ settings: { ...db.settings, wordRead: wordCheck.checked } })
+                ) {
+                    wordCheck.checked = db.settings.wordRead;
+                    showToast('자동 발음 설정을 저장하지 못했습니다.', 'error');
+                    return;
+                }
                 if (!wordCheck.checked) practiceMemorization.stopSpeech();
             });
         }

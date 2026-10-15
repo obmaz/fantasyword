@@ -10,6 +10,7 @@ function runtime({
     nowStep = 0,
     random = () => 0.9,
     grantReward = () => null,
+    getDistractors = () => ['다른 보기'],
     source = [
         { word: 'apple', meaning: '사과' },
         { word: 'banana', meaning: '바나나' },
@@ -32,9 +33,14 @@ function runtime({
         onMistake() {
             mistakes++;
         },
-        db: { addGold: (value) => (gold += value) },
+        db: {
+            get gold() {
+                return gold;
+            },
+            addGold: (value) => (gold += value),
+        },
         getSource: () => source,
-        questions: { getDistractors: () => ['다른 보기'], shuffle },
+        questions: { getDistractors, shuffle },
         rules: {
             buildPool: (_day, source) => source,
             assaultReward: loadScripts(['scripts/domain/battle-rules.js']).evaluate('battleRules')
@@ -135,6 +141,37 @@ function runtime({
         },
     };
 }
+
+test('한 방향의 보기가 부족하면 반대 방향으로 출제하고 두 방향 모두 부족하면 종료한다', () => {
+    const alternate = runtime({
+        getDistractors: (_answer, key) => (key === 'word' ? [] : ['다른 뜻']),
+    });
+    alternate.session.start(1);
+    assert.equal(alternate.words.values().next().value.item.answerKey, 'meaning');
+    alternate.answer(true);
+    assert.equal(alternate.gold, 4);
+    const empty = runtime({ getDistractors: () => [] });
+    empty.session.start(1);
+    assert.equal(empty.session.active, false);
+    assert.equal(empty.words.size, 0);
+    assert.equal(empty.frames.size, 0);
+    assert.equal(empty.results.length, 0);
+    assert.match(empty.notifications[0], /다른 범위/);
+    assert.ok(empty.events.includes('exit'));
+});
+
+test('진행 중 다음 단어의 보기가 부족해 종료하면 늦은 프레임을 예약하지 않는다', () => {
+    const r = runtime({
+        getDistractors: (_answer, _key, row) => (row.word === 'apple' ? ['다른 보기'] : []),
+    });
+    r.session.start(1);
+    r.answer(true);
+    r.advance(2500);
+    assert.equal(r.session.active, false);
+    assert.equal(r.frames.size, 0);
+    assert.equal(r.words.size, 0);
+    assert.ok(r.events.includes('exit'));
+});
 
 test('엘리트 단어 악당은 붉은 빠른 단어로 표시되고 추가 골드와 무작위 아이템을 준다', () => {
     const source = [

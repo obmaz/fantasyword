@@ -645,8 +645,9 @@ function createBattleSession({
                         secondary && secondary.id !== 'shield_item' ? secondary.effect : null,
                     combo: Boolean(game.currentQ.comboBonus),
                 });
-                const questBonus =
-                    game.mode === 'revenge' ? quests?.succeed(game.currentQ) || 0 : 0;
+                const questReward =
+                    game.mode === 'revenge' ? quests?.prepareSuccess(game.currentQ) : null;
+                const questBonus = questReward?.bonus || 0;
                 const baseGain = battleRules.reward({
                     mode: game.mode,
                     subjective: !!game.currentQ.isBoss,
@@ -663,14 +664,21 @@ function createBattleSession({
                         ? 0
                         : baseGain + routeBonus + comboBonus + questBonus;
                 if (weapon.multiplier > 1) game.view.goldAttack();
-                if (
+                const glove =
                     game.mode !== 'idiom-test' &&
                     db.equipped?.gloves === 'goldGlove' &&
-                    db.durability.goldGlove > 0
-                )
-                    db.useItem('goldGlove');
-                game.stats.gain += gain;
-                db.addGold(gain);
+                    db.durability.goldGlove > 0;
+                const paid =
+                    game.mode === 'idiom-test' ||
+                    db.grantGold(gain, questReward?.changes || {}, glove ? 'goldGlove' : null);
+                if (paid) {
+                    game.stats.gain += gain;
+                    if (questReward) quests.refresh();
+                } else
+                    notify(
+                        '정답 보상을 저장하지 못했습니다. 골드와 아이템은 이전 상태입니다.',
+                        'error'
+                    );
                 const rewardDetails = [
                     `정답 +${baseGain}`,
                     ...(routeBonus ? [`보물 +${routeBonus}`] : []),
@@ -678,9 +686,11 @@ function createBattleSession({
                     ...(questBonus ? [`퀘스트 +${questBonus}`] : []),
                 ];
                 game.view.floatText(
-                    game.mode === 'idiom-test' ? '정답!' : `+${gain} G`,
+                    game.mode === 'idiom-test' ? '정답!' : paid ? `+${gain} G` : '정답 · 저장 실패',
                     'gold',
-                    comboBonus || routeBonus || questBonus ? rewardDetails.join(' · ') : ''
+                    paid && (comboBonus || routeBonus || questBonus)
+                        ? rewardDetails.join(' · ')
+                        : ''
                 );
                 game.later(() => {
                     game.idx++;
@@ -700,9 +710,11 @@ function createBattleSession({
                 game.view.hit();
                 const penalty =
                     game.mode === 'idiom-test' ? 0 : battleRules.penalty(db.gold, db.has('shield'));
-                game.stats.lost += penalty;
+                const previousGold = db.gold;
                 db.subGold(penalty);
-                game.view.floatText(game.mode === 'idiom-test' ? '오답' : `-${penalty} G`, 'red');
+                const lost = previousGold - db.gold;
+                game.stats.lost += lost;
+                game.view.floatText(game.mode === 'idiom-test' ? '오답' : `-${lost} G`, 'red');
                 game.later(() => {
                     game.idx++;
                     game.nextLevel();
@@ -757,11 +769,10 @@ function createBattleSession({
             const count = battleRules.hintRemovalCount(wrong.length);
             if (!count) return;
             const indices = game.shuffle(wrong).slice(0, count);
+            if (!db.commitChanges({ skills: { ...db.skills, hint: db.skills.hint - 1 } })) return;
             indices.forEach((index) => {
                 game.options[index].disabled = true;
             });
-            db.skills.hint--;
-            db.save('skills');
             game.view.disableOptions(indices);
             ui.updateSkills();
         },
@@ -782,8 +793,8 @@ function createBattleSession({
                 game.handleAnswer(false, null);
                 return;
             }
-            db.skills.ultimate--;
-            db.save('skills');
+            if (!db.commitChanges({ skills: { ...db.skills, ultimate: db.skills.ultimate - 1 } }))
+                return;
             game.answerOption(index);
             ui.updateSkills();
         },

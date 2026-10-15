@@ -22,7 +22,9 @@
             id === 'battle-mode-game' ||
             id === 'practice-mode-game' ||
             id === 'skyfall-mode-game' ||
-            id === 'shell-game'
+            id === 'shell-game' ||
+            id === 'story-puzzle-game' ||
+            id === 'hangman-game'
         ) {
             title.style.display = 'none';
             title.inert = true;

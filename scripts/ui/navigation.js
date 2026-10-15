@@ -4,7 +4,12 @@ const navigation = (() => {
     let initialized = false;
     const visible = (id) => {
         const element = document.getElementById(id);
-        return !!element && element.style.display !== 'none' && element.style.display !== '';
+        return (
+            !!element &&
+            element.style.display !== 'none' &&
+            element.style.display !== '' &&
+            !element.classList.contains('closing')
+        );
     };
 
     function track(screen) {
@@ -108,7 +113,7 @@ const navigation = (() => {
             armed = false;
             back();
             // 하위 설정/스토리에서 돌아온 화면에만 뒤로 가기 한 번을 예약한다.
-            const top = document.querySelector('dialog[open]:not(.closing)');
+            const top = Array.from(document.querySelectorAll('dialog[open]:not(.closing)')).at(-1);
             if (top) track(top.id);
         });
     }

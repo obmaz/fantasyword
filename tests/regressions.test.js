@@ -25,7 +25,7 @@ test('손상된 저장 데이터와 잘못된 타입이 초기 로딩을 막지 
     assert.equal(evaluate('db.getBookStats("book-2").subjective.perfectDays.length'), 0);
 });
 
-test('저장소 접근 거부/용량 초과 중에도 게임 진행과 UI 업데이트를 계속한다', () => {
+test('저장소 접근 거부/용량 초과를 처리하고 저장 상태를 보존한다', () => {
     const { evaluate, store } = browserRuntime(
         {},
         {
@@ -40,11 +40,11 @@ test('저장소 접근 거부/용량 초과 중에도 게임 진행과 UI 업데
         }
     );
     assert.equal(evaluate('db.gold'), 99);
-    assert.equal(evaluate('db.addGold(40)'), 139);
+    assert.equal(evaluate('db.addGold(40)'), 99);
     assert.equal(evaluate('gameStorage.warned'), true);
     assert.equal(store.size, 0);
     evaluate('db.addStats(true, "objective")');
-    assert.equal(evaluate('db.getBookStats().correct'), 1);
+    assert.equal(evaluate('db.getBookStats().correct'), 0);
 });
 
 test('알 수 없는 단어장 이름 기록을 1번 단어장에 잘못 합산하지 않는다', () => {

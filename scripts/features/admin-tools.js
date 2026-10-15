@@ -110,8 +110,10 @@ const secret = {
             // 이전 확인창의 응답이 새로 열린 관리 작업을 덮어쓰지 않는다.
             if (secret.pendingAction !== resetAction) return;
             if (ok) {
-                db.stats = { books: {} };
-                db.save('stats');
+                if (!db.commitChanges({ stats: { books: {} } })) {
+                    showToast('통계를 초기화하지 못했습니다. 다시 시도해 주세요.', 'error');
+                    return;
+                }
 
                 if (typeof statistics !== 'undefined' && typeof statistics.render === 'function') {
                     statistics.render();
@@ -174,10 +176,10 @@ const secret = {
 
         // 비밀번호 확인 후 실행할 함수
         secret.pendingAction = () => {
-            db.gold = secret.editGold;
-            db.save();
-
-            ui.updateGold();
+            if (!db.commitChanges({ gold: secret.editGold })) {
+                showToast('골드를 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
+                return;
+            }
             if (typeof shop !== 'undefined' && typeof shop.render === 'function') {
                 shop.render();
             }

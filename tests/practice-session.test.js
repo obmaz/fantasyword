@@ -28,7 +28,14 @@ function session(db, getSource) {
     return { result, events };
 }
 function store() {
-    return { settings: { wordRead: false }, getBookKey: () => 'book-1', save() {} };
+    return {
+        settings: { wordRead: false },
+        getBookKey: () => 'book-1',
+        commitChanges(changes) {
+            Object.assign(this, changes);
+            return true;
+        },
+    };
 }
 
 test('연습 세션은 브라우저 전역 없이 생성되고 두 세션의 진행 상태를 격리한다', () => {

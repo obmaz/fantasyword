@@ -38,15 +38,29 @@ self.addEventListener('fetch', (event) => {
     )
         return;
     if (request.mode === 'navigate') {
+        const entry = new URL('index.html', self.registration.scope);
+        const root = new URL('./', entry);
+        if (url.pathname !== entry.pathname && url.pathname !== root.pathname) return;
         event.respondWith(
             (async () => {
-                const cache = await caches.open(CACHE_NAME);
                 try {
                     const response = await fetch(request);
-                    if (response.ok) await cache.put('index.html', response.clone());
+                    if (response.ok) {
+                        try {
+                            const cache = await caches.open(CACHE_NAME);
+                            await cache.put('index.html', response.clone());
+                        } catch {
+                            // A full cache must not discard a successful network response.
+                        }
+                    }
                     return response;
                 } catch {
-                    return (await cache.match('index.html')) || Response.error();
+                    try {
+                        const cache = await caches.open(CACHE_NAME);
+                        return (await cache.match('index.html')) || Response.error();
+                    } catch {
+                        return Response.error();
+                    }
                 }
             })()
         );
@@ -59,12 +73,23 @@ self.addEventListener('fetch', (event) => {
         return;
     event.respondWith(
         (async () => {
-            const cache = await caches.open(CACHE_NAME);
-            // Only unversioned dynamic image requests may match a precached version.
-            const saved = await cache.match(request, { ignoreSearch: !url.search });
-            if (saved) return saved;
+            let cache;
+            try {
+                cache = await caches.open(CACHE_NAME);
+                // Only unversioned dynamic image requests may match a precached version.
+                const saved = await cache.match(request, { ignoreSearch: !url.search });
+                if (saved) return saved;
+            } catch {
+                // Cache access is optional when the network is available.
+            }
             const response = await fetch(request);
-            if (response.ok) await cache.put(request, response.clone());
+            if (response.ok && cache) {
+                try {
+                    await cache.put(request, response.clone());
+                } catch {
+                    // Keep a valid response when the device cannot store more assets.
+                }
+            }
             return response;
         })()
     );

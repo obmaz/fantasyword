@@ -2087,12 +2087,6 @@ dialog.screen-overlay :is(select, select option),
 :root {
     --frame-gutter: 16px;
 }
-#global-fullscreen-btn {
-    right: max(
-        env(safe-area-inset-right),
-        calc((100vw - var(--title-container-width, 100vw)) / 2 + var(--frame-gutter))
-    );
-}
 .title-buttons-overlay,
 #battle-mode-game .gameplay-header,
 #practice-mode-game .gameplay-header,

@@ -38,16 +38,15 @@ const hangman = {
         this.meaning = item.meaning;
         this.guessed = new Set();
         this.lives = HANGMAN_MAX_LIVES;
-        document.getElementById('title-screen').style.display = 'none';
-        document.getElementById('hangman-game').style.display = 'flex';
+        openScreenOverlay('hangman-game', false);
         this.render();
     },
     exit() {
         this.active = false;
         this.roundVersion += 1;
         document.getElementById('background-music')?.pause();
-        document.getElementById('hangman-game').style.display = 'none';
-        document.getElementById('title-screen').style.display = 'flex';
+        resetScreenOverlay('hangman-game');
+        openScreenOverlay('title-screen', false);
     },
     choose(letter) {
         const won = [...this.word].every((key) => key === ' ' || this.guessed.has(key));

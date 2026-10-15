@@ -102,7 +102,7 @@ const shop = {
             type === 'backpack'
                 ? `최대 ${db.inventoryCapacity}칸 → ${db.inventoryCapacity + 1}칸 · 구매할 때마다 +1칸`
                 : item.desc;
-        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
+        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price">${formatMenuNumber(item.cost)} G</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" data-confirm-tone="execute" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
     },
 
     /**

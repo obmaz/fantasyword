@@ -193,6 +193,7 @@ const storyJourney = {
         if (stage >= nodes.length) {
             const restart = document.createElement('button');
             restart.className = 'btn-main story-map-restart';
+            restart.dataset.confirmTone = 'warning';
             restart.textContent = '스토리 초기화 · 50골드';
             restart.addEventListener('click', () => storyJourney.requestReset());
             container.appendChild(restart);
@@ -632,6 +633,7 @@ const storyJourney = {
                 const buy = document.createElement('button');
                 buy.type = 'button';
                 buy.className = 'image-action-button';
+                buy.dataset.confirmTone = 'execute';
                 buy.disabled = db.has(item.id);
                 buy.textContent = buy.disabled ? '보유 중' : `${item.cost}골드 · 구매`;
                 buy.setAttribute('aria-label', `${itemDisplayName(item)} 구매`);

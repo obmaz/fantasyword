@@ -17,6 +17,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             const button = doc.createElement('button');
             button.type = 'button';
             button.className = 'image-action-button';
+            button.dataset.confirmTone = 'execute';
             button.textContent = label;
             button.onclick = () => {
                 if (generation === version && !button.disabled) callback();

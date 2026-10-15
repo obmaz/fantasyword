@@ -47,8 +47,7 @@ const story = {
         if (game.active || game.isProcessing) return;
         story.mode = 'boss';
         story.day = 'boss';
-        db.lastSelectedDay = 'boss';
-        db.save('lastDay');
+        db.commitChanges({ lastSelectedDay: 'boss' });
         const startScreen = document.getElementById('title-screen');
         if (startScreen) {
             startScreen.style.display = 'flex';
@@ -68,8 +67,7 @@ const story = {
         }
         const daySel = dayArg || document.getElementById('day-select').value;
         dlog('[story.startIntro] mode=', mode, 'dayArg=', dayArg, 'resolvedDay=', daySel);
-        db.lastSelectedDay = daySel;
-        db.save('lastDay');
+        db.commitChanges({ lastSelectedDay: daySel });
         story.day = mode === 'boss' ? 'boss' : daySel;
         story.mode = mode;
         // 지도에서 이미 입장을 확인한 스토리 전투는 추가 시작창 없이 실행한다.

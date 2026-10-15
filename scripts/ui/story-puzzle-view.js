@@ -10,6 +10,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             const button = doc.createElement('button');
             button.type = 'button';
             button.className = 'image-action-button';
+            button.dataset.confirmTone = 'execute';
             button.textContent = label;
             button.onclick = () => {
                 if (version === generation && !button.disabled) callback();

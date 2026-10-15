@@ -65,7 +65,11 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 ## 상태·저장·비동기
 
 `database.js`의 `DB_STORAGE_FIELDS`가 필드·키·직렬화를 관리하고 `gameStorage`만 localStorage에 접근한다.
-구매·이벤트는 사본에서 계산한 변경을 `db.commitChanges`로 저장한 뒤 메모리에 적용한다.
+설정·외움·장착/해제·통계·구매·이벤트는 사본에서 계산한 변경을 `db.commitChanges`로 저장한 뒤 메모리에 적용한다.
+`db.grantGold`는 정답 골드·아이템 소모·복수 완료 기록을 함께 저장한다.
+복수 서비스의 `prepareSuccess`는 변경 계획만 반환하며 실제 지급 성공 뒤에 목록을 갱신한다.
+스킬 저장이 실패하면 보기 제거·즉시 정답을 실행하지 않는다. 실패한 보상은 획득 합계에 포함하지 않는다.
+단순 출제 선택은 변경된 선택 키만 저장하며 게임 데이터 전체를 다시 직렬화하지 않는다.
 `gameStorage.setBatch`는 변경 전 값을 보관하고 실패 시 역순 복원한다.
 진행/왕관·지급·초기화도 같은 경계를 쓰며 강제 종료나 복원 차단까지 원자성을 보장하지 않는다.
 저장 형식은 [사양의 저장 계약](spec.md#저장-계약과-제약)을 따른다.
@@ -105,6 +109,7 @@ HTML의 실제 cascade를 유지한다. 공통/화면 기본 규칙 뒤에는 �
 4. `theme/approved-menus.css`
 5. `theme/weapon-effects.css`
 6. `screens/skyfall-mode.css`, `hangman-mode.css`, `story-events.css`, `story-puzzles.css`
+7. `theme/shared-ui.css` — 공통 보기·진행 버튼, 프롬프트 정렬, 고정된 풀이/다음 영역, 메뉴 안내 띠
 
 이름만 보고 재정렬하지 않고 기존 소유 규칙에 변경을 반영한다. 끝없는 override 누적을 피한다.
 CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 붙인다.
@@ -119,6 +124,8 @@ CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 
 공통 전체화면 버튼은 가장 위 dialog 또는 body로 이동하며 프레임 우상단 위치를 유지한다.
 전체화면 전환은 열린 dialog를 같은 순서로 복원하고 실패 시에도 입력·스크롤·이력을 보존한다.
 상단 조작과 영어 키보드는 `ui/gameplay-controls.js`에서 모드별 종료 콜백·삭제 키 여부를 받아 공유한다.
+버튼 역할은 `data-confirm-tone`으로 표시하고 기존 이미지 스킨보다 우선하는 색상 매핑 한 곳에서 처리한다.
+저장 실패·묶음 보상·화면 전환은 `review-reliability.test.js`, 캐시 오류/탐색은 `service-worker.test.js`로 검증한다.
 
 ## 코드·데이터 규칙
 

@@ -60,7 +60,7 @@ export interface PracticeDependencies {
         settings: { wordRead: boolean };
         practiceMemorized?: Record<string, string[]>;
         getBookKey(): string;
-        save(section: 'memorized'): void;
+        commitChanges(changes: { practiceMemorized: Record<string, string[]> }): boolean;
     };
     getSource(): Word[];
     getWrongWords(): Pick<Word, 'word' | 'meaning'>[];

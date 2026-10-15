@@ -259,8 +259,7 @@ const db = {
         // 호출자가 음수/양수를 전달할 수 있음; 정수로 강제하고 0 이상으로 제한
         const delta = Number(n);
         if (!Number.isFinite(delta)) return db.gold;
-        db.gold = Math.max(0, Math.floor(db.gold) + Math.floor(delta));
-        db.save('gold');
+        db.commitChanges({ gold: Math.max(0, db.gold + Math.floor(delta)) });
         return db.gold;
     },
 
@@ -342,7 +341,9 @@ const db = {
      * @param {string} questionType - 문제 타입 ('objective' 또는 'subjective')
      */
     addStats: (isCorrect, questionType = 'objective') => {
-        const bookStats = db.getBookStats();
+        if (!['objective', 'subjective'].includes(questionType)) return false;
+        const stats = db.copyStats();
+        const bookStats = stats.books[db.getBookKey()];
 
         bookStats.solved++;
         if (isCorrect) bookStats.correct++;
@@ -353,7 +354,28 @@ const db = {
         bookStats[questionType].solved++;
         if (isCorrect) bookStats[questionType].correct++;
 
-        db.save('stats');
+        return db.commitChanges({ stats });
+    },
+
+    /** 변경 전 원본과 하위 기록을 공유하지 않는 통계 사본. */
+    copyStats: () => {
+        const book = db.getBookKey();
+        const current = db.stats.books?.[book] || db._emptyBookStats();
+        return {
+            ...db.stats,
+            books: {
+                ...db.stats.books,
+                [book]: {
+                    ...current,
+                    objective: { ...current.objective },
+                    subjective: {
+                        ...current.subjective,
+                        perfectDays: current.subjective.perfectDays.map((entry) => ({ ...entry })),
+                    },
+                    bossMode: { ...current.bossMode },
+                },
+            },
+        };
     },
 
     /**
@@ -362,8 +384,9 @@ const db = {
      * @returns {boolean} 갱신 여부
      */
     recordBossWave: (wave) => {
-        if (!(wave > 0)) return false;
-        const bossMode = db.getBookStats().bossMode;
+        if (!Number.isSafeInteger(wave) || wave <= 0) return false;
+        const stats = db.copyStats();
+        const bossMode = stats.books[db.getBookKey()].bossMode;
         if (wave <= bossMode.bestWave) return false;
 
         const today = new Date();
@@ -372,8 +395,7 @@ const db = {
             date: db._todayISO(today),
             displayDate: db._todayDisplay(today),
         };
-        db.save('stats');
-        return true;
+        return db.commitChanges({ stats });
     },
 
     /**
@@ -382,7 +404,8 @@ const db = {
      * @param {string} dayLabel - 표시용 라벨
      */
     recordPerfectDay: (day, dayLabel) => {
-        const subjective = db.getBookStats().subjective;
+        const stats = db.copyStats();
+        const subjective = stats.books[db.getBookKey()].subjective;
         const today = new Date();
         const entry = {
             date: db._todayISO(today),
@@ -395,13 +418,12 @@ const db = {
         if (existing === -1) {
             subjective.perfectDays.push(entry);
         } else {
-            subjective.perfectDays[existing].date = entry.date;
-            subjective.perfectDays[existing].displayDate = entry.displayDate;
+            subjective.perfectDays[existing] = entry;
         }
 
         // 날짜순 정렬 (최신이 마지막)
         subjective.perfectDays.sort((a, b) => a.date.localeCompare(b.date));
-        db.save('stats');
+        return db.commitChanges({ stats });
     },
 
     /** 저장용 날짜 문자열 (YYYY-MM-DD, 로컬 기준) */
@@ -419,24 +441,39 @@ const db = {
      * @param {string} id - 아이템 ID
      */
     useItem: (id) => {
-        if (db.durability[id]) {
-            db.durability[id]--;
-            if (db.durability[id] <= 0) {
-                delete db.durability[id];
-                db.owned = db.owned.filter((x) => x !== id);
-                db.inventory = db.inventory.filter((x) => x !== id);
-                for (const slot of Object.keys(db.equipped)) {
-                    if (db.equipped[slot] === id) delete db.equipped[slot];
-                }
-                showToast(
-                    `[${id === 'goldGlove' ? '미다스의 건틀릿' : '아이템'}]이 소모되었습니다!`,
-                    'warn'
+        if (!(db.durability[id] > 0)) return false;
+        return db.grantGold(0, {}, id);
+    },
+
+    /** 보상·퀘스트·소모 횟수는 한 번에 저장해 일부만 적용되지 않게 한다. */
+    grantGold: (amount, relatedChanges = {}, itemId = null) => {
+        if (!Number.isSafeInteger(amount) || amount < 0) return false;
+        const changes = { ...relatedChanges, gold: db.gold + amount };
+        let consumed = false;
+        if (itemId && db.durability[itemId] > 0) {
+            const durability = { ...db.durability, [itemId]: db.durability[itemId] - 1 };
+            changes.durability = durability;
+            if (durability[itemId] === 0) {
+                consumed = true;
+                delete durability[itemId];
+                changes.owned = db.owned.filter((id) => id !== itemId);
+                changes.inventory = db.inventory.filter((id) => id !== itemId);
+                changes.equipped = Object.fromEntries(
+                    Object.entries(db.equipped).filter(([, id]) => id !== itemId)
                 );
             }
-            db.save('dura', 'owned', 'inventory', 'equipped');
-            ui.updateSkills(); // 황금장갑이 skill bar에 표시되므로
+        }
+        if (!db.commitChanges(changes)) return false;
+        if (consumed)
+            showToast(
+                `[${itemId === 'goldGlove' ? '미다스의 건틀릿' : '아이템'}]이 소모되었습니다!`,
+                'warn'
+            );
+        if (itemId) {
+            ui.updateSkills();
             ui.updateVisuals();
         }
+        return true;
     },
 };
 

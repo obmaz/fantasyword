@@ -330,12 +330,15 @@
                 <button id="skyfall-exit-btn" type="button" aria-label="나가기" title="나가기">
                     나가기
                 </button>
-                <div><small>TIME</small><strong id="skyfall-time">60</strong></div>
-                <div><small>HIT</small><strong id="skyfall-score">0 / 0</strong></div>
-                <div class="skyfall-heart">
-                    <small>LIFE</small><strong id="skyfall-lives">♥♥♥♥♥</strong>
+                <h2>총공세</h2>
+                <div class="skyfall-status" role="group" aria-label="전투 상태">
+                    <div><small>TIME</small><strong id="skyfall-time">60</strong></div>
+                    <div><small>HIT</small><strong id="skyfall-score">0 / 0</strong></div>
+                    <div class="skyfall-heart">
+                        <small>LIFE</small><strong id="skyfall-lives">♥♥♥♥♥</strong>
+                    </div>
+                    <div><small>GOLD</small><strong id="skyfall-gold">0</strong></div>
                 </div>
-                <div><small>GOLD</small><strong id="skyfall-gold">0</strong></div>
             </header>
             <p id="skyfall-notice" role="status" aria-live="polite"></p>
             <div id="skyfall-field" class="skyfall-field" aria-label="내려오는 단어">
@@ -754,7 +757,12 @@
                     <select id="practice-mode-modal-day-select"></select>
                 </div>
                 <div class="mode-actions">
-                    <button id="practice-mode-modal-start-btn" type="button" class="mode-start">
+                    <button
+                        id="practice-mode-modal-start-btn"
+                        type="button"
+                        class="mode-start"
+                        data-confirm-tone="execute"
+                    >
                         연습 시작
                     </button>
                 </div>
@@ -782,6 +790,7 @@
                     id="hangman-next-btn"
                     class="hangman-next image-action-button"
                     type="button"
+                    data-confirm-tone="execute"
                     hidden
                 >
                     다음 단어
@@ -881,7 +890,12 @@
                     </p>
                 </div>
                 <div class="mode-actions">
-                    <button id="battle-mode-modal-start-btn" type="button" class="mode-start">
+                    <button
+                        id="battle-mode-modal-start-btn"
+                        type="button"
+                        class="mode-start"
+                        data-confirm-tone="execute"
+                    >
                         도전 시작
                     </button>
                 </div>
@@ -922,7 +936,12 @@
                     </p>
                 </div>
                 <div class="mode-actions">
-                    <button id="skyfall-modal-start" type="button" class="mode-start">
+                    <button
+                        id="skyfall-modal-start"
+                        type="button"
+                        class="mode-start"
+                        data-confirm-tone="execute"
+                    >
                         총공세 시작
                     </button>
                 </div>
@@ -1020,7 +1039,12 @@
 
                 <!-- 하단: 네비게이션 버튼 (중앙: 외웠어요) -->
                 <div class="practice-memorization-navigation">
-                    <button class="practice-nav-btn" id="practice-prev-btn" title="이전 단어">
+                    <button
+                        class="practice-nav-btn"
+                        id="practice-prev-btn"
+                        title="이전 단어"
+                        data-confirm-tone="cancel"
+                    >
                         이전
                     </button>
                     <button
@@ -1032,7 +1056,12 @@
                     >
                         외웠어요
                     </button>
-                    <button class="practice-nav-btn" id="practice-next-btn" title="다음 단어">
+                    <button
+                        class="practice-nav-btn"
+                        id="practice-next-btn"
+                        title="다음 단어"
+                        data-confirm-tone="execute"
+                    >
                         다음
                     </button>
                 </div>
@@ -1064,7 +1093,12 @@
                 </header>
                 <div class="story-text-content" id="battle-mode-text"></div>
                 <div class="story-actions">
-                    <button class="btn-main" id="battle-mode-start-btn" autofocus>
+                    <button
+                        class="btn-main"
+                        id="battle-mode-start-btn"
+                        data-confirm-tone="execute"
+                        autofocus
+                    >
                         모험 시작 ⚔️
                     </button>
                 </div>
@@ -1095,6 +1129,7 @@
                     type="button"
                     class="image-action-button story-reset-button"
                     data-action="story-reset"
+                    data-confirm-tone="warning"
                 >
                     스토리 초기화 · 50골드
                 </button>
@@ -1164,6 +1199,7 @@
                         type="button"
                         class="image-action-button"
                         data-action="idiom-test-start"
+                        data-confirm-tone="execute"
                     >
                         시작
                     </button>
@@ -1233,6 +1269,7 @@
                             type="button"
                             class="image-action-button"
                             data-action="story-mystery-reveal"
+                            data-confirm-tone="execute"
                         >
                             100 G로 확인
                         </button>
@@ -1240,6 +1277,7 @@
                             type="button"
                             class="image-action-button"
                             data-action="story-mystery-enter"
+                            data-confirm-tone="execute"
                         >
                             그대로 들어가기
                         </button>
@@ -1274,6 +1312,7 @@
                         type="button"
                         id="story-treasure-open"
                         data-action="story-treasure-open"
+                        data-confirm-tone="execute"
                     >
                         상자 열기
                     </button>
@@ -1309,6 +1348,7 @@
                             type="button"
                             class="image-action-button"
                             data-action="story-market-advance"
+                            data-confirm-tone="cancel"
                         >
                             나가기
                         </button>
@@ -1457,7 +1497,11 @@
                     </div>
                     <div id="res-record" class="result-record-container"></div>
                     <p id="res-retry-note" hidden></p>
-                    <button class="result-btn" data-action="revenge-open">
+                    <button
+                        class="result-btn"
+                        data-action="revenge-open"
+                        data-confirm-tone="execute"
+                    >
                         복수 퀘스트 <b data-revenge-count>0</b>
                     </button>
                     <div id="res-wrong-words" class="result-wrong-words-container"></div>
@@ -1465,6 +1509,7 @@
                         id="result-review-btn"
                         class="result-btn result-btn-gold"
                         data-action="result-review"
+                        data-confirm-tone="execute"
                         hidden
                     >
                         틀린 단어 복습
@@ -1757,7 +1802,11 @@
                         </button>
                     </div>
                     <div class="settings-actions settings-primary-actions">
-                        <button class="modal-btn-main" data-action="secret-print-open">
+                        <button
+                            class="modal-btn-main"
+                            data-action="secret-print-open"
+                            data-confirm-tone="execute"
+                        >
                             <img
                                 class="action-icon"
                                 src="images/theme/parts/calm-print-icon.webp"
@@ -1937,7 +1986,11 @@
                         골라 인쇄할 수 있습니다.
                     </p>
                     <div class="worksheet-actions">
-                        <button class="modal-btn-main" data-action="secret-print-generate">
+                        <button
+                            class="modal-btn-main"
+                            data-action="secret-print-generate"
+                            data-confirm-tone="execute"
+                        >
                             <img
                                 class="action-icon"
                                 src="images/theme/parts/calm-print-icon.webp"
@@ -1982,6 +2035,7 @@
                     <button
                         id="revenge-start-btn"
                         class="image-action-button"
+                        data-confirm-tone="execute"
                         data-action="revenge-start"
                     >
                         <span>재도전</span>
@@ -2030,7 +2084,11 @@
                     포함되지 않습니다.
                 </p>
                 <footer>
-                    <button class="image-action-button" data-action="route-exit">
+                    <button
+                        class="image-action-button"
+                        data-action="route-exit"
+                        data-confirm-tone="cancel"
+                    >
                         <span>마을로</span>
                     </button>
                 </footer>

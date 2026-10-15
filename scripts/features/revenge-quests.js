@@ -13,20 +13,37 @@ const revengeQuests = (() => {
     }
     function save(key, entry) {
         const book = db.getBookKey();
-        if (!db.revengeQuests[book]) db.revengeQuests[book] = {};
-        db.revengeQuests[book][key] = entry;
-        db.save('revenge');
+        if (
+            !db.commitChanges({
+                revengeQuests: {
+                    ...db.revengeQuests,
+                    [book]: { ...db.revengeQuests[book], [key]: entry },
+                },
+            })
+        )
+            return false;
         refresh();
+        return true;
     }
     function fail(question) {
         const key = revengeRules.key(question);
         save(key, revengeRules.failed(db.revengeQuests[db.getBookKey()]?.[key], question));
     }
-    function succeed(question) {
+    function prepareSuccess(question) {
+        const book = db.getBookKey();
         const key = revengeRules.key(question);
-        const result = revengeRules.succeeded(db.revengeQuests[db.getBookKey()]?.[key], Date.now());
-        if (result.entry) save(key, result.entry);
-        return result.bonus;
+        const result = revengeRules.succeeded(db.revengeQuests[book]?.[key], Date.now());
+        return {
+            bonus: result.bonus,
+            changes: result.entry
+                ? {
+                      revengeQuests: {
+                          ...db.revengeQuests,
+                          [book]: { ...db.revengeQuests[book], [key]: result.entry },
+                      },
+                  }
+                : {},
+        };
     }
     function ready() {
         return entries()
@@ -108,5 +125,5 @@ const revengeQuests = (() => {
         close();
         game.init('revenge', 'all');
     }
-    return { fail, succeed, ready, refresh, open, close, start };
+    return { fail, prepareSuccess, ready, refresh, open, close, start };
 })();

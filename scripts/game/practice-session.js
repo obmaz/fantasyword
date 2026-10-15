@@ -54,16 +54,19 @@ function createPracticeSession({
             if (!word) return;
             const book = db.getBookKey();
             const key = `${word.word}|${word.meaning}`;
-            db.practiceMemorized ||= {};
-            db.practiceMemorized[book] ||= [];
-            const keys = db.practiceMemorized[book];
+            const keys = [...(db.practiceMemorized?.[book] || [])];
             const index = keys.indexOf(key);
             if (index === -1) {
                 keys.push(key);
             } else {
                 keys.splice(index, 1);
             }
-            db.save('memorized');
+            if (
+                !db.commitChanges({ practiceMemorized: { ...db.practiceMemorized, [book]: keys } })
+            ) {
+                notify('외움 표시를 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
+                return;
+            }
             if (session.currentFilter === 'all') session.updateMemorizedButton();
             else session.applyFilter(null, session.currentIndex);
         },
