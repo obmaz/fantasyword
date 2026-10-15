@@ -102,7 +102,7 @@ dialog.screen-overlay
         filter 140ms ease;
 }
 #battle-mode-game .option-btn:is(.option-btn-correct, .option-btn-picked-correct) {
-    --ui-option-art: var(--ui-action);
+    --ui-option-art: var(--ui-confirm-execute);
 }
 #battle-mode-game .option-btn.option-btn-picked-wrong {
     --ui-option-art: var(--ui-danger);

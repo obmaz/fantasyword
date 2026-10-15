@@ -3176,11 +3176,10 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
     font-weight: 800;
     opacity: 1;
 }
-#battle-mode-game .option-btn.answer-revealed {
-    background: #b9e2ff !important;
-    color: #14364e !important;
-    outline: 3px solid #72bcf3;
-    outline-offset: -3px;
+#battle-mode-game .option-btn:is(.option-btn-correct, .option-btn-picked-correct) {
+    color: #fff5dc !important;
+    text-shadow: 0 1px 1px #103324;
+    outline: none;
     opacity: 1;
     filter: none;
 }
@@ -3355,17 +3354,11 @@ dialog.screen-overlay .menu-heading > .modal-close-x {
     color: #216ba4;
 }
 #puzzle-choices button[data-result='correct'] {
-    background: #b9e2ff !important;
-    border: 2px solid #72bcf3 !important;
-    border-image: none !important;
-    color: #14364e !important;
+    --ui-control-art: var(--ui-confirm-execute);
     opacity: 1;
 }
 #puzzle-choices button[data-result='wrong'] {
-    background: #f3b0ab !important;
-    border: 2px solid #da6863 !important;
-    border-image: none !important;
-    color: #671c19 !important;
+    --ui-control-art: var(--ui-danger);
     opacity: 1;
 }
 
