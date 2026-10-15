@@ -1,4 +1,8 @@
 /** 구성 루트. 런타임 서비스와 세션의 연결은 이 파일 한 곳에서 수행한다. */
+const haptics = createHaptics({
+    getSettings: () => db.settings,
+    vibrate: (duration) => navigator.vibrate?.(duration) ?? false,
+});
 const game = createBattleSession({
     db,
     ui,
@@ -44,7 +48,7 @@ const game = createBattleSession({
     timers: { setTimeout, clearTimeout, setInterval, clearInterval },
     now: () => performance.now(),
     random: () => Math.random(),
-    vibrate: (duration) => navigator.vibrate?.(duration),
+    vibrate: () => haptics.error(),
     notify: showToast,
 });
 game.view = createBattleView({
@@ -88,6 +92,7 @@ const practiceMemorization = createPracticeSession({
 });
 
 const skyfall = createSkyfallSession({
+    onMistake: () => haptics.error(),
     db,
     grantReward: (id) => inventory.grantReward(id),
     getSource: () => window.rawDataData || rawData,
@@ -119,6 +124,7 @@ const skyfall = createSkyfallSession({
 });
 
 const shellGame = createShellSession({
+    onMistake: () => haptics.error(),
     view: createShellView({
         document,
         openScreen: openScreenOverlay,
@@ -134,6 +140,7 @@ const shellGame = createShellSession({
 });
 
 const storyPuzzle = createStoryPuzzleSession({
+    onMistake: () => haptics.error(),
     view: createStoryPuzzleView({
         document,
         openScreen: openScreenOverlay,

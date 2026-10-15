@@ -1,5 +1,5 @@
 /** 세 컵·세 주사위 야바위. 늦은 입력과 지급은 세션 세대로 보호한다. */
-function createShellSession({ view, random, timers, onOpen, onExit }) {
+function createShellSession({ view, random, timers, onOpen, onExit, onMistake = () => {} }) {
     const { setTimeout, clearTimeout } = timers;
     let active = false;
     let phase = 'idle';
@@ -88,6 +88,7 @@ function createShellSession({ view, random, timers, onOpen, onExit }) {
         pick(cup) {
             if (!active || !['pick', 'double'].includes(phase) || !cups.includes(cup)) return;
             if (cup !== target) {
+                onMistake();
                 phase = 'settle';
                 view.reveal(dice, cups);
                 session.settle(0);

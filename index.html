@@ -339,7 +339,6 @@
             </header>
             <p id="skyfall-notice" role="status" aria-live="polite"></p>
             <div id="skyfall-field" class="skyfall-field" aria-label="내려오는 단어">
-                <div class="skyfall-danger-line" aria-hidden="true"></div>
                 <div class="skyfall-hero" aria-hidden="true">✦</div>
             </div>
             <div class="skyfall-answer-panel">
@@ -769,8 +768,8 @@
                         >남은 기회 <strong id="hangman-lives">7</strong></span
                     >
                     <div id="hangman-drawing" class="hangman-drawing" aria-label="행맨 그림"></div>
-                    <p id="hangman-meaning" class="hangman-meaning"></p>
                     <div id="hangman-word" class="hangman-word" aria-live="polite"></div>
+                    <p id="hangman-meaning" class="hangman-meaning"></p>
                     <p id="hangman-status" role="status" aria-live="polite"></p>
                 </div>
                 <div
@@ -1606,6 +1605,21 @@
                             /><span>단어 바로 읽기</span>
                         </label>
                     </div>
+                    <div class="setting-option-row">
+                        <label class="setting-checkbox-label">
+                            <input type="checkbox" id="setting-vibration" checked />
+                            <span class="setting-vibration-icon" aria-hidden="true">▥</span>
+                            <span>오답 진동</span>
+                        </label>
+                    </div>
+                    <div class="setting-option-row settings-vibration-length">
+                        <label for="setting-vibration-duration">진동 길이</label>
+                        <select id="setting-vibration-duration">
+                            <option value="80">짧게</option>
+                            <option value="200" selected>보통</option>
+                            <option value="350">길게</option>
+                        </select>
+                    </div>
                     <section
                         id="settings-admin-gold"
                         class="settings-gold-editor"
@@ -2103,6 +2117,7 @@
 
         <!-- 메인 애플리케이션 -->
         <script src="scripts/features/app-install.js"></script>
+        <script src="scripts/features/haptics.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/init.js" defer></script>
 

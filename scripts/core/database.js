@@ -216,12 +216,16 @@ const db = {
 
     revengeQuests: revengeRules.normalize(storedRecord('v7_revenge_quests')),
 
-    // 설정: 음악 재생, 단어 바로 읽기 (연습 모드 단어 바뀔 때 TTS) - 기본 true
+    // 음악·자동 발음·오답 진동은 기존 저장에도 기본 ON을 적용한다.
     settings: (() => {
         const o = storedRecord('v7_settings');
         return {
             musicPlay: o.musicPlay !== false,
             wordRead: o.wordRead !== false,
+            vibration: o.vibration !== false,
+            vibrationDuration: [80, 200, 350].includes(o.vibrationDuration)
+                ? o.vibrationDuration
+                : 200,
         };
     })(),
 

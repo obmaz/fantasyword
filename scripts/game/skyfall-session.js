@@ -13,6 +13,7 @@ function createSkyfallSession({
     notify,
     random = Math.random,
     grantReward = () => null,
+    onMistake = () => {},
 }) {
     const BASE_TIME = 5;
     const TIME_PER_WORD = 3;
@@ -105,8 +106,8 @@ function createSkyfallSession({
             spawnElapsed += delta;
             for (const item of [...items]) {
                 item.y += delta * rates(elapsed, item).speed;
-                view.moveWord(item.id, Math.min(0.84, item.y));
-                if (item.y >= 0.84) hit(item, false, true);
+                view.moveWord(item.id, Math.min(1, item.y));
+                if (item.y >= 1) hit(item, false, true);
                 if (!active) return false;
             }
         }
@@ -128,6 +129,7 @@ function createSkyfallSession({
             view.attack(item.id);
         } else {
             lives -= 1;
+            onMistake();
             view.damage();
         }
         resolved += 1;

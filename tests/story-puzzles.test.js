@@ -82,8 +82,11 @@ test('대장간 현재·목표·보기 뜻은 단어별로 표시하고 뜻을 �
 });
 
 function runtime(kind, options = null) {
-    const seen = { results: [] };
+    const seen = { results: [], mistakes: 0 };
     const session = domain.evaluate('createStoryPuzzleSession')({
+        onMistake() {
+            seen.mistakes++;
+        },
         rules,
         proverbs,
         paths,
@@ -155,6 +158,7 @@ test('속담 세 번 오답과 대장간 변환 소진은 실패하며 잘못된
         proverb.seen.next();
     }
     assert.equal(proverb.seen.results[0].won, false);
+    assert.equal(proverb.seen.mistakes, 3);
     assert.equal(proverb.seen.results[0].points, 0);
     const forge = runtime('forge');
     forge.seen.choose('XYZ');
@@ -167,6 +171,7 @@ test('속담 세 번 오답과 대장간 변환 소진은 실패하며 잘못된
         forge.seen.choose(forge.seen.model.current === 'CAT' ? 'COT' : 'CAT');
     forge.seen.next();
     assert.equal(forge.seen.results[0].won, false);
+    assert.equal(forge.seen.mistakes, 1);
     assert.equal(forge.seen.results[0].points, 0);
 });
 

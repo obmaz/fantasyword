@@ -29,6 +29,7 @@ test('행맨은 26글자를 제공하고 마지막 기회와 패배 후에 뜻�
     assert.equal(r.evaluate('hangman.lives'), 0);
     assert.equal(r.getElement('hangman-drawing').dataset.mistakes, '7');
     assert.equal(r.getElement('hangman-status').textContent, '정답: cat');
+    assert.equal(r.getElement('hangman-word').textContent, 'c a t');
     assert.equal(r.getElement('hangman-game').dataset.finished, 'true');
     assert.equal(r.getElement('hangman-meaning').hidden, false);
     assert.equal(r.getElement('hangman-meaning').textContent, '뜻: 고양이');
@@ -58,7 +59,10 @@ test('행맨 정답 뒤 추가 오답과 새 단어·나가기 뒤의 이전 키
     r.evaluate('hangman.next()');
     assert.equal(r.getElement('hangman-game').dataset.finished, 'false');
     assert.equal(r.getElement('hangman-meaning').hidden, true);
-    assert.equal(r.getElement('hangman-meaning').textContent, '');
+    assert.equal(
+        r.getElement('hangman-meaning').textContent,
+        `뜻: ${r.evaluate('hangman.meaning')}`
+    );
     const old = r.getElement('hangman-letters').children[0].children[0];
     r.evaluate('hangman.next()');
     old.click();

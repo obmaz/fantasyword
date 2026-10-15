@@ -60,7 +60,10 @@
 }
 .answer-choice:disabled {
     transform: none !important;
-    outline: none;
+    outline: none !important;
+}
+:is(#battle-mode-game, #hangman-game, #story-puzzle-game, #shell-game) button:disabled {
+    outline: none !important;
 }
 .answer-choice .forge-word {
     font-size: inherit;
@@ -140,6 +143,103 @@
     color: #b9e2ff;
 }
 
+/* English and idioms reserve the same scene before their question card. */
+#battle-mode-game {
+    --objective-scene-size: 35%;
+    --objective-scene-min: 252px;
+}
+:root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .battle-arena {
+    flex: 0 0 var(--objective-scene-size);
+    min-height: var(--objective-scene-min);
+    max-height: none;
+    padding: 8px 12px 20px;
+}
+:root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .quiz-area {
+    margin: 0;
+    padding-top: 8px;
+}
+:root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .question-box {
+    min-height: 68px;
+    margin-block: 0;
+    padding: 8px;
+}
+#story-puzzle-game #puzzle-progress {
+    align-self: flex-start;
+    padding: 6px 10px;
+    border: 1px solid #d8bf8580;
+    border-radius: 8px;
+    background: #173d2dcc;
+    color: #fff3cf;
+}
+#story-puzzle-game[data-kind='forge'] .gameplay-header {
+    background: linear-gradient(#142e26c9, #142e265c);
+}
+
+/* Hidden meanings and the next action retain their exact space for the whole round. */
+#hangman-game .hangman-word {
+    width: 100%;
+    height: 2.6em;
+    min-height: 2.6em;
+    line-height: 1.3;
+    overflow: auto;
+}
+#hangman-game .hangman-meaning {
+    height: 3.8em;
+    display: grid;
+    place-items: safe center;
+    overflow: auto;
+}
+#hangman-game .hangman-meaning[hidden] {
+    display: grid !important;
+    visibility: hidden;
+}
+#hangman-game #hangman-next-btn[hidden] {
+    display: block !important;
+    visibility: hidden;
+}
+#hangman-game[data-finished='true'] .english-keyboard {
+    display: grid;
+}
+#hangman-status {
+    height: 2.6em;
+    min-height: 2.6em;
+    overflow: auto;
+}
+.setting-vibration-icon {
+    font-size: 30px;
+    text-align: center;
+    color: #36644e;
+}
+#setting-modal .settings-vibration-length {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+#setting-vibration-duration {
+    min-height: 44px;
+    max-width: 120px;
+    color: var(--menu-ink);
+    background: #fff6dd;
+    border: 1px solid #bdba8b;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font: inherit;
+}
+
+@media (max-height: 850px) {
+    #battle-mode-game {
+        --objective-scene-size: 26%;
+        --objective-scene-min: clamp(110px, 26cqh, 200px);
+    }
+}
+@media (max-height: 550px) {
+    #battle-mode-game {
+        --objective-scene-size: 21%;
+        --objective-scene-min: clamp(90px, 21cqh, 110px);
+    }
+}
+
 /* The title, full-width context strip and scrolling body have identical geometry. */
 :is(#shop-modal, #inventory-modal, #statistics-modal) .card.rpg-modal {
     height: calc(var(--app-height, 100dvh) - 84px);
@@ -196,6 +296,37 @@
 }
 
 @media (max-height: 500px) {
+    :root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .quiz-area {
+        padding-top: 4px;
+    }
+    :root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .question-box {
+        min-height: 60px;
+        padding: 4px;
+    }
+    #hangman-game .hangman-content {
+        gap: 3px;
+        justify-content: safe center;
+    }
+    #hangman-game .hangman-drawing {
+        height: 24px;
+    }
+    #hangman-game .hangman-word {
+        height: 26px;
+        min-height: 26px;
+        font-size: 18px;
+    }
+    #hangman-game .hangman-meaning {
+        height: 38px;
+        font-size: 12px;
+    }
+    #hangman-status {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        min-height: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
     :root[data-layout]
         #practice-mode-game
         .practice-memorization-container

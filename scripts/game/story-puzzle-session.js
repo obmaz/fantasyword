@@ -9,6 +9,7 @@ function createStoryPuzzleSession({
     shuffle,
     onOpen,
     onExit,
+    onMistake = () => {},
 }) {
     let active = false;
     let phase = 'idle';
@@ -94,7 +95,10 @@ function createStoryPuzzleSession({
             if (kind === 'proverb') {
                 if (!question.choices.includes(choice)) return;
                 const correct = choice === question.answer;
-                if (!correct) mistakes++;
+                if (!correct) {
+                    mistakes++;
+                    onMistake();
+                }
                 phase = 'review';
                 roundVersion++;
                 view.review(
@@ -131,6 +135,7 @@ function createStoryPuzzleSession({
                     guard(() => session.continue())
                 );
             } else if (trail.length - 1 >= question.minimum + 2) {
+                onMistake();
                 mistakes = 3;
                 phase = 'review';
                 view.review(

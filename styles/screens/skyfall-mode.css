@@ -75,16 +75,6 @@
     pointer-events: none;
     background: linear-gradient(#08201517 0%, transparent 22%, transparent 75%, #0c2b2870);
 }
-.skyfall-danger-line {
-    position: absolute;
-    z-index: 3;
-    top: 84%;
-    left: 3%;
-    right: 3%;
-    border-top: 3px dashed #ffcb91;
-    box-shadow: 0 -2px 0 #71352f;
-    pointer-events: none;
-}
 .skyfall-hero {
     position: absolute;
     z-index: 1;

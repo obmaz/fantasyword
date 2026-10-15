@@ -83,7 +83,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             message('');
             delete element('puzzle-prompt').dataset.result;
             element('puzzle-progress').textContent =
-                `${model.round} / ${model.total} · ${model.kind === 'proverb' ? `오답 ${model.mistakes} / 2` : `추가 변환 ${model.mistakes} / 2`}`;
+                `${model.kind === 'proverb' ? '속담' : '단어 대장간'} · ${model.round} / ${model.total} · ${model.kind === 'proverb' ? `오답 ${model.mistakes} / 2` : `추가 변환 ${model.mistakes} / 2`}`;
             if (model.kind === 'forge') {
                 wordCard(
                     element('puzzle-prompt'),

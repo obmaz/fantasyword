@@ -60,7 +60,10 @@ const hangman = {
         )
             return;
         this.guessed.add(letter);
-        if (!this.word.includes(letter)) this.lives -= 1;
+        if (!this.word.includes(letter)) {
+            this.lives -= 1;
+            haptics.error();
+        }
         this.render();
     },
     next() {
@@ -69,14 +72,16 @@ const hangman = {
     render() {
         const word = document.getElementById('hangman-word');
         word.textContent = [...this.word]
-            .map((letter) => (letter === ' ' ? ' ' : this.guessed.has(letter) ? letter : '_'))
+            .map((letter) =>
+                letter === ' ' ? ' ' : this.lives === 0 || this.guessed.has(letter) ? letter : '_'
+            )
             .join(' ');
         const mistakes = HANGMAN_MAX_LIVES - this.lives;
         const won = [...this.word].every((letter) => letter === ' ' || this.guessed.has(letter));
         document.getElementById('hangman-game').dataset.finished = String(won || this.lives === 0);
         const meaning = document.getElementById('hangman-meaning');
         const showMeaning = won || this.lives <= 1;
-        meaning.textContent = showMeaning ? `뜻: ${this.meaning}` : '';
+        meaning.textContent = `뜻: ${this.meaning}`;
         meaning.hidden = !showMeaning;
         document.getElementById('hangman-lives').textContent = this.lives;
         const drawing = document.getElementById('hangman-drawing');

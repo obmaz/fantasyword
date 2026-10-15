@@ -575,7 +575,10 @@ function createBattleSession({
                     selectedIndex = null;
                 }
             }
-            if (!isCorrect) game.sessionMistakes++;
+            if (!isCorrect) {
+                game.sessionMistakes++;
+                vibrate?.(200);
+            }
             if (!isCorrect && game.mode !== 'boss' && game.gear?.shield > 0) {
                 game.hadRetry = true;
                 game.gear.shield--;
@@ -695,7 +698,6 @@ function createBattleSession({
                     return;
                 }
                 game.view.hit();
-                vibrate(200);
                 const penalty =
                     game.mode === 'idiom-test' ? 0 : battleRules.penalty(db.gold, db.has('shield'));
                 game.stats.lost += penalty;

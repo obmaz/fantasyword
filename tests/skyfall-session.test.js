@@ -27,7 +27,11 @@ function runtime({
     const notices = [];
     const notifications = [];
     const moves = [];
+    let mistakes = 0;
     const session = createSession({
+        onMistake() {
+            mistakes++;
+        },
         db: { addGold: (value) => (gold += value) },
         getSource: () => source,
         questions: { getDistractors: () => ['다른 보기'], shuffle },
@@ -104,6 +108,9 @@ function runtime({
         results,
         events,
         moves,
+        get mistakes() {
+            return mistakes;
+        },
         get hud() {
             return hud;
         },
@@ -230,6 +237,8 @@ test('느린 프레임에서도 낙하와 등장 간격은 실제 시간을 따�
     assert.equal(r.words.size, 2);
     assert.equal([...r.words.values()].at(-1).item.y, 0.07);
     r.advance(3200);
+    assert.equal(r.hud.lives, 5);
+    r.advance(1000);
     assert.equal(r.hud.lives, 4);
     assert.ok(r.events.includes('damage'));
 });
@@ -274,10 +283,29 @@ test('오답은 생명을 차감하며 시간이 지나면 낙하 속도가 빨�
         r.answer(false);
     }
     assert.equal(r.hud.lives, 3);
+    assert.equal(r.mistakes, 2);
     assert.equal(r.gold, 0);
     assert.equal(r.results[0].won, false);
     assert.ok(r.session.rates(30).speed > r.session.rates(0).speed);
     assert.ok(r.session.rates(30).interval < r.session.rates(0).interval);
+});
+
+test('단어 바닥이 주황색 하단선에 닿기 전에는 손실이 없고 접촉 시 한 번만 차감한다', () => {
+    const r = runtime();
+    r.session.start(1);
+    const item = r.words.values().next().value.item;
+    item.y = 0.99;
+    r.advance(1);
+    assert.equal(r.hud.lives, 5);
+    assert.equal(r.mistakes, 0);
+    item.y = 1;
+    r.advance(1);
+    assert.equal(r.hud.lives, 4);
+    assert.equal(r.mistakes, 1);
+    assert.equal(r.moves.at(-1)[1], 1);
+    r.advance(1);
+    assert.equal(r.hud.lives, 4);
+    assert.equal(r.mistakes, 1);
 });
 
 test('출제 덱을 섞은 순서로 모든 Day 단어를 중복 없이 내보낸다', () => {
@@ -305,7 +333,7 @@ test('바닥에 닿은 단어 5개는 생명을 모두 차감하고 결과를 �
     r.session.start(1);
     for (let index = 0; index < 310 && r.session.active; index++) r.advance(100);
     assert.equal(r.hud.lives, 0);
-    assert.equal(r.moves.filter(([, y]) => y === 0.84).length, 5);
+    assert.equal(r.moves.filter(([, y]) => y === 1).length, 5);
     assert.equal(r.results.length, 1);
     assert.equal(r.results[0].won, false);
     assert.equal(r.gold, 0);

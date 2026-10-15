@@ -7,7 +7,7 @@ function runtime(options = null, random = () => 0.25) {
     let clock = 0;
     let serial = 0;
     const jobs = new Map();
-    const seen = { swaps: [], rewards: [] };
+    const seen = { swaps: [], rewards: [], mistakes: 0 };
     const view = {
         init() {},
         open(dice, begin) {
@@ -37,6 +37,9 @@ function runtime(options = null, random = () => 0.25) {
         exit() {},
     };
     const session = createSession({
+        onMistake() {
+            seen.mistakes++;
+        },
         view,
         random,
         timers: {
@@ -136,6 +139,7 @@ test('틀린 컵은 0점이며 저장 실패는 같은 보상만 재시도한다
     r.seen.retry();
     assert.equal(writes, 2);
     assert.deepEqual(r.seen.rewards, [0]);
+    assert.equal(r.seen.mistakes, 1);
 });
 
 test('이전 판의 시작·선택 콜백과 타이머는 나가기·새 판 이후에 영향을 주지 않는다', () => {

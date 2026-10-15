@@ -54,15 +54,43 @@ const settingsManager = {
         // 1. 설정 데이터 검증 및 초기화
         // 참고: 음악 트랙 잠금(unlockedMusicTracks / musicUnlockThresholds)은 제거되었습니다.
         // 해금 조건이 구현된 적이 없어 항상 전 트랙이 열린 상태였고,
-        // database.js의 settings 로더가 두 필드(musicPlay/wordRead)만 복원하므로
-        // 저장되지도 않는 죽은 상태였습니다. 모든 트랙은 항상 재생 가능합니다.
+        // 저장 계약에 없던 잠금 상태는 제거했습니다. 모든 트랙은 항상 재생 가능합니다.
         if (!db.settings) {
-            db.settings = { musicPlay: true, wordRead: true };
+            db.settings = {
+                musicPlay: true,
+                wordRead: true,
+                vibration: true,
+                vibrationDuration: 200,
+            };
         }
 
         // 2. UI 이벤트 리스너 설정
         const musicCheck = document.getElementById('setting-music-play');
         const wordCheck = document.getElementById('setting-word-read');
+        const vibrationCheck = document.getElementById('setting-vibration');
+        const vibrationDuration = document.getElementById('setting-vibration-duration');
+        const syncVibration = () => {
+            vibrationCheck.checked = db.settings.vibration !== false;
+            vibrationDuration.value = String(db.settings.vibrationDuration || 200);
+            vibrationDuration.disabled = !vibrationCheck.checked;
+        };
+        const saveVibration = () => {
+            if (!settingsManager.adminUnlocked) settingsManager.hideAdmin();
+            if (
+                !db.commitChanges({
+                    settings: {
+                        ...db.settings,
+                        vibration: vibrationCheck.checked,
+                        vibrationDuration: Number(vibrationDuration.value),
+                    },
+                })
+            )
+                showToast('진동 설정을 저장하지 못했습니다.', 'error');
+            syncVibration();
+        };
+        syncVibration();
+        vibrationCheck.addEventListener('change', saveVibration);
+        vibrationDuration.addEventListener('change', saveVibration);
 
         if (musicCheck) {
             musicCheck.checked = db.settings.musicPlay !== false;
@@ -120,6 +148,12 @@ const settingsManager = {
         settingsManager.showPanel('gold-adjuster-modal');
         document.getElementById('setting-music-play').checked = db.settings.musicPlay;
         document.getElementById('setting-word-read').checked = db.settings.wordRead;
+        document.getElementById('setting-vibration').checked = db.settings.vibration !== false;
+        document.getElementById('setting-vibration-duration').value = String(
+            db.settings.vibrationDuration || 200
+        );
+        document.getElementById('setting-vibration-duration').disabled =
+            db.settings.vibration === false;
         openScreenOverlay('setting-modal');
         settingsManager.showPanel('gold-adjuster-modal');
         secret.editGold = db.gold;
