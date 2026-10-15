@@ -13,11 +13,11 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
         const root = element('shell-controls');
         root.replaceChildren();
         const generation = version;
-        for (const [label, callback] of actions) {
+        for (const [label, callback, tone = 'execute'] of actions) {
             const button = doc.createElement('button');
             button.type = 'button';
             button.className = 'image-action-button';
-            button.dataset.confirmTone = 'execute';
+            if (tone) button.dataset.confirmTone = tone;
             button.textContent = label;
             button.onclick = () => {
                 if (generation === version && !button.disabled) callback();
@@ -152,7 +152,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
         done(points, casino, again) {
             element('shell-status').textContent =
                 `${points ? '성공!' : '아쉬워요.'} ${casino ? `획득 ${points}골드` : `테스트 점수 ${points}`} · 보유 금화를 걸지 않는 체험입니다.`;
-            controls([casino ? '지도로 돌아가기' : '다시 하기', again]);
+            controls([casino ? '지도로 돌아가기' : '다시 하기', again, casino ? 'execute' : null]);
         },
         exit() {
             version++;

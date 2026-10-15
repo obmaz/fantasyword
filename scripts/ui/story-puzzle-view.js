@@ -6,11 +6,11 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         const root = element('puzzle-controls');
         root.replaceChildren();
         const generation = version;
-        for (const [label, callback] of buttons) {
+        for (const [label, callback, tone = 'execute'] of buttons) {
             const button = doc.createElement('button');
             button.type = 'button';
             button.className = 'image-action-button';
-            button.dataset.confirmTone = 'execute';
+            if (tone) button.dataset.confirmTone = tone;
             button.textContent = label;
             button.onclick = () => {
                 if (version === generation && !button.disabled) callback();
@@ -174,7 +174,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
                     : '다음 지점은 아직 열리지 않았습니다.'
             );
             if (!story && !result.won) message('다시 도전해 보세요.');
-            actions([story ? '지도로 돌아가기' : '다시 하기', again]);
+            actions([story ? '지도로 돌아가기' : '다시 하기', again, story ? 'execute' : null]);
         },
         exit() {
             version++;
