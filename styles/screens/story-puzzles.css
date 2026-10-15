@@ -347,9 +347,12 @@
 
 .story-puzzle-game[data-kind='proverb'] .puzzle-board {
     overflow: hidden;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto;
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-choices {
-    margin-top: auto;
+    align-self: end;
+    width: 100%;
 }
 .story-puzzle-game[data-kind='proverb'] #puzzle-feedback {
     white-space: pre-line;
