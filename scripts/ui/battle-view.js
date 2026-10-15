@@ -241,7 +241,7 @@ function createBattleView({
             element('q-text').innerText = prompt;
             optionButtons = options.map((option, index) => {
                 const button = doc.createElement('button');
-                button.className = 'option-btn';
+                button.className = 'option-btn answer-choice';
                 button.innerText = option.label;
                 button.onclick = () => {
                     if (version === questionVersion && !button.disabled) onAnswer(index);

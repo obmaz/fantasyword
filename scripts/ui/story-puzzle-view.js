@@ -39,6 +39,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             const part = doc.createElement('span');
             part.className = className;
             part.textContent = text;
+            if (className === 'puzzle-blank') part.setAttribute('aria-label', '빈칸');
             sentence.appendChild(part);
         }
         root.textContent = before + answer + after;
@@ -116,7 +117,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             for (const choice of model.choices) {
                 const button = doc.createElement('button');
                 button.type = 'button';
-                button.className = 'image-action-button';
+                button.className = 'image-action-button answer-choice';
                 if (model.kind === 'forge') wordCard(button, choice, model.wordMeanings[choice]);
                 else button.textContent = choice;
                 button.onclick = () => {

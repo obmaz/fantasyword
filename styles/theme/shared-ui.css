@@ -1,0 +1,241 @@
+/* One illustrated choice component for English, idioms and story puzzles. */
+:root {
+    --choice-height: 76px;
+    --choice-font-size: clamp(18px, 5cqw, 28px);
+    --choice-gap: 8px;
+    --ui-choice-default: url('../../images/theme/parts/game-action.webp');
+    --ui-choice-wrong: url('../../images/theme/parts/game-danger.webp');
+}
+
+:root[data-layout]
+    :is(#battle-mode-game, #story-puzzle-game)
+    :is(.options-grid, .puzzle-choices).answer-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(var(--choice-height), auto);
+    gap: var(--choice-gap);
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+    padding: 0;
+    margin: auto 0 0;
+}
+:root[data-layout]
+    :is(#battle-mode-game, #story-puzzle-game)
+    :is(.option-btn, .image-action-button).answer-choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    min-height: var(--choice-height);
+    margin: 0;
+    padding: 2px 8px !important;
+    border: 10px solid transparent !important;
+    border-image: var(--answer-art, var(--ui-choice-default)) 48 fill / 10px / 0 stretch !important;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff5dc !important;
+    font-family: inherit;
+    font-size: var(--choice-font-size);
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
+    text-shadow: 0 1px 1px #103324;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+.answer-choice:is(.option-btn-correct, .option-btn-picked-correct, [data-result='correct']) {
+    --answer-art: var(--ui-confirm-execute);
+}
+.answer-choice:is(.option-btn-picked-wrong, [data-result='wrong']) {
+    --answer-art: var(--ui-choice-wrong);
+}
+#puzzle-choices .answer-choice:disabled {
+    opacity: 1;
+    filter: none;
+}
+.answer-choice:disabled {
+    transform: none !important;
+    outline: none;
+}
+.answer-choice .forge-word {
+    font-size: inherit;
+    line-height: inherit;
+}
+.answer-choice .forge-meaning {
+    margin-top: 0;
+    font-size: clamp(11px, 3cqw, 14px);
+    line-height: 1.1;
+}
+:root[data-layout] #story-puzzle-game[data-kind='forge'] .answer-choice {
+    gap: 0;
+}
+
+/* Match the horizontal gutters, so the same grid produces the same button width. */
+:root[data-layout]
+    #practice-mode-game
+    .practice-memorization-container
+    :is(.practice-chip, .practice-memorized-btn, .practice-speak-btn, .practice-nav-btn) {
+    height: 60px;
+    min-height: 60px;
+    padding-block: 8px !important;
+    border-width: 8px !important;
+    border-image-width: 8px !important;
+}
+.settings-install-help {
+    margin: 8px 0 14px;
+    color: var(--menu-ink);
+    font-size: 13px;
+    line-height: 1.5;
+}
+:root[data-layout] #battle-mode-game .quiz-area,
+:root[data-layout] #battle-mode-game[data-question-kind='idiom'] .quiz-area {
+    padding-inline: 12px;
+}
+#story-puzzle-game .puzzle-board {
+    padding-inline: 12px;
+}
+#story-puzzle-game[data-kind='forge'] .answer-choices {
+    max-height: 42cqh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* Compact question cards leave the scene visible between the prompt and choices. */
+#battle-mode-game[data-question-kind='idiom'] .question-box {
+    min-height: 68px;
+    margin-block: 0;
+    padding: 8px;
+}
+#battle-mode-game[data-question-kind='idiom'] .q-text,
+#story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
+    font-size: clamp(18px, 4.6cqw, 28px);
+    line-height: 1.5;
+}
+#story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
+    min-height: 84px;
+    padding: 8px;
+    border-width: 12px;
+    border-image-width: 12px;
+}
+#story-puzzle-game .puzzle-blank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    min-height: 1.9em;
+    margin-inline: 0.15em;
+    padding: 0 0.2em;
+    border: 6px solid transparent;
+    border-image: url('../../images/theme/parts/proverb-blank.webp') 28 fill / 6px / 0 stretch;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: transparent;
+}
+#story-puzzle-game .puzzle-blank.puzzle-answer {
+    color: #b9e2ff;
+}
+
+/* The title, full-width context strip and scrolling body have identical geometry. */
+:is(#shop-modal, #inventory-modal, #statistics-modal) .card.rpg-modal {
+    height: calc(var(--app-height, 100dvh) - 84px);
+    max-height: calc(var(--app-height, 100dvh) - 84px);
+}
+:is(#shop-modal, #inventory-modal, #statistics-modal) .menu-context {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    flex: 0 0 auto;
+    margin: 0 0 12px;
+    padding: 8px 12px;
+    border: 1px solid #dcc17b;
+    border-radius: 8px;
+    background: #183e32;
+    color: #fff1cd;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+:is(#shop-modal, #statistics-modal) .modal-body,
+#inventory-modal .inv-container {
+    margin: 0;
+    padding: 6px;
+}
+
+@container (max-width: 280px) {
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .modal-title {
+        grid-column: 1;
+        gap: 4px;
+        font-size: 22px !important;
+    }
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .modal-title .game-emblem {
+        width: 28px;
+        height: 28px;
+    }
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .menu-wallet {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        gap: 3px;
+        padding: 4px 5px;
+        font-size: 11px;
+    }
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .menu-wallet img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-height: 500px) {
+    :root[data-layout]
+        #practice-mode-game
+        .practice-memorization-container
+        :is(.practice-chip, .practice-memorized-btn, .practice-speak-btn, .practice-nav-btn) {
+        height: 52px;
+        min-height: 52px;
+        padding-block: 5px !important;
+        border-width: 6px !important;
+        border-image-width: 6px !important;
+    }
+    :root {
+        --choice-height: 48px;
+        --choice-font-size: 16px;
+        --choice-gap: 5px;
+    }
+    :root[data-layout]
+        :is(#battle-mode-game, #story-puzzle-game)
+        :is(.option-btn, .image-action-button).answer-choice {
+        padding: 1px 8px !important;
+        border-width: 6px !important;
+        border-image-width: 6px !important;
+    }
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .card.rpg-modal {
+        height: calc(var(--app-height, 100dvh) - 72px);
+        max-height: calc(var(--app-height, 100dvh) - 72px);
+    }
+    :is(#shop-modal, #inventory-modal, #statistics-modal) .menu-context {
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+    #story-puzzle-game[data-kind='proverb'] #puzzle-prompt {
+        min-height: 68px;
+        padding: 4px;
+        font-size: 17px;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .question-box {
+        min-height: 60px;
+        padding: 4px;
+    }
+    #battle-mode-game[data-question-kind='idiom'] .q-text {
+        font-size: 17px;
+    }
+}

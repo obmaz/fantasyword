@@ -7,6 +7,10 @@ test('배낭 구매는 보관함 용량과 화면 표시를 즉시 늘리고 재
     const r = browserRuntime({ v7_gold: '500' });
     r.evaluate('inventory.render(); shop.render()');
     assert.match(r.getElement('inventory-capacity-summary').textContent, /0 \/ 3칸/);
+    assert.equal(
+        r.getElement('shop-capacity-summary').textContent,
+        r.getElement('inventory-capacity-summary').textContent
+    );
     assert.match(
         r.evaluate('shop.createItemHtml(relics.find(i => i.id === "backpack"), "backpack")'),
         /3칸 → 4칸/
@@ -15,6 +19,10 @@ test('배낭 구매는 보관함 용량과 화면 표시를 즉시 늘리고 재
     assert.equal(r.evaluate('db.inventoryCapacity'), 5);
     assert.equal(r.evaluate('db.gold'), 260);
     assert.match(r.getElement('inventory-capacity-summary').textContent, /0 \/ 5칸 · 빈칸 5칸/);
+    assert.equal(
+        r.getElement('shop-capacity-summary').textContent,
+        r.getElement('inventory-capacity-summary').textContent
+    );
     assert.match(r.getElement('shop-container').innerHTML, /최대 5칸 → 6칸/);
     const restored = browserRuntime(Object.fromEntries(r.store));
     assert.equal(restored.evaluate('db.inventoryCapacity'), 5);

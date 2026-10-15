@@ -24,6 +24,7 @@ function scheduleGameStart(callback) {
  * 각 핸들러는 클릭된 요소를 인자로 받으므로 data-* 속성으로 값을 전달할 수 있습니다.
  */
 const ACTION_HANDLERS = {
+    'app-install': () => appInstall.install(),
     'route-exit': () => game.exit(),
     'revenge-open': () => revengeQuests.open(),
     'revenge-close': () => revengeQuests.close(),
@@ -107,6 +108,7 @@ function setupActionDelegation() {
  * 게임 환경, 이벤트 리스너 및 UI 컴포넌트를 초기화합니다.
  */
 window.onload = () => {
+    appInstall.init();
     for (const options of [
         { mode: 'battle', title: '도전', subtitle: 'WORD QUEST', headingId: 'battle-screen-title' },
         { mode: 'practice', title: '연습', subtitle: 'LEARN · DISCOVER · REMEMBER' },

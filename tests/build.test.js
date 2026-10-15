@@ -14,6 +14,11 @@ function fixture(t) {
     fs.writeFileSync(path.join(root, 'index.html'), '<script src="scripts/app.js"></script>');
     fs.writeFileSync(path.join(root, 'CNAME'), 'example.test');
     fs.writeFileSync(path.join(root, 'favicon.ico'), 'favicon');
+    fs.writeFileSync(path.join(root, 'manifest.webmanifest'), '{}');
+    fs.writeFileSync(
+        path.join(root, 'sw.js'),
+        "const APP_VERSION = '__BUILD_VERSION__'; const PRECACHE_ASSETS = ['index.html'];"
+    );
     fs.writeFileSync(path.join(root, 'scripts/app.js'), 'const answer = 42;');
     fs.writeFileSync(path.join(root, 'data/music.mp3'), 'music');
     fs.writeFileSync(path.join(root, 'docs/review.md'), 'private development note');
@@ -27,7 +32,7 @@ test('빌드는 런타임 원본과 동적 음악을 보존하고 개발 파일�
     for (const [relative, hash] of Object.entries(manifest)) {
         const content = fs.readFileSync(path.join(output, relative));
         assert.equal(crypto.createHash('sha256').update(content).digest('hex'), hash);
-        if (relative !== 'index.html')
+        if (!['index.html', 'sw.js'].includes(relative))
             assert.deepEqual(content, fs.readFileSync(path.join(root, relative)));
     }
     assert.equal(
@@ -48,6 +53,25 @@ test('재빌드는 삭제된 에셋을 남기지 않으며 같은 소스의 mani
     build(root);
     assert.equal(fs.existsSync(path.join(first.output, 'obsolete.js')), false);
     assert.equal(fs.readFileSync(path.join(first.output, 'build-manifest.json'), 'utf8'), before);
+});
+
+test('PWA 캐시는 런타임 변경에 따라 갱신하고 음악·개발 파일은 사전 저장하지 않는다', (t) => {
+    const root = fixture(t);
+    const first = build(root);
+    const before = fs.readFileSync(path.join(first.output, 'sw.js'), 'utf8');
+    assert.ok(!before.includes('__BUILD_VERSION__'));
+    assert.ok(before.includes(`scripts/app.js?v=${first.manifest['scripts/app.js'].slice(0, 12)}`));
+    assert.ok(before.includes('manifest.webmanifest?v='));
+    assert.ok(!before.includes('music.mp3'));
+    assert.ok(!before.includes('review.md'));
+    fs.writeFileSync(path.join(root, 'scripts/app.js'), 'const answer = 43;');
+    const second = build(root);
+    const after = fs.readFileSync(path.join(second.output, 'sw.js'), 'utf8');
+    assert.notEqual(before, after);
+    assert.notEqual(
+        before.match(/APP_VERSION = '([^']+)'/)[1],
+        after.match(/APP_VERSION = '([^']+)'/)[1]
+    );
 });
 
 test('HTML 참조가 배포 파일에 없으면 빌드를 실패시킨다', (t) => {

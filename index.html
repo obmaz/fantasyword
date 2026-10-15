@@ -68,6 +68,11 @@
         <link rel="stylesheet" href="styles/screens/hangman-mode.css" />
         <link rel="stylesheet" href="styles/screens/story-events.css" />
         <link rel="stylesheet" href="styles/screens/story-puzzles.css" />
+        <link rel="stylesheet" href="styles/theme/shared-ui.css" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <meta name="theme-color" content="#173d32" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="킹왕짱" />
     </head>
 
     <body>
@@ -277,7 +282,7 @@
 
                 <div
                     id="options-box"
-                    class="options-grid"
+                    class="options-grid answer-choices"
                     role="group"
                     aria-labelledby="q-text"
                 ></div>
@@ -560,7 +565,7 @@
                 </div>
                 <p
                     id="inventory-capacity-summary"
-                    class="inventory-capacity-summary"
+                    class="inventory-capacity-summary menu-context"
                     role="status"
                 ></p>
                 <div class="inv-container">
@@ -1186,7 +1191,7 @@
                 </div>
                 <div
                     id="puzzle-choices"
-                    class="puzzle-choices"
+                    class="puzzle-choices answer-choices"
                     role="group"
                     aria-label="답 선택"
                 ></div>
@@ -1342,6 +1347,11 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                <p
+                    id="shop-capacity-summary"
+                    class="shop-capacity-summary menu-context"
+                    role="status"
+                ></p>
                 <div class="modal-body">
                     <div id="shop-container" style="text-align: left"></div>
                 </div>
@@ -1377,6 +1387,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                <p id="statistics-book-info" class="statistics-book-info menu-context"></p>
                 <div class="modal-body">
                     <div id="statistics-container" style="text-align: left"></div>
                 </div>
@@ -1757,6 +1768,18 @@
                     </div>
                     <button
                         type="button"
+                        id="app-install-btn"
+                        class="modal-btn-main"
+                        data-action="app-install"
+                        data-confirm-tone="execute"
+                    >
+                        앱 설치
+                    </button>
+                    <p id="app-install-help" class="settings-install-help" role="status">
+                        홈 화면에 설치해 앱처럼 사용할 수 있어요.
+                    </p>
+                    <button
+                        type="button"
                         class="modal-btn-main settings-reset-game"
                         data-action="settings-reset-game"
                     >
@@ -2079,6 +2102,7 @@
         <script src="scripts/features/hangman.js"></script>
 
         <!-- 메인 애플리케이션 -->
+        <script src="scripts/features/app-install.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/init.js" defer></script>
 

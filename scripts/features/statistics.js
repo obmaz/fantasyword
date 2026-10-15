@@ -51,20 +51,12 @@ const statistics = {
     },
 
     /**
-     * 현재 단어장 이름을 모달 헤더에 표시합니다
+     * 현재 단어장 이름을 제목 아래 공통 안내 영역에 표시합니다
      * (통계의 저장 키는 데이터셋 ID지만, 표시는 사람이 읽는 이름으로 합니다)
      */
     _renderBookInfo: () => {
-        const modalHeader = document.querySelector('#statistics-modal .modal-header');
-        if (!modalHeader) return;
-
-        const existing = modalHeader.querySelector('.statistics-book-info');
-        if (existing) existing.remove();
-
-        const bookInfo = document.createElement('div');
-        bookInfo.className = 'statistics-book-info';
+        const bookInfo = document.getElementById('statistics-book-info');
         bookInfo.textContent = window.currentGameDataName || '기본 단어장';
-        modalHeader.appendChild(bookInfo);
     },
 
     /**

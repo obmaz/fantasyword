@@ -15,6 +15,11 @@ for (const directory of ['scripts', 'data', 'tools', 'tests']) {
     }
 }
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+new vm.Script(fs.readFileSync(path.join(root, 'sw.js'), 'utf8'), { filename: 'sw.js' });
+const appManifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
+for (const icon of appManifest.icons) {
+    if (!fs.existsSync(path.join(root, icon.src))) throw new Error(`설치 아이콘 누락: ${icon.src}`);
+}
 // 빌드 없는 구성에서는 런타임 파일의 등록과 책임 경계를 명시적으로 검사한다.
 for (const directory of ['scripts', 'styles']) {
     for (const file of files(path.join(root, directory))) {

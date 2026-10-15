@@ -30,6 +30,9 @@ const shop = {
         const container = document.getElementById('shop-container');
         container.innerHTML = '';
         document.getElementById('shop-gold').innerText = formatMenuNumber(db.gold);
+        const used = inventory.getStoredCount();
+        document.getElementById('shop-capacity-summary').textContent =
+            `보관함 ${used} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - used)}칸`;
 
         const isPurchased = (item) =>
             db.inventory.includes(item.id) ||
@@ -38,7 +41,6 @@ const shop = {
 
         // 경제형 무기
         let html =
-            `<p class="shop-capacity-summary" role="status">보관함 ${inventory.getStoredCount()} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - inventory.getStoredCount())}칸</p>` +
             '<p class="shop-economy-guide">10문제 전투 약 50–75 G<br><small>정답률 80% · 문제당 4초 · 기본 장비 기준</small></p>' +
             '<div class="shop-section">마법 무기 · 골드 보너스</div>';
         weapons

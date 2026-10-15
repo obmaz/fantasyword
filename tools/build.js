@@ -37,7 +37,8 @@ function build(root = path.resolve(__dirname, '..')) {
         if (fs.lstatSync(source).isSymbolicLink()) throw new Error(`배포 링크 금지: ${relative}`);
         write(relative, fs.readFileSync(source));
     }
-    for (const file of ['index.html', 'CNAME', 'favicon.ico']) copy(file);
+    for (const file of ['index.html', 'CNAME', 'favicon.ico', 'manifest.webmanifest', 'sw.js'])
+        copy(file);
     for (const [directory, extensions] of Object.entries(RUNTIME_DIRECTORIES)) {
         function walk(relative) {
             if (fs.lstatSync(path.join(root, relative)).isSymbolicLink())
@@ -80,6 +81,19 @@ function build(root = path.resolve(__dirname, '..')) {
                 `${before}${versioned(reference, 'index.html')}${after}`
         )
     );
+    const appVersion = crypto
+        .createHash('sha256')
+        .update(JSON.stringify(manifest))
+        .digest('hex')
+        .slice(0, 16);
+    const offlineAssets = Object.entries(manifest)
+        .filter(([file]) => !['sw.js', 'CNAME'].includes(file) && !file.endsWith('.mp3'))
+        .map(([file, hash]) => (file === 'index.html' ? file : `${file}?v=${hash.slice(0, 12)}`));
+    const worker = fs
+        .readFileSync(path.join(output, 'sw.js'), 'utf8')
+        .replace('__BUILD_VERSION__', appVersion)
+        .replace("['index.html']", JSON.stringify(offlineAssets));
+    write('sw.js', worker);
     fs.writeFileSync(path.join(output, '.nojekyll'), '');
     fs.writeFileSync(
         path.join(output, 'build-manifest.json'),
