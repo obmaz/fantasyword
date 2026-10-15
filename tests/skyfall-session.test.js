@@ -24,6 +24,8 @@ function runtime({
     const frames = new Map();
     const results = [];
     const events = [];
+    const notices = [];
+    const notifications = [];
     const moves = [];
     const session = createSession({
         db: { addGold: (value) => (gold += value) },
@@ -35,6 +37,9 @@ function runtime({
                 .assaultReward,
         },
         view: {
+            notice(message) {
+                notices.push(message);
+            },
             hud(value) {
                 hud = value;
             },
@@ -75,7 +80,9 @@ function runtime({
         },
         playMusic() {},
         pauseMusic() {},
-        notify() {},
+        notify(message) {
+            notifications.push(message);
+        },
         grantReward,
         random,
         requestFrame(callback) {
@@ -90,6 +97,8 @@ function runtime({
     });
     return {
         session,
+        notices,
+        notifications,
         words,
         frames,
         results,
@@ -464,5 +473,7 @@ test('엘리트 아이템은 주입된 보상 서비스로 지급하고 추가 �
     assert.equal(r.words.values().next().value.item.elite, true);
     r.answer(true);
     assert.deepEqual(rewards, ['hint']);
+    assert.equal(r.notifications.length, 0);
+    assert.match(r.notices[0], /통찰의 포션/);
     assert.equal(r.gold, 12);
 });

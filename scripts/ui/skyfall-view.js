@@ -5,6 +5,7 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
     const words = new Map();
     const effects = new Set();
     const pending = new Set();
+    let noticeTimer = null;
     const setText = (id, value) => {
         const element = byId(id);
         if (element) element.textContent = String(value);
@@ -29,6 +30,14 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
         pending.add(id);
     }
     const view = {
+        notice(message) {
+            if (noticeTimer !== null) cancel(noticeTimer);
+            setText('skyfall-notice', message);
+            noticeTimer = schedule(() => {
+                setText('skyfall-notice', '');
+                noticeTimer = null;
+            }, 3500);
+        },
         hud({ remaining, score, target, lives, maxLives, earned, itemAvailable, modifier }) {
             setText('skyfall-time', remaining);
             setText('skyfall-score', score + ' / ' + target);
@@ -103,6 +112,9 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
             field.classList.add('skyfall-damaged');
         },
         stop() {
+            if (noticeTimer !== null) cancel(noticeTimer);
+            noticeTimer = null;
+            setText('skyfall-notice', '');
             pending.forEach(cancel);
             pending.clear();
             effects.forEach((element) => element.remove());

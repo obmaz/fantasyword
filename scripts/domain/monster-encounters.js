@@ -52,11 +52,13 @@ const monsterEncounters = Object.freeze({
                 )
             );
     },
-    spellingTiles(word, shuffle) {
-        const letters = [...word].filter((letter) => /[a-z]/i.test(letter));
+    spellingTiles(word, shuffle, hints = '') {
+        const letters = [...word].filter(
+            (letter, index) => /[a-z]/i.test(letter) && !/[a-z]/i.test(hints[index] || '')
+        );
         // Common letters make plausible decoys while every answer letter remains available.
         const common = [...'aeiourstnl'];
-        const used = new Set(letters.map((letter) => letter.toLowerCase()));
+        const used = new Set([...word.toLowerCase()]);
         const unusedCommon = common.filter((letter) => !used.has(letter));
         const uncommon = [...'abcdefghijklmnopqrstuvwxyz'].filter(
             (letter) => !used.has(letter) && !common.includes(letter)
@@ -66,10 +68,16 @@ const monsterEncounters = Object.freeze({
             a.toLowerCase().localeCompare(b.toLowerCase(), 'en')
         );
     },
-    spellingAnswer(word, tiles, chosen) {
+    spellingAnswer(word, tiles, chosen, hints = '') {
         let index = 0;
         return [...word]
-            .map((letter) => (/[a-z]/i.test(letter) ? tiles[chosen[index++]] || '_' : letter))
+            .map((letter, position) =>
+                /[a-z]/i.test(hints[position] || '')
+                    ? hints[position]
+                    : /[a-z]/i.test(letter)
+                      ? tiles[chosen[index++]] || '_'
+                      : letter
+            )
             .join('');
     },
     checkAnswer(input, word) {

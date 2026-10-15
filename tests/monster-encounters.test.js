@@ -130,8 +130,9 @@ function runtime() {
         game.nextLevel();
     }
     function assemble(word) {
-        for (const letter of word) {
-            if (!/[a-z]/i.test(letter)) continue;
+        for (const [position, letter] of [...word].entries()) {
+            if (!/[a-z]/i.test(letter) || /[a-z]/i.test(game.spellingHints[position] || ''))
+                continue;
             const index = game.spellingTiles.findIndex(
                 (candidate, i) => candidate === letter && !game.spellingChosen.includes(i)
             );
@@ -174,7 +175,7 @@ test('고블린은 같은 글자 조각을 재사용하지 않으며 중복 철�
     const r = runtime();
     r.start('goblin', 'balloon');
     assert.notEqual(r.game.spellingTiles.join(''), 'balloon');
-    assert.equal(r.game.spellingTiles.length, 10);
+    assert.equal(r.game.spellingTiles.length, 9);
     r.game.chooseSpellingLetter(0);
     r.game.chooseSpellingLetter(0);
     assert.equal(r.game.spellingChosen.length, 1);
@@ -185,11 +186,11 @@ test('고블린은 같은 글자 조각을 재사용하지 않으며 중복 철�
     r.game.chooseSpellingLetter(0);
     r.game.clearSpelling();
     r.assemble('balloon');
-    assert.equal(r.game.spellingChosen.length, 7);
-    assert.equal(new Set(r.game.spellingChosen).size, 7);
+    assert.equal(r.game.spellingChosen.length, 6);
+    assert.equal(new Set(r.game.spellingChosen).size, 6);
     assert.equal(r.getElement('spelling-submit').disabled, false);
     r.game.chooseSpellingLetter(7);
-    assert.equal(r.game.spellingChosen.length, 7);
+    assert.equal(r.game.spellingChosen.length, 6);
     r.game.checkBossAnswer();
     assert.equal(r.game.subjectiveCorrect, 1);
     assert.equal(r.evaluate('db.getBookStats().subjective.correct'), 1);
@@ -200,7 +201,12 @@ test('고블린은 숙어의 띄어쓰기를 유지하고 틀린 배열에는 �
     r.start('goblin', 'put on');
     r.assemble('put on');
     assert.equal(
-        r.encounters.spellingAnswer('put on', r.game.spellingTiles, r.game.spellingChosen),
+        r.encounters.spellingAnswer(
+            'put on',
+            r.game.spellingTiles,
+            r.game.spellingChosen,
+            r.game.spellingHints
+        ),
         'put on'
     );
     r.game.checkBossAnswer();
@@ -212,7 +218,8 @@ test('고블린은 숙어의 띄어쓰기를 유지하고 틀린 배열에는 �
         wrong.encounters.spellingAnswer(
             'put on',
             wrong.game.spellingTiles,
-            wrong.game.spellingChosen
+            wrong.game.spellingChosen,
+            wrong.game.spellingHints
         ) === 'put on'
     ) {
         wrong.game.clearSpelling();
@@ -412,4 +419,25 @@ test('철자 조립의 첫·끝 힌트는 타일 입력을 채우지 않고 문�
         assert.equal(r.game.spellingChosen.length, 0);
         assert.equal(r.getElement('spelling-submit').disabled, true);
     }
+});
+
+test('조립의 고정 글자는 타일에서 제외하고 나머지 글자만 조립·지우기·채점한다', () => {
+    const r = runtime();
+    r.start('dragon', 'balloon');
+    assert.equal(r.game.spellingHints, 'b_____n');
+    assert.equal(r.game.spellingLength(), 5);
+    assert.equal(r.game.spellingTiles.length, 8);
+    assert.ok(!r.game.spellingTiles.includes('b') && !r.game.spellingTiles.includes('n'));
+    const current = () => r.getElement('spelling-answer').children.slice(-7);
+    assert.ok(current()[1].classList.contains('letter-slot-active'));
+    r.assemble('balloon');
+    assert.equal(r.game.spellingChosen.length, 5);
+    r.game.removeSpellingLetter();
+    assert.ok(current()[5].classList.contains('letter-slot-active'));
+    r.game.clearSpelling();
+    assert.equal(current()[0].innerText, 'b');
+    assert.equal(current()[6].innerText, 'n');
+    r.assemble('balloon');
+    r.game.checkBossAnswer();
+    assert.equal(r.game.currentQ.wasCorrect, true);
 });

@@ -251,10 +251,7 @@ test('두 미니보스는 드래곤 외형과 한국어 뜻 철자조립으로 �
                 assert.equal(r.getElement('q-text').innerText, game.currentQ.meaning);
                 assert.equal(r.getElement('spelling-panel').hidden, false);
                 assert.equal(r.getElement('boss-box').style.display, 'none');
-                assert.equal(
-                    game.spellingTiles.length,
-                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length + 3
-                );
+                assert.equal(game.spellingTiles.length, game.spellingLength() + 3);
                 if (index < mistakes) assembleWrongAnswer(game);
                 else assembleAnswer(game);
                 game.checkBossAnswer();

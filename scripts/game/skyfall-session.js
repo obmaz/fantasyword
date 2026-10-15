@@ -122,8 +122,8 @@ function createSkyfallSession({
             if (item.elite) {
                 const rewardId = ELITE_REWARDS[Math.floor(random() * ELITE_REWARDS.length)];
                 const rewardName = grantReward(rewardId);
-                if (rewardName) notify(`엘리트 악당 보상: ${rewardName} 획득!`);
-                else notify('추가 아이템을 받을 수 없어 엘리트 골드 보너스만 지급되었습니다.');
+                if (rewardName) view.notice?.(`엘리트 보상: ${rewardName} 획득!`);
+                else view.notice?.('엘리트 골드 보너스 지급 · 추가 아이템은 받을 수 없습니다.');
             }
             view.attack(item.id);
         } else {

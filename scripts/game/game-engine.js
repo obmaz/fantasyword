@@ -55,6 +55,7 @@ function createBattleSession({
         encounterHistory: [],
         spellingTiles: [],
         spellingChosen: [],
+        spellingHints: '',
         listeningReady: false,
         listenRequest: 0,
         subjectiveTotal: 0,
@@ -323,7 +324,21 @@ function createBattleSession({
                 return;
             }
             if (data.questionKind === 'spelling') {
-                game.spellingTiles = encounters.spellingTiles(data.word, game.shuffle);
+                game.spellingHints = battleRules.spellingHint(
+                    data.word,
+                    data.questionKind === 'riddle' &&
+                        /[a-z]/i.test(
+                            data.encounterPrompt || data.englishExplanation || data.meaning
+                        ) &&
+                        !/[가-힣]/.test(
+                            data.encounterPrompt || data.englishExplanation || data.meaning
+                        )
+                );
+                game.spellingTiles = encounters.spellingTiles(
+                    data.word,
+                    game.shuffle,
+                    game.spellingHints
+                );
                 game.spellingChosen = [];
                 game.view.spelling(
                     data.meaning,
@@ -332,7 +347,7 @@ function createBattleSession({
                     game.chooseSpellingLetter,
                     game.removeSpellingLetter,
                     game.checkBossAnswer,
-                    battleRules.spellingHint(data.word)
+                    game.spellingHints
                 );
                 game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
                 return;
@@ -340,7 +355,21 @@ function createBattleSession({
             if (data.questionKind === 'cloze' || data.questionKind === 'riddle') {
                 // 영어 예문/수수께끼는 자유 입력보다 철자 조립으로 출제해
                 // 모바일 키보드 부담을 줄이고 게임의 기존 철자 타일을 재사용한다.
-                game.spellingTiles = encounters.spellingTiles(data.word, game.shuffle);
+                game.spellingHints = battleRules.spellingHint(
+                    data.word,
+                    data.questionKind === 'riddle' &&
+                        /[a-z]/i.test(
+                            data.encounterPrompt || data.englishExplanation || data.meaning
+                        ) &&
+                        !/[가-힣]/.test(
+                            data.encounterPrompt || data.englishExplanation || data.meaning
+                        )
+                );
+                game.spellingTiles = encounters.spellingTiles(
+                    data.word,
+                    game.shuffle,
+                    game.spellingHints
+                );
                 game.spellingChosen = [];
                 game.view.spelling(
                     data.encounterPrompt || data.englishExplanation || data.meaning,
@@ -349,16 +378,7 @@ function createBattleSession({
                     game.chooseSpellingLetter,
                     game.removeSpellingLetter,
                     game.checkBossAnswer,
-                    battleRules.spellingHint(
-                        data.word,
-                        data.questionKind === 'riddle' &&
-                            /[a-z]/i.test(
-                                data.encounterPrompt || data.englishExplanation || data.meaning
-                            ) &&
-                            !/[가-힣]/.test(
-                                data.encounterPrompt || data.englishExplanation || data.meaning
-                            )
-                    )
+                    game.spellingHints
                 );
                 game.view.spellingProgress(game.spellingTiles, game.spellingChosen);
                 return;
@@ -385,6 +405,12 @@ function createBattleSession({
             );
             if (listening) game.view.listening();
         },
+        spellingLength() {
+            return [...game.currentQ.word].filter(
+                (letter, index) =>
+                    /[a-z]/i.test(letter) && !/[a-z]/i.test(game.spellingHints[index] || '')
+            ).length;
+        },
         chooseSpellingLetter(index) {
             if (
                 !game.active ||
@@ -393,8 +419,7 @@ function createBattleSession({
                 !Number.isInteger(index) ||
                 index < 0 ||
                 index >= game.spellingTiles.length ||
-                game.spellingChosen.length >=
-                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length ||
+                game.spellingChosen.length >= game.spellingLength() ||
                 game.spellingChosen.includes(index)
             )
                 return;
@@ -518,17 +543,13 @@ function createBattleSession({
             if (!game.active || !game.currentQ || game.isProcessing || !game.currentQ.isBoss)
                 return;
             const assembling = encounters?.usesSpelling(game.currentQ.questionKind);
-            if (
-                assembling &&
-                game.spellingChosen.length !==
-                    [...game.currentQ.word].filter((letter) => /[a-z]/i.test(letter)).length
-            )
-                return;
+            if (assembling && game.spellingChosen.length !== game.spellingLength()) return;
             const input = assembling
                 ? encounters.spellingAnswer(
                       game.currentQ.word,
                       game.spellingTiles,
-                      game.spellingChosen
+                      game.spellingChosen,
+                      game.spellingHints
                   )
                 : game.view.readAnswer();
             game.handleAnswer(

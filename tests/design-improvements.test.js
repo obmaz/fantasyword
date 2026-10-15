@@ -592,7 +592,7 @@ test('Day 선택 목록은 60일 제한 대신 실제 데이터의 유효한 Day
     assert.ok(!html.includes('value="Infinity"'));
 });
 
-test('영어 뜻만 나온 7글자 이상 단어는 끝 글자 힌트를 주고 전체 입력을 요구한다', () => {
+test('영어 뜻만 나온 7글자 이상 단어의 첫·끝 글자는 고정하고 나머지를 입력한다', () => {
     const r = browserRuntime();
     const rules = r.evaluate('battleRules');
     assert.equal(rules.spellingHint('balloon', true), 'b_____n');
@@ -606,7 +606,37 @@ test('영어 뜻만 나온 7글자 이상 단어는 끝 글자 힌트를 주고 
     assert.equal(slots[0].textContent, 'b');
     assert.equal(slots[6].textContent, 'n');
     assert.ok(slots[0].classList.contains('letter-slot-hint'));
-    assert.equal(r.getElement('boss-input').value, '');
+    assert.equal(r.getElement('boss-input').value, 'b_____n');
     assert.equal(rules.checkSpelling('alloo', 'balloon'), false);
     assert.equal(rules.checkSpelling('balloon', 'balloon'), true);
+});
+
+test('고정 글자를 건너뛰어 입력하고 지우기 뒤에도 첫·끝 글자와 커서는 유지된다', () => {
+    const r = browserRuntime();
+    r.sandbox.onload();
+    r.evaluate(
+        "game.view.subjective({word:'balloon',meaning:'a bag filled with air'},'',battleRules.spellingHint('balloon',true),()=>{},false)"
+    );
+    const input = r.getElement('boss-input');
+    const press = (key) => input.onkeydown({ key, preventDefault() {} });
+    press('Backspace');
+    assert.equal(input.value, 'b_____n');
+    assert.ok(
+        r.getElement('boss-letter-slots').children[1].classList.contains('letter-slot-active')
+    );
+    press('a');
+    assert.equal(input.value, 'ba____n');
+    assert.ok(
+        r.getElement('boss-letter-slots').children[2].classList.contains('letter-slot-active')
+    );
+    for (const letter of 'lloo') press(letter);
+    assert.equal(input.value, 'balloon');
+    assert.equal(
+        r
+            .getElement('boss-letter-slots')
+            .children.filter((slot) => slot.classList.contains('letter-slot-active')).length,
+        0
+    );
+    for (let i = 0; i < 10; i++) press('Backspace');
+    assert.equal(input.value, 'b_____n');
 });

@@ -27,45 +27,54 @@ function createBattleView({
             button.disabled = locked;
         });
     }
+    const fixedInput = (index) => /[a-z]/i.test(inputHints[index] || '');
+    const editableInput = () =>
+        [...inputPattern].flatMap((character, index) =>
+            /[a-z]/i.test(character) && !fixedInput(index) ? [index] : []
+        );
+    function writeInput(letters) {
+        let cursor = 0;
+        let last = -1;
+        const value = [...inputPattern].map((character, index) => {
+            if (!/[a-z]/i.test(character)) return character;
+            const letter = fixedInput(index) ? inputHints[index] : letters[cursor++] || '_';
+            if (letter !== '_') last = index;
+            return letter;
+        });
+        let end = last + 1;
+        while (end > 0 && end < inputPattern.length && !/[a-z]/i.test(inputPattern[end])) end++;
+        element('boss-input').value = value.slice(0, end).join('');
+    }
     function typeLetter(key) {
         const input = element('boss-input');
         if (input.disabled) return;
-        const letters = input.value.replace(/[^a-z]/gi, '').split('');
+        const positions = editableInput();
+        const letters = positions
+            .map((index) => input.value[index])
+            .filter((letter) => /^[a-z]$/i.test(letter || ''));
         if (key === 'Backspace') letters.pop();
-        else if (letters.length < (inputPattern.match(/[a-z]/gi) || []).length)
-            letters.push(key.toLowerCase());
-        let index = 0;
-        let value = '';
-        for (const character of inputPattern) {
-            if (/[a-z]/i.test(character)) {
-                if (!letters[index]) break;
-                value += letters[index++];
-            } else if (index > 0) value += character;
-        }
-        input.value = value;
+        else if (letters.length < positions.length) letters.push(key.toLowerCase());
+        writeInput(letters);
         updateInputSlots();
     }
     function updateInputSlots() {
         const input = element('boss-input');
         const slots = element('boss-letter-slots');
-        slots.innerHTML = '';
-        const typed = Array.from(input.value);
-        const pattern = Array.from(inputPattern);
-        for (let index = 0; index < Math.max(pattern.length, typed.length); index++) {
+        slots.replaceChildren();
+        const current = editableInput().find((index) => !/^[a-z]$/i.test(input.value[index] || ''));
+        for (const [index, character] of [...inputPattern].entries()) {
             const slot = doc.createElement('span');
-            slot.className = /[a-z]/i.test(pattern[index] || 'a')
-                ? 'letter-slot'
-                : 'letter-separator';
-            slot.textContent =
-                typed[index] || (/[^a-z]/i.test(pattern[index] || 'a') ? pattern[index] : '\u00a0');
-            slot.classList.toggle(
-                'letter-slot-active',
-                index === (input.selectionStart ?? typed.length)
-            );
-            if (!typed[index] && /[a-z]/i.test(inputHints[index] || '')) {
-                slot.textContent = inputHints[index];
-                slot.classList.add('letter-slot-hint');
-            }
+            slot.className = /[a-z]/i.test(character) ? 'letter-slot' : 'letter-separator';
+            slot.textContent = fixedInput(index)
+                ? inputHints[index]
+                : !/[a-z]/i.test(character)
+                  ? character
+                  : /^[a-z]$/i.test(input.value[index] || '')
+                    ? input.value[index]
+                    : '\u00a0';
+            slot.classList.toggle('letter-slot-active', index === current);
+            if (index === current) slot.setAttribute('aria-label', '현재 입력 위치');
+            if (fixedInput(index)) slot.classList.add('letter-slot-hint', 'letter-slot-fixed');
             slots.appendChild(slot);
         }
     }
@@ -192,6 +201,7 @@ function createBattleView({
             element('music-info-overlay').style.display = 'none';
         },
         beginQuestion(sprite, progress, encounter = null) {
+            element('battle-mode-game').dataset.inputLocked = 'false';
             questionVersion++;
             spellingResizeObserver?.disconnect();
             floatVersion++;
@@ -256,6 +266,7 @@ function createBattleView({
             input.value = '';
             inputPattern = data.word || '';
             inputHints = hint || '';
+            writeInput([]);
             input.oninput = updateInputSlots;
             input.onclick = updateInputSlots;
             updateInputSlots();
@@ -382,16 +393,22 @@ function createBattleView({
             for (const [position, character] of [...spellingPattern].entries()) {
                 const slot = doc.createElement('span');
                 slot.className = character === '_' ? 'letter-slot' : 'letter-separator';
-                const picked = character === '_' ? tiles[chosen[index++]] : null;
                 const hint = /[a-z]/i.test(spellingHints[position] || '')
                     ? spellingHints[position]
                     : '';
-                slot.innerText = character === '_' ? picked || hint || '·' : character;
-                if (character === '_' && !picked && hint) slot.classList.add('letter-slot-hint');
+                const editable = character === '_' && !hint;
+                const picked = editable ? tiles[chosen[index]] : null;
+                slot.innerText = hint || (character === '_' ? picked || '·' : character);
+                if (hint) slot.classList.add('letter-slot-hint', 'letter-slot-fixed');
+                if (editable && index === chosen.length) {
+                    slot.classList.add('letter-slot-active');
+                    slot.setAttribute('aria-label', '현재 입력 위치');
+                }
+                if (editable) index++;
                 answer.appendChild(slot);
             }
             letterButtons.forEach((button, i) => {
-                button.disabled = chosen.includes(i) || (index > 0 && chosen.length >= index);
+                button.disabled = chosen.includes(i) || chosen.length >= index;
             });
             element('spelling-submit').disabled = chosen.length !== index;
             const next = letterButtons.find((button) => !button.disabled);
@@ -427,6 +444,7 @@ function createBattleView({
             return element('boss-input').value;
         },
         feedback(correct, selectedIndex, lockInput = false) {
+            element('battle-mode-game').dataset.inputLocked = 'true';
             optionButtons.forEach((button) => {
                 button.disabled = true;
             });
@@ -462,6 +480,7 @@ function createBattleView({
             element('equipment-hint').innerText = text;
         },
         shieldBlock(index) {
+            element('battle-mode-game').dataset.inputLocked = 'true';
             clearAttack();
             positionAttack();
             element('combat-effects').classList.add('is-blocking');
@@ -474,7 +493,7 @@ function createBattleView({
             });
             if (index !== null && index !== undefined)
                 optionButtons[index]?.classList.add('option-btn-picked-wrong');
-            element('boss-input').value = '';
+            writeInput([]);
             updateInputSlots();
             element('boss-input').disabled = true;
             lockKeyboard(true);
@@ -491,6 +510,7 @@ function createBattleView({
             element('listen-fallback-btn').disabled = true;
         },
         retry(options) {
+            element('battle-mode-game').dataset.inputLocked = 'false';
             lockKeyboard(false);
             optionButtons.forEach((button, i) => {
                 button.disabled = options[i].disabled;
@@ -506,6 +526,13 @@ function createBattleView({
             });
             element('listen-word-btn').disabled = false;
             element('listen-fallback-btn').disabled = false;
+            if (!element('spelling-panel').hidden)
+                (
+                    letterButtons.find((button) => !button.disabled) || element('spelling-submit')
+                ).focus({ preventScroll: true });
+            else if (element('boss-box').style.display !== 'none')
+                element('boss-input').focus({ preventScroll: true });
+            else optionButtons.find((button) => !button.disabled)?.focus({ preventScroll: true });
         },
         disableOptions(indices) {
             indices.forEach((index) => {

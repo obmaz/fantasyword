@@ -48,7 +48,7 @@ const battleRules = Object.freeze({
     checkSpelling(input, word) {
         const answer = word.trim().toLowerCase();
         const value = input.trim().toLowerCase();
-        // 힌트는 표시만 하며 첫 글자를 포함한 전체 철자를 입력해야 한다.
+        // 고정 글자와 사용자가 입력한 빈칸을 합친 전체 철자로 채점한다.
         return value.length > 0 && value === answer;
     },
     hintRemovalCount(wrongCount) {

@@ -2,8 +2,8 @@ const assert = require('node:assert/strict');
 
 function answerIndices(game) {
     const indices = [];
-    for (const letter of game.currentQ.word) {
-        if (!/[a-z]/i.test(letter)) continue;
+    for (const [position, letter] of [...game.currentQ.word].entries()) {
+        if (!/[a-z]/i.test(letter) || /[a-z]/i.test(game.spellingHints?.[position] || '')) continue;
         const index = game.spellingTiles.findIndex(
             (tile, i) => tile.toLowerCase() === letter.toLowerCase() && !indices.includes(i)
         );
