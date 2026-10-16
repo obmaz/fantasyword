@@ -180,10 +180,22 @@
     color: #216ba4;
 }
 
-/* English and idioms reserve the same scene before their question card. */
-#battle-mode-game {
-    --objective-scene-size: 35%;
+/* English, idioms and proverbs use the same scene height above the question. */
+:is(#battle-mode-game, #story-puzzle-game) {
+    --objective-scene-size: 35cqh;
     --objective-scene-min: 252px;
+}
+#story-puzzle-game[data-kind='proverb'] .puzzle-board {
+    padding-top: 8px;
+}
+#story-puzzle-game[data-kind='proverb'] .puzzle-content {
+    position: relative;
+    padding-top: max(var(--objective-scene-size), var(--objective-scene-min));
+}
+#story-puzzle-game[data-kind='proverb'] #puzzle-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 :root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .battle-arena {
     flex: 0 0 var(--objective-scene-size);
@@ -265,14 +277,14 @@
 }
 
 @media (max-height: 850px) {
-    #battle-mode-game {
-        --objective-scene-size: 26%;
+    :is(#battle-mode-game, #story-puzzle-game) {
+        --objective-scene-size: 26cqh;
         --objective-scene-min: clamp(110px, 26cqh, 200px);
     }
 }
 @media (max-height: 550px) {
-    #battle-mode-game {
-        --objective-scene-size: 21%;
+    :is(#battle-mode-game, #story-puzzle-game) {
+        --objective-scene-size: 21cqh;
         --objective-scene-min: clamp(90px, 21cqh, 110px);
     }
 }
@@ -333,6 +345,13 @@
 }
 
 @media (max-height: 500px) {
+    #story-puzzle-game[data-kind='proverb'] .gameplay-header {
+        height: 68px;
+        min-height: 68px;
+    }
+    #story-puzzle-game[data-kind='proverb'] .puzzle-board {
+        padding-top: 4px;
+    }
     :root[data-layout] #battle-mode-game:not([data-answer-entry='letters']) .quiz-area {
         padding-top: 4px;
     }
