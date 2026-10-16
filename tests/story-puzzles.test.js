@@ -344,9 +344,10 @@ test('속담 공격은 장착 무기·왼손 속성을 사용하고 나가기 �
     assert.equal(effect.classList.contains('is-attacking'), false);
     assert.equal(r.getElement('puzzle-monster-img').classList.contains('mob-active'), false);
     choose(false);
-    assert.ok(r.getElement('puzzle-hero-img').classList.contains('hero-hit-anim'));
+    r.advance(r.evaluate('PRESENTATION_CONFIG.monsterWindupMs'));
+    assert.ok(r.getElement('puzzle-hero-wrapper').classList.contains('hero-recoil'));
     assert.equal(effect.classList.contains('is-attacking'), false);
     r.evaluate("storyPuzzle.exit(); storyPuzzle.start('forge')");
     r.advance(500);
-    assert.equal(r.getElement('puzzle-hero-img').classList.contains('hero-hit-anim'), false);
+    assert.equal(r.getElement('puzzle-hero-wrapper').classList.contains('hero-recoil'), false);
 });

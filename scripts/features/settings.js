@@ -59,6 +59,7 @@ const settingsManager = {
             db.settings = {
                 musicPlay: true,
                 wordRead: true,
+                soundEffects: true,
                 vibration: true,
                 vibrationDuration: HAPTICS_CONFIG.defaultDuration,
             };
@@ -67,6 +68,20 @@ const settingsManager = {
         // 2. UI 이벤트 리스너 설정
         const musicCheck = document.getElementById('setting-music-play');
         const wordCheck = document.getElementById('setting-word-read');
+        const soundCheck = document.getElementById('setting-sound-effects');
+        soundCheck.checked = db.settings.soundEffects !== false;
+        soundCheck.addEventListener('change', () => {
+            if (
+                !db.commitChanges({
+                    settings: { ...db.settings, soundEffects: soundCheck.checked },
+                })
+            ) {
+                soundCheck.checked = db.settings.soundEffects !== false;
+                showToast('효과음 설정을 저장하지 못했습니다.', 'error');
+            }
+            if (!db.settings.soundEffects) gameSound.stop();
+            else gameSound.unlock();
+        });
         const vibrationCheck = document.getElementById('setting-vibration');
         const vibrationDuration = document.getElementById('setting-vibration-duration');
         vibrationDuration.replaceChildren();
@@ -164,6 +179,8 @@ const settingsManager = {
         secret.previousModal = null;
         document.getElementById('setting-music-play').checked = db.settings.musicPlay;
         document.getElementById('setting-word-read').checked = db.settings.wordRead;
+        document.getElementById('setting-sound-effects').checked =
+            db.settings.soundEffects !== false;
         document.getElementById('setting-vibration').checked = db.settings.vibration !== false;
         document.getElementById('setting-vibration-duration').value = String(
             db.settings.vibrationDuration || HAPTICS_CONFIG.defaultDuration

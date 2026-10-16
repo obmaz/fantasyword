@@ -141,6 +141,15 @@ function initializeApp() {
 
     // data-action 위임 리스너 (인라인 onclick 대체)
     setupActionDelegation();
+    for (const event of ['pointerdown', 'keydown']) {
+        document.addEventListener(event, () => gameSound.unlock(), { passive: true });
+    }
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            gameSound.stop();
+            gamePresentation.clear();
+        }
+    });
 
     // 핵심 시스템 초기화
     if (typeof secret !== 'undefined') secret.init();

@@ -3,6 +3,21 @@ const haptics = createHaptics({
     getSettings: () => db.settings,
     vibrate: (duration) => navigator.vibrate?.(duration) ?? false,
 });
+const gameSound = createGameSound({
+    getSettings: () => db.settings,
+    isVisible: () => !document.hidden,
+    createContext: () => {
+        const Audio = window.AudioContext || window.webkitAudioContext;
+        return Audio ? new Audio() : null;
+    },
+});
+const gamePresentation = createGamePresentation({
+    document,
+    timers: { setTimeout, clearTimeout },
+    sound: gameSound,
+    itemMarkup: itemIconMarkup,
+});
+window.gamePresentation = gamePresentation;
 /** 설정은 공유하고 재생·취소 상태는 세션마다 분리한다. */
 function createGameSpeech() {
     return createPracticeSpeech({
@@ -57,6 +72,8 @@ const game = createBattleSession({
 });
 game.view = createBattleView({
     document,
+    sound: gameSound,
+    presentation: gamePresentation,
     attacks: battleAttackProfiles,
     schedule: game.later,
     escapeHTML,
@@ -94,6 +111,8 @@ const skyfall = createSkyfallSession({
     rules: battleRules,
     view: createSkyfallView({
         document,
+        sound: gameSound,
+        presentation: gamePresentation,
         openScreen: openScreenOverlay,
         closeScreen: closeScreenOverlay,
         syncLayout: syncGameScreenSize,
@@ -121,6 +140,7 @@ const shellGame = createShellSession({
     onMistake: () => haptics.error(),
     view: createShellView({
         document,
+        sound: gameSound,
         openScreen: openScreenOverlay,
         resetScreen: resetScreenOverlay,
     }),
@@ -137,10 +157,13 @@ const storyPuzzle = createStoryPuzzleSession({
     onMistake: () => haptics.error(),
     view: createStoryPuzzleView({
         document,
+        sound: gameSound,
         openScreen: openScreenOverlay,
         resetScreen: resetScreenOverlay,
         combat: createBattleView({
             document,
+            sound: gameSound,
+            presentation: gamePresentation,
             attacks: battleAttackProfiles,
             schedule: setTimeout,
             escapeHTML,

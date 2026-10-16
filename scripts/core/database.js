@@ -222,6 +222,7 @@ const db = {
         return {
             musicPlay: o.musicPlay !== false,
             wordRead: o.wordRead !== false,
+            soundEffects: o.soundEffects !== false,
             vibration: o.vibration !== false,
             vibrationDuration: HAPTICS_CONFIG.durations.includes(o.vibrationDuration)
                 ? o.vibrationDuration

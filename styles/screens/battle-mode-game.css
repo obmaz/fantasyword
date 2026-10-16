@@ -388,16 +388,6 @@
     justify-content: center;
 }
 
-.mob-attack-anim {
-    animation: mob-atk 0.4s ease-in-out;
-}
-.hero-hit-anim {
-    animation: hero-hit 0.4s;
-}
-.screen-shake {
-    animation: shake-screen 0.4s;
-}
-
 .damage-txt {
     position: absolute;
     top: 40%;

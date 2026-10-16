@@ -69,6 +69,7 @@
         <link rel="stylesheet" href="styles/screens/story-events.css" />
         <link rel="stylesheet" href="styles/screens/story-puzzles.css" />
         <link rel="stylesheet" href="styles/theme/shared-ui.css" />
+        <link rel="stylesheet" href="styles/theme/game-presentation.css" />
         <link rel="manifest" href="manifest.webmanifest" />
         <meta name="theme-color" content="#173d32" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1732,6 +1733,18 @@
                             <span>오답 진동</span>
                         </label>
                     </div>
+                    <div class="setting-option-row">
+                        <label class="setting-checkbox-label">
+                            <input type="checkbox" id="setting-sound-effects" checked />
+                            <img
+                                class="setting-icon"
+                                src="images/theme/parts/calm-attack-icon.webp"
+                                alt=""
+                                aria-hidden="true"
+                            />
+                            <span>게임 효과음</span>
+                        </label>
+                    </div>
                     <div class="setting-option-row settings-vibration-length">
                         <label for="setting-vibration-duration">진동 길이</label>
                         <select id="setting-vibration-duration"></select>
@@ -2246,6 +2259,8 @@
         <!-- 메인 애플리케이션 -->
         <script src="scripts/features/app-install.js"></script>
         <script src="scripts/features/haptics.js"></script>
+        <script src="scripts/features/sound-effects.js"></script>
+        <script src="scripts/ui/game-presentation.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/init.js" defer></script>
 

@@ -702,12 +702,12 @@ function createBattleSession({
                     questionType === 'subjective',
                     game.options.findIndex((option) => option.correct)
                 );
+                game.view.hit();
                 if (game.mode === 'boss') {
                     game.view.floatText('GAME OVER', 'red');
                     game.later(() => story.showEnding(false), 2500);
                     return;
                 }
-                game.view.hit();
                 const penalty =
                     game.mode === 'idiom-test' ? 0 : battleRules.penalty(db.gold, db.has('shield'));
                 const previousGold = db.gold;
@@ -839,7 +839,8 @@ function createBattleSession({
                 db.gold,
                 battleRules.resultRows(game, win),
                 game.sessionWrongWords,
-                game.hadRetry
+                game.hadRetry,
+                game.sessionMistakes
             );
             game._saveSessionRecords();
             game.stop();

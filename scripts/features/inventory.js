@@ -21,6 +21,11 @@ const inventory = {
         if (!db.commitChanges(changes)) return null;
         inventory.refresh();
         shop.refresh();
+        gamePresentation.notify({
+            title: '전리품 획득',
+            detail: itemDisplayName(relic),
+            item: relic,
+        });
         return itemDisplayName(relic);
     },
     slots: {
@@ -413,6 +418,12 @@ const inventory = {
         }
         inventory.refresh();
         shop.refresh();
+        gamePresentation.equip(
+            { ...item, name: itemDisplayName(item) },
+            document.getElementById('inventory-avatar')
+        );
+        for (const target of slots)
+            gamePresentation.highlight?.(document.getElementById(`inv-${target}`));
         return true;
     },
 

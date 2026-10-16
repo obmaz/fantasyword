@@ -14,6 +14,7 @@
     function openScreenOverlay(id, animated = true) {
         const element = document.getElementById(id);
         if (!element) return;
+        window.gamePresentation?.clear();
         cancelClose(id);
         element.classList.remove('closing');
         element.style.display = 'flex';
@@ -41,6 +42,8 @@
     function resetScreenOverlay(id) {
         const element = document.getElementById(id);
         if (!element) return;
+        if (element.style.display !== 'none' && (element.tagName !== 'DIALOG' || element.open))
+            window.gamePresentation?.clear();
         cancelClose(id);
         if (element.tagName === 'DIALOG' && element.open) element.close();
         element.style.display = 'none';

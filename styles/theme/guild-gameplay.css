@@ -342,9 +342,6 @@
 .battle-arena .char-wrapper:not(.equipment-avatar) .char-img {
     opacity: 0;
 }
-.battle-arena .char-wrapper:has(.mob-attack-anim)::before {
-    animation: mob-atk 0.4s ease;
-}
 .title-toolbar {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr) auto;
@@ -1123,12 +1120,6 @@ select {
     }
     #hero-wrapper.hero-active::before {
         animation: hero-atk 0.5s ease;
-    }
-    .battle-arena .char-wrapper:has(.mob-attack-anim)::before {
-        animation: mob-atk 0.4s ease;
-    }
-    #hero-wrapper:has(.hero-hit-anim)::before {
-        animation: hero-hit 0.4s ease;
     }
 }
 /* 실행 버튼은 색상에 관계없이 같은 얕은 단차와 윗면 하이라이트를 쓴다. */

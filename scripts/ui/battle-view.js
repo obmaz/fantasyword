@@ -9,6 +9,8 @@ function createBattleView({
     openScreen,
     closeScreen,
     attacks,
+    sound = null,
+    presentation = null,
     elementPrefix = '',
     arenaSelector = '.battle-arena',
 }) {
@@ -50,6 +52,25 @@ function createBattleView({
     let attackVersion = 0;
     let inputPattern = '';
     let keyboardButtons = [];
+    const soundChannel = elementPrefix || 'battle';
+    let announcement = null;
+    let monsterKind = 'slime';
+    const playSound = (cue, profile = {}) => sound?.play(cue, profile, soundChannel);
+    function announce(text) {
+        const arena = doc.querySelector(arenaSelector);
+        if (!arena) return;
+        announcement?.remove();
+        const label = doc.createElement('div');
+        label.className = 'encounter-announcement';
+        label.textContent = text;
+        label.setAttribute('aria-live', 'polite');
+        arena.appendChild(label);
+        announcement = label;
+        questionLater(() => {
+            label.remove();
+            if (announcement === label) announcement = null;
+        }, PRESENTATION_CONFIG.encounterMs);
+    }
     function lockKeyboard(locked) {
         keyboardButtons.forEach((button) => {
             button.disabled = locked;
@@ -124,7 +145,9 @@ function createBattleView({
     }
     function clearAttack() {
         attackVersion++;
-        element('hero-wrapper').classList.remove('hero-active');
+        announcement?.remove();
+        announcement = null;
+        element('hero-wrapper').classList.remove('hero-active', 'hero-recoil');
         delete element('hero-wrapper').dataset.strike;
         element('monster-img').classList.remove('mob-active');
         const layer = element('combat-effects');
@@ -137,7 +160,11 @@ function createBattleView({
         element('effect-slash').className = 'attack-impact';
         element('attack-particles').innerHTML = '';
         const arena = doc.querySelector(arenaSelector);
-        if (arena) delete arena.dataset.strike;
+        if (arena) {
+            delete arena.dataset.strike;
+            delete arena.dataset.reaction;
+            if (arena.dataset.phase === 'enemy-attack') arena.dataset.phase = 'ready';
+        }
     }
     function positionAttack() {
         const arena = doc.querySelector(arenaSelector);
@@ -185,20 +212,41 @@ function createBattleView({
     }
     function resetEffects() {
         clearAttack();
-        for (const [id, classes] of [
-            ['hero-img', ['hero-hit-anim']],
-            ['hero-head', ['hero-hit-anim']],
-            ['monster-img', ['mob-attack-anim']],
-            ['dmg-txt', ['float-up']],
-        ])
-            element(id)?.classList.remove(...classes);
-        doc.querySelector(arenaSelector)?.classList.remove('screen-shake');
+        sound?.stop(soundChannel);
+        element('hero-wrapper').classList.remove('hero-victory');
+        const arena = doc.querySelector(arenaSelector);
+        if (arena) {
+            delete arena.dataset.reaction;
+            delete arena.dataset.phase;
+        }
+        element('dmg-txt').classList.remove('float-up');
         element('dmg-txt').textContent = '';
     }
     return {
         resetCombat() {
             questionVersion++;
             resetEffects();
+        },
+        enterCombat(monster = 'slime') {
+            monsterKind = monster;
+            const arena = doc.querySelector(arenaSelector);
+            if (arena) {
+                arena.dataset.monster = monster;
+                arena.dataset.phase = 'enter';
+            }
+            announce(
+                monster === 'dragon'
+                    ? 'FINAL · 드래곤 등장'
+                    : `${{ slime: '슬라임', goblin: '고블린', bat: '박쥐' }[monster] || '몬스터'} 등장`
+            );
+            questionLater(() => {
+                if (arena?.dataset.phase === 'enter') arena.dataset.phase = 'ready';
+            }, PRESENTATION_CONFIG.encounterMs);
+        },
+        victory(won = true) {
+            resetEffects();
+            element('hero-wrapper').classList.toggle('hero-victory', won);
+            playSound(won ? 'victory' : 'defeat');
         },
         stop() {
             questionVersion++;
@@ -246,6 +294,20 @@ function createBattleView({
             screen.dataset.answerEntry = '';
             screen.dataset.monster = encounter?.id || '';
             screen.dataset.questionKind = encounter?.kind || '';
+            monsterKind = encounter?.id || (encounter?.kind === 'idiom' ? 'goblin' : 'slime');
+            const arena = doc.querySelector(arenaSelector);
+            if (arena) {
+                arena.dataset.monster = monsterKind;
+                arena.dataset.phase = 'enter';
+            }
+            announce(
+                `${progress} · ${encounter?.name || '몬스터'}${monsterKind === 'dragon' ? ' · FINAL' : ''}`
+            );
+            if (encounter?.kind !== 'listening')
+                playSound(monsterKind === 'dragon' ? 'boss' : 'encounter');
+            questionLater(() => {
+                if (arena?.dataset.phase === 'enter') arena.dataset.phase = 'ready';
+            }, PRESENTATION_CONFIG.encounterMs);
             screen
                 .querySelector('.battle-hud')
                 ?.setAttribute(
@@ -504,6 +566,7 @@ function createBattleView({
             clearAttack();
             positionAttack();
             element('combat-effects').classList.add('is-blocking');
+            playSound('block');
             const version = attackVersion;
             questionLater(() => {
                 if (version === attackVersion) clearAttack();
@@ -575,8 +638,10 @@ function createBattleView({
         },
         attack(input) {
             clearAttack();
+            sound?.stop(soundChannel);
             const size = positionAttack();
             const profile = attacks.resolve(input);
+            playSound('swing', profile);
             const layer = element('combat-effects');
             layer.dataset.strike = profile.motion;
             layer.dataset.element = profile.element;
@@ -593,17 +658,20 @@ function createBattleView({
             element('attack-secondary-art').src = effectArt(profile.secondary || 'basic');
             element('attack-gold-art').src = effectArt('gold');
             const particles = element('attack-particles');
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < PRESENTATION_CONFIG.particleCount; i++) {
                 const spark = doc.createElement('i');
                 spark.style.setProperty(
                     '--spark-x',
-                    `${Math.cos((i * Math.PI * 2) / 7) * size * 0.4}px`
+                    `${Math.cos((i * Math.PI * 2) / PRESENTATION_CONFIG.particleCount) * size * 0.4}px`
                 );
                 spark.style.setProperty(
                     '--spark-y',
-                    `${Math.sin((i * Math.PI * 2) / 7) * size * 0.4}px`
+                    `${Math.sin((i * Math.PI * 2) / PRESENTATION_CONFIG.particleCount) * size * 0.4}px`
                 );
-                spark.style.setProperty('--spark-angle', `${i * 51}deg`);
+                spark.style.setProperty(
+                    '--spark-angle',
+                    `${(i * 360) / PRESENTATION_CONFIG.particleCount}deg`
+                );
                 particles.appendChild(spark);
             }
             // Clear old animation styles before replaying on the same DOM nodes.
@@ -619,6 +687,9 @@ function createBattleView({
                 element('effect-slash').classList.add(`eff-${profile.element}`);
                 if (profile.secondary) layer.classList.add('has-secondary');
                 element('monster-img').classList.add('mob-active');
+                if (arena) arena.dataset.reaction = profile.motion === 'axe' ? 'heavy' : 'impact';
+                playSound('impact', profile);
+                if (profile.combo) playSound('combo', profile);
             }, profile.impactMs);
             questionLater(() => {
                 if (version === attackVersion) clearAttack();
@@ -633,16 +704,24 @@ function createBattleView({
                 element('combat-effects').classList.add('has-gold');
         },
         hit() {
-            element('monster-img').classList.add('mob-attack-anim');
-            element('hero-img').classList.add('hero-hit-anim');
-            element('hero-head').classList.add('hero-hit-anim');
-            doc.querySelector(arenaSelector)?.classList.add('screen-shake');
+            clearAttack();
+            const version = attackVersion;
+            const arena = doc.querySelector(arenaSelector);
+            if (arena) arena.dataset.phase = 'enemy-attack';
             questionLater(() => {
-                element('monster-img').classList.remove('mob-attack-anim');
-                element('hero-img').classList.remove('hero-hit-anim');
-                element('hero-head').classList.remove('hero-hit-anim');
-                doc.querySelector(arenaSelector)?.classList.remove('screen-shake');
-            }, 400);
+                if (version !== attackVersion) return;
+                element('hero-wrapper').classList.add('hero-recoil');
+                if (arena) arena.dataset.reaction = 'hurt';
+                playSound('hurt');
+            }, PRESENTATION_CONFIG.monsterWindupMs);
+            questionLater(() => {
+                if (version !== attackVersion) return;
+                element('hero-wrapper').classList.remove('hero-recoil');
+                if (arena) {
+                    delete arena.dataset.reaction;
+                    arena.dataset.phase = 'ready';
+                }
+            }, PRESENTATION_CONFIG.monsterWindupMs + PRESENTATION_CONFIG.reactionMs);
         },
         floatText(text, type, detail = '') {
             const version = ++floatVersion;
@@ -671,7 +750,7 @@ function createBattleView({
             bar.style.width = `${Math.max(0, Math.min(100, (timeLeft / maxTime) * 100))}%`;
             bar.classList.toggle('timer-danger', timed && timeLeft <= 3);
         },
-        results(win, mode, stats, gold, rows, wrongWords, hadRetry = false) {
+        results(win, mode, stats, gold, rows, wrongWords, hadRetry = false, mistakes = 0) {
             element('res-retry-note').hidden = !hadRetry;
             element('res-retry-note').textContent =
                 '방패 재도전 사용 · 맞힌 개수는 최종 제출 기준입니다. 처음 틀린 단어는 복수 퀘스트에 남아 있어요.';
@@ -716,6 +795,13 @@ function createBattleView({
                           )
                           .join('')
                     : '<div class="result-modal-item result-modal-item-empty">없음</div>');
+            presentation?.complete({
+                host: doc.querySelector('#result-modal .result-modal'),
+                hero: element('hero-wrapper'),
+                won: win,
+                gold: stats.gain,
+                mistakes: mode === 'story' ? mistakes : null,
+            });
         },
     };
 }

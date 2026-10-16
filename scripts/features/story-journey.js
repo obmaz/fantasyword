@@ -100,6 +100,7 @@ const storyJourney = {
     open() {
         const snapshot = storyJourney.render();
         openScreenOverlay('story-map-modal', false);
+        if (snapshot.unlocked) gameSound.play('progress', {}, 'reward');
         const card = document.getElementById('story-map-content');
         const map = document.getElementById('story-map-path');
         const current = map.querySelector(
@@ -123,6 +124,11 @@ const storyJourney = {
         const events = storyJourney.events;
         const nodes = storyJourney.nodes(rows, events);
         const snapshot = { rows, stage, path, events, nodes };
+        const unlocked = gamePresentation.takeProgress(db.getBookKey(), stage);
+        snapshot.unlocked = unlocked;
+        container.dataset.chapter = ['forest', 'lake', 'canyon', 'snow', 'volcano'][
+            Math.min(4, Math.floor(stage / 3))
+        ];
         const height = nodes.length * 112 + 112;
         const y = (row) => (nodes.length - row - 1) * 112 + 80;
         container.style.height = `${height}px`;
@@ -138,7 +144,7 @@ const storyJourney = {
                         path[rowIndex + 1] === target;
                     const available = rowIndex === stage - 1 && path[rowIndex] === index;
                     lines.push(
-                        `<path class="${visited ? 'visited' : available ? 'available' : ''}" d="M ${storyJourney.position(index, row.length)} ${y(rowIndex)} L ${storyJourney.position(target, nodes[rowIndex + 1].length)} ${y(rowIndex + 1)}" />`
+                        `<path class="${visited ? 'visited' : available ? 'available' : ''}" ${unlocked && available ? 'data-new-route="true"' : ''} d="M ${storyJourney.position(index, row.length)} ${y(rowIndex)} L ${storyJourney.position(target, nodes[rowIndex + 1].length)} ${y(rowIndex + 1)}" />`
                     );
                 });
             })
@@ -157,6 +163,9 @@ const storyJourney = {
                 button.className = `story-map-node story-map-node-${node.kind}`;
                 button.dataset.index = String(index);
                 button.disabled = !storyJourney.canSelect(rowIndex, index, nodes, snapshot);
+                if (unlocked && !button.disabled) button.dataset.newlyUnlocked = 'true';
+                if (unlocked && rowIndex === stage - 1 && index === unlocked.index)
+                    button.dataset.newlyCleared = 'true';
                 button.style.left = `${storyJourney.position(index, row.length)}%`;
                 button.style.top = `${y(rowIndex)}px`;
                 const cleared = rowIndex < stage && path[rowIndex] === index;
@@ -533,6 +542,7 @@ const storyJourney = {
         )
             return false;
         storyJourney.cancelBattleReturn();
+        gamePresentation.rememberProgress({ book: db.getBookKey(), stage: row + 1, index });
         return true;
     },
     claimCasino(row, index, points) {
@@ -587,6 +597,11 @@ const storyJourney = {
         storyJourney.completeBattle();
         document.getElementById('story-treasure-status').textContent = `${gold} G를 얻었습니다.`;
         document.getElementById('story-treasure-open').disabled = true;
+        gamePresentation.notify({
+            title: '보물 발견!',
+            detail: `+${gold} G`,
+            item: { id: 'pilgrimMedal' },
+        });
     },
     leaveTreasure() {
         resetScreenOverlay('story-treasure-modal');
@@ -610,6 +625,11 @@ const storyJourney = {
                 })
             )
                 return;
+            gamePresentation.rememberProgress({
+                book: db.getBookKey(),
+                stage: storyJourney.stage,
+                index: storyJourney.pendingIndex,
+            });
         }
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
@@ -674,6 +694,11 @@ const storyJourney = {
         }
         inventory.refresh();
         storyJourney.renderMarket();
+        gamePresentation.notify({
+            title: '유물 획득',
+            detail: itemDisplayName(relic),
+            item: relic,
+        });
     },
     leaveMarket() {
         resetScreenOverlay('story-market-modal');

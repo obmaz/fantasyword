@@ -30,7 +30,12 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 `features/app-install.js`는 설치 이벤트와 Safari 안내를 처리하고 `init.js`에서 초기화한다.
 빌드는 워커의 앱 버전과 음악을 제외한 사전 저장 목록을 주입한다. 워커는 저장 데이터에 접근하지 않는다.
 `features/haptics.js`는 저장된 ON/OFF·길이를 읽는 공통 오답 진동 서비스다.
-`config.js`의 `EQUIPMENT_CONFIG`는 장비 수치, `HAPTICS_CONFIG`는 진동 기본값·선택지를 소유한다.
+`features/sound-effects.js`는 사용자 입력 후 지연 생성하는 AudioContext와 제한된 음원 풀을 소유한다.
+화면별 채널 취소·설정 OFF·문서 비활성화를 처리하며 UI나 세션은 `play/stop`만 호출한다.
+`ui/game-presentation.js`는 저장 성공 후 획득 알림·장착 강조·결과 캐릭터·일회성 지도 해금 연출을 소유한다.
+복제 캐릭터의 ID는 제거하며 화면 전환 시 타이머·알림을 정리한다. 저장 데이터나 지급 규칙을 변경하지 않는다.
+`config.js`의 `EQUIPMENT_CONFIG`는 장비 수치, `HAPTICS_CONFIG`는 진동 기본값·선택지,
+`PRESENTATION_CONFIG`는 등장·반격·보상 길이, 파티클·동시 음원 상한을 소유한다.
 아이템 데이터·마이그레이션·보상·설정·HUD는 같은 정책을 참조한다. 독립 도메인 테스트도 이 설정을 먼저 로드한다.
 `app.js`가 게임 세션의 오답 콜백에 주입하며, 진동 API 오류는 게임 진행에 전파하지 않는다.
 
@@ -99,6 +104,8 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 뷰는 `data-phase`로 문제/풀이/결과를 표현한다.
 속담은 별도 ID 접두사의 전투 장면에서 `createBattleView`의 공격·피격·효과 초기화를 재사용한다.
 화면 전환 시 효과 세대를 갱신해 이전 공격 콜백이 다음 문제나 다른 전투에 영향을 주지 않게 한다.
+전투 뷰는 무기 impactMs와 같은 예약 시점에 타격음·화면 반응을 적용하고 공격 버전으로 이전 반격 정리를 차단한다.
+`game-presentation.test.js`는 음향 정책·동시 음원 제한·채널 취소·보스 피격·타격 타이밍·저장 실패·지도 진행을 검증한다.
 야바위는 컵 ID/자리·주사위를 세션에, 이동·선택 DOM은 뷰에 둔다.
 스토리 퍼즐/야바위 지급은 결과 콜백으로만 저장한다. 어드민은 실제 지급 콜백을 주입하지 않는다.
 
@@ -121,6 +128,7 @@ HTML의 실제 cascade를 유지한다. 공통/화면 기본 규칙 뒤에는 �
 5. `theme/weapon-effects.css`
 6. `screens/skyfall-mode.css`, `hangman-mode.css`, `story-events.css`, `story-puzzles.css`
 7. `theme/shared-ui.css` — 공통 보기·진행 버튼, 프롬프트 정렬, 고정된 풀이/다음 영역, 메뉴 안내 띠
+8. `theme/game-presentation.css` — 전체 캐릭터·몬스터 동작, 타격 반응, 획득·승리·지도 진행과 reduced motion
 
 이름만 보고 재정렬하지 않고 기존 소유 규칙에 변경을 반영한다. 끝없는 override 누적을 피한다.
 CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 붙인다.

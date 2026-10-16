@@ -1,5 +1,5 @@
 /** 컵과 주사위 표현. 게임 판정·보상은 주입된 세션이 소유한다. */
-function createShellView({ document: doc, openScreen, resetScreen }) {
+function createShellView({ document: doc, openScreen, resetScreen, sound }) {
     const element = (id) => doc.getElementById(id);
     const labels = { red: '빨강', blue: '파랑', yellow: '노랑', green: '초록' };
     let cupButtons = [];
@@ -129,6 +129,7 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             });
         },
         offer(cash, double) {
+            sound?.play('combo', {}, 'shell');
             cupButtons.forEach((button) => {
                 button.disabled = true;
             });
@@ -150,11 +151,13 @@ function createShellView({ document: doc, openScreen, resetScreen }) {
             controls(['저장 재시도', retry]);
         },
         done(points, casino, again) {
+            sound?.play(points ? 'reward' : 'defeat', {}, 'shell');
             element('shell-status').textContent =
                 `${points ? '성공!' : '아쉬워요.'} ${casino ? `획득 ${points}골드` : `테스트 점수 ${points}`} · 보유 금화를 걸지 않는 체험입니다.`;
             controls([casino ? '지도로 돌아가기' : '다시 하기', again, casino ? 'execute' : null]);
         },
         exit() {
+            sound?.stop('shell');
             version++;
             cancelAnimations();
             resetScreen('shell-game');

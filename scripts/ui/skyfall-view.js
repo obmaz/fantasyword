@@ -1,5 +1,13 @@
 /** 총공세 DOM과 짧은 공격 효과의 수명만 소유한다. */
-function createSkyfallView({ document, openScreen, closeScreen, syncLayout, timers }) {
+function createSkyfallView({
+    document,
+    openScreen,
+    closeScreen,
+    syncLayout,
+    timers,
+    sound,
+    presentation,
+}) {
     const { setTimeout: schedule, clearTimeout: cancel } = timers;
     const byId = (id) => document.getElementById(id);
     const words = new Map();
@@ -104,14 +112,17 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
             if (!word) return;
             effect('skyfall-projectile', word, 360);
             effect('skyfall-hit', word, 620);
+            sound?.play('impact', {}, 'skyfall');
         },
         damage() {
+            sound?.play('hurt', {}, 'skyfall');
             const field = byId('skyfall-field');
             field.classList.remove('skyfall-damaged');
             void field.offsetWidth;
             field.classList.add('skyfall-damaged');
         },
         stop() {
+            sound?.stop('skyfall');
             if (noticeTimer !== null) cancel(noticeTimer);
             noticeTimer = null;
             setText('skyfall-notice', '');
@@ -145,6 +156,11 @@ function createSkyfallView({ document, openScreen, closeScreen, syncLayout, time
                 won ? '내려오는 단어를 모두 막았습니다.' : '다시 도전해서 기록을 높여 보세요.'
             );
             openScreen('skyfall-result-modal', false);
+            presentation?.complete({
+                host: document.querySelector('#skyfall-result-modal .skyfall-result'),
+                won,
+                gold: earned,
+            });
         },
     };
     return view;

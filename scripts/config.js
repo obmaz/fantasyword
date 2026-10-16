@@ -28,3 +28,14 @@ const HAPTICS_CONFIG = Object.freeze({
     defaultDuration: 200,
     durations: Object.freeze([80, 200, 350]),
 });
+
+const PRESENTATION_CONFIG = Object.freeze({
+    encounterMs: 650,
+    monsterWindupMs: 160,
+    reactionMs: 460,
+    rewardMs: 1800,
+    equipMs: 700,
+    maxVoices: 20,
+    soundVolume: 0.12,
+    particleCount: 9,
+});

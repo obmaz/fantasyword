@@ -1,5 +1,12 @@
 /** 모델과 콜백만 사용하는 스토리 퍼즐 화면. 공통 이미지 헤더·버튼을 재사용한다. */
-function createStoryPuzzleView({ document: doc, openScreen, resetScreen, combat, combatants }) {
+function createStoryPuzzleView({
+    document: doc,
+    openScreen,
+    resetScreen,
+    combat,
+    combatants,
+    sound,
+}) {
     const element = (id) => doc.getElementById(id);
     let version = 0;
     let proverbReviewTimer = null;
@@ -85,7 +92,10 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen, combat,
         question(model, choose) {
             version++;
             combat?.resetCombat();
-            if (model.kind === 'proverb') combatants?.render();
+            if (model.kind === 'proverb') {
+                combatants?.render();
+                combat?.enterCombat('slime');
+            }
             element('story-puzzle-game').dataset.phase = 'question';
             clearQuestion();
             actions();
@@ -192,6 +202,9 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen, combat,
         done(result, story, again) {
             version++;
             combat?.resetCombat();
+            if (element('story-puzzle-game').dataset.kind === 'proverb')
+                combat?.victory(result.won);
+            else sound?.play(result.won ? 'victory' : 'defeat', {}, 'reward');
             element('story-puzzle-game').dataset.phase = 'done';
             clearQuestion();
             element('puzzle-prompt').textContent = result.won ? '완료!' : '다시 도전해 보세요';

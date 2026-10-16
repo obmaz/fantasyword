@@ -1,0 +1,458 @@
+/* Actors move as complete sprites: the equipped layers stay attached to their hands. */
+:is(#hero-wrapper, #puzzle-hero-wrapper) > img,
+:is(#monster-img, #puzzle-monster-img) {
+    animation: none !important;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-monster]
+    :is(#hero-wrapper, #puzzle-hero-wrapper):not(.hero-active, .hero-recoil, .hero-victory) {
+    transform-origin: 50% 90%;
+    animation: adventurer-breathe 3s ease-in-out infinite;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-monster]:not([data-phase='enemy-attack'])
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)):not(
+        :has(.mob-active)
+    ) {
+    transform-origin: 50% 90%;
+    animation: var(--enemy-idle, slime-bounce) var(--enemy-period, 2.2s) ease-in-out infinite;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-monster='goblin']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    --enemy-idle: goblin-watch;
+    --enemy-period: 2.8s;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-monster='bat']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    --enemy-idle: bat-hover;
+    --enemy-period: 1.6s;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-monster='dragon']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    --enemy-idle: dragon-breathe;
+    --enemy-period: 3.6s;
+    filter: drop-shadow(0 0 6px #f0ba6d55);
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-phase='enemy-attack']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    animation: enemy-lunge var(--enemy-attack-duration) ease-in-out both;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-phase='enemy-attack'][data-monster='slime']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    animation-name: slime-pounce;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-phase='enemy-attack'][data-monster='bat']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    animation-name: bat-dive;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-phase='enemy-attack'][data-monster='dragon']
+    :is(.char-wrapper, .puzzle-combatant):has(> :is(#monster-img, #puzzle-monster-img)) {
+    animation-name: dragon-stomp;
+}
+:is(#battle-mode-game, #story-puzzle-game) :is(#hero-wrapper, #puzzle-hero-wrapper).hero-recoil {
+    animation: adventurer-hurt var(--reaction-duration) ease-out both;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-reaction] {
+    animation: scene-impact 160ms ease-out;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-reaction='heavy'] {
+    animation: scene-heavy-impact 220ms ease-out;
+}
+:is(.battle-arena, .puzzle-combat-scene)[data-reaction='hurt'] {
+    animation: scene-hurt 200ms ease-out;
+}
+.encounter-announcement {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    z-index: 28;
+    width: max-content;
+    max-width: 85%;
+    color: var(--ui-text-on-art);
+    text-shadow: 0 2px 3px var(--color-black);
+    font-size: clamp(14px, 4cqw, 22px);
+    font-weight: 900;
+    text-align: center;
+    pointer-events: none;
+    animation: encounter-enter var(--encounter-duration) ease-out both;
+}
+/* Acquisitions sit above the play area and never intercept buttons. */
+.game-acquisition {
+    position: fixed;
+    z-index: var(--layer-toast);
+    top: clamp(76px, 16vh, 140px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    max-width: calc(var(--title-container-width, 100vw) - 48px);
+    padding: 4px 12px;
+    border: 8px solid transparent;
+    border-image: var(--ui-panel) 18% fill / 8px / 0 stretch;
+    color: var(--ui-text-on-art);
+    font-size: 14px;
+    pointer-events: none;
+    box-shadow: 0 0 20px #e8ce6e44;
+}
+.game-acquisition strong,
+.game-acquisition span {
+    display: block;
+}
+.game-acquisition span {
+    margin-top: 2px;
+    font-size: 12px;
+}
+.acquisition-art {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+.acquisition-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.game-acquisition.is-acquiring {
+    animation: acquisition-arrive var(--reward-duration) ease both;
+}
+.equipment-reveal {
+    animation: equipment-reveal var(--equip-duration) ease-out;
+}
+.result-celebration {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 80px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    color: var(--ui-text-on-art);
+}
+.result-celebration .celebration-avatar {
+    width: 78px;
+    height: 78px;
+    flex: 0 0 78px;
+    max-width: 78px;
+    isolation: isolate;
+    margin: 0;
+    pointer-events: none;
+}
+.celebration-avatar .char-img {
+    animation: none !important;
+}
+.celebration-avatar[data-actor-state='victory'],
+:is(#hero-wrapper, #puzzle-hero-wrapper).hero-victory {
+    animation: adventurer-victory 950ms ease-in-out 2;
+}
+.celebration-avatar[data-actor-state='defeat'] {
+    transform: rotate(-6deg);
+    opacity: 0.7;
+}
+.result-celebration > i {
+    position: absolute;
+    top: 70%;
+    left: calc(10% + var(--spark-index) * 9%);
+    width: 12px;
+    height: 12px;
+    background: url('../../images/theme/parts/approved-coin.webp') center / contain no-repeat;
+    pointer-events: none;
+    animation: victory-spark 1.2s ease-out calc(var(--spark-index) * 45ms) both;
+}
+.reward-settled :is(#res-gain, #skyfall-result-gold) {
+    animation: gold-settle 850ms ease-out;
+}
+#story-map-path {
+    --journey-accent: #b9e2b0;
+}
+#story-map-path[data-chapter='lake'] {
+    --journey-accent: #b9e2ff;
+}
+#story-map-path[data-chapter='canyon'] {
+    --journey-accent: #ecc58d;
+}
+#story-map-path[data-chapter='snow'] {
+    --journey-accent: #e0f4f4;
+}
+#story-map-path[data-chapter='volcano'] {
+    --journey-accent: #ffa477;
+}
+.story-map-node[data-newly-unlocked='true'] {
+    outline: 3px solid var(--journey-accent);
+    outline-offset: 4px;
+    animation: route-unlock 1s ease-out both;
+}
+.story-map-node[data-newly-cleared='true'] .story-map-crown {
+    animation: crown-arrive 900ms ease-out both;
+}
+.story-map-edges path[data-new-route='true'] {
+    stroke: var(--journey-accent);
+    stroke-dasharray: 240;
+    animation: route-reveal 1s ease-out both;
+}
+@keyframes adventurer-breathe {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-0.5deg);
+    }
+    50% {
+        transform: translateY(-2px) rotate(0.5deg);
+    }
+}
+@keyframes slime-bounce {
+    0%,
+    100% {
+        transform: scale(1.02, 0.98);
+    }
+    50% {
+        transform: translateY(-4px) scale(0.98, 1.02);
+    }
+}
+@keyframes goblin-watch {
+    0%,
+    100% {
+        transform: rotate(-1.5deg);
+    }
+    50% {
+        transform: translateX(-3px) rotate(1.5deg);
+    }
+}
+@keyframes bat-hover {
+    0%,
+    100% {
+        transform: translateY(2px) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+@keyframes dragon-breathe {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.035) rotate(-1deg);
+    }
+}
+@keyframes enemy-lunge {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    15% {
+        transform: translateX(6px) rotate(4deg);
+    }
+    26% {
+        transform: translateX(-26px) rotate(-5deg);
+    }
+}
+@keyframes slime-pounce {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.15, 0.8);
+    }
+    26% {
+        transform: translate(-24px, -10px) scale(0.9, 1.1);
+    }
+}
+@keyframes bat-dive {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    15% {
+        transform: translate(4px, -8px);
+    }
+    26% {
+        transform: translate(-28px, 10px) rotate(-12deg);
+    }
+}
+@keyframes dragon-stomp {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: translateY(-7px) scale(1.04);
+    }
+    26% {
+        transform: translate(-12px, 4px) scale(1.03);
+    }
+}
+@keyframes adventurer-hurt {
+    0%,
+    100% {
+        transform: translateX(0);
+        filter: none;
+    }
+    20% {
+        transform: translateX(-8px) rotate(-5deg);
+        filter: brightness(1.3) sepia(0.35);
+    }
+    55% {
+        transform: translateX(2px);
+    }
+}
+@keyframes scene-impact {
+    40% {
+        filter: brightness(1.12);
+    }
+}
+@keyframes scene-heavy-impact {
+    30% {
+        transform: translateY(2px);
+        filter: brightness(1.15);
+    }
+    65% {
+        transform: translateY(-1px);
+    }
+}
+@keyframes scene-hurt {
+    40% {
+        filter: sepia(0.3) brightness(0.95);
+    }
+}
+@keyframes encounter-enter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 8px);
+    }
+    25%,
+    65% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -4px);
+    }
+}
+@keyframes acquisition-arrive {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -10px) scale(0.95);
+    }
+    12%,
+    85% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -4px);
+    }
+}
+@keyframes equipment-reveal {
+    30% {
+        filter: brightness(1.4) drop-shadow(0 0 8px #ffe3a7);
+    }
+}
+@keyframes adventurer-victory {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+    30% {
+        transform: translateY(-7px) rotate(-4deg);
+    }
+    60% {
+        transform: translateY(-2px) rotate(4deg);
+    }
+}
+@keyframes victory-spark {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.4);
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) rotate(120deg) scale(0.9);
+    }
+}
+@keyframes gold-settle {
+    30% {
+        scale: 1.15;
+        color: #9a6216;
+    }
+}
+@keyframes route-unlock {
+    0% {
+        scale: 0.9;
+        opacity: 0.5;
+    }
+    60% {
+        scale: 1.08;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+@keyframes crown-arrive {
+    0% {
+        scale: 0.2;
+        opacity: 0;
+    }
+    60% {
+        scale: 1.2;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+@keyframes route-reveal {
+    from {
+        stroke-dashoffset: 240;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@media (max-height: 500px) {
+    .result-celebration {
+        min-height: 52px;
+    }
+    .result-celebration .celebration-avatar {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+    }
+    .game-acquisition {
+        top: 65px;
+        padding-block: 0;
+        font-size: 12px;
+    }
+    .acquisition-art {
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    :is(.battle-arena, .puzzle-combat-scene)[data-monster],
+    :is(.battle-arena, .puzzle-combat-scene)[data-monster] *,
+    .result-celebration *,
+    .hero-victory,
+    .equipment-reveal,
+    .game-acquisition.is-acquiring,
+    .story-map-node[data-newly-unlocked],
+    .story-map-crown,
+    .story-map-edges path[data-new-route] {
+        animation: none !important;
+        transition: none !important;
+    }
+    .encounter-announcement {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+    .story-map-edges path[data-new-route] {
+        stroke-dasharray: none;
+    }
+}

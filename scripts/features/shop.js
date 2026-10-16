@@ -167,6 +167,12 @@ const shop = {
         if (!db.commitChanges(changes)) return;
         shop.render();
         inventory.refresh();
+        gamePresentation.notify({
+            title: type === 'backpack' ? '보관함 확장' : '아이템 획득',
+            detail:
+                type === 'backpack' ? `${db.inventoryCapacity}칸으로 확장` : itemDisplayName(item),
+            item,
+        });
         if (type === 'backpack')
             showToast(
                 `보관함이 ${previousCapacity}칸에서 ${db.inventoryCapacity}칸으로 늘었습니다.`,
