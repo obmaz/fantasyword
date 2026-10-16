@@ -264,7 +264,6 @@ function createBattleView({
             element('spelling-answer').classList.remove('spelling-revealed');
             const quizArea = doc.querySelector('.quiz-area');
             if (quizArea) quizArea.scrollTop = 0;
-            element('game-info-badge').style.display = 'block';
             element('skill-display').style.visibility = 'visible';
         },
         objective(prompt, options, onAnswer) {

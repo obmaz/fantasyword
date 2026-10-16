@@ -21,6 +21,31 @@ const pool = [
     { day: 1, word: 'dog', meaning: '개' },
 ];
 
+test('기존 Day 배지가 없는 실제 화면 구조에서도 도전·스토리·사자성어를 시작하고 다음 문제로 진행한다', () => {
+    for (const mode of ['battle', 'story', 'idiom-test']) {
+        const r = browserRuntime(quiet);
+        r.sandbox.rawDataData = pool;
+        assert.doesNotMatch(r.html, /id="game-info-badge"/);
+        const getElementById = r.sandbox.document.getElementById;
+        r.sandbox.document.getElementById = (id) =>
+            id === 'game-info-badge' ? null : getElementById(id);
+        const day = mode === 'idiom-test' ? 'all' : 1;
+        r.evaluate(
+            `game.battleQuestionType = 'objective'; game.init('${mode}', '${day}', 'objective')`
+        );
+        r.advance(400);
+        assert.equal(r.evaluate('game.active'), true, mode);
+        assert.notEqual(r.getElement('q-text').innerText, '', mode);
+        assert.ok(r.getElement('options-box').children.length > 0, mode);
+        r.evaluate('game.answerOption(game.options.findIndex(option => option.correct))');
+        assert.equal(r.evaluate('game.currentQ.wasCorrect'), true, mode);
+        r.advance(800);
+        assert.equal(r.evaluate('game.idx'), 1, mode);
+        r.evaluate('game.exit()');
+        assert.equal(r.evaluate('game.active'), false, mode);
+    }
+});
+
 test('음악·자동 발음·진동 설정은 저장 실패 시 체크와 실행 상태를 보존한다', () => {
     const r = browserRuntime();
     r.sandbox.onload();

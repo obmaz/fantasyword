@@ -20,7 +20,7 @@ const ui = {
     },
 
     /**
-     * 게임 정보 배지를 업데이트합니다
+     * 게임 제목 옆 출제 범위를 업데이트합니다
      * @param {string} mode - 게임 모드
      * @param {string|number} day - Day 값
      */
@@ -64,8 +64,6 @@ const ui = {
                 }
             }
         }
-        const gameInfoEl = document.getElementById('game-info-badge');
-        if (gameInfoEl) gameInfoEl.innerText = dayText;
         const dayLabel = document.getElementById('battle-day-label');
         if (dayLabel) {
             dayLabel.textContent = dayText;
