@@ -340,7 +340,7 @@ select option:checked {
 }
 .mode-question-types label,
 .print-radio-label {
-    background: #fff8e7;
+    background: transparent;
     color: var(--theme-ink);
     font-size: 14px;
 }

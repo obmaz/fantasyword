@@ -65,8 +65,11 @@ const ui = {
             }
         }
         const gameInfoEl = document.getElementById('game-info-badge');
-        if (gameInfoEl) {
-            gameInfoEl.innerText = dayText;
+        if (gameInfoEl) gameInfoEl.innerText = dayText;
+        const dayLabel = document.getElementById('battle-day-label');
+        if (dayLabel) {
+            dayLabel.textContent = dayText;
+            dayLabel.hidden = !dayText || ['생존 도전', '복수 퀘스트'].includes(dayText);
         }
     },
 
@@ -140,6 +143,11 @@ const ui = {
                 }
                 equipmentBar.appendChild(node);
             };
+            const battleScreen = document.getElementById('battle-mode-game');
+            if (battleScreen) {
+                battleScreen.dataset.combo = gear.weapon ? String(gear.combo) : '';
+                battleScreen.style.setProperty('--combo-count', `"${gear.combo || 0}/3"`);
+            }
             if (gear.weapon)
                 append(
                     db.equipped['hand-1'] || db.equippedWeapon || 'basic',

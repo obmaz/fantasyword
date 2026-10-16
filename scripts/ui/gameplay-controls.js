@@ -52,6 +52,11 @@ function createGameplayHeader({
     if (headingId) name.id = headingId;
     name.textContent = title;
     heading.appendChild(name);
+    const day = doc.createElement('span');
+    day.id = `${mode}-day-label`;
+    day.className = 'gameplay-day-label';
+    day.hidden = true;
+    heading.appendChild(day);
     if (subtitle) {
         const caption = doc.createElement('p');
         caption.textContent = subtitle;
