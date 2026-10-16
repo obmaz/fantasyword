@@ -18,14 +18,7 @@
         element.classList.remove('closing');
         element.style.display = 'flex';
         const title = document.getElementById('title-screen');
-        if (
-            id === 'battle-mode-game' ||
-            id === 'practice-mode-game' ||
-            id === 'skyfall-mode-game' ||
-            id === 'shell-game' ||
-            id === 'story-puzzle-game' ||
-            id === 'hangman-game'
-        ) {
+        if (APP_CONFIG.gameScreenIds.includes(id)) {
             title.style.display = 'none';
             title.inert = true;
         } else if (id === 'title-screen') {
@@ -60,7 +53,8 @@
         cancelClose(id);
         if (id === 'battle-mode-game') game.stop();
         if (id === 'skyfall-mode-game') skyfall.stop();
-        if (animated && element.classList.contains('screen-overlay')) {
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+        if (animated && !reduceMotion && element.classList.contains('screen-overlay')) {
             element.classList.add('closing');
             closeTimers.set(
                 id,

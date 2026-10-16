@@ -38,10 +38,15 @@ const appInstall = (() => {
                 document.getElementById('app-install-help').textContent =
                     '홈 화면에서 앱을 열 수 있어요.';
             });
-            if (window.isSecureContext && 'serviceWorker' in navigator)
-                navigator.serviceWorker
-                    .register('sw.js', { updateViaCache: 'none' })
-                    .catch(() => {});
+            if (window.isSecureContext && 'serviceWorker' in navigator) {
+                const register = () =>
+                    navigator.serviceWorker
+                        .register('sw.js', { updateViaCache: 'none' })
+                        .catch(() => {});
+                // 전체 오프라인 에셋의 사전 저장이 첫 화면 다운로드와 경쟁하지 않게 한다.
+                if (document.readyState === 'complete') register();
+                else window.addEventListener('load', register, { once: true });
+            }
         },
         async install() {
             if (installed()) return;

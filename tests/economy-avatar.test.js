@@ -269,7 +269,7 @@ test('오른손을 교체·복원하면 두 아바타에 새 무기만 남고 �
     assert.ok(restoredLayers.every((layer) => layer.hidden));
 });
 
-test('장착 무기를 바꾼 뒤 전투 연속 공격 표시도 현재 오른손 무기를 사용한다', () => {
+test('무기를 교체해도 콤보는 전투 장면에 표시하고 중복 장비 태그를 만들지 않는다', () => {
     for (const id of ['fire', 'midasSword']) {
         const r = economyRuntime({
             v7_owned: '["basic","fire","midasSword"]',
@@ -281,9 +281,13 @@ test('장착 무기를 바꾼 뒤 전투 연속 공격 표시도 현재 오른�
         r.getElement('count-select').value = '10';
         r.evaluate('game.init("battle", 1)');
         r.advance(400);
-        const controls = r.getElement('equipment-display').children;
-        assert.match(controls[0].innerHTML, new RegExp(`item-art-${id}`));
-        assert.ok(!controls[0].innerHTML.includes('item-art-basic'));
+        assert.equal(r.evaluate('db.equipped["hand-1"]'), id);
+        assert.equal(r.getElement('battle-mode-game').dataset.combo, '0');
+        assert.ok(
+            r
+                .getElement('equipment-display')
+                .children.every((el) => !el.innerHTML.includes('Combo'))
+        );
         r.evaluate('game.stop()');
     }
 });

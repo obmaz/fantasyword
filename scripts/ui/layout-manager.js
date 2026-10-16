@@ -82,14 +82,7 @@
     function syncGameScreenSize() {
         const height = getLockedAppHeight();
         const width = getScreenWidth();
-        for (const id of [
-            'battle-mode-game',
-            'practice-mode-game',
-            'skyfall-mode-game',
-            'hangman-game',
-            'shell-game',
-            'story-puzzle-game',
-        ]) {
+        for (const id of APP_CONFIG.gameScreenIds) {
             const screen = document.getElementById(id);
             if (screen) {
                 screen.style.width = width + 'px';

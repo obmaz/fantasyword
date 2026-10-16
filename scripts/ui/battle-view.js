@@ -193,7 +193,7 @@ function createBattleView({
         ])
             element(id)?.classList.remove(...classes);
         doc.querySelector(arenaSelector)?.classList.remove('screen-shake');
-        element('dmg-txt').innerText = '';
+        element('dmg-txt').textContent = '';
     }
     return {
         resetCombat() {
@@ -252,12 +252,12 @@ function createBattleView({
                     'aria-label',
                     encounter?.kind === 'idiom' ? '풀이 정보' : '전투 정보'
                 );
-            element('wave-badge').innerText = progress;
+            element('wave-badge').textContent = progress;
             element('equipment-hint').hidden = true;
-            element('equipment-hint').innerText = '';
-            element('q-label').innerText = '';
+            element('equipment-hint').textContent = '';
+            element('q-label').textContent = '';
             element('q-label').style.display = 'none';
-            element('question-instruction').innerText = '';
+            element('question-instruction').textContent = '';
             element('listening-panel').hidden = true;
             element('spelling-panel').hidden = true;
             element('spelling-panel').onkeydown = null;
@@ -272,11 +272,11 @@ function createBattleView({
             const box = element('options-box');
             box.style.display = 'grid';
             box.innerHTML = '';
-            element('q-text').innerText = prompt;
+            element('q-text').textContent = prompt;
             optionButtons = options.map((option, index) => {
                 const button = doc.createElement('button');
                 button.className = 'option-btn answer-choice';
-                button.innerText = option.label;
+                button.textContent = option.label;
                 button.onclick = () => {
                     if (version === questionVersion && !button.disabled) onAnswer(index);
                 };
@@ -289,9 +289,9 @@ function createBattleView({
             const version = questionVersion;
             element('boss-box').style.display = 'flex';
             element('options-box').style.display = 'none';
-            element('boss-title').innerText = title;
-            element('q-text').innerText = data.meaning;
-            element('boss-hint').innerText = hint;
+            element('boss-title').textContent = title;
+            element('q-text').textContent = data.meaning;
+            element('boss-hint').textContent = hint;
             element('boss-hint').classList.remove('boss-hint-revealed');
             const input = element('boss-input');
             input.value = '';
@@ -351,7 +351,7 @@ function createBattleView({
             doc.querySelectorAll('#spelling-panel .spelling-tools button').forEach((button) => {
                 button.disabled = false;
             });
-            element('q-text').innerText = prompt;
+            element('q-text').textContent = prompt;
             const box = element('spelling-tiles');
             box.innerHTML = '';
             letterButtons = tiles.map((letter, index) => {
@@ -418,7 +418,7 @@ function createBattleView({
                     : '';
                 const editable = character === '_' && !hint;
                 const picked = editable ? tiles[chosen[index]] : null;
-                slot.innerText = hint || (character === '_' ? picked || '·' : character);
+                slot.textContent = hint || (character === '_' ? picked || '·' : character);
                 if (hint) slot.classList.add('letter-slot-hint', 'letter-slot-fixed');
                 if (editable && index === chosen.length) {
                     slot.classList.add('letter-slot-active');
@@ -439,9 +439,9 @@ function createBattleView({
             element('listen-word-btn').disabled = false;
             element('listen-fallback-btn').disabled = false;
             const label = element('listen-word-btn').querySelector('span');
-            if (label) label.innerText = '듣고 풀기';
+            if (label) label.textContent = '듣고 풀기';
             // 실제 버튼 동작은 공통 이벤트 위임이 소유한다.
-            element('listening-status').innerText =
+            element('listening-status').textContent =
                 '발음을 듣고 한국어 뜻을 고르세요. 발음이 끝나면 답을 고를 수 있습니다.';
             optionButtons.forEach((button) => {
                 button.disabled = true;
@@ -450,8 +450,8 @@ function createBattleView({
         listeningState(state, options) {
             element('listen-word-btn').disabled = state === 'playing' || state === 'answered';
             const label = element('listen-word-btn').querySelector('span');
-            if (label) label.innerText = state === 'playing' ? '듣는 중…' : '다시 듣기';
-            element('listening-status').innerText =
+            if (label) label.textContent = state === 'playing' ? '듣는 중…' : '다시 듣기';
+            element('listening-status').textContent =
                 state === 'playing'
                     ? '발음을 재생하고 있습니다.'
                     : '들린 단어의 뜻을 고르세요. 다시 들어도 남은 시간은 유지됩니다.';
@@ -497,7 +497,7 @@ function createBattleView({
         },
         equipmentHint(text) {
             element('equipment-hint').hidden = false;
-            element('equipment-hint').innerText = text;
+            element('equipment-hint').textContent = text;
         },
         shieldBlock(index) {
             element('battle-mode-game').dataset.inputLocked = 'true';
@@ -565,10 +565,10 @@ function createBattleView({
         },
         reveal(answer, subjective, correctIndex) {
             if (!element('spelling-panel').hidden) {
-                element('spelling-answer').innerText = answer;
+                element('spelling-answer').textContent = answer;
                 element('spelling-answer').classList.add('spelling-revealed');
             } else if (subjective) {
-                element('boss-hint').innerText = answer;
+                element('boss-hint').textContent = answer;
                 element('boss-hint').classList.add('boss-hint-revealed');
             } else
                 optionButtons[correctIndex]?.classList.add('option-btn-correct', 'answer-revealed');
@@ -647,18 +647,18 @@ function createBattleView({
         floatText(text, type, detail = '') {
             const version = ++floatVersion;
             const node = element('dmg-txt');
-            node.innerText = text;
+            node.textContent = text;
             node.className = `damage-txt float-up ${type === 'gold' ? 'dmg-gold' : 'dmg-red'}${detail ? ' damage-with-detail' : ''}`;
             if (detail) {
                 const label = doc.createElement('span');
                 label.className = 'damage-detail';
-                label.innerText = detail;
+                label.textContent = detail;
                 node.appendChild(label);
             }
             questionLater(() => {
                 if (version === floatVersion) {
                     node.classList.remove('float-up');
-                    node.innerText = '';
+                    node.textContent = '';
                 }
             }, 1000);
         },
@@ -673,18 +673,18 @@ function createBattleView({
         },
         results(win, mode, stats, gold, rows, wrongWords, hadRetry = false) {
             element('res-retry-note').hidden = !hadRetry;
-            element('res-retry-note').innerText =
+            element('res-retry-note').textContent =
                 '방패 재도전 사용 · 맞힌 개수는 최종 제출 기준입니다. 처음 틀린 단어는 복수 퀘스트에 남아 있어요.';
             element('result-review-btn').hidden = wrongWords.length === 0;
             const isIdiom = element('battle-mode-game').dataset.questionKind === 'idiom';
-            element('res-title').innerText = isIdiom
+            element('res-title').textContent = isIdiom
                 ? win
                     ? '풀이 완료'
                     : '풀이 종료'
                 : win || mode === 'boss'
                   ? '전투 완료'
                   : '도전 종료';
-            element('res-subtitle').innerText = isIdiom
+            element('res-subtitle').textContent = isIdiom
                 ? '사자성어'
                 : mode === 'story'
                   ? '스토리'
@@ -694,12 +694,12 @@ function createBattleView({
                       ? '생존 도전'
                       : '도전';
             const total = rows.find(({ label }) => label === '전체') || rows.at(-1);
-            element('res-summary').innerText = total
+            element('res-summary').textContent = total
                 ? `정답 ${total.correct}/${total.total} · ${total.total ? Math.round((total.correct / total.total) * 100) : 0}%`
                 : '';
-            element('res-gain').innerText = stats.gain;
-            element('res-lost').innerText = stats.lost;
-            element('res-current-total').innerText = gold;
+            element('res-gain').textContent = stats.gain;
+            element('res-lost').textContent = stats.lost;
+            element('res-current-total').textContent = gold;
             element('res-record').innerHTML = rows
                 .map(({ label, correct, total }) => {
                     const rate = total > 0 ? Math.round((correct / total) * 100) : 0;

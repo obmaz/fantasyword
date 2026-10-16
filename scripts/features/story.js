@@ -105,14 +105,14 @@ const story = {
         // Day 정보 표시
         const dayInfoEl = document.getElementById(`${storyScreenPrefix}-day-info`);
         if (dayInfoEl) {
-            dayInfoEl.innerText = displayTitle;
+            dayInfoEl.textContent = displayTitle;
         }
 
         // 이야기 텍스트 표시
         const textEl = document.getElementById(`${storyScreenPrefix}-text`);
         if (textEl) {
             let introText = data.intro || '';
-            textEl.innerText = introText;
+            textEl.textContent = introText;
         }
 
         // "모험시작" 버튼에 이벤트 연결 (버튼당 1회만)

@@ -4,12 +4,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-function runtime(userAgent = 'Chrome') {
+function runtime(userAgent = 'Chrome', readyState = 'complete') {
     const events = {};
     const elements = new Map();
     const registrations = [];
     const context = vm.createContext({
         document: {
+            readyState,
             getElementById: (id) => {
                 if (!elements.has(id)) elements.set(id, {});
                 return elements.get(id);
@@ -39,6 +40,14 @@ function runtime(userAgent = 'Chrome') {
     context.api.init();
     return { api: context.api, events, elements, registrations };
 }
+
+test('설치 이벤트는 먼저 연결하고 오프라인 사전 저장 등록은 첫 화면 로드 뒤에 한다', () => {
+    const r = runtime('Chrome', 'interactive');
+    assert.equal(typeof r.events.beforeinstallprompt, 'function');
+    assert.equal(r.registrations.length, 0);
+    r.events.load();
+    assert.equal(r.registrations[0][0], 'sw.js');
+});
 
 test('설치 창을 제공하지 않는 iPhone은 공유 메뉴 설치 방법을 안내한다', async () => {
     const r = runtime('iPhone');

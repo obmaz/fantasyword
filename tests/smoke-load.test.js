@@ -43,7 +43,7 @@ function makeDomStubs() {
             removeItem: (k) => store.delete(k),
         },
         document: {
-            readyState: 'complete',
+            readyState: 'loading',
             head: { appendChild() {} },
             body: { appendChild() {}, contains: () => false },
             documentElement: { style: { setProperty() {} }, clientWidth: 375, clientHeight: 667 },

@@ -51,7 +51,7 @@
     background: #142e26e8;
     border: 1px solid #d8bf8580;
     border-radius: 8px;
-    color: #b9e2ff;
+    color: var(--ui-answer-blue);
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-choices button {
     min-height: 76px;
@@ -360,7 +360,7 @@
 }
 .story-puzzle-game[data-kind='proverb'] #puzzle-feedback {
     white-space: pre-line;
-    color: #b9e2ff;
+    color: var(--ui-answer-blue);
 }
 /* Only visible actions take space; question/review choices sit at the board bottom. */
 .story-puzzle-game[data-kind='proverb'] .puzzle-controls {

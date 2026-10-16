@@ -145,7 +145,7 @@ function createBattleSession({
             game.mode = mode;
             if (mode !== 'story') journey?.cancelBattleReturn?.();
             game.currentDay = day;
-            closeScreenOverlay('battle-mode-story-modal', true);
+            closeScreenOverlay('battle-mode-story-modal', false);
             const source =
                 mode === 'idiom-test'
                     ? getIdiomTestPool()
@@ -222,7 +222,7 @@ function createBattleSession({
                     game.awaitingRoute = true;
                     game.view.chooseRoute(game.selectRoute);
                 } else game.nextLevel();
-            }, APP_CONFIG.overlayCloseMs);
+            }, APP_CONFIG.gameStartDelayMs);
         },
         selectRoute(route) {
             if (!game.active || !game.awaitingRoute || !['safe', 'treasure'].includes(route))

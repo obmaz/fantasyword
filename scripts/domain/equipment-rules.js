@@ -30,11 +30,12 @@ const equipmentRules = Object.freeze({
         const combo = state.combo + 1;
         return {
             combo,
-            bonus: combo % 3 === 0 ? equipmentRules.comboBonus : 0,
+            bonus: combo % EQUIPMENT_CONFIG.comboEvery === 0 ? equipmentRules.comboBonus : 0,
         };
     },
-    routeBonus: (gain, route) => (route === 'treasure' ? Math.round(gain * 0.1) : 0),
-    routeSeconds: (route) => (route === 'safe' ? 5 : 0),
+    routeBonus: (gain, route) =>
+        route === 'treasure' ? Math.round(gain * EQUIPMENT_CONFIG.treasureRate) : 0,
+    routeSeconds: (route) => (route === 'safe' ? EQUIPMENT_CONFIG.safeRouteSeconds : 0),
     hint(word) {
         const letters = [...word.trim()];
         if (letters.length <= 1) return `전체 ${letters.length}글자`;

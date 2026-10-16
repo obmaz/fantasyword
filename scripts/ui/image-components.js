@@ -1,32 +1,35 @@
 /** Shared presentation assets; item data and purchase rules stay in their existing modules. */
+const ITEM_ICON_NAMES = Object.freeze({
+    goldDagger: 'weapon-gold-dagger',
+    midasSword: 'weapon-midas-sword',
+    tycoonAxe: 'weapon-tycoon-axe',
+    basic: 'weapon-basic',
+    sword: 'weapon-sword',
+    fire: 'weapon-fire',
+    ice: 'weapon-ice',
+    lightning: 'weapon-lightning',
+    void: 'weapon-void',
+    shield_item: 'weapon-shield',
+    helmet: 'item-helmet',
+    boots: 'item-boots',
+    hourglass: 'item-hourglass',
+    goldGlove: 'item-glove',
+    shield: 'item-shield',
+    backpack: 'ui-backpack',
+    hint: 'item-potion',
+    ultimate: 'item-lightning',
+    totalAssaultPause: 'item-hourglass',
+    shadowCompass: 'item-scroll',
+    shadowLantern: 'item-potion',
+    wardingSigil: 'item-shield',
+    pilgrimMedal: 'approved-coin',
+});
+
+const MENU_NUMBER_FORMAT = new Intl.NumberFormat('ko-KR');
+
 function itemIconMarkup(item) {
-    const names = {
-        goldDagger: 'weapon-gold-dagger',
-        midasSword: 'weapon-midas-sword',
-        tycoonAxe: 'weapon-tycoon-axe',
-        basic: 'weapon-basic',
-        sword: 'weapon-sword',
-        fire: 'weapon-fire',
-        ice: 'weapon-ice',
-        lightning: 'weapon-lightning',
-        void: 'weapon-void',
-        shield_item: 'weapon-shield',
-        helmet: 'item-helmet',
-        boots: 'item-boots',
-        hourglass: 'item-hourglass',
-        goldGlove: 'item-glove',
-        shield: 'item-shield',
-        backpack: 'ui-backpack',
-        hint: 'item-potion',
-        ultimate: 'item-lightning',
-        totalAssaultPause: 'item-hourglass',
-        shadowCompass: 'item-scroll',
-        shadowLantern: 'item-potion',
-        wardingSigil: 'item-shield',
-        pilgrimMedal: 'approved-coin',
-    };
-    const name = names[item.id] || 'item-scroll';
-    return `<img class="item-art item-art-${item.id}" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;
+    const name = ITEM_ICON_NAMES[item.id] || 'item-scroll';
+    return `<img class="item-art item-art-${escapeHTML(item.id)}" src="images/theme/parts/${name}.webp" alt="" aria-hidden="true" />`;
 }
 
 function itemDisplayName(item) {
@@ -34,7 +37,7 @@ function itemDisplayName(item) {
 }
 
 function formatMenuNumber(value) {
-    return Number(value).toLocaleString('ko-KR');
+    return MENU_NUMBER_FORMAT.format(Number(value));
 }
 
 // 생성된 부품 안의 실제 손잡이 위치. 같은 중심 좌표로 모든 무기를 붙이지 않는다.
@@ -62,6 +65,9 @@ function renderEquipmentAvatar(root, { equipped, durability, weapons, items, fal
         if (part === 'weapon' || part === 'secondary') {
             const weapon = weapons.find((item) => item.id === active);
             layers.forEach((layer) => {
+                const id = weapon?.id || '';
+                if (layer.dataset.avatarReady === 'true' && layer.dataset.weapon === id) return;
+                layer.dataset.avatarReady = 'true';
                 layer.hidden = !weapon;
                 layer.dataset.weapon = weapon?.id || '';
                 layer.dataset.element = weapon?.effect || 'basic';

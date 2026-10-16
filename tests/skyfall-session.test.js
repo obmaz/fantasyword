@@ -43,8 +43,10 @@ function runtime({
         questions: { getDistractors, shuffle },
         rules: {
             buildPool: (_day, source) => source,
-            assaultReward: loadScripts(['scripts/domain/battle-rules.js']).evaluate('battleRules')
-                .assaultReward,
+            assaultReward: loadScripts([
+                'scripts/config.js',
+                'scripts/domain/battle-rules.js',
+            ]).evaluate('battleRules').assaultReward,
         },
         view: {
             notice(message) {

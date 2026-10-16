@@ -4,9 +4,9 @@ function createHaptics({ getSettings, vibrate }) {
         error() {
             const settings = getSettings();
             if (settings.vibration === false) return false;
-            const duration = [80, 200, 350].includes(settings.vibrationDuration)
+            const duration = HAPTICS_CONFIG.durations.includes(settings.vibrationDuration)
                 ? settings.vibrationDuration
-                : 200;
+                : HAPTICS_CONFIG.defaultDuration;
             try {
                 return Boolean(vibrate(duration));
             } catch {

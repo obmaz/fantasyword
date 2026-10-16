@@ -55,7 +55,7 @@
         rgba(41, 121, 255, 0.95),
         rgba(41, 121, 255, 0.85)
     ) !important;
-    color: #fff !important;
+    color: var(--color-white) !important;
 }
 
 /* Statistics Item & Section Styles */
@@ -65,7 +65,7 @@
     font-size: 14px;
     color: var(--primary);
     font-weight: bold;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--neutral-800);
     padding-bottom: 5px;
     margin-top: 15px;
 }
@@ -83,7 +83,7 @@
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 8px;
-    border: 1px solid #333;
+    border: 1px solid var(--neutral-800);
 }
 
 /* 통계 수치 행 (JS에서 인라인 style로 찍던 것을 클래스로 이관) */

@@ -15,6 +15,23 @@ for (const directory of ['scripts', 'data', 'tools', 'tests']) {
     }
 }
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+function assertUnique(values, label) {
+    const seen = new Set();
+    for (const value of values) {
+        if (seen.has(value)) throw new Error(`${label} 중복: ${value}`);
+        seen.add(value);
+    }
+}
+assertUnique(
+    [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]),
+    'HTML ID'
+);
+assertUnique(
+    [...html.matchAll(/(?:src|href)="((?:scripts|styles)\/[^"?]+)(?:\?[^"]*)?"/g)].map(
+        (match) => match[1]
+    ),
+    '런타임 로드'
+);
 new vm.Script(fs.readFileSync(path.join(root, 'sw.js'), 'utf8'), { filename: 'sw.js' });
 const appManifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
 for (const icon of appManifest.icons) {

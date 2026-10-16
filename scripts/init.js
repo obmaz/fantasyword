@@ -11,7 +11,7 @@ function scheduleGameStart(callback) {
     pendingGameStart = setTimeout(() => {
         pendingGameStart = null;
         callback();
-    }, APP_CONFIG.overlayCloseMs);
+    }, APP_CONFIG.gameStartDelayMs);
 }
 
 /**
@@ -104,10 +104,13 @@ function setupActionDelegation() {
 }
 
 /**
- * 윈도우 로드 이벤트 핸들러
+ * DOM 준비 시 한 번 실행하는 초기화
  * 게임 환경, 이벤트 리스너 및 UI 컴포넌트를 초기화합니다.
  */
-window.onload = () => {
+let appInitialized = false;
+function initializeApp() {
+    if (appInitialized) return;
+    appInitialized = true;
     appInstall.init();
     for (const options of [
         { mode: 'battle', title: '도전', subtitle: 'WORD QUEST', headingId: 'battle-screen-title' },
@@ -143,7 +146,7 @@ window.onload = () => {
     if (typeof secret !== 'undefined') secret.init();
     if (typeof settingsManager !== 'undefined') settingsManager.init();
     setupMusicSelectListeners();
-    if (typeof inventory !== 'undefined') inventory.render();
+    ui.updateVisuals();
     initSelections();
     ui.updateGold();
     revengeQuests.refresh();
@@ -207,9 +210,6 @@ window.onload = () => {
     });
     document.getElementById('title-screen')?.addEventListener('pointerdown', showLobbyWeaponEffect);
 
-    document.getElementById('skyfall-modal-close')?.addEventListener('click', () => {
-        closeScreenOverlay('skyfall-mode-modal', false);
-    });
     document.getElementById('skyfall-modal-start')?.addEventListener('click', () => {
         const day = document.getElementById('skyfall-mode-day-select').value;
         db.commitChanges({ lastSelectedDay: day });
@@ -222,7 +222,6 @@ window.onload = () => {
 
     // 연습 모드 모달 버튼
     const practiceStartBtn = document.getElementById('practice-mode-modal-start-btn');
-    const practiceCancelBtn = document.getElementById('practice-mode-modal-cancel-btn');
     const practiceDaySelect = document.getElementById('practice-mode-modal-day-select');
 
     if (practiceStartBtn) {
@@ -237,17 +236,11 @@ window.onload = () => {
             const startScreen = document.getElementById('title-screen');
             if (startScreen) startScreen.style.display = 'none';
 
-            closePracticeModal(true);
+            closePracticeModal(false);
 
             scheduleGameStart(() => {
                 practiceMemorization.start(selectedDay);
             });
-        });
-    }
-
-    if (practiceCancelBtn) {
-        practiceCancelBtn.addEventListener('click', () => {
-            closePracticeModal();
         });
     }
 
@@ -317,7 +310,6 @@ window.onload = () => {
 
     // 배틀 모달 버튼
     const battleStartBtn = document.getElementById('battle-mode-modal-start-btn');
-    const battleCancelBtn = document.getElementById('battle-mode-modal-cancel-btn');
     const battleDaySelect = document.getElementById('battle-mode-modal-day-select');
     const battleCountSelect = document.getElementById('battle-mode-modal-count-select');
     const battleTypeGroup = document.getElementById('battle-mode-modal-battle-type-group');
@@ -359,7 +351,7 @@ window.onload = () => {
             if (daySelect) daySelect.value = selectedDay;
             if (countSelect) countSelect.value = String(selectedCount);
 
-            closePracticeModal(true); // Helper acts for both practice and battle modals
+            closePracticeModal(false);
 
             scheduleGameStart(() => {
                 game.init(
@@ -368,12 +360,6 @@ window.onload = () => {
                     selectedQuestionType
                 );
             });
-        });
-    }
-
-    if (battleCancelBtn) {
-        battleCancelBtn.addEventListener('click', () => {
-            closePracticeModal();
         });
     }
 
@@ -393,4 +379,10 @@ window.onload = () => {
         syncScreenLayout();
         if (returnToStory) storyJourney.open();
     };
-};
+}
+
+// 이미지·음악 다운로드가 끝나기 전에 조작을 연결한다. load 폴백도 중복 등록하지 않는다.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp, { once: true });
+} else initializeApp();
+window.onload = initializeApp;

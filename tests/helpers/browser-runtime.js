@@ -6,6 +6,7 @@ function browserRuntime(saved = {}, overrides = {}) {
     const store = new Map(Object.entries(saved));
     const elements = new Map();
     const events = {};
+    const documentEvents = {};
     const timeouts = new Map();
     const intervals = new Map();
     let clock = 0;
@@ -19,7 +20,12 @@ function browserRuntime(saved = {}, overrides = {}) {
             options: [],
             children: [],
             value: '',
-            innerText: '',
+            get innerText() {
+                return this.textContent;
+            },
+            set innerText(value) {
+                this.textContent = value;
+            },
             textContent: '',
             innerHTML: '',
             get className() {
@@ -130,7 +136,9 @@ function browserRuntime(saved = {}, overrides = {}) {
                     ? getElement(selector)
                     : null,
             querySelectorAll: () => [],
-            addEventListener() {},
+            addEventListener(name, callback) {
+                (documentEvents[name] ??= []).push(callback);
+            },
         },
         history: { pushState() {}, replaceState() {} },
         location: { href: 'http://localhost/', reload() {} },
@@ -176,7 +184,17 @@ function browserRuntime(saved = {}, overrides = {}) {
         }
         clock = end;
     }
-    return { ...loaded, store, getElement, events, advance, timeouts, intervals, html };
+    return {
+        ...loaded,
+        store,
+        getElement,
+        events,
+        documentEvents,
+        advance,
+        timeouts,
+        intervals,
+        html,
+    };
 }
 
 module.exports = { browserRuntime };

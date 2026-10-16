@@ -3,6 +3,20 @@ const haptics = createHaptics({
     getSettings: () => db.settings,
     vibrate: (duration) => navigator.vibrate?.(duration) ?? false,
 });
+/** 설정은 공유하고 재생·취소 상태는 세션마다 분리한다. */
+function createGameSpeech() {
+    return createPracticeSpeech({
+        getSynth: () => window.speechSynthesis,
+        createUtterance: (text) =>
+            typeof window.SpeechSynthesisUtterance === 'function'
+                ? new window.SpeechSynthesisUtterance(text)
+                : null,
+        getVoice: getPreferredTTSVoice,
+        playRemote: playGoogleTTS,
+        notify: showToast,
+        getMusic: () => document.getElementById('background-music'),
+    });
+}
 const game = createBattleSession({
     db,
     ui,
@@ -20,17 +34,7 @@ const game = createBattleSession({
             storyIdioms,
             Number(document.getElementById('idiom-test-level').value) || 1
         ),
-    speech: createPracticeSpeech({
-        getSynth: () => window.speechSynthesis,
-        createUtterance: (text) =>
-            typeof window.SpeechSynthesisUtterance === 'function'
-                ? new window.SpeechSynthesisUtterance(text)
-                : null,
-        getVoice: getPreferredTTSVoice,
-        playRemote: playGoogleTTS,
-        notify: showToast,
-        getMusic: () => document.getElementById('background-music'),
-    }),
+    speech: createGameSpeech(),
     getSource: () => window.rawDataData || rawData,
     getDecoys: (...args) => window.getDecoyWordCandidates?.(...args) || [],
     getWeapons: () => weapons,
@@ -72,17 +76,7 @@ const practiceMemorization = createPracticeSession({
         track: (screen) => navigation.track(screen),
         schedule: setTimeout,
     }),
-    speech: createPracticeSpeech({
-        getSynth: () => window.speechSynthesis,
-        createUtterance: (text) =>
-            typeof window.SpeechSynthesisUtterance === 'function'
-                ? new window.SpeechSynthesisUtterance(text)
-                : null,
-        getVoice: getPreferredTTSVoice,
-        playRemote: playGoogleTTS,
-        notify: showToast,
-        getMusic: () => document.getElementById('background-music'),
-    }),
+    speech: createGameSpeech(),
     notify: showToast,
     resetResult: () => {
         storyJourney.cancelBattleReturn();

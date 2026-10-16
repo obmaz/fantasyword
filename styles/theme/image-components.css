@@ -1,12 +1,4 @@
 /* Shared generated parts. Text, form controls and state remain live HTML. */
-:root {
-    --ui-action: url('../../images/theme/parts/surface-action.webp');
-    --ui-secondary: url('../../images/theme/parts/surface-secondary.webp');
-    --ui-danger: url('../../images/theme/parts/surface-danger.webp');
-    --ui-field: url('../../images/theme/parts/surface-field.webp');
-    --ui-panel: url('../../images/theme/parts/surface-panel.webp');
-    --ui-answer: url('../../images/theme/parts/surface-answer.webp');
-}
 
 /* The old theme has several per-screen button skins; image parts replace those skins. */
 :is(.mode-actions, .story-actions, .app-confirm-actions, #detail-actions) button,
@@ -31,8 +23,8 @@ button:is(
     border: 0 !important;
     border-image: none !important;
     box-shadow: none !important;
-    color: #fff5dc !important;
-    text-shadow: 0 1px 1px #103324;
+    color: var(--ui-text-on-art) !important;
+    text-shadow: 0 1px 1px var(--ui-text-shadow);
     min-height: 44px;
     padding: 10px 16px;
 }
@@ -77,7 +69,7 @@ dialog.screen-overlay
     border-image: var(--ui-panel) 18% fill / 14px / 0 stretch !important;
     background: transparent !important;
     box-shadow: none !important;
-    color: #fff5dc;
+    color: var(--ui-text-on-art);
 }
 .result-modal::before,
 .result-modal::after {
@@ -94,7 +86,7 @@ dialog.screen-overlay
     border-image: none !important;
     background: var(--ui-option-art) center / 100% 100% no-repeat !important;
     box-shadow: none !important;
-    color: #fff5dc !important;
+    color: var(--ui-text-on-art) !important;
 }
 #battle-mode-game .option-btn {
     transition:
@@ -263,7 +255,7 @@ dialog.screen-overlay select,
     background: var(--ui-answer) center / 100% 100% no-repeat;
     border: 0;
     box-shadow: none;
-    color: #fff5dc;
+    color: var(--ui-text-on-art);
 }
 #practice-speak-btn {
     font-size: 0 !important;
@@ -280,7 +272,7 @@ dialog.screen-overlay select,
 #detail-close {
     background: var(--ui-secondary) center / 100% 100% no-repeat;
     border: 0;
-    color: #fff5dc;
+    color: var(--ui-text-on-art);
 }
 .equipped-weapon .item-art,
 .hero-effect .item-art {
@@ -373,7 +365,7 @@ dialog.screen-overlay select,
     mask-image: radial-gradient(
         ellipse 6% 7% at var(--held-hand-x) var(--held-hand-y),
         transparent 85%,
-        #000 100%
+        var(--color-black) 100%
     );
 }
 .equipment-avatar :is(.avatar-weapon, .avatar-secondary) .item-art {

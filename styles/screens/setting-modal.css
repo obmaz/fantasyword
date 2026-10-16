@@ -86,8 +86,8 @@
 .password-box {
     width: 30px;
     height: 40px;
-    border: 2px solid #555;
-    background-color: #222;
+    border: 2px solid var(--neutral-600);
+    background-color: var(--neutral-900);
     border-radius: 6px;
     text-align: center;
     line-height: 40px;
@@ -334,7 +334,7 @@
 }
 
 #print-day-select-modal .worksheet-day:has(input:checked) {
-    color: #fff6df;
+    color: var(--ui-text-warm);
     border-color: #315c42;
     background: #23553d;
     box-shadow: inset 0 1px 0 #ffffff26;

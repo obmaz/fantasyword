@@ -23,6 +23,7 @@ const WORDS = [
 function loadGame(overrides = {}) {
     const { evaluate } = loadScripts(
         [
+            'scripts/config.js',
             'scripts/domain/questions.js',
             'scripts/domain/battle-rules.js',
             'scripts/game/game-engine.js',
@@ -211,7 +212,9 @@ test('dayLabel: all/boss/숫자를 사람이 읽는 라벨로 바꾼다', () => 
 });
 
 test('정답 골드는 문제 수와 무관하고 남은 시간 또는 풀이 시간에 따라 감소한다', () => {
-    const rules = loadScripts(['scripts/domain/battle-rules.js']).evaluate('battleRules');
+    const rules = loadScripts(['scripts/config.js', 'scripts/domain/battle-rules.js']).evaluate(
+        'battleRules'
+    );
     const objective = (timeLeft) =>
         rules.reward({ mode: 'battle', subjective: false, timeLeft, maxTime: 10 });
     const subjective = (elapsedSeconds, count = 10) =>

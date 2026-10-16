@@ -69,7 +69,7 @@
         ui.renderMusicSelectOptions(selectId, musicNum);
 
         if (musicInfoOverlay && musicFilenameEl) {
-            musicFilenameEl.innerText = `배경음악 ${musicNum}`;
+            musicFilenameEl.textContent = `배경음악 ${musicNum}`;
             musicInfoOverlay.style.display = 'block';
         }
 
@@ -151,7 +151,7 @@
                         const { filename: filenameId, overlay: overlayId } = musicElementIds(mode);
                         const musicFilenameEl = document.getElementById(filenameId);
                         if (musicFilenameEl) {
-                            musicFilenameEl.innerText = `배경음악 ${musicNum}`;
+                            musicFilenameEl.textContent = `배경음악 ${musicNum}`;
                         }
                         // 플레이 (자동 재생 방지 예외 처리)
                         // [FIX] 여기서도 db.settings.musicPlay를 쓰거나, 아니면 사용자가 직접 바꿨으니 무조건 재생?
@@ -209,7 +209,7 @@
     function updateMusicToggleButtons(isPlaying) {
         const toggleBtns = document.querySelectorAll('.music-toggle-btn');
         toggleBtns.forEach((btn) => {
-            btn.innerText = isPlaying ? '⏸️' : '▶️';
+            btn.textContent = isPlaying ? '⏸️' : '▶️';
             btn.dataset.musicState = isPlaying ? 'on' : 'off';
             btn.setAttribute('aria-pressed', String(isPlaying));
             const label = isPlaying ? '배경음악 ON, 끄기' : '배경음악 OFF, 켜기';

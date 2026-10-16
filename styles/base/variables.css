@@ -3,7 +3,7 @@
     --layer-game: 20;
     --layer-modal: 30;
     --layer-toast: 40;
-    --overlay-close-duration: 400ms;
+    --overlay-close-duration: 160ms;
     --primary: #ffd54f;
     --bg-color: #121212;
     --card-bg: #1e1e1e;
@@ -19,6 +19,25 @@
     --game-card-border: #d5d5d5;
     --game-text: #2a2a2a;
     --game-text-muted: #5a5a5a;
+
+    --color-white: #fff;
+    --color-black: #000;
+    --neutral-900: #222;
+    --neutral-800: #333;
+    --neutral-600: #555;
+    --neutral-400: #888;
+    --ui-surface-forest: #173d32;
+
+    /* Shared text, answer and field colors; artwork retains its own palette. */
+    --ui-text-on-art: #fff5dc;
+    --ui-text-label: #fff2d8;
+    --ui-text-warm: #fff6df;
+    --ui-field-bg: #fff6dd;
+    --ui-answer-blue: #b9e2ff;
+    --ui-answer-ink: #216ba4;
+    --ui-text-shadow: #103324;
+    --ui-field-border: #bdba8b;
+    --menu-ink: #243626;
 
     /* Modal Theme */
     --modal-header-bg: rgba(0, 0, 0, 0.15);

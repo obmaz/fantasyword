@@ -93,7 +93,9 @@ test('진동 설정 저장 실패는 기존 설정과 토글을 함께 유지한
 });
 
 test('진동을 지원하지 않거나 API가 거부되어도 채점 흐름에 오류를 전파하지 않는다', () => {
-    const create = loadScripts(['scripts/features/haptics.js']).evaluate('createHaptics');
+    const create = loadScripts(['scripts/config.js', 'scripts/features/haptics.js']).evaluate(
+        'createHaptics'
+    );
     const feedback = create({
         getSettings: () => ({ vibration: true }),
         vibrate() {

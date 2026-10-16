@@ -19,14 +19,14 @@ const inventory = {
             changes = { owned: [...db.owned, id] };
         } else return null;
         if (!db.commitChanges(changes)) return null;
-        inventory.render();
-        shop.render();
+        inventory.refresh();
+        shop.refresh();
         return itemDisplayName(relic);
     },
     slots: {
         gloves: {
             label: '장갑',
-            accepts: '미다스의 건틀릿 · 정답 골드 x1.5 · 10회',
+            accepts: `미다스의 건틀릿 · 정답 골드 x${EQUIPMENT_CONFIG.gloveMultiplier} · ${EQUIPMENT_CONFIG.gloveUses}회`,
             placeholder: 'goldGlove',
         },
         head: { label: '머리', accepts: '통찰의 헬름 · 무료 힌트 1회', placeholder: 'helmet' },
@@ -74,15 +74,30 @@ const inventory = {
             .filter(Boolean);
     },
     getStoredCount: (state = db) => inventory.getStoredEntries(state).length,
+    capacitySummary: (used = inventory.getStoredCount()) =>
+        `보관함 ${used} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - used)}칸`,
+    renderCapacity: (used = inventory.getStoredCount()) => {
+        document.getElementById('inv-cap').textContent = used;
+        document.getElementById('inv-max-cap').textContent = db.inventoryCapacity;
+        document.getElementById('inventory-capacity-summary').textContent =
+            inventory.capacitySummary(used);
+    },
+    refresh: () => {
+        if (document.getElementById('inventory-modal').open) inventory.render();
+        else {
+            inventory.renderCapacity();
+            ui.updateVisuals();
+            ui.updateSkills();
+        }
+    },
     /**
      * 인벤토리 모달을 엽니다
      */
     open: () => {
         // title-screen은 숨기지 않고 모달만 표시
-        openScreenOverlay('inventory-modal', true);
-
         inventory.hideDetails(false); // 열 때 이전 상세 화면과 포커스를 정리한다.
         inventory.render();
+        openScreenOverlay('inventory-modal', true);
 
         // 접근성 / 작은 뷰포트 대응: 닫기 버튼이 도달 가능하도록 보장
         const closeBtn = document.querySelector('#inventory-modal .modal-header .modal-close-x');
@@ -122,15 +137,14 @@ const inventory = {
         invContainer.replaceChildren();
 
         // 인벤토리 용량 표시
-        document.getElementById('inv-cap').innerText = inventory.getStoredCount();
-        document.getElementById('inv-max-cap').innerText = db.inventoryCapacity;
-        const used = inventory.getStoredCount();
-        document.getElementById('inventory-capacity-summary').textContent =
-            `보관함 ${used} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - used)}칸`;
+        const entries = inventory.getStoredEntries();
+        inventory.renderCapacity(entries.length);
         const weapon = weapons.find((w) => w.id === db.equippedWeapon);
         const gloveMultiplier =
-            db.equipped.gloves === 'goldGlove' && db.durability.goldGlove > 0 ? 1.5 : 1;
-        document.getElementById('inv-gold-bonus').innerText =
+            db.equipped.gloves === 'goldGlove' && db.durability.goldGlove > 0
+                ? EQUIPMENT_CONFIG.gloveMultiplier
+                : 1;
+        document.getElementById('inv-gold-bonus').textContent =
             `×${Number(((weapon?.multiplier || 1) * gloveMultiplier).toFixed(2))}`;
 
         // 표시하는 슬롯은 실제 장착 위치와 같다. 장착하지 않은 슬롯은 빈 칸으로 둔다.
@@ -139,15 +153,14 @@ const inventory = {
             if (!equipSlot) continue;
             const itemId = db.equipped[slot] || null;
             const item = items.find((i) => i.id === itemId) || weapons.find((w) => w.id === itemId);
-            const isDefault = false;
             equipSlot.dataset.empty = String(!item);
-            equipSlot.disabled = !item || isDefault;
+            equipSlot.disabled = !item;
             equipSlot.title = `${rule.label} · ${rule.accepts}`;
             if (item) {
                 equipSlot.innerHTML = itemIconMarkup(item);
                 equipSlot.setAttribute(
                     'aria-label',
-                    `${rule.label}: ${itemDisplayName(item)}, ${isDefault ? '기본 장비' : '장착 해제'}`
+                    `${rule.label}: ${itemDisplayName(item)}, 장착 해제`
                 );
             } else {
                 equipSlot.innerHTML = '<span class="inv-slot-empty" aria-hidden="true">·</span>';
@@ -159,7 +172,7 @@ const inventory = {
         }
 
         // 용량에 포함되는 장비와 슬롯 없는 유물을 같은 목록에 표시한다.
-        inventory.getStoredEntries().forEach(({ item, type }) => {
+        entries.forEach(({ item, type }) => {
             const itemEl = document.createElement('button');
             itemEl.type = 'button';
             itemEl.setAttribute('aria-label', itemDisplayName(item));
@@ -172,7 +185,7 @@ const inventory = {
         if (!invContainer.children.length) {
             const empty = document.createElement('p');
             empty.className = 'inventory-empty';
-            empty.innerText = '보관 중인 장비가 없습니다.';
+            empty.textContent = '보관 중인 장비가 없습니다.';
             invContainer.appendChild(empty);
         }
 
@@ -234,7 +247,7 @@ const inventory = {
                 : null;
 
         document.getElementById('detail-icon').innerHTML = itemIconMarkup(itemData);
-        document.getElementById('detail-name').innerText = itemDisplayName(itemData);
+        document.getElementById('detail-name').textContent = itemDisplayName(itemData);
         const allowedSlots = type === 'weapon' ? weaponEquipSlots(itemData) : [itemData.slot];
         const slotNames = allowedSlots.map((slot) => inventory.slots[slot]?.label).filter(Boolean);
         const placement = itemData.id === 'boots' ? '양발 함께' : slotNames.join(' 또는 ');
@@ -247,7 +260,7 @@ const inventory = {
             description += `\n오른손: 3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`;
         if (type === 'weapon' && itemData.multiplier > 1)
             description += '\n골드 보너스는 오른손에 장착했을 때 적용됩니다.';
-        document.getElementById('detail-desc').innerText = description;
+        document.getElementById('detail-desc').textContent = description;
 
         const actionsContainer = document.getElementById('detail-actions');
         actionsContainer.replaceChildren();
@@ -259,7 +272,7 @@ const inventory = {
                 equipBtn.className = 'btn-main';
                 equipBtn.dataset.confirmTone = 'execute';
                 const current = db.equipped[slot];
-                equipBtn.innerText = `${inventory.slots[slot].label} ${current === id ? '장착 중' : current ? '교체' : '장착'}`;
+                equipBtn.textContent = `${inventory.slots[slot].label} ${current === id ? '장착 중' : current ? '교체' : '장착'}`;
                 equipBtn.disabled = current === id;
                 equipBtn.onclick = () => {
                     if (inventory.equip(id, 'weapon', slot)) inventory.hideDetails();
@@ -272,7 +285,7 @@ const inventory = {
                 const unequipBtn = document.createElement('button');
                 unequipBtn.className = 'btn-main btn-blue';
                 unequipBtn.dataset.confirmTone = 'cancel';
-                unequipBtn.innerText = '해제';
+                unequipBtn.textContent = '해제';
                 unequipBtn.onclick = () => {
                     const slot = Object.keys(db.equipped).find((s) => db.equipped[s] === id);
                     if (inventory.unequipWeapon(slot)) inventory.hideDetails();
@@ -284,7 +297,7 @@ const inventory = {
             const equipBtn = document.createElement('button');
             equipBtn.className = 'btn-main';
             equipBtn.dataset.confirmTone = 'execute';
-            equipBtn.innerText = `${itemData.id === 'boots' ? '양발' : slotNames[0]} 장착`;
+            equipBtn.textContent = `${itemData.id === 'boots' ? '양발' : slotNames[0]} 장착`;
             equipBtn.onclick = () => {
                 if (inventory.equip(id, type)) inventory.hideDetails();
             };
@@ -296,7 +309,7 @@ const inventory = {
                 const useBtn = document.createElement('button');
                 useBtn.className = 'btn-main btn-blue';
                 useBtn.dataset.confirmTone = 'execute';
-                useBtn.innerText = '사용하기';
+                useBtn.textContent = '사용하기';
                 useBtn.onclick = () => {
                     if (db.useItem(id)) inventory.hideDetails();
                 };
@@ -398,8 +411,8 @@ const inventory = {
                 'success'
             );
         }
-        inventory.render();
-        shop.render();
+        inventory.refresh();
+        shop.refresh();
         return true;
     },
 
@@ -448,8 +461,8 @@ const inventory = {
             showToast('장비 해제를 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
             return false;
         }
-        inventory.render();
-        shop.render();
+        inventory.refresh();
+        shop.refresh();
         return true;
     },
 };

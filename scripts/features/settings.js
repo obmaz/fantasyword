@@ -60,7 +60,7 @@ const settingsManager = {
                 musicPlay: true,
                 wordRead: true,
                 vibration: true,
-                vibrationDuration: 200,
+                vibrationDuration: HAPTICS_CONFIG.defaultDuration,
             };
         }
 
@@ -69,9 +69,18 @@ const settingsManager = {
         const wordCheck = document.getElementById('setting-word-read');
         const vibrationCheck = document.getElementById('setting-vibration');
         const vibrationDuration = document.getElementById('setting-vibration-duration');
+        vibrationDuration.replaceChildren();
+        HAPTICS_CONFIG.durations.forEach((duration, index) => {
+            const option = document.createElement('option');
+            option.value = String(duration);
+            option.textContent = ['짧게', '보통', '길게'][index];
+            vibrationDuration.appendChild(option);
+        });
         const syncVibration = () => {
             vibrationCheck.checked = db.settings.vibration !== false;
-            vibrationDuration.value = String(db.settings.vibrationDuration || 200);
+            vibrationDuration.value = String(
+                db.settings.vibrationDuration || HAPTICS_CONFIG.defaultDuration
+            );
             vibrationDuration.disabled = !vibrationCheck.checked;
         };
         const saveVibration = () => {
@@ -153,12 +162,11 @@ const settingsManager = {
         secret.entered = '';
         secret.pendingAction = null;
         secret.previousModal = null;
-        settingsManager.showPanel('gold-adjuster-modal');
         document.getElementById('setting-music-play').checked = db.settings.musicPlay;
         document.getElementById('setting-word-read').checked = db.settings.wordRead;
         document.getElementById('setting-vibration').checked = db.settings.vibration !== false;
         document.getElementById('setting-vibration-duration').value = String(
-            db.settings.vibrationDuration || 200
+            db.settings.vibrationDuration || HAPTICS_CONFIG.defaultDuration
         );
         document.getElementById('setting-vibration-duration').disabled =
             db.settings.vibration === false;
@@ -166,7 +174,7 @@ const settingsManager = {
         settingsManager.showPanel('gold-adjuster-modal');
         secret.editGold = db.gold;
         secret.updateGoldEdit(0);
-        document.getElementById('settings-current-gold').innerText = formatMenuNumber(db.gold);
+        document.getElementById('settings-current-gold').textContent = formatMenuNumber(db.gold);
     },
     close: () => {
         settingsManager.hideAdmin();

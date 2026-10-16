@@ -11,11 +11,11 @@ const ui = {
         for (const id of ['title-ui-gold', 'overlay-gold']) {
             const amount = document.getElementById(id);
             if (!amount) continue;
-            amount.innerText = db.gold;
+            amount.textContent = db.gold;
             amount.title = `${db.gold}`;
         }
         document.querySelectorAll('[data-menu-gold]').forEach((amount) => {
-            amount.innerText = formatMenuNumber(db.gold);
+            amount.textContent = formatMenuNumber(db.gold);
         });
     },
 
@@ -129,6 +129,11 @@ const ui = {
             game.options.filter((option) => !option.correct && !option.disabled).length <= 1;
         const equipmentBar = document.getElementById('equipment-display');
         equipmentBar.innerHTML = '';
+        const battleScreen = document.getElementById('battle-mode-game');
+        if (battleScreen) {
+            battleScreen.dataset.combo = gear?.weapon ? String(gear.combo) : '';
+            battleScreen.style.setProperty('--combo-count', `"Combo ${gear?.combo || 0}"`);
+        }
         if (gear) {
             const append = (id, text, title, action = null, disabled = false) => {
                 const node = document.createElement(action ? 'button' : 'span');
@@ -141,17 +146,6 @@ const ui = {
                 }
                 equipmentBar.appendChild(node);
             };
-            const battleScreen = document.getElementById('battle-mode-game');
-            if (battleScreen) {
-                battleScreen.dataset.combo = gear.weapon ? String(gear.combo) : '';
-                battleScreen.style.setProperty('--combo-count', `"Combo ${gear.combo || 0}"`);
-            }
-            if (gear.weapon)
-                append(
-                    db.equipped['hand-1'] || db.equippedWeapon || 'basic',
-                    `Combo ${gear.combo}`,
-                    `3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`
-                );
             if (gear.protection || gear.shieldMax > 0)
                 append(
                     gear.protection ? 'shield_item' : 'wardingSigil',
@@ -174,9 +168,9 @@ const ui = {
                 append(
                     'boots',
                     gear.route === 'safe'
-                        ? '시간 +5초'
+                        ? `시간 +${EQUIPMENT_CONFIG.safeRouteSeconds}초`
                         : gear.route === 'treasure'
-                          ? '골드 +10%'
+                          ? `골드 +${EQUIPMENT_CONFIG.treasureRate * 100}%`
                           : '경로 선택',
                     '부츠의 모험 경로 효과'
                 );
@@ -200,8 +194,8 @@ const ui = {
             gloveBtn.className = 'skill-btn skill-passive';
             gloveBtn.innerHTML = `${itemIconMarkup({ id: 'goldGlove' })} <span class="skill-count">${
                 db.durability['goldGlove'] || 0
-            }/30</span>`;
-            gloveBtn.title = '미다스의 건틀릿 (장착 중): 정답 골드 x1.5배';
+            }/${EQUIPMENT_CONFIG.gloveUses}</span>`;
+            gloveBtn.title = `미다스의 건틀릿 (장착 중): 정답 골드 x${EQUIPMENT_CONFIG.gloveMultiplier}배`;
             container.appendChild(gloveBtn);
         }
 
@@ -240,7 +234,7 @@ const ui = {
         if (!hasSkills) {
             const placeholder = document.createElement('div');
             placeholder.className = 'skill-placeholder';
-            placeholder.innerText = '장착한 스킬 없음';
+            placeholder.textContent = '장착한 스킬 없음';
             container.appendChild(placeholder);
         }
     },
@@ -262,7 +256,7 @@ const ui = {
         for (let i = 1; i <= trackCount; i++) {
             const option = document.createElement('option');
             option.value = String(i);
-            option.innerText = `배경음악 ${i}`;
+            option.textContent = `배경음악 ${i}`;
 
             if (i === currentMusicNum) {
                 option.selected = true;

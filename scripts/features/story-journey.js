@@ -22,12 +22,12 @@ const storyJourney = {
         return `v7_story_stage_${db.getBookKey()}`;
     },
     get stage() {
+        return storyJourney.readStage();
+    },
+    readStage(rows = storyJourney.rows) {
         return Math.max(
             0,
-            Math.min(
-                storyJourney.nodes().length,
-                Math.floor(Number(gameStorage.get(storyJourney.key, '0')) || 0)
-            )
+            Math.min(rows.length, Math.floor(Number(gameStorage.get(storyJourney.key, '0')) || 0))
         );
     },
     set stage(value) {
@@ -59,9 +59,8 @@ const storyJourney = {
         const value = gameStorage.readJSON(storyJourney.eventsKey, {});
         return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
     },
-    nodes() {
-        const events = storyJourney.events;
-        return storyJourney.rows.map((row, stage) =>
+    nodes(rows = storyJourney.rows, events = storyJourney.events) {
+        return rows.map((row, stage) =>
             row.map((kind, index) => {
                 const saved = events[`${stage}:${index}`]?.kind;
                 const resolved =
@@ -81,22 +80,25 @@ const storyJourney = {
     position(index, count) {
         return storyMapRules.position(index, count);
     },
-    connections(row, index, nodes = storyJourney.nodes()) {
+    connections(row, index) {
         // 숨겨진 이벤트 결과에 따라 연결을 바꾸지 않고 저장된 지도를 기준으로 삼는다.
         return storyMapRules.connections(row, index, storyJourney.rows);
     },
-    canSelect(row, index, nodes = storyJourney.nodes()) {
-        if (row !== storyJourney.stage || !nodes[row]?.[index]) return false;
-        const previous = storyJourney.path[row - 1];
+    canSelect(row, index, nodes = storyJourney.nodes(), snapshot = null) {
+        const stage = snapshot?.stage ?? storyJourney.stage;
+        if (row !== stage || !nodes[row]?.[index]) return false;
+        const previous = (snapshot?.path ?? storyJourney.path)[row - 1];
         // 기존 진행도와 경로를 그대로 이어간다. 경로 기록이 없으면 현재 행에서 선택할 수 있다.
         return (
             row === 0 ||
             !nodes[row - 1]?.[previous] ||
-            storyJourney.connections(row - 1, previous, nodes).includes(index)
+            storyMapRules
+                .connections(row - 1, previous, snapshot?.rows ?? storyJourney.rows)
+                .includes(index)
         );
     },
     open() {
-        storyJourney.render();
+        const snapshot = storyJourney.render();
         openScreenOverlay('story-map-modal', false);
         const card = document.getElementById('story-map-content');
         const map = document.getElementById('story-map-path');
@@ -106,7 +108,7 @@ const storyJourney = {
         if (current)
             card.scrollTop =
                 map.offsetTop + current.offsetTop - (card.clientHeight - current.offsetHeight) / 2;
-        else if (storyJourney.stage >= storyJourney.nodes().length) card.scrollTop = 0;
+        else if (snapshot.stage >= snapshot.nodes.length) card.scrollTop = 0;
     },
     close() {
         resetScreenOverlay('story-map-modal');
@@ -115,10 +117,12 @@ const storyJourney = {
     render() {
         const container = document.getElementById('story-map-path');
         container.replaceChildren();
-        const stage = storyJourney.stage;
+        const rows = storyJourney.rows;
+        const stage = storyJourney.readStage(rows);
         const path = storyJourney.path;
-        const nodes = storyJourney.nodes();
         const events = storyJourney.events;
+        const nodes = storyJourney.nodes(rows, events);
+        const snapshot = { rows, stage, path, events, nodes };
         const height = nodes.length * 112 + 112;
         const y = (row) => (nodes.length - row - 1) * 112 + 80;
         container.style.height = `${height}px`;
@@ -127,7 +131,7 @@ const storyJourney = {
         const lines = [];
         nodes.forEach((row, rowIndex) =>
             row.forEach((_, index) => {
-                storyJourney.connections(rowIndex, index, nodes).forEach((target) => {
+                storyMapRules.connections(rowIndex, index, rows).forEach((target) => {
                     const visited =
                         rowIndex < stage &&
                         path[rowIndex] === index &&
@@ -152,7 +156,7 @@ const storyJourney = {
                 button.type = 'button';
                 button.className = `story-map-node story-map-node-${node.kind}`;
                 button.dataset.index = String(index);
-                button.disabled = !storyJourney.canSelect(rowIndex, index, nodes);
+                button.disabled = !storyJourney.canSelect(rowIndex, index, nodes, snapshot);
                 button.style.left = `${storyJourney.position(index, row.length)}%`;
                 button.style.top = `${y(rowIndex)}px`;
                 const cleared = rowIndex < stage && path[rowIndex] === index;
@@ -194,10 +198,11 @@ const storyJourney = {
             const restart = document.createElement('button');
             restart.className = 'btn-main story-map-restart';
             restart.dataset.confirmTone = 'warning';
-            restart.textContent = '스토리 초기화 · 50골드';
+            restart.textContent = `스토리 초기화 · ${storyJourney.resetCost}골드`;
             restart.addEventListener('click', () => storyJourney.requestReset());
             container.appendChild(restart);
         }
+        return snapshot;
     },
     requestSelection(row, index) {
         if (!storyJourney.canSelect(row, index)) return;
@@ -667,7 +672,7 @@ const storyJourney = {
             );
             return;
         }
-        inventory.render();
+        inventory.refresh();
         storyJourney.renderMarket();
     },
     leaveMarket() {

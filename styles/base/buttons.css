@@ -5,7 +5,7 @@
 .btn-main {
     background: linear-gradient(135deg, var(--primary) 0%, #ffb74d 50%, var(--primary) 100%);
     background-size: 200% 200%;
-    color: #000;
+    color: var(--color-black);
     font-weight: bold;
     padding: 16px;
     border: none;
@@ -52,7 +52,7 @@
 
 .btn-danger {
     margin-top: 10px;
-    color: #fff;
+    color: var(--color-white);
     border: 1px solid #eda5a4;
     background: linear-gradient(180deg, #e58484, #d8757b);
     box-shadow:
@@ -94,12 +94,12 @@
         rgba(41, 121, 255, 0.95),
         rgba(41, 121, 255, 0.85)
     ) !important;
-    color: #fff !important;
+    color: var(--color-white) !important;
 }
 
 .btn-boss-mode {
     background: linear-gradient(45deg, var(--boss-color), #ab47bc);
-    color: #fff;
+    color: var(--color-white);
     box-shadow: 0 4px 15px rgba(224, 64, 251, 0.2);
 }
 
@@ -187,7 +187,7 @@
     padding: 12px;
     font-size: clamp(16px, 5.5cqmin, 34px);
     text-align: center;
-    background: #222;
+    background: var(--neutral-900);
     border: 2px solid var(--primary);
     color: white;
     border-radius: 8px;
@@ -253,7 +253,7 @@ img[src*='exit_btn']:active {
     pointer-events: none;
 }
 .buy-btn.owned {
-    background: #555;
+    background: var(--neutral-600);
     pointer-events: none;
 }
 
@@ -319,7 +319,7 @@ select option:checked {
     margin: 0 auto 10px auto; /* Exit button above with spacing */
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
-    color: #fff;
+    color: var(--color-white);
     border: 2px solid rgba(255, 255, 255, 0.3);
     font-size: 20px;
     cursor: pointer;

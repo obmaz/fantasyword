@@ -9,9 +9,8 @@ const shop = {
      */
     open: () => {
         // title-screen은 숨기지 않고 모달만 표시
-        openScreenOverlay('shop-modal', true);
-
         shop.render();
+        openScreenOverlay('shop-modal', true);
     },
 
     /**
@@ -23,16 +22,18 @@ const shop = {
         // title-screen은 이미 표시되어 있으므로 다시 표시할 필요 없음
     },
 
+    refresh: () => {
+        if (document.getElementById('shop-modal').open) shop.render();
+    },
+
     /**
      * 상점 UI를 렌더링합니다
      */
     render: () => {
         const container = document.getElementById('shop-container');
         container.innerHTML = '';
-        document.getElementById('shop-gold').innerText = formatMenuNumber(db.gold);
-        const used = inventory.getStoredCount();
-        document.getElementById('shop-capacity-summary').textContent =
-            `보관함 ${used} / ${db.inventoryCapacity}칸 · 빈칸 ${Math.max(0, db.inventoryCapacity - used)}칸`;
+        document.getElementById('shop-gold').textContent = formatMenuNumber(db.gold);
+        document.getElementById('shop-capacity-summary').textContent = inventory.capacitySummary();
 
         const isPurchased = (item) =>
             db.inventory.includes(item.id) ||
@@ -165,7 +166,7 @@ const shop = {
         const previousCapacity = db.inventoryCapacity;
         if (!db.commitChanges(changes)) return;
         shop.render();
-        inventory.render(); // 인벤토리 화면도 업데이트
+        inventory.refresh();
         if (type === 'backpack')
             showToast(
                 `보관함이 ${previousCapacity}칸에서 ${db.inventoryCapacity}칸으로 늘었습니다.`,
@@ -178,7 +179,6 @@ const shop = {
      * @param {string} id - 아이템 ID
      */
     equip: (id) => {
-        db.equip(id);
-        shop.render();
+        return db.equip(id);
     },
 };

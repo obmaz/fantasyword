@@ -33,7 +33,7 @@
     border: 1px solid #74683c;
     border-radius: 10px;
     background: #20202e;
-    color: #fff;
+    color: var(--color-white);
     font: inherit;
 }
 .mode-question-types {
@@ -81,7 +81,7 @@
     border: 1px solid #74683c;
     border-radius: 10px;
     background: #292938;
-    color: #fff;
+    color: var(--color-white);
     font: inherit;
     font-weight: bold;
     cursor: pointer;
@@ -92,6 +92,6 @@
 }
 .mode-selection :is(button, select):focus-visible,
 .mode-question-types label:focus-within {
-    outline: 3px solid #fff;
+    outline: 3px solid var(--color-white);
     outline-offset: 3px;
 }

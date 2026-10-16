@@ -299,7 +299,7 @@ function objectiveGame() {
     runtime.getElement('count-select').value = '10';
     game.battleQuestionType = 'objective';
     game.init('battle', 'all');
-    runtime.advance(400);
+    runtime.advance(runtime.evaluate('APP_CONFIG.gameStartDelayMs'));
     return { ...runtime, game };
 }
 
@@ -359,6 +359,7 @@ test('전투 진행은 DOM 없는 렌더러를 주입해 시작·채점·종료�
     };
     const { evaluate } = loadScripts(
         [
+            'scripts/config.js',
             'scripts/domain/questions.js',
             'scripts/domain/battle-rules.js',
             'scripts/game/game-engine.js',

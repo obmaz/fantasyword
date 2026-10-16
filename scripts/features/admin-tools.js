@@ -140,7 +140,7 @@ const secret = {
         // 골드 수정 모달 열기
         settingsManager.showPanel('gold-edit-modal');
         secret.editGold = db.gold; // 현재 골드로 초기화
-        document.getElementById('current-gold-edit-display').innerText = db.gold;
+        document.getElementById('current-gold-edit-display').textContent = db.gold;
         secret.updateGoldEdit(0);
 
         document.getElementById('gold-edit-up').onclick = () => secret.updateGoldEdit(500);
@@ -158,7 +158,7 @@ const secret = {
         const formatted = formatMenuNumber(secret.editGold);
         for (const id of ['edit-gold-display', 'settings-edit-gold']) {
             const output = document.getElementById(id);
-            output.innerText = formatted;
+            output.textContent = formatted;
             output.dataset.goldSize = formatted.length > 4 ? 'long' : 'short';
         }
     },
@@ -180,16 +180,6 @@ const secret = {
                 showToast('골드를 저장하지 못했습니다. 다시 시도해 주세요.', 'error');
                 return;
             }
-            if (typeof shop !== 'undefined' && typeof shop.render === 'function') {
-                shop.render();
-            }
-            if (typeof inventory !== 'undefined' && typeof inventory.render === 'function') {
-                inventory.render();
-            }
-            if (typeof statistics !== 'undefined' && typeof statistics.render === 'function') {
-                statistics.render();
-            }
-
             showToast('골드가 수정되었습니다.', 'success');
             secret.pendingAction = null;
             secret.previousModal = null;

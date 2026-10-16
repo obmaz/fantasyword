@@ -80,7 +80,7 @@ const battleRules = Object.freeze({
                 (REWARD_POLICY.minimumShare + ratio * (1 - REWARD_POLICY.minimumShare)) *
                 multiplier
         );
-        if (glove) gain = Math.floor(gain * 1.5);
+        if (glove) gain = Math.floor(gain * EQUIPMENT_CONFIG.gloveMultiplier);
         return gain;
     },
     resultRows(session, win) {

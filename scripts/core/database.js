@@ -223,9 +223,9 @@ const db = {
             musicPlay: o.musicPlay !== false,
             wordRead: o.wordRead !== false,
             vibration: o.vibration !== false,
-            vibrationDuration: [80, 200, 350].includes(o.vibrationDuration)
+            vibrationDuration: HAPTICS_CONFIG.durations.includes(o.vibrationDuration)
                 ? o.vibrationDuration
-                : 200,
+                : HAPTICS_CONFIG.defaultDuration,
         };
     })(),
 
@@ -483,7 +483,7 @@ const previousEquipment = JSON.stringify(db.equipped);
 // 이전 자동 활성 유물은 장갑 슬롯으로 옮겨 효과와 남은 사용 횟수를 보존한다.
 if (db.owned.includes('goldGlove')) {
     db.owned = db.owned.filter((id) => id !== 'goldGlove');
-    db.durability.goldGlove ??= 10;
+    db.durability.goldGlove ??= EQUIPMENT_CONFIG.gloveUses;
     if (!db.equipped.gloves) {
         db.equipped.gloves = 'goldGlove';
         db.inventory = db.inventory.filter((id) => id !== 'goldGlove');
@@ -496,8 +496,8 @@ if (db.owned.includes('goldGlove')) {
 }
 const previousPrimaryWeapon = db.equippedWeapon;
 // 건틀릿의 현행 수명은 최대 10회다. 이미 사용한 더 적은 횟수는 보존한다.
-if (db.durability.goldGlove > 10) {
-    db.durability.goldGlove = 10;
+if (db.durability.goldGlove > EQUIPMENT_CONFIG.gloveUses) {
+    db.durability.goldGlove = EQUIPMENT_CONFIG.gloveUses;
     db._writers.dura();
 }
 function restoreWeaponToHand(id) {

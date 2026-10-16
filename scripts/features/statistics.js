@@ -12,9 +12,8 @@ const statistics = {
      */
     open: () => {
         // title-screen은 숨기지 않고 모달만 표시
-        openScreenOverlay('statistics-modal', true);
-
         statistics.render();
+        openScreenOverlay('statistics-modal', true);
     },
 
     /**
