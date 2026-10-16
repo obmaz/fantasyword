@@ -28,7 +28,10 @@ const equipmentRules = Object.freeze({
     combo(state, correct) {
         if (!correct || !state.weapon) return { combo: 0, bonus: 0 };
         const combo = state.combo + 1;
-        return combo === 3 ? { combo: 0, bonus: equipmentRules.comboBonus } : { combo, bonus: 0 };
+        return {
+            combo,
+            bonus: combo % 3 === 0 ? equipmentRules.comboBonus : 0,
+        };
     },
     routeBonus: (gain, route) => (route === 'treasure' ? Math.round(gain * 0.1) : 0),
     routeSeconds: (route) => (route === 'safe' ? 5 : 0),

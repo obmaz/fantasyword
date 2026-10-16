@@ -2448,7 +2448,9 @@ button img:not([class]) {
     place-items: center;
     border: 2px solid #f6d56f;
     border-radius: 50%;
-    background: radial-gradient(circle, #f5b52c 0 22%, #9d431a 24% 36%, #202f28 38% 100%);
+    background:
+        url('../../images/theme/parts/calm-attack-icon.webp') center / 72% no-repeat,
+        radial-gradient(circle, #f5b52c 0 22%, #9d431a 24% 36%, #202f28 38% 100%);
     box-shadow:
         0 0 0 3px #f6d56f55,
         0 0 18px #f5bd4c;

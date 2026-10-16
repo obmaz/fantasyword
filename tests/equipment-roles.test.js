@@ -44,13 +44,16 @@ test('오른손 무기는 3연속 정답에만 추가 3 G를 주며 오답은 �
     assert.equal(r.evaluate('db.gold'), 1033);
     assert.equal(r.getElement('dmg-txt').innerText, '+13 G');
     assert.equal(r.getElement('dmg-txt').children.at(-1).innerText, '정답 +10 · 연속 +3');
-    assert.equal(r.game.gear.combo, 0);
+    assert.equal(r.game.gear.combo, 3);
     r.advance(800);
     r.choose(false);
     assert.equal(r.game.gear.combo, 0);
     const rules = r.evaluate('equipmentRules');
     assert.equal(rules.combo({ combo: 2, weapon: false }, true).bonus, 0);
     assert.equal(rules.combo({ combo: 2, weapon: true }, false).combo, 0);
+    assert.equal(rules.combo({ combo: 3, weapon: true }, true).combo, 4);
+    assert.equal(rules.combo({ combo: 5, weapon: true }, true).bonus, 3);
+    assert.equal(rules.combo({ combo: 6, weapon: true }, true).bonus, 0);
 });
 
 test('황금장갑은 장착할 때만 보상이 늘고 정답에서만 사용 횟수가 차감된다', () => {

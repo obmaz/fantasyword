@@ -146,12 +146,12 @@ const ui = {
             const battleScreen = document.getElementById('battle-mode-game');
             if (battleScreen) {
                 battleScreen.dataset.combo = gear.weapon ? String(gear.combo) : '';
-                battleScreen.style.setProperty('--combo-count', `"${gear.combo || 0}/3"`);
+                battleScreen.style.setProperty('--combo-count', `"Combo ${gear.combo || 0}"`);
             }
             if (gear.weapon)
                 append(
                     db.equipped['hand-1'] || db.equippedWeapon || 'basic',
-                    `연속 ${gear.combo}/3`,
+                    `Combo ${gear.combo}`,
                     `3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`
                 );
             if (gear.protection || gear.shieldMax > 0)
