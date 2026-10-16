@@ -29,7 +29,7 @@
 | `parts/menu-*.webp`, `ui-*.webp`, `calm-*.webp`                   | 모드·메뉴·기능별 독립 아이콘/부품                           |
 | `parts/game-action.webp`, `game-danger.webp`, `game-control.webp` | 일반·도전/위험·하단 메뉴와 공통 조작 재질                   |
 | `parts/confirm-cancel.webp`, `confirm-execute.webp`               | 회색 취소·밝고 차분한 파란 실행; 경고는 game-danger         |
-| `parts/proverb-blank.webp`                                        | 생성한 초록색·금색 테두리의 둥근 사각형 속담 빈칸           |
+| `parts/proverb-blank.webp`                                        | 이전 속담 빈칸 부품; 현행 빈칸은 단순한 CSS 사각형          |
 | `parts/approved-*.webp`, `surface-*.webp`                         | 메뉴 프레임·양피지·입력·슬롯·코인·기본 재질                 |
 | `parts/revenge-icon.webp`                                         | 검·회전 화살표 복수 아이콘; 이름은 HTML                     |
 | `parts/quest-{hero,dragon,key,delete,paper,attack}.webp`          | 주관식 장면/키보드 부품; 장비 몸 그림은 아래 전용 파일 사용 |
@@ -45,7 +45,7 @@
 단어 대장간은 길드 공터를 사용한다. 속담·사자성어에 아이템 두루마리를 배경으로 확대하지 않는다.
 `data-confirm-tone`이 취소/실행/경고 이미지를 고르며 글자·동작·비활성화는 HTML이 처리한다.
 영어·사자성어·속담·대장간의 `answer-choice`는 `shared-ui.css`에서 동일한 game-action/confirm-execute/game-danger 이미지와 크기를 공유한다.
-총공세 보기는 이 공통 크기에서 제외한다. 속담 빈칸은 이미지 테두리 안에 HTML 정답을 표시하며 문제판을 확대하지 않는다.
+총공세 보기는 이 공통 크기에서 제외한다. 속담 빈칸은 단순한 사각형 안에 HTML 정답을 표시하며 문제판을 확대하지 않는다.
 예전 글자가 포함된 메뉴 이미지와 기본 재질도 cascade에 참조가 남을 수 있으므로 이름만 보고 삭제하지 않는다.
 `images/battle/`는 기존 모험가/몬스터 sprite다. JS 동적 경로와 CSS/HTML 직접 참조를 함께 확인한다.
 

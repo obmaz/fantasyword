@@ -348,7 +348,7 @@
 .story-puzzle-game[data-kind='proverb'] .puzzle-board {
     overflow: hidden;
     display: grid;
-    grid-template-rows: minmax(0, 1fr) auto auto;
+    grid-template-rows: minmax(0, 1fr) auto;
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-choices {
     align-self: end;
@@ -358,17 +358,15 @@
     white-space: pre-line;
     color: #b9e2ff;
 }
-/* Reserve the action row before answering so choices never move on review. */
+/* Only visible actions take space; question/review choices sit at the board bottom. */
 .story-puzzle-game[data-kind='proverb'] .puzzle-controls {
-    flex: 0 0 54px;
-    height: 54px;
+    min-height: 54px;
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-controls button {
     height: 54px;
     min-height: 54px;
     padding: 4px 8px;
 }
-.story-puzzle-game[data-kind='proverb'] .puzzle-controls:empty {
-    display: flex;
-    visibility: hidden;
+.story-puzzle-game[data-kind='proverb'] .puzzle-controls:not(:has(button:not([hidden]))) {
+    display: none;
 }

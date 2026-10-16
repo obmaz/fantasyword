@@ -169,14 +169,15 @@
     min-height: 1.9em;
     margin-inline: 0.15em;
     padding: 0 0.2em;
-    border: 6px solid transparent;
-    border-image: url('../../images/theme/parts/proverb-blank.webp') 28 fill / 6px / 0 stretch;
+    border: 1px solid #8c805e;
+    border-radius: 4px;
+    background: #fff8e3;
     font-size: 0.9em;
     line-height: 1.4;
     color: transparent;
 }
 #story-puzzle-game .puzzle-blank.puzzle-answer {
-    color: #b9e2ff;
+    color: #216ba4;
 }
 
 /* English and idioms reserve the same scene before their question card. */
