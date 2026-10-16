@@ -9,8 +9,10 @@ function createBattleView({
     openScreen,
     closeScreen,
     attacks,
+    elementPrefix = '',
+    arenaSelector = '.battle-arena',
 }) {
-    const element = (id) => doc.getElementById(id);
+    const element = (id) => doc.getElementById(elementPrefix + id);
     let optionButtons = [];
     let letterButtons = [];
     let spellingResizeObserver = null;
@@ -134,11 +136,11 @@ function createBattleView({
         layer.dataset.combo = 'false';
         element('effect-slash').className = 'attack-impact';
         element('attack-particles').innerHTML = '';
-        const arena = doc.querySelector('.battle-arena');
+        const arena = doc.querySelector(arenaSelector);
         if (arena) delete arena.dataset.strike;
     }
     function positionAttack() {
-        const arena = doc.querySelector('.battle-arena');
+        const arena = doc.querySelector(arenaSelector);
         const hero = element('hero-wrapper');
         const monster = element('monster-img').parentElement;
         const fallback = { left: 0, top: 0, width: 360, height: 260 };
@@ -190,10 +192,14 @@ function createBattleView({
             ['dmg-txt', ['float-up']],
         ])
             element(id)?.classList.remove(...classes);
-        doc.querySelector('.battle-arena')?.classList.remove('screen-shake');
+        doc.querySelector(arenaSelector)?.classList.remove('screen-shake');
         element('dmg-txt').innerText = '';
     }
     return {
+        resetCombat() {
+            questionVersion++;
+            resetEffects();
+        },
         stop() {
             questionVersion++;
             floatVersion++;
@@ -232,8 +238,10 @@ function createBattleView({
             resetEffects();
             optionButtons = [];
             letterButtons = [];
-            element('monster-img').src = sprite;
-            element('monster-img').alt = encounter?.name || '몬스터';
+            element('monster-img').src =
+                encounter?.kind === 'idiom' ? 'images/theme/parts/monster-goblin.webp' : sprite;
+            element('monster-img').alt =
+                encounter?.kind === 'idiom' ? '고블린' : encounter?.name || '몬스터';
             const screen = element('battle-mode-game');
             screen.dataset.answerEntry = '';
             screen.dataset.monster = encounter?.id || '';
@@ -602,7 +610,8 @@ function createBattleView({
             // Clear old animation styles before replaying on the same DOM nodes.
             void layer.offsetWidth;
             element('hero-wrapper').dataset.strike = profile.motion;
-            doc.querySelector('.battle-arena').dataset.strike = profile.motion;
+            const arena = doc.querySelector(arenaSelector);
+            if (arena) arena.dataset.strike = profile.motion;
             element('hero-wrapper').classList.add('hero-active');
             layer.classList.add('is-attacking');
             const version = attackVersion;
@@ -628,12 +637,12 @@ function createBattleView({
             element('monster-img').classList.add('mob-attack-anim');
             element('hero-img').classList.add('hero-hit-anim');
             element('hero-head').classList.add('hero-hit-anim');
-            doc.querySelector('.battle-arena')?.classList.add('screen-shake');
+            doc.querySelector(arenaSelector)?.classList.add('screen-shake');
             questionLater(() => {
                 element('monster-img').classList.remove('mob-attack-anim');
                 element('hero-img').classList.remove('hero-hit-anim');
                 element('hero-head').classList.remove('hero-hit-anim');
-                doc.querySelector('.battle-arena')?.classList.remove('screen-shake');
+                doc.querySelector(arenaSelector)?.classList.remove('screen-shake');
             }, 400);
         },
         floatText(text, type, detail = '') {

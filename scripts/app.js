@@ -145,6 +145,38 @@ const storyPuzzle = createStoryPuzzleSession({
         document,
         openScreen: openScreenOverlay,
         resetScreen: resetScreenOverlay,
+        combat: createBattleView({
+            document,
+            attacks: battleAttackProfiles,
+            schedule: setTimeout,
+            escapeHTML,
+            elementPrefix: 'puzzle-',
+            arenaSelector: '#puzzle-combat-scene',
+        }),
+        combatants: {
+            render() {
+                renderEquipmentAvatar(document.getElementById('puzzle-hero-wrapper'), {
+                    equipped: db.equipped,
+                    durability: db.durability,
+                    weapons,
+                    items,
+                    fallback: null,
+                });
+                document.getElementById('puzzle-monster-img').src =
+                    'images/theme/parts/monster-slime.webp';
+                document.getElementById('puzzle-monster-img').alt = '슬라임';
+            },
+            attack() {
+                const weapon = weapons.find((w) => w.id === db.equippedWeapon) || weapons[0];
+                const secondary = weapons.find((w) => w.id === db.equipped['hand-2']);
+                return {
+                    weaponId: weapon.id,
+                    effect: weapon.effect || 'basic',
+                    secondaryEffect:
+                        secondary && secondary.id !== 'shield_item' ? secondary.effect : null,
+                };
+            },
+        },
     }),
     rules: storyPuzzleRules,
     proverbs: storyProverbs,

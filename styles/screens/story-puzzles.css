@@ -259,9 +259,6 @@
 }
 #battle-mode-game[data-question-kind='idiom']::before,
 #battle-mode-game[data-question-kind='idiom'] .battle-arena::after,
-#battle-mode-game[data-question-kind='idiom'] .char-wrapper,
-#battle-mode-game[data-question-kind='idiom'] #combat-effects,
-#battle-mode-game[data-question-kind='idiom'] #dmg-txt,
 #battle-mode-game[data-question-kind='idiom'] #equipment-display,
 #battle-mode-game[data-question-kind='idiom'] #skill-display,
 #battle-mode-game[data-question-kind='idiom'] .gameplay-heading p {
@@ -281,6 +278,13 @@
 }
 #battle-mode-game[data-question-kind='idiom'] .gameplay-header {
     background: linear-gradient(#102733cc, #10273366);
+}
+#battle-mode-game[data-question-kind='idiom'] .char-wrapper::before {
+    display: none;
+}
+#battle-mode-game[data-question-kind='idiom'] #monster-img {
+    opacity: 1;
+    object-fit: contain;
 }
 :root[data-layout] #battle-mode-game[data-question-kind='idiom'] .quiz-area {
     flex: 1;
@@ -369,4 +373,46 @@
 }
 .story-puzzle-game[data-kind='proverb'] .puzzle-controls:not(:has(button:not([hidden]))) {
     display: none;
+}
+.puzzle-combat-scene {
+    display: none;
+}
+[data-kind='proverb'][data-phase='question'] .puzzle-combat-scene,
+[data-kind='proverb'][data-phase='review'] .puzzle-combat-scene {
+    display: block;
+    position: absolute;
+    inset: -8px 0 auto;
+    height: max(var(--objective-scene-size), var(--objective-scene-min));
+    isolation: isolate;
+    pointer-events: none;
+}
+.puzzle-combatant {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    width: clamp(88px, 21cqh, 180px);
+    height: clamp(88px, 21cqh, 180px);
+    filter: drop-shadow(0 6px 3px #123b3d55);
+}
+.puzzle-combatant.puzzle-monster {
+    right: 5%;
+    left: auto;
+}
+.puzzle-monster img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#puzzle-progress {
+    z-index: 2;
+}
+@media (max-height: 500px) {
+    [data-kind='proverb'] .puzzle-combat-scene {
+        top: -4px;
+    }
+    .puzzle-combatant {
+        width: 64px;
+        height: 64px;
+        bottom: 8px;
+    }
 }

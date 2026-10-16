@@ -314,3 +314,39 @@ test('속담은 빈칸에 파란 정답을 넣고 오답 보기를 구분하며 
         assert.equal(r.getElement('puzzle-feedback').textContent, before);
     }
 });
+
+test('속담 공격은 장착 무기·왼손 속성을 사용하고 나가기 뒤 늦은 효과가 새 판에 남지 않는다', () => {
+    const r = browserRuntime({
+        v7_owned: '["goldDagger","fire"]',
+        v7_equipped: '{"hand-1":"goldDagger","hand-2":"fire"}',
+        v7_gold: '99',
+    });
+    r.sandbox.onload();
+    const choose = (correct) => {
+        const prompt = r.getElement('puzzle-prompt').textContent;
+        const question = r
+            .evaluate('storyProverbs')
+            .find((q) => `${q.before}____${q.after}` === prompt);
+        r.getElement('puzzle-choices')
+            .children.find((button) => (button.textContent === question.answer) === correct)
+            .click();
+    };
+    r.evaluate("storyPuzzle.start('proverb')");
+    choose(true);
+    const effect = r.getElement('puzzle-combat-effects');
+    assert.ok(effect.classList.contains('is-attacking'));
+    assert.equal(effect.dataset.strike, 'dagger');
+    assert.equal(effect.dataset.secondary, 'fire');
+    assert.equal(r.evaluate('db.gold'), 99);
+    assert.equal(r.getElement('combat-effects').classList.contains('is-attacking'), false);
+    r.evaluate("storyPuzzle.exit(); storyPuzzle.start('proverb')");
+    r.advance(800);
+    assert.equal(effect.classList.contains('is-attacking'), false);
+    assert.equal(r.getElement('puzzle-monster-img').classList.contains('mob-active'), false);
+    choose(false);
+    assert.ok(r.getElement('puzzle-hero-img').classList.contains('hero-hit-anim'));
+    assert.equal(effect.classList.contains('is-attacking'), false);
+    r.evaluate("storyPuzzle.exit(); storyPuzzle.start('forge')");
+    r.advance(500);
+    assert.equal(r.getElement('puzzle-hero-img').classList.contains('hero-hit-anim'), false);
+});

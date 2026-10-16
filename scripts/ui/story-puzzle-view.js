@@ -1,5 +1,5 @@
 /** 모델과 콜백만 사용하는 스토리 퍼즐 화면. 공통 이미지 헤더·버튼을 재사용한다. */
-function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
+function createStoryPuzzleView({ document: doc, openScreen, resetScreen, combat, combatants }) {
     const element = (id) => doc.getElementById(id);
     let version = 0;
     let proverbReviewTimer = null;
@@ -77,12 +77,15 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         open(kind) {
             version++;
+            combat?.resetCombat();
             element('puzzle-title').textContent = kind === 'proverb' ? '속담' : '단어 대장간';
             element('story-puzzle-game').dataset.kind = kind;
             openScreen('story-puzzle-game', false);
         },
         question(model, choose) {
             version++;
+            combat?.resetCombat();
+            if (model.kind === 'proverb') combatants?.render();
             element('story-puzzle-game').dataset.phase = 'question';
             clearQuestion();
             actions();
@@ -137,6 +140,8 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
             element('story-puzzle-game').dataset.phase = 'review';
             const proverb = element('story-puzzle-game').dataset.kind === 'proverb';
             if (proverb) {
+                if (model.correct) combat?.attack(combatants?.attack());
+                else combat?.hit();
                 proverbSentence(model.before, model.correctAnswer, model.after, true);
                 Array.from(element('puzzle-choices').children).forEach((button) => {
                     button.disabled = true;
@@ -186,6 +191,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         done(result, story, again) {
             version++;
+            combat?.resetCombat();
             element('story-puzzle-game').dataset.phase = 'done';
             clearQuestion();
             element('puzzle-prompt').textContent = result.won ? '완료!' : '다시 도전해 보세요';
@@ -201,6 +207,7 @@ function createStoryPuzzleView({ document: doc, openScreen, resetScreen }) {
         },
         exit() {
             version++;
+            combat?.resetCombat();
             resetScreen('story-puzzle-game');
             openScreen('title-screen', false);
         },

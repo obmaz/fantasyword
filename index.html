@@ -1215,6 +1215,82 @@
             <div id="puzzle-header-host"></div>
             <main class="puzzle-board">
                 <div class="puzzle-content">
+                    <div
+                        id="puzzle-combat-scene"
+                        class="puzzle-combat-scene"
+                        aria-label="속담 전투"
+                    >
+                        <div id="puzzle-hero-wrapper" class="equipment-avatar puzzle-combatant">
+                            <img
+                                id="puzzle-hero-head"
+                                class="avatar-layer avatar-helmet"
+                                src="images/theme/parts/quest-hero-unarmed-helmet.webp"
+                                alt=""
+                                data-avatar-part="helmet"
+                                hidden
+                            />
+                            <div
+                                class="avatar-layer avatar-glove-near"
+                                data-avatar-part="gloves"
+                                hidden
+                            ></div>
+                            <div
+                                class="avatar-layer avatar-glove-far"
+                                data-avatar-part="gloves"
+                                hidden
+                            ></div>
+                            <div
+                                class="avatar-layer avatar-boot-near"
+                                data-avatar-part="boots"
+                                hidden
+                            ></div>
+                            <div
+                                class="avatar-layer avatar-boot-far"
+                                data-avatar-part="boots"
+                                hidden
+                            ></div>
+                            <img
+                                id="puzzle-hero-img"
+                                class="avatar-body"
+                                src="images/theme/parts/quest-hero-unarmed.webp"
+                                alt="모험가"
+                            />
+                            <div
+                                class="equipped-weapon avatar-weapon"
+                                data-avatar-part="weapon"
+                            ></div>
+                            <div
+                                class="avatar-layer avatar-secondary"
+                                data-avatar-part="secondary"
+                                hidden
+                            ></div>
+                        </div>
+                        <div id="puzzle-combat-effects" class="effect-layer" aria-hidden="true">
+                            <div class="weapon-flight">
+                                <img id="puzzle-weapon-flight-art" alt="" />
+                            </div>
+                            <div id="puzzle-effect-slash" class="attack-impact">
+                                <img id="puzzle-attack-impact-art" class="combat-core" alt="" />
+                                <img id="puzzle-attack-echo-art" class="combat-echo" alt="" />
+                                <img
+                                    class="combat-cut"
+                                    src="images/theme/parts/combat-basic.webp"
+                                    alt=""
+                                />
+                                <div id="puzzle-attack-particles" class="combat-particles"></div>
+                            </div>
+                            <div id="puzzle-attack-secondary" class="attack-impact">
+                                <img id="puzzle-attack-secondary-art" alt="" />
+                            </div>
+                            <div id="puzzle-attack-gold" class="attack-impact">
+                                <img id="puzzle-attack-gold-art" alt="" />
+                            </div>
+                        </div>
+                        <div class="puzzle-combatant puzzle-monster">
+                            <img id="puzzle-monster-img" alt="몬스터" />
+                        </div>
+                        <div id="puzzle-dmg-txt" class="damage-txt"></div>
+                    </div>
                     <p id="puzzle-progress"></p>
                     <div class="puzzle-word-pair">
                         <div id="puzzle-prompt"></div>
