@@ -79,6 +79,10 @@ const storyMapRules = Object.freeze({
         rows[7] = ['miniboss'];
         rows[11] = ['miniboss'];
         rows[14] = ['boss'];
+        // 같은 행 수를 유지하면서 지점의 좌우 배치도 섞어 경로 모양을 바꾼다.
+        rows.forEach((row, stage) => {
+            if (![7, 11, 14].includes(stage)) rows[stage] = shuffle(row);
+        });
         return rows;
     },
     assignDay(source, events, shuffle) {

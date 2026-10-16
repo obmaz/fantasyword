@@ -617,19 +617,29 @@ const storyJourney = {
                 events[key].mistakes = result.mistakes;
             const path = storyJourney.path;
             path[storyJourney.pendingStage] = storyJourney.pendingIndex;
-            if (
-                !gameStorage.setBatch({
-                    [storyJourney.eventsKey]: JSON.stringify(events),
-                    [storyJourney.pathKey]: JSON.stringify(path),
-                    [storyJourney.key]: String(storyJourney.stage + 1),
-                })
-            )
-                return;
-            gamePresentation.rememberProgress({
-                book: db.getBookKey(),
-                stage: storyJourney.stage,
-                index: storyJourney.pendingIndex,
-            });
+            const nextStage = storyJourney.stage + 1;
+            const changes =
+                nextStage >= storyJourney.rows.length
+                    ? {
+                          [storyJourney.key]: '0',
+                          [storyJourney.pathKey]: '[]',
+                          [storyJourney.eventsKey]: '{}',
+                          [storyJourney.layoutKey]: JSON.stringify(
+                              storyMapRules.regenerate(questionTools.shuffle)
+                          ),
+                      }
+                    : {
+                          [storyJourney.eventsKey]: JSON.stringify(events),
+                          [storyJourney.pathKey]: JSON.stringify(path),
+                          [storyJourney.key]: String(nextStage),
+                      };
+            if (!gameStorage.setBatch(changes)) return;
+            if (nextStage < storyJourney.rows.length)
+                gamePresentation.rememberProgress({
+                    book: db.getBookKey(),
+                    stage: nextStage,
+                    index: storyJourney.pendingIndex,
+                });
         }
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;

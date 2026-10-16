@@ -61,7 +61,7 @@ test('관리 도구는 설정 음악 OFF→ON 3회에만 열리고 닫기·다�
     assert.equal(r.evaluate('settingsManager.musicTogglePairs'), 0);
 });
 
-test('스토리 최종 보스는 실제 철자 타일로 답을 입력하고 동 왕관도 다음 단계로 진행한다', () => {
+test('스토리 최종 보스는 실제 철자 타일로 답을 입력하고 클리어 뒤 새 지도를 시작한다', () => {
     const r = browserRuntime({ v7_settings: '{"musicPlay":false,"wordRead":false}' });
     r.sandbox.rawDataData = [
         'apple',
@@ -96,9 +96,10 @@ test('스토리 최종 보스는 실제 철자 타일로 답을 입력하고 동
         }
         r.advance(i < 2 ? 2500 : 800);
     }
-    assert.equal(journey.stage, 15);
-    assert.equal(journey.events['14:0'].mistakes, 2);
-    assert.equal(r.evaluate('storyMapRules.crown(storyJourney.events["14:0"].mistakes)'), 'bronze');
+    assert.equal(journey.stage, 0);
+    assert.equal(Object.keys(journey.events).length, 0);
+    assert.equal(journey.path.length, 0);
+    assert.equal(r.evaluate('storyMapRules.validLayout(storyJourney.rows)'), true);
 });
 
 test('건틀릿은 10회로 제한하고 남은 1회 및 저장된 0골드는 보존한다', () => {
