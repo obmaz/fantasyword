@@ -99,10 +99,10 @@ test('야바위는 입력을 잠그고 일곱 번 실제 이동 모델을 보낸
     assert.equal(r.seen.revealed, undefined);
     r.seen.cash();
     r.seen.cash();
-    assert.deepEqual(r.seen.rewards, [10]);
+    assert.deepEqual(r.seen.rewards, [50]);
 });
 
-test('2배 도전은 다른 주사위와 속성의 컵을 찾고 정답 공개 없이 20 또는 0을 지급한다', () => {
+test('3배 도전은 다른 주사위와 속성의 컵을 찾고 정답 공개 없이 150 또는 0을 지급한다', () => {
     for (const correct of [true, false]) {
         const r = runtime();
         r.seen.begin();
@@ -119,7 +119,7 @@ test('2배 도전은 다른 주사위와 속성의 컵을 찾고 정답 공개 �
         assert.equal(r.session.phase, 'double');
         r.seen.pick(correct ? target(r) : first);
         r.seen.pick(target(r));
-        assert.deepEqual(r.seen.rewards, [correct ? 20 : 0]);
+        assert.deepEqual(r.seen.rewards, [correct ? 150 : 0]);
     }
 });
 

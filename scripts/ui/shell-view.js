@@ -134,8 +134,8 @@ function createShellView({ document: doc, openScreen, resetScreen, sound }) {
                 button.disabled = true;
             });
             element('shell-status').textContent =
-                '정답! 10을 받을까요, 다른 주사위의 컵을 찾아 2배에 도전할까요?';
-            controls(['10 받기', cash], ['2배 도전', double]);
+                '정답! 50골드를 받을까요, 다른 주사위의 컵을 찾아 3배에 도전할까요?';
+            controls(['50골드 받기', cash], ['3배 도전', double]);
         },
         reveal(dice, cups) {
             cancelAnimations();
