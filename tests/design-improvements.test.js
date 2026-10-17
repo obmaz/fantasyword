@@ -646,61 +646,25 @@ test('고정 글자를 건너뛰어 입력하고 지우기 뒤에도 첫·끝 �
     assert.equal(input.value, 'b_____n');
 });
 
-test('설치 창 표시 모드에서도 API 전체화면을 요청하고 실제 진입 후에만 버튼 자리를 숨긴다', async () => {
-    for (const mode of ['fullscreen', 'standalone']) {
+test('설치 앱은 현재·이전 표시 모드와 iOS 홈 화면 실행 모두 최대화 버튼을 숨기고 API를 호출하지 않는다', async () => {
+    for (const mode of ['standalone', 'fullscreen', 'ios']) {
         const r = browserRuntime();
         r.sandbox.matchMedia = (query) => ({ matches: query === `(display-mode: ${mode})` });
+        r.sandbox.navigator.standalone = mode === 'ios';
         const button = r.getElement('global-fullscreen-btn');
         const document = r.sandbox.document;
-        const events = {};
-        document.addEventListener = (name, callback) => (events[name] = callback);
         document.querySelectorAll = (selector) =>
             selector === '[data-action="fullscreen-toggle"]' ? [button] : [];
         document.fullscreenEnabled = true;
         let requests = 0;
-        document.documentElement.requestFullscreen = async (options) => {
-            assert.equal(options.navigationUI, 'hide');
-            requests++;
-            document.fullscreenElement = document.documentElement;
-            events.fullscreenchange();
-        };
-        document.exitFullscreen = async () => {
-            document.fullscreenElement = null;
-            events.fullscreenchange();
-        };
+        document.documentElement.requestFullscreen = async () => requests++;
         r.sandbox.initFullscreenControls();
-        assert.equal(button.hidden, false);
-        assert.equal(document.documentElement.dataset.installedApp, 'true');
-        await r.sandbox.toggleFullscreen();
-        assert.equal(requests, 1);
         assert.equal(button.hidden, true);
+        assert.equal(document.documentElement.dataset.installedApp, 'true');
         assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'true');
         await r.sandbox.toggleFullscreen();
-        assert.equal(button.hidden, false);
-        assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'false');
+        assert.equal(requests, 0);
     }
-});
-
-test('설치 창의 API 전체화면이 거부되어도 확장 버튼을 유지하고 다시 요청할 수 있다', async () => {
-    const r = browserRuntime();
-    r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
-    const button = r.getElement('global-fullscreen-btn');
-    const document = r.sandbox.document;
-    document.querySelectorAll = (selector) =>
-        selector === '[data-action="fullscreen-toggle"]' ? [button] : [];
-    document.fullscreenEnabled = true;
-    let requests = 0;
-    document.documentElement.requestFullscreen = async () => {
-        requests++;
-        throw new Error('Denied');
-    };
-    r.sandbox.initFullscreenControls();
-    await r.sandbox.toggleFullscreen();
-    await r.sandbox.toggleFullscreen();
-    assert.equal(requests, 2);
-    assert.equal(button.hidden, false);
-    assert.equal(button.disabled, false);
-    assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'false');
 });
 
 test('설치 창이 시스템 바 때문에 줄어들면 가용 높이보다 큰 문서 높이를 합성하지 않는다', () => {

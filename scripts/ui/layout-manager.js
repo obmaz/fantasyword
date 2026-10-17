@@ -109,7 +109,7 @@
 
     function updateFullscreenButtons() {
         const active = !!document.fullscreenElement;
-        const hideControl = installedWindow && active;
+        const hideControl = installedWindow;
         document.documentElement.dataset.fullscreenControlHidden = String(hideControl);
         for (const button of document.querySelectorAll('[data-action="fullscreen-toggle"]')) {
             button.hidden = hideControl;
@@ -130,8 +130,8 @@
     }
 
     function initFullscreenControls() {
-        // Manifest fullscreen and element fullscreen are independent. Remember the
-        // installed window before an API request changes display-mode media queries.
+        // Installed apps keep the phone status bar and never offer element fullscreen.
+        // Detect old fullscreen installs too, until their manifest is updated.
         installedWindow ||= Boolean(
             appRunsFullscreen() ||
             window.matchMedia?.('(display-mode: standalone)').matches ||
@@ -149,7 +149,7 @@
     }
 
     async function toggleFullscreen() {
-        if (fullscreenPending) return;
+        if (fullscreenPending || installedWindow) return;
         if (!document.fullscreenEnabled) {
             showToast('이 브라우저는 전체화면을 지원하지 않습니다.', 'info');
             return;
