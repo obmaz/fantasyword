@@ -95,11 +95,6 @@ html {
     justify-content: center;
 }
 
-:root[data-installed-app='true'] body {
-    position: fixed;
-    inset: 0;
-}
-
 body {
     font-family: system-ui, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
     font-size: clamp(16px, 4vw, 24px); /* 화면 크기에 비례하여 확대 */
@@ -121,6 +116,24 @@ body {
     -webkit-user-select: none;
     user-select: none;
     position: relative;
+}
+
+/* Paint the entire installed window while JS sizes only the game frame.
+   The browser decides whether that window includes the Android cutout. */
+:root[data-installed-app='true'] {
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+}
+
+:root[data-installed-app='true'] body {
+    position: fixed;
+    inset: 0;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    background: var(--ui-surface-forest);
+    animation: none;
 }
 
 @keyframes gradientBG {

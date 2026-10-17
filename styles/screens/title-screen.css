@@ -9,6 +9,9 @@
     background: #10121b;
     z-index: var(--layer-title);
 }
+:root[data-installed-app='true'] #title-screen {
+    height: 100%;
+}
 .title-container-wrapper {
     position: relative;
     width: min(100%, 460px);

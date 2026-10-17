@@ -324,7 +324,8 @@ Day별로 하나만 무작위 출제한다. 제외된 자리는 다른 어간의
 PWA는 `manifest.webmanifest`·192/512px 아이콘·`sw.js`로 설치와 오프라인 실행을 제공한다.
 설치 앱은 `standalone` 모드로 휴대폰 상태바를 표시한다. Android의 상태바 테마는 manifest와 HTML의 `theme-color`에 지정한 숲색 `#173d32`를 요청하며, iOS는 `apple-mobile-web-app-status-bar-style: black`으로 검은 상태바와 밝은 글자를 요청한다. 상태바의 최종 표현은 OS·설치 브라우저 정책에 따른다.
 설치 창에서는 최대화 버튼과 예약 Grid 열·빈 공간을 항상 숨기고 Fullscreen API를 호출하지 않는다. 이전 `fullscreen` 모드로 설치된 창도 같은 버튼 정책을 적용하며, 표시 모드는 브라우저의 설치 정보 갱신 후 `standalone`으로 바뀐다. 일반 웹브라우저 실행에는 기존 전체화면 버튼과 `requestFullscreen({ navigationUI: 'hide' })`를 유지한다.
-문서 높이는 실제 `innerHeight`를 사용하며 시스템 영역까지 덮기 위해 더 큰 높이를 합성하지 않는다. 문서 최상위 세로 스크롤을 잠그고 설치 창의 body를 고정한다. 짧은 화면의 필요한 메뉴·본문 내부 스크롤은 유지한다. OS가 설치 창 자체를 리사이즈하면 콘텐츠는 가용 영역에 맞춰 바뀔 수 있다. `viewport-fit=cover`와 safe-area는 웹뷰에 제공되는 영역에서만 적용된다.
+게임 프레임 높이는 실제 `innerHeight`를 사용하며 시스템 영역까지 덮기 위해 더 큰 높이를 합성하지 않는다. 설치 창의 문서 배경은 JS 픽셀 높이와 분리해 실제 창 전체를 채운다. root는 높이 `100%`, body는 `position: fixed; inset: 0; height: auto`로 채우고 숲색 배경을 사용하며, 로비 배경도 `height: 100%`로 창을 따른다. 문서 최상위 세로 스크롤은 잠그고 짧은 화면의 필요한 메뉴·본문 내부 스크롤은 유지한다. OS가 설치 창 자체를 리사이즈하면 콘텐츠는 가용 영역에 맞춰 바뀔 수 있다.
+`theme-color`와 manifest는 스타일시트보다 먼저 전달한다. `viewport-fit=cover`와 safe-area는 웹뷰에 제공되는 영역에서만 적용된다. Android 노치 뒤까지 확장하는 설치형 standalone 지원은 Chrome/OS의 기능 적용 여부에 달려 있으며 웹에서 강제로 켤 수 없다. 관련 구현은 [Chromium의 설치형 앱 표시 모드 설명](https://chromium.googlesource.com/chromium/src.git/+/main/components/webapps/docs/android_architecture.md#display-modes-and-immersive-mode)을 참고한다. 노치 영역이 허용되면 배경이 채워지고 상단 조작은 기존 safe-area 여백을 사용한다.
 설정의 앱 설치는 지원 브라우저의 설치 창을 열며, 미지원/iPhone은 브라우저별 홈 화면 추가 방법을 안내한다.
 빌드는 HTML·CSS·JS·데이터·이미지의 해시로 서비스 워커 버전을 만들고 음악을 제외한 런타임을 사전 저장한다.
 첫 온라인 캐시 준비 후 학습 화면을 오프라인으로 열 수 있다. 음악은 온라인 전용이며 기존 브라우저별 저장 계약을 유지한다.
