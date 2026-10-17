@@ -54,7 +54,7 @@ window.weaponsData = [
         effect: 'fire',
         icon: '🔥',
         multiplier: 1.0,
-        desc: '화염 이펙트',
+        desc: '오른손: 정답마다 +2 G · 3연속마다 +3 G · 화염 공격',
         slot: 'either-hand',
     },
     {
@@ -65,7 +65,7 @@ window.weaponsData = [
         effect: 'ice',
         icon: '❄️',
         multiplier: 1.0,
-        desc: '얼음 이펙트',
+        desc: '오른손: 전투당 오답 1회 재도전 · 3연속마다 +3 G · 얼음 공격',
         slot: 'either-hand',
     },
     {
@@ -76,7 +76,7 @@ window.weaponsData = [
         effect: 'lightning',
         icon: '🔱',
         multiplier: 1.0,
-        desc: '번개 이펙트',
+        desc: '오른손: 2연속 정답마다 +3 G · 번개 공격',
         slot: 'either-hand',
     },
     {

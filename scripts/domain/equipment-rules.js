@@ -12,14 +12,23 @@ const equipmentRules = Object.freeze({
     },
     load(equipped, weapons, fallback = 'basic') {
         const primary = weapons.find((w) => w.id === (equipped['hand-1'] || fallback));
+        const isLightning = primary?.id === 'lightning';
+        const isIce = primary?.id === 'ice';
         return {
             weapon: Boolean(
                 primary && primary.id !== 'shield_item' && primary.category !== 'effect'
             ),
             combo: 0,
-            protection: equipped['hand-2'] === 'shield_item',
+            comboEvery: isLightning
+                ? EQUIPMENT_CONFIG.lightningComboEvery
+                : EQUIPMENT_CONFIG.comboEvery,
+            comboReward: isLightning
+                ? EQUIPMENT_CONFIG.lightningComboBonus
+                : equipmentRules.comboBonus,
+            fireBonus: primary?.id === 'fire' ? EQUIPMENT_CONFIG.fireCorrectBonus : 0,
+            protection: equipped['hand-2'] === 'shield_item' || isIce,
             insight: equipped.head === 'helmet',
-            shield: equipped['hand-2'] === 'shield_item' ? 1 : 0,
+            shield: equipped['hand-2'] === 'shield_item' || isIce ? 1 : 0,
             hint: equipped.head === 'helmet' ? 1 : 0,
             boots: equipped['foot-1'] === 'boots' && equipped['foot-2'] === 'boots',
             route: 'none',
@@ -30,7 +39,10 @@ const equipmentRules = Object.freeze({
         const combo = state.combo + 1;
         return {
             combo,
-            bonus: combo % EQUIPMENT_CONFIG.comboEvery === 0 ? equipmentRules.comboBonus : 0,
+            bonus:
+                combo % (state.comboEvery || EQUIPMENT_CONFIG.comboEvery) === 0
+                    ? state.comboReward || equipmentRules.comboBonus
+                    : 0,
         };
     },
     routeBonus: (gain, route) =>

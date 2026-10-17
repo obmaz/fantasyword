@@ -56,6 +56,23 @@ test('오른손 무기는 3연속 정답에만 추가 3 G를 주며 오답은 �
     assert.equal(rules.combo({ combo: 6, weapon: true }, true).bonus, 0);
 });
 
+test('원소 무기는 오른손에 장착하면 각자 다른 전투 능력을 쓴다', () => {
+    const fire = runtime({ 'hand-1': 'fire' }, { v7_owned: '["basic","fire"]' });
+    fire.start();
+    fire.choose(true);
+    assert.equal(fire.game.stats.gain, 12);
+
+    const ice = runtime({ 'hand-1': 'ice' }, { v7_owned: '["basic","ice"]' });
+    assert.equal(ice.game.gear.shield, 1);
+
+    const lightning = runtime({ 'hand-1': 'lightning' }, { v7_owned: '["basic","lightning"]' });
+    assert.equal(lightning.game.gear.comboEvery, 2);
+    assert.equal(lightning.game.gear.comboReward, 3);
+    assert.equal(lightning.evaluate('equipmentRules.combo(game.gear, true).bonus'), 0);
+    lightning.evaluate('game.gear.combo = 1');
+    assert.equal(lightning.evaluate('equipmentRules.combo(game.gear, true).bonus'), 3);
+});
+
 test('황금장갑은 장착할 때만 보상이 늘고 정답에서만 사용 횟수가 차감된다', () => {
     for (const equipped of [false, true]) {
         const r = runtime(equipped ? { gloves: 'goldGlove' } : {}, {

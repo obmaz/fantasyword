@@ -261,7 +261,11 @@ const inventory = {
                 ? `${itemData.desc}\n보유 중 효과 적용 · 보관함 1칸 사용`
                 : `${itemData.desc}\n장착 위치: ${placement}`;
         if (itemData.durability) description += `\n남은 사용: ${db.durability[id] || 0}회`;
-        if (type === 'weapon' && allowedSlots.includes('hand-1'))
+        if (
+            type === 'weapon' &&
+            allowedSlots.includes('hand-1') &&
+            !itemData.desc?.includes('3연속')
+        )
             description += `\n오른손: 3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`;
         if (type === 'weapon' && itemData.multiplier > 1)
             description += '\n골드 보너스는 오른손에 장착했을 때 적용됩니다.';

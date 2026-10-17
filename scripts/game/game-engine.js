@@ -659,10 +659,11 @@ function createBattleSession({
                 });
                 const routeBonus = equipment?.routeBonus(baseGain, game.gear?.route) || 0;
                 const comboBonus = game.currentQ.comboBonus || 0;
+                const elementalBonus = game.mode === 'idiom-test' ? 0 : game.gear?.fireBonus || 0;
                 const gain =
                     game.mode === 'idiom-test'
                         ? 0
-                        : baseGain + routeBonus + comboBonus + questBonus;
+                        : baseGain + routeBonus + comboBonus + elementalBonus + questBonus;
                 if (weapon.multiplier > 1) game.view.goldAttack();
                 const glove =
                     game.mode !== 'idiom-test' &&
@@ -683,12 +684,13 @@ function createBattleSession({
                     `정답 +${baseGain}`,
                     ...(routeBonus ? [`보물 +${routeBonus}`] : []),
                     ...(comboBonus ? [`연속 +${comboBonus}`] : []),
+                    ...(elementalBonus ? [`화염 +${elementalBonus}`] : []),
                     ...(questBonus ? [`퀘스트 +${questBonus}`] : []),
                 ];
                 game.view.floatText(
                     game.mode === 'idiom-test' ? '정답!' : paid ? `+${gain} G` : '정답 · 저장 실패',
                     'gold',
-                    paid && (comboBonus || routeBonus || questBonus)
+                    paid && (comboBonus || routeBonus || elementalBonus || questBonus)
                         ? rewardDetails.join(' · ')
                         : ''
                 );

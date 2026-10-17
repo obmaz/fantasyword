@@ -27,6 +27,9 @@ const EQUIPMENT_CONFIG = Object.freeze({
     gloveUses: 10,
     gloveMultiplier: 1.5,
     comboEvery: 3,
+    lightningComboEvery: 2,
+    lightningComboBonus: 3,
+    fireCorrectBonus: 2,
     safeRouteSeconds: 5,
     treasureRate: 0.1,
 });
