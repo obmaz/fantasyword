@@ -17,6 +17,12 @@ const storyMapRules = Object.freeze({
         ['battle', 'spelling'],
         ['boss'],
     ],
+    // 단계별 지점 수 자체를 바꿔 갈림길·합류 위치가 다른 세 구조를 순환한다.
+    routeWidths: Object.freeze([
+        Object.freeze([2, 3, 2, 1, 3, 2, 3, 1, 2, 3, 2, 1, 3, 2, 1]),
+        Object.freeze([1, 2, 3, 2, 1, 2, 3, 1, 3, 2, 1, 1, 2, 3, 1]),
+        Object.freeze([3, 1, 3, 2, 3, 1, 2, 1, 3, 1, 3, 1, 2, 3, 1]),
+    ]),
     encounters: {
         battle: { label: '전투', type: 'monsters', count: 8 },
         objective: { label: '뜻 문제', type: 'objective', count: 6 },
@@ -37,17 +43,21 @@ const storyMapRules = Object.freeze({
     nonCombat(kind) {
         return ['market', 'treasure', 'casino', 'mystery', 'proverb', 'forge'].includes(kind);
     },
+    layoutIndex(rows) {
+        if (!Array.isArray(rows)) return -1;
+        return storyMapRules.routeWidths.findIndex(
+            (widths) =>
+                rows.length === widths.length &&
+                rows.every((row, stage) => Array.isArray(row) && row.length === widths[stage])
+        );
+    },
     validLayout(rows) {
         return (
-            Array.isArray(rows) &&
-            rows.length === storyMapRules.rows.length &&
-            rows.every(
-                (row, stage) =>
-                    Array.isArray(row) &&
-                    row.length === storyMapRules.rows[stage].length &&
-                    row.every(
-                        (kind) => Object.hasOwn(storyMapRules.encounters, kind) && kind !== 'idiom'
-                    )
+            storyMapRules.layoutIndex(rows) >= 0 &&
+            rows.every((row) =>
+                row.every(
+                    (kind) => Object.hasOwn(storyMapRules.encounters, kind) && kind !== 'idiom'
+                )
             ) &&
             rows.at(-1)[0] === 'boss' &&
             rows.slice(0, -1).every((row) => !row.includes('boss')) &&
@@ -60,15 +70,18 @@ const storyMapRules = Object.freeze({
             })
         );
     },
-    regenerate(shuffle) {
+    regenerate(shuffle, previousRows = storyMapRules.rows) {
         // 전투 행을 사이에 둬 숨겨진 ? 결과도 비전투 지점과 연속되지 않게 한다.
-        const rows = storyMapRules.rows.map((row) => [...row]);
+        const next =
+            (storyMapRules.layoutIndex(previousRows) + 1) % storyMapRules.routeWidths.length;
+        const rows = storyMapRules.routeWidths[next].map((width) => Array(width).fill('battle'));
         const combat = shuffle(['battle', 'objective', 'spelling', 'listening', 'assault']);
         let combatIndex = 0;
         const events = ['market', 'treasure', 'casino', 'mystery', 'proverb', 'forge'];
         let eventIndex = 0;
         const order = shuffle(events);
         rows.forEach((row, stage) => {
+            if ([7, 11, 14].includes(stage)) return;
             row.forEach((_, index) => {
                 row[index] =
                     stage % 2 === 1 && stage !== rows.length - 1
@@ -79,7 +92,7 @@ const storyMapRules = Object.freeze({
         rows[7] = ['miniboss'];
         rows[11] = ['miniboss'];
         rows[14] = ['boss'];
-        // 같은 행 수를 유지하면서 지점의 좌우 배치도 섞어 경로 모양을 바꾼다.
+        // 같은 구조 안에서도 이벤트의 좌우 배치를 무작위로 만든다.
         rows.forEach((row, stage) => {
             if (![7, 11, 14].includes(stage)) rows[stage] = shuffle(row);
         });

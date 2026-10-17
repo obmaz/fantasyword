@@ -278,7 +278,7 @@ const storyJourney = {
                         [storyJourney.pathKey]: '[]',
                         [storyJourney.eventsKey]: '{}',
                         [storyJourney.layoutKey]: JSON.stringify(
-                            storyMapRules.regenerate(questionTools.shuffle)
+                            storyMapRules.regenerate(questionTools.shuffle, storyJourney.rows)
                         ),
                     }
                 )
@@ -625,7 +625,7 @@ const storyJourney = {
                           [storyJourney.pathKey]: '[]',
                           [storyJourney.eventsKey]: '{}',
                           [storyJourney.layoutKey]: JSON.stringify(
-                              storyMapRules.regenerate(questionTools.shuffle)
+                              storyMapRules.regenerate(questionTools.shuffle, storyJourney.rows)
                           ),
                       }
                     : {

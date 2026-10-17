@@ -38,15 +38,20 @@ test('기본 지도와 재배치 지도는 비전투가 연속되지 않고 모�
             seed = (seed * 16807) % 2147483647;
             return seed % 2 ? 1 : -1;
         });
+    let previous = rules.rows;
     for (const rows of [
-        rules.rows,
-        ...Array.from({ length: 100 }, () => rules.regenerate(shuffle)),
+        previous,
+        ...Array.from({ length: 99 }, () => (previous = rules.regenerate(shuffle, previous))),
     ]) {
         assert.equal(rules.validLayout(rows), true);
         assert.ok(rows.flat().includes('casino'));
         assert.ok(rows.flat().includes('mystery'));
         assert.ok(rows.flat().includes('proverb'));
         assert.ok(rows.flat().includes('forge'));
+        assert.equal(rows[7][0], 'miniboss');
+        assert.equal(rows[11][0], 'miniboss');
+        assert.equal(rows.at(-1)[0], 'boss');
+        let reachable = new Set(rows[0].map((_, index) => index));
         for (let stage = 0; stage < rows.length - 1; stage++) {
             const incoming = new Set();
             rows[stage].forEach((kind, index) => {
@@ -61,12 +66,107 @@ test('기본 지도와 재배치 지도는 비전투가 연속되지 않고 모�
                 });
             });
             assert.equal(incoming.size, rows[stage + 1].length);
+            reachable = new Set(
+                [...reachable].flatMap((index) => rules.connections(stage, index, rows))
+            );
+            assert.equal(reachable.size, rows[stage + 1].length);
         }
     }
     const blocked = rules.rows.map((row) => [...row]);
     blocked[0].fill('market');
     blocked[1].fill('casino');
     assert.equal(rules.validLayout(blocked), false);
+});
+
+test('이벤트 셔플과 독립적으로 세 갈림길 구조를 순환하고 실제 연결 모양도 다르다', () => {
+    const rules = loadScripts(['scripts/domain/story-map.js']).evaluate('storyMapRules');
+    const shapes = [];
+    let rows = rules.rows;
+    for (let cycle = 0; cycle < 7; cycle++) {
+        assert.equal(rules.layoutIndex(rows), cycle % 3);
+        const shape = JSON.stringify(
+            rows.map((row, stage) => row.map((_, index) => rules.connections(stage, index, rows)))
+        );
+        if (cycle < 3) shapes.push(shape);
+        const before = JSON.stringify(rows);
+        const previous = rows;
+        rows = rules.regenerate((values) => [...values], rows);
+        assert.equal(JSON.stringify(previous), before);
+        assert.notEqual(JSON.stringify(rows), before);
+    }
+    assert.equal(new Set(shapes).size, 3);
+    assert.equal(rules.validLayout(null), false);
+    assert.equal(rules.validLayout([['boss']]), false);
+});
+
+test('초기화와 최종 클리어는 현재 구조의 다음 지도를 저장하고 새로고침·단어장별로 유지한다', () => {
+    let r = browserRuntime({ v7_gold: '500' });
+    for (const expected of [1, 2, 0, 1]) {
+        r.evaluate('storyJourney.requestReset(); storyJourney.confirmSelection()');
+        assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), expected);
+        const saved = Object.fromEntries(r.store);
+        r = browserRuntime(saved);
+        assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), expected);
+        assert.deepEqual(Object.fromEntries(r.store), saved);
+    }
+    r.evaluate(
+        'storyJourney.stage=14;storyJourney.select(14,0);storyJourney.completeBattle({mistakes:0})'
+    );
+    assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 2);
+    assert.equal(r.evaluate('storyJourney.stage'), 0);
+    assert.equal(r.evaluate('storyJourney.path.length'), 0);
+    assert.equal(r.evaluate('Object.keys(storyJourney.events).length'), 0);
+    r = browserRuntime({ ...Object.fromEntries(r.store), selectedGameDataSet: '2' });
+    assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 0);
+    r.evaluate('storyJourney.requestReset();storyJourney.confirmSelection()');
+    assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 1);
+    r = browserRuntime({ ...Object.fromEntries(r.store), selectedGameDataSet: '1' });
+    assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 2);
+});
+
+test('기존 저장 지도의 이벤트·왕관·선택 경로는 열기·진입 취소만으로 교체되지 않는다', () => {
+    const legacy = browserRuntime().evaluate('JSON.stringify(storyMapRules.rows)');
+    const r = browserRuntime({
+        'v7_story_layout_book-1': legacy,
+        'v7_story_stage_book-1': '4',
+        'v7_story_path_book-1': '[0,0,0,0]',
+        'v7_story_events_book-1': '{"0:0":{"cleared":true,"mistakes":0,"day":1}}',
+    });
+    const before = Object.fromEntries(r.store);
+    r.evaluate('storyJourney.open();storyJourney.close();storyJourney.open()');
+    assert.deepEqual(Object.fromEntries(r.store), before);
+    assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 0);
+    assert.equal(r.evaluate('storyJourney.canSelect(4,0)'), true);
+    r.evaluate('storyJourney.requestSelection(4,0);storyJourney.cancelSelection()');
+    assert.deepEqual(Object.fromEntries(r.store), before);
+});
+
+test('구조 저장 실패 시 초기화·최종 클리어는 순서·골드·진행을 보존하고 재시도한다', () => {
+    for (const finish of [false, true]) {
+        const r = browserRuntime({ v7_gold: '200' });
+        r.evaluate('storyJourney.requestReset();storyJourney.confirmSelection()');
+        r.evaluate(
+            finish
+                ? 'storyJourney.stage=14;storyJourney.select(14,0)'
+                : 'storyJourney.requestReset()'
+        );
+        const before = Object.fromEntries(r.store);
+        const write = r.sandbox.localStorage.setItem;
+        r.sandbox.localStorage.setItem = (key, value) => {
+            if (key === 'v7_story_layout_book-1') throw Error('quota');
+            write(key, value);
+        };
+        const settle = finish
+            ? 'storyJourney.completeBattle({mistakes:0})'
+            : 'storyJourney.confirmSelection()';
+        r.evaluate(settle);
+        assert.deepEqual(Object.fromEntries(r.store), before);
+        assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 1);
+        r.sandbox.localStorage.setItem = write;
+        r.evaluate(settle);
+        assert.equal(r.evaluate('storyMapRules.layoutIndex(storyJourney.rows)'), 2);
+        assert.equal(r.evaluate('storyJourney.stage'), 0);
+    }
 });
 
 test('고정 전투 Day는 확인 이후에만 저장되며 다른 지점에 중복 배정되지 않는다', () => {
