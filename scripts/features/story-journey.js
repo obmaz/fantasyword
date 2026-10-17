@@ -644,29 +644,22 @@ const storyJourney = {
         if (!storyJourney.isPending()) return storyJourney.pendingStage === null;
         const completion = result ?? storyJourney.pendingCompletion ?? {};
         storyJourney.pendingCompletion = completion;
-        const key = `${storyJourney.pendingStage}:${storyJourney.pendingIndex}`;
-        const events = storyJourney.events;
-        events[key] = { ...events[key], cleared: true };
-        if (Number.isInteger(completion.mistakes) && completion.mistakes >= 0)
-            events[key].mistakes = completion.mistakes;
-        const path = storyJourney.path;
-        path[storyJourney.pendingStage] = storyJourney.pendingIndex;
-        const nextStage = storyJourney.stage + 1;
-        const changes =
-            nextStage >= storyJourney.rows.length
-                ? {
-                      [storyJourney.key]: '0',
-                      [storyJourney.pathKey]: '[]',
-                      [storyJourney.eventsKey]: '{}',
-                      [storyJourney.layoutKey]: JSON.stringify(
-                          storyMapRules.regenerate(questionTools.shuffle, storyJourney.rows)
-                      ),
-                  }
-                : {
-                      [storyJourney.eventsKey]: JSON.stringify(events),
-                      [storyJourney.pathKey]: JSON.stringify(path),
-                      [storyJourney.key]: String(nextStage),
-                  };
+        const { changes, nextStage } = storyProgressRules.completion({
+            events: storyJourney.events,
+            path: storyJourney.path,
+            stage: storyJourney.stage,
+            index: storyJourney.pendingIndex,
+            rowCount: storyJourney.rows.length,
+            keys: {
+                stage: storyJourney.key,
+                path: storyJourney.pathKey,
+                events: storyJourney.eventsKey,
+                layout: storyJourney.layoutKey,
+            },
+            rows: storyJourney.rows,
+            mistakes: completion.mistakes,
+            regenerate: (rows) => storyMapRules.regenerate(questionTools.shuffle, rows),
+        });
         if (!gameStorage.setBatch(changes)) return false;
         if (nextStage < storyJourney.rows.length)
             gamePresentation.rememberProgress({

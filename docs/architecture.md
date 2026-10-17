@@ -50,24 +50,24 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 
 아래 경로는 `scripts/`, 테스트 파일은 `tests/` 기준이다.
 
-| 기능           | 구현 시작점                                                                                            | 주요 테스트                                                              |
-| -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| 출제·채점·보상 | `domain/questions.js`, `domain/battle-rules.js`, `game/game-engine.js`                                 | `game-engine.test.js`, `regressions.test.js`                             |
-| 몬스터별 문제  | `domain/monster-encounters.js`, `data/battle-examples.js`(루트 data)                                   | `monster-encounters.test.js`                                             |
-| 연습·발음      | `game/practice-session.js`, `features/speech.js`, `ui/practice-view.js`                                | `practice-session.test.js`, `speech-fallback.test.js`                    |
-| 복수 퀘스트    | `domain/revenge-rules.js`, `features/revenge-quests.js`                                                | `revenge-quests.test.js`                                                 |
-| 장비·착용·경제 | `domain/equipment-rules.js`, `data/items-loader.js`, `features/inventory.js`, `ui/image-components.js` | `equipment-roles.test.js`, `inventory.test.js`, `economy-avatar.test.js` |
-| 무기 모션      | `domain/attack-profiles.js`, `ui/battle-view.js`                                                       | `weapon-effects.test.js`                                                 |
-| 스토리·이벤트  | `domain/story-map.js`, `features/story-journey.js`                                                     | `story-journey.test.js`, `story-events.test.js`                          |
-| 총공세         | `game/skyfall-session.js`, `ui/skyfall-view.js`                                                        | `skyfall-session.test.js`                                                |
-| 사자성어       | `domain/idiom-rules.js`, `game/game-engine.js`                                                         | `story-events.test.js`                                                   |
-| 야바위         | `game/shell-session.js`, `ui/shell-view.js`                                                            | `shell-session.test.js`                                                  |
-| 속담·대장간    | `domain/story-puzzle-rules.js`, `game/story-puzzle-session.js`, `ui/story-puzzle-view.js`              | `story-puzzles.test.js`                                                  |
-| 행맨           | `features/hangman.js`, `ui/gameplay-controls.js`                                                       | `hangman.test.js`                                                        |
-| 문제지         | `domain/worksheet-rules.js`, `features/worksheet.js`                                                   | `worksheet.test.js`                                                      |
-| 저장·초기화    | `core/storage.js`, `core/database.js`, `features/settings.js`                                          | `smoke-load.test.js`, `full-reset.test.js`                               |
-| 메뉴·전체화면  | `ui/layout-manager.js`, `modal-manager.js`, `navigation.js`                                            | `design-improvements.test.js`, `navigation-practice.test.js`             |
-| 어드민 해금    | `features/settings.js`                                                                                 | `admin-games.test.js`, `progression-settings.test.js`                    |
+| 기능           | 구현 시작점                                                                                            | 주요 테스트                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| 출제·채점·보상 | `domain/questions.js`, `domain/battle-rules.js`, `game/game-engine.js`                                 | `game-engine.test.js`, `regressions.test.js`                              |
+| 몬스터별 문제  | `domain/monster-encounters.js`, `data/battle-examples.js`(루트 data)                                   | `monster-encounters.test.js`                                              |
+| 연습·발음      | `game/practice-session.js`, `features/speech.js`, `ui/practice-view.js`                                | `practice-session.test.js`, `speech-fallback.test.js`                     |
+| 복수 퀘스트    | `domain/revenge-rules.js`, `features/revenge-quests.js`                                                | `revenge-quests.test.js`                                                  |
+| 장비·착용·경제 | `domain/equipment-rules.js`, `data/items-loader.js`, `features/inventory.js`, `ui/image-components.js` | `equipment-roles.test.js`, `inventory.test.js`, `economy-avatar.test.js`  |
+| 무기 모션      | `domain/attack-profiles.js`, `ui/battle-view.js`                                                       | `weapon-effects.test.js`                                                  |
+| 스토리·이벤트  | `domain/story-map.js`, `domain/story-progress.js`, `features/story-journey.js`                         | `story-journey.test.js`, `story-events.test.js`, `story-progress.test.js` |
+| 총공세         | `game/skyfall-session.js`, `ui/skyfall-view.js`                                                        | `skyfall-session.test.js`                                                 |
+| 사자성어       | `domain/idiom-rules.js`, `game/game-engine.js`                                                         | `story-events.test.js`                                                    |
+| 야바위         | `game/shell-session.js`, `ui/shell-view.js`                                                            | `shell-session.test.js`                                                   |
+| 속담·대장간    | `domain/story-puzzle-rules.js`, `game/story-puzzle-session.js`, `ui/story-puzzle-view.js`              | `story-puzzles.test.js`                                                   |
+| 행맨           | `features/hangman.js`, `ui/gameplay-controls.js`                                                       | `hangman.test.js`                                                         |
+| 문제지         | `domain/worksheet-rules.js`, `features/worksheet.js`                                                   | `worksheet.test.js`                                                       |
+| 저장·초기화    | `core/storage.js`, `core/database.js`, `features/settings.js`                                          | `smoke-load.test.js`, `full-reset.test.js`                                |
+| 메뉴·전체화면  | `ui/layout-manager.js`, `modal-manager.js`, `navigation.js`                                            | `design-improvements.test.js`, `navigation-practice.test.js`              |
+| 어드민 해금    | `features/settings.js`                                                                                 | `admin-games.test.js`, `progression-settings.test.js`                     |
 
 과거 결함의 동작 검증은 `review-regressions.test.js`, `review-2026-10-09.test.js`에도 유지한다.
 리뷰 문서 정리는 회귀 테스트 삭제의 근거가 아니다.
@@ -181,3 +181,5 @@ strict checkJs는 연습 세션/뷰/발음에 적용하며 전체 앱 타입 검
 문서·시안·도구·테스트·npm 파일은 배포하지 않으며 `build.test.js`가 재현성과 제외 정책을 검사한다.
 
 스토리의 학습 지점은 미완료/완료 이벤트에 기록된 Day를 확인해 가장 낮은 미출제 Day부터 배정한다. 갈림길·이벤트 배치는 계속 무작위로 생성한다.
+
+스토리 완료 변경 집합은 `domain/story-progress.js`에서 순수 계산하고, `features/story-journey.js`가 저장·재시도를 담당한다.
