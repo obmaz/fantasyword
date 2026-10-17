@@ -295,6 +295,27 @@ test('미니보스 중도 종료 후 일반 철자조립은 고블린으로 돌�
     );
 });
 
+test('스토리 학습 지점은 가장 낮은 미출제 Day부터 순서대로 배정한다', () => {
+    const r = browserRuntime();
+    const source = [
+        ...Array.from({ length: 4 }, (_, index) => ({ day: 3, word: `d3-${index}` })),
+        ...Array.from({ length: 4 }, (_, index) => ({ day: 1, word: `d1-${index}` })),
+        ...Array.from({ length: 4 }, (_, index) => ({ day: 2, word: `d2-${index}` })),
+        { day: 4, word: 'too-few' },
+    ];
+    const data = JSON.stringify(source);
+    const events = {};
+    const assignDay = () =>
+        r.evaluate(`storyMapRules.assignDay(${data}, ${JSON.stringify(events)})`);
+    assert.equal(assignDay(), 1);
+    events.first = { day: 1 };
+    assert.equal(assignDay(), 2);
+    events.second = { day: 2 };
+    assert.equal(assignDay(), 3);
+    events.third = { day: 3 };
+    assert.equal(assignDay(), 'all');
+});
+
 test('스토리 전투의 문제 수는 일반 전투 select와 독립적으로 5·6·8개를 사용한다', () => {
     for (const [stage, index, count] of [
         [0, 0, 8],

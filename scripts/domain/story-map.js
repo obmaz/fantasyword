@@ -98,7 +98,7 @@ const storyMapRules = Object.freeze({
         });
         return rows;
     },
-    assignDay(source, events, shuffle) {
+    assignDay(source, events) {
         const used = new Set(Object.values(events).map((event) => Number(event?.day)));
         const days = [...new Set(source.map((row) => Number(row.day)))].filter(
             (day) =>
@@ -107,7 +107,7 @@ const storyMapRules = Object.freeze({
                 !used.has(day) &&
                 source.filter((row) => Number(row.day) === day).length >= 4
         );
-        return shuffle(days)[0] ?? 'all';
+        return days.sort((left, right) => left - right)[0] ?? 'all';
     },
     position(index, count) {
         return ((index + 0.5) / count) * 100;

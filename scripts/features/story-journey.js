@@ -247,11 +247,7 @@ const storyJourney = {
         const day =
             node.day ||
             (['objective', 'spelling', 'listening'].includes(node.kind)
-                ? storyMapRules.assignDay(
-                      window.rawDataData || rawData,
-                      storyJourney.events,
-                      questionTools.shuffle
-                  )
+                ? storyMapRules.assignDay(window.rawDataData || rawData, storyJourney.events)
                 : 'all');
         storyJourney.selection = { row, index, day, book: db.getBookKey() };
         document.getElementById('story-confirm-title').textContent = `${node.label} 진행`;
