@@ -432,3 +432,10 @@
         font-size: 17px;
     }
 }
+.q-text,
+.practice-word-text,
+.practice-meaning-text,
+.practice-explanation-text {
+    -webkit-user-select: text;
+    user-select: text;
+}
