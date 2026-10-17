@@ -266,20 +266,58 @@
     color: #36644e;
 }
 #setting-modal .settings-vibration-length {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 96px;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    gap: 8px;
+    padding-block: 6px;
+}
+.setting-option-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+    word-break: keep-all;
+}
+.settings-select-control {
+    position: relative;
+    min-width: 0;
+    color: var(--menu-ink);
+}
+.settings-select-control::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
 }
 #setting-vibration-duration {
+    appearance: none;
+    width: 100%;
+    min-width: 0;
     min-height: 44px;
-    max-width: 120px;
+    margin: 0;
     color: var(--menu-ink);
-    background: var(--ui-field-bg);
-    border: 1px solid var(--ui-field-border);
-    border-radius: 8px;
-    padding: 6px 10px;
-    font: inherit;
+    background: transparent;
+    border: 6px solid transparent;
+    border-image: var(--ui-field) 18% fill / 6px / 0 stretch;
+    border-radius: 0;
+    padding: 4px 22px 4px 10px;
+    cursor: pointer;
+}
+.settings-select-control:has(select:disabled) {
+    opacity: 0.55;
+}
+#setting-vibration-duration:disabled {
+    cursor: default;
 }
 
 @media (max-height: 850px) {
