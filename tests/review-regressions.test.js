@@ -143,6 +143,7 @@ function fullscreenRuntime() {
         querySelectorAll: (selector) =>
             selector.startsWith('dialog[open]') && dialog.open ? [dialog] : [],
         documentElement: {
+            dataset: {},
             requestFullscreen: () => {
                 requests++;
                 return new Promise((done) => {

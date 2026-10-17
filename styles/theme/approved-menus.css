@@ -2293,6 +2293,20 @@ button img:not([class]) {
 .title-toolbar {
     grid-template-columns: max-content minmax(0, 1fr) 44px 44px;
 }
+:root[data-app-fullscreen='true'] .title-toolbar {
+    grid-template-columns: max-content minmax(0, 1fr) 44px;
+}
+:root[data-app-fullscreen='true'] .fullscreen-space {
+    display: none;
+}
+:root[data-app-fullscreen='true'] dialog.screen-overlay {
+    bottom: auto;
+    height: var(--app-height);
+    max-height: var(--app-height);
+}
+:root[data-app-fullscreen='true'] dialog.screen-overlay :is(.card, .result-modal) {
+    max-height: calc(var(--app-height) - 96px);
+}
 .title-toolbar .revenge-shortcut {
     position: relative;
     display: flex;

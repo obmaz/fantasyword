@@ -87,6 +87,9 @@ body {
 }
 
 html {
+    background: var(--ui-surface-forest);
+    color-scheme: dark;
+    overscroll-behavior: none;
     display: flex;
     align-items: center;
     justify-content: center;

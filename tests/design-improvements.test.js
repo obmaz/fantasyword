@@ -245,6 +245,7 @@ test('전체화면 진입·종료·거부 뒤에도 팝업 순서와 입력 상�
         querySelectorAll: (selector) =>
             selector.startsWith('dialog[open]') ? dialogs.filter((dialog) => dialog.open) : [],
         documentElement: {
+            dataset: {},
             requestFullscreen: async (options) => {
                 assert.equal(options.navigationUI, 'hide');
                 assert.ok(dialogs.every((dialog) => !dialog.open));
@@ -656,6 +657,52 @@ test('설치 앱의 전체화면 실행에서는 중복 버튼과 API 요청을 
     r.sandbox.document.documentElement.requestFullscreen = async () => requests++;
     r.sandbox.initFullscreenControls();
     assert.equal(button.hidden, true);
+    assert.equal(r.sandbox.document.documentElement.dataset.appFullscreen, 'true');
     await r.sandbox.toggleFullscreen();
     assert.equal(requests, 0);
+});
+
+test('설치 전체화면은 시스템 바가 나타나도 큰 뷰포트 높이를 유지하고 회전에는 적응한다', () => {
+    const r = browserRuntime();
+    r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
+    r.sandbox.CSS = { supports: (property, value) => property === 'height' && value === '100lvh' };
+    let largeHeight = 900;
+    r.sandbox.document.documentElement.getBoundingClientRect = () => ({ height: largeHeight });
+    r.sandbox.innerWidth = 390;
+    r.sandbox.innerHeight = 836;
+    r.sandbox.onload();
+    assert.equal(r.evaluate('getLockedAppHeight()'), 900);
+    r.sandbox.innerHeight = 780;
+    largeHeight = 844;
+    r.events.resize();
+    r.advance(100);
+    assert.equal(r.getElement('battle-mode-game').style.height, '900px');
+    assert.equal(r.getElement('practice-mode-game').style.height, '900px');
+    largeHeight = 390;
+    r.sandbox.innerWidth = 900;
+    r.sandbox.innerHeight = 350;
+    r.events.resize();
+    r.advance(100);
+    assert.equal(r.evaluate('getLockedAppHeight()'), 390);
+    assert.equal(r.getElement('battle-mode-game').style.width, '292.5px');
+    r.sandbox.matchMedia = () => ({ matches: false });
+    r.sandbox.initAppHeight(true);
+    r.sandbox.initFullscreenControls();
+    assert.equal(r.evaluate('getLockedAppHeight()'), 350);
+    assert.equal(r.sandbox.document.documentElement.dataset.appFullscreen, 'false');
+});
+
+test('큰 뷰포트 단위 미지원 앱도 시스템 바의 높이 변경과 실제 화면 회전을 구분한다', () => {
+    const r = browserRuntime();
+    r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
+    r.sandbox.innerWidth = 390;
+    r.sandbox.innerHeight = 900;
+    r.sandbox.initAppHeight(true);
+    r.sandbox.innerHeight = 830;
+    r.sandbox.initAppHeight(true);
+    assert.equal(r.evaluate('getLockedAppHeight()'), 900);
+    r.sandbox.innerWidth = 900;
+    r.sandbox.innerHeight = 390;
+    r.sandbox.initAppHeight(true);
+    assert.equal(r.evaluate('getLockedAppHeight()'), 390);
 });
