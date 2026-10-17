@@ -16,6 +16,12 @@ const APP_CONFIG = Object.freeze({
     ]),
 });
 
+/** 야바위 보상은 게임 화면·스토리 정산·안내 문구가 함께 참조한다. */
+const SHELL_GAME_CONFIG = Object.freeze({
+    cashOut: 50,
+    doublePayout: 150,
+});
+
 /** 장비의 표시·데이터·보상에서 공유하는 수치. */
 const EQUIPMENT_CONFIG = Object.freeze({
     gloveUses: 10,

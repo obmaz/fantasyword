@@ -165,6 +165,29 @@
 #story-map-path {
     --journey-accent: #b9e2b0;
 }
+.story-progress-save-status {
+    position: absolute;
+    z-index: 20;
+    right: 8px;
+    bottom: 62px;
+    left: 8px;
+    margin: 0;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #173d32ef;
+    color: #fff1cd;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: center;
+}
+.story-progress-save-retry {
+    position: absolute;
+    z-index: 20;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: min(220px, calc(100% - 24px));
+}
 #story-map-path[data-chapter='lake'] {
     --journey-accent: #b9e2ff;
 }

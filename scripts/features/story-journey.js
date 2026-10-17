@@ -1,6 +1,7 @@
 /** 지도에서 선택한 지점만 진행하고, 완료한 단계는 단어장별로 기억한다. */
 const storyJourney = {
     returnAfterResult: false,
+    pendingCompletion: null,
     pendingStage: null,
     pendingIndex: null,
     pendingBook: null,
@@ -10,11 +11,13 @@ const storyJourney = {
     mysteryRevealCost: 100,
     resetCost: 50,
     cancelBattleReturn() {
+        if (storyJourney.pendingCompletion) return false;
         storyJourney.returnAfterResult = false;
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
         storyJourney.pendingBook = null;
         storyJourney.pendingKind = null;
+        return true;
     },
     purchaseSuccessRate: 0.75,
     random: () => Math.random(),
@@ -85,6 +88,7 @@ const storyJourney = {
         return storyMapRules.connections(row, index, storyJourney.rows);
     },
     canSelect(row, index, nodes = storyJourney.nodes(), snapshot = null) {
+        if (storyJourney.pendingCompletion) return false;
         const stage = snapshot?.stage ?? storyJourney.stage;
         if (row !== stage || !nodes[row]?.[index]) return false;
         const previous = (snapshot?.path ?? storyJourney.path)[row - 1];
@@ -112,6 +116,10 @@ const storyJourney = {
         else if (snapshot.stage >= snapshot.nodes.length) card.scrollTop = 0;
     },
     close() {
+        if (!storyJourney.retryCompletion()) {
+            notify('진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.', 'error');
+            return;
+        }
         resetScreenOverlay('story-map-modal');
         navigation.track('title-screen');
     },
@@ -210,6 +218,22 @@ const storyJourney = {
             restart.textContent = `스토리 초기화 · ${storyJourney.resetCost}골드`;
             restart.addEventListener('click', () => storyJourney.requestReset());
             container.appendChild(restart);
+        }
+        if (storyJourney.pendingCompletion) {
+            const status = document.createElement('p');
+            status.className = 'story-progress-save-status';
+            status.setAttribute('role', 'status');
+            status.textContent = '진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.className = 'image-action-button story-progress-save-retry';
+            retry.dataset.confirmTone = 'execute';
+            retry.textContent = '진행 저장 재시도';
+            retry.addEventListener('click', () => {
+                if (storyJourney.retryCompletion()) storyJourney.open();
+                else status.textContent = '저장에 실패했습니다. 공간을 확보한 뒤 다시 시도하세요.';
+            });
+            container.append(status, retry);
         }
         return snapshot;
     },
@@ -401,9 +425,13 @@ const storyJourney = {
             const claimed = storyJourney.events[`${row}:${index}`]?.claimed;
             if (claimed) storyJourney.completeBattle();
             document.getElementById('story-treasure-status').textContent = claimed
-                ? '이미 연 상자입니다.'
+                ? storyJourney.pendingCompletion
+                    ? '보상은 받았지만 진행 저장에 실패했습니다. 다시 시도하세요.'
+                    : '이미 연 상자입니다.'
                 : `상자를 열면 ${storyJourney.treasureGold(row)} G를 얻습니다.`;
             document.getElementById('story-treasure-open').disabled = !!claimed;
+            document.getElementById('story-treasure-retry').hidden =
+                !storyJourney.pendingCompletion;
             openScreenOverlay('story-treasure-modal', false);
             return;
         }
@@ -547,7 +575,7 @@ const storyJourney = {
     },
     claimCasino(row, index, points) {
         if (
-            ![0, 10, 20].includes(points) ||
+            ![0, SHELL_GAME_CONFIG.cashOut, SHELL_GAME_CONFIG.doublePayout].includes(points) ||
             !storyJourney.isPending() ||
             storyJourney.pendingKind !== 'casino' ||
             storyJourney.pendingStage !== row ||
@@ -594,9 +622,12 @@ const storyJourney = {
             )
         )
             return;
-        storyJourney.completeBattle();
-        document.getElementById('story-treasure-status').textContent = `${gold} G를 얻었습니다.`;
+        const completed = storyJourney.completeBattle();
+        document.getElementById('story-treasure-status').textContent = completed
+            ? `${gold} G를 얻었습니다.`
+            : `${gold} G를 받았지만 진행 저장에 실패했습니다. 아래에서 다시 시도하세요.`;
         document.getElementById('story-treasure-open').disabled = true;
+        document.getElementById('story-treasure-retry').hidden = completed;
         gamePresentation.notify({
             title: '보물 발견!',
             detail: `+${gold} G`,
@@ -604,47 +635,69 @@ const storyJourney = {
         });
     },
     leaveTreasure() {
+        if (!storyJourney.retryCompletion()) {
+            document.getElementById('story-treasure-status').textContent =
+                '진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            return;
+        }
         resetScreenOverlay('story-treasure-modal');
         storyJourney.cancelBattleReturn();
         storyJourney.open();
     },
     completeBattle(result = null) {
-        if (storyJourney.isPending()) {
-            const key = `${storyJourney.pendingStage}:${storyJourney.pendingIndex}`;
-            const events = storyJourney.events;
-            events[key] = { ...events[key], cleared: true };
-            if (Number.isInteger(result?.mistakes) && result.mistakes >= 0)
-                events[key].mistakes = result.mistakes;
-            const path = storyJourney.path;
-            path[storyJourney.pendingStage] = storyJourney.pendingIndex;
-            const nextStage = storyJourney.stage + 1;
-            const changes =
-                nextStage >= storyJourney.rows.length
-                    ? {
-                          [storyJourney.key]: '0',
-                          [storyJourney.pathKey]: '[]',
-                          [storyJourney.eventsKey]: '{}',
-                          [storyJourney.layoutKey]: JSON.stringify(
-                              storyMapRules.regenerate(questionTools.shuffle, storyJourney.rows)
-                          ),
-                      }
-                    : {
-                          [storyJourney.eventsKey]: JSON.stringify(events),
-                          [storyJourney.pathKey]: JSON.stringify(path),
-                          [storyJourney.key]: String(nextStage),
-                      };
-            if (!gameStorage.setBatch(changes)) return;
-            if (nextStage < storyJourney.rows.length)
-                gamePresentation.rememberProgress({
-                    book: db.getBookKey(),
-                    stage: nextStage,
-                    index: storyJourney.pendingIndex,
-                });
-        }
+        if (!storyJourney.isPending()) return storyJourney.pendingStage === null;
+        const completion = result ?? storyJourney.pendingCompletion ?? {};
+        storyJourney.pendingCompletion = completion;
+        const key = `${storyJourney.pendingStage}:${storyJourney.pendingIndex}`;
+        const events = storyJourney.events;
+        events[key] = { ...events[key], cleared: true };
+        if (Number.isInteger(completion.mistakes) && completion.mistakes >= 0)
+            events[key].mistakes = completion.mistakes;
+        const path = storyJourney.path;
+        path[storyJourney.pendingStage] = storyJourney.pendingIndex;
+        const nextStage = storyJourney.stage + 1;
+        const changes =
+            nextStage >= storyJourney.rows.length
+                ? {
+                      [storyJourney.key]: '0',
+                      [storyJourney.pathKey]: '[]',
+                      [storyJourney.eventsKey]: '{}',
+                      [storyJourney.layoutKey]: JSON.stringify(
+                          storyMapRules.regenerate(questionTools.shuffle, storyJourney.rows)
+                      ),
+                  }
+                : {
+                      [storyJourney.eventsKey]: JSON.stringify(events),
+                      [storyJourney.pathKey]: JSON.stringify(path),
+                      [storyJourney.key]: String(nextStage),
+                  };
+        if (!gameStorage.setBatch(changes)) return false;
+        if (nextStage < storyJourney.rows.length)
+            gamePresentation.rememberProgress({
+                book: db.getBookKey(),
+                stage: nextStage,
+                index: storyJourney.pendingIndex,
+            });
         storyJourney.pendingStage = null;
         storyJourney.pendingIndex = null;
         storyJourney.pendingBook = null;
         storyJourney.pendingKind = null;
+        storyJourney.pendingCompletion = null;
+        return true;
+    },
+    retryCompletion() {
+        return storyJourney.pendingCompletion ? storyJourney.completeBattle() : true;
+    },
+    claimTreasureProgress() {
+        if (!storyJourney.retryCompletion()) {
+            document.getElementById('story-treasure-status').textContent =
+                '진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            return false;
+        }
+        document.getElementById('story-treasure-retry').hidden = true;
+        document.getElementById('story-treasure-status').textContent =
+            '보상과 진행을 저장했습니다.';
+        return true;
     },
     renderMarket(message = '') {
         document.getElementById('story-market-status').textContent =
@@ -711,12 +764,21 @@ const storyJourney = {
         });
     },
     leaveMarket() {
+        if (!storyJourney.retryCompletion()) {
+            document.getElementById('story-market-status').textContent =
+                '진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            return;
+        }
         resetScreenOverlay('story-market-modal');
         storyJourney.cancelBattleReturn();
         storyJourney.open();
     },
     advanceMarket() {
-        storyJourney.completeBattle();
+        if (!storyJourney.completeBattle()) {
+            document.getElementById('story-market-status').textContent =
+                '진행 저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            return;
+        }
         storyJourney.leaveMarket();
     },
 };

@@ -1,7 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { loadScripts } = require('./helpers/load-module');
-const createSession = loadScripts(['scripts/game/shell-session.js']).evaluate('createShellSession');
+const createSession = loadScripts(['scripts/config.js', 'scripts/game/shell-session.js']).evaluate(
+    'createShellSession'
+);
 
 function runtime(options = null, random = () => 0.25) {
     let clock = 0;

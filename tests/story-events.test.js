@@ -169,6 +169,57 @@ test('구조 저장 실패 시 초기화·최종 클리어는 순서·골드·�
     }
 });
 
+test('전투 완료 저장 실패는 결과를 보존하고 진행 커밋을 재시도한다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    journey.select(0, 0);
+    const write = r.sandbox.localStorage.setItem;
+    r.sandbox.localStorage.setItem = (key, value) => {
+        if (key === 'v7_story_stage_book-1') throw new Error('QuotaExceededError');
+        write(key, value);
+    };
+
+    assert.equal(r.evaluate('storyJourney.completeBattle({ mistakes: 1 })'), false);
+    assert.equal(journey.stage, 0);
+    assert.equal(journey.pendingCompletion.mistakes, 1);
+    assert.equal(journey.pendingStage, 0);
+
+    r.sandbox.localStorage.setItem = write;
+    assert.equal(r.evaluate('storyJourney.retryCompletion()'), true);
+    assert.equal(journey.stage, 1);
+    assert.equal(journey.pendingCompletion, null);
+    assert.equal(journey.pendingStage, null);
+});
+
+test('스토리 승리 결과는 진행 저장 실패를 알리고 결과 모달에서 재시도할 수 있다', () => {
+    const r = browserRuntime();
+    const journey = r.evaluate('storyJourney');
+    journey.select(0, 0);
+    r.evaluate(`
+        game.active = true;
+        game.mode = 'story';
+        game.list = [{}, {}, {}, {}];
+        game.sessionMistakes = 0;
+        game.sessionCorrectObjective = 4;
+        game.view.results = (...args) => { window.storyProgressFailureShown = args.at(-1); };
+    `);
+    const write = r.sandbox.localStorage.setItem;
+    r.sandbox.localStorage.setItem = (key, value) => {
+        if (key === 'v7_story_stage_book-1') throw new Error('QuotaExceededError');
+        write(key, value);
+    };
+
+    r.evaluate('game.end(true)');
+    assert.equal(r.evaluate('window.storyProgressFailureShown'), true);
+    assert.equal(r.evaluate('storyJourney.stage'), 0);
+    assert.equal(r.getElement('result-modal').open, true);
+
+    r.sandbox.localStorage.setItem = write;
+    r.evaluate('storyJourney.retryCompletion()');
+    assert.equal(r.evaluate('storyJourney.stage'), 1);
+    assert.equal(r.evaluate('storyJourney.pendingCompletion'), null);
+});
+
 test('고정 전투 Day는 확인 이후에만 저장되며 다른 지점에 중복 배정되지 않는다', () => {
     const r = browserRuntime();
     const journey = r.evaluate('storyJourney');
@@ -384,7 +435,7 @@ test('확장 암시장 유물은 스토리에만 추가 힌트·재도전·상�
     assert.equal(r.evaluate('game.gear.shield'), normal[1] + 1);
 });
 
-test('도박장 보상 저장·진행 재시도는 한 번만 지급하며 지난 단어장 콜백을 차단한다', () => {
+test('도박장 150G 보상 저장·진행 재시도는 한 번만 지급하며 지난 단어장 콜백을 차단한다', () => {
     const r = browserRuntime({ v7_gold: '99' });
     r.evaluate(
         'shellGame.start = (options) => { window.casinoOptions = options; }; storyJourney.stage = 5; storyJourney.select(5, 0)'
@@ -394,13 +445,50 @@ test('도박장 보상 저장·진행 재시도는 한 번만 지급하며 지�
         if (key === 'v7_story_stage_book-1') throw new Error('quota');
         write(key, value);
     };
-    assert.equal(r.evaluate('window.casinoOptions.onSettle(20)'), false);
-    assert.equal(r.evaluate('db.gold'), 119);
+    assert.equal(r.evaluate('window.casinoOptions.onSettle(150)'), false);
+    assert.equal(r.evaluate('db.gold'), 249);
     r.sandbox.localStorage.setItem = write;
-    assert.equal(r.evaluate('window.casinoOptions.onSettle(20)'), true);
-    assert.equal(r.evaluate('window.casinoOptions.onSettle(20)'), false);
-    assert.equal(r.evaluate('db.gold'), 119);
+    assert.equal(r.evaluate('window.casinoOptions.onSettle(150)'), true);
+    assert.equal(r.evaluate('window.casinoOptions.onSettle(150)'), false);
+    assert.equal(r.evaluate('db.gold'), 249);
     assert.equal(r.evaluate('storyJourney.stage'), 6);
     r.evaluate('window.currentGameDataSetId = 2');
-    assert.equal(r.evaluate('window.casinoOptions.onSettle(20)'), false);
+    assert.equal(r.evaluate('window.casinoOptions.onSettle(150)'), false);
+});
+
+test('도박장 안전 수령 50G도 스토리에서 정상 지급하고 진행한다', () => {
+    const r = browserRuntime({ v7_gold: '99' });
+    r.evaluate(
+        'shellGame.start = (options) => { window.casinoOptions = options; }; storyJourney.stage = 5; storyJourney.select(5, 0)'
+    );
+
+    assert.equal(r.evaluate('window.casinoOptions.onSettle(50)'), true);
+    assert.equal(r.evaluate('db.gold'), 149);
+    assert.equal(r.evaluate('storyJourney.stage'), 6);
+});
+
+test('보물 보상은 진행 저장에 실패해도 재시도할 수 있고 중복 지급되지 않는다', () => {
+    const r = browserRuntime({ v7_gold: '99' });
+    r.evaluate(`
+        storyJourney.pendingStage = 0;
+        storyJourney.pendingIndex = 1;
+        storyJourney.pendingBook = db.getBookKey();
+        storyJourney.pendingKind = 'treasure';
+    `);
+    const write = r.sandbox.localStorage.setItem;
+    r.sandbox.localStorage.setItem = (key, value) => {
+        if (key === 'v7_story_stage_book-1') throw new Error('QuotaExceededError');
+        write(key, value);
+    };
+
+    r.evaluate('storyJourney.claimTreasure()');
+    const reward = r.evaluate('db.gold');
+    assert.ok(reward > 99);
+    assert.equal(r.getElement('story-treasure-retry').hidden, false);
+    assert.match(r.getElement('story-treasure-status').textContent, /진행 저장에 실패/);
+
+    r.sandbox.localStorage.setItem = write;
+    assert.equal(r.evaluate('storyJourney.claimTreasureProgress()'), true);
+    assert.equal(r.evaluate('db.gold'), reward);
+    assert.equal(r.evaluate('storyJourney.stage'), 1);
 });

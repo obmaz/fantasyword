@@ -69,6 +69,14 @@ const ACTION_HANDLERS = {
 
     'statistics-close': () => statistics.close(),
     'result-close': () => closeResultScreen(),
+    'story-progress-retry': () => {
+        const saved = storyJourney.retryCompletion();
+        if (document.getElementById('result-modal').open) game.view.storyProgressSaved(saved);
+        else if (document.getElementById('story-treasure-modal').open)
+            storyJourney.claimTreasureProgress();
+        else if (document.getElementById('story-market-modal').open) storyJourney.advanceMarket();
+        else if (saved) storyJourney.open();
+    },
     'result-review': () => practiceMemorization.reviewWrongWords(),
 
     'secret-enter': (el) => secret.enter(Number(el.dataset.digit)),
@@ -374,6 +382,10 @@ function initializeApp() {
 
     // 전역: 결과 화면 닫기 함수
     window.closeResultScreen = function () {
+        if (storyJourney.pendingCompletion && !storyJourney.retryCompletion()) {
+            game.view.storyProgressSaved(false);
+            return;
+        }
         const returnToStory = storyJourney.returnAfterResult;
         storyJourney.cancelBattleReturn();
         closeScreenOverlay('result-modal', true);

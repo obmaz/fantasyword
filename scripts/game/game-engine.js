@@ -827,8 +827,10 @@ function createBattleSession({
                         game.list.length,
                         game.sessionMistakes
                     ) ?? win;
-            if (game.mode === 'story' && win)
-                journey.completeBattle({ mistakes: game.sessionMistakes });
+            const storyProgressSaved =
+                game.mode !== 'story' ||
+                !win ||
+                journey.completeBattle({ mistakes: game.sessionMistakes }) !== false;
             resetScreenOverlays(GAME_ENTRY_OVERLAYS);
             openScreenOverlay('title-screen', false);
             openScreenOverlay('result-modal', true);
@@ -840,7 +842,8 @@ function createBattleSession({
                 battleRules.resultRows(game, win),
                 game.sessionWrongWords,
                 game.hadRetry,
-                game.sessionMistakes
+                game.sessionMistakes,
+                !storyProgressSaved
             );
             game._saveSessionRecords();
             game.stop();

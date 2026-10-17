@@ -750,7 +750,22 @@ function createBattleView({
             bar.style.width = `${Math.max(0, Math.min(100, (timeLeft / maxTime) * 100))}%`;
             bar.classList.toggle('timer-danger', timed && timeLeft <= 3);
         },
-        results(win, mode, stats, gold, rows, wrongWords, hadRetry = false, mistakes = 0) {
+        results(
+            win,
+            mode,
+            stats,
+            gold,
+            rows,
+            wrongWords,
+            hadRetry = false,
+            mistakes = 0,
+            storyProgressSaveFailed = false
+        ) {
+            element('result-progress-status').hidden = !storyProgressSaveFailed;
+            element('result-progress-retry').hidden = !storyProgressSaveFailed;
+            element('result-progress-status').textContent = storyProgressSaveFailed
+                ? '전투는 이겼지만 스토리 진행을 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도하세요.'
+                : '';
             element('res-retry-note').hidden = !hadRetry;
             element('res-retry-note').textContent =
                 '방패 재도전 사용 · 맞힌 개수는 최종 제출 기준입니다. 처음 틀린 단어는 복수 퀘스트에 남아 있어요.';
@@ -802,6 +817,13 @@ function createBattleView({
                 gold: stats.gain,
                 mistakes: mode === 'story' ? mistakes : null,
             });
+        },
+        storyProgressSaved(saved) {
+            element('result-progress-status').hidden = saved;
+            element('result-progress-status').textContent = saved
+                ? '스토리 진행을 저장했습니다. 지도로 돌아가도 됩니다.'
+                : '저장에 실패했습니다. 저장 공간을 확인한 뒤 다시 시도하세요.';
+            element('result-progress-retry').hidden = saved;
         },
     };
 }

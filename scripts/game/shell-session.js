@@ -97,7 +97,7 @@ function createShellSession({ view, random, timers, onOpen, onExit, onMistake = 
             if (phase === 'double') {
                 phase = 'settle';
                 view.reveal(dice, cups);
-                session.settle(150);
+                session.settle(SHELL_GAME_CONFIG.doublePayout);
                 return;
             }
             phase = 'offer';
@@ -110,7 +110,7 @@ function createShellSession({ view, random, timers, onOpen, onExit, onMistake = 
             if (!active || phase !== 'offer') return;
             phase = 'settle';
             view.reveal(dice, cups);
-            session.settle(50);
+            session.settle(SHELL_GAME_CONFIG.cashOut);
         },
         double() {
             if (!active || phase !== 'offer') return;

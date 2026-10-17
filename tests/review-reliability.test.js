@@ -46,6 +46,14 @@ test('기존 Day 배지가 없는 실제 화면 구조에서도 도전·스토�
     }
 });
 
+test('일반 문제 문구는 동적 변경을 보조기기에 공지한다', () => {
+    const r = browserRuntime();
+    assert.match(
+        r.html,
+        /class="q-text"\s+id="q-text"\s+role="status"\s+aria-live="polite"\s+aria-atomic="true"/
+    );
+});
+
 test('음악·자동 발음·진동 설정은 저장 실패 시 체크와 실행 상태를 보존한다', () => {
     const r = browserRuntime();
     r.sandbox.onload();

@@ -207,7 +207,15 @@
                 <div class="question-box">
                     <div class="gameplay-card-label" id="question-instruction"></div>
                     <div class="q-label" id="q-label">MEANING</div>
-                    <div class="q-text" id="q-text">Loading...</div>
+                    <div
+                        class="q-text"
+                        id="q-text"
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    >
+                        Loading...
+                    </div>
                 </div>
                 <p id="equipment-hint" role="status" hidden></p>
 
@@ -1392,6 +1400,16 @@
                     >
                         상자 열기
                     </button>
+                    <button
+                        type="button"
+                        id="story-treasure-retry"
+                        class="image-action-button"
+                        data-action="story-progress-retry"
+                        data-confirm-tone="execute"
+                        hidden
+                    >
+                        진행 저장 재시도
+                    </button>
                 </div>
             </section>
         </dialog>
@@ -1557,6 +1575,21 @@
                 <h2 id="res-title" class="result-modal-title">전투 완료</h2>
                 <p id="res-subtitle" class="result-modal-subtitle"></p>
                 <p id="res-summary" class="result-modal-summary"></p>
+                <p
+                    id="result-progress-status"
+                    class="result-progress-status"
+                    role="status"
+                    hidden
+                ></p>
+                <button
+                    id="result-progress-retry"
+                    class="result-btn"
+                    data-action="story-progress-retry"
+                    data-confirm-tone="execute"
+                    hidden
+                >
+                    스토리 진행 저장 재시도
+                </button>
 
                 <div class="result-modal-body">
                     <div class="result-modal-row">
