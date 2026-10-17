@@ -103,7 +103,7 @@ const shop = {
             type === 'backpack'
                 ? `최대 ${db.inventoryCapacity}칸 → ${db.inventoryCapacity + 1}칸 · 구매할 때마다 +1칸`
                 : item.desc;
-        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price" aria-label="${formatMenuNumber(item.cost)} 골드">${formatMenuNumber(item.cost)}<img class="shop-price-icon" src="images/theme/parts/approved-coin.webp" alt="" aria-hidden="true" /></strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" data-confirm-tone="execute" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
+        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price" aria-label="${formatMenuNumber(item.cost)} 골드"><img class="shop-price-icon" src="images/theme/parts/approved-coin.webp" alt="" aria-hidden="true" />${formatMenuNumber(item.cost)}</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" data-confirm-tone="execute" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
     },
 
     /**
