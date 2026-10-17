@@ -646,63 +646,79 @@ test('고정 글자를 건너뛰어 입력하고 지우기 뒤에도 첫·끝 �
     assert.equal(input.value, 'b_____n');
 });
 
-test('설치 앱의 전체화면 실행에서는 중복 버튼과 API 요청을 만들지 않는다', async () => {
+test('설치 창 표시 모드에서도 API 전체화면을 요청하고 실제 진입 후에만 버튼 자리를 숨긴다', async () => {
+    for (const mode of ['fullscreen', 'standalone']) {
+        const r = browserRuntime();
+        r.sandbox.matchMedia = (query) => ({ matches: query === `(display-mode: ${mode})` });
+        const button = r.getElement('global-fullscreen-btn');
+        const document = r.sandbox.document;
+        const events = {};
+        document.addEventListener = (name, callback) => (events[name] = callback);
+        document.querySelectorAll = (selector) =>
+            selector === '[data-action="fullscreen-toggle"]' ? [button] : [];
+        document.fullscreenEnabled = true;
+        let requests = 0;
+        document.documentElement.requestFullscreen = async (options) => {
+            assert.equal(options.navigationUI, 'hide');
+            requests++;
+            document.fullscreenElement = document.documentElement;
+            events.fullscreenchange();
+        };
+        document.exitFullscreen = async () => {
+            document.fullscreenElement = null;
+            events.fullscreenchange();
+        };
+        r.sandbox.initFullscreenControls();
+        assert.equal(button.hidden, false);
+        assert.equal(document.documentElement.dataset.installedApp, 'true');
+        await r.sandbox.toggleFullscreen();
+        assert.equal(requests, 1);
+        assert.equal(button.hidden, true);
+        assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'true');
+        await r.sandbox.toggleFullscreen();
+        assert.equal(button.hidden, false);
+        assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'false');
+    }
+});
+
+test('설치 창의 API 전체화면이 거부되어도 확장 버튼을 유지하고 다시 요청할 수 있다', async () => {
     const r = browserRuntime();
     r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
     const button = r.getElement('global-fullscreen-btn');
-    r.sandbox.document.querySelectorAll = (selector) =>
+    const document = r.sandbox.document;
+    document.querySelectorAll = (selector) =>
         selector === '[data-action="fullscreen-toggle"]' ? [button] : [];
+    document.fullscreenEnabled = true;
     let requests = 0;
-    r.sandbox.document.fullscreenEnabled = true;
-    r.sandbox.document.documentElement.requestFullscreen = async () => requests++;
+    document.documentElement.requestFullscreen = async () => {
+        requests++;
+        throw new Error('Denied');
+    };
     r.sandbox.initFullscreenControls();
-    assert.equal(button.hidden, true);
-    assert.equal(r.sandbox.document.documentElement.dataset.appFullscreen, 'true');
     await r.sandbox.toggleFullscreen();
-    assert.equal(requests, 0);
+    await r.sandbox.toggleFullscreen();
+    assert.equal(requests, 2);
+    assert.equal(button.hidden, false);
+    assert.equal(button.disabled, false);
+    assert.equal(document.documentElement.dataset.fullscreenControlHidden, 'false');
 });
 
-test('설치 전체화면은 시스템 바가 나타나도 큰 뷰포트 높이를 유지하고 회전에는 적응한다', () => {
+test('설치 창이 시스템 바 때문에 줄어들면 가용 높이보다 큰 문서 높이를 합성하지 않는다', () => {
     const r = browserRuntime();
     r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
-    r.sandbox.CSS = { supports: (property, value) => property === 'height' && value === '100lvh' };
-    let largeHeight = 900;
-    r.sandbox.document.documentElement.getBoundingClientRect = () => ({ height: largeHeight });
     r.sandbox.innerWidth = 390;
     r.sandbox.innerHeight = 836;
     r.sandbox.onload();
-    assert.equal(r.evaluate('getLockedAppHeight()'), 900);
+    assert.equal(r.evaluate('getLockedAppHeight()'), 836);
     r.sandbox.innerHeight = 780;
-    largeHeight = 844;
     r.events.resize();
     r.advance(100);
-    assert.equal(r.getElement('battle-mode-game').style.height, '900px');
-    assert.equal(r.getElement('practice-mode-game').style.height, '900px');
-    largeHeight = 390;
+    assert.equal(r.getElement('battle-mode-game').style.height, '780px');
+    assert.equal(r.getElement('practice-mode-game').style.height, '780px');
     r.sandbox.innerWidth = 900;
-    r.sandbox.innerHeight = 350;
+    r.sandbox.innerHeight = 390;
     r.events.resize();
     r.advance(100);
     assert.equal(r.evaluate('getLockedAppHeight()'), 390);
     assert.equal(r.getElement('battle-mode-game').style.width, '292.5px');
-    r.sandbox.matchMedia = () => ({ matches: false });
-    r.sandbox.initAppHeight(true);
-    r.sandbox.initFullscreenControls();
-    assert.equal(r.evaluate('getLockedAppHeight()'), 350);
-    assert.equal(r.sandbox.document.documentElement.dataset.appFullscreen, 'false');
-});
-
-test('큰 뷰포트 단위 미지원 앱도 시스템 바의 높이 변경과 실제 화면 회전을 구분한다', () => {
-    const r = browserRuntime();
-    r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
-    r.sandbox.innerWidth = 390;
-    r.sandbox.innerHeight = 900;
-    r.sandbox.initAppHeight(true);
-    r.sandbox.innerHeight = 830;
-    r.sandbox.initAppHeight(true);
-    assert.equal(r.evaluate('getLockedAppHeight()'), 900);
-    r.sandbox.innerWidth = 900;
-    r.sandbox.innerHeight = 390;
-    r.sandbox.initAppHeight(true);
-    assert.equal(r.evaluate('getLockedAppHeight()'), 390);
 });

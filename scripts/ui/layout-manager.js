@@ -7,8 +7,6 @@
 // IIFE 캡슐화: _lockedAppHeight(내부 상태)는 숨기고 함수만 window에 노출합니다.
 (function () {
     let _lockedAppHeight = 0;
-    let heightViewportWidth = 0;
-    let heightWasFullscreen = false;
     const TITLE_VARIANTS = ['킹왕짱', '왕짱킹', '킹짱왕', '왕킹짱', '짱킹왕', '짱왕킹'];
     const LOBBY_BACKGROUNDS = [
         'images/theme/quest-lobby-forest.webp',
@@ -18,6 +16,7 @@
     let previousTitleIndex = -1;
     let previousBackgroundIndex = -1;
     let fullscreenPending = false;
+    let installedWindow = false;
 
     /**
      * 앱 높이를 측정하고 CSS 변수로 설정합니다.
@@ -26,25 +25,9 @@
     function initAppHeight(force = false) {
         if (_lockedAppHeight > 0 && !force) return;
 
-        const root = document.documentElement;
-        const fullscreen = Boolean(
-            document.fullscreenElement || window.matchMedia?.('(display-mode: fullscreen)').matches
-        );
-        let height = window.innerHeight;
-        if (fullscreen) {
-            // Transient Android system bars must overlay the scene, not resize the lesson.
-            if (heightWasFullscreen && heightViewportWidth === window.innerWidth)
-                height = Math.max(height, _lockedAppHeight);
-            if (window.CSS?.supports('height', '100lvh')) {
-                root.style.setProperty('--app-height', '100lvh');
-                const largeHeight = root.getBoundingClientRect().height;
-                if (Number.isFinite(largeHeight) && largeHeight > 0)
-                    height = Math.max(height, largeHeight);
-            }
-        }
-        heightViewportWidth = window.innerWidth;
-        heightWasFullscreen = fullscreen;
-        _lockedAppHeight = height;
+        // Size the document to the actual viewport. A larger synthetic height creates
+        // page overflow when the installed browser resizes its Android surface.
+        _lockedAppHeight = window.innerHeight;
         document.documentElement.style.setProperty('--app-height', _lockedAppHeight + 'px');
         dlog('[layout] App height locked:', _lockedAppHeight + 'px');
     }
@@ -126,10 +109,10 @@
 
     function updateFullscreenButtons() {
         const active = !!document.fullscreenElement;
-        const appFullscreen = !!appRunsFullscreen();
-        document.documentElement.dataset.appFullscreen = String(appFullscreen);
+        const hideControl = installedWindow && active;
+        document.documentElement.dataset.fullscreenControlHidden = String(hideControl);
         for (const button of document.querySelectorAll('[data-action="fullscreen-toggle"]')) {
-            button.hidden = appFullscreen;
+            button.hidden = hideControl;
             button.disabled = fullscreenPending;
             button.setAttribute('aria-pressed', String(active));
             const label = active ? '전체화면 나가기' : '전체화면';
@@ -147,6 +130,14 @@
     }
 
     function initFullscreenControls() {
+        // Manifest fullscreen and element fullscreen are independent. Remember the
+        // installed window before an API request changes display-mode media queries.
+        installedWindow ||= Boolean(
+            appRunsFullscreen() ||
+            window.matchMedia?.('(display-mode: standalone)').matches ||
+            window.navigator?.standalone
+        );
+        document.documentElement.dataset.installedApp = String(installedWindow);
         syncFullscreenHost();
         updateFullscreenButtons();
         document.addEventListener('fullscreenchange', () => {
@@ -158,7 +149,7 @@
     }
 
     async function toggleFullscreen() {
-        if (fullscreenPending || appRunsFullscreen()) return;
+        if (fullscreenPending) return;
         if (!document.fullscreenEnabled) {
             showToast('이 브라우저는 전체화면을 지원하지 않습니다.', 'info');
             return;
