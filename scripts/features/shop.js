@@ -98,19 +98,24 @@ const shop = {
         const isSkill = type === 'skill';
         const name = itemDisplayName(item);
         const price = formatMenuNumber(item.cost);
-        const skillDetails = isSkill
+        const condition = item.desc.match(/^(오른손|왼손|장갑|머리|양발)(?: 장착)?:\s*/);
+        const details = isSkill
             ? `<div class="shop-item-meta"><span>보유 ${formatMenuNumber(db.skills[item.id] || 0)}회</span><span>구매 시 +${formatMenuNumber(item.uses)}회</span></div>`
-            : '';
+            : condition
+              ? `<div class="shop-item-meta"><span class="shop-item-condition">${escapeHTML(condition[1])} 장착 시</span></div>`
+              : '';
         const description =
             type === 'backpack'
                 ? `최대 ${db.inventoryCapacity}칸 → ${db.inventoryCapacity + 1}칸 · 구매할 때마다 +1칸`
-                : item.desc;
+                : condition
+                  ? item.desc.slice(condition[0].length)
+                  : item.desc;
         return `<div class="shop-item">
             <div class="shop-item-heading">
                 <div class="shop-item-art">${itemIconMarkup(item)}</div>
                 <div class="shop-item-copy">
                     <b class="shop-item-name">${escapeHTML(name)}</b>
-                    ${skillDetails}
+                    ${details}
                 </div>
             </div>
             <p class="shop-item-description">${escapeHTML(description)}</p>
