@@ -82,6 +82,27 @@ test('게임 보상은 숨겨진 상점·장비 목록을 재생성하지 않고
     assert.match(r.getElement('shop-container').innerHTML, /최대 4칸 → 5칸/);
 });
 
+test('스킬 상점은 보유 횟수와 구매 추가 횟수를 구별하고 구매·재실행 후 갱신한다', () => {
+    const r = browserRuntime({
+        ...quiet,
+        v7_gold: '200',
+        v7_skills: '{"hint":4,"ultimate":2}',
+    });
+    const card = () =>
+        r.evaluate('shop.createItemHtml(relics.find(item => item.id === "hint"), "skill")');
+    assert.match(card(), /보유 4회/);
+    assert.match(card(), /구매 시 \+4회/);
+    assert.doesNotMatch(card(), /통찰의 포션 \(현재/);
+    r.evaluate('shop.open(); shop.buy("hint", "skill")');
+    assert.equal(r.evaluate('db.gold'), 176);
+    assert.equal(r.evaluate('db.skills.hint'), 8);
+    assert.match(r.getElement('shop-container').innerHTML, /보유 8회/);
+    assert.match(r.getElement('shop-container').innerHTML, /구매 시 \+4회/);
+    const restored = browserRuntime(Object.fromEntries(r.store));
+    restored.evaluate('shop.open()');
+    assert.match(restored.getElement('shop-container').innerHTML, /보유 8회/);
+});
+
 test('건틀릿 잔여 횟수는 아이템 수명과 같은 분모를 표시한다', () => {
     const r = browserRuntime({
         ...quiet,

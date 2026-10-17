@@ -178,21 +178,6 @@ dialog.screen-overlay select,
     height: 24px;
 }
 
-#shop-modal .shop-item {
-    grid-template-columns: 36px minmax(0, 1fr) auto;
-    gap: 10px;
-    align-items: center;
-}
-#shop-modal .shop-item-copy {
-    min-width: 0;
-}
-#shop-modal .shop-item-copy b {
-    overflow-wrap: anywhere;
-}
-#shop-modal .buy-btn {
-    font-size: 14px;
-    min-width: 76px;
-}
 #inventory-modal .relic-item {
     display: flex;
     gap: 10px;
@@ -201,16 +186,6 @@ dialog.screen-overlay select,
 #inventory-modal .relic-item .item-art {
     flex-shrink: 0;
 }
-@container (max-width: 360px) {
-    #shop-modal .shop-item {
-        grid-template-columns: 36px minmax(0, 1fr);
-    }
-    #shop-modal .buy-btn {
-        grid-column: 2;
-        width: 100%;
-    }
-}
-
 /* Simple generated navigation icons coexist with native fullscreen semantics. */
 .music-toggle-btn {
     position: relative;

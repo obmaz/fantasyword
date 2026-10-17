@@ -38,19 +38,4 @@
     border: 1px solid var(--neutral-800);
 }
 
-.shop-modal-wrapper .shop-item-skill {
-    padding: 5px 10px !important;
-    margin-bottom: 4px !important;
-    min-height: auto !important;
-}
-
-.shop-modal-wrapper .shop-item-skill > div {
-    line-height: 1.3 !important;
-    margin: 0 !important;
-}
-
-#shop-modal .shop-item-skill > div br {
-    line-height: 1.3 !important;
-}
-
 /* Shop 버튼 스타일은 buttons.css의 .modal-btn-main 사용 */

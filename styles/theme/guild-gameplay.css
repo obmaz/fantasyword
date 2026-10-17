@@ -1422,23 +1422,6 @@ select {
     color: #f4f3df;
     padding: 12px;
 }
-#shop-modal .shop-item {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px;
-}
-#shop-modal .shop-item-copy,
-#shop-modal .shop-item-description {
-    color: #d1e4d7;
-    line-height: 1.5;
-}
-#shop-modal .shop-item-copy b {
-    color: #fff2d7;
-}
-#shop-modal .shop-item-skill {
-    padding: 12px !important;
-    margin-bottom: 8px !important;
-}
 :is(#shop-modal, #inventory-modal, #statistics-modal)
     :is(.shop-section, .statistics-section, .inv-section-title) {
     color: #f0dca6;

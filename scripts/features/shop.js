@@ -96,14 +96,29 @@ const shop = {
      */
     createItemHtml: (item, type) => {
         const isSkill = type === 'skill';
-        const name = isSkill
-            ? `${itemDisplayName(item)} (현재 ${db.skills[item.id]}개)`
-            : itemDisplayName(item);
+        const name = itemDisplayName(item);
+        const price = formatMenuNumber(item.cost);
+        const skillDetails = isSkill
+            ? `<div class="shop-item-meta"><span>보유 ${formatMenuNumber(db.skills[item.id] || 0)}회</span><span>구매 시 +${formatMenuNumber(item.uses)}회</span></div>`
+            : '';
         const description =
             type === 'backpack'
                 ? `최대 ${db.inventoryCapacity}칸 → ${db.inventoryCapacity + 1}칸 · 구매할 때마다 +1칸`
                 : item.desc;
-        return `<div class="shop-item${isSkill ? ' shop-item-skill' : ''}"><div class="shop-item-art">${itemIconMarkup(item)}</div><div class="shop-item-copy"><b>${escapeHTML(name)}</b><br><span class="shop-item-description">${escapeHTML(description)}</span></div><div class="shop-item-purchase"><strong class="shop-price" aria-label="${formatMenuNumber(item.cost)} 골드"><img class="shop-price-icon" src="images/theme/parts/approved-coin.webp" alt="" aria-hidden="true" />${formatMenuNumber(item.cost)}</strong><button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" data-confirm-tone="execute" aria-label="${escapeHTML(name)} 구매">구매</button></div></div>`;
+        return `<div class="shop-item">
+            <div class="shop-item-heading">
+                <div class="shop-item-art">${itemIconMarkup(item)}</div>
+                <div class="shop-item-copy">
+                    <b class="shop-item-name">${escapeHTML(name)}</b>
+                    ${skillDetails}
+                </div>
+            </div>
+            <p class="shop-item-description">${escapeHTML(description)}</p>
+            <div class="shop-item-purchase">
+                <strong class="shop-price" aria-label="${price} 골드"><img class="gold-icon" src="images/theme/parts/approved-coin.webp" alt="" aria-hidden="true" /><span>${price}</span></strong>
+                <button class="buy-btn" data-id="${escapeHTML(item.id)}" data-type="${escapeHTML(type)}" data-confirm-tone="execute" aria-label="${escapeHTML(name)} 구매">구매</button>
+            </div>
+        </div>`;
     },
 
     /**
