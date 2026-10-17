@@ -43,7 +43,9 @@ test('진동 설정 변경은 즉시 공통 피드백에 적용되고 다시 열
 
 test('일반 오답·방패 재시도·보스 실패는 공통 진동을 한 번 호출하고 중복 입력은 무시한다', () => {
     for (const mode of ['ordinary', 'shield', 'boss']) {
-        const r = browserRuntime();
+        const r = browserRuntime(
+            mode === 'shield' ? { v7_settings: '{"vibrationDuration":80}' } : {}
+        );
         const calls = [];
         r.sandbox.navigator.vibrate = (duration) => {
             calls.push(duration);
@@ -60,7 +62,7 @@ test('일반 오답·방패 재시도·보스 실패는 공통 진동을 한 번
         if (mode === 'shield') r.evaluate('game.gear.shield=1');
         if (mode === 'boss') r.evaluate("game.mode='boss'");
         r.evaluate('game.handleAnswer(false,0);game.handleAnswer(false,0)');
-        assert.deepEqual(calls, [200], mode);
+        assert.deepEqual(calls, [mode === 'shield' ? 80 : 200], mode);
     }
 });
 

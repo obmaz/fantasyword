@@ -577,7 +577,7 @@ function createBattleSession({
             }
             if (!isCorrect) {
                 game.sessionMistakes++;
-                vibrate?.(200);
+                vibrate?.();
             }
             if (!isCorrect && game.mode !== 'boss' && game.gear?.shield > 0) {
                 game.hadRetry = true;
