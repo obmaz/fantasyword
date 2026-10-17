@@ -3,6 +3,7 @@ const APP_CONFIG = Object.freeze({
     overlayCloseMs: 160,
     gameStartDelayMs: 0,
     musicTrackCount: 20,
+    musicVolume: 0.4,
     objectiveSeconds: 10,
     hourglassSeconds: 15,
     gameScreenIds: Object.freeze([

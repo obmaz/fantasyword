@@ -55,6 +55,8 @@
         if (!bgMusic || !db.settings) {
             return;
         }
+        // 원본 MP3는 그대로 두고 공통 재생 볼륨만 낮춘다.
+        bgMusic.volume = APP_CONFIG.musicVolume;
 
         const filename = `background_music_${musicNum}.mp3`;
         bgMusic.src = `data/${filename}`;

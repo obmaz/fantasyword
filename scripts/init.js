@@ -132,7 +132,7 @@ function initializeApp() {
         '--overlay-close-duration',
         `${APP_CONFIG.overlayCloseMs}ms`
     );
-    document.getElementById('background-music').volume = 0.5;
+    document.getElementById('background-music').volume = APP_CONFIG.musicVolume;
 
     // 모든 데이터 로드 후 dayCatalog 커버리지 검증
     if (typeof dayCatalog !== 'undefined' && typeof dayCatalog.validateCoverage === 'function') {
