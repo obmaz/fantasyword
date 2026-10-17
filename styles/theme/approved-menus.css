@@ -126,10 +126,6 @@
 .story-map-header > .btn-gray .visually-hidden {
     position: absolute;
 }
-#detail-header .modal-close-x {
-    top: 6px;
-    right: 6px;
-}
 .result-modal .modal-close-x,
 .skyfall-result .modal-close-x {
     top: 10px;
@@ -1518,18 +1514,78 @@ button .action-icon {
     font-size: 13px;
     padding: 8px;
 }
+#inventory-modal .relic-item > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
 #inventory-modal #detail-desc {
     color: var(--menu-ink);
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
 }
 #inventory-modal #inv-item-detail {
+    width: calc(100% - 24px);
     max-height: calc(100% - 36px);
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 40;
 }
+#inventory-modal #detail-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: start;
+    gap: 8px;
+    min-width: 0;
+}
+#inventory-modal #detail-icon {
+    display: grid;
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+}
+#inventory-modal #detail-icon .item-art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    max-height: 100%;
+    object-fit: contain;
+}
+#inventory-modal #detail-name {
+    align-self: center;
+    min-width: 0;
+    color: var(--menu-ink);
+    font-family: inherit;
+    font-size: clamp(16px, calc(var(--title-container-width, 100vw) * 0.05), 20px);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
 #inventory-modal #detail-close {
+    position: static;
+    inset: auto;
+    width: 44px;
+    height: 44px;
+    margin: 0;
     background: url('../../images/theme/parts/approved-control.webp') center / 100% 100% no-repeat;
     color: #fff6de;
-    flex-shrink: 0;
+    font-size: 25px;
+    line-height: 1;
+}
+#inventory-modal #detail-actions {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+#inventory-modal #detail-actions:empty {
+    display: none;
 }
 #inventory-modal #inv-close-btn {
     margin-top: 10px;
@@ -3223,8 +3279,7 @@ button[data-confirm-tone='warning'] {
 }
 
 /* Popup headings use the frame width, independent of each popup's own container. */
-dialog.screen-overlay h2,
-dialog.screen-overlay #detail-name {
+dialog.screen-overlay h2 {
     font-family: inherit !important;
     font-size: var(--popup-title-size) !important;
     font-weight: 800 !important;

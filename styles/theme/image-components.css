@@ -163,10 +163,6 @@ dialog.screen-overlay select,
     max-width: 48px;
     max-height: 48px;
 }
-#detail-icon .item-art {
-    width: 56px;
-    height: 56px;
-}
 .hero-weapon .item-art,
 .hero-effect .item-art,
 .hero-head .item-art {
