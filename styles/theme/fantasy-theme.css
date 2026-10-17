@@ -286,9 +286,9 @@ dialog.screen-overlay {
     display: flex;
     align-items: center;
     gap: 12px;
-    min-height: 64px;
-    padding: 0 0 12px;
-    margin: 0 0 12px;
+    min-height: var(--popup-header-min-height);
+    padding: var(--popup-header-padding) 0;
+    margin: 0 0 8px;
     border: 0;
     border-bottom: 2px solid #b1936455;
     background: transparent;
@@ -296,8 +296,8 @@ dialog.screen-overlay {
     text-align: left;
 }
 .menu-heading .game-emblem {
-    width: 46px;
-    height: 46px;
+    width: var(--popup-header-icon-size);
+    height: var(--popup-header-icon-size);
 }
 .menu-heading h2,
 .mode-selection .menu-heading h2 {
@@ -424,9 +424,9 @@ select option:checked {
 }
 .card.rpg-modal .modal-header,
 .statistics-modal-wrapper .card.rpg-modal .modal-header {
-    min-height: 62px;
-    margin-bottom: 14px;
-    padding: 0 0 12px;
+    min-height: var(--popup-header-min-height);
+    margin-bottom: 8px;
+    padding: var(--popup-header-padding) 0;
     border: 0;
     border-bottom: 2px solid #b1936455;
     border-radius: 0;
@@ -443,8 +443,8 @@ select option:checked {
     text-shadow: none;
 }
 .card.rpg-modal .modal-title .game-emblem {
-    width: 46px;
-    height: 46px;
+    width: var(--popup-header-icon-size);
+    height: var(--popup-header-icon-size);
 }
 .card.rpg-modal .modal-body {
     min-height: 0;

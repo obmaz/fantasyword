@@ -1179,9 +1179,9 @@ select {
 }
 .card.rpg-modal .modal-header,
 .statistics-modal-wrapper .card.rpg-modal .modal-header {
-    min-height: 56px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    min-height: var(--popup-header-min-height);
+    margin-bottom: 8px;
+    padding-block: var(--popup-header-padding);
     border-bottom-color: #d8e7df;
 }
 .card.rpg-modal .modal-footer {

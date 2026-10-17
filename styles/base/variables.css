@@ -38,6 +38,9 @@
     --ui-text-shadow: #103324;
     --ui-field-border: #bdba8b;
     --menu-ink: #243626;
+    --popup-header-padding: 4px;
+    --popup-header-icon-size: 40px;
+    --popup-header-min-height: calc(44px + var(--popup-header-padding) * 2);
 
     /* Modal Theme */
     --modal-header-bg: rgba(0, 0, 0, 0.15);

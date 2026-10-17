@@ -284,7 +284,7 @@ dialog.screen-overlay .card.story-map-card {
     position: relative !important;
     flex: 0 0 auto;
     z-index: 10;
-    padding: 8px 0;
+    padding: var(--popup-header-padding) 0;
     background: none;
 }
 .story-map-header h2 {
@@ -1122,8 +1122,8 @@ button .action-icon {
     background: none;
     border: 0;
     border-radius: 0;
-    min-height: 64px;
-    padding: 8px 0;
+    min-height: var(--popup-header-min-height);
+    padding: var(--popup-header-padding) 0;
     margin: 0;
     gap: 6px 8px;
 }
@@ -1145,8 +1145,8 @@ button .action-icon {
     min-width: 0;
 }
 :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .modal-title .game-emblem {
-    width: clamp(44px, 15cqw, 66px);
-    height: clamp(44px, 15cqw, 66px);
+    width: var(--popup-header-icon-size);
+    height: var(--popup-header-icon-size);
     flex-shrink: 0;
 }
 .menu-wallet {
@@ -1636,12 +1636,6 @@ button .action-icon {
     :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .modal-title {
         grid-row: 1;
         font-size: 24px;
-    }
-    :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
-        .modal-title
-        .game-emblem {
-        width: 40px;
-        height: 40px;
     }
     :is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal) .image-action-button {
         min-height: 48px;
@@ -3186,7 +3180,10 @@ dialog.screen-overlay .card.mode-selection {
     padding-block: 12px;
 }
 dialog.screen-overlay .menu-heading {
-    padding-block: 8px;
+    padding-block: var(--popup-header-padding);
+}
+dialog.screen-overlay .modal-header > .modal-close-x {
+    top: var(--popup-header-padding);
 }
 dialog.screen-overlay .menu-heading > .modal-close-x {
     position: static;
