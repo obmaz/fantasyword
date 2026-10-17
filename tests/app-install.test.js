@@ -4,13 +4,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-function runtime(userAgent = 'Chrome', readyState = 'complete') {
+function runtime(
+    userAgent = 'Chrome',
+    readyState = 'complete',
+    displayMode = 'browser',
+    apiFullscreen = false
+) {
     const events = {};
     const elements = new Map();
     const registrations = [];
     const context = vm.createContext({
         document: {
             readyState,
+            fullscreenElement: apiFullscreen ? {} : null,
             getElementById: (id) => {
                 if (!elements.has(id)) elements.set(id, {});
                 return elements.get(id);
@@ -18,7 +24,7 @@ function runtime(userAgent = 'Chrome', readyState = 'complete') {
         },
         window: {
             isSecureContext: true,
-            matchMedia: () => ({ matches: false }),
+            matchMedia: (query) => ({ matches: query === `(display-mode: ${displayMode})` }),
             addEventListener: (name, fn) => {
                 events[name] = fn;
             },
@@ -92,4 +98,11 @@ test('설치 취소 후 새 설치 이벤트로 다시 시도할 수 있다', as
         assert.equal(r.elements.get('app-install-btn').disabled, outcome === 'accepted');
     }
     assert.equal(opened, 2);
+});
+
+test('전체화면으로 설치 실행한 앱은 설치됨으로 인식하되 일반 브라우저의 API 전체화면과 구분한다', () => {
+    const app = runtime('Chrome', 'complete', 'fullscreen');
+    assert.equal(app.elements.get('app-install-btn').textContent, '설치됨');
+    const browser = runtime('Chrome', 'complete', 'fullscreen', true);
+    assert.equal(browser.elements.get('app-install-btn').textContent, '앱 설치');
 });

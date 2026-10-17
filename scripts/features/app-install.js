@@ -5,6 +5,8 @@ const appInstall = (() => {
     const installed = () =>
         installationAccepted ||
         window.matchMedia?.('(display-mode: standalone)').matches ||
+        (!document.fullscreenElement &&
+            window.matchMedia?.('(display-mode: fullscreen)').matches) ||
         navigator.standalone === true;
     const refresh = () => {
         const button = document.getElementById('app-install-btn');

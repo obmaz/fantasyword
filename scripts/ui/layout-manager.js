@@ -100,10 +100,16 @@
         }
     }
 
+    function appRunsFullscreen() {
+        return (
+            !document.fullscreenElement && window.matchMedia?.('(display-mode: fullscreen)').matches
+        );
+    }
+
     function updateFullscreenButtons() {
         const active = !!document.fullscreenElement;
         for (const button of document.querySelectorAll('[data-action="fullscreen-toggle"]')) {
-            button.hidden = false;
+            button.hidden = !!appRunsFullscreen();
             button.disabled = fullscreenPending;
             button.setAttribute('aria-pressed', String(active));
             const label = active ? '전체화면 나가기' : '전체화면';
@@ -132,7 +138,7 @@
     }
 
     async function toggleFullscreen() {
-        if (fullscreenPending) return;
+        if (fullscreenPending || appRunsFullscreen()) return;
         if (!document.fullscreenEnabled) {
             showToast('이 브라우저는 전체화면을 지원하지 않습니다.', 'info');
             return;
@@ -146,7 +152,7 @@
         dialogs.forEach((dialog) => dialog.close());
         try {
             if (document.fullscreenElement) await document.exitFullscreen();
-            else await document.documentElement.requestFullscreen();
+            else await document.documentElement.requestFullscreen({ navigationUI: 'hide' });
         } catch {
             showToast('전체화면으로 전환할 수 없습니다. 다시 시도해 주세요.', 'info');
         } finally {

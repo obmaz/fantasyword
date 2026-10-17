@@ -245,7 +245,8 @@ test('전체화면 진입·종료·거부 뒤에도 팝업 순서와 입력 상�
         querySelectorAll: (selector) =>
             selector.startsWith('dialog[open]') ? dialogs.filter((dialog) => dialog.open) : [],
         documentElement: {
-            requestFullscreen: async () => {
+            requestFullscreen: async (options) => {
+                assert.equal(options.navigationUI, 'hide');
                 assert.ok(dialogs.every((dialog) => !dialog.open));
                 stack.push('fullscreen');
                 document.fullscreenElement = document.documentElement;
@@ -642,4 +643,19 @@ test('고정 글자를 건너뛰어 입력하고 지우기 뒤에도 첫·끝 �
     );
     for (let i = 0; i < 10; i++) press('Backspace');
     assert.equal(input.value, 'b_____n');
+});
+
+test('설치 앱의 전체화면 실행에서는 중복 버튼과 API 요청을 만들지 않는다', async () => {
+    const r = browserRuntime();
+    r.sandbox.matchMedia = (query) => ({ matches: query === '(display-mode: fullscreen)' });
+    const button = r.getElement('global-fullscreen-btn');
+    r.sandbox.document.querySelectorAll = (selector) =>
+        selector === '[data-action="fullscreen-toggle"]' ? [button] : [];
+    let requests = 0;
+    r.sandbox.document.fullscreenEnabled = true;
+    r.sandbox.document.documentElement.requestFullscreen = async () => requests++;
+    r.sandbox.initFullscreenControls();
+    assert.equal(button.hidden, true);
+    await r.sandbox.toggleFullscreen();
+    assert.equal(requests, 0);
 });
