@@ -52,7 +52,7 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 
 | 기능           | 구현 시작점                                                                                            | 주요 테스트                                                               |
 | -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| 출제·채점·보상 | `domain/questions.js`, `domain/battle-rules.js`, `game/game-engine.js`                                 | `game-engine.test.js`, `regressions.test.js`                              |
+| 출제·채점·보상 | `domain/questions.js`, `domain/battle-rules.js`, `game/battle-answer.js`, `game/game-engine.js`        | `game-engine.test.js`, `regressions.test.js`, `equipment-roles.test.js`   |
 | 몬스터별 문제  | `domain/monster-encounters.js`, `data/battle-examples.js`(루트 data)                                   | `monster-encounters.test.js`                                              |
 | 연습·발음      | `game/practice-session.js`, `features/speech.js`, `ui/practice-view.js`                                | `practice-session.test.js`, `speech-fallback.test.js`                     |
 | 복수 퀘스트    | `domain/revenge-rules.js`, `features/revenge-quests.js`                                                | `revenge-quests.test.js`                                                  |
@@ -183,3 +183,5 @@ strict checkJs는 연습 세션/뷰/발음에 적용하며 전체 앱 타입 검
 스토리의 학습 지점은 미완료/완료 이벤트에 기록된 Day를 확인해 가장 낮은 미출제 Day부터 배정한다. 갈림길·이벤트 배치는 계속 무작위로 생성한다.
 
 스토리 완료 변경 집합은 `domain/story-progress.js`에서 순수 계산하고, `features/story-journey.js`가 저장·재시도를 담당한다.
+
+전투 세션은 출제·수명주기를 조율하고, `game/battle-answer.js`는 답변 판정 후 보상·재시도·피격 연출을 맡는다.

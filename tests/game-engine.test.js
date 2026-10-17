@@ -26,6 +26,7 @@ function loadGame(overrides = {}) {
             'scripts/config.js',
             'scripts/domain/questions.js',
             'scripts/domain/battle-rules.js',
+            'scripts/game/battle-answer.js',
             'scripts/game/game-engine.js',
         ],
         {

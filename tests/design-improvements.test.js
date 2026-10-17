@@ -362,6 +362,7 @@ test('전투 진행은 DOM 없는 렌더러를 주입해 시작·채점·종료�
             'scripts/config.js',
             'scripts/domain/questions.js',
             'scripts/domain/battle-rules.js',
+            'scripts/game/battle-answer.js',
             'scripts/game/game-engine.js',
         ],
         globals
