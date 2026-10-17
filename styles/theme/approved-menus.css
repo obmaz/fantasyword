@@ -1509,15 +1509,39 @@ button .action-icon {
     margin: 8px 0;
 }
 #inventory-modal .relic-item {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
     background: #f4e3bd;
     color: var(--menu-ink);
     font-size: 13px;
-    padding: 8px;
+    padding: 10px;
+    text-align: left;
 }
-#inventory-modal .relic-item > span {
+#inventory-modal .relic-item .item-art {
+    display: block;
+    width: 36px;
+    height: 36px;
     min-width: 0;
+    object-fit: contain;
+}
+#inventory-modal .relic-item-copy {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    line-height: 1.5;
     overflow-wrap: anywhere;
     word-break: keep-all;
+}
+#inventory-modal .relic-item-name {
+    font-size: 14px;
+    font-weight: 800;
+}
+#inventory-modal .relic-item-remaining {
+    font-size: 12px;
 }
 #inventory-modal #detail-desc {
     color: var(--menu-ink);

@@ -174,14 +174,6 @@ dialog.screen-overlay select,
     height: 24px;
 }
 
-#inventory-modal .relic-item {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-#inventory-modal .relic-item .item-art {
-    flex-shrink: 0;
-}
 /* Simple generated navigation icons coexist with native fullscreen semantics. */
 .music-toggle-btn {
     position: relative;

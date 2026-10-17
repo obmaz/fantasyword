@@ -207,12 +207,16 @@ const inventory = {
                 const relicEl = document.createElement('div');
                 relicEl.className = 'relic-item';
 
-                let relicInfo = `${itemIconMarkup(relic)}<span><b>${itemDisplayName(relic)}</b>: ${relic.desc}`;
-                if (relic.type === 'consumable' && db.durability[relic.id]) {
-                    relicInfo += ` (${db.durability[relic.id]}회 남음)`;
-                }
-
-                relicEl.innerHTML = relicInfo + '</span>';
+                const remaining =
+                    relic.type === 'consumable' && db.durability[relic.id]
+                        ? `<span class="relic-item-remaining">${formatMenuNumber(db.durability[relic.id])}회 남음</span>`
+                        : '';
+                relicEl.innerHTML = `${itemIconMarkup(relic)}
+                    <div class="relic-item-copy">
+                        <b class="relic-item-name">${escapeHTML(itemDisplayName(relic))}</b>
+                        <span class="relic-item-description">${escapeHTML(relic.desc)}</span>
+                        ${remaining}
+                    </div>`;
                 relicsContainer.appendChild(relicEl);
             }
         });
