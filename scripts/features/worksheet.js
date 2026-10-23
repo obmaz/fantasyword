@@ -80,18 +80,18 @@ const worksheet = {
         body { background: white; }
         .toolbar { display: none; }
         .sheet { width: auto; max-width: none; margin: 0; padding: 0; }
-        body[data-print-target="questions"] .solutions,
-        body[data-print-target="answers"] .quiz { display: none; }
+        body[data-print-target="questions"] .solutions { display: none; }
         body[data-print-target="both"] .solutions { break-before: page; page-break-before: always; }
     }
 </style>
 </head>
-<body data-print-target="questions">
+<body data-print-target="both">
 <aside class="toolbar" aria-label="인쇄 도구">
     <div class="controls"><label for="print-target">인쇄 범위</label>
-        <select id="print-target"><option value="questions">문제지만</option><option value="answers">정답지만</option><option value="both">문제지 + 정답지</option></select>
-        <button id="print-button" type="button">A4 인쇄 / PDF 저장</button></div>
-    <p>A4 · 세로 · 배율 100% 권장. 브라우저의 머리글/바닥글은 끄세요. 긴 문제는 다음 장으로 이어집니다. 정답지는 별도 인쇄할 수 있습니다.</p>
+        <select id="print-target"><option value="both" selected>문제지 + 정답지</option><option value="questions">문제지만</option></select>
+        <button id="print-button" type="button">A4 인쇄 / PDF 저장</button>
+        <button id="download-html-button" type="button">HTML 다운로드</button></div>
+    <p>A4 · 세로 · 배율 100% 권장. 브라우저의 머리글/바닥글은 끄세요. 긴 문제는 다음 장으로 이어집니다. PDF는 인쇄창에서 ‘PDF로 저장’을 선택하세요.</p>
 </aside>
 <main>
     <section class="sheet quiz" aria-label="문제지">
@@ -113,6 +113,23 @@ const worksheet = {
     });
     document.getElementById('print-button').addEventListener('click', function () {
         window.print();
+    });
+    document.getElementById('download-html-button').addEventListener('click', function () {
+        const copy = document.documentElement.cloneNode(true);
+        document.querySelectorAll('select').forEach(function (select) {
+            copy.querySelectorAll('#' + select.id + ' option').forEach(function (option) {
+                option.toggleAttribute('selected', option.value === select.value);
+            });
+        });
+        const html = '<!DOCTYPE html>\\n' + copy.outerHTML;
+        const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'word_test.html';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
     });
 </script>
 </body>
@@ -189,14 +206,7 @@ const worksheet = {
         }
         const html = worksheet.createDocuments(papers);
         const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `word_test_day_${selectedDays.join('_')}.html`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
         window.open(url, '_blank', 'noopener');
-        // 차단된 새 창 대신 다운로드한 HTML을 열어도 같은 인쇄 도구를 사용할 수 있다.
         setTimeout(() => URL.revokeObjectURL(url), 60000);
         secret.closePrintDaySelect();
     },

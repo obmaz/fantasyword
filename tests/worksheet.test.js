@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const { runInNewContext } = require('node:vm');
 const { loadScripts } = require('./helpers/load-module');
 const source = Array.from({ length: 12 }, (_, index) => ({
     day: 1,
@@ -110,7 +111,7 @@ test('보기가 부족하면 정답 중복 없이 주관식으로 대체한다',
     assert.ok(model.questions.every((q) => q.options === null));
 });
 
-test('생성 문서: A4, 답란, 정답 분리, 이스케이프 및 다운로드 흐름', () => {
+test('생성 문서: 자동 다운로드 없이 미리보기, 기본 문제지·정답지, A4 및 이스케이프', () => {
     let html,
         closed = false,
         removed = false,
@@ -154,14 +155,98 @@ test('생성 문서: A4, 답란, 정답 분리, 이스케이프 및 다운로드
         URL: { createObjectURL: () => 'blob:test' },
     });
     r.evaluate('worksheet.generate()');
-    assert.ok(closed && removed && downloaded && opened);
+    assert.ok(closed && opened);
+    assert.equal(downloaded, false);
+    assert.equal(removed, false);
     assert.match(html, /size: A4 portrait; margin: 14mm/);
-    assert.match(html, /data-print-target="questions"/);
+    assert.match(html, /data-print-target="both"/);
+    assert.match(html, /value="both" selected/);
+    assert.doesNotMatch(html, /정답지만|value="answers"/);
+    assert.match(html, /id="download-html-button"/);
     assert.match(html, /class="answer-line"/);
     assert.match(html, /교사용 정답지/);
     assert.match(html, /&lt;script&gt;bad&lt;\/script&gt;/);
     assert.doesNotMatch(html, /<script>bad/);
     assert.match(html, /A &amp; B/);
+});
+
+test('미리보기는 버튼을 눌러 인쇄하거나 현재 선택을 유지한 HTML을 다운로드한다', () => {
+    const r = loadScripts(['scripts/features/worksheet.js'], { escapeHTML: String });
+    const html = r.evaluate("worksheet.createDocument({questions:[]}, 'Day 1')");
+    const handlers = {};
+    const selections = [
+        { id: 'print-target', value: 'questions' },
+        { id: 'print-day', value: '3' },
+    ];
+    const options = new Map();
+    for (const select of selections) {
+        options.set('#' + select.id + ' option', [
+            {
+                value: select.value,
+                toggleAttribute(name, on) {
+                    this[name] = on;
+                },
+            },
+            {
+                value: 'other',
+                toggleAttribute(name, on) {
+                    this[name] = on;
+                },
+            },
+        ]);
+    }
+    let prints = 0;
+    let downloads = 0;
+    let saved;
+    const timers = [];
+    const copy = {
+        outerHTML: '<html>current document</html>',
+        querySelectorAll: (key) => options.get(key),
+    };
+    runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], {
+        document: {
+            getElementById: (id) => ({
+                addEventListener: (event, fn) => {
+                    handlers[id] = fn;
+                },
+            }),
+            querySelectorAll: () => selections,
+            documentElement: { cloneNode: () => copy },
+            body: { appendChild() {} },
+            createElement: () => ({
+                click() {
+                    downloads++;
+                },
+                remove() {},
+            }),
+        },
+        window: {
+            print() {
+                prints++;
+            },
+        },
+        Blob: class {
+            constructor(parts) {
+                saved = parts.join('');
+            }
+        },
+        URL: { createObjectURL: () => 'blob:saved', revokeObjectURL() {} },
+        setTimeout: (fn) => timers.push(fn),
+    });
+    assert.equal(prints, 0);
+    assert.equal(downloads, 0);
+    handlers['print-button']();
+    assert.equal(prints, 1);
+    assert.equal(downloads, 0);
+    handlers['download-html-button']();
+    assert.equal(downloads, 1);
+    assert.equal(saved, '<!DOCTYPE html>\n' + copy.outerHTML);
+    for (const items of options.values()) {
+        assert.equal(items[0].selected, true);
+        assert.equal(items[1].selected, false);
+    }
+    assert.equal(timers.length, 1);
+    timers[0]();
 });
 
 test('여러 Day는 번호순으로 묶고 상한과 중복 제거를 Day마다 적용한다', () => {
