@@ -72,9 +72,7 @@
         if (!gameStorage.set('selectedGameDataSet', dataSetId)) return false;
         if (loadDataSet(dataSetId)) {
             currentDataSetId = dataSetId;
-            // localStorage에 저장
-
-            // words.js의 dayCatalog 재생성 필요 시 호출
+            // 카탈로그 재생성 기능이 제공되는 구성에서는 즉시 갱신한다.
             if (typeof dayCatalog !== 'undefined' && typeof dayCatalog.rebuild === 'function') {
                 dayCatalog.rebuild();
             }
@@ -180,7 +178,7 @@
         }
     }
 
-    // 즉시 초기화 (words.js가 로드되기 전에 데이터를 설정해야 함)
+    // words-loader.js가 읽을 전역 데이터를 DOM 준비 전에 설정한다.
     init();
 
     // DOMContentLoaded 시 UI 설정

@@ -51,10 +51,7 @@ const settingsManager = {
         starts[mode]();
     },
     init: () => {
-        // 1. 설정 데이터 검증 및 초기화
-        // 참고: 음악 트랙 잠금(unlockedMusicTracks / musicUnlockThresholds)은 제거되었습니다.
-        // 해금 조건이 구현된 적이 없어 항상 전 트랙이 열린 상태였고,
-        // 저장 계약에 없던 잠금 상태는 제거했습니다. 모든 트랙은 항상 재생 가능합니다.
+        // 저장 설정을 사용하며 배경음악은 모든 트랙을 선택할 수 있다.
         if (!db.settings) {
             db.settings = {
                 musicPlay: true,
@@ -65,7 +62,7 @@ const settingsManager = {
             };
         }
 
-        // 2. UI 이벤트 리스너 설정
+        // 각 조작은 저장 성공 후의 설정 상태를 표시한다.
         const musicCheck = document.getElementById('setting-music-play');
         const wordCheck = document.getElementById('setting-word-read');
         const soundCheck = document.getElementById('setting-sound-effects');

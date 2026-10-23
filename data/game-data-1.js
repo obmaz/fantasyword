@@ -1,5 +1,4 @@
-//
-// Game Data 1: 능률 보카 중등 기본
+// 단어장 1: 능률 보카 중등 기본.
 window.gameDataName_1 = '능률 보카 중등 기본';
 
 // ============================================
@@ -5411,7 +5410,7 @@ window.rawData_1 = [
         englishExplanation: 'used to say that something is greater in amount, degree, etc.',
     },
 
-    // DAY 34
+    // Day 34
     {
         day: 34,
         word: 'offer',
@@ -7421,7 +7420,7 @@ window.rawData_1 = [
         englishExplanation: 'a flat shape with three straight sides and three angles',
     },
 
-    // DAY 47 수정완료
+    // Day 47
     {
         day: 47,
         word: 'inform',
@@ -7577,7 +7576,7 @@ window.rawData_1 = [
             'to feel sorry about something you have done or about something that you have not been able to do; a sad feeling about something that has happened or something that you have done or not done',
     },
 
-    // Day 48 수정완료
+    // Day 48
     {
         day: 48,
         word: 'tragedy',
@@ -9277,7 +9276,7 @@ window.rawData_1 = [
         englishExplanation: 'to be remembered or thought of',
     },
 
-    // Day 59 수정완료
+    // Day 59
     {
         day: 59,
         word: 'risk',
@@ -9429,7 +9428,7 @@ window.rawData_1 = [
         englishExplanation: 'to take part in or become involved in an activity',
     },
 
-    // Day 60 수정완료
+    // Day 60
     {
         day: 60,
         word: 'bring back',

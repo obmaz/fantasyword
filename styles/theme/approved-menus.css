@@ -50,7 +50,7 @@
     text-shadow: 0 2px 3px #16331e;
 }
 
-/* 모든 닫기 동작은 팝업 우상단의 작은 X로 통일한다. */
+/* 내부 메뉴·결과의 닫기는 팝업 우상단의 44px X로 통일한다. */
 :is(
     .card.rpg-modal,
     .card.mode-selection,
@@ -3183,7 +3183,7 @@ button.equipment-control {
         0 0 0 2px #7cae72;
 }
 
-/* 설정의 두 토글과 골드 편집 영역은 같은 행 높이와 간격을 사용한다. */
+/* 설정의 체크박스·선택 항목과 골드 편집 영역은 같은 행 높이와 간격을 사용한다. */
 :is(#gold-adjuster-modal, #setting-modal) .modal-body {
     gap: 14px;
 }

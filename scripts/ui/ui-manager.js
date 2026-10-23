@@ -85,7 +85,7 @@ const ui = {
             weapons.find((w) => w.id === hand1Id) ||
             weapons.find((w) => w.id === db.equippedWeapon) ||
             weapons.find((w) => w.id === 'basic');
-        // 이펙트 -> hand-2 (시각 효과)
+        // 왼손 무기·방패는 오른손과 별도로 착용 요약에 반영한다.
         const hand2Id = db.equipped['hand-2'];
         const effData = weapons.find((w) => w.id === hand2Id);
         const avatarModel = {
@@ -264,7 +264,7 @@ const ui = {
     },
 };
 
-// 콘솔/디버깅을 위해 노출하고 다른 스크립트가 덮어쓰지 않도록 보호
+// 구성 루트와 디버깅에서 사용할 전역 참조를 제공하며 기존 참조가 있으면 유지한다.
 try {
     window.ui = window.ui || ui;
 } catch (e) {

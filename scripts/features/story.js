@@ -41,7 +41,7 @@ const story = {
     },
 
     /**
-     * 보스 모드: 스토리 모달 없이 바로 게임 시작
+     * 생존 도전: 인트로 팝업 없이 바로 시작한다.
      */
     startBossDirectly: () => {
         if (game.active || game.isProcessing) return;
@@ -57,8 +57,8 @@ const story = {
 
     /**
      * 스토리 인트로를 시작합니다
-     * @param {string} mode - 게임 모드 ('battle', 'boss', 'practice')
-     * @param {string} dayArg - Day 값
+     * @param {'story'|'battle'|'boss'} mode - 스토리 전투, 일반 전투 또는 생존 도전
+     * @param {string|number} [dayArg] - Day 값. 생략하면 공통 선택값 사용.
      */
     startIntro: (mode, dayArg) => {
         if (mode === 'boss') {
@@ -147,9 +147,7 @@ const story = {
     /**
      * 시작 버튼에 리스너를 1회만 붙입니다.
      *
-     * 이전에는 리스너 중복을 막으려고 cloneNode로 노드를 통째 교체했지만,
-     * 핸들러가 클로저를 쓰지 않게 바꾼 지금은 플래그 하나로 충분합니다.
-     * (노드 교체는 다른 곳에서 잡아둔 참조를 무효화하는 부작용도 있었습니다.)
+     * 같은 버튼을 다시 열어도 핸들러가 중복되지 않도록 등록 여부를 기록한다.
      * @param {HTMLElement} btn
      */
     _bindStartButton: (btn) => {

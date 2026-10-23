@@ -90,6 +90,7 @@ declare global {
         rawData_1?: Word[];
         rawData_2?: Word[];
         rawData_3?: Word[];
+        rawData_4?: Word[];
         playGoogleTTS: SpeechDependencies['playRemote'];
     }
 }

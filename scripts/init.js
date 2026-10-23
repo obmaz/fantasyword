@@ -15,13 +15,8 @@ function scheduleGameStart(callback) {
 }
 
 /**
- * data-action 속성 → 핸들러 매핑.
- *
- * index.html의 인라인 `onclick="secret.enter(1)"` 같은 문자열을 대체합니다.
- * 인라인 핸들러는 전역 이름에 하드코딩으로 묶이고, 값 보간 시 따옴표가 깨질 수 있으며,
- * 마크업과 동작이 분리되지 않습니다(spec §1.3).
- *
- * 각 핸들러는 클릭된 요소를 인자로 받으므로 data-* 속성으로 값을 전달할 수 있습니다.
+ * data-action과 실행할 핸들러를 연결한다.
+ * 핸들러는 클릭된 요소의 data-* 값으로 인자를 읽고, 이벤트 등록은 문서에서 위임한다.
  */
 const ACTION_HANDLERS = {
     'app-install': () => appInstall.install(),
@@ -147,7 +142,7 @@ function initializeApp() {
         dayCatalog.validateCoverage();
     }
 
-    // data-action 위임 리스너 (인라인 onclick 대체)
+    // 정적·동적 data-action 버튼을 같은 위임 리스너로 처리한다.
     setupActionDelegation();
     for (const event of ['pointerdown', 'keydown']) {
         document.addEventListener(event, () => gameSound.unlock(), { passive: true });
@@ -271,14 +266,11 @@ function initializeApp() {
     const practiceExplanationSection = document.getElementById('practice-explanation-section');
 
     if (practicePrevBtn)
-        practicePrevBtn.addEventListener('click', () => practiceMemorization.prev()); // Converted to .prev() from .prevWord()
+        practicePrevBtn.addEventListener('click', () => practiceMemorization.prev());
     if (practiceNextBtn)
-        practiceNextBtn.addEventListener('click', () => practiceMemorization.next()); // Converted to .next() from .nextWord()
+        practiceNextBtn.addEventListener('click', () => practiceMemorization.next());
     if (practiceExitBtn)
         practiceExitBtn.addEventListener('click', () => practiceMemorization.exit());
-
-    // 참고: 기존 코드를 practice-mode.js의 메서드(`playTTS`, `toggleExplanationLang`) 호출로 변경함
-    // 기존 호출과 일치하도록 업데이트됨.
 
     if (practiceSpeakBtn)
         practiceSpeakBtn.addEventListener('click', () => practiceMemorization.playTTS());
@@ -390,7 +382,7 @@ function initializeApp() {
         storyJourney.cancelBattleReturn();
         closeScreenOverlay('result-modal', true);
 
-        // 스토리/모드 선택 오버레이의 인라인 스타일을 CSS 기본값으로 되돌림
+        // 닫기 타이머와 게임 진입 팝업을 함께 정리한다.
         resetScreenOverlays(GAME_ENTRY_OVERLAYS);
 
         const gameScreen = document.getElementById('battle-mode-game');

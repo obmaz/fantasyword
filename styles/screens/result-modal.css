@@ -3,7 +3,7 @@
    ============================================ */
 
 /* 결과 내용의 기본 배치. 이미지 재질은 theme/approved-menus.css가 담당한다. */
-/* 통계 모달과 동일: 헤더/푸터 고정, 본문만 스크롤 */
+/* 결과 제목과 닫기는 본문 밖에 두고 상세 결과만 스크롤한다. */
 #result-modal .result-modal {
     position: relative;
     display: flex;
@@ -132,7 +132,7 @@
     color: rgba(170, 225, 255, 0.95);
 }
 
-/* 이번 게임 성적 행 (JS에서 인라인 style로 찍던 것을 클래스로 이관) */
+/* 이번 전투의 유형별 성적 행. */
 #result-modal .result-stat-row {
     text-align: right;
     width: 100%;

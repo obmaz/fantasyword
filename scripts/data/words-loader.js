@@ -50,7 +50,7 @@ const dayCatalog = (function () {
     return c;
 })();
 
-// 런타임 검증기: rawData days와 dayCatalog를 비교하고 (선택적으로) 경량 플레이스홀더를 자동 채움
+// 런타임 검증기: rawData의 Day 중 카탈로그에 없는 항목은 기본 레이블로 채운다.
 // - 스크립트 로드 후 호출 안전 (정의 시점에 자동 실행되지 않음)
 // - UI가 'all'로 대체되는 것을 방지하기 위해 비파괴적 플레이스홀더 추가
 if (typeof dayCatalog.validateCoverage === 'undefined') {
@@ -97,12 +97,12 @@ if (typeof dayCatalog.validateCoverage === 'undefined') {
     };
 }
 
-// data-loader.js가 먼저 로드되어 window.rawDataData를 설정해야 함 (rawData_1 또는 rawData_2에서 로드됨)
+// game-data-loader.js가 먼저 선택한 단어장을 window.rawDataData에 설정해야 한다.
 const rawData = typeof window !== 'undefined' && window.rawDataData ? window.rawDataData : [];
 dlog('[words.js] rawData loaded:', rawData ? rawData.length : 0, 'items');
 
 // ============================================================
-// 유사 단어 그룹 기반 decoy (추천 방식)
+// 모든 단어장이 공유하는 유사 오답 후보 인덱스
 //
 // - 목표: "어떤 단어가 어떤 단어랑 유사한지"를 코드가 알 수 있도록
 //         데이터에 '유사 단어 그룹(집합)'을 정의하고, 그 그룹에서 보기를 우선 뽑는다.
@@ -148,7 +148,7 @@ const decoyWordIndex = (function () {
     return idx;
 })();
 
-// 전역 helper로 노출 (init.js에서 사용)
+// 구성 루트에서 출제 서비스에 주입할 후보 조회 함수를 노출한다.
 if (typeof window !== 'undefined' && typeof window.getDecoyWordCandidates !== 'function') {
     window.getDecoyWordCandidates = function (word) {
         const k = normalizeDecoyKey(word);

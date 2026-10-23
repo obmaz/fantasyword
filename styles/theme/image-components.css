@@ -1,6 +1,6 @@
 /* Shared generated parts. Text, form controls and state remain live HTML. */
 
-/* The old theme has several per-screen button skins; image parts replace those skins. */
+/* 화면별 버튼 위에 공통 이미지 부품을 적용한다. 최종 동작별 색상은 shared-ui.css가 정한다. */
 :is(.mode-actions, .story-actions, .app-confirm-actions, #detail-actions) button,
 button:is(
     .boss-submit,

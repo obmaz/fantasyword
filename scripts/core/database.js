@@ -266,9 +266,9 @@ const db = {
     ),
 
     /**
-     * 데이터를 localStorage에 저장합니다.
+     * 데이터를 필드별로 개별 저장한다.
+     * 상태·비용을 함께 바꾸는 작업은 commitChanges를 사용한다.
      * @param {...string} fields - 저장할 필드명(_writers 키). 생략 시 전체 저장.
-     *   핫패스(골드/통계 가산 등)에서는 변경된 키만 넘겨 불필요한 직렬화를 줄입니다.
      */
     save: (...fields) => {
         const keys = fields.length ? fields : Object.keys(db._writers);

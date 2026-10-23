@@ -3,8 +3,8 @@
 (function () {
     /**
      * 사용 가능한 배경음악 트랙 수 (data/background_music_{1..N}.mp3).
-     * 파일을 추가/삭제하면 이 상수만 바꾸면 됩니다 — 드롭다운 렌더링(ui-manager)과
-     * 랜덤/다음 곡 선택이 모두 이 값 하나를 참조합니다.
+     * APP_CONFIG.musicTrackCount와 실제 MP3 파일 수를 맞춘다.
+     * 드롭다운과 무작위·다음 곡 선택이 같은 설정값을 사용한다.
      */
     const MUSIC_TRACK_COUNT = APP_CONFIG.musicTrackCount;
 
@@ -37,8 +37,8 @@
      * 특정 배경 음악 트랙을 재생하고 종료 이벤트 리스너를 설정합니다.
      * 내부 헬퍼 함수입니다.
      * @param {number} musicNum 음악 트랙 번호 (1부터 시작)
-     * @param {string} mode 'battle' | 'practice' | 'hangman'
-     * @param {boolean} forcePlay 강제 재생 여부 (기본 false)
+     * @param {'battle'|'practice'|'hangman'|'shell'|'puzzle'} mode 음악 선택 상태를 보관할 모드
+     * @param {boolean} [forcePlay=false] 자동 재생 설정과 관계없이 재생을 시도할지 여부
      */
     function _playMusic(musicNum, mode, forcePlay = false) {
         const bgMusic = document.getElementById('background-music');
@@ -51,7 +51,7 @@
         const musicFilenameEl = document.getElementById(filenameId);
         const musicSelectEl = document.getElementById(selectId);
 
-        // [FIX] 설정이 꺼져있어도 UI는 나와야 하므로 여기서 리턴하지 않음
+        // 음악 OFF 상태에서도 곡 선택 UI를 준비한다.
         if (!bgMusic || !db.settings) {
             return;
         }
@@ -75,15 +75,12 @@
             musicInfoOverlay.style.display = 'block';
         }
 
-        // [FIX] 설정에 따라 자동 재생 여부 결정
-        // forcePlay가 true이면(예: 이전 곡이 끝나서 넘어옴) 무조건 재생
+        // 첫 진입은 설정을 따르고, 곡이 끝난 뒤 순환할 때는 재생을 이어 간다.
         if (forcePlay || (db.settings && db.settings.musicPlay)) {
             resumeMusic(bgMusic);
         } else {
             updateMusicToggleButtons(false);
         }
-        // else: 설정이 꺼져있으면 정지 상태로 시작 (UI는 표시됨)
-
         // 다음 음악을 순서대로 재생하도록 onended 이벤트 리스너 설정
         bgMusic.onended = () => {
             playNextMusic(mode);
@@ -91,9 +88,9 @@
     }
 
     /**
-     * 지정된 모드의 배경 음악 재생을 시작합니다 (현재 인덱스부터).
-     * 이미 음악이 재생 중이면 계속 재생합니다.
-     * @param {string} mode 'battle' | 'practice' | 'hangman'
+     * 모드에서 선택한 곡을 처음부터 준비하고 자동 재생 설정을 적용한다.
+     * 첫 진입에는 무작위 곡을 선택한다.
+     * @param {'battle'|'practice'|'hangman'|'shell'|'puzzle'} mode 음악 선택 상태를 보관할 모드
      */
     function playMusic(mode) {
         if (!currentMusicIndices[mode]) {
@@ -110,7 +107,7 @@
 
     /**
      * 지정된 모드의 다음 배경 음악 트랙을 순서대로 재생합니다.
-     * @param {string} mode 'battle' | 'practice' | 'hangman'
+     * @param {'battle'|'practice'|'hangman'|'shell'|'puzzle'} mode 음악 선택 상태를 보관할 모드
      */
     function playNextMusic(mode) {
         // 1..MUSIC_TRACK_COUNT 를 순환
@@ -155,9 +152,7 @@
                         if (musicFilenameEl) {
                             musicFilenameEl.textContent = `배경음악 ${musicNum}`;
                         }
-                        // 플레이 (자동 재생 방지 예외 처리)
-                        // [FIX] 여기서도 db.settings.musicPlay를 쓰거나, 아니면 사용자가 직접 바꿨으니 무조건 재생?
-                        // 보통 직접 곡을 바꾸면 재생을 의도한 것이므로 재생 시도 + 버튼 상태 업데이트
+                        // 직접 고른 곡은 재생을 시도하고 성공 여부를 ON/OFF에 반영한다.
                         resumeMusic(bgMusic);
 
                         // 모드 감지 (ID에 따라)
@@ -193,15 +188,13 @@
         const bgMusic = document.getElementById('background-music');
         if (!bgMusic) return;
 
-        // [FIX] 설정값(db.settings.musicPlay)을 덮어쓰지 않고,
-        // 현재 세션의 재생 상태만 토글함.
+        // 자동 재생 설정은 유지하고 현재 세션의 재생 상태만 바꾼다.
         if (bgMusic.paused) {
             resumeMusic(bgMusic);
         } else {
             bgMusic.pause();
             updateMusicToggleButtons(false);
         }
-        // db.save(); // 제거: 영구 저장 안 함
     }
 
     /**

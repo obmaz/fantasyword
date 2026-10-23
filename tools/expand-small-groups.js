@@ -1,5 +1,6 @@
 /**
- * 그룹 단어가 3개 이하인 그룹만 찾아서 4개로 확장
+ * 서로 다른 단어가 3개 이하인 그룹을 찾아 가능한 경우 4개로 확장한다.
+ * 1번 단어장과 다른 그룹의 유사 단어를 사용하며 제공 그룹의 고유 단어는 4개 이상 남긴다.
  * 실행: node tools/expand-small-groups.js
  */
 const fs = require('node:fs');
@@ -53,7 +54,7 @@ function isSimilar(a, b) {
 
 const allRawWords = [...readWords(gameDataPath, 1)];
 const existingGroups = readGroups(decoyPath);
-// 3개 이하인 그룹 찾기
+// 고유 단어가 3개 이하인 그룹 찾기
 const smallGroups = existingGroups.filter((g) => uniqueSize(g) <= 3);
 console.error('Small groups (<=3 words):', smallGroups.length);
 
@@ -82,7 +83,7 @@ updatedGroups.forEach((group, groupIdx) => {
         }
     }
 
-    // 2) 다른 그룹(4개 이상)에서 가져올 수 있는 단어 찾기
+    // 2) 고유 단어가 5개 이상인 다른 그룹에서 옮길 수 있는 단어 찾기
     for (let i = 0; i < existingGroups.length; i++) {
         if (i === groupIdx) continue;
         const otherGroup = updatedGroups[i];
@@ -150,9 +151,9 @@ function formatGroup(arr) {
     );
 }
 
-const out = `// 유사 단어 집합(decoyWordsSet) 수동 관리 파일
+const out = `// 유사 단어 집합(decoyWordsSet)의 공유 원본
 // ============================================================
-// - 이 파일만 직접 수정해서 유사 단어 집합을 확장하세요.
+// - 모든 단어장의 유사 오답 후보를 이 파일에서 함께 관리합니다.
 // - day 개념 없이 "유사한 단어(철자/발음이 비슷한)"를 같은 집합으로 묶습니다.
 // - 게임은 객관식(word 보기) 오답 생성 시, 정답 단어가 집합에 있으면
 //   같은 집합의 다른 단어들을 우선적으로 오답 후보로 사용합니다.

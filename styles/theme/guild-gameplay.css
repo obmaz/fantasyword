@@ -14,7 +14,7 @@
     --button-surface: linear-gradient(180deg, #2bb68f, #24a786);
     --button-depth: inset 0 1px 0 #ffffff40, 0 2px 0 #298f79, 0 4px 8px #22564912;
 }
-/* 로비와 메뉴도 같은 조형으로 연결한다. 그림은 배경과 아이콘에만 쓴다. */
+/* 로비와 내부 메뉴의 기본 조형. 뒤쪽 이미지 부품 스타일이 버튼·패널 재질을 적용한다. */
 .title-btn-area,
 .card.mode-selection,
 .card.story-card,
@@ -1525,7 +1525,7 @@ select {
     }
 }
 
-/* A single control stays in the viewport corner, including the dialog top layer. */
+/* 공통 전체화면 버튼의 기본 위치. 아래 프레임 정렬 규칙이 최종 가로 위치를 정한다. */
 #global-fullscreen-btn {
     position: fixed;
     top: max(12px, env(safe-area-inset-top));

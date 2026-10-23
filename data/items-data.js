@@ -1,5 +1,5 @@
 window.weaponsData = [
-    // Economy Weapons (gold bonus applies in the right-hand slot)
+    // 오른손에 장착할 때 골드 배율을 적용하는 경제형 무기.
     {
         id: 'goldDagger',
         name: '💰 행운의 대거',
@@ -34,7 +34,7 @@ window.weaponsData = [
         slot: 'hand-1',
     },
 
-    // Attack effects and equipment roles
+    // 무기·방패의 공격 속성과 전투 역할.
     {
         id: 'basic',
         name: '🗡️ 쇼트소드',

@@ -97,7 +97,7 @@ dialog.screen-overlay::backdrop {
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
     border: none;
     animation: none;
-    /* 타이틀 컨테이너 크기를 기준으로 설정 (battle-mode-story-modal, boss-mode-story-modal과 동일) */
+    /* 게임 프레임 크기를 기준으로 메뉴 카드의 기본 폭과 최대 높이를 제한한다. */
     width: 81%;
     max-width: min(81%, var(--title-container-width, 95vw));
     max-height: min(var(--title-container-height, 95vh), 85vh);
@@ -185,7 +185,7 @@ dialog.screen-overlay::backdrop {
     border-top: 1px solid var(--neutral-800);
 }
 
-/* Style for locked music options in select dropdowns */
+/* 이전 음악 선택 마크업의 잠금 표시용 호환 스타일. 현행 음악 목록은 모두 선택 가능하다. */
 option.locked-music {
     color: var(--neutral-400) !important;
     background-color: var(--neutral-800) !important;

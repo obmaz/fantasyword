@@ -1,4 +1,4 @@
-// Game Data 2: 임시 데이터
+// 단어장 2: 워드 마스터 중등 고난도.
 window.gameDataName_2 = '워드 마스터 중등 고난도';
 
 // ============================================
@@ -209,7 +209,7 @@ window.storiesData_2 = {
 };
 
 window.rawData_2 = [
-    // Day 01: 가족 및 관계
+    // Day 1: 가족 및 관계
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Cambridge Dictionary (https://dictionary.cambridge.org/)
     {
         day: 1,
@@ -441,7 +441,7 @@ window.rawData_2 = [
         englishExplanation: 'to end a romantic relationship with someone',
     },
 
-    // Day 02: 성격 및 외모
+    // Day 2: 성격 및 외모
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 2,
@@ -668,7 +668,7 @@ window.rawData_2 = [
             'to be very noticeable or obvious; to be much better than other similar things or people',
     },
 
-    // Day 03: 감정
+    // Day 3: 감정
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 3,
@@ -893,7 +893,7 @@ window.rawData_2 = [
             'to accept or continue to accept an unpleasant situation or experience, or someone who behaves unpleasantly',
     },
 
-    // Day 04: 음식 및 요리
+    // Day 4: 음식 및 요리
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 4,
@@ -1120,7 +1120,7 @@ window.rawData_2 = [
         englishExplanation: 'to eat a particular food as the main food',
     },
 
-    // Day 05: 의복 및 패션
+    // Day 5: 의복 및 패션
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 5,
@@ -1351,7 +1351,7 @@ window.rawData_2 = [
             'to behave in a way that is intended to attract attention or admiration, and that other people often find annoying',
     },
 
-    // Day 06: 주거 및 생활
+    // Day 6: 주거 및 생활
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 6,
@@ -1574,7 +1574,7 @@ window.rawData_2 = [
         englishExplanation: 'to end a phone conversation; to put something on a hook or hanger',
     },
 
-    // Day 07: 학문 및 연구
+    // Day 7: 학문 및 연구
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
     {
         day: 7,
@@ -1803,7 +1803,7 @@ window.rawData_2 = [
             'to think or talk about something a lot of the time, especially something that is unpleasant or annoying',
     },
 
-    // Day 08: 학교 생활
+    // Day 8: 학교 생활
     {
         day: 8,
         word: 'educate',
@@ -3528,7 +3528,6 @@ window.rawData_2 = [
     // Day 16: 자연 및 환경
     // 출처: 국립국어원 표준국어대사전 (https://stdict.korean.go.kr/), Oxford Learner's Dictionary (https://www.oxfordlearnersdictionaries.com/)
 
-    // Day 16: 자연 및 환경
     {
         day: 16,
         word: 'environment',

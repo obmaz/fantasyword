@@ -2,7 +2,7 @@
    Practice Mode Game 스타일
    ============================================ */
 
-/* 컨테이너 쿼리: 레이아웃이 줄어들면 글자도 같이 줄어들게 (cqmin 기준) */
+/* 연습 화면의 기본 배치와 cqmin 크기. 최종 이미지·공통 조작은 theme 스타일에서 적용한다. */
 #practice-mode-game {
     container-type: size;
     container-name: practice-game;
@@ -28,7 +28,7 @@
     overflow: hidden;
 }
 
-/* 배틀 아레나 스타일 (배틀 모드와 동일) */
+/* 연습 배경과 범위·단어 순서를 표시하는 아레나. */
 .practice-memorization-arena {
     flex: 0 0 25%;
     background: var(--color-black) url('../../images/theme/library.webp') center/cover no-repeat;
@@ -44,7 +44,7 @@
     min-height: 160px;
 }
 
-/* 헤더 영역 (배틀 모드의 info-badge 스타일) */
+/* 아레나의 학습 범위와 단어 순서 표시. 조작 버튼은 별도 gameplay-header에 둔다. */
 .practice-memorization-header {
     position: absolute;
     top: 10px;
@@ -143,7 +143,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* 나가기: 아레나(이미지) 우하단 고정 */
+/* 이전 아레나 나가기 영역의 배치. 현행 나가기는 공통 gameplay-header에 둔다. */
 .practice-arena-exit-wrap {
     position: absolute;
     bottom: clamp(10px, 2.5cqmin, 20px);
@@ -158,7 +158,7 @@
     font-size: clamp(14px, 2.8cqmin, 18px);
 }
 
-/* 초이스 칩 — 외웠어요 행 안에서 한 줄 */
+/* 필터 칩의 기본 크기와 선택 상태. */
 .practice-chip {
     flex: 1;
     min-width: 0;
@@ -185,7 +185,7 @@
     font-weight: 800;
 }
 
-/* 초이스 칩 + 외웠어요 한 줄 행 */
+/* 필터 칩과 발음 버튼을 담는 행. 외움 표시는 하단 탐색 버튼 사이에 둔다. */
 .practice-memorized-row {
     flex-shrink: 0;
     display: flex;
@@ -291,7 +291,7 @@
     letter-spacing: 2px;
 }
 
-/* 단어 + 음성 재생 아이콘 한 줄 (아이콘 우측 배치) */
+/* 영어 단어의 가로 배치. 발음 버튼은 별도 필터 행에 둔다. */
 .practice-word-row {
     display: flex;
     align-items: center;
@@ -324,7 +324,7 @@
     transform: scale(0.98);
 }
 
-/* 단어·설명 크기 — 밝은 톤 (아이콘 우측이므로 단어는 남은 공간에서 중앙) */
+/* 단어·뜻·풀이의 기본 글자 크기와 정렬. */
 .practice-word-text {
     flex: 1;
     font-size: clamp(18px, 6.5cqmin, 38px);

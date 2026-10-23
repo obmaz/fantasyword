@@ -39,8 +39,9 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 아이템 데이터·마이그레이션·보상·설정·HUD는 같은 정책을 참조한다. 독립 도메인 테스트도 이 설정을 먼저 로드한다.
 `app.js`가 게임 세션의 오답 콜백에 주입하며, 진동 API 오류는 게임 진행에 전파하지 않는다.
 
-`domain/`은 값과 함수만 입력받고 `game/`은 브라우저 전역을 직접 조회하지 않는다.
-뷰는 `game`/`db`를 직접 조회하지 않는다. 실제 난수는 `app.js`에서 공급하고 테스트는 결정적인 함수를 주입한다.
+`domain/`은 DOM·저장소·세션 상태를 직접 조회하지 않고 `game/`은 브라우저 전역을 직접 조회하지 않는다.
+뷰는 `game`/`db`를 직접 조회하지 않는다. 세션의 시계·타이머·음성·난수 서비스는 `app.js`에서 주입한다.
+공용 `questionTools.shuffle`은 `Math.random`을 직접 사용한다. 테스트에서는 세션에 난수·셔플 함수를 주입하거나 전투의 `shuffle` 등 호출 경계를 교체해 출제를 고정한다.
 상점·설정·통계 등 일부 주변 서비스는 전역 API를 사용한다.
 `init.js`는 DOM 준비 시 조작을 한 번만 등록한다. 이미지 로드 뒤의 `load` 폴백은 초기화를 반복하지 않는다.
 설치 이벤트는 먼저 연결하고 서비스 워커 등록·오프라인 사전 저장은 첫 화면 `load` 뒤에 시작해 초기 다운로드와의 경쟁을 줄인다.
@@ -60,7 +61,7 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 | 무기 모션      | `domain/attack-profiles.js`, `ui/battle-view.js`                                                       | `weapon-effects.test.js`                                                  |
 | 스토리·이벤트  | `domain/story-map.js`, `domain/story-progress.js`, `features/story-journey.js`                         | `story-journey.test.js`, `story-events.test.js`, `story-progress.test.js` |
 | 총공세         | `game/skyfall-session.js`, `ui/skyfall-view.js`                                                        | `skyfall-session.test.js`                                                 |
-| 사자성어       | `domain/idiom-rules.js`, `game/game-engine.js`                                                         | `story-events.test.js`                                                    |
+| 사자성어       | `domain/idiom-rules.js`, `game/game-engine.js`                                                         | `idiom-data.test.js`, `story-events.test.js`                              |
 | 야바위         | `game/shell-session.js`, `ui/shell-view.js`                                                            | `shell-session.test.js`                                                   |
 | 속담·대장간    | `domain/story-puzzle-rules.js`, `game/story-puzzle-session.js`, `ui/story-puzzle-view.js`              | `story-puzzles.test.js`                                                   |
 | 행맨           | `features/hangman.js`, `ui/gameplay-controls.js`                                                       | `hangman.test.js`                                                         |
@@ -93,20 +94,23 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 현재 native 발음의 외부 취소·중단은 실패 콜백을 한 번 완료하며, 원격 폴백 시작 뒤의 늦은 native 오류는 무시한다.
 전투/총공세 시간은 주입된 `performance.now()` 기반 마감 시각이며 interval/rAF는 표시·진행 갱신용이다.
 입력 직전에도 마감·낙하를 검사한다. 퀘스트의 회상 시각은 재시작 후 유지되는 `Date.now()`다.
+전투 세션은 출제·수명주기를 조율하고, `game/battle-answer.js`는 답변 판정 후 보상·재시도·피격 연출을 맡는다.
 
 `story-map.js`는 종류·출제 수·왕관·연결·비전투 연속 금지·배치 검증·중복 없는 Day 배정을 소유한다.
 `routeWidths`의 세 단계별 지점 수 구조와 `layoutIndex`로 기존 저장 배열을 식별한다.
 `regenerate(shuffle, previousRows)`는 다음 구조를 선택하고 이벤트를 섞으며 입력 배열은 수정하지 않는다.
 초기화·최종 클리어는 다음 배치와 초기 진행을 함께 저장한다. 실패·재진입·새로고침은 구조 순서를 바꾸지 않는다.
+스토리 완료 변경 집합은 `domain/story-progress.js`에서 순수 계산하고, `features/story-journey.js`가 저장·재시도를 담당한다.
 연결은 공개된 ? 결과가 아닌 원래 종류로 계산한다.
 `storyJourney.selection`은 확인 전 임시 선택이며 확인 후에만 Day와 이벤트를 저장한다.
 지도 렌더링은 layout·stage·path·events를 한 번씩 읽은 사본으로 연결과 선택 가능 상태를 계산한다.
 다시 열 때는 새로 읽으므로 진행·초기화·단어장 변경 결과를 즉시 반영한다.
+학습 지점은 미완료/완료 이벤트에 기록된 Day를 확인해 가장 낮은 미출제 Day부터 배정한다. 갈림길·이벤트 배치는 무작위로 생성한다.
 미니보스의 `type: spelling`, `monsterId: dragon`은 출제 방식과 외형을 분리하고 진행 중인 지점에만 적용한다.
 스토리 총공세는 시작 옵션과 종료/복귀 콜백으로 연결해 일반 Day 전체 출제를 보존한다.
 
 사자성어는 `data/story-idioms.js`를 영어 풀과 분리한다.
-문제 모델의 `kind: 'idiom'`을 뷰가 `data-question-kind`로 표현하며 헤더가 이를 별도로 덮어쓰지 않는다.
+문제 모델의 `questionKind: 'idiom'`을 뷰가 `data-question-kind`로 표현하며 헤더가 이를 별도로 덮어쓰지 않는다.
 속담·대장간 데이터와 한국어 뜻은 `data/story-puzzles.js`, 이웃·최단 경로(BFS)·출제는 퍼즐 도메인이 소유한다.
 뷰는 `data-phase`로 문제/풀이/결과를 표현한다.
 속담은 별도 ID 접두사의 전투 장면에서 `createBattleView`의 공격·피격·효과 초기화를 재사용한다.
@@ -158,12 +162,14 @@ CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 
 ## 코드·데이터 규칙
 
 - Prettier·EditorConfig: 4칸·JS single quote·semicolon·LF·print width 100. YAML은 2칸.
-- JS camelCase, 정책 묶음 UPPER_SNAKE_CASE, 파일·HTML ID·CSS class·data-action은 kebab-case.
+- JS 변수·함수는 camelCase, 정책 묶음은 UPPER_SNAKE_CASE, 타입·인터페이스는 PascalCase를 사용한다. 파일·HTML ID·CSS class·data-action은 kebab-case다.
 - 기존 `rawData_1`, `background_music_1.mp3`, 아이템/저장/화면 ID는 호환 계약으로 유지한다.
 - 재할당이 없으면 const, 필요할 때 let. 정책 값은 config나 소유 도메인에 둔다.
 - Node 표준 모듈은 `node:fs` 같은 prefix를 사용한다.
 - 문구는 textContent 우선, HTML 템플릿 데이터는 escapeHTML. inline 이벤트 속성을 추가하지 않는다.
 - 새 파일은 소유 폴더에 둔다. 작은 공유 함수 외 기능별 규칙을 utils에 쌓지 않는다.
+- 주석은 현행 계약·처리 이유·제약을 설명하고 JSDoc의 인자·반환값은 실제 시그니처와 맞춘다. 폐기된 파일명·기능 설명과 날짜별 변경 일지는 제거하고 데이터의 사전 출처·검토 근거는 보존한다.
+- 기본 들여쓰기와 예외는 `.prettierrc`·`.editorconfig`에 함께 반영한다. YAML은 2칸 override를 사용하며 `format`·`format:check`에 포함한다.
 
 새 단어장은 `data/game-data-N.js`를 classic script로 등록하고 데이터셋 ID/`book-ID` 기록을 유지한다.
 4번 단어장의 `explanationSources`는 출처 메타데이터이며 게임 출제 필드는 기존 계약을 따른다.
@@ -173,7 +179,8 @@ CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 
 
 ## 검증과 빌드
 
-`npm run check`는 문법·등록/에셋·책임 경계·문서 링크·타입·동작 테스트·포맷을 검사한다.
+`npm run check`는 문법·등록/에셋·책임 경계·문서 로컬 링크/제목 앵커·타입·동작 테스트·포맷을 검사한다.
+문서 검사는 외부 URL을 조회하지 않으며 코드 블록의 예시 링크·셸 주석을 제외한다. Markdown의 ATX 제목과 중복 제목 접미사, 명시적 HTML id를 확인한다.
 strict checkJs는 연습 세션/뷰/발음에 적용하며 전체 앱 타입 검사는 아니다.
 실제 브라우저·푸시·배포 절차는 [작업 인계](handoff.md)에서 관리한다.
 
@@ -182,9 +189,3 @@ strict checkJs는 연습 세션/뷰/발음에 적용하며 전체 앱 타입 검
 이미지 → CSS → HTML 순서로 내용 해시 버전을 붙이고 `.nojekyll`·SHA-256 `build-manifest.json`을 만든다.
 소스/로드 순서는 보존하고 symlink와 외부 dist 경로를 거부한다.
 문서·시안·도구·테스트·npm 파일은 배포하지 않으며 `build.test.js`가 재현성과 제외 정책을 검사한다.
-
-스토리의 학습 지점은 미완료/완료 이벤트에 기록된 Day를 확인해 가장 낮은 미출제 Day부터 배정한다. 갈림길·이벤트 배치는 계속 무작위로 생성한다.
-
-스토리 완료 변경 집합은 `domain/story-progress.js`에서 순수 계산하고, `features/story-journey.js`가 저장·재시도를 담당한다.
-
-전투 세션은 출제·수명주기를 조율하고, `game/battle-answer.js`는 답변 판정 후 보상·재시도·피격 연출을 맡는다.

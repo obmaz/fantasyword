@@ -48,7 +48,7 @@ const shop = {
             .filter((w) => w.multiplier > 1 && !isPurchased(w))
             .forEach((w) => (html += shop.createItemHtml(w, 'weapon')));
 
-        // 스킨 무기
+        // 골드 배율이 없는 전투 무기·방패
         html += '<div class="shop-section">무기 · 방패</div>';
         weapons
             .filter((w) => w.id !== 'basic' && w.multiplier === 1 && !isPurchased(w))
@@ -172,7 +172,7 @@ const shop = {
             changes.inventoryCapacity = db.inventoryCapacity + 1;
         } else if (type === 'skill') {
             const skill = relics.find((r) => r.id === id);
-            // hint/ultimate 외의 새 스킬은 db.skills에 키가 없어 undefined += n → NaN 이 되므로 가드
+            // 저장 기록에 없는 스킬도 보유 횟수 0부터 더한다.
             changes.skills = { ...db.skills, [id]: (db.skills[id] || 0) + skill.uses };
         } else {
             // 무기 및 기타 유물

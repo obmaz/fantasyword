@@ -4,7 +4,7 @@ function initSelections() {
     const battleDaySelect = document.getElementById('battle-mode-modal-day-select');
     const skyfallDaySelect = document.getElementById('skyfall-mode-day-select');
 
-    // Gather days from canonical `dayCatalog` and rawData (avoid referencing legacy `dayInfo`)
+    // 스토리 카탈로그와 실제 단어 데이터의 Day를 합쳐 선택 범위를 만든다.
     const daysFromData = new Set();
     if (typeof rawData !== 'undefined' && Array.isArray(rawData))
         rawData.forEach((r) => {
@@ -23,7 +23,7 @@ function initSelections() {
         .filter((day) => Number.isSafeInteger(day) && day > 0)
         .sort((a, b) => a - b);
 
-    // Build options
+    // 숫자 Day 다음에 전체 범위를 놓는다.
     let html = '';
     sortedDays.forEach((d) => {
         const label =
@@ -36,7 +36,7 @@ function initSelections() {
             : '전체';
     html += `<option value="all">${escapeHTML(allLabel)}</option>`;
 
-    // Initialize both selects
+    // 공통 선택과 연습·도전·총공세 선택창에 같은 옵션을 사용한다.
     if (daySelect) {
         daySelect.innerHTML = html;
         const last = db.lastSelectedDay || 'all';

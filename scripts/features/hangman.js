@@ -1,6 +1,6 @@
-/** 총공세 옆 시험용 행맨. 오답마다 단두대와 졸라맨이 단계적으로 그려진다. */
+/** 설정의 어드민 행맨. 오답 횟수에 따라 그림을 단계적으로 표시한다. */
 const HANGMAN_MAX_LIVES = 7;
-const HANGMAN_DRAWING = `<svg viewBox="0 0 180 150" role="img" aria-label="오답 단계별 단두대 그림">
+const HANGMAN_DRAWING = `<svg viewBox="0 0 180 150" role="img" aria-label="오답 단계별 교수대 그림">
     <path class="hangman-part part-gallows" d="M20 140H160M45 140V15H125M45 15H125M125 15V35" />
     <circle class="hangman-part part-head" cx="125" cy="50" r="15" />
     <path class="hangman-part part-body" d="M125 65V100" />

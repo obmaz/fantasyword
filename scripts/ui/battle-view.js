@@ -1,6 +1,16 @@
 /**
  * 전투 DOM만 소유한다. 게임/저장소를 읽지 않고 모델과 이벤트 콜백을 받는다.
- * @param {{document: Document, schedule: (callback: () => void, delay: number) => unknown, escapeHTML: (text: string) => string, openScreen?: (id: string, animated: boolean) => void, closeScreen?: (id: string, animated: boolean) => void}} dependencies
+ * @param {Object} dependencies
+ * @param {Document} dependencies.document
+ * @param {(callback: () => void, delay: number) => unknown} dependencies.schedule
+ * @param {(text: string) => string} dependencies.escapeHTML
+ * @param {(id: string, animated: boolean) => void} [dependencies.openScreen]
+ * @param {(id: string, animated: boolean) => void} [dependencies.closeScreen]
+ * @param {typeof battleAttackProfiles} dependencies.attacks
+ * @param {ReturnType<typeof createGameSound>|null} [dependencies.sound]
+ * @param {ReturnType<typeof createGamePresentation>|null} [dependencies.presentation]
+ * @param {string} [dependencies.elementPrefix=''] 공유 뷰를 사용하는 퍼즐 DOM의 ID 접두사
+ * @param {string} [dependencies.arenaSelector='.battle-arena'] 효과를 표시할 장면 선택자
  */
 function createBattleView({
     document: doc,

@@ -3,7 +3,7 @@
    ============================================ */
 
 /* Shop Modal 전용 스타일 */
-/* RPG Modal 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+/* 공통 기본 배치는 base/modal-common.css, 최종 메뉴 재질은 theme 스타일에서 적용한다. */
 
 /* Shop Modal 타이틀, 헤더, 푸터 스타일은 modal-common.css의 .card.rpg-modal 공통 스타일을 따름 */
 

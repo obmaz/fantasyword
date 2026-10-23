@@ -17,8 +17,8 @@ const WORDS = [
 ];
 
 /**
- * game 객체를 스텁 전역과 함께 로드합니다.
- * @param {Object} [overrides] - window에 얹을 값 (rawDataData 등)
+ * 출제 규칙을 로드하고 테스트용 데이터·서비스를 주입해 전투 세션을 만듭니다.
+ * @param {Object} [overrides] - 단어 데이터·오답 후보·Day 카탈로그 등 테스트 입력
  */
 function loadGame(overrides = {}) {
     const { evaluate } = loadScripts(

@@ -1,6 +1,5 @@
 /**
- * 관리자 도구 및 비밀 기능
- * 비밀번호 보호된 관리 메뉴, 골드 수정, 통계 초기화, 문제 출력 기능 포함
+ * 설정 내부의 비밀번호 확인·골드 수정·통계 초기화·문제 출력을 담당한다.
  */
 
 const secret = {
@@ -14,7 +13,7 @@ const secret = {
         secret.checkTimer = null;
         secret.errorTimer = null;
     },
-    previousModal: null, // 비밀번호 모달로 오기 전 모달 추적 (gold-adjuster-modal 또는 gold-edit-modal)
+    previousModal: null, // 비밀번호 확인 전 설정 패널 ID (gold-adjuster-modal 또는 gold-edit-modal)
 
     init: () => {
         const passwordBox = document.getElementById('password-input-boxes');
@@ -31,7 +30,7 @@ const secret = {
 
     close: () => {
         secret.cancelTimers();
-        // 비밀번호 모달이 열려있으면 이전 모달로 돌아가기
+        // 비밀번호 확인 중이었다면 같은 설정 dialog 안의 이전 패널로 돌아간다.
         const passwordModal = document.getElementById('password-modal');
         if (passwordModal && passwordModal.style.display !== 'none') {
             settingsManager.showPanel(secret.previousModal || 'gold-adjuster-modal');
@@ -137,7 +136,7 @@ const secret = {
     editGold: 0, // 골드 수정 값
 
     openGoldEditModal: () => {
-        // 골드 수정 모달 열기
+        // 같은 설정 dialog에서 골드 수정 패널로 전환한다.
         settingsManager.showPanel('gold-edit-modal');
         secret.editGold = db.gold; // 현재 골드로 초기화
         document.getElementById('current-gold-edit-display').textContent = db.gold;
@@ -148,7 +147,7 @@ const secret = {
     },
 
     closeGoldEditModal: () => {
-        // 골드 수정 모달 닫고 골드 조정 화면으로 돌아가기
+        // 골드 수정 패널을 닫고 기본 설정 패널로 돌아간다.
         settingsManager.showPanel('gold-adjuster-modal');
         secret.editGold = 0;
     },

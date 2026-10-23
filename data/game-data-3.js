@@ -1,4 +1,4 @@
-// Game Data 2: 임시 데이터
+// 단어장 3: 완자 VOCA PICK 중등 고난도.
 window.gameDataName_3 = '완자 VOCA PICK 중등 고난도';
 
 // ============================================
@@ -319,7 +319,7 @@ window.rawData_3 = [
         englishExplanation: 'a place in the ground where a dead person is buried',
     },
 
-    // Day 02: 성격, 태도
+    // Day 2: 성격, 태도
     {
         day: 2,
         word: 'attitude',
@@ -535,7 +535,7 @@ window.rawData_3 = [
         englishExplanation: 'unfriendly and ready to argue or fight',
     },
 
-    // Day 03: 기분, 감정
+    // Day 3: 기분, 감정
     {
         day: 3,
         word: 'concern',
@@ -753,7 +753,7 @@ window.rawData_3 = [
         englishExplanation: 'to annoy somebody, especially by something you continuously do',
     },
 
-    // Day 04: 생각, 사고
+    // Day 4: 생각, 사고
     {
         day: 4,
         word: 'define',
@@ -972,7 +972,7 @@ window.rawData_3 = [
             'to think deeply in silence, especially for religious reasons or in order to make your mind calm',
     },
 
-    // Day 05: 일상
+    // Day 5: 일상
     {
         day: 5,
         word: 'alarm',
@@ -1185,7 +1185,7 @@ window.rawData_3 = [
         englishExplanation: 'a dirty mark on something that is difficult to remove',
     },
 
-    // Day 06: 요리, 맛
+    // Day 6: 요리, 맛
     {
         day: 6,
         word: 'nutrition',
@@ -1398,7 +1398,7 @@ window.rawData_3 = [
         englishExplanation: 'decayed and not fit to be eaten',
     },
 
-    // Day 07: 쇼핑, 의복
+    // Day 7: 쇼핑, 의복
     {
         day: 7,
         word: 'afford',

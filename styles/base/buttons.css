@@ -62,7 +62,7 @@
     text-shadow: none;
 }
 
-/* Common Modal Button Style (Consolidated from shop/setting modals) */
+/* 상점·설정 등 모달 버튼의 공통 기본 스타일. */
 .modal-btn-main {
     height: 58px;
     border-radius: 14px;
@@ -224,7 +224,7 @@
     pointer-events: none;
 }
 
-/* exit_btn 이미지 스타일 */
+/* 이전 exit_btn 이미지 마크업의 눌림·선택 방지 스타일. */
 img[src*='exit_btn'] {
     cursor: pointer;
     -webkit-user-select: none;
@@ -316,7 +316,7 @@ select option:checked {
     display: block;
     width: 40px;
     height: 40px;
-    margin: 0 auto 10px auto; /* Exit button above with spacing */
+    margin: 0 auto 10px auto;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
     color: var(--color-white);
@@ -324,7 +324,7 @@ select option:checked {
     font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
-    display: flex; /* Centering emoji */
+    display: flex;
     align-items: center;
     justify-content: center;
     -webkit-backdrop-filter: blur(4px);

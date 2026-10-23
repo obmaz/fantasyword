@@ -3,9 +3,9 @@
    ============================================ */
 
 /* Statistics Modal 전용 스타일 */
-/* RPG Modal 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+/* 공통 기본 배치는 base/modal-common.css, 최종 메뉴 재질은 theme 스타일에서 적용한다. */
 
-/* Statistics Modal 타이틀 스타일 (margin, padding 추가) */
+/* 통계 제목의 기본 여백과 줄 높이. */
 .statistics-modal-wrapper .card.rpg-modal .modal-title {
     margin: 0;
     padding: 0;
@@ -70,7 +70,7 @@
     margin-top: 15px;
 }
 
-/* 여백이 더 넓은 대분류 섹션 (게임 통계 / 보스 모드 기록) */
+/* 전체 기록 대분류의 위쪽 여백. */
 .statistics-section-major {
     margin-top: 20px;
 }
@@ -86,7 +86,7 @@
     border: 1px solid var(--neutral-800);
 }
 
-/* 통계 수치 행 (JS에서 인라인 style로 찍던 것을 클래스로 이관) */
+/* 현재 단어장 안내와 통계 수치 행. */
 .statistics-book-info {
     font-size: 12px;
     color: var(--primary);

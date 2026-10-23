@@ -1,5 +1,5 @@
 /**
- * 비차단 알림 컴포넌트
+ * 토스트와 비동기 확인창
  * - showToast(message, type, duration): 화면을 막지 않는 토스트 알림 (alert 대체)
  * - showConfirm(message, options): Promise<boolean>을 반환하는 커스텀 확인 모달 (confirm 대체)
  *
@@ -43,7 +43,8 @@
     }
 
     /**
-     * 화면을 막지 않는 커스텀 확인 모달.
+     * JavaScript 실행을 멈추지 않고 Promise로 응답하는 native dialog.
+     * 확인창이 열려 있는 동안 배경 화면의 조작은 차단한다.
      * @param {string} message - 확인 메시지
      * @param {{okText?: string, cancelText?: string, tone?: 'execute' | 'warning'}} [options]
      * @returns {Promise<boolean>} 확인=true, 취소/바깥클릭=false

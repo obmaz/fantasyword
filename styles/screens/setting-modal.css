@@ -3,11 +3,11 @@
    ============================================ */
 
 /* Setting Modal 전용 스타일 */
-/* RPG Modal 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+/* 공통 기본 배치는 base/modal-common.css, 최종 메뉴 재질은 theme 스타일에서 적용한다. */
 
 /* Setting Modal header 스타일은 modal-common.css의 .card.rpg-modal 공통 스타일을 따름 */
 
-/* 설정 옵션 행 (음악 재생, 단어 읽기) — 다른 버튼과 비슷한 윤곽선, 폰트 키움, 좌측 정렬 */
+/* 음악·발음·효과음·진동 설정 행의 기본 테두리와 좌측 정렬. */
 .gold-adjuster-modal-card .setting-option-row {
     width: 80%;
     margin: 0 auto 10px;
@@ -26,7 +26,7 @@
     margin-top: 0;
 }
 
-/* 버튼(.btn-main)과 동일한 폰트 크기 */
+/* 설정 체크박스 라벨의 기본 글꼴과 조작 영역. */
 .gold-adjuster-modal-card .setting-checkbox-label {
     display: flex;
     align-items: center;

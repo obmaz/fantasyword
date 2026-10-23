@@ -3,9 +3,9 @@
    ============================================ */
 
 /* Inventory Modal 전용 스타일 */
-/* RPG Modal 공통 스타일은 modal-common.css에 정의되어 있습니다 */
+/* 공통 기본 배치는 base/modal-common.css, 최종 메뉴 재질은 theme 스타일에서 적용한다. */
 
-/* Inventory Modal 타이틀 스타일 (margin, padding 추가) */
+/* 장비 제목의 기본 여백과 줄 높이. */
 .inventory-modal-wrapper .card.rpg-modal .modal-title {
     margin: 0;
     padding: 0;
