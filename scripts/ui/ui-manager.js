@@ -13,9 +13,11 @@ const ui = {
             if (!amount) continue;
             amount.textContent = db.gold;
             amount.title = `${db.gold}`;
+            amount.dataset.goldSize = String(db.gold).length > 5 ? 'long' : 'regular';
         }
         document.querySelectorAll('[data-menu-gold]').forEach((amount) => {
             amount.textContent = formatMenuNumber(db.gold);
+            amount.dataset.goldSize = String(db.gold).length > 9 ? 'long' : 'regular';
         });
     },
 
@@ -158,11 +160,7 @@ const ui = {
                     `힌트 ${gear.hint}/${gear.hintMax || 1}`,
                     '무료 힌트: 보기 제거 또는 일부 철자',
                     game.useEquipmentHint,
-                    !gear.hint ||
-                        !game.currentQ ||
-                        game.isProcessing ||
-                        noUsefulHint ||
-                        (game.currentQ.questionKind === 'listening' && !game.listeningReady)
+                    !game.canUseEquipmentHint()
                 );
             if (gear.boots)
                 append(

@@ -122,6 +122,7 @@ function createStoryPuzzleSession({
             roundVersion++;
             if (choice === question.goal) {
                 mistakes += Math.max(0, trail.length - 1 - question.minimum);
+                if (mistakes > 2) onMistake();
                 phase = 'review';
                 view.review(
                     {

@@ -36,6 +36,19 @@ test('데이터 도구는 아포스트로피가 있는 단어를 원문 그대�
     assert.ok(!words.has('on one'));
 });
 
+test('1번 단어장 Day 13의 성공은 올바른 철자로 학습·출제한다', () => {
+    const rows = readData(path.join(ROOT, 'data/game-data-1.js'), 'rawData_1');
+    const success = rows.find((row) => row.day === 13 && row.meaning === '성공');
+    assert.equal(success.word, 'success');
+    assert.ok(!rows.some((row) => row.word === 'succcess'));
+    assert.ok(!readGroups(path.join(ROOT, 'data/decoy-words-set.js')).flat().includes('succcess'));
+    const r = loadScripts(['scripts/domain/worksheet-rules.js'], { corrected: [success] });
+    const worksheet = r.evaluate(
+        "worksheetRules.build(corrected, {day:13, type:'subjective'}, values => [...values])"
+    );
+    assert.equal(worksheet.questions[0].answer, 'success');
+});
+
 test('그룹 확장은 단어를 보존하고 제공 그룹을 4개 미만으로 줄이지 않는다', (t) => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fantasy-decoy-test-'));
     t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
@@ -60,6 +73,38 @@ test('그룹 확장은 단어를 보존하고 제공 그룹을 4개 미만으로
     assert.ok(updated[0].length >= 4);
     assert.equal(updated.flat().length, groups.flat().length);
     assert.deepEqual([...updated.flat()].sort(), [...groups.flat()].sort());
+});
+
+test('그룹 확장은 기존·대소문자 중복을 새 후보로 세지 않고 서로 다른 보기 네 개를 유지한다', (t) => {
+    for (const target of [
+        ['cat', 'bat', 'hat'],
+        ['cat', 'Cat', 'bat', 'hat'],
+    ]) {
+        const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fantasy-decoy-distinct-'));
+        t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+        fs.mkdirSync(path.join(dir, 'tools'));
+        fs.mkdirSync(path.join(dir, 'data'));
+        for (const name of ['read-data.js', 'expand-small-groups.js']) {
+            fs.copyFileSync(path.join(ROOT, 'tools', name), path.join(dir, 'tools', name));
+        }
+        const groups = [target, ['cat', 'mat', 'sat', 'rat', 'fat']];
+        fs.writeFileSync(
+            path.join(dir, 'data/decoy-words-set.js'),
+            `window.decoyWordsSet = ${JSON.stringify(groups)}`
+        );
+        fs.writeFileSync(
+            path.join(dir, 'data/game-data-1.js'),
+            `window.rawData_1 = ${JSON.stringify(groups.flat().map((word) => ({ word })))}`
+        );
+        execFileSync(process.execPath, [path.join(dir, 'tools/expand-small-groups.js')], {
+            stdio: 'pipe',
+        });
+        const updated = readGroups(path.join(dir, 'data/decoy-words-set.js'));
+        for (const group of updated) {
+            assert.ok(new Set(group.map((word) => word.toLowerCase())).size >= 4);
+        }
+        assert.deepEqual([...updated.flat()].sort(), [...groups.flat()].sort());
+    }
 });
 
 test('4번 단어장은 Day 1~40의 원본 개수를 유지하고 모든 풀이에 공식 사전 출처가 있다', () => {

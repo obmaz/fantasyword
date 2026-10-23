@@ -149,12 +149,11 @@ function createPracticeSpeech({
                     const voice = getVoice();
                     if (voice) utterance.voice = voice;
                     utterance.onerror = (event) => {
-                        if (
-                            !isCurrent() ||
-                            event.error === 'canceled' ||
-                            event.error === 'interrupted'
-                        )
+                        if (!isCurrent() || fallbackStarted) return;
+                        if (event.error === 'canceled' || event.error === 'interrupted') {
+                            unavailable();
                             return;
+                        }
                         fallback();
                     };
                     utterance.onend = () => {

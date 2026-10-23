@@ -2006,7 +2006,7 @@
         ['pursue', 'puse', 'pursu', 'purseu'],
         ['fulfill', 'fullfill', 'fulfil', 'fulfeel'],
         ['funeral', 'funerel', 'funaral', 'fuenral'],
-        ['succcess'],
+        ['success'],
         ['not ~ at all'],
         ['be about to-v'],
         ['characteristic'],

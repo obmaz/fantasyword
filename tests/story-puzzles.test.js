@@ -273,6 +273,24 @@ test('대장간 이전 보기·다음 콜백은 새 문제에서 작동하지 �
     assert.equal(r.seen.results[0].mistakes, 2);
 });
 
+test('대장간은 목표에 도착해도 누적 추가 변환이 한도를 넘으면 실패 진동을 한 번 알린다', () => {
+    const r = runtime('forge');
+    for (let round = 0; round < 2; round++) {
+        const start = r.seen.model.current;
+        r.seen.choose(rules.neighbors(start, words)[0]);
+        r.seen.choose(start);
+        const route = rules.path(start, r.seen.model.prompt, words);
+        for (const word of route.slice(1)) r.seen.choose(word);
+        assert.equal(r.seen.mistakes, round);
+        r.seen.next();
+    }
+    assert.equal(r.seen.results[0].won, false);
+    assert.equal(r.seen.results[0].mistakes, 4);
+    assert.equal(r.seen.mistakes, 1);
+    r.seen.next();
+    assert.equal(r.seen.mistakes, 1);
+});
+
 test('속담은 빈칸에 파란 정답을 넣고 오답 보기를 구분하며 해설에 정답을 반복하지 않는다', () => {
     for (const correct of [true, false]) {
         const r = browserRuntime();

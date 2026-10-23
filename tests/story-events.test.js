@@ -334,6 +334,42 @@ test('스토리 초기화 저장 실패는 골드와 이전 지도를 모두 보
     assert.equal(r.evaluate('storyJourney.selection'), null);
 });
 
+test('완료 저장 실패 후 지도 초기화를 저장하면 이전 완료 재시도를 정리하고 새 지점을 연다', () => {
+    for (const stage of [0, 4]) {
+        const r = browserRuntime({ v7_gold: '200' });
+        const journey = r.evaluate('storyJourney');
+        journey.stage = stage;
+        journey.select(stage, 0);
+        const write = r.sandbox.localStorage.setItem;
+        r.sandbox.localStorage.setItem = (key, value) => {
+            if (key === 'v7_story_stage_book-1') throw new Error('quota');
+            write(key, value);
+        };
+        assert.equal(journey.completeBattle({ mistakes: 1 }), false);
+        const before = Object.fromEntries(r.store);
+        journey.requestReset();
+        journey.confirmSelection();
+        assert.deepEqual(Object.fromEntries(r.store), before);
+        assert.equal(journey.pendingCompletion.mistakes, 1);
+        assert.equal(journey.pendingStage, stage);
+
+        r.sandbox.localStorage.setItem = write;
+        journey.confirmSelection();
+        assert.equal(r.evaluate('db.gold'), 150);
+        assert.equal(journey.stage, 0);
+        assert.equal(journey.pendingCompletion, null);
+        assert.equal(journey.pendingStage, null);
+        assert.equal(journey.pendingIndex, null);
+        assert.equal(journey.pendingBook, null);
+        assert.equal(journey.pendingKind, null);
+        assert.equal(journey.returnAfterResult, false);
+        assert.equal(journey.canSelect(0, 0), true);
+        assert.equal(journey.retryCompletion(), true);
+        assert.equal(journey.stage, 0);
+        assert.deepEqual(Object.keys(journey.events), []);
+    }
+});
+
 test('스토리 초기화는 부족한 금액을 표시하고 50골드부터 확인할 수 있다', () => {
     for (const gold of [0, 49, 50]) {
         const r = browserRuntime({ v7_gold: String(gold), 'v7_story_stage_book-1': '7' });

@@ -263,3 +263,45 @@ test('총공세 보상 저장 실패는 용량·아이템·포션 횟수를 증�
     assert.equal(r.evaluate('inventory.grantReward("hourglass")'), null);
     assert.equal(r.evaluate('db.has("hourglass")'), false);
 });
+
+test('이전 건틀릿·손 슬롯 이전 저장 실패는 모든 원본 키를 보존하고 재시작에서 다시 이전한다', () => {
+    for (const blockedKey of ['v7_owned', 'v7_inventory', 'v7_dura', 'v7_equipped', 'v7_equip']) {
+        const saved = {
+            selectedGameDataSet: '1',
+            v7_owned: '["basic","goldGlove","midasSword"]',
+            v7_inventory: '["goldGlove"]',
+            v7_dura: '{"goldGlove":50}',
+            v7_equipped: '{"weapon":"midasSword"}',
+            v7_equip: 'basic',
+        };
+        const stored = new Map(Object.entries(saved));
+        const r = browserRuntime(
+            {},
+            {
+                localStorage: {
+                    getItem: (key) => stored.get(key) ?? null,
+                    setItem(key, value) {
+                        if (key === blockedKey && String(value) !== saved[key])
+                            throw new Error('QuotaExceededError');
+                        stored.set(key, String(value));
+                    },
+                    removeItem: (key) => stored.delete(key),
+                },
+            }
+        );
+        assert.deepEqual(Object.fromEntries(stored), saved, blockedKey);
+        assert.equal(r.evaluate('db.owned.includes("goldGlove")'), true, blockedKey);
+        assert.equal(r.evaluate('db.equipped.weapon'), 'midasSword', blockedKey);
+        assert.equal(r.evaluate('db.durability.goldGlove'), 50, blockedKey);
+
+        const retried = browserRuntime(Object.fromEntries(stored));
+        assert.equal(retried.evaluate('db.equipped.gloves'), 'goldGlove', blockedKey);
+        assert.equal(retried.evaluate('db.equipped["hand-1"]'), 'midasSword', blockedKey);
+        assert.equal(retried.evaluate('db.equippedWeapon'), 'midasSword', blockedKey);
+        assert.equal(retried.evaluate('db.durability.goldGlove'), 10, blockedKey);
+        assert.equal(retried.evaluate('db.owned.includes("goldGlove")'), false, blockedKey);
+        const restored = browserRuntime(Object.fromEntries(retried.store));
+        assert.equal(restored.evaluate('db.equipped.gloves'), 'goldGlove', blockedKey);
+        assert.equal(restored.evaluate('db.durability.goldGlove'), 10, blockedKey);
+    }
+});

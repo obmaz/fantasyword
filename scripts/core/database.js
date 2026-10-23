@@ -125,28 +125,13 @@ const db = {
     stats: (() => {
         const saved = storedRecord('v7_stats');
 
-        // [마이그레이션 1] 단어장 구분 없던 시절의 전역 누적치 → 1번 단어장으로 이관
+        // 단어장 이름을 먼저 ID로 바꿔 기존 1번 기록을 확인한다.
         if (!isRecord(saved.books)) saved.books = {};
-        if (
-            (saved.solved > 0 ||
-                saved.correct > 0 ||
-                saved.bossMode ||
-                saved.subjective ||
-                saved.objective) &&
-            !saved.books[makeBookKey('1')]
-        ) {
-            saved.books[makeBookKey('1')] = {
-                solved: saved.solved || 0,
-                correct: saved.correct || 0,
-                objective: saved.objective || { solved: 0, correct: 0 },
-                subjective: saved.subjective || { solved: 0, correct: 0, perfectDays: [] },
-                bossMode: saved.bossMode || { bestWave: 0, bestWaveDate: null },
-            };
-        }
-
-        // [마이그레이션 2] 단어장 "이름" 키 → 데이터셋 ID 키
         saved.books = Object.fromEntries(
-            Object.entries(saved.books).map(([key, value]) => [key, normalizeBookStats(value)])
+            Object.entries(saved.books)
+                // 손상된 값이 빈 통계로 바뀌어 전역 합계의 복원을 막지 않게 한다.
+                .filter(([, value]) => isRecord(value))
+                .map(([key, value]) => [key, normalizeBookStats(value)])
         );
         saved.books = migrateBookKeys(saved.books, (a, b) => ({
             solved: (a.solved || 0) + (b.solved || 0),
@@ -168,6 +153,19 @@ const db = {
                     ? a.bossMode
                     : b.bossMode,
         }));
+
+        // 단어장 구분 없던 전역 합계는 1번 기록이 없을 때만 이관한다.
+        // 이름 키 기록과 전역 합계가 함께 저장된 버전의 통계를 중복 합산하지 않는다.
+        if (
+            (saved.solved > 0 ||
+                saved.correct > 0 ||
+                saved.bossMode ||
+                saved.subjective ||
+                saved.objective) &&
+            !saved.books[makeBookKey('1')]
+        ) {
+            saved.books[makeBookKey('1')] = normalizeBookStats(saved);
+        }
 
         // [정리] 레거시 최상위 누적 필드 제거.
         // books[]에 같은 값을 이중으로 쓰면서 읽는 곳은 없었다(표시는 전부 books 기준).
@@ -203,18 +201,47 @@ const db = {
     lastSelectedDay: gameStorage.get('v7_last_day') || 'all',
 
     // 연습 모드 외운 단어 (단어장별) { 'book-N': ['word|meaning', ...] }
-    practiceMemorized: migrateBookKeys(
-        Object.fromEntries(
-            Object.entries(storedRecord('v7_practice_memorized')).map(([key, value]) => [
-                key,
-                Array.isArray(value) ? value.filter((word) => typeof word === 'string') : [],
-            ])
-        ),
-        // 같은 데이터셋으로 합쳐지면 중복 제거 후 병합
-        (a, b) => Array.from(new Set([...(a || []), ...(b || [])]))
-    ),
+    practiceMemorized: (() => {
+        const records = migrateBookKeys(
+            Object.fromEntries(
+                Object.entries(storedRecord('v7_practice_memorized')).map(([key, value]) => [
+                    key,
+                    Array.isArray(value) ? value.filter((word) => typeof word === 'string') : [],
+                ])
+            ),
+            // 같은 데이터셋으로 합쳐지면 중복 제거 후 병합
+            (a, b) => Array.from(new Set([...(a || []), ...(b || [])]))
+        );
+        // 1번 단어장 Day 13의 철자 정정 전 외움 기록을 보존한다.
+        if (records['book-1'])
+            records['book-1'] = [
+                ...new Set(
+                    records['book-1'].map((key) => (key === 'succcess|성공' ? 'success|성공' : key))
+                ),
+            ];
+        return records;
+    })(),
 
-    revengeQuests: revengeRules.normalize(storedRecord('v7_revenge_quests')),
+    revengeQuests: (() => {
+        const records = revengeRules.normalize(storedRecord('v7_revenge_quests'));
+        const book = records['book-1'];
+        const oldKey = revengeRules.key({ word: 'succcess', meaning: '성공' });
+        const correctedKey = revengeRules.key({ word: 'success', meaning: '성공' });
+        const previous = book?.[oldKey];
+        if (previous) {
+            const current = book[correctedKey];
+            book[correctedKey] = {
+                ...previous,
+                word: 'success',
+                ...current,
+                failures: Math.max(previous.failures, current?.failures || 0),
+                revengeRewarded: previous.revengeRewarded || current?.revengeRewarded === true,
+                recallRewarded: previous.recallRewarded || current?.recallRewarded === true,
+            };
+            delete book[oldKey];
+        }
+        return records;
+    })(),
 
     // 음악·자동 발음·오답 진동은 기존 저장에도 기본 ON을 적용한다.
     settings: (() => {
@@ -478,65 +505,78 @@ const db = {
     },
 };
 
-// 이전 단일 무기 슬롯을 실제 손 슬롯으로 옮기고, 오른손과 골드 보너스의 무기를 맞춘다.
-if (!db.owned.includes('basic')) db.owned.unshift('basic');
-const previousEquipment = JSON.stringify(db.equipped);
-// 이전 자동 활성 유물은 장갑 슬롯으로 옮겨 효과와 남은 사용 횟수를 보존한다.
-if (db.owned.includes('goldGlove')) {
-    db.owned = db.owned.filter((id) => id !== 'goldGlove');
-    db.durability.goldGlove ??= EQUIPMENT_CONFIG.gloveUses;
-    if (!db.equipped.gloves) {
-        db.equipped.gloves = 'goldGlove';
-        db.inventory = db.inventory.filter((id) => id !== 'goldGlove');
-    } else if (db.equipped.gloves !== 'goldGlove' && !db.inventory.includes('goldGlove')) {
-        db.inventory.push('goldGlove');
+// 이전 장비의 소유·보관·내구도·손 슬롯은 함께 이전한다.
+// 일부 키만 저장되면 재시작에서 아이템이 사라지거나 소모 횟수가 복원될 수 있다.
+(function migrateEquipment() {
+    const changes = {
+        owned: [...db.owned],
+        inventory: [...db.inventory],
+        durability: { ...db.durability },
+        equipped: { ...db.equipped },
+        equippedWeapon: db.equippedWeapon,
+    };
+    if (!changes.owned.includes('basic')) changes.owned.unshift('basic');
+
+    // 이전 자동 활성 유물은 장갑 슬롯으로 옮겨 남은 사용 횟수를 보존한다.
+    if (changes.owned.includes('goldGlove')) {
+        changes.owned = changes.owned.filter((id) => id !== 'goldGlove');
+        changes.durability.goldGlove ??= EQUIPMENT_CONFIG.gloveUses;
+        if (!changes.equipped.gloves) {
+            changes.equipped.gloves = 'goldGlove';
+            changes.inventory = changes.inventory.filter((id) => id !== 'goldGlove');
+        } else if (
+            changes.equipped.gloves !== 'goldGlove' &&
+            !changes.inventory.includes('goldGlove')
+        ) {
+            changes.inventory.push('goldGlove');
+        }
     }
-    db._writers.owned();
-    db._writers.inventory();
-    db._writers.dura();
-}
-const previousPrimaryWeapon = db.equippedWeapon;
-// 건틀릿의 현행 수명은 최대 10회다. 이미 사용한 더 적은 횟수는 보존한다.
-if (db.durability.goldGlove > EQUIPMENT_CONFIG.gloveUses) {
-    db.durability.goldGlove = EQUIPMENT_CONFIG.gloveUses;
-    db._writers.dura();
-}
-function restoreWeaponToHand(id) {
-    const weapon = weapons.find((entry) => entry.id === id && db.has(id));
-    if (!weapon || Object.values(db.equipped).includes(id)) return;
-    const slot = weaponEquipSlots(weapon)[0];
-    if (slot && !db.equipped[slot]) db.equipped[slot] = id;
-    // 대상 손이 차 있으면 owned에 보존되어 보관함에 표시된다.
-}
-const oldWeaponSlot = db.equipped.weapon;
-delete db.equipped.weapon;
-for (const slot of ['hand-1', 'hand-2']) {
-    const weapon = weapons.find((entry) => entry.id === db.equipped[slot]);
-    if (weapon && !weaponEquipSlots(weapon).includes(slot)) {
-        delete db.equipped[slot];
-        restoreWeaponToHand(weapon.id);
+    // 이미 사용한 더 적은 횟수는 보존한다.
+    if (changes.durability.goldGlove > EQUIPMENT_CONFIG.gloveUses)
+        changes.durability.goldGlove = EQUIPMENT_CONFIG.gloveUses;
+
+    function restoreWeaponToHand(id) {
+        const weapon = weapons.find((entry) => entry.id === id && changes.owned.includes(id));
+        if (!weapon || Object.values(changes.equipped).includes(id)) return;
+        const slot = weaponEquipSlots(weapon)[0];
+        if (slot && !changes.equipped[slot]) changes.equipped[slot] = id;
+        // 대상 손이 차 있으면 owned에 보존되어 보관함에 표시된다.
     }
-}
-if (
-    db.equipped['hand-1'] &&
-    db.equipped['hand-1'] === db.equipped['hand-2'] &&
-    weapons.some((weapon) => weapon.id === db.equipped['hand-1'])
-) {
-    delete db.equipped['hand-2'];
-}
-if (oldWeaponSlot) restoreWeaponToHand(oldWeaponSlot);
-if (previousPrimaryWeapon !== 'basic') restoreWeaponToHand(previousPrimaryWeapon);
-db.equippedWeapon =
-    weapons.find((weapon) => weapon.id === db.equipped['hand-1'] && db.has(weapon.id))?.id ||
-    'basic';
-if (
-    previousEquipment !== JSON.stringify(db.equipped) ||
-    previousPrimaryWeapon !== db.equippedWeapon
-) {
-    // 로드 중에는 UI가 아직 준비되지 않았으므로 저장 필드만 직렬화한다.
-    db._writers.equipped();
-    db._writers.equip();
-}
+    const oldWeaponSlot = changes.equipped.weapon;
+    delete changes.equipped.weapon;
+    for (const slot of ['hand-1', 'hand-2']) {
+        const weapon = weapons.find((entry) => entry.id === changes.equipped[slot]);
+        if (weapon && !weaponEquipSlots(weapon).includes(slot)) {
+            delete changes.equipped[slot];
+            restoreWeaponToHand(weapon.id);
+        }
+    }
+    if (
+        changes.equipped['hand-1'] &&
+        changes.equipped['hand-1'] === changes.equipped['hand-2'] &&
+        weapons.some((weapon) => weapon.id === changes.equipped['hand-1'])
+    ) {
+        delete changes.equipped['hand-2'];
+    }
+    if (oldWeaponSlot) restoreWeaponToHand(oldWeaponSlot);
+    if (db.equippedWeapon !== 'basic') restoreWeaponToHand(db.equippedWeapon);
+    changes.equippedWeapon =
+        weapons.find(
+            (weapon) =>
+                weapon.id === changes.equipped['hand-1'] && changes.owned.includes(weapon.id)
+        )?.id || 'basic';
+
+    const writes = {};
+    const updates = {};
+    for (const [key, property, serialize] of Object.values(DB_STORAGE_FIELDS)) {
+        if (property in changes && serialize(changes[property]) !== serialize(db[property])) {
+            writes[key] = serialize(changes[property]);
+            updates[property] = changes[property];
+        }
+    }
+    // 로드 중에는 UI를 갱신하지 않고, 저장 실패 시 원본으로 다시 시도할 수 있게 한다.
+    if (Object.keys(writes).length && gameStorage.setBatch(writes)) Object.assign(db, updates);
+})();
 
 // 이전 총공세 보상은 owned와 inventory에 동시에 저장되었다.
 // 포션·배낭은 실제 효과로 한 번만 복구하고 유물은 owned에 보존한다.

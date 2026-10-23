@@ -33,6 +33,10 @@ function norm(w) {
         .toLowerCase();
 }
 
+function uniqueSize(words) {
+    return new Set(words.map(norm)).size;
+}
+
 // 유사도: 길이 차이 3 이하 + 편집 거리 3~5 (완화)
 function isSimilar(a, b) {
     const x = norm(a),
@@ -50,7 +54,7 @@ function isSimilar(a, b) {
 const allRawWords = [...readWords(gameDataPath, 1)];
 const existingGroups = readGroups(decoyPath);
 // 3개 이하인 그룹 찾기
-const smallGroups = existingGroups.filter((g) => g.length <= 3);
+const smallGroups = existingGroups.filter((g) => uniqueSize(g) <= 3);
 console.error('Small groups (<=3 words):', smallGroups.length);
 
 // 각 작은 그룹에 비슷한 단어 추가
@@ -63,7 +67,7 @@ for (let i = 0; i < existingGroups.length; i++) {
 
 const updatedGroups = existingGroups.map((group) => [...group]);
 updatedGroups.forEach((group, groupIdx) => {
-    if (group.length > 3) return; // 이미 4개 이상이면 그대로
+    if (uniqueSize(group) > 3) return; // 서로 다른 단어가 이미 4개 이상이면 그대로
 
     const candidates = [];
 
@@ -82,7 +86,7 @@ updatedGroups.forEach((group, groupIdx) => {
     for (let i = 0; i < existingGroups.length; i++) {
         if (i === groupIdx) continue;
         const otherGroup = updatedGroups[i];
-        if (otherGroup.length <= 4) continue; // 4개 이상인 그룹에서만 가져오기
+        if (uniqueSize(otherGroup) <= 4) continue;
 
         for (const word of otherGroup) {
             for (const g of group) {
@@ -101,15 +105,20 @@ updatedGroups.forEach((group, groupIdx) => {
 
     // 가장 유사한 순으로 정렬하고, 4개가 될 때까지 추가
     candidates.sort((a, b) => a.dist - b.dist);
-    const needed = 4 - group.length;
+    const needed = 4 - uniqueSize(group);
     const toAdd = [];
-    const usedWords = new Set();
+    const usedWords = new Set(group.map(norm));
 
     for (const c of candidates) {
         if (toAdd.length >= needed) break;
         const nw = norm(c.word);
         if (usedWords.has(nw)) continue;
-        if (c.source === 'other' && updatedGroups[c.fromGroup].length <= 4) continue; // 가져온 후 4개 미만이 되면 안 됨
+        if (c.source === 'other') {
+            const donor = updatedGroups[c.fromGroup];
+            const position = donor.indexOf(c.word);
+            if (position === -1 || uniqueSize(donor.filter((_, index) => index !== position)) < 4)
+                continue;
+        }
 
         toAdd.push(c.word);
         usedWords.add(nw);
@@ -161,6 +170,6 @@ ${updatedGroups.map(formatGroup).join(',\n')}
 
 fs.writeFileSync(decoyPath, out, 'utf8');
 const expanded = updatedGroups.filter(
-    (g, i) => existingGroups[i].length <= 3 && g.length >= 4
+    (g, i) => uniqueSize(existingGroups[i]) <= 3 && uniqueSize(g) >= 4
 ).length;
 console.error('Done. Expanded', expanded, 'groups to 4+ words.');

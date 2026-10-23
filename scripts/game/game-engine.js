@@ -72,6 +72,7 @@ function createBattleSession({
         spellingTiles: [],
         spellingChosen: [],
         spellingHints: '',
+        equipmentHintRevealed: false,
         listeningReady: false,
         listenRequest: 0,
         subjectiveTotal: 0,
@@ -262,6 +263,7 @@ function createBattleSession({
         nextLevel() {
             if (!game.active || game.awaitingRoute) return;
             game.isProcessing = false;
+            game.equipmentHintRevealed = false;
             game.deadline = null;
             clearInterval(game.timer);
             game.timer = null;
@@ -539,15 +541,11 @@ function createBattleSession({
                 : game.idx === game.list.length - 1
                   ? '⚠️ BOSS BATTLE'
                   : '⚔️ ELITE';
-            game.view.subjective(
-                data,
-                title,
-                battleRules.spellingHint(
-                    data.word,
-                    /[a-z]/i.test(data.meaning) && !/[가-힣]/.test(data.meaning)
-                ),
-                game.checkBossAnswer
+            game.spellingHints = battleRules.spellingHint(
+                data.word,
+                /[a-z]/i.test(data.meaning) && !/[가-힣]/.test(data.meaning)
             );
+            game.view.subjective(data, title, game.spellingHints, game.checkBossAnswer);
         },
         answerOption(index) {
             if (!game.active || game.isProcessing || game.currentQ?.isBoss) return;
@@ -581,7 +579,7 @@ function createBattleSession({
                 : Math.max(0, (game.deadline - game.now()) / 1000);
         },
         handleAnswer,
-        useEquipmentHint() {
+        canUseEquipmentHint() {
             if (
                 !game.active ||
                 !game.currentQ ||
@@ -589,7 +587,16 @@ function createBattleSession({
                 !game.gear?.hint ||
                 (game.currentQ.questionKind === 'listening' && !game.listeningReady)
             )
-                return;
+                return false;
+            return game.currentQ.isBoss
+                ? !game.equipmentHintRevealed &&
+                      equipment.canHint(game.currentQ.word, game.spellingHints)
+                : battleRules.hintRemovalCount(
+                      game.options.filter((option) => !option.correct && !option.disabled).length
+                  ) > 0;
+        },
+        useEquipmentHint() {
+            if (!game.canUseEquipmentHint()) return;
             if (game.deadline !== null && game.remainingTime() <= 0) {
                 game.handleAnswer(false, null);
                 return;
@@ -605,7 +612,10 @@ function createBattleSession({
                     game.options[i].disabled = true;
                 });
                 game.view.disableOptions(indices);
-            } else game.view.equipmentHint(equipment.hint(game.currentQ.word));
+            } else {
+                game.view.equipmentHint(equipment.hint(game.currentQ.word));
+                game.equipmentHintRevealed = true;
+            }
             game.gear.hint--;
             ui.updateSkills();
         },

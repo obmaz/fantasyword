@@ -104,6 +104,20 @@ const battleRules = Object.freeze({
                       ]
                     : [];
             });
+            for (const [label, subjective] of [
+                ['📋 객관식', false],
+                ['✍️ 주관식', true],
+            ]) {
+                const questions = encounters.filter(
+                    (q) => !q.questionKind && Boolean(q.isBoss) === subjective
+                );
+                if (questions.length)
+                    rows.push({
+                        label,
+                        correct: questions.filter((q) => q.wasCorrect).length,
+                        total: questions.length,
+                    });
+            }
             rows.push({
                 label: '전체',
                 correct: encounters.filter((q) => q.wasCorrect).length,
@@ -160,9 +174,9 @@ const battleRules = Object.freeze({
                 correct: session.subjectiveCorrect,
                 total: subjective,
             });
-        if (session.battleQuestionType === 'mixed')
+        if (objective && subjective)
             rows.push({
-                label: '📊 전체',
+                label: '전체',
                 correct: session.sessionCorrectObjective + session.subjectiveCorrect,
                 total: session.list.length,
             });

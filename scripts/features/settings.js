@@ -71,6 +71,7 @@ const settingsManager = {
         const soundCheck = document.getElementById('setting-sound-effects');
         soundCheck.checked = db.settings.soundEffects !== false;
         soundCheck.addEventListener('change', () => {
+            if (!settingsManager.adminUnlocked) settingsManager.hideAdmin();
             if (
                 !db.commitChanges({
                     settings: { ...db.settings, soundEffects: soundCheck.checked },

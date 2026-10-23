@@ -388,6 +388,30 @@
     }
 }
 
+/* A balance must not consume the title or close control's space. */
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
+    .approved-menu-header:has([data-menu-gold][data-gold-size='long']) {
+    grid-template-columns: minmax(0, 1fr) 44px;
+}
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
+    .approved-menu-header:has([data-menu-gold][data-gold-size='long'])
+    .modal-title {
+    grid-column: 1;
+    white-space: nowrap;
+}
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
+    .approved-menu-header:has([data-menu-gold][data-gold-size='long'])
+    .menu-wallet {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+}
+:is(#shop-modal, #inventory-modal, #statistics-modal, #setting-modal)
+    .approved-menu-header:has([data-menu-gold][data-gold-size='long'])
+    > .modal-close-x {
+    grid-column: 2;
+}
+
 @media (max-height: 500px) {
     #story-puzzle-game[data-kind='proverb'] .gameplay-header {
         height: 68px;

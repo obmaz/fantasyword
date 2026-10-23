@@ -48,6 +48,16 @@ const equipmentRules = Object.freeze({
     routeBonus: (gain, route) =>
         route === 'treasure' ? Math.round(gain * EQUIPMENT_CONFIG.treasureRate) : 0,
     routeSeconds: (route) => (route === 'safe' ? EQUIPMENT_CONFIG.safeRouteSeconds : 0),
+    canHint(word, fixedHints = '') {
+        const letters = [...word.trim()];
+        if (letters.length <= 1) return false;
+        const shown = letters.length === 2 ? 1 : 2;
+        return letters
+            .slice(0, shown)
+            .some(
+                (letter, index) => /[a-z]/i.test(letter) && !/[a-z]/i.test(fixedHints[index] || '')
+            );
+    },
     hint(word) {
         const letters = [...word.trim()];
         if (letters.length <= 1) return `전체 ${letters.length}글자`;

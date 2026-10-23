@@ -2251,7 +2251,7 @@ window.rawData_1 = [
     },
     {
         day: 13,
-        word: 'succcess',
+        word: 'success',
         meaning: '성공',
         koreanExplanation: '성공를 의미하는 단어나 개념',
         englishExplanation: 'the achieving of the results wanted or hoped for',

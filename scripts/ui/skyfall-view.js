@@ -153,7 +153,11 @@ function createSkyfallView({
             setText('skyfall-result-gold', '+' + earned);
             setText(
                 'skyfall-result-detail',
-                won ? '내려오는 단어를 모두 막았습니다.' : '다시 도전해서 기록을 높여 보세요.'
+                won
+                    ? score === target
+                        ? '내려오는 단어를 모두 막았습니다.'
+                        : `모든 단어를 처리하고 오답 ${target - score}개로 통과했습니다.`
+                    : '다시 도전해서 기록을 높여 보세요.'
             );
             openScreen('skyfall-result-modal', false);
             presentation?.complete({

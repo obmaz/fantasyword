@@ -307,6 +307,7 @@ const storyJourney = {
                     '스토리 초기화를 저장하지 못했습니다. 골드와 진행 기록은 그대로입니다. 다시 시도해 주세요.';
                 return;
             }
+            storyJourney.pendingCompletion = null;
             storyJourney.cancelBattleReturn();
             storyJourney.mysterySelection = null;
             storyJourney.cancelSelection();

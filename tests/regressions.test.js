@@ -409,3 +409,46 @@ test('객관식 대신 주관식으로 대체된 문제도 결과 성적에 포�
     assert.ok(r.getElement('res-record').innerHTML.includes('1/1'));
     assert.ok(r.getElement('res-record').innerHTML.includes('주관식'));
 });
+
+test('객관식과 대체 주관식이 섞인 결과 요약은 모든 문제를 합산한다', () => {
+    const r = browserRuntime();
+    r.evaluate(`
+        game.active = true;
+        game.mode = 'battle';
+        game.battleQuestionType = 'objective';
+        game.list = [{isBoss: false}, {isBoss: false}, {isBoss: false}, {isBoss: true}];
+        game.sessionCorrectObjective = 2;
+        game.subjectiveCorrect = 1;
+        game.end(true);
+    `);
+    assert.equal(r.getElement('res-summary').textContent, '정답 3/4 · 75%');
+});
+
+test('생존 혼합형은 드래곤과 일반 객관식의 상세 성적을 모두 표시한다', () => {
+    const r = browserRuntime({ v7_settings: '{"wordRead":false,"musicPlay":false}' });
+    r.sandbox.rawDataData = [
+        { day: 1, word: 'apple', meaning: '사과' },
+        { day: 1, word: 'banana', meaning: '바나나' },
+        { day: 1, word: 'cat', meaning: '고양이' },
+        { day: 1, word: 'dog', meaning: '개' },
+    ];
+    const game = r.evaluate('game');
+    game.shuffle = (values) => [...values];
+    game.init('boss', 'all', 'mixed');
+    r.advance(400);
+    game.answerOption(game.options.findIndex((option) => option.correct));
+    r.advance(800);
+    assert.equal(game.currentQ.monsterId, 'dragon');
+    game.handleAnswer(true, null);
+    r.advance(800);
+    game.answerOption(game.options.findIndex((option) => !option.correct));
+    const rows = r.evaluate('battleRules').resultRows(game, false);
+    assert.deepEqual(
+        Array.from(rows, ({ label, correct, total }) => [label, correct, total]),
+        [
+            ['보스 문제', 1, 1],
+            ['📋 객관식', 1, 2],
+            ['전체', 2, 3],
+        ]
+    );
+});

@@ -100,3 +100,52 @@ test('회상 오답은 같은 몬스터의 복수로 돌아가며 이미 받은 
     assert.equal(failed.monsterId, 'dragon');
     assert.equal(rules.succeeded(failed, 5000).bonus, 0);
 });
+
+test('success 철자 정정은 기존 단어장의 외움·복수·회상 보상 기록을 보존한다', () => {
+    const oldWord = { word: 'succcess', meaning: '성공', monsterId: 'goblin' };
+    const corrected = { word: 'success', meaning: '성공', monsterId: 'goblin' };
+    const oldEntry = rules.succeeded(rules.failed(null, oldWord), 1000).entry;
+    const r = browserRuntime({
+        v7_practice_memorized: JSON.stringify({
+            'book-1': ['succcess|성공', 'success|성공', 'apple|사과'],
+            'book-2': ['succcess|성공'],
+        }),
+        v7_revenge_quests: JSON.stringify({
+            'book-1': { [rules.key(oldWord)]: oldEntry },
+            'book-2': { [rules.key(oldWord)]: oldEntry },
+        }),
+    });
+    r.sandbox.rawDataData = [corrected];
+    assert.deepEqual(Array.from(r.evaluate('db.practiceMemorized["book-1"]')), [
+        'success|성공',
+        'apple|사과',
+    ]);
+    assert.deepEqual(Array.from(r.evaluate('db.practiceMemorized["book-2"]')), ['succcess|성공']);
+    const entry = r.evaluate('db.revengeQuests["book-1"]')[rules.key(corrected)];
+    assert.equal(entry.word, 'success');
+    assert.equal(entry.dueAt, oldEntry.dueAt);
+    assert.equal(entry.revengeRewarded, true);
+    assert.equal(rules.entries(r.evaluate('db.revengeQuests["book-1"]'), [corrected]).length, 1);
+    assert.equal(rules.succeeded(entry, entry.dueAt).bonus, 8);
+    assert.equal(r.evaluate('db.revengeQuests["book-2"]')[rules.key(oldWord)].word, 'succcess');
+});
+
+test('정정 전후 복수 기록이 함께 있어도 완료 상태와 수령한 보상은 잃지 않는다', () => {
+    const oldWord = { word: 'succcess', meaning: '성공' };
+    const corrected = { word: 'success', meaning: '성공' };
+    const oldEntry = rules.succeeded(rules.failed(null, oldWord), 1000).entry;
+    const finished = rules.succeeded(oldEntry, oldEntry.dueAt).entry;
+    const r = browserRuntime({
+        v7_revenge_quests: JSON.stringify({
+            'book-1': {
+                [rules.key(oldWord)]: finished,
+                [rules.key(corrected)]: { ...finished, word: 'success', recallRewarded: false },
+            },
+        }),
+    });
+    const records = r.evaluate('db.revengeQuests["book-1"]');
+    assert.deepEqual(Object.keys(records), [rules.key(corrected)]);
+    assert.equal(records[rules.key(corrected)].phase, 'complete');
+    assert.equal(records[rules.key(corrected)].recallRewarded, true);
+    assert.equal(rules.succeeded(records[rules.key(corrected)], 999999999).bonus, 0);
+});

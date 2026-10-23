@@ -72,6 +72,7 @@ test('브라우저 음성을 우선 사용하고 재생 오류 시에만 현재 
     assert.equal(r.utterances.length, 1);
     r.utterances[0].onerror({ error: 'synthesis-failed' });
     r.utterances[0].onerror({ error: 'synthesis-failed' });
+    r.utterances[0].onerror({ error: 'interrupted' });
     assert.equal(r.clips.length, 1);
     assert.equal(new URL(r.clips[0].src).searchParams.get('q'), r.practice.words[0].word);
     assert.equal(r.notices.length, 0);
@@ -183,4 +184,48 @@ test('발음이 재생되는 동안 음악을 멈추고 완료 또는 취소 시
     assert.equal(music.paused, true);
     speech.stop();
     assert.equal(music.paused, true);
+});
+
+test('현재 브라우저 발음이 외부에서 취소되어도 음악 잠금을 풀고 실패를 한 번만 알린다', () => {
+    for (const error of ['canceled', 'interrupted']) {
+        const r = speechRuntime();
+        const music = {
+            paused: false,
+            pause() {
+                this.paused = true;
+            },
+            play() {
+                this.paused = false;
+                return Promise.resolve();
+            },
+        };
+        let unavailable = 0;
+        let ready = 0;
+        const speech = r.evaluate('createPracticeSpeech')({
+            getSynth: () => r.sandbox.speechSynthesis,
+            createUtterance: (word) => new r.sandbox.SpeechSynthesisUtterance(word),
+            getVoice: r.sandbox.getPreferredTTSVoice,
+            playRemote: r.sandbox.playGoogleTTS,
+            notify() {},
+            getMusic: () => music,
+        });
+        speech.play('apple', true, {
+            onUnavailable: () => unavailable++,
+            onReady: () => ready++,
+        });
+        assert.equal(music.paused, true);
+        const utterance = r.utterances.at(-1);
+        utterance.onerror({ error });
+        utterance.onerror({ error });
+        utterance.onend();
+        assert.equal(music.paused, false);
+        assert.equal(unavailable, 1);
+        assert.equal(ready, 0);
+        assert.equal(r.clips.length, 0);
+        speech.play('banana', true, { onUnavailable: () => unavailable++ });
+        const previous = r.utterances.at(-1);
+        speech.stop();
+        previous.onerror({ error });
+        assert.equal(unavailable, 1, '자체 취소한 요청의 늦은 오류는 무시한다');
+    }
 });

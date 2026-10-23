@@ -359,6 +359,7 @@ dialog.screen-overlay select,
 .shop-economy-guide {
     color: var(--menu-ink, #243c2b);
     margin: 0 0 12px;
+    font-size: clamp(14px, 4cqw, 20px);
     line-height: 1.6;
     font-weight: 700;
 }

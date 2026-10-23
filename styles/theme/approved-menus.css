@@ -907,7 +907,7 @@ button .action-icon {
     align-items: center;
     margin-left: 6px;
     color: #f8df9d;
-    font-size: 0.72em;
+    font-size: clamp(10px, 3cqw, 14px);
     font-weight: 800;
     white-space: nowrap;
 }
@@ -927,6 +927,21 @@ button .action-icon {
 #battle-mode-game .gameplay-heading p {
     grid-column: 1 / -1;
     grid-row: 2;
+}
+@container battle-game (max-width: 350px) {
+    #battle-mode-game .gameplay-heading {
+        grid-template-columns: minmax(0, 1fr);
+        justify-content: stretch;
+    }
+    #battle-mode-game .gameplay-heading .gameplay-day-label {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: 0;
+        line-height: 1.2;
+    }
+    #battle-mode-game .gameplay-heading:has(.gameplay-day-label:not([hidden])) p {
+        display: none;
+    }
 }
 .gameplay-heading p {
     white-space: nowrap;
@@ -2426,6 +2441,34 @@ button img:not([class]) {
 }
 :root[data-fullscreen-control-hidden='true'] .title-toolbar {
     grid-template-columns: max-content minmax(0, 1fr) 44px;
+}
+/* Keep the selected book readable when a long balance fills a narrow frame. */
+@media (max-width: 350px), (max-height: 466px) {
+    .title-toolbar:has(#title-ui-gold[data-gold-size='long']) {
+        grid-template-columns: minmax(0, 1fr) 44px 44px;
+    }
+    :root[data-fullscreen-control-hidden='true']
+        .title-toolbar:has(#title-ui-gold[data-gold-size='long']) {
+        grid-template-columns: minmax(0, 1fr) 44px;
+    }
+    .title-toolbar:has(#title-ui-gold[data-gold-size='long']) .title-gold-display {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        font-size: 11px;
+    }
+    .title-toolbar:has(#title-ui-gold[data-gold-size='long']) .title-data-selector {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+    .title-toolbar:has(#title-ui-gold[data-gold-size='long']) .revenge-shortcut {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .title-toolbar:has(#title-ui-gold[data-gold-size='long']) .fullscreen-space {
+        grid-column: 3;
+        grid-row: 1;
+    }
 }
 :root[data-fullscreen-control-hidden='true'] .fullscreen-space {
     display: none;

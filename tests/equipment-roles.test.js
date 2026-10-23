@@ -218,6 +218,103 @@ test('남은 오답 보기가 하나면 힌트는 정답만 남기거나 소모�
     assert.equal(r.game.options.filter((q) => !q.disabled).length, 2);
 });
 
+test('추가로 공개할 철자가 없는 헬름 힌트는 소모하지 않는다', () => {
+    for (const monster of ['goblin', null]) {
+        const r = runtime({ head: 'helmet' });
+        for (const word of ['a', 'an', 'I']) {
+            const question = { day: 1, word, meaning: '짧은 단어' };
+            r.game.list = [
+                monster
+                    ? r.evaluate('monsterEncounters').prepare(question, monster)
+                    : { ...question, isBoss: true },
+            ];
+            r.game.idx = 0;
+            r.game.nextLevel();
+            assert.equal(r.game.canUseEquipmentHint(), false, `${monster}/${word}`);
+            r.game.useEquipmentHint();
+            assert.equal(r.game.gear.hint, 1);
+            assert.equal(r.getElement('equipment-hint').hidden, true);
+        }
+        const question = { day: 1, word: 'apple', meaning: '사과' };
+        r.game.list = [
+            monster
+                ? r.evaluate('monsterEncounters').prepare(question, monster)
+                : { ...question, isBoss: true },
+        ];
+        r.game.idx = 0;
+        r.game.nextLevel();
+        assert.equal(r.game.canUseEquipmentHint(), true);
+        r.game.useEquipmentHint();
+        assert.equal(r.game.gear.hint, 0);
+        assert.match(r.getElement('equipment-hint').textContent, /앞 2글자: ap/);
+    }
+});
+
+test('스토리 추가 헬름 힌트는 같은 철자를 두 번 소모하지 않고 방패 재도전 뒤에도 유지한다', () => {
+    for (const monster of ['goblin', null]) {
+        const r = runtime(
+            { head: 'helmet', 'hand-2': 'shield_item' },
+            { v7_owned: '["basic","shadowLantern","shield_item"]' }
+        );
+        r.game.exit();
+        r.game.init('story', 1);
+        r.advance(400);
+        r.game.list = POOL.map((question) =>
+            monster
+                ? r.evaluate('monsterEncounters').prepare(question, monster)
+                : { ...question, isBoss: true }
+        );
+        r.game.idx = 0;
+        r.game.nextLevel();
+        assert.equal(r.game.gear.hint, 2);
+        r.game.useEquipmentHint();
+        assert.equal(r.game.gear.hint, 1);
+        assert.equal(r.game.canUseEquipmentHint(), false);
+        r.game.useEquipmentHint();
+        assert.equal(r.game.gear.hint, 1);
+
+        if (monster) assembleWrongAnswer(r.game);
+        else r.getElement('boss-input').value = 'wrong';
+        r.game.checkBossAnswer();
+        r.advance(800);
+        assert.equal(r.game.currentQ.word, 'apple');
+        assert.equal(r.game.gear.shield, 0);
+        assert.equal(r.game.canUseEquipmentHint(), false);
+        r.game.useEquipmentHint();
+        assert.equal(r.game.gear.hint, 1);
+        assert.match(r.getElement('equipment-hint').textContent, /앞 2글자: ap/);
+
+        if (monster) assembleAnswer(r.game);
+        else r.getElement('boss-input').value = 'apple';
+        r.game.checkBossAnswer();
+        r.advance(800);
+        assert.equal(r.game.currentQ.word, 'banana');
+        assert.equal(r.game.canUseEquipmentHint(), true);
+        r.game.useEquipmentHint();
+        assert.equal(r.game.gear.hint, 0);
+        assert.match(r.getElement('equipment-hint').textContent, /앞 2글자: ba/);
+    }
+});
+
+test('스토리 객관식의 추가 헬름 힌트는 새로 제거할 보기가 남으면 이어서 사용한다', () => {
+    const r = runtime(
+        { head: 'helmet', 'hand-2': 'shield_item' },
+        { v7_owned: '["basic","shadowLantern","shield_item"]' }
+    );
+    r.game.exit();
+    r.game.init('story', 1);
+    r.advance(400);
+    r.start();
+    r.game.options.push({ label: '추가 보기', correct: false, disabled: false });
+    assert.equal(r.game.gear.hint, 2);
+    r.game.useEquipmentHint();
+    assert.equal(r.game.gear.hint, 1);
+    assert.equal(r.game.canUseEquipmentHint(), true);
+    r.game.useEquipmentHint();
+    assert.equal(r.game.gear.hint, 0);
+    assert.equal(r.game.options.filter((option) => !option.disabled).length, 2);
+});
+
 test('시간 제한이 없는 문제도 풀이가 길어지면 기본 보상이 줄어든다', () => {
     const r = runtime();
     r.start('dragon');

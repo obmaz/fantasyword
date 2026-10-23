@@ -55,10 +55,12 @@ test('관리 도구는 설정 음악 OFF→ON 3회에만 열리고 닫기·다�
     change(true);
     r.advance(5001);
     assert.equal(r.evaluate('settingsManager.musicTogglePairs'), 0);
-    change(false);
-    change(true);
-    r.getElement('setting-word-read').dispatch('change');
-    assert.equal(r.evaluate('settingsManager.musicTogglePairs'), 0);
+    for (const id of ['setting-word-read', 'setting-sound-effects']) {
+        change(false);
+        change(true);
+        r.getElement(id).dispatch('change');
+        assert.equal(r.evaluate('settingsManager.musicTogglePairs'), 0);
+    }
 });
 
 test('스토리 최종 보스는 실제 철자 타일로 답을 입력하고 클리어 뒤 새 지도를 시작한다', () => {

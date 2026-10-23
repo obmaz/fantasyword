@@ -139,3 +139,77 @@ test('레거시 최상위 누적 통계는 1번 단어장으로 이관되고 제
     assert.strictEqual(evaluate('db.stats.books["book-1"].correct'), 30);
     assert.strictEqual(evaluate('db.stats.solved'), undefined, '레거시 필드는 남으면 안 됨');
 });
+
+test('단어장 이름 기록과 같은 레거시 합계가 함께 있어도 누적 통계를 두 번 더하지 않는다', () => {
+    const stubs = makeDomStubs();
+    stubs.localStorage.setItem(
+        'v7_stats',
+        JSON.stringify({
+            solved: 10,
+            correct: 7,
+            objective: { solved: 8, correct: 6 },
+            subjective: { solved: 2, correct: 1, perfectDays: [] },
+            books: {
+                '능률 보카 중등 기본': {
+                    solved: 10,
+                    correct: 7,
+                    objective: { solved: 8, correct: 6 },
+                    subjective: { solved: 2, correct: 1, perfectDays: [] },
+                },
+            },
+        })
+    );
+    const { evaluate } = loadScripts(scriptOrderFromIndexHtml(), stubs);
+    assert.strictEqual(evaluate('db.getBookStats("book-1").solved'), 10);
+    assert.strictEqual(evaluate('db.getBookStats("book-1").correct'), 7);
+    assert.strictEqual(evaluate('db.getBookStats("book-1").objective.solved'), 8);
+    assert.strictEqual(evaluate('db.getBookStats("book-1").subjective.solved'), 2);
+    assert.strictEqual(evaluate('db.stats.solved'), undefined);
+});
+
+test('손상된 ID·이름 통계는 레거시 합계 복원을 막지 않고 유효한 단어장 기록을 우선한다', () => {
+    for (const invalid of [null, false, '', 0, [], 8, 'invalid']) {
+        for (const books of [
+            { 'book-1': invalid },
+            { '능률 보카 중등 기본': invalid },
+            { 'book-1': invalid, '능률 보카 중등 기본': invalid },
+            {
+                'book-1': invalid,
+                '능률 보카 중등 기본': {
+                    solved: 8,
+                    correct: 6,
+                    objective: { solved: 8, correct: 6 },
+                },
+            },
+        ]) {
+            const stubs = makeDomStubs();
+            stubs.localStorage.setItem(
+                'v7_stats',
+                JSON.stringify({
+                    solved: 8,
+                    correct: 6,
+                    objective: { solved: 8, correct: 6 },
+                    books,
+                })
+            );
+            const { evaluate } = loadScripts(scriptOrderFromIndexHtml(), stubs);
+            assert.strictEqual(evaluate('db.getBookStats("book-1").solved'), 8);
+            assert.strictEqual(evaluate('db.getBookStats("book-1").correct'), 6);
+            assert.strictEqual(evaluate('db.getBookStats("book-1").objective.solved'), 8);
+        }
+    }
+    for (const solved of [0, 2]) {
+        const stubs = makeDomStubs();
+        stubs.localStorage.setItem(
+            'v7_stats',
+            JSON.stringify({
+                solved: 8,
+                correct: 6,
+                books: { 'book-1': { solved, correct: solved }, '능률 보카 중등 기본': null },
+            })
+        );
+        const { evaluate } = loadScripts(scriptOrderFromIndexHtml(), stubs);
+        assert.strictEqual(evaluate('db.getBookStats("book-1").solved'), solved);
+        assert.strictEqual(evaluate('db.getBookStats("book-1").correct'), solved);
+    }
+});
