@@ -3,16 +3,23 @@ const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
 const { loadScripts } = require('./helpers/load-module');
 
-test('사자성어는 독립된 네 단계의 30개와 정부 사전 출처를 가진다', () => {
+test('사자성어는 독립된 네 단계의 60개와 정부 사전 출처를 가진다', () => {
     const r = browserRuntime();
     const rows = r.evaluate('storyIdioms');
-    assert.equal(rows.length, 120);
-    assert.equal(new Set(rows.map((row) => row.word)).size, 120);
+    assert.equal(rows.length, 240);
+    assert.equal(new Set(rows.map((row) => row.word)).size, 240);
+    assert.equal(new Set(rows.map((row) => row.meaning)).size, 240);
+    assert.equal(new Set(rows.map((row) => row.source)).size, 240);
     for (let level = 1; level <= 4; level++) {
         const pool = r.evaluate(`idiomRules.pool(storyIdioms, ${level})`);
-        assert.equal(pool.length, 30);
+        assert.equal(pool.length, 60);
         for (const row of pool) {
             assert.match(row.word, /^[가-힣]{4}$/);
+            assert.equal(row.word, row.word.trim());
+            assert.equal(row.meaning, row.meaning.trim());
+            assert.ok(row.meaning.length > 5);
+            assert.ok(row.meaning.endsWith('.'));
+            assert.ok(!row.meaning.includes(row.word));
             assert.match(
                 row.source,
                 /^https:\/\/stdict.korean.go.kr\/search\/searchView.do\?word_no=\d+$/
@@ -21,6 +28,8 @@ test('사자성어는 독립된 네 단계의 30개와 정부 사전 출처를 �
             assert.equal(choices.length, 4);
             assert.equal(new Set(choices.map((choice) => choice.label)).size, 4);
             assert.equal(choices.filter((choice) => choice.correct).length, 1);
+            assert.equal(choices.find((choice) => choice.correct).label, row.word);
+            assert.ok(choices.every((choice) => pool.some((entry) => entry.word === choice.label)));
         }
     }
     assert.equal(
