@@ -266,7 +266,7 @@ dialog.screen-overlay .card.story-map-card {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 10px;
+    padding: calc(10px - var(--popup-header-padding)) 10px 10px;
     color: #f5eccd;
     border-radius: 0;
     border-image-slice: 15% fill !important;
@@ -1044,7 +1044,7 @@ button .action-icon {
     max-height: 100%;
     overflow: auto;
     box-sizing: border-box;
-    padding: 20px 14px 14px;
+    padding: 14px;
     border: 18px solid transparent;
     border-image: var(--ui-panel) 48 fill / 18px / 0 stretch;
     border-radius: 0;
@@ -1122,7 +1122,7 @@ button .action-icon {
     width: calc(var(--title-container-width, 100vw) - 32px);
     max-width: min(600px, calc(var(--title-container-width, 100vw) - 32px));
     max-height: calc(var(--app-height, 100dvh) - 84px);
-    padding: 10px;
+    padding: calc(10px - var(--popup-header-padding)) 10px 10px;
     border-radius: 0;
     border-image-slice: 15% fill !important;
     overflow: hidden;
@@ -3354,9 +3354,9 @@ dialog.screen-overlay h2 {
     letter-spacing: 0 !important;
 }
 
-/* Entry titles sit between equal upper/lower padding, including the close control. */
+/* 제목 줄의 위 패딩이 카드 여백에 중복되지 않게 보정한다. */
 dialog.screen-overlay .card.mode-selection {
-    padding-block: 12px;
+    padding-block: calc(12px - var(--popup-header-padding)) 12px;
 }
 dialog.screen-overlay .menu-heading {
     padding-block: var(--popup-header-padding);
