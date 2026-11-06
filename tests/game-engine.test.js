@@ -112,16 +112,18 @@ test('_buildPool: all/boss는 전체, 숫자 day는 해당 Day만 반환한다',
     assert.strictEqual(game._buildPool(99, WORDS).length, 0);
 });
 
-test('_interleave: 두 배열을 번갈아 배치한다', () => {
-    const game = loadGame();
-    assert.deepStrictEqual([...game._interleave(['a', 'b'], [1, 2])], ['a', 1, 'b', 2]);
+test('interleave: 두 배열을 번갈아 배치한다', () => {
+    const { evaluate } = loadScripts(['scripts/config.js', 'scripts/domain/battle-rules.js']);
+    const rules = evaluate('battleRules');
+    assert.deepStrictEqual([...rules.interleave(['a', 'b'], [1, 2])], ['a', 1, 'b', 2]);
 });
 
-test('_interleave: 길이가 달라도 남은 원소를 모두 보존한다', () => {
-    const game = loadGame();
-    assert.deepStrictEqual([...game._interleave(['a'], [1, 2, 3])], ['a', 1, 2, 3]);
-    assert.deepStrictEqual([...game._interleave(['a', 'b', 'c'], [1])], ['a', 1, 'b', 'c']);
-    assert.deepStrictEqual([...game._interleave([], [1, 2])], [1, 2]);
+test('interleave: 길이가 달라도 남은 원소를 모두 보존한다', () => {
+    const { evaluate } = loadScripts(['scripts/config.js', 'scripts/domain/battle-rules.js']);
+    const rules = evaluate('battleRules');
+    assert.deepStrictEqual([...rules.interleave(['a'], [1, 2, 3])], ['a', 1, 2, 3]);
+    assert.deepStrictEqual([...rules.interleave(['a', 'b', 'c'], [1])], ['a', 1, 'b', 'c']);
+    assert.deepStrictEqual([...rules.interleave([], [1, 2])], [1, 2]);
 });
 
 test('_buildBattleList: objective/subjective는 전부 한 종류로 채운다', () => {

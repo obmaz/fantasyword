@@ -131,7 +131,6 @@ function createBattleSession({
         },
         _getRawData: getSource,
         _buildPool: (day, source) => battleRules.buildPool(day, source || game._getRawData()),
-        _interleave: (a, b) => battleRules.interleave(a, b),
         _buildBattleList: (pool, count, type, monsterId = null) =>
             ['spelling', 'listening', 'dragon'].includes(type) && encounters
                 ? game

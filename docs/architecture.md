@@ -70,13 +70,15 @@ ES modules·프레임워크·번들 전환은 실행/배포 계약을 바꾸는 
 | 메뉴·전체화면  | `ui/layout-manager.js`, `modal-manager.js`, `navigation.js`                                            | `design-improvements.test.js`, `navigation-practice.test.js`              |
 | 어드민 해금    | `features/settings.js`                                                                                 | `admin-games.test.js`, `progression-settings.test.js`                     |
 
-과거 결함의 동작 검증은 `review-regressions.test.js`, `review-2026-10-09.test.js`에도 유지한다.
-리뷰 문서 정리는 회귀 테스트 삭제의 근거가 아니다.
+테스트는 리뷰 날짜 대신 검증하는 동작으로 분류한다. `storage-transactions.test.js`는 묶음 저장의 원자성,
+`storage-recovery.test.js`는 저장 실패 후 복구·재시도, `session-lifecycle.test.js`는 음성·예약·화면 전환,
+`ui-interactions.test.js`는 입력·포커스·동작 줄이기·화면 갱신을 검증한다.
+과거 결함을 재현하는 유효한 테스트는 파일 정리 때에도 유지한다.
 
 ## 상태·저장·비동기
 
 `database.js`의 `DB_STORAGE_FIELDS`가 필드·키·직렬화를 관리하고 `gameStorage`만 localStorage에 접근한다.
-설정·외움·장착/해제·통계·구매·이벤트는 사본에서 계산한 변경을 `db.commitChanges`로 저장한 뒤 메모리에 적용한다.
+장착은 `inventory.equip`에서 처리한다. 설정·외움·장착/해제·통계·구매·이벤트는 사본에서 계산한 변경을 `db.commitChanges`로 저장한 뒤 메모리에 적용한다.
 `db.grantGold`는 정답 골드·아이템 소모·복수 완료 기록을 함께 저장한다.
 복수 서비스의 `prepareSuccess`는 변경 계획만 반환하며 실제 지급 성공 뒤에 목록을 갱신한다.
 스킬 저장이 실패하면 보기 제거·즉시 정답을 실행하지 않는다. 실패한 보상은 획득 합계에 포함하지 않는다.
@@ -157,7 +159,7 @@ CSS 이미지 상대 경로는 `../../images/`이며 빌드가 내용 버전을 
 전체화면 전환은 열린 dialog를 같은 순서로 복원하고 실패 시에도 입력·스크롤·이력을 보존한다.
 상단 조작과 영어 키보드는 `ui/gameplay-controls.js`에서 모드별 종료 콜백·삭제 키 여부를 받아 공유한다.
 버튼 역할은 `data-confirm-tone`으로 표시하고 기존 이미지 스킨보다 우선하는 색상 매핑 한 곳에서 처리한다.
-저장 실패·묶음 보상·화면 전환은 `review-reliability.test.js`, 캐시 오류/탐색은 `service-worker.test.js`로 검증한다.
+저장 실패·묶음 보상·화면 전환은 `storage-recovery.test.js`, 캐시 오류/탐색은 `service-worker.test.js`로 검증한다.
 
 ## 코드·데이터 규칙
 

@@ -21,39 +21,6 @@ const pool = [
     { day: 1, word: 'dog', meaning: '개' },
 ];
 
-test('기존 Day 배지가 없는 실제 화면 구조에서도 도전·스토리·사자성어를 시작하고 다음 문제로 진행한다', () => {
-    for (const mode of ['battle', 'story', 'idiom-test']) {
-        const r = browserRuntime(quiet);
-        r.sandbox.rawDataData = pool;
-        assert.doesNotMatch(r.html, /id="game-info-badge"/);
-        const getElementById = r.sandbox.document.getElementById;
-        r.sandbox.document.getElementById = (id) =>
-            id === 'game-info-badge' ? null : getElementById(id);
-        const day = mode === 'idiom-test' ? 'all' : 1;
-        r.evaluate(
-            `game.battleQuestionType = 'objective'; game.init('${mode}', '${day}', 'objective')`
-        );
-        r.advance(400);
-        assert.equal(r.evaluate('game.active'), true, mode);
-        assert.notEqual(r.getElement('q-text').innerText, '', mode);
-        assert.ok(r.getElement('options-box').children.length > 0, mode);
-        r.evaluate('game.answerOption(game.options.findIndex(option => option.correct))');
-        assert.equal(r.evaluate('game.currentQ.wasCorrect'), true, mode);
-        r.advance(800);
-        assert.equal(r.evaluate('game.idx'), 1, mode);
-        r.evaluate('game.exit()');
-        assert.equal(r.evaluate('game.active'), false, mode);
-    }
-});
-
-test('일반 문제 문구는 동적 변경을 보조기기에 공지한다', () => {
-    const r = browserRuntime();
-    assert.match(
-        r.html,
-        /class="q-text"\s+id="q-text"\s+role="status"\s+aria-live="polite"\s+aria-atomic="true"/
-    );
-});
-
 test('음악·자동 발음·진동 설정은 저장 실패 시 체크와 실행 상태를 보존한다', () => {
     const r = browserRuntime();
     r.sandbox.onload();
@@ -219,39 +186,4 @@ test('골드는 안전한 정수 범위를 넘거나 저장이 실패해도 기�
     assert.equal(r.store.get('v7_gold'), String(Number.MAX_SAFE_INTEGER));
     rejectWrites(r, 'v7_gold');
     assert.equal(r.evaluate('db.subGold(100)'), Number.MAX_SAFE_INTEGER);
-});
-
-test('행맨·속담·대장간은 히스토리를 예약하고 뒤의 로비를 비활성화한 뒤 복구한다', () => {
-    for (const [start, exit] of [
-        ['hangman.start()', 'hangman.exit()'],
-        ['storyPuzzle.start("proverb")', 'storyPuzzle.exit()'],
-        ['storyPuzzle.start("forge")', 'storyPuzzle.exit()'],
-    ]) {
-        let pushes = 0;
-        const r = browserRuntime(quiet, {
-            history: {
-                pushState() {
-                    pushes++;
-                },
-                replaceState() {},
-            },
-        });
-        r.evaluate('navigation.init()');
-        r.evaluate(start);
-        assert.equal(pushes, 1, start);
-        assert.equal(r.getElement('title-screen').inert, true, start);
-        assert.equal(r.getElement('title-screen').style.display, 'none', start);
-        r.evaluate(exit);
-        assert.equal(r.getElement('title-screen').inert, false, exit);
-        assert.equal(r.getElement('title-screen').style.display, 'flex', exit);
-    }
-});
-
-test('닫는 중인 팝업은 연속 뒤로 가기를 가로채지 않는다', () => {
-    const r = browserRuntime(quiet);
-    r.getElement('shop-modal').classList.add('screen-overlay');
-    r.evaluate('shop.open(); navigation.back()');
-    assert.equal(r.getElement('shop-modal').classList.contains('closing'), true);
-    r.evaluate('hangman.start(); navigation.back()');
-    assert.equal(r.evaluate('hangman.active'), false);
 });

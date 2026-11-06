@@ -199,12 +199,4 @@ const shop = {
                 'success'
             );
     },
-
-    /**
-     * 아이템을 장착합니다
-     * @param {string} id - 아이템 ID
-     */
-    equip: (id) => {
-        return db.equip(id);
-    },
 };

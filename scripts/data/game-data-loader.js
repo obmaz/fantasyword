@@ -190,15 +190,10 @@
         setupSelector();
     }
 
-    // 전역으로 노출
+    // 설정의 단어장 선택과 현재 단어장 조회 API. 전환 적용 후에는 새로고침한다.
     window.gameDataLoader = {
         changeDataSet: changeDataSet,
         getCurrentDataSetId: () => currentDataSetId,
         getAvailableDataSets: () => availableDataSets,
-        reload: () => {
-            if (currentDataSetId) {
-                changeDataSet(currentDataSetId);
-            }
-        },
     };
 })();

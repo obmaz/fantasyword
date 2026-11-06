@@ -5,18 +5,16 @@
 
 ## 승인 참고 이미지
 
-| 파일                                                                                       | 용도                                              |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| [시작 메뉴](design/approved-lobby.webp)                                                    | 초록 숲·남자아이·버튼 재질 기준                   |
-| [내부 메뉴](design/approved-menus.webp)                                                    | 상점·장비·통계·설정의 재질과 톤                   |
-| [영어 키보드](design/approved-english-keyboard.webp)                                       | 주관식 캐릭터·문제판·키·공격 버튼                 |
-| [파비콘 원본](design/favicon.webp)                                                         | 숲색 타일·책·금색 왕관                            |
-| [지도 초안](design/story-map-draft.webp)                                                   | 지도 제작 참고; 현행 배경·경로는 아래 런타임 사용 |
-| [초기 길드](design/guild-lobby-concept.webp), [메뉴 탐색](design/quest-menu-concepts.webp) | 제작 참고; 현재 메뉴 배치의 기준은 아님           |
+| 파일                                                 | 용도                              |
+| ---------------------------------------------------- | --------------------------------- |
+| [시작 메뉴](design/approved-lobby.webp)              | 초록 숲·남자아이·버튼 재질 기준   |
+| [내부 메뉴](design/approved-menus.webp)              | 상점·장비·통계·설정의 재질과 톤   |
+| [영어 키보드](design/approved-english-keyboard.webp) | 주관식 캐릭터·문제판·키·공격 버튼 |
+| [파비콘 원본](design/favicon.webp)                   | 숲색 타일·책·금색 왕관            |
 
 시안의 예시 숫자·가격·슬롯·뒤로 버튼을 실제 계약으로 해석하지 않는다.
 현행 로비는 스토리·도전·연습 한 줄과 하단 개별 메뉴다.
-옛 프롬프트·변경 과정은 Git 이력에서 확인한다. 새 제작은 승인 WebP와 아래 기준으로 이어간다.
+사용하지 않는 초기 시안·옛 프롬프트·변경 과정은 Git 이력에서 확인한다. 새 제작은 승인 WebP와 아래 기준으로 이어간다.
 
 ## 런타임 이미지
 
@@ -29,15 +27,13 @@
 | `parts/menu-*.webp`, `ui-*.webp`, `calm-*.webp`                   | 모드·메뉴·기능별 독립 아이콘/부품                           |
 | `parts/game-action.webp`, `game-danger.webp`, `game-control.webp` | 일반·도전/위험·하단 메뉴와 공통 조작 재질                   |
 | `parts/confirm-cancel.webp`, `confirm-execute.webp`               | 회색 취소·밝고 차분한 파란 실행; 경고는 game-danger         |
-| `parts/proverb-blank.webp`                                        | 이전 속담 빈칸 부품; 현행 빈칸은 단순한 CSS 사각형          |
-| `parts/approved-*.webp`, `surface-*.webp`                         | 메뉴 프레임·양피지·입력·슬롯·코인·기본 재질                 |
+| `parts/approved-*.webp`                                           | 메뉴 프레임·양피지·입력·슬롯·코인·기본 재질                 |
 | `parts/revenge-icon.webp`                                         | 검·회전 화살표 복수 아이콘; 이름은 HTML                     |
-| `parts/quest-{hero,dragon,key,delete,paper,attack}.webp`          | 주관식 장면/키보드 부품; 장비 몸 그림은 아래 전용 파일 사용 |
+| `parts/quest-{dragon,key,delete,paper,attack}.webp`               | 주관식 장면/키보드 부품; 장비 몸 그림은 아래 전용 파일 사용 |
 | `parts/monster-*.webp`, `item-*.webp`, `weapon-*.webp`            | 몬스터·상점/장비·착용 부품                                  |
 | `parts/combat-{basic,fire,ice,lightning,void,gold}.webp`          | 투명 공격 효과 여섯 종류                                    |
 | `skyfall-field.webp`                                              | 총공세 탑뷰 숲 공터                                         |
 | `story-map-background.webp`                                       | 들판·강/호수·협곡·설산·화산; 실제 길/지점은 SVG/HTML        |
-| `story-map.webp`                                                  | 예전 길/아이콘 포함 지도 참고 이미지                        |
 | `hangman-stage.webp`                                              | 칠판·목조 무대; 그림·단어·키보드는 별도 UI                  |
 | `shell-tavern.webp`, `parts/shell-cup.webp`                       | 초록 테이블 도박장과 독립 컵; 주사위/이동은 DOM             |
 | `proverb-study.webp`, `idiom-study.webp`                          | 낮의 서당·달빛 서예방; 문제판/하단 보기는 별도 UI           |
@@ -46,7 +42,8 @@
 `data-confirm-tone`이 취소/실행/경고 이미지를 고르며 글자·동작·비활성화는 HTML이 처리한다.
 영어·사자성어·속담·대장간의 `answer-choice`는 `shared-ui.css`에서 동일한 game-action/confirm-execute/game-danger 이미지와 크기를 공유한다.
 총공세 보기는 이 공통 크기에서 제외한다. 속담 빈칸은 단순한 사각형 안에 HTML 정답을 표시하며 문제판을 확대하지 않는다.
-예전 글자가 포함된 메뉴 이미지와 기본 재질도 cascade에 참조가 남을 수 있으므로 이름만 보고 삭제하지 않는다.
+메뉴 이미지와 기본 재질은 CSS cascade의 참조도 확인한다. `ITEM_ICON_NAMES`·공격 프로필의 부품명과
+몬스터·공격 효과의 동적 경로는 파일 이름 문자열 검색만으로 미사용 여부를 판단하지 않는다.
 `images/battle/`는 기존 모험가/몬스터 sprite다. JS 동적 경로와 CSS/HTML 직접 참조를 함께 확인한다.
 
 파비콘은 루트 `favicon.ico`(16·32·48·64px), `images/icons/favicon-32.png`,
@@ -57,7 +54,7 @@ PWA의 `images/icons/app-{192,512}.png`는 같은 승인 파비콘 원본에서 
 
 `parts/quest-hero-unarmed.webp`·`quest-hero-unarmed-helmet.webp`는 384×384 투명 몸 그림이다.
 무기·방패·칼집이 없고 실제 헬름 장착 시 같은 포즈의 헬름 몸 그림으로 전환한다.
-이전 몸 파일은 캐시 호환용으로 보존하며 현행 HTML은 새 파일을 사용한다.
+HTML은 이 두 몸 그림을 직접 참조한다. 캐시는 빌드 버전별로 관리하며, 참조 없는 이전 몸 그림은 배포에 포함하지 않는다.
 빈 오른손에는 무기 레이어를 넣지 않는다.
 
 `parts/avatar-equipment.webp`는 2172×724 투명 atlas다. 정사각형 세 칸 중 건틀릿·부츠를 손/발에 클립하며

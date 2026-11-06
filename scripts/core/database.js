@@ -257,27 +257,6 @@ const db = {
         };
     })(),
 
-    // 필드별 localStorage 직렬화 함수 (save에서 선택적으로 호출)
-    _writers: Object.fromEntries(
-        Object.entries(DB_STORAGE_FIELDS).map(([field, [key, property, serialize]]) => [
-            field,
-            () => db[property] === undefined || gameStorage.set(key, serialize(db[property])),
-        ])
-    ),
-
-    /**
-     * 데이터를 필드별로 개별 저장한다.
-     * 상태·비용을 함께 바꾸는 작업은 commitChanges를 사용한다.
-     * @param {...string} fields - 저장할 필드명(_writers 키). 생략 시 전체 저장.
-     */
-    save: (...fields) => {
-        const keys = fields.length ? fields : Object.keys(db._writers);
-        keys.forEach((k) => {
-            if (db._writers[k]) db._writers[k]();
-        });
-        ui.updateGold();
-    },
-
     /**
      * 골드를 추가합니다 (음수 가능)
      * @param {number} n - 추가할 골드 양
@@ -325,12 +304,6 @@ const db = {
      * @returns {boolean} 보유 여부
      */
     has: (id) => db.owned.includes(id),
-
-    /**
-     * 아이템을 장착합니다
-     * @param {string} id - 아이템 ID
-     */
-    equip: (id) => inventory.equip(id, 'weapon'),
 
     /** 현재 활성 데이터셋의 단어장 저장 키 ('book-N') */
     getBookKey: () => currentBookKey(),

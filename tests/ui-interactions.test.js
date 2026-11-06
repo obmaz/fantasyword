@@ -2,6 +2,13 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { browserRuntime } = require('./helpers/browser-runtime');
 
+const pool = [
+    { day: 1, word: 'apple', meaning: '사과' },
+    { day: 1, word: 'banana', meaning: '바나나' },
+    { day: 1, word: 'cat', meaning: '고양이' },
+    { day: 1, word: 'dog', meaning: '개' },
+];
+
 const quiet = { v7_settings: '{"musicPlay":false,"wordRead":false}' };
 
 test('야바위의 동작 줄이기는 이동 애니메이션을 생략하고 같은 최종 컵 위치를 유지한다', () => {
@@ -200,4 +207,127 @@ test('변하지 않은 무기 레이어는 골드·장비 UI 갱신에서 같은
     render(null);
     assert.equal(writes, 3);
     assert.equal(weapon.hidden, true);
+});
+
+test('전체 철자 입력은 첫 글자가 빠진 답을 오답으로 처리하고 골드를 주지 않는다', () => {
+    const r = browserRuntime();
+    r.evaluate('game.battleQuestionType = "subjective"; game.init("battle", 1)');
+    r.advance(500);
+    const answer = r.evaluate('game.currentQ.word');
+    r.getElement('boss-input').value = answer.slice(1);
+    r.evaluate('game.checkBossAnswer()');
+    assert.equal(r.evaluate('game.subjectiveCorrect'), 0);
+    assert.equal(r.evaluate('game.stats.gain'), 0);
+    assert.equal(r.evaluate('game.sessionMistakes'), 1);
+});
+
+test('연습 필터 선택은 보조기술에도 전달되고 빈 목록의 암기 상태를 초기화한다', () => {
+    const r = browserRuntime();
+    const chips = ['all', 'memorized', 'not-memorized'].map((value) => {
+        const chip = r.getElement(`filter-${value}`);
+        chip.getAttribute = (name) => (name === 'data-filter' ? value : null);
+        return chip;
+    });
+    r.sandbox.document.querySelectorAll = (selector) =>
+        selector === '#practice-filter-chips .practice-chip' ? chips : [];
+    r.evaluate('practiceMemorization.start(1); practiceMemorization.applyFilter("memorized")');
+    assert.deepEqual(
+        chips.map((chip) => chip['aria-pressed']),
+        ['false', 'true', 'false']
+    );
+    r.getElement('practice-memorized-btn').textContent = '외움 취소';
+    r.evaluate('practiceMemorization.applyFilter("memorized")');
+    assert.equal(r.getElement('practice-memorized-btn').textContent, '외웠어요');
+    assert.equal(r.getElement('practice-memorized-btn')['aria-pressed'], 'false');
+});
+
+test('아이템 상세를 닫으면 호출 버튼으로, 렌더 뒤 버튼이 없으면 장비 닫기로 포커스를 복원한다', () => {
+    for (const connected of [true, false]) {
+        const r = browserRuntime({ v7_inventory: '["helmet"]' });
+        const trigger = r.getElement('item-trigger');
+        let focused;
+        trigger.focus = () => {
+            focused = trigger;
+        };
+        const close = r.getElement('inventory-close');
+        close.focus = () => {
+            focused = close;
+        };
+        trigger.isConnected = connected;
+        r.sandbox.document.activeElement = trigger;
+        r.getElement('inventory-modal').contains = () => true;
+        r.getElement('inv-item-detail').contains = () => false;
+        r.sandbox.document.querySelector = (selector) =>
+            selector === '#inventory-modal .modal-header .modal-close-x' ? close : null;
+        r.evaluate('inventory.showDetails("helmet", "item"); inventory.hideDetails()');
+        assert.equal(focused, connected ? trigger : close);
+    }
+});
+
+test('기존 Day 배지가 없는 실제 화면 구조에서도 도전·스토리·사자성어를 시작하고 다음 문제로 진행한다', () => {
+    for (const mode of ['battle', 'story', 'idiom-test']) {
+        const r = browserRuntime(quiet);
+        r.sandbox.rawDataData = pool;
+        assert.doesNotMatch(r.html, /id="game-info-badge"/);
+        const getElementById = r.sandbox.document.getElementById;
+        r.sandbox.document.getElementById = (id) =>
+            id === 'game-info-badge' ? null : getElementById(id);
+        const day = mode === 'idiom-test' ? 'all' : 1;
+        r.evaluate(
+            `game.battleQuestionType = 'objective'; game.init('${mode}', '${day}', 'objective')`
+        );
+        r.advance(400);
+        assert.equal(r.evaluate('game.active'), true, mode);
+        assert.notEqual(r.getElement('q-text').innerText, '', mode);
+        assert.ok(r.getElement('options-box').children.length > 0, mode);
+        r.evaluate('game.answerOption(game.options.findIndex(option => option.correct))');
+        assert.equal(r.evaluate('game.currentQ.wasCorrect'), true, mode);
+        r.advance(800);
+        assert.equal(r.evaluate('game.idx'), 1, mode);
+        r.evaluate('game.exit()');
+        assert.equal(r.evaluate('game.active'), false, mode);
+    }
+});
+
+test('일반 문제 문구는 동적 변경을 보조기기에 공지한다', () => {
+    const r = browserRuntime();
+    assert.match(
+        r.html,
+        /class="q-text"\s+id="q-text"\s+role="status"\s+aria-live="polite"\s+aria-atomic="true"/
+    );
+});
+
+test('행맨·속담·대장간은 히스토리를 예약하고 뒤의 로비를 비활성화한 뒤 복구한다', () => {
+    for (const [start, exit] of [
+        ['hangman.start()', 'hangman.exit()'],
+        ['storyPuzzle.start("proverb")', 'storyPuzzle.exit()'],
+        ['storyPuzzle.start("forge")', 'storyPuzzle.exit()'],
+    ]) {
+        let pushes = 0;
+        const r = browserRuntime(quiet, {
+            history: {
+                pushState() {
+                    pushes++;
+                },
+                replaceState() {},
+            },
+        });
+        r.evaluate('navigation.init()');
+        r.evaluate(start);
+        assert.equal(pushes, 1, start);
+        assert.equal(r.getElement('title-screen').inert, true, start);
+        assert.equal(r.getElement('title-screen').style.display, 'none', start);
+        r.evaluate(exit);
+        assert.equal(r.getElement('title-screen').inert, false, exit);
+        assert.equal(r.getElement('title-screen').style.display, 'flex', exit);
+    }
+});
+
+test('닫는 중인 팝업은 연속 뒤로 가기를 가로채지 않는다', () => {
+    const r = browserRuntime(quiet);
+    r.getElement('shop-modal').classList.add('screen-overlay');
+    r.evaluate('shop.open(); navigation.back()');
+    assert.equal(r.getElement('shop-modal').classList.contains('closing'), true);
+    r.evaluate('hangman.start(); navigation.back()');
+    assert.equal(r.evaluate('hangman.active'), false);
 });
