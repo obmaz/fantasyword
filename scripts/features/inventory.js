@@ -37,7 +37,7 @@ const inventory = {
         head: { label: '머리', accepts: '통찰의 헬름 · 무료 힌트 1회', placeholder: 'helmet' },
         'hand-1': {
             label: '오른손',
-            accepts: `주무기 · 골드 보너스 · 3연속 정답 +${equipmentRules.comboBonus} G`,
+            accepts: '주무기 · 무기별 골드·연속 정답 보너스',
             placeholder: 'basic',
         },
         'hand-2': {
@@ -268,7 +268,7 @@ const inventory = {
         if (
             type === 'weapon' &&
             allowedSlots.includes('hand-1') &&
-            !itemData.desc?.includes('3연속')
+            !itemData.desc?.includes('연속')
         )
             description += `\n오른손: 3연속 정답마다 추가 공격 +${equipmentRules.comboBonus} G`;
         if (type === 'weapon' && itemData.multiplier > 1)

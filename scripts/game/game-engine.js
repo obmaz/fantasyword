@@ -622,6 +622,7 @@ function createBattleSession({
         useHint() {
             if (
                 !game.active ||
+                game.mode === 'idiom-test' ||
                 !game.currentQ ||
                 game.isProcessing ||
                 game.currentQ.isBoss ||
@@ -649,6 +650,7 @@ function createBattleSession({
         useUltimate() {
             if (
                 !game.active ||
+                game.mode === 'idiom-test' ||
                 !game.currentQ ||
                 game.isProcessing ||
                 game.currentQ.isBoss ||

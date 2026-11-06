@@ -4,6 +4,45 @@ const { browserRuntime } = require('./helpers/browser-runtime');
 
 const quiet = { v7_settings: '{"musicPlay":false,"wordRead":false}' };
 
+test('야바위의 동작 줄이기는 이동 애니메이션을 생략하고 같은 최종 컵 위치를 유지한다', () => {
+    for (const reduce of [false, true]) {
+        const r = browserRuntime(quiet);
+        r.sandbox.document.defaultView = {
+            matchMedia: () => ({ matches: reduce }),
+        };
+        const animations = [];
+        const createElement = r.sandbox.document.createElement;
+        r.sandbox.document.createElement = () => {
+            const element = createElement();
+            element.animate = (...args) => {
+                animations.push(args);
+                return { cancel() {} };
+            };
+            return element;
+        };
+        const view = r.evaluate('createShellView')({
+            document: r.sandbox.document,
+            openScreen() {},
+            resetScreen() {},
+        });
+        view.open(
+            [
+                { color: 'red', number: 1 },
+                { color: 'blue', number: 2 },
+                { color: 'green', number: 3 },
+            ],
+            () => {}
+        );
+        const cups = r.getElement('shell-table').children.slice(1);
+        view.swap(0, 2, 0, 2, 540);
+        assert.equal(animations.length, reduce ? 0 : 2);
+        assert.equal(cups[0].style.left, '66.666%');
+        assert.equal(cups[2].style.left, '0%');
+        assert.equal(cups[0]['aria-label'], '3번째 컵 선택');
+        assert.equal(cups[2]['aria-label'], '1번째 컵 선택');
+    }
+});
+
 test('동작 줄이기에서는 팝업 닫기 대기 없이 즉시 조작을 돌려준다', () => {
     const r = browserRuntime(quiet, { matchMedia: () => ({ matches: true }) });
     r.getElement('shop-modal').classList.add('screen-overlay');

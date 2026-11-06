@@ -93,6 +93,9 @@ function createShellView({ document: doc, openScreen, resetScreen, sound }) {
         },
         swap(first, second, left, right, duration) {
             cancelAnimations();
+            const reduceMotion = doc.defaultView?.matchMedia?.(
+                '(prefers-reduced-motion: reduce)'
+            )?.matches;
             for (const [cup, from, to, arc] of [
                 [first, left, right, -18],
                 [second, right, left, 18],
@@ -104,7 +107,7 @@ function createShellView({ document: doc, openScreen, resetScreen, sound }) {
                     left: `${position * 33.333}%`,
                     transform: `translateY(${y}px)`,
                 });
-                if (button.animate)
+                if (button.animate && !reduceMotion)
                     animations.push(
                         button.animate(
                             [frame(from, 0), frame((from + to) / 2, arc), frame(to, 0)],
